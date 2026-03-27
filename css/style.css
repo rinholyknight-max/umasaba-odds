@@ -232,7 +232,7 @@ button {
   box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);
 }
 .c-button--secondary {
-  background: #666666;
+  background: #999999;
   color: #1a1a1a;
   border: 1px solid #eeeeee;
 }
