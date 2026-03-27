@@ -200,27 +200,42 @@ h2,
 }
 .l-header__hamburger {
   width: 30px;
-  height: 24px;
+  height: 22px;
   position: relative;
   background: none;
   border: none;
+  cursor: pointer;
+  z-index: 300;
+  padding: 0;
 }
 .l-header__hamburger span {
   display: block;
   position: absolute;
+  left: 0;
   width: 100%;
   height: 2px;
   background: #fff;
   transition: 0.3s;
+  border-radius: 2px;
+}
+.l-header__hamburger span:nth-child(1) {
+  top: 0;
+}
+.l-header__hamburger span:nth-child(2) {
+  top: 10px;
+}
+.l-header__hamburger span:nth-child(3) {
+  top: 20px;
 }
 .l-header__hamburger.is-active span:nth-child(1) {
-  transform: translateY(11px) rotate(45deg);
+  transform: translateY(10px) rotate(45deg);
 }
 .l-header__hamburger.is-active span:nth-child(2) {
   opacity: 0;
+  transform: translateX(-10px);
 }
 .l-header__hamburger.is-active span:nth-child(3) {
-  transform: translateY(-11px) rotate(-45deg);
+  transform: translateY(-10px) rotate(-45deg);
 }
 
 .l-menu {
