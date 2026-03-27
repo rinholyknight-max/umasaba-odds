@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>リアルタイムオッズ - ウマサバ</title>
+    <title>リアルタイムオッズ - うまさば</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body class="l-page-container">
     <header class="l-header">
       <div class="l-header__inner">
         <button class="l-header__hamburger" id="js-hamburger"><span></span><span></span><span></span></button>
-        <span class="l-header__logo">📊 リアルタイムオッズ</span>
+        <span class="l-header__logo">リアルタイムオッズ</span>
       </div>
     </header>
 
@@ -27,7 +27,7 @@
     <main class="p-voting">
       <h1 class="p-voting__title">現在のオッズ推移</h1>
       <div id="odds-list" class="p-voting__list">データ集計中...</div>
-      <div id="total-info" style="text-align: center; margin-top: 20px; font-weight: bold; color: #666"></div>
+      <div id="total-info" class="p-voting__total"></div>
     </main>
 
     <script type="module">
@@ -55,13 +55,12 @@
         const oddsListDiv = document.getElementById("odds-list");
         const totalInfoDiv = document.getElementById("total-info");
 
-        // 【修正OK】horseName と userName を反映したオッズ計算
         onValue(ref(db, "horses"), (snapshot) => {
           const data = snapshot.val();
           oddsListDiv.innerHTML = "";
 
           if (!data) {
-            oddsListDiv.innerHTML = "<p>データがありません。</p>";
+            oddsListDiv.innerHTML = "<p class='p-voting__loading'>データがありません。</p>";
             return;
           }
 
@@ -82,18 +81,22 @@
             }
 
             const item = document.createElement("div");
-            item.className = "p-voting__item";
+            item.className = "p-voting__item p-voting__item--odds";
             item.innerHTML = `
-                        <div class="p-voting__info">
-                            <span class="p-voting__name">${h.horseName}</span>
-                            <small style="color:#666; font-size:0.75rem;">ユーザー: ${h.userName}</small>
-                            <span class="p-voting__votes">${v} 票</span>
-                        </div>
-                        <div style="text-align: right;">
-                            <span style="font-size: 0.8rem; color: #d32f2f; font-weight: bold;">オッズ</span><br>
-                            <span style="font-size: 1.5rem; font-weight: bold;">${odds.toFixed(1)}</span>
-                        </div>
-                    `;
+                <div class="p-voting__info">
+                    <div class="p-voting__text-group">
+                        <span class="p-voting__name" title="${h.horseName}">${h.horseName}</span>
+                        <span class="p-voting__user">トレーナー: ${h.userName}</span>
+                    </div>
+                    <div class="p-voting__stats">
+                        <span class="p-voting__votes">${v} 票</span>
+                    </div>
+                </div>
+                <div class="p-voting__odds-display">
+                    <span class="p-voting__label">オッズ</span>
+                    <span class="p-voting__number">${odds.toFixed(1)}</span>
+                </div>
+            `;
             oddsListDiv.appendChild(item);
           }
         });

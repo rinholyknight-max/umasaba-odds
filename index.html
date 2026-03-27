@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>オッズ投票 - ウマサバ</title>
+    <title>オッズ投票 - うまさば</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body class="l-page-container">
     <header class="l-header">
       <div class="l-header__inner">
         <button class="l-header__hamburger" id="js-hamburger"><span></span><span></span><span></span></button>
-        <span class="l-header__logo">🏇 ウマサバ投票</span>
+        <span class="l-header__logo">うまさば投票</span>
       </div>
     </header>
 
@@ -30,11 +30,8 @@
     </main>
 
     <script type="module">
-      // 【修正禁止】ログインチェック
       import { checkAuth, logout } from "./js/auth.js";
       import { initMenu } from "./js/menu.js";
-
-      // 【修正禁止】ライブラリの読み込み
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
       import { getDatabase, ref, onValue, update, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
@@ -56,7 +53,6 @@
         const db = getDatabase(app);
         const horseListDiv = document.getElementById("horse-list");
 
-        // 【修正OK】horseName と userName を表示するように変更
         onValue(ref(db, "horses"), (snapshot) => {
           const data = snapshot.val();
           horseListDiv.innerHTML = "";
@@ -70,16 +66,21 @@
             const h = data[id];
             const item = document.createElement("div");
             item.className = "p-voting__item";
-            item.innerHTML = `
-                        <div class="p-voting__info">
-                            <span class="p-voting__name">${h.horseName}</span>
-                            <small style="color:#666; font-size:0.75rem;">ユーザー: ${h.userName}</small>
-                            <span class="p-voting__votes">${h.votes || 0} 票</span>
-                        </div>
-                        <button class="c-button c-button--primary p-voting__button">投票する</button>
-                    `;
 
-            // 【修正禁止】投票を増やす命令
+            // レイアウト崩れを防ぐため、キャラ名とユーザー名をラップ
+            item.innerHTML = `
+                <div class="p-voting__info">
+                    <div class="p-voting__text-group">
+                        <span class="p-voting__name" title="${h.horseName}">${h.horseName}</span>
+                        <span class="p-voting__user">トレーナー: ${h.userName}</span>
+                    </div>
+                    <div class="p-voting__stats">
+                        <span class="p-voting__votes">${h.votes || 0} 票</span>
+                    </div>
+                </div>
+                <button class="c-button c-button--primary p-voting__button">投票</button>
+            `;
+
             item.querySelector("button").onclick = () => {
               update(ref(db, `horses/${id}`), { votes: increment(1) });
               alert(`${h.horseName}に投票しました！`);

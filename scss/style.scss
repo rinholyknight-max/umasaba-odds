@@ -126,6 +126,10 @@
   border: 1px solid #ccc;
   border-radius: v.$radius-sm;
   width: 100%;
+  &:focus {
+    outline: none;
+    border-color: v.$color-primary;
+  }
 }
 .c-button {
   display: inline-block;
@@ -159,6 +163,7 @@
   border-radius: v.$radius-md;
   box-shadow: v.$shadow-sm;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .p-login {
@@ -208,6 +213,11 @@
     &-name {
       font-weight: bold;
       font-size: 1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+      margin-right: 10px;
     }
   }
 }
@@ -239,6 +249,11 @@
     &:hover {
       background: lighten(v.$color-primary, 60%);
     }
+
+    // オッズ画面用
+    &--odds {
+      border-left: 4px solid v.$color-danger;
+    }
   }
   &__info {
     display: flex;
@@ -246,20 +261,46 @@
     gap: 2px;
     flex: 1;
     margin-right: 10px;
+    min-width: 0; // ellipsisを効かせるために必須
   }
   &__name {
     font-weight: bold;
     font-size: 1.1rem;
     line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   &__subtext {
     font-size: 0.75rem;
     color: v.$color-text-sub;
-  } // 追加: ユーザー名用
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   &__votes {
     font-size: 0.85rem;
     color: v.$color-primary;
     font-weight: bold;
     margin-top: 4px;
+  }
+
+  // オッズ数値の強調表示
+  &__odds-display {
+    text-align: right;
+    min-width: 70px;
+    flex-shrink: 0;
+  }
+  &__odds-label {
+    font-size: 0.65rem;
+    color: v.$color-danger;
+    font-weight: bold;
+    display: block;
+  }
+  &__odds-number {
+    font-size: 1.4rem;
+    font-weight: 900;
+    line-height: 1;
+    color: v.$color-text-main;
   }
 }

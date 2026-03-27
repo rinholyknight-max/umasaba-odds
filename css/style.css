@@ -193,6 +193,10 @@ button {
   border-radius: 4px;
   width: 100%;
 }
+.c-input:focus {
+  outline: none;
+  border-color: #2c7c33;
+}
 
 .c-button {
   display: inline-block;
@@ -225,6 +229,7 @@ button {
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
+  box-sizing: border-box;
 }
 
 .p-login {
@@ -276,6 +281,11 @@ button {
 .p-admin__item-name {
   font-weight: bold;
   font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  margin-right: 10px;
 }
 
 .p-voting {
@@ -306,25 +316,52 @@ button {
 .p-voting__item:hover {
   background: rgb(228.4285714286, 245.5714285714, 229.9285714286);
 }
+.p-voting__item--odds {
+  border-left: 4px solid #d32f2f;
+}
 .p-voting__info {
   display: flex;
   flex-direction: column;
   gap: 2px;
   flex: 1;
   margin-right: 10px;
+  min-width: 0;
 }
 .p-voting__name {
   font-weight: bold;
   font-size: 1.1rem;
   line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .p-voting__subtext {
   font-size: 0.75rem;
   color: #666666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .p-voting__votes {
   font-size: 0.85rem;
   color: #2c7c33;
   font-weight: bold;
   margin-top: 4px;
+}
+.p-voting__odds-display {
+  text-align: right;
+  min-width: 70px;
+  flex-shrink: 0;
+}
+.p-voting__odds-label {
+  font-size: 0.65rem;
+  color: #d32f2f;
+  font-weight: bold;
+  display: block;
+}
+.p-voting__odds-number {
+  font-size: 1.4rem;
+  font-weight: 900;
+  line-height: 1;
+  color: #1a1a1a;
 }/*# sourceMappingURL=style.css.map */
