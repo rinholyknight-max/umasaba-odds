@@ -10,18 +10,19 @@
     <div id="horse-list">読み込み中...</div>
 
     <script type="module">
-      // --- ログインチェック：promptを削除 ---
+      // 【修正禁止】ログインチェックの仕組み。消すと誰でも見れてしまいます
       if (!sessionStorage.getItem("auth_role")) {
         alert("ログインしてください");
         window.location.href = "login.html";
       }
 
+      // 【修正禁止】ライブラリの読み込み。URLを変えると動きません
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
       import { getDatabase, ref, onValue, update, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-      // Firebaseの設定（あなたの設定をここに貼り付け）
+      // 【修正禁止】Firebaseの接続キー。ここを間違うとデータが消えたり届かなくなります
       const firebaseConfig = {
-        apiKey: "YOUR_API_KEY",
+        apiKey: "YOUR_API_KEY", // あなたのキーを維持してください
         authDomain: "umasaba-odds.firebaseapp.com",
         databaseURL: "https://umasaba-odds-default-rtdb.firebaseio.com",
         projectId: "umasaba-odds",
@@ -34,15 +35,17 @@
       const db = getDatabase(app);
       const horseListDiv = document.getElementById("horse-list");
 
-      // 馬リストの表示と投票処理
+      // 【修正OK】表示の仕方を工夫したい（表形式にしたい等）場合はこの中を編集
       onValue(ref(db, "horses"), (snapshot) => {
         const data = snapshot.val();
         horseListDiv.innerHTML = "";
         for (let id in data) {
           const h = data[id];
           const btn = document.createElement("button");
+          // ボタンの中の文字のデザインなどは変えてOK
           btn.textContent = `${h.name} (${h.votes || 0}票)`;
           btn.onclick = () => {
+            // 【修正禁止】投票を増やす命令。ここを変えると投票がカウントされません
             update(ref(db, `horses/${id}`), { votes: increment(1) });
             alert(`${h.name}に投票しました！`);
           };

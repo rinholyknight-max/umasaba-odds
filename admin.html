@@ -14,7 +14,7 @@
     <button onclick="location.href = 'index.html'">投票画面へ戻る</button>
 
     <script type="module">
-      // --- ログインチェック：管理者（admin）以外は追い返す ---
+      // 【修正禁止】管理者以外を追い出す処理。非常に重要です
       if (sessionStorage.getItem("auth_role") !== "admin") {
         alert("管理者権限が必要です。ログインし直してください。");
         window.location.href = "login.html";
@@ -23,7 +23,7 @@
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
       import { getDatabase, ref, push, set, onValue, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-      // Firebaseの設定（index.htmlと同じものを貼り付け）
+      // 【修正禁止】Firebase設定（index.htmlと同じにする必要があります）
       const firebaseConfig = {
         apiKey: "YOUR_API_KEY",
         authDomain: "umasaba-odds.firebaseapp.com",
@@ -37,7 +37,7 @@
       const app = initializeApp(firebaseConfig);
       const db = getDatabase(app);
 
-      // 馬の追加
+      // 【修正OK】登録成功時のメッセージを出したいなどはここ
       document.getElementById("add-btn").onclick = () => {
         const name = document.getElementById("horse-name").value;
         if (name) {
@@ -47,19 +47,19 @@
         }
       };
 
-      // 馬の削除用リスト表示
       onValue(ref(db, "horses"), (snapshot) => {
         const data = snapshot.val();
         const list = document.getElementById("admin-list");
         list.innerHTML = "";
         for (let id in data) {
           const div = document.createElement("div");
+          // 【修正OK】「削除」ボタンの文字や色を変えるのはここ
           div.innerHTML = `${data[id].name} <button onclick="deleteHorse('${id}')">削除</button>`;
           list.appendChild(div);
         }
       });
 
-      // 削除関数をグローバルに公開
+      // 【修正禁止】データを消す命令。ここを間違うと削除ができなくなります
       window.deleteHorse = (id) => {
         if (confirm("本当に削除しますか？")) {
           remove(ref(db, `horses/${id}`));
