@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>オッズ投票 - ウマサバ</title>
+    <title>リアルタイムオッズ - ウマサバ</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body class="l-page-container">
     <header class="l-header">
       <div class="l-header__inner">
         <button class="l-header__hamburger" id="js-hamburger"><span></span><span></span><span></span></button>
-        <span class="l-header__logo">🏇 ウマサバ投票</span>
+        <span class="l-header__logo">📊 リアルタイムオッズ</span>
       </div>
     </header>
 
@@ -25,23 +25,22 @@
     <div class="l-menu__overlay" id="js-overlay"></div>
 
     <main class="p-voting">
-      <h1 class="p-voting__title">レース出走表</h1>
-      <div id="horse-list" class="p-voting__list">読み込み中...</div>
+      <h1 class="p-voting__title">現在のオッズ推移</h1>
+      <div id="odds-list" class="p-voting__list">データ集計中...</div>
+      <div id="total-info" style="text-align: center; margin-top: 20px; font-weight: bold; color: #666"></div>
     </main>
 
     <script type="module">
-      // 【修正禁止】ログインチェック
       import { checkAuth, logout } from "./js/auth.js";
       import { initMenu } from "./js/menu.js";
-
-      // 【修正禁止】ライブラリ
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-      import { getDatabase, ref, onValue, update, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+      import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
       if (checkAuth()) {
         initMenu();
         document.getElementById("js-logout").onclick = logout;
 
+        // 【重要】他のファイルと同じConfigを使用してください
         const firebaseConfig = {
           apiKey: "YOUR_API_KEY",
           authDomain: "umasaba-odds.firebaseapp.com",
@@ -54,34 +53,49 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
-        const horseListDiv = document.getElementById("horse-list");
+        const oddsListDiv = document.getElementById("odds-list");
+        const totalInfoDiv = document.getElementById("total-info");
 
         onValue(ref(db, "horses"), (snapshot) => {
           const data = snapshot.val();
-          horseListDiv.innerHTML = "";
+          oddsListDiv.innerHTML = "";
 
           if (!data) {
-            horseListDiv.innerHTML = "<p class='p-voting__loading'>現在、登録されている馬はいません。</p>";
+            oddsListDiv.innerHTML = "<p>馬データがありません。</p>";
             return;
           }
 
+          // 全投票数の合計を算出
+          let totalVotes = 0;
+          for (let id in data) {
+            totalVotes += data[id].votes || 0;
+          }
+
+          totalInfoDiv.innerText = `総投票数: ${totalVotes} 票`;
+
           for (let id in data) {
             const h = data[id];
+            const v = h.votes || 0;
+
+            // オッズ計算式: 総投票数 / その馬の投票数 (0票の場合は 99.9 とする)
+            let odds = 99.9;
+            if (v > 0) {
+              odds = Math.floor((totalVotes / v) * 10) / 10;
+            }
+
             const item = document.createElement("div");
             item.className = "p-voting__item";
             item.innerHTML = `
                         <div class="p-voting__info">
                             <span class="p-voting__name">${h.name}</span>
-                            <span class="p-voting__votes">${h.votes || 0} 票</span>
+                            <span class="p-voting__votes">${v} 票</span>
                         </div>
-                        <button class="c-button c-button--primary p-voting__button">投票する</button>
+                        <div style="text-align: right;">
+                            <span style="font-size: 0.8rem; color: #d32f2f; font-weight: bold;">オッズ</span><br>
+                            <span style="font-size: 1.5rem; font-weight: bold;">${odds.toFixed(1)}</span>
+                        </div>
                     `;
-
-            item.querySelector("button").onclick = () => {
-              update(ref(db, `horses/${id}`), { votes: increment(1) });
-              alert(`${h.name}に投票しました！`);
-            };
-            horseListDiv.appendChild(item);
+            oddsListDiv.appendChild(item);
           }
         });
       }

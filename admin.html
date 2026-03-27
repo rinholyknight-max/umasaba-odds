@@ -17,6 +17,7 @@
     <nav class="l-menu" id="js-menu">
       <ul class="l-menu__list">
         <li class="l-menu__item"><a href="index.html" class="l-menu__link">投票画面</a></li>
+        <li class="l-menu__item"><a href="odds.html" class="l-menu__link">オッズ確認</a></li>
         <li class="l-menu__item"><a href="admin.html" class="l-menu__link">管理者画面</a></li>
         <li class="l-menu__item"><button id="js-logout" class="l-menu__link">ログアウト</button></li>
       </ul>
@@ -34,11 +35,8 @@
     </main>
 
     <script type="module">
-      // 【修正禁止】管理者以外を追い出す処理
       import { checkAuth, logout } from "./js/auth.js";
       import { initMenu } from "./js/menu.js";
-
-      // 【修正禁止】ライブラリの読み込み
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
       import { getDatabase, ref, push, set, onValue, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
@@ -46,7 +44,6 @@
         initMenu();
         document.getElementById("js-logout").onclick = logout;
 
-        // 【重要】Firebaseコンソールの「プロジェクトの設定」から本物の値をコピーして貼り付けてください
         const firebaseConfig = {
           apiKey: "YOUR_API_KEY",
           authDomain: "umasaba-odds.firebaseapp.com",
@@ -60,20 +57,13 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // 【修正OK】登録処理の確認用alert追加
         document.getElementById("add-btn").onclick = () => {
           const nameInput = document.getElementById("horse-name");
           const name = nameInput.value;
           if (name) {
             const newHorseRef = push(ref(db, "horses"));
-            set(newHorseRef, { name: name, votes: 0 })
-              .then(() => {
-                alert(name + " を登録しました！");
-                nameInput.value = "";
-              })
-              .catch((error) => {
-                alert("エラーが発生しました: " + error.message);
-              });
+            set(newHorseRef, { name: name, votes: 0 });
+            nameInput.value = "";
           }
         };
 
@@ -94,7 +84,6 @@
           }
         });
 
-        // 【修正禁止】データを消す命令
         window.deleteHorse = (id) => {
           if (confirm("本当に削除しますか？")) {
             remove(ref(db, `horses/${id}`));
