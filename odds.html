@@ -68,6 +68,29 @@
         const totalInfoDiv = document.getElementById("total-info");
         const searchInput = document.getElementById("js-search-input");
 
+        // --- ボタンイベントの紐付け ---
+        const sortAscBtn = document.getElementById("sort-asc");
+        const sortDescBtn = document.getElementById("sort-desc");
+
+        sortAscBtn.onclick = () => {
+          // クラスの切り替え
+          sortAscBtn.classList.add("is-active");
+          sortDescBtn.classList.remove("is-active");
+          // 描画
+          render(getFilteredAndSortedData("asc"));
+        };
+
+        sortDescBtn.onclick = () => {
+          // クラスの切り替え
+          sortDescBtn.classList.add("is-active");
+          sortAscBtn.classList.remove("is-active");
+          // 描画
+          render(getFilteredAndSortedData("desc"));
+        };
+
+        // 初期状態として昇順にクラスをつけておく
+        sortAscBtn.classList.add("is-active");
+
         let allCombos = [];
         let totalVotes = 0;
         // --- 【追加】キャラ名からユーザー名を引くための変数 ---

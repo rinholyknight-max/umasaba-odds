@@ -161,15 +161,31 @@
   }
 
   &--primary {
-    background: linear-gradient(135deg, #42d392 0%, #647eff 100%);
+    background: v.$grad-primary; // 変数に置き換え
+    box-shadow: 0 4px 10px rgba(44, 124, 51, 0.2);
   }
   &--danger {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ee0979 100%);
+    background: v.$grad-danger; // 変数に置き換え
+    box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);
   }
   &--secondary {
-    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+    background: v.$color-secondary;
     color: v.$color-text-main;
     border: 1px solid v.$color-border;
+
+    // 昇順（sort-asc）ボタンがアクティブな時：赤系
+    &#sort-asc.is-active {
+      background: v.$color-danger; // グラデではなく単色
+      color: v.$color-white;
+      border-color: v.$color-danger;
+    }
+
+    // 降順（sort-desc）ボタンがアクティブな時：青（メイン）系
+    &#sort-desc.is-active {
+      background: v.$color-primary; // グラデではなく単色
+      color: v.$color-white;
+      border-color: v.$color-primary;
+    }
   }
 }
 

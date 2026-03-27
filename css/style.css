@@ -224,15 +224,27 @@ button {
   box-shadow: none;
 }
 .c-button--primary {
-  background: linear-gradient(135deg, #42d392 0%, #647eff 100%);
+  background: linear-gradient(135deg, #2c7c33 0%, #4caf50 100%);
+  box-shadow: 0 4px 10px rgba(44, 124, 51, 0.2);
 }
 .c-button--danger {
-  background: linear-gradient(135deg, #ff6b6b 0%, #ee0979 100%);
+  background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+  box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);
 }
 .c-button--secondary {
-  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+  background: #666666;
   color: #1a1a1a;
   border: 1px solid #eeeeee;
+}
+.c-button--secondary#sort-asc.is-active {
+  background: #d32f2f;
+  color: #ffffff;
+  border-color: #d32f2f;
+}
+.c-button--secondary#sort-desc.is-active {
+  background: #2c7c33;
+  color: #ffffff;
+  border-color: #2c7c33;
 }
 
 .p-admin, .p-login {
