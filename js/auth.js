@@ -2,10 +2,18 @@
  * 認証管理モジュール (js/auth.js)
  */
 
-// パスワードを一括管理
+// パスワードと表示名の対応表
+// ここに新しいユーザーを追加するだけでログインと名前表示が完結します
+const USER_MAP = {
+  "01-LastCrop": "ラスクロメンバー",
+  "02-cocoa": "へべれけメンバー",
+  "03-Snowknight": "スノウナイトメンバー",
+  "04-Smile": "Smileメンバー",
+};
+
+// パスワード管理
 export const PASSWORDS = {
-  // 配列にすることで、複数のパスワードを許可
-  USER: ["01-LastCrop", "02-cocoa", "03-Snowknight", "04-Smile"],
+  USER: Object.keys(USER_MAP),
   ADMIN: "04umasaba-Observers",
 };
 
@@ -13,12 +21,14 @@ export const PASSWORDS = {
  * ログイン実行
  */
 export function login(inputPass) {
-  // .includes() を使って、入力されたパスワードが配列内にあるかチェック
   if (PASSWORDS.USER.includes(inputPass)) {
     sessionStorage.setItem("auth_role", "user");
+    // 対応する名前を保存
+    sessionStorage.setItem("user_name", USER_MAP[inputPass]);
     window.location.href = "index.html";
   } else if (inputPass === PASSWORDS.ADMIN) {
     sessionStorage.setItem("auth_role", "admin");
+    sessionStorage.setItem("user_name", "管理者");
     window.location.href = "admin.html";
   } else {
     alert("パスワードが違います");
@@ -30,12 +40,10 @@ export function login(inputPass) {
  */
 export function checkAuth(requiredRole = null) {
   const currentRole = sessionStorage.getItem("auth_role");
-
   if (!currentRole) {
     window.location.href = "login.html";
     return false;
   }
-
   if (requiredRole === "admin" && currentRole !== "admin") {
     alert("管理者権限が必要です");
     window.location.href = "index.html";

@@ -25,11 +25,29 @@
     </header>
 
     <nav class="l-menu" id="js-menu">
+      <div class="l-menu__user-box">
+        <div class="l-menu__user-icon">
+          <span class="material-symbols-outlined">account_circle</span>
+        </div>
+        <div class="l-menu__user-info">
+          <p class="l-menu__user-label">ログインユーザー</p>
+          <span id="js-display-user" class="l-menu__user-name"></span>
+        </div>
+      </div>
+
       <ul class="l-menu__list">
-        <li class="l-menu__item"><a href="index.html" class="l-menu__link">投票画面</a></li>
-        <li class="l-menu__item"><a href="odds.html" class="l-menu__link">オッズ確認</a></li>
-        <li class="l-menu__item"><a href="admin.html" class="l-menu__link">管理者画面</a></li>
-        <li class="l-menu__item"><button id="js-logout" class="l-menu__link">ログアウト</button></li>
+        <li class="l-menu__item">
+          <a href="index.html" class="l-menu__link"> <span class="material-symbols-outlined">how_to_vote</span>投票画面 </a>
+        </li>
+        <li class="l-menu__item">
+          <a href="odds.html" class="l-menu__link"> <span class="material-symbols-outlined">leaderboard</span>オッズ確認 </a>
+        </li>
+        <li class="l-menu__item">
+          <a href="admin.html" class="l-menu__link"> <span class="material-symbols-outlined">admin_panel_settings</span>管理者画面 </a>
+        </li>
+        <li class="l-menu__item">
+          <button id="js-logout" class="l-menu__link"><span class="material-symbols-outlined">logout</span>ログアウト</button>
+        </li>
       </ul>
     </nav>
     <div class="l-menu__overlay" id="js-overlay"></div>
@@ -64,6 +82,17 @@
       import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
 
       initTheme();
+
+      // 1. セッションから「表示名」を取得（パスワードそのものではなく名前を出す）
+      const userName = sessionStorage.getItem("user_name") || "不明なユーザー";
+
+      // 2. 画面上の要素を書き換え
+      const userDisplay = document.getElementById("js-display-user");
+      if (userDisplay) {
+        // 「様」は含めず、名前のみを表示
+        userDisplay.innerText = userName;
+      }
+
       const isAuthorized = checkAuth();
 
       if (isAuthorized) {

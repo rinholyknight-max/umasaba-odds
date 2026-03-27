@@ -269,16 +269,43 @@ h2,
   background: var(--bg-card);
   z-index: 200;
   transition: transform 0.3s ease;
-  padding-top: 80px;
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
 }
 .l-menu.is-active {
   transform: translateX(260px);
 }
+.l-menu__user-box {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px 20px;
+  background: var(--bg-page);
+  border-bottom: 1px solid var(--border);
+}
+.l-menu__user-box p {
+  font-size: 0.75rem;
+  color: var(--text-sub);
+  margin-bottom: 4px;
+}
+.l-menu__user-box #js-display-user {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--text-main);
+  display: block;
+}
+.l-menu__list {
+  list-style: none;
+  padding: 0;
+}
 .l-menu__item {
   border-bottom: 1px solid var(--border);
 }
+.l-menu__item:last-child {
+  border-bottom: none;
+}
 .l-menu__link {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   padding: 20px;
   color: var(--text-main);
   text-decoration: none;
@@ -288,9 +315,17 @@ h2,
   background: none;
   border: none;
   cursor: pointer;
+  transition: background 0.2s;
+}
+.l-menu__link .material-symbols-outlined {
+  font-size: 20px;
+  color: var(--text-sub);
 }
 .l-menu__link:hover {
   background: var(--bg-page);
+}
+.l-menu__link:hover .material-symbols-outlined {
+  color: var(--header-bg);
 }
 .l-menu__overlay {
   position: fixed;

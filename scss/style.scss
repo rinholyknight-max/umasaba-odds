@@ -203,7 +203,6 @@ h2,
     }
   }
 }
-
 .l-menu {
   position: fixed;
   top: 0;
@@ -213,15 +212,53 @@ h2,
   background: var(--bg-card);
   z-index: 200;
   transition: transform 0.3s ease;
-  padding-top: 80px;
+  // padding-top: 80px; // ユーザーボックスを入れるため削除または調整
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
+
   &.is-active {
     transform: translateX(260px);
   }
+
+  // --- ユーザー表示セクション ---
+  &__user-box {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px 20px;
+    background: var(--bg-page);
+    border-bottom: 1px solid var(--border);
+
+    p {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      margin-bottom: 4px;
+    }
+
+    #js-display-user {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--text-main);
+      display: block;
+    }
+  }
+
+  // --- リストセクション ---
+  &__list {
+    list-style: none;
+    padding: 0;
+  }
+
   &__item {
     border-bottom: 1px solid var(--border);
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
+
   &__link {
-    display: block;
+    display: flex; // アイコンと並べるためflex
+    align-items: center;
+    gap: 12px;
     padding: 20px;
     color: var(--text-main);
     text-decoration: none;
@@ -231,10 +268,22 @@ h2,
     background: none;
     border: none;
     cursor: pointer;
+    transition: background 0.2s;
+
+    .material-symbols-outlined {
+      font-size: 20px;
+      color: var(--text-sub);
+    }
+
     &:hover {
       background: var(--bg-page);
+      .material-symbols-outlined {
+        color: var(--header-bg); // ホバー時にアイコンに色を付ける
+      }
     }
   }
+
+  // --- オーバーレイ ---
   &__overlay {
     position: fixed;
     top: 0;
@@ -246,6 +295,7 @@ h2,
     opacity: 0;
     visibility: hidden;
     transition: 0.3s;
+
     &.is-active {
       opacity: 1;
       visibility: visible;
