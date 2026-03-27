@@ -422,8 +422,34 @@ button {
   text-align: right;
   flex-shrink: 0;
 }
+@media screen and (max-width: 767px) {
+  .p-voting__odds-display {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 2px;
+  }
+}
+.p-voting__odds-display .p-voting__label {
+  display: block;
+  font-size: 0.65rem;
+  color: #666666;
+  margin-bottom: 2px;
+}
+@media screen and (max-width: 767px) {
+  .p-voting__odds-display .p-voting__label {
+    margin-bottom: 0;
+  }
+}
 .p-voting__odds-display .p-voting__number {
   font-size: 1.4rem;
   font-weight: 900;
   color: #1a1a1a;
+  line-height: 1;
+}
+@media screen and (max-width: 767px) {
+  .p-voting__odds-display .p-voting__number {
+    font-size: 1.2rem;
+  }
 }/*# sourceMappingURL=style.css.map */

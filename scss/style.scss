@@ -384,10 +384,36 @@
   &__odds-display {
     text-align: right;
     flex-shrink: 0;
+
+    // --- スマホ（SP）で縦積みにする設定 ---
+    @media screen and (max-width: 767px) {
+      display: flex;
+      flex-direction: column; // 上下（縦）に並べる
+      align-items: flex-end; // 右側に揃える（中央寄せなら center）
+      justify-content: center;
+      gap: 2px; // ラベルと数字の隙間
+    }
+
+    .p-voting__label {
+      display: block; // 改行を確実にする
+      font-size: 0.65rem;
+      color: v.$color-text-sub;
+      margin-bottom: 2px;
+
+      @media screen and (max-width: 767px) {
+        margin-bottom: 0;
+      }
+    }
+
     .p-voting__number {
       font-size: 1.4rem;
       font-weight: 900;
       color: v.$color-text-main;
+      line-height: 1; // 縦積みの時に余白が開きすぎないように
+
+      @media screen and (max-width: 767px) {
+        font-size: 1.2rem; // スマホでは少しだけコンパクトに
+      }
     }
   }
 }
