@@ -2,38 +2,26 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ログイン - ウマサバ</title>
-    <style>
-      body {
-        font-family: sans-serif;
-        text-align: center;
-        padding-top: 50px;
-      }
-      input {
-        padding: 10px;
-        margin: 10px;
-      }
-    </style>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
-    <h1>ログイン</h1>
-    <input type="password" id="pass" placeholder="パスワードを入力" />
-    <button id="login-btn">ログイン</button>
+  <body class="l-page-container">
+    <main class="p-login">
+      <h1 class="p-login__title">ログイン</h1>
 
-    <script>
+      <div class="p-login__form">
+        <input type="password" id="pass" class="c-input" placeholder="パスワードを入力" />
+        <button id="login-btn" class="c-button c-button--primary">ログイン</button>
+      </div>
+    </main>
+
+    <script type="module">
+      import { login } from "./js/auth.js";
+
       document.getElementById("login-btn").onclick = () => {
         const pass = document.getElementById("pass").value;
-
-        // 【修正OK】パスワードの文字列を変えたい場合はここを編集
-        if (pass === "asahihai") {
-          sessionStorage.setItem("auth_role", "user");
-          window.location.href = "index.html";
-        } else if (pass === "admin_yuya") {
-          sessionStorage.setItem("auth_role", "admin");
-          window.location.href = "admin.html";
-        } else {
-          alert("パスワードが違います");
-        }
+        login(pass);
       };
     </script>
   </body>

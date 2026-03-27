@@ -1,0 +1,221 @@
+/* ==========================================================================
+   Modern Reset for SCSS
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+.l-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 24px;
+  background-color: #f4f7f6;
+}
+
+.c-input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.c-button {
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  transition: opacity 0.2s;
+}
+.c-button:hover {
+  opacity: 0.8;
+}
+.c-button--primary {
+  background-color: #2c7c33;
+  color: #ffffff;
+}
+.c-button--danger {
+  background-color: #d32f2f;
+  color: #ffffff;
+}
+.c-button--secondary {
+  background-color: #666666;
+  color: #ffffff;
+}
+
+.c-divider {
+  border: 0;
+  border-top: 2px solid #eeeeee;
+  margin: 24px 0;
+}
+
+.p-voting, .p-admin, .p-login {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.p-login {
+  padding: 40px;
+  max-width: 400px;
+  text-align: center;
+}
+.p-login__title {
+  margin-bottom: 24px;
+  font-size: 1.5rem;
+}
+.p-login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.p-admin {
+  padding: 30px;
+  max-width: 600px;
+}
+.p-admin__title {
+  margin-bottom: 16px;
+  text-align: center;
+}
+.p-admin__register {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+@media (max-width: 480px) {
+  .p-admin__register {
+    flex-direction: column;
+  }
+}
+.p-admin__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eeeeee;
+}
+.p-admin__item-name {
+  font-weight: bold;
+}
+.p-admin__footer {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.p-voting {
+  padding: 24px;
+  max-width: 500px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+.p-voting__title {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 1.4rem;
+}
+.p-voting__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.p-voting__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+.p-voting__item:hover {
+  background-color: rgb(228.4285714286, 245.5714285714, 229.9285714286);
+}
+.p-voting__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.p-voting__name {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.p-voting__votes {
+  font-size: 0.9rem;
+  color: #666666;
+}
+.p-voting__button {
+  min-width: 100px;
+}/*# sourceMappingURL=style.css.map */

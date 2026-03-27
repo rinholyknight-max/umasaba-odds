@@ -2,19 +2,30 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>管理者画面 - ウマサバ</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
-    <h1>管理者パネル</h1>
-    <input type="text" id="horse-name" placeholder="馬の名前を入力" />
-    <button id="add-btn">馬を登録する</button>
-    <hr />
-    <div id="admin-list"></div>
-    <button onclick="location.href = 'index.html'">投票画面へ戻る</button>
+  <body class="l-page-container">
+    <main class="p-admin">
+      <h1 class="p-admin__title">🛠 管理者パネル</h1>
+
+      <section class="p-admin__register">
+        <input type="text" id="horse-name" class="c-input" placeholder="馬の名前を入力" />
+        <button id="add-btn" class="c-button c-button--primary">馬を登録する</button>
+      </section>
+
+      <hr class="c-divider" />
+
+      <div id="admin-list" class="p-admin__list"></div>
+
+      <div class="p-admin__footer">
+        <button onclick="location.href = 'index.html'" class="c-button c-button--secondary">投票画面へ戻る</button>
+      </div>
+    </main>
 
     <script type="module">
-      // 【修正禁止】管理者以外を追い出す処理。非常に重要です
+      // ログインチェック：auth.jsを使う形に書き換えるとよりスマートです
       if (sessionStorage.getItem("auth_role") !== "admin") {
         alert("管理者権限が必要です。ログインし直してください。");
         window.location.href = "login.html";
@@ -23,7 +34,6 @@
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
       import { getDatabase, ref, push, set, onValue, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-      // 【修正禁止】Firebase設定（index.htmlと同じにする必要があります）
       const firebaseConfig = {
         apiKey: "YOUR_API_KEY",
         authDomain: "umasaba-odds.firebaseapp.com",
@@ -37,7 +47,7 @@
       const app = initializeApp(firebaseConfig);
       const db = getDatabase(app);
 
-      // 【修正OK】登録成功時のメッセージを出したいなどはここ
+      // 馬の追加
       document.getElementById("add-btn").onclick = () => {
         const name = document.getElementById("horse-name").value;
         if (name) {
@@ -47,19 +57,25 @@
         }
       };
 
+      // リスト表示（BEMクラスを付与するように修正）
       onValue(ref(db, "horses"), (snapshot) => {
         const data = snapshot.val();
         const list = document.getElementById("admin-list");
         list.innerHTML = "";
         for (let id in data) {
-          const div = document.createElement("div");
-          // 【修正OK】「削除」ボタンの文字や色を変えるのはここ
-          div.innerHTML = `${data[id].name} <button onclick="deleteHorse('${id}')">削除</button>`;
-          list.appendChild(div);
+          const item = document.createElement("div");
+          item.className = "p-admin__item"; // BEMクラス
+          item.innerHTML = `
+                    <span class="p-admin__item-name">${data[id].name}</span>
+                    <button 
+                        onclick="deleteHorse('${id}')" 
+                        class="c-button c-button--danger"
+                    >削除</button>
+                `;
+          list.appendChild(item);
         }
       });
 
-      // 【修正禁止】データを消す命令。ここを間違うと削除ができなくなります
       window.deleteHorse = (id) => {
         if (confirm("本当に削除しますか？")) {
           remove(ref(db, `horses/${id}`));

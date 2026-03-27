@@ -1,17 +1,17 @@
-const PASSWORDS = {
-  user: "1234", // 一般ユーザー用
-  admin: "admin99", // 管理画面用
+// パスワードをここで一括管理！
+export const PASSWORDS = {
+  USER: "asahihai",
+  ADMIN: "admin_yuya",
 };
 
-function checkAuth(type) {
-  const session = sessionStorage.getItem(`auth_${type}`);
-  if (session !== "true") {
-    const input = prompt(`${type}パスワードを入力してください:`);
-    if (input === PASSWORDS[type]) {
-      sessionStorage.setItem(`auth_${type}`, "true");
-    } else {
-      alert("パスワードが違います。");
-      window.location.href = "index.html";
-    }
+export function login(inputPass) {
+  if (inputPass === PASSWORDS.USER) {
+    sessionStorage.setItem("auth_role", "user");
+    window.location.href = "index.html";
+  } else if (inputPass === PASSWORDS.ADMIN) {
+    sessionStorage.setItem("auth_role", "admin");
+    window.location.href = "admin.html";
+  } else {
+    alert("パスワードが違います");
   }
 }

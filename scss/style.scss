@@ -1,0 +1,182 @@
+@use "reset";
+@use "variables" as v;
+
+// ==========================================================================
+// Layout
+// ==========================================================================
+.l-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: v.$space-lg;
+  background-color: v.$color-bg-light;
+}
+
+// ==========================================================================
+// Component
+// ==========================================================================
+.c-input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: v.$radius-sm;
+  width: 100%;
+  max-width: 300px;
+}
+
+.c-button {
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  border-radius: v.$radius-sm;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &--primary {
+    background-color: v.$color-primary;
+    color: v.$color-white;
+  }
+  &--danger {
+    background-color: v.$color-danger;
+    color: v.$color-white;
+  }
+  &--secondary {
+    background-color: v.$color-secondary;
+    color: v.$color-white;
+  }
+}
+
+.c-divider {
+  border: 0;
+  border-top: 2px solid v.$color-border;
+  margin: v.$space-lg 0;
+}
+
+// ==========================================================================
+// Project (Base Style)
+// ==========================================================================
+%page-card-base {
+  background: v.$color-white;
+  border-radius: v.$radius-md;
+  box-shadow: v.$shadow-sm;
+  width: 100%;
+}
+
+// --- ログイン画面 ---
+.p-login {
+  @extend %page-card-base;
+  padding: v.$space-xl;
+  max-width: 400px;
+  text-align: center;
+
+  &__title {
+    margin-bottom: v.$space-lg;
+    font-size: 1.5rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-md;
+    align-items: center;
+  }
+}
+
+// --- 管理画面 ---
+.p-admin {
+  @extend %page-card-base;
+  padding: 30px;
+  max-width: 600px;
+
+  &__title {
+    margin-bottom: v.$space-md;
+    text-align: center;
+  }
+
+  &__register {
+    display: flex;
+    gap: 10px;
+    margin-bottom: v.$space-md;
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid v.$color-border;
+
+    &-name {
+      font-weight: bold;
+    }
+  }
+
+  &__footer {
+    margin-top: v.$space-lg;
+    text-align: center;
+  }
+}
+
+// --- 投票画面 ---
+.p-voting {
+  @extend %page-card-base;
+  padding: v.$space-lg;
+  max-width: 500px;
+  box-shadow: v.$shadow-lg;
+
+  &__title {
+    text-align: center;
+    margin-bottom: v.$space-lg;
+    font-size: 1.4rem;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: v.$space-md;
+    border: 1px solid v.$color-border;
+    border-radius: v.$radius-md;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: lighten(v.$color-primary, 60%);
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__name {
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+
+  &__votes {
+    font-size: 0.9rem;
+    color: v.$color-text-sub;
+  }
+
+  &__button {
+    min-width: 100px;
+  }
+}

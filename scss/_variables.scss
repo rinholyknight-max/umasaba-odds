@@ -1,0 +1,30 @@
+// ==========================================================================
+// Variables: 共通変数
+// ==========================================================================
+
+// --- Colors (配色) ---
+$color-primary: #2c7c33; // 芝の緑（メイン）
+$color-secondary: #666666; // 補助的なグレー
+$color-danger: #d32f2f; // 削除・警告の赤
+$color-accent: #ffc107; // 注目させる黄色（オッズなど）
+
+$color-bg-light: #f4f7f6; // 全体の背景色
+$color-white: #ffffff; // カードの背景色
+$color-text-main: #1a1a1a; // メインの文字色
+$color-text-sub: #666666; // 補足の文字色
+$color-border: #eeeeee; // 区切り線
+
+// --- Spacing (余白) ---
+$space-sm: 8px;
+$space-md: 16px;
+$space-lg: 24px;
+$space-xl: 40px;
+
+// --- Shadow (影) ---
+$shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+// --- Border Radius (角丸) ---
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
