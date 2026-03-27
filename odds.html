@@ -46,10 +46,7 @@
       import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
       import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
 
-      // 1. 認証チェック
       const isAuthorized = checkAuth();
-      console.log("Auth Status:", isAuthorized);
-
       if (isAuthorized) {
         initMenu();
         document.getElementById("js-logout").onclick = logout;
@@ -71,10 +68,26 @@
         const totalInfoDiv = document.getElementById("total-info");
         const searchInput = document.getElementById("js-search-input");
 
-        let allCombos = []; // 全データを保持
-        let totalVotes = 0; // 総投票数
+        let allCombos = [];
+        let totalVotes = 0;
+        // --- 【追加】キャラ名からユーザー名を引くための変数 ---
+        let horseToUserMap = {};
 
-        // --- 描画関数の定義 (ここが抜け落ちていました) ---
+        // --- 【追加】1. キャラクター情報を取得して「名簿」を作る ---
+        onValue(ref(db, "horses"), (snapshot) => {
+          const data = snapshot.val();
+          horseToUserMap = {};
+          if (data) {
+            for (let id in data) {
+              // 「キャラ名」をキーにして「ユーザー名」を保存
+              horseToUserMap[data[id].horseName] = data[id].userName;
+            }
+          }
+          // すでに投票データがある場合は再描画
+          if (allCombos.length > 0) render(getFilteredAndSortedData("asc"));
+        });
+
+        // --- 2. 描画関数 (ユーザー名表示を追加) ---
         const render = (arr) => {
           oddsListDiv.innerHTML = "";
           if (!arr || arr.length === 0) {
@@ -83,9 +96,13 @@
           }
 
           arr.forEach((c) => {
-            // オッズ計算ロジック: 総票数 / その組み合わせの票数 (小数点第1位まで)
             const odds = c.v > 0 ? Math.floor((totalVotes / c.v) * 10) / 10 : 99.9;
             const names = c.id.split("_");
+
+            // --- 【追加】名簿からユーザー名を取得 ---
+            const user0 = horseToUserMap[names[0]] || "不明";
+            const user1 = horseToUserMap[names[1]] || "不明";
+            const user2 = horseToUserMap[names[2]] || "不明";
 
             const item = document.createElement("div");
             item.className = "p-voting__item p-voting__item--odds";
@@ -93,9 +110,11 @@
           <div class="p-voting__info">
             <div class="p-voting__combo-names">
               <span class="p-voting__tag">3連複</span>
-              <span class="p-voting__name">${names[0]}</span>
-              <span class="p-voting__name">${names[1]}</span>
-              <span class="p-voting__name">${names[2]}</span>
+              <div class="p-voting__horse-group" style="display:flex; flex-direction:column; gap:4px;">
+                <span class="p-voting__name">${names[0]} <small style="color:#666;">(${user0})</small></span>
+                <span class="p-voting__name">${names[1]} <small style="color:#666;">(${user1})</small></span>
+                <span class="p-voting__name">${names[2]} <small style="color:#666;">(${user2})</small></span>
+              </div>
             </div>
             <div class="p-voting__stats">
               <span class="p-voting__votes">${c.v} 票</span>
@@ -110,33 +129,22 @@
           });
         };
 
-        // --- フィルタリング・ソート関数の定義 ---
         const getFilteredAndSortedData = (sortOrder = "asc") => {
           const keyword = (searchInput.value || "").toLowerCase();
-          // ID（名前_名前_名前）にキーワードが含まれるかチェック
           let filtered = allCombos.filter((c) => c.id.toLowerCase().includes(keyword));
-
-          if (sortOrder === "asc") {
-            return filtered.sort((a, b) => b.v - a.v); // 人気順（票数多い順）
-          } else {
-            return filtered.sort((a, b) => a.v - b.v); // 大穴順（票数少ない順）
-          }
+          return sortOrder === "asc" ? filtered.sort((a, b) => b.v - a.v) : filtered.sort((a, b) => a.v - b.v);
         };
 
-        // --- Firebase リアルタイム監視 ---
         onValue(
           ref(db, "combos"),
           (snapshot) => {
             const data = snapshot.val();
-            console.log("Firebase Data Received:", data);
-
             if (!data) {
               oddsListDiv.innerHTML = "<p class='p-voting__loading'>まだ投票データがありません。</p>";
               totalInfoDiv.innerText = "総投票数: 0 票";
               return;
             }
 
-            // データの集計
             totalVotes = 0;
             allCombos = [];
             for (let id in data) {
@@ -146,8 +154,6 @@
             }
 
             totalInfoDiv.innerText = `総投票数: ${totalVotes} 票`;
-
-            // 初回表示の実行
             render(getFilteredAndSortedData("asc"));
           },
           (error) => {
@@ -156,13 +162,9 @@
           },
         );
 
-        // --- ボタンイベントの紐付け ---
         document.getElementById("sort-asc").onclick = () => render(getFilteredAndSortedData("asc"));
         document.getElementById("sort-desc").onclick = () => render(getFilteredAndSortedData("desc"));
         searchInput.oninput = () => render(getFilteredAndSortedData("asc"));
-      } else {
-        console.error("Auth Failed: Redirecting or stopping.");
-        alert("ログインセッションが無効です。再度ログインしてください。");
       }
     </script>
   </body>

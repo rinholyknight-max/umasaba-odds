@@ -384,3 +384,14 @@
     font-size: 0.9rem;
   }
 }
+
+.p-voting__horse-group {
+  display: flex;
+  flex-direction: column; /* 縦並びにする */
+  gap: 2px;
+}
+.p-voting__name small {
+  font-size: 0.75rem;
+  color: #666;
+  margin-left: 4px;
+}
