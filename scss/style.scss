@@ -3,7 +3,6 @@
 
 // --- テーマ変数の定義 ---
 :root {
-  // $color-bg-light ではなく v.$color-bg-light と書く
   --bg-page: #{v.$color-bg-light};
   --bg-card: #{v.$color-white};
   --text-main: #{v.$color-text-main};
@@ -24,13 +23,11 @@
   --header-bg: #154d00;
   --header-text: #e0e0e0;
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  // ダークモード用のグラデーション（必要に応じて調整）
   --grad-primary: linear-gradient(135deg, #{v.$color-primary} 0%, #154d00 100%);
 }
 
-// マテリアルシンボルの基本設定
 .material-symbols-outlined {
-  font-size: 32px; // スイッチなので少し大きめが見やすいです
+  font-size: 32px;
   font-variation-settings:
     "FILL" 0,
     "wght" 400,
@@ -47,7 +44,6 @@ body {
     "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-page);
   color: var(--text-main);
   transition:
@@ -72,10 +68,9 @@ h2,
   padding: 80px 20px 40px;
 }
 
-// コンテンツ全体を中央に寄せるためのラッパー
 .l-main-content {
   width: 100%;
-  max-width: 600px; // odds.htmlのコンテンツ幅を統一
+  max-width: 600px;
   margin: 0 auto;
 }
 
@@ -96,24 +91,19 @@ h2,
     height: 100%;
     padding: 0 v.$space-md;
   }
-
   &__logo {
     font-weight: bold;
     margin-left: v.$space-md;
     font-size: 1.1rem;
   }
-
   &__theme-toggle {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 1.2rem;
+    color: var(--header-text);
     margin-left: auto;
-    margin-right: 10px;
     display: flex;
     align-items: center;
-    padding: 5px;
-
     .icon-moon {
       display: none;
     }
@@ -122,19 +112,19 @@ h2,
         display: none;
       }
       .icon-moon {
-        display: inline;
+        display: inline-block;
+        .material-symbols-outlined {
+          font-variation-settings: "FILL" 1;
+        }
       }
     }
   }
-
   &__hamburger {
     width: 30px;
     height: 24px;
     position: relative;
     background: none;
     border: none;
-    cursor: pointer;
-    z-index: 300;
     span {
       display: block;
       position: absolute;
@@ -142,15 +132,6 @@ h2,
       height: 2px;
       background: #fff;
       transition: 0.3s;
-      &:nth-child(1) {
-        top: 0;
-      }
-      &:nth-child(2) {
-        top: 11px;
-      }
-      &:nth-child(3) {
-        bottom: 0;
-      }
     }
     &.is-active span {
       &:nth-child(1) {
@@ -166,43 +147,6 @@ h2,
   }
 }
 
-.l-header__theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--header-text);
-  padding: 4px;
-  display: flex;
-  align-items: center;
-
-  // 初期状態（ライトモード）
-  .icon-sun {
-    display: inline-block;
-  }
-  .icon-moon {
-    display: none;
-  }
-}
-
-// ダークモード時のスタイル
-[data-theme="dark"] {
-  .l-header__theme-toggle {
-    .icon-sun {
-      display: none;
-    }
-    .icon-moon {
-      display: inline-block;
-      // ダークモード時はアイコンを塗りつぶす設定に上書き
-      .material-symbols-outlined {
-        font-variation-settings:
-          "FILL" 1,
-          "wght" 400,
-          "GRAD" 0,
-          "opsz" 24;
-      }
-    }
-  }
-}
 .l-menu {
   position: fixed;
   top: 0;
@@ -212,78 +156,47 @@ h2,
   background: var(--bg-card);
   z-index: 200;
   transition: transform 0.3s ease;
-  // padding-top: 80px; // ユーザーボックスを入れるため削除または調整
   box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
-
   &.is-active {
     transform: translateX(260px);
   }
-
-  // --- ユーザー表示セクション ---
   &__user-box {
-    display: flex;
-    flex-direction: column;
     padding: 30px 20px 20px;
     background: var(--bg-page);
     border-bottom: 1px solid var(--border);
-
     p {
       font-size: 0.75rem;
       color: var(--text-sub);
       margin-bottom: 4px;
     }
-
     #js-display-user {
       font-size: 1.1rem;
       font-weight: bold;
       color: var(--text-main);
-      display: block;
     }
   }
-
-  // --- リストセクション ---
   &__list {
     list-style: none;
     padding: 0;
   }
-
   &__item {
     border-bottom: 1px solid var(--border);
-
-    &:last-child {
-      border-bottom: none;
-    }
   }
-
   &__link {
-    display: flex; // アイコンと並べるためflex
+    display: flex;
     align-items: center;
     gap: 12px;
     padding: 20px;
     color: var(--text-main);
     text-decoration: none;
     font-weight: bold;
-    width: 100%;
-    text-align: left;
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s;
-
-    .material-symbols-outlined {
-      font-size: 20px;
-      color: var(--text-sub);
-    }
-
     &:hover {
       background: var(--bg-page);
       .material-symbols-outlined {
-        color: var(--header-bg); // ホバー時にアイコンに色を付ける
+        color: var(--header-bg);
       }
     }
   }
-
-  // --- オーバーレイ ---
   &__overlay {
     position: fixed;
     top: 0;
@@ -295,7 +208,6 @@ h2,
     opacity: 0;
     visibility: hidden;
     transition: 0.3s;
-
     &.is-active {
       opacity: 1;
       visibility: visible;
@@ -311,7 +223,6 @@ h2,
   background-color: var(--bg-card);
   color: var(--text-main);
   width: 100%;
-  box-sizing: border-box;
   &:focus {
     outline: none;
     border-color: v.$color-primary;
@@ -329,20 +240,16 @@ h2,
   font-weight: bold;
   transition: 0.2s;
   color: v.$color-white;
-
   &:hover:not(:disabled) {
     opacity: 0.9;
     transform: translateY(-1px);
     filter: brightness(1.1);
   }
-
   &--primary {
     background: v.$grad-primary;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
   &--danger {
     background: v.$grad-danger;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
   &--secondary {
     background: var(--bg-card);
@@ -350,12 +257,12 @@ h2,
     border: 1px solid var(--border);
     &#sort-asc.is-active {
       background: v.$color-danger;
-      color: v.$color-white;
+      color: #fff;
       border-color: v.$color-danger;
     }
     &#sort-desc.is-active {
       background: v.$color-blue;
-      color: v.$color-white;
+      color: #fff;
       border-color: v.$color-blue;
     }
   }
@@ -367,10 +274,8 @@ h2,
   border-radius: v.$radius-md;
   box-shadow: var(--shadow);
   width: 100%;
-  box-sizing: border-box;
 }
 
-// 容器としての p-voting
 .p-voting {
   @extend %page-card-base;
   padding: v.$space-lg;
@@ -382,63 +287,112 @@ h2,
     font-size: 1.25rem;
   }
 
-  &__subtitle {
-    text-align: center;
-    font-size: 1rem;
-    margin-bottom: v.$space-md;
-    color: var(--text-main);
+  // --- リストアイテム（SP向け2カラム調整） ---
+  &__item {
+    display: flex;
+    align-items: stretch; // 左右の高さを揃える
+    justify-content: space-between;
+    padding: 15px;
+    background: var(--bg-card);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    gap: 12px;
+    border: 1px solid var(--border);
+    transition: 0.2s;
+    &:hover {
+      background: var(--bg-page);
+    }
+    &--odds {
+      border-left: 4px solid v.$color-danger;
+    }
   }
 
-  // --- 投票フォーム用 (Selection Area) ---
-  &__selection-container {
-    background: var(--bg-page);
-    padding: v.$space-md;
-    border-radius: v.$radius-md;
-    margin-bottom: v.$space-lg;
-  }
-
-  &__slots {
+  // 左カラム
+  &__info {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: v.$space-md;
-
-    @media (min-width: 480px) {
-      flex-direction: row;
-      justify-content: space-between;
-    }
+    justify-content: center;
+    gap: 6px;
   }
 
-  &__slot {
-    flex: 1;
-    background: var(--bg-card);
-    padding: 10px;
-    border-radius: v.$radius-sm;
-    border: 1px dashed var(--border);
-    font-size: 0.9rem;
-    text-align: center;
-
-    .slot-name {
-      font-weight: bold;
-      color: v.$color-primary;
-    }
-  }
-
-  &__actions {
+  &__horse-group {
     display: flex;
-    gap: 10px;
-    .c-button {
-      flex: 1;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__name {
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    line-height: 1.3;
+    small {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      display: block;
     }
   }
 
-  &__divider {
-    margin: v.$space-lg 0;
-    border: 0;
-    border-top: 1px solid var(--border);
+  // 右カラム（投票者名とオッズを縦積み）
+  &__right-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    min-width: 100px;
+    text-align: right;
   }
 
-  // --- グラフ用 ---
+  &__voter-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+
+  &__voter-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    padding: 1px 6px;
+    background: var(--bg-page);
+    color: var(--text-main);
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  &__odds-display {
+    .p-voting__label {
+      display: block;
+      font-size: 0.6rem;
+      color: var(--text-sub);
+      line-height: 1;
+    }
+    .p-voting__number {
+      font-size: 1.5rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--text-main);
+    }
+  }
+
+  &__tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    background: var(--bg-page);
+    color: var(--text-sub);
+    border-radius: 4px;
+  }
+
+  &__stats {
+    font-size: 0.75rem;
+    color: var(--text-sub);
+  }
+
+  // グラフ・その他
   &__chart-container {
     @extend %page-card-base;
     margin-bottom: v.$space-lg;
@@ -451,134 +405,9 @@ h2,
       max-width: 100% !important;
       max-height: 100% !important;
     }
-    @media screen and (max-width: 767px) {
-      height: 300px;
-      padding: v.$space-md;
-    }
-  }
-
-  // --- 共通コントロール・情報表示 ---
-  &__controls {
-    display: flex;
-    gap: 10px;
-    margin-bottom: v.$space-md;
-    .c-button {
-      flex: 1;
-    }
-  }
-
-  &__total {
-    text-align: center;
-    font-weight: bold;
-    padding: 10px;
-    color: v.$color-primary;
-  }
-
-  // --- リストアイテム (共通) ---
-  &__item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px;
-    background: var(--bg-card);
-    border-radius: 8px;
-    margin-bottom: 10px;
-    gap: 15px;
-    border: 1px solid var(--border);
-    transition: 0.2s;
-    &:hover {
-      background: var(--bg-page);
-    }
-    &--odds {
-      border-left: 4px solid v.$color-danger;
-    }
-  }
-
-  &__name {
-    font-weight: bold;
-    font-size: 1rem;
-    color: var(--text-main);
-    small {
-      font-size: 0.75rem;
-      color: var(--text-sub);
-      margin-left: 6px;
-      @media screen and (max-width: 767px) {
-        display: block;
-        margin-left: 0;
-      }
-    }
-  }
-
-  &__horse-group {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    @media screen and (max-width: 767px) {
-      gap: 8px;
-    }
-  }
-
-  &__odds-display {
-    text-align: right;
-    flex-shrink: 0;
-    @media screen and (max-width: 767px) {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
-    .p-voting__label {
-      font-size: 0.65rem;
-      color: var(--text-sub);
-    }
-    .p-voting__number {
-      font-size: 1.4rem;
-      font-weight: 900;
-      line-height: 1;
-    }
-  }
-
-  &__tag {
-    display: inline-block;
-    font-size: 0.65rem;
-    padding: 2px 6px;
-    background: var(--bg-page);
-    color: var(--text-sub);
-    border-radius: 4px;
-    margin-bottom: 4px;
-  }
-
-  &__voter-list {
-    display: flex;
-    flex-wrap: wrap; // 幅がいっぱいになったら折り返す
-    gap: 6px; // 名前ごとの隙間
-    margin: 12px 0;
-    padding-top: 10px;
-    border-top: 1px dashed var(--border); // 境界線
-  }
-
-  &__voter-tag {
-    display: inline-block;
-    font-size: 0.7rem;
-    padding: 2px 10px;
-    background: var(--bg-page); // ライト・ダークそれぞれの背景に追従
-    color: var(--text-main);
-    border-radius: 12px; // 角丸にしてチップに見せる
-    border: 1px solid var(--border);
-    white-space: nowrap; // 名前が途中で改行されないように
   }
 }
 
-// ログイン・管理画面用
-.p-login,
-.p-admin {
-  @extend %page-card-base;
-  padding: v.$space-lg;
-  max-width: 450px;
-  margin: 0 auto;
-}
-
-[data-theme="dark"] {
-  canvas {
-    filter: brightness(0.9) contrast(1.1);
-  }
+[data-theme="dark"] canvas {
+  filter: brightness(0.9) contrast(1.1);
 }

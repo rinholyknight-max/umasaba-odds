@@ -212,13 +212,14 @@
             </div>
           </div>
           
-          <div class="p-voting__voter-list">
-            ${voterTags}
-          </div>
-
-          <div class="p-voting__odds-display">
-            <span class="p-voting__label">オッズ</span>
-            <span class="p-voting__number">${odds.toFixed(1)}</span>
+          <div class="p-voting__right-column">
+            <div class="p-voting__voter-list">
+              ${voterTags}
+            </div>
+            <div class="p-voting__odds-display">
+              <span class="p-voting__label">オッズ</span>
+              <span class="p-voting__number">${odds.toFixed(1)}</span>
+            </div>
           </div>
         `;
             oddsListDiv.appendChild(item);
