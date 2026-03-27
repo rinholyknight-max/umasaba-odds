@@ -247,7 +247,7 @@ button {
   border-color: #2f48d3;
 }
 
-.p-admin, .p-login {
+.p-admin, .p-voting__chart-container, .p-login {
   background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -270,6 +270,34 @@ button {
   flex-direction: column;
   gap: 16px;
   align-items: center;
+}
+
+.p-voting__chart-container {
+  margin-bottom: 24px;
+  padding: 24px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.p-voting__chart-container canvas {
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+@media screen and (max-width: 767px) {
+  .p-voting__chart-container {
+    height: 320px;
+    padding: 16px;
+  }
+}
+
+.p-voting__total {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: rgb(27, 183, 0);
+  margin-bottom: 16px;
 }
 
 .p-admin {

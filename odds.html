@@ -27,6 +27,10 @@
     <main class="p-voting">
       <h1 class="p-voting__title">3連複オッズ推移</h1>
 
+      <div class="p-voting__chart-container" style="margin-bottom: 20px; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); height: 350px">
+        <canvas id="oddsChart"></canvas>
+      </div>
+
       <div style="margin-bottom: 15px">
         <input type="text" id="js-search-input" class="c-input" placeholder="キャラ名で絞り込み..." />
       </div>
@@ -41,6 +45,10 @@
     </main>
 
     <script type="module">
+      // --- 1. Chart.js のインポート ---
+      import { Chart, registerables } from "https://cdn.jsdelivr.net/npm/chart.js";
+      Chart.register(...registerables);
+
       import { checkAuth, logout } from "./js/auth.js";
       import { initMenu } from "./js/menu.js";
       import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
@@ -75,7 +83,59 @@
         let allCombos = [];
         let totalVotes = 0;
         let horseToUserMap = {};
-        let currentSortOrder = "asc"; // 現在のソート状態を保持
+        let currentSortOrder = "asc";
+        let myChart = null; // グラフインスタンス保持用
+
+        // --- 【追加】グラフ更新関数（円グラフ） ---
+        const updateChart = () => {
+          const canvas = document.getElementById("oddsChart");
+          if (!canvas) return;
+          const ctx = canvas.getContext("2d");
+
+          // 単体集計ロジック
+          const horseVotes = {};
+          allCombos.forEach((c) => {
+            const names = c.id.split("_");
+            names.forEach((name) => {
+              horseVotes[name] = (horseVotes[name] || 0) + c.v;
+            });
+          });
+
+          // データの整形（上位7名 + その他）
+          const sortedHorses = Object.entries(horseVotes)
+            .map(([name, votes]) => ({ name, votes }))
+            .sort((a, b) => b.votes - a.votes);
+
+          const limit = 7;
+          let displayData = sortedHorses.slice(0, limit);
+          const otherVotes = sortedHorses.slice(limit).reduce((sum, h) => sum + h.votes, 0);
+          if (otherVotes > 0) displayData.push({ name: "その他", votes: otherVotes });
+
+          // グラフの再構築
+          if (myChart) myChart.destroy();
+          myChart = new Chart(ctx, {
+            type: "pie",
+            data: {
+              labels: displayData.map((h) => h.name),
+              datasets: [
+                {
+                  data: displayData.map((h) => h.votes),
+                  backgroundColor: ["#2c7c33", "#4caf50", "#81c784", "#a5d6a7", "#ff8a65", "#ffb74d", "#4fc3f7", "#cfd8dc"],
+                  borderWidth: 2,
+                  borderColor: "#ffffff",
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { position: "bottom", labels: { boxWidth: 12 } },
+                title: { display: true, text: "ウマ娘別・支持率シェア", font: { size: 14 } },
+              },
+            },
+          });
+        };
 
         // --- フィルタリング・ソート関数 ---
         const getFilteredAndSortedData = (sortOrder) => {
@@ -127,6 +187,9 @@
         `;
             oddsListDiv.appendChild(item);
           });
+
+          // 描画に合わせてグラフも更新
+          updateChart();
         };
 
         // --- ボタンイベント ---

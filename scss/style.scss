@@ -216,6 +216,42 @@
   }
 }
 
+// --- グラフコンテナのスタイル ---
+.p-voting__chart-container {
+  @extend %page-card-base; // 白背景・角丸・影を共通カードスタイルから継承
+  margin-bottom: v.$space-lg;
+  padding: v.$space-lg;
+
+  // 円グラフと下の凡例が綺麗に収まる高さ
+  height: 400px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  // グラフ自体が親要素からはみ出さないように制御
+  canvas {
+    max-width: 100% !important;
+    max-height: 100% !important;
+  }
+
+  // スマホ表示での調整
+  @media screen and (max-width: 767px) {
+    height: 320px; // スマホでは少しコンパクトに
+    padding: v.$space-md;
+  }
+}
+
+// 総投票数テキストの微調整（グラフのすぐ下にくる場合）
+.p-voting__total {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: v.$color-primary;
+  margin-bottom: v.$space-md;
+}
+
 .p-admin {
   @extend %page-card-base;
   padding: 30px;
