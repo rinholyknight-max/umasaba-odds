@@ -182,9 +182,9 @@
 
     // 降順（sort-desc）ボタンがアクティブな時：青（メイン）系
     &#sort-desc.is-active {
-      background: v.$color-primary; // グラデではなく単色
+      background: v.$color-blue; // グラデではなく単色
       color: v.$color-white;
-      border-color: v.$color-primary;
+      border-color: v.$color-blue;
     }
   }
 }

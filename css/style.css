@@ -86,7 +86,7 @@ button {
   left: 0;
   width: 100%;
   height: 60px;
-  background: #2c7c33;
+  background: rgb(27, 183, 0);
   color: #ffffff;
   z-index: 100;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -195,7 +195,7 @@ button {
 }
 .c-input:focus {
   outline: none;
-  border-color: #2c7c33;
+  border-color: rgb(27, 183, 0);
 }
 
 .c-button {
@@ -224,11 +224,11 @@ button {
   box-shadow: none;
 }
 .c-button--primary {
-  background: linear-gradient(135deg, #2c7c33 0%, #4caf50 100%);
+  background: linear-gradient(135deg, rgb(180, 245, 144) 0%, rgb(27, 183, 0) 100%);
   box-shadow: 0 4px 10px rgba(44, 124, 51, 0.2);
 }
 .c-button--danger {
-  background: linear-gradient(135deg, #d32f2f 0%, #ff5252 100%);
+  background: linear-gradient(135deg, #ff5252 0%, #d32f2f 100%);
   box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);
 }
 .c-button--secondary {
@@ -242,9 +242,9 @@ button {
   border-color: #d32f2f;
 }
 .c-button--secondary#sort-desc.is-active {
-  background: #2c7c33;
+  background: #2f48d3;
   color: #ffffff;
-  border-color: #2c7c33;
+  border-color: #2f48d3;
 }
 
 .p-admin, .p-login {
@@ -332,7 +332,7 @@ button {
   transition: 0.2s;
 }
 .p-voting__item:hover {
-  background: rgb(228.4285714286, 245.5714285714, 229.9285714286);
+  background: rgb(237.0983606557, 255, 234);
 }
 .p-voting__item--odds {
   border-left: 4px solid #d32f2f;

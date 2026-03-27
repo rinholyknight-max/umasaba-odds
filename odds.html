@@ -47,6 +47,7 @@
       import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
 
       const isAuthorized = checkAuth();
+
       if (isAuthorized) {
         initMenu();
         document.getElementById("js-logout").onclick = logout;
@@ -67,50 +68,28 @@
         const oddsListDiv = document.getElementById("odds-list");
         const totalInfoDiv = document.getElementById("total-info");
         const searchInput = document.getElementById("js-search-input");
-
-        // --- ボタンイベントの紐付け ---
         const sortAscBtn = document.getElementById("sort-asc");
         const sortDescBtn = document.getElementById("sort-desc");
 
-        sortAscBtn.onclick = () => {
-          // クラスの切り替え
-          sortAscBtn.classList.add("is-active");
-          sortDescBtn.classList.remove("is-active");
-          // 描画
-          render(getFilteredAndSortedData("asc"));
-        };
-
-        sortDescBtn.onclick = () => {
-          // クラスの切り替え
-          sortDescBtn.classList.add("is-active");
-          sortAscBtn.classList.remove("is-active");
-          // 描画
-          render(getFilteredAndSortedData("desc"));
-        };
-
-        // 初期状態として昇順にクラスをつけておく
-        sortAscBtn.classList.add("is-active");
-
+        // --- 状態管理 ---
         let allCombos = [];
         let totalVotes = 0;
-        // --- 【追加】キャラ名からユーザー名を引くための変数 ---
         let horseToUserMap = {};
+        let currentSortOrder = "asc"; // 現在のソート状態を保持
 
-        // --- 【追加】1. キャラクター情報を取得して「名簿」を作る ---
-        onValue(ref(db, "horses"), (snapshot) => {
-          const data = snapshot.val();
-          horseToUserMap = {};
-          if (data) {
-            for (let id in data) {
-              // 「キャラ名」をキーにして「ユーザー名」を保存
-              horseToUserMap[data[id].horseName] = data[id].userName;
-            }
+        // --- フィルタリング・ソート関数 ---
+        const getFilteredAndSortedData = (sortOrder) => {
+          const keyword = (searchInput.value || "").toLowerCase();
+          let filtered = allCombos.filter((c) => c.id.toLowerCase().includes(keyword));
+
+          if (sortOrder === "asc") {
+            return filtered.sort((a, b) => b.v - a.v); // 人気順
+          } else {
+            return filtered.sort((a, b) => a.v - b.v); // 大穴順
           }
-          // すでに投票データがある場合は再描画
-          if (allCombos.length > 0) render(getFilteredAndSortedData("asc"));
-        });
+        };
 
-        // --- 2. 描画関数 (ユーザー名表示を追加) ---
+        // --- 描画関数 ---
         const render = (arr) => {
           oddsListDiv.innerHTML = "";
           if (!arr || arr.length === 0) {
@@ -121,8 +100,6 @@
           arr.forEach((c) => {
             const odds = c.v > 0 ? Math.floor((totalVotes / c.v) * 10) / 10 : 99.9;
             const names = c.id.split("_");
-
-            // --- 【追加】名簿からユーザー名を取得 ---
             const user0 = horseToUserMap[names[0]] || "不明";
             const user1 = horseToUserMap[names[1]] || "不明";
             const user2 = horseToUserMap[names[2]] || "不明";
@@ -152,11 +129,39 @@
           });
         };
 
-        const getFilteredAndSortedData = (sortOrder = "asc") => {
-          const keyword = (searchInput.value || "").toLowerCase();
-          let filtered = allCombos.filter((c) => c.id.toLowerCase().includes(keyword));
-          return sortOrder === "asc" ? filtered.sort((a, b) => b.v - a.v) : filtered.sort((a, b) => a.v - b.v);
+        // --- ボタンイベント ---
+        sortAscBtn.onclick = () => {
+          currentSortOrder = "asc";
+          sortAscBtn.classList.add("is-active");
+          sortDescBtn.classList.remove("is-active");
+          render(getFilteredAndSortedData(currentSortOrder));
         };
+
+        sortDescBtn.onclick = () => {
+          currentSortOrder = "desc";
+          sortDescBtn.classList.add("is-active");
+          sortAscBtn.classList.remove("is-active");
+          render(getFilteredAndSortedData(currentSortOrder));
+        };
+
+        searchInput.oninput = () => {
+          render(getFilteredAndSortedData(currentSortOrder));
+        };
+
+        // 初期状態
+        sortAscBtn.classList.add("is-active");
+
+        // --- Firebase 監視 ---
+        onValue(ref(db, "horses"), (snapshot) => {
+          const data = snapshot.val();
+          horseToUserMap = {};
+          if (data) {
+            for (let id in data) {
+              horseToUserMap[data[id].horseName] = data[id].userName;
+            }
+          }
+          if (allCombos.length > 0) render(getFilteredAndSortedData(currentSortOrder));
+        });
 
         onValue(
           ref(db, "combos"),
@@ -177,17 +182,13 @@
             }
 
             totalInfoDiv.innerText = `総投票数: ${totalVotes} 票`;
-            render(getFilteredAndSortedData("asc"));
+            render(getFilteredAndSortedData(currentSortOrder));
           },
           (error) => {
             console.error("Firebase Read Error:", error);
             oddsListDiv.innerHTML = `<p class='p-voting__loading' style='color:red;'>接続エラー: ${error.message}</p>`;
           },
         );
-
-        document.getElementById("sort-asc").onclick = () => render(getFilteredAndSortedData("asc"));
-        document.getElementById("sort-desc").onclick = () => render(getFilteredAndSortedData("desc"));
-        searchInput.oninput = () => render(getFilteredAndSortedData("asc"));
       }
     </script>
   </body>
