@@ -1,15 +1,17 @@
 // --- 1. Base Colors ---
-$color-primary: rgb(27, 183, 0); // 既存の緑
-$color-primary-light: rgba(180, 245, 144, 1); // グラデ用（明るい緑）
+$color-primary: rgb(27, 183, 0);
+$color-primary-light: rgba(180, 245, 144, 1);
+$color-primary-dark: #154d00;
 
-$color-danger: #d32f2f; // 既存の赤
-$color-danger-light: #ff5252; // グラデ用（明るい赤）
+$color-danger: #d32f2f;
+$color-danger-light: #ff5252;
+$color-danger-dark: #8b0000;
 
-$color-blue: #2f48d3; // 既存の赤
-$color-blue-light: #5289ff; // グラデ用（明るい赤）
+$color-blue: #2f48d3;
+$color-blue-light: #5289ff;
 
-$color-secondary: #666666; // 既存のグレー
-$color-secondary-light: #999999; // グラデ用（明るいグレー）
+$color-secondary: #666666;
+$color-secondary-light: #999999;
 
 $color-white: #ffffff;
 $color-bg-light: #f4f7f6;
@@ -17,22 +19,55 @@ $color-text-main: #1a1a1a;
 $color-text-sub: #666666;
 $color-border: #eeeeee;
 
-// --- 2. Gradients (ここを定義) ---
-// 135deg（左上から右下）の傾斜が最も自然に見えます
-$grad-primary: linear-gradient(135deg, $color-primary-light 0%, $color-primary 100%);
-$grad-danger: linear-gradient(135deg, $color-danger-light 0%, $color-danger 100%);
-$grad-secondary: linear-gradient(135deg, $color-secondary 0%, $color-secondary-light 100%);
-
-// --- 3. Spacing & Design ---
-$space-md: 16px;
-$space-lg: 24px;
-$space-xl: 40px;
-
-$shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.1);
-$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+// --- 2. Design Fixed Values (順序を前に移動) ---
+// CSS変数内で使うために、先に定義しておく必要があります
+$shadow-sm-value: 0 4px 12px rgba(0, 0, 0, 0.1);
+$shadow-lg-value: 0 8px 24px rgba(0, 0, 0, 0.12);
 
 $radius-sm: 4px;
 $radius-md: 8px;
 
 $font-main: "Noto Sans JP", sans-serif;
 $font-accent: "Zen Kaku Gothic New", sans-serif;
+
+$space-md: 16px;
+$space-lg: 24px;
+$space-xl: 40px;
+
+// --- 3. Semantic CSS Variables (Dark Mode Support) ---
+:root {
+  // Light Mode (Default)
+  --bg-page: #{$color-bg-light};
+  --bg-card: #{$color-white};
+  --text-main: #{$color-text-main};
+  --text-sub: #{$color-text-sub};
+  --border: #{$color-border};
+  --header-bg: #{$color-primary};
+  --shadow: #{$shadow-sm-value};
+
+  --grad-primary: linear-gradient(135deg, #{$color-primary-light} 0%, #{$color-primary} 100%);
+  --grad-danger: linear-gradient(135deg, #{$color-danger-light} 0%, #{$color-danger} 100%);
+}
+
+[data-theme="dark"] {
+  // Dark Mode
+  --bg-page: #121212;
+  --bg-card: #1e1e1e;
+  --text-main: #e0e0e0;
+  --text-sub: #a0a0a0;
+  --border: #333333;
+  --header-bg: #{$color-primary-dark};
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+  --grad-primary: linear-gradient(135deg, #{$color-primary} 0%, #{$color-primary-dark} 100%);
+  --grad-danger: linear-gradient(135deg, #{$color-danger} 0%, #{$color-danger-dark} 100%);
+}
+
+// --- 4. Final Export Variables ---
+// SCSS内で使いやすくするためのエイリアス
+$grad-primary: var(--grad-primary);
+$grad-danger: var(--grad-danger);
+$grad-secondary: linear-gradient(135deg, $color-secondary 0%, $color-secondary-light 100%);
+
+$shadow-sm: var(--shadow);
+$shadow-lg: $shadow-lg-value;

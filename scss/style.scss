@@ -1,27 +1,66 @@
 @use "reset";
 @use "variables" as v;
 
+// --- テーマ変数の定義 ---
+:root {
+  // $color-bg-light ではなく v.$color-bg-light と書く
+  --bg-page: #{v.$color-bg-light};
+  --bg-card: #{v.$color-white};
+  --text-main: #{v.$color-text-main};
+  --text-sub: #{v.$color-text-sub};
+  --border: #{v.$color-border};
+  --header-bg: #{v.$color-primary};
+  --header-text: #ffffff;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --grad-primary: linear-gradient(135deg, #{v.$color-primary-light} 0%, #{v.$color-primary} 100%);
+}
+
+[data-theme="dark"] {
+  --bg-page: #121212;
+  --bg-card: #1e1e1e;
+  --text-main: #e0e0e0;
+  --text-sub: #a0a0a0;
+  --border: #333333;
+  --header-bg: #154d00;
+  --header-text: #e0e0e0;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  // ダークモード用のグラデーション（必要に応じて調整）
+  --grad-primary: linear-gradient(135deg, #{v.$color-primary} 0%, #154d00 100%);
+}
+
+// マテリアルシンボルの基本設定
+.material-symbols-outlined {
+  font-size: 32px; // スイッチなので少し大きめが見やすいです
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+  transition: all 0.3s ease;
+}
+
 body {
   font-family:
     "Noto Sans JP",
     -apple-system,
     BlinkMacSystemFont,
     "Helvetica Neue",
-    "Hiragino Kaku Gothic ProN",
-    "Hiragino Sans",
-    Meiryo,
     sans-serif;
-  -webkit-font-smoothing: antialiased; // 文字を滑らかにする
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
-// タイトルや強調したい部分にアクセントフォントを適用
 h1,
 h2,
 .p-voting__title,
 .p-voting__number {
   font-family: "Zen Kaku Gothic New", sans-serif;
-  letter-spacing: 0.02em; // 少し字間をあけると高級感が出ます
+  letter-spacing: 0.02em;
 }
 
 // --- 1. Layout ---
@@ -31,7 +70,13 @@ h2,
   align-items: flex-start;
   min-height: 100vh;
   padding: 80px 20px 40px;
-  background-color: v.$color-bg-light;
+}
+
+// コンテンツ全体を中央に寄せるためのラッパー
+.l-main-content {
+  width: 100%;
+  max-width: 600px; // odds.htmlのコンテンツ幅を統一
+  margin: 0 auto;
 }
 
 .l-header {
@@ -40,21 +85,48 @@ h2,
   left: 0;
   width: 100%;
   height: 60px;
-  background: v.$color-primary;
-  color: v.$color-white;
+  background: var(--header-bg);
+  color: var(--header-text);
   z-index: 100;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
   &__inner {
     display: flex;
     align-items: center;
     height: 100%;
     padding: 0 v.$space-md;
   }
+
   &__logo {
     font-weight: bold;
     margin-left: v.$space-md;
     font-size: 1.1rem;
   }
+
+  &__theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-left: auto;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+
+    .icon-moon {
+      display: none;
+    }
+    [data-theme="dark"] & {
+      .icon-sun {
+        display: none;
+      }
+      .icon-moon {
+        display: inline;
+      }
+    }
+  }
+
   &__hamburger {
     width: 30px;
     height: 24px;
@@ -94,13 +166,51 @@ h2,
   }
 }
 
+.l-header__theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--header-text);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+
+  // 初期状態（ライトモード）
+  .icon-sun {
+    display: inline-block;
+  }
+  .icon-moon {
+    display: none;
+  }
+}
+
+// ダークモード時のスタイル
+[data-theme="dark"] {
+  .l-header__theme-toggle {
+    .icon-sun {
+      display: none;
+    }
+    .icon-moon {
+      display: inline-block;
+      // ダークモード時はアイコンを塗りつぶす設定に上書き
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 1,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+    }
+  }
+}
+
 .l-menu {
   position: fixed;
   top: 0;
   left: -260px;
   width: 260px;
   height: 100%;
-  background: v.$color-white;
+  background: var(--bg-card);
   z-index: 200;
   transition: transform 0.3s ease;
   padding-top: 80px;
@@ -108,12 +218,12 @@ h2,
     transform: translateX(260px);
   }
   &__item {
-    border-bottom: 1px solid v.$color-border;
+    border-bottom: 1px solid var(--border);
   }
   &__link {
     display: block;
     padding: 20px;
-    color: v.$color-text-main;
+    color: var(--text-main);
     text-decoration: none;
     font-weight: bold;
     width: 100%;
@@ -122,7 +232,7 @@ h2,
     border: none;
     cursor: pointer;
     &:hover {
-      background: v.$color-bg-light;
+      background: var(--bg-page);
     }
   }
   &__overlay {
@@ -146,9 +256,12 @@ h2,
 // --- 2. Components ---
 .c-input {
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border);
   border-radius: v.$radius-sm;
+  background-color: var(--bg-card);
+  color: var(--text-main);
   width: 100%;
+  box-sizing: border-box;
   &:focus {
     outline: none;
     border-color: v.$color-primary;
@@ -173,39 +286,25 @@ h2,
     filter: brightness(1.1);
   }
 
-  &:active:not(:disabled) {
-    transform: translateY(1px);
-  }
-
-  &:disabled {
-    background: #ccc !important;
-    cursor: not-allowed;
-    box-shadow: none;
-  }
-
   &--primary {
-    background: v.$grad-primary; // 変数に置き換え
-    box-shadow: 0 4px 10px rgba(44, 124, 51, 0.2);
+    background: v.$grad-primary;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
   &--danger {
-    background: v.$grad-danger; // 変数に置き換え
-    box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);
+    background: v.$grad-danger;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
   &--secondary {
-    background: v.$color-secondary-light;
-    color: v.$color-text-main;
-    border: 1px solid v.$color-border;
-
-    // 昇順（sort-asc）ボタンがアクティブな時：赤系
+    background: var(--bg-card);
+    color: var(--text-main);
+    border: 1px solid var(--border);
     &#sort-asc.is-active {
-      background: v.$color-danger; // グラデではなく単色
+      background: v.$color-danger;
       color: v.$color-white;
       border-color: v.$color-danger;
     }
-
-    // 降順（sort-desc）ボタンがアクティブな時：青（メイン）系
     &#sort-desc.is-active {
-      background: v.$color-blue; // グラデではなく単色
+      background: v.$color-blue;
       color: v.$color-white;
       border-color: v.$color-blue;
     }
@@ -214,233 +313,202 @@ h2,
 
 // --- 3. Projects ---
 %page-card-base {
-  background: v.$color-white;
+  background: var(--bg-card);
   border-radius: v.$radius-md;
-  box-shadow: v.$shadow-sm;
+  box-shadow: var(--shadow);
   width: 100%;
   box-sizing: border-box;
 }
 
-.p-login {
+// 容器としての p-voting
+.p-voting {
   @extend %page-card-base;
-  padding: v.$space-xl;
-  max-width: 400px;
-  text-align: center;
-  margin: auto;
-  &__title {
-    margin-bottom: v.$space-lg;
-    font-size: 1.5rem;
-  }
-  &__form {
-    display: flex;
-    flex-direction: column;
-    gap: v.$space-md;
-    align-items: center;
-  }
-}
-
-// --- グラフコンテナのスタイル ---
-.p-voting__chart-container {
-  @extend %page-card-base; // 白背景・角丸・影を共通カードスタイルから継承
-  margin-bottom: v.$space-lg;
   padding: v.$space-lg;
+  margin-bottom: v.$space-lg;
 
-  // 円グラフと下の凡例が綺麗に収まる高さ
-  height: 400px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  // グラフ自体が親要素からはみ出さないように制御
-  canvas {
-    max-width: 100% !important;
-    max-height: 100% !important;
-  }
-
-  // スマホ表示での調整
-  @media screen and (max-width: 767px) {
-    height: 320px; // スマホでは少しコンパクトに
-    padding: v.$space-md;
-  }
-}
-
-// 総投票数テキストの微調整（グラフのすぐ下にくる場合）
-.p-voting__total {
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: v.$color-primary;
-  margin-bottom: v.$space-md;
-}
-
-.p-admin {
-  @extend %page-card-base;
-  padding: 30px;
-  max-width: 600px;
-  margin: 0 auto;
   &__title {
     margin-bottom: v.$space-md;
     text-align: center;
+    font-size: 1.25rem;
   }
-  &__register {
+
+  &__subtitle {
+    text-align: center;
+    font-size: 1rem;
     margin-bottom: v.$space-md;
+    color: var(--text-main);
   }
-  &__register-group {
+
+  // --- 投票フォーム用 (Selection Area) ---
+  &__selection-container {
+    background: var(--bg-page);
+    padding: v.$space-md;
+    border-radius: v.$radius-md;
+    margin-bottom: v.$space-lg;
+  }
+
+  &__slots {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    @media (min-width: 600px) {
+    gap: 8px;
+    margin-bottom: v.$space-md;
+
+    @media (min-width: 480px) {
       flex-direction: row;
+      justify-content: space-between;
     }
   }
-  &__item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px;
-    border-bottom: 1px solid v.$color-border;
-    &-name {
+
+  &__slot {
+    flex: 1;
+    background: var(--bg-card);
+    padding: 10px;
+    border-radius: v.$radius-sm;
+    border: 1px dashed var(--border);
+    font-size: 0.9rem;
+    text-align: center;
+
+    .slot-name {
       font-weight: bold;
-      font-size: 1rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      flex: 1;
-      margin-right: 10px;
+      color: v.$color-primary;
     }
   }
-}
 
-.p-voting {
-  background: v.$color-white;
-  border-radius: v.$radius-md;
-  box-shadow: v.$shadow-lg;
-  padding: v.$space-lg;
-  max-width: 500px;
-  margin: 0 auto;
+  &__actions {
+    display: flex;
+    gap: 10px;
+    .c-button {
+      flex: 1;
+    }
+  }
 
+  &__divider {
+    margin: v.$space-lg 0;
+    border: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  // --- グラフ用 ---
+  &__chart-container {
+    @extend %page-card-base;
+    margin-bottom: v.$space-lg;
+    padding: v.$space-lg;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    canvas {
+      max-width: 100% !important;
+      max-height: 100% !important;
+    }
+    @media screen and (max-width: 767px) {
+      height: 300px;
+      padding: v.$space-md;
+    }
+  }
+
+  // --- 共通コントロール・情報表示 ---
+  &__controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: v.$space-md;
+    .c-button {
+      flex: 1;
+    }
+  }
+
+  &__total {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    color: v.$color-primary;
+  }
+
+  // --- リストアイテム (共通) ---
   &__item {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 15px;
-    background: #fff;
+    background: var(--bg-card);
     border-radius: 8px;
     margin-bottom: 10px;
     gap: 15px;
-    border: 1px solid #eee;
+    border: 1px solid var(--border);
     transition: 0.2s;
-
     &:hover {
-      background: lighten(v.$color-primary, 60%);
+      background: var(--bg-page);
     }
     &--odds {
       border-left: 4px solid v.$color-danger;
     }
   }
 
-  &__info {
-    flex: 1;
-    min-width: 0; // 折り返しを機能させるために必須
-  }
-
-  &__text-group {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  &__number {
-    font-weight: 900; // オッズの数字をより力強く
-  }
-
   &__name {
     font-weight: bold;
     font-size: 1rem;
-    color: v.$color-text-main;
-    line-height: 1.4;
-    white-space: normal;
-    word-break: break-all;
-    overflow: visible;
-
+    color: var(--text-main);
     small {
       font-size: 0.75rem;
-      color: v.$color-text-sub;
+      color: var(--text-sub);
       margin-left: 6px;
-      font-weight: normal;
-
-      // --- スマホ（SP）用の設定を追加 ---
       @media screen and (max-width: 767px) {
-        display: block; // ブロック要素にして改行させる
-        margin-left: 0; // 横の余白をリセット
-        margin-top: 2px; // 名前との間に少しだけ隙間を作る
-        line-height: 1.2; // ユーザー名自体の行間を調整
+        display: block;
+        margin-left: 0;
       }
     }
   }
 
-  // 名前ごとの間隔（4pxだと少し詰まって見えるので微調整）
   &__horse-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
     @media screen and (max-width: 767px) {
-      gap: 8px !important; // 3人の区別をつけやすくするために少し広げる
+      gap: 8px;
     }
   }
 
-  &__user {
-    font-size: 0.8rem;
-    color: v.$color-text-sub;
-    white-space: normal;
-  }
-
-  // スマホ(SP)専用の調整
-  @media screen and (max-width: 767px) {
-    &__item {
-      padding: 12px;
-    }
-    .c-button {
-      flex-shrink: 0; // ボタンが潰れるのを防ぐ
-      width: 85px;
-      padding: 10px 5px;
-      font-size: 0.85rem;
-    }
-  }
-
-  // オッズ画面用
   &__odds-display {
     text-align: right;
     flex-shrink: 0;
-
-    // --- スマホ（SP）で縦積みにする設定 ---
     @media screen and (max-width: 767px) {
       display: flex;
-      flex-direction: column; // 上下（縦）に並べる
-      align-items: flex-end; // 右側に揃える（中央寄せなら center）
-      justify-content: center;
-      gap: 2px; // ラベルと数字の隙間
+      flex-direction: column;
+      align-items: flex-end;
     }
-
     .p-voting__label {
-      display: block; // 改行を確実にする
       font-size: 0.65rem;
-      color: v.$color-text-sub;
-      margin-bottom: 2px;
-
-      @media screen and (max-width: 767px) {
-        margin-bottom: 0;
-      }
+      color: var(--text-sub);
     }
-
     .p-voting__number {
       font-size: 1.4rem;
       font-weight: 900;
-      color: v.$color-text-main;
-      line-height: 1; // 縦積みの時に余白が開きすぎないように
-
-      @media screen and (max-width: 767px) {
-        font-size: 1.2rem; // スマホでは少しだけコンパクトに
-      }
+      line-height: 1;
     }
+  }
+
+  &__tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    background: var(--bg-page);
+    color: var(--text-sub);
+    border-radius: 4px;
+    margin-bottom: 4px;
+  }
+}
+
+// ログイン・管理画面用
+.p-login,
+.p-admin {
+  @extend %page-card-base;
+  padding: v.$space-lg;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+[data-theme="dark"] {
+  canvas {
+    filter: brightness(0.9) contrast(1.1);
   }
 }

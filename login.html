@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body class="l-page-container">
@@ -19,7 +21,11 @@
     </main>
 
     <script type="module">
+      import { initTheme } from "./js/theme.js";
       import { login } from "./js/auth.js";
+      // ★ ここで実行！これがないと動きません
+      initTheme();
+
       document.getElementById("login-btn").onclick = () => {
         login(document.getElementById("pass").value);
       };
