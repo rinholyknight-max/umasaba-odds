@@ -1,21 +1,126 @@
 @use "reset";
 @use "variables" as v;
 
-// ==========================================================================
 // Layout
-// ==========================================================================
 .l-page-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   min-height: 100vh;
-  padding: v.$space-lg;
+  padding: 80px 20px 40px;
   background-color: v.$color-bg-light;
 }
 
-// ==========================================================================
-// Component
-// ==========================================================================
+.l-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: v.$color-primary;
+  color: v.$color-white;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  &__inner {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 v.$space-md;
+  }
+  &__logo {
+    font-weight: bold;
+    margin-left: v.$space-md;
+    font-size: 1.1rem;
+  }
+  &__hamburger {
+    width: 30px;
+    height: 24px;
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 300;
+    span {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: #fff;
+      transition: 0.3s;
+      &:nth-child(1) {
+        top: 0;
+      }
+      &:nth-child(2) {
+        top: 11px;
+      }
+      &:nth-child(3) {
+        bottom: 0;
+      }
+    }
+    &.is-active span {
+      &:nth-child(1) {
+        transform: translateY(11px) rotate(45deg);
+      }
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      &:nth-child(3) {
+        transform: translateY(-11px) rotate(-45deg);
+      }
+    }
+  }
+}
+
+.l-menu {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100%;
+  background: v.$color-white;
+  z-index: 200;
+  transition: transform 0.3s ease;
+  padding-top: 80px;
+  &.is-active {
+    transform: translateX(260px);
+  }
+  &__item {
+    border-bottom: 1px solid v.$color-border;
+  }
+  &__link {
+    display: block;
+    padding: 20px;
+    color: v.$color-text-main;
+    text-decoration: none;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      background: v.$color-bg-light;
+    }
+  }
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 150;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    &.is-active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+// Components
 .c-input {
   padding: 12px;
   border: 1px solid #ccc;
@@ -23,7 +128,6 @@
   width: 100%;
   max-width: 300px;
 }
-
 .c-button {
   display: inline-block;
   padding: 12px 24px;
@@ -32,35 +136,25 @@
   cursor: pointer;
   font-weight: bold;
   text-align: center;
-  transition: opacity 0.2s;
-
+  transition: 0.2s;
   &:hover {
     opacity: 0.8;
   }
-
   &--primary {
-    background-color: v.$color-primary;
+    background: v.$color-primary;
     color: v.$color-white;
   }
   &--danger {
-    background-color: v.$color-danger;
+    background: v.$color-danger;
     color: v.$color-white;
   }
   &--secondary {
-    background-color: v.$color-secondary;
+    background: v.$color-secondary;
     color: v.$color-white;
   }
 }
 
-.c-divider {
-  border: 0;
-  border-top: 2px solid v.$color-border;
-  margin: v.$space-lg 0;
-}
-
-// ==========================================================================
-// Project (Base Style)
-// ==========================================================================
+// Projects
 %page-card-base {
   background: v.$color-white;
   border-radius: v.$radius-md;
@@ -68,18 +162,16 @@
   width: 100%;
 }
 
-// --- ログイン画面 ---
 .p-login {
   @extend %page-card-base;
   padding: v.$space-xl;
   max-width: 400px;
   text-align: center;
-
+  margin: auto;
   &__title {
     margin-bottom: v.$space-lg;
     font-size: 1.5rem;
   }
-
   &__form {
     display: flex;
     flex-direction: column;
@@ -88,64 +180,55 @@
   }
 }
 
-// --- 管理画面 ---
 .p-admin {
   @extend %page-card-base;
   padding: 30px;
   max-width: 600px;
-
+  margin: 0 auto;
   &__title {
     margin-bottom: v.$space-md;
     text-align: center;
   }
-
   &__register {
     display: flex;
     gap: 10px;
     margin-bottom: v.$space-md;
-
     @media (max-width: 480px) {
       flex-direction: column;
     }
   }
-
   &__item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 12px;
     border-bottom: 1px solid v.$color-border;
-
     &-name {
       font-weight: bold;
     }
   }
-
   &__footer {
     margin-top: v.$space-lg;
     text-align: center;
   }
 }
 
-// --- 投票画面 ---
 .p-voting {
   @extend %page-card-base;
   padding: v.$space-lg;
   max-width: 500px;
+  margin: 0 auto;
   box-shadow: v.$shadow-lg;
-
   &__title {
     text-align: center;
     margin-bottom: v.$space-lg;
     font-size: 1.4rem;
   }
-
   &__list {
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
-
   &__item {
     display: flex;
     justify-content: space-between;
@@ -153,30 +236,22 @@
     padding: v.$space-md;
     border: 1px solid v.$color-border;
     border-radius: v.$radius-md;
-    transition: background-color 0.2s;
-
+    transition: 0.2s;
     &:hover {
-      background-color: lighten(v.$color-primary, 60%);
+      background: lighten(v.$color-primary, 60%);
     }
   }
-
   &__info {
     display: flex;
     flex-direction: column;
     gap: 4px;
   }
-
   &__name {
     font-weight: bold;
     font-size: 1.1rem;
   }
-
   &__votes {
     font-size: 0.9rem;
     color: v.$color-text-sub;
-  }
-
-  &__button {
-    min-width: 100px;
   }
 }

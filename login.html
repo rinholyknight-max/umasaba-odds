@@ -8,8 +8,7 @@
   </head>
   <body class="l-page-container">
     <main class="p-login">
-      <h1 class="p-login__title">ログイン</h1>
-
+      <h1 class="p-login__title">🔑 ログイン</h1>
       <div class="p-login__form">
         <input type="password" id="pass" class="c-input" placeholder="パスワードを入力" />
         <button id="login-btn" class="c-button c-button--primary">ログイン</button>
@@ -18,10 +17,8 @@
 
     <script type="module">
       import { login } from "./js/auth.js";
-
       document.getElementById("login-btn").onclick = () => {
-        const pass = document.getElementById("pass").value;
-        login(pass);
+        login(document.getElementById("pass").value);
       };
     </script>
   </body>
