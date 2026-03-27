@@ -389,6 +389,19 @@ button {
   margin-left: 6px;
   font-weight: normal;
 }
+@media screen and (max-width: 767px) {
+  .p-voting__name small {
+    display: block;
+    margin-left: 0;
+    margin-top: 2px;
+    line-height: 1.2;
+  }
+}
+@media screen and (max-width: 767px) {
+  .p-voting__horse-group {
+    gap: 8px !important;
+  }
+}
 .p-voting__user {
   font-size: 0.8rem;
   color: #666666;

@@ -334,8 +334,8 @@
     font-size: 1rem;
     color: v.$color-text-main;
     line-height: 1.4;
-    white-space: normal; // 改行を許可
-    word-break: break-all; // 長い名前を強制改行
+    white-space: normal;
+    word-break: break-all;
     overflow: visible;
 
     small {
@@ -343,6 +343,21 @@
       color: v.$color-text-sub;
       margin-left: 6px;
       font-weight: normal;
+
+      // --- スマホ（SP）用の設定を追加 ---
+      @media screen and (max-width: 767px) {
+        display: block; // ブロック要素にして改行させる
+        margin-left: 0; // 横の余白をリセット
+        margin-top: 2px; // 名前との間に少しだけ隙間を作る
+        line-height: 1.2; // ユーザー名自体の行間を調整
+      }
+    }
+  }
+
+  // 名前ごとの間隔（4pxだと少し詰まって見えるので微調整）
+  &__horse-group {
+    @media screen and (max-width: 767px) {
+      gap: 8px !important; // 3人の区別をつけやすくするために少し広げる
     }
   }
 
