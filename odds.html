@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>オッズ確認画面 - うまさば</title>
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body class="l-page-container">
     <header class="l-header">
@@ -25,9 +26,9 @@
     <div class="l-menu__overlay" id="js-overlay"></div>
 
     <main class="p-voting">
-      <h1 class="p-voting__title">3連複オッズ推移</h1>
+      <h1 class="p-voting__title">3連複支持率シェア</h1>
 
-      <div class="p-voting__chart-container" style="margin-bottom: 20px; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); height: 350px">
+      <div class="p-voting__chart-container">
         <canvas id="oddsChart"></canvas>
       </div>
 
@@ -45,10 +46,6 @@
     </main>
 
     <script type="module">
-      // --- 1. Chart.js のインポート ---
-      import { Chart, registerables } from "https://cdn.jsdelivr.net/npm/chart.js";
-      Chart.register(...registerables);
-
       import { checkAuth, logout } from "./js/auth.js";
       import { initMenu } from "./js/menu.js";
       import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
@@ -58,7 +55,8 @@
 
       if (isAuthorized) {
         initMenu();
-        document.getElementById("js-logout").onclick = logout;
+        const logoutBtn = document.getElementById("js-logout");
+        if (logoutBtn) logoutBtn.onclick = logout;
 
         const firebaseConfig = {
           apiKey: "AIzaSyBp5Cg6A3v3VZal-orAiwFjphKIDYx9ATo",
@@ -84,15 +82,14 @@
         let totalVotes = 0;
         let horseToUserMap = {};
         let currentSortOrder = "asc";
-        let myChart = null; // グラフインスタンス保持用
+        let myChart = null;
 
-        // --- 【追加】グラフ更新関数（円グラフ） ---
+        // --- グラフ更新関数 ---
         const updateChart = () => {
           const canvas = document.getElementById("oddsChart");
           if (!canvas) return;
           const ctx = canvas.getContext("2d");
 
-          // 単体集計ロジック
           const horseVotes = {};
           allCombos.forEach((c) => {
             const names = c.id.split("_");
@@ -101,7 +98,6 @@
             });
           });
 
-          // データの整形（上位7名 + その他）
           const sortedHorses = Object.entries(horseVotes)
             .map(([name, votes]) => ({ name, votes }))
             .sort((a, b) => b.votes - a.votes);
@@ -111,8 +107,8 @@
           const otherVotes = sortedHorses.slice(limit).reduce((sum, h) => sum + h.votes, 0);
           if (otherVotes > 0) displayData.push({ name: "その他", votes: otherVotes });
 
-          // グラフの再構築
           if (myChart) myChart.destroy();
+          // グローバルな Chart オブジェクトを使用
           myChart = new Chart(ctx, {
             type: "pie",
             data: {
@@ -131,27 +127,24 @@
               maintainAspectRatio: false,
               plugins: {
                 legend: { position: "bottom", labels: { boxWidth: 12 } },
-                title: { display: true, text: "ウマ娘別・支持率シェア", font: { size: 14 } },
+                title: { display: true, text: "ウマ娘別・支持率シェア" },
               },
             },
           });
         };
 
-        // --- フィルタリング・ソート関数 ---
+        // --- フィルタリング・ソート ---
         const getFilteredAndSortedData = (sortOrder) => {
           const keyword = (searchInput.value || "").toLowerCase();
           let filtered = allCombos.filter((c) => c.id.toLowerCase().includes(keyword));
-
-          if (sortOrder === "asc") {
-            return filtered.sort((a, b) => b.v - a.v); // 人気順
-          } else {
-            return filtered.sort((a, b) => a.v - b.v); // 大穴順
-          }
+          return sortOrder === "asc" ? filtered.sort((a, b) => b.v - a.v) : filtered.sort((a, b) => a.v - b.v);
         };
 
         // --- 描画関数 ---
         const render = (arr) => {
+          if (!oddsListDiv) return;
           oddsListDiv.innerHTML = "";
+
           if (!arr || arr.length === 0) {
             oddsListDiv.innerHTML = "<p class='p-voting__loading'>該当する組み合わせはありません。</p>";
             return;
@@ -167,32 +160,31 @@
             const item = document.createElement("div");
             item.className = "p-voting__item p-voting__item--odds";
             item.innerHTML = `
-          <div class="p-voting__info">
-            <div class="p-voting__combo-names">
-              <span class="p-voting__tag">3連複</span>
-              <div class="p-voting__horse-group" style="display:flex; flex-direction:column; gap:4px;">
-                <span class="p-voting__name">${names[0]} <small style="color:#666;">(${user0})</small></span>
-                <span class="p-voting__name">${names[1]} <small style="color:#666;">(${user1})</small></span>
-                <span class="p-voting__name">${names[2]} <small style="color:#666;">(${user2})</small></span>
+              <div class="p-voting__info">
+                <div class="p-voting__combo-names">
+                  <span class="p-voting__tag">3連複</span>
+                  <div class="p-voting__horse-group" style="display:flex; flex-direction:column; gap:4px;">
+                    <span class="p-voting__name">${names[0]} <small style="color:#666;">(${user0})</small></span>
+                    <span class="p-voting__name">${names[1]} <small style="color:#666;">(${user1})</small></span>
+                    <span class="p-voting__name">${names[2]} <small style="color:#666;">(${user2})</small></span>
+                  </div>
+                </div>
+                <div class="p-voting__stats">
+                  <span class="p-voting__votes">${c.v} 票</span>
+                </div>
               </div>
-            </div>
-            <div class="p-voting__stats">
-              <span class="p-voting__votes">${c.v} 票</span>
-            </div>
-          </div>
-          <div class="p-voting__odds-display">
-            <span class="p-voting__label">オッズ</span>
-            <span class="p-voting__number">${odds.toFixed(1)}</span>
-          </div>
-        `;
+              <div class="p-voting__odds-display">
+                <span class="p-voting__label">オッズ</span>
+                <span class="p-voting__number">${odds.toFixed(1)}</span>
+              </div>
+            `;
             oddsListDiv.appendChild(item);
           });
 
-          // 描画に合わせてグラフも更新
           updateChart();
         };
 
-        // --- ボタンイベント ---
+        // --- イベント登録 ---
         sortAscBtn.onclick = () => {
           currentSortOrder = "asc";
           sortAscBtn.classList.add("is-active");
@@ -211,7 +203,7 @@
           render(getFilteredAndSortedData(currentSortOrder));
         };
 
-        // 初期状態
+        // 初期化
         sortAscBtn.classList.add("is-active");
 
         // --- Firebase 監視 ---
@@ -249,7 +241,7 @@
           },
           (error) => {
             console.error("Firebase Read Error:", error);
-            oddsListDiv.innerHTML = `<p class='p-voting__loading' style='color:red;'>接続エラー: ${error.message}</p>`;
+            oddsListDiv.innerHTML = `<p class='p-voting__loading' style='color:red;'>接続エラー</p>`;
           },
         );
       }
