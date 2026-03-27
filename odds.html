@@ -79,23 +79,18 @@
       import { checkAuth, logout } from "./js/auth.js";
       import { initMenu } from "./js/menu.js";
       import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-      import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
+      // ★ get をインポートに追加（これがないとエラーになります）
+      import { getDatabase, ref, onValue, get } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
 
       initTheme();
 
-      // 1. セッションから「表示名」を取得（パスワードそのものではなく名前を出す）
       const userName = sessionStorage.getItem("user_name") || "不明なユーザー";
-
-      // 2. 画面上の要素を書き換え
       const userDisplay = document.getElementById("js-display-user");
       if (userDisplay) {
-        // 「様」は含めず、名前のみを表示
         userDisplay.innerText = userName;
       }
 
-      const isAuthorized = checkAuth();
-
-      if (isAuthorized) {
+      if (checkAuth()) {
         initMenu();
         const logoutBtn = document.getElementById("js-logout");
         if (logoutBtn) logoutBtn.onclick = logout;
@@ -125,16 +120,13 @@
         let currentSortOrder = "asc";
         let myChart = null;
 
-        // --- グラフ更新関数 (ダークモード対応版) ---
         const updateChart = () => {
           const canvas = document.getElementById("oddsChart");
           if (!canvas) return;
           const ctx = canvas.getContext("2d");
-
-          // 現在のテーマを確認
           const isDark = document.documentElement.getAttribute("data-theme") === "dark";
           const textColor = isDark ? "#f5f5f5" : "#333333";
-          const borderColor = isDark ? "#1e1e1e" : "#ffffff"; // 背景色に合わせる
+          const borderColor = isDark ? "#1e1e1e" : "#ffffff";
 
           const horseVotes = {};
           allCombos.forEach((c) => {
@@ -154,7 +146,6 @@
           if (otherVotes > 0) displayData.push({ name: "その他", votes: otherVotes });
 
           if (myChart) myChart.destroy();
-
           myChart = new Chart(ctx, {
             type: "pie",
             data: {
@@ -164,7 +155,7 @@
                   data: displayData.map((h) => h.votes),
                   backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF", "#FF9F40", "#C9CBCF", "#7BC225"],
                   borderWidth: 2,
-                  borderColor: borderColor, // ダークモード時は境界線を暗く
+                  borderColor: borderColor,
                 },
               ],
             },
@@ -172,24 +163,13 @@
               responsive: true,
               maintainAspectRatio: false,
               plugins: {
-                legend: {
-                  position: "bottom",
-                  labels: {
-                    boxWidth: 12,
-                    color: textColor, // 凡例の文字色をテーマに追従
-                  },
-                },
-                title: {
-                  display: true,
-                  text: "ウマ娘別・支持率シェア",
-                  color: textColor, // タイトルの文字色をテーマに追従
-                },
+                legend: { position: "bottom", labels: { boxWidth: 12, color: textColor } },
+                title: { display: true, text: "ウウマ娘別・支持率シェア", color: textColor },
               },
             },
           });
         };
 
-        // --- フィルタリング・ソート ---
         const getFilteredAndSortedData = (sortOrder) => {
           const keyword = (searchInput.value || "").toLowerCase();
           let filtered = allCombos.filter((c) => c.id.toLowerCase().includes(keyword));
@@ -199,7 +179,6 @@
         const render = (arr) => {
           if (!oddsListDiv) return;
           oddsListDiv.innerHTML = "";
-
           if (!arr || arr.length === 0) {
             oddsListDiv.innerHTML = "<p class='p-voting__loading'>該当する組み合わせはありません。</p>";
             return;
@@ -212,42 +191,43 @@
             const user1 = horseToUserMap[names[1]] || "不明";
             const user2 = horseToUserMap[names[2]] || "不明";
 
+            // ★ 投票者チップの生成
+            const voterList = Array.isArray(c.voters) ? c.voters : [];
+            const voterTags = voterList.map((vName) => `<span class="p-voting__voter-tag">${vName}</span>`).join("");
+
             const item = document.createElement("div");
             item.className = "p-voting__item p-voting__item--odds";
             item.innerHTML = `
-        <div class="p-voting__info">
-          <div class="p-voting__combo-names">
-            <span class="p-voting__tag">3連複</span>
-            <div class="p-voting__horse-group">
-              <span class="p-voting__name">${names[0]} <small>(${user0})</small></span>
-              <span class="p-voting__name">${names[1]} <small>(${user1})</small></span>
-              <span class="p-voting__name">${names[2]} <small>(${user2})</small></span>
+          <div class="p-voting__info">
+            <div class="p-voting__combo-names">
+              <span class="p-voting__tag">3連複</span>
+              <div class="p-voting__horse-group">
+                <span class="p-voting__name">${names[0]} <small>(${user0})</small></span>
+                <span class="p-voting__name">${names[1]} <small>(${user1})</small></span>
+                <span class="p-voting__name">${names[2]} <small>(${user2})</small></span>
+              </div>
+            </div>
+            <div class="p-voting__voter-list">
+              ${voterTags}
+            </div>
+            <div class="p-voting__stats">
+              <span class="p-voting__votes">${c.v} 票</span>
             </div>
           </div>
-          <div class="p-voting__stats">
-            <span class="p-voting__votes">${c.v} 票</span>
+          <div class="p-voting__odds-display">
+            <span class="p-voting__label">オッズ</span>
+            <span class="p-voting__number">${odds.toFixed(1)}</span>
           </div>
-        </div>
-        <div class="p-voting__odds-display">
-          <span class="p-voting__label">オッズ</span>
-          <span class="p-voting__number">${odds.toFixed(1)}</span>
-        </div>
-      `;
+        `;
             oddsListDiv.appendChild(item);
           });
-
           updateChart();
         };
 
-        // --- テーマ切り替えボタンのクリック時にグラフを再描画する処理を追加 ---
+        // 初期化とイベント設定
         const themeToggle = document.getElementById("js-dark-mode-toggle");
         if (themeToggle) {
-          themeToggle.addEventListener("click", () => {
-            // テーマ切り替え(setAttribute)が完了するのをわずかに待ってから再描画
-            setTimeout(() => {
-              updateChart();
-            }, 10);
-          });
+          themeToggle.addEventListener("click", () => setTimeout(updateChart, 10));
         }
 
         sortAscBtn.onclick = () => {
@@ -264,19 +244,14 @@
           render(getFilteredAndSortedData(currentSortOrder));
         };
 
-        searchInput.oninput = () => {
-          render(getFilteredAndSortedData(currentSortOrder));
-        };
-
+        searchInput.oninput = () => render(getFilteredAndSortedData(currentSortOrder));
         sortAscBtn.classList.add("is-active");
 
         onValue(ref(db, "horses"), (snapshot) => {
           const data = snapshot.val();
           horseToUserMap = {};
           if (data) {
-            for (let id in data) {
-              horseToUserMap[data[id].horseName] = data[id].userName;
-            }
+            for (let id in data) horseToUserMap[data[id].horseName] = data[id].userName;
           }
           if (allCombos.length > 0) render(getFilteredAndSortedData(currentSortOrder));
         });
@@ -293,6 +268,7 @@
           for (let id in data) {
             const v = data[id].votes || 0;
             totalVotes += v;
+            // voters も含めて allCombos に格納
             allCombos.push({ id, ...data[id], v });
           }
           totalInfoDiv.innerText = `総投票数: ${totalVotes} 票`;

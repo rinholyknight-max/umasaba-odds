@@ -61,9 +61,14 @@
             <div class="p-voting__slot" data-slot="3">3枠: <span class="slot-name">未選択</span></div>
           </div>
 
+          <div class="p-voting__input-group">
+            <label for="js-voter-name" class="p-voting__label">投票者名</label>
+            <input type="text" id="js-voter-name" class="c-input" placeholder="あなたの名前を入力" maxlength="15" />
+          </div>
+
           <div class="p-voting__actions">
             <button id="js-clear-btn" class="c-button c-button--danger">クリア</button>
-            <button id="js-submit-vote" class="c-button c-button--primary" disabled>投票する</button>
+            <button id="js-submit-vote" class="c-button c-button--primary" disabled>投票を確定する</button>
           </div>
         </div>
 
@@ -80,18 +85,18 @@
       import { checkAuth, logout } from "./js/auth.js";
       import { initMenu } from "./js/menu.js";
       import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-      import { getDatabase, ref, onValue, update, increment, push, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
+      // ★ get をインポートに追加しました
+      import { getDatabase, ref, onValue, update, increment, push, serverTimestamp, get } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
 
-      // ★ ここで実行！これがないと動きません
+      // 初期化実行
       initTheme();
 
-      // 1. セッションから「表示名」を取得（パスワードそのものではなく名前を出す）
+      // 1. セッションから「表示名」を取得
       const userName = sessionStorage.getItem("user_name") || "不明なユーザー";
 
-      // 2. 画面上の要素を書き換え
+      // 2. サイドメニューのユーザー名表示を更新
       const userDisplay = document.getElementById("js-display-user");
       if (userDisplay) {
-        // 「様」は含めず、名前のみを表示
         userDisplay.innerText = userName;
       }
 
@@ -119,7 +124,7 @@
         const updateSelectionUI = () => {
           for (let i = 1; i <= 3; i++) {
             const slot = document.querySelector(`.p-voting__slot[data-slot="${i}"] .slot-name`);
-            slot.innerText = selectedHorses[i - 1] ? selectedHorses[i - 1].name : "未選択";
+            if (slot) slot.innerText = selectedHorses[i - 1] ? selectedHorses[i - 1].name : "未選択";
           }
           submitBtn.disabled = selectedHorses.length < 3;
 
@@ -143,40 +148,67 @@
           updateSelectionUI();
         };
 
-        // 投票実行
+        // --- 投票実行 ---
         submitBtn.onclick = async () => {
           if (selectedHorses.length < 3) return;
+
+          // 入力された名前を取得
+          const voterNameInput = document.getElementById("js-voter-name");
+          if (!voterNameInput) {
+            alert("名前入力フィールドが見つかりません。");
+            return;
+          }
+
+          const voterName = voterNameInput.value.trim();
+
+          // 名前が空の場合はストップ
+          if (!voterName) {
+            alert("投票者名を入力してください");
+            voterNameInput.focus();
+            return;
+          }
 
           const sortedNames = selectedHorses.map((h) => h.name).sort();
           const ticketId = sortedNames.join("_");
 
-          // 二重クリック防止
           submitBtn.disabled = true;
           submitBtn.innerText = "送信中...";
 
           try {
-            // combos 階層に保存
-            await update(ref(db, `combos/${ticketId}`), {
+            const comboRef = ref(db, `combos/${ticketId}`);
+
+            // ★ ここで get を使用（インポートしたので動くようになります）
+            const snapshot = await get(comboRef);
+            const currentData = snapshot.val() || {};
+            const currentVoters = Array.isArray(currentData.voters) ? currentData.voters : [];
+
+            // リストに今回の名前を追加
+            currentVoters.push(voterName);
+
+            // Firebaseを更新
+            await update(comboRef, {
               votes: increment(1),
+              voters: currentVoters,
               names: sortedNames,
             });
 
-            // ログ保存
+            // ログにも入力された名前を保存
             await push(ref(db, "logs"), {
+              user: voterName,
               combination: ticketId,
               timestamp: serverTimestamp(),
             });
 
-            // --- アラートを削除し、即座に遷移 ---
             window.location.href = "odds.html";
           } catch (e) {
             console.error("投票エラー:", e);
-            alert("エラーが発生しました。"); // 失敗時のみ通知
+            alert("エラーが発生しました: " + e.message);
             submitBtn.disabled = false;
             submitBtn.innerText = "投票を確定する";
           }
         };
 
+        // 出走表のリアルタイム取得
         onValue(ref(db, "horses"), (snapshot) => {
           const data = snapshot.val();
           horseListDiv.innerHTML = "";
@@ -192,13 +224,13 @@
             item.setAttribute("data-id", id);
 
             item.innerHTML = `
-            <div class="p-voting__info">
-                <div class="p-voting__text-group">
-                    <span class="p-voting__name">${h.horseName}</span>
-                    <span class="p-voting__user">トレーナー: ${h.userName}</span>
-                </div>
-            </div>
-            <button class="c-button c-button--secondary">選択</button>
+          <div class="p-voting__info">
+              <div class="p-voting__text-group">
+                  <span class="p-voting__name">${h.horseName}</span>
+                  <span class="p-voting__user">トレーナー: ${h.userName}</span>
+              </div>
+          </div>
+          <button class="c-button c-button--secondary">選択</button>
         `;
 
             item.querySelector("button").onclick = () => {
