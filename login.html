@@ -16,7 +16,7 @@
     </style>
   </head>
   <body>
-    <h1>🔑 ログイン</h1>
+    <h1>ログイン</h1>
     <input type="password" id="pass" placeholder="パスワードを入力" />
     <button id="login-btn">ログイン</button>
 
@@ -25,10 +25,10 @@
         const pass = document.getElementById("pass").value;
 
         // 【修正OK】パスワードの文字列を変えたい場合はここを編集
-        if (pass === "1234") {
+        if (pass === "asahihai") {
           sessionStorage.setItem("auth_role", "user");
           window.location.href = "index.html";
-        } else if (pass === "admin99") {
+        } else if (pass === "admin_yuya") {
           sessionStorage.setItem("auth_role", "admin");
           window.location.href = "admin.html";
         } else {
