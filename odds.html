@@ -43,23 +43,28 @@
     <script type="module">
       import { checkAuth, logout } from "./js/auth.js";
       import { initMenu } from "./js/menu.js";
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-      import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+      // SDKバージョンを 12.11.0 に統一
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+      import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
 
       if (checkAuth()) {
         initMenu();
         document.getElementById("js-logout").onclick = logout;
 
+        // 最新の正しい構成値に差し替え
         const firebaseConfig = {
-          apiKey: "YOUR_API_KEY",
+          apiKey: "AIzaSyBp5Cg6A3v3VZal-orAiwFjphKIDYx9ATo",
           authDomain: "umasaba-odds.firebaseapp.com",
           databaseURL: "https://umasaba-odds-default-rtdb.firebaseio.com",
           projectId: "umasaba-odds",
-          storageBucket: "umasaba-odds.appspot.com",
-          messagingSenderId: "YOUR_ID",
-          appId: "YOUR_APP_ID",
+          storageBucket: "umasaba-odds.firebasestorage.app",
+          messagingSenderId: "802834774249",
+          appId: "1:802834774249:web:5623185854ead82c261878",
+          measurementId: "G-8V19DEN08N",
         };
 
+        // Firebaseの初期化
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
         const oddsListDiv = document.getElementById("odds-list");
@@ -68,6 +73,7 @@
 
         let allCombos = []; // 全データを保持する変数
 
+        // Firebaseから「combos（組み合わせ）」データを取得
         onValue(ref(db, "combos"), (snapshot) => {
           const data = snapshot.val();
           if (!data) {
@@ -76,16 +82,19 @@
             return;
           }
 
+          // 1. データを配列に変換し、総投票数を計算
           let totalVotes = 0;
           allCombos = [];
           for (let id in data) {
             const v = data[id].votes || 0;
             totalVotes += v;
+            // idは "キャラA_キャラB_キャラC" の形式
             allCombos.push({ id, ...data[id], v });
           }
 
           totalInfoDiv.innerText = `総投票数: ${totalVotes} 票`;
 
+          // 2. 描画用関数
           const render = (arr) => {
             oddsListDiv.innerHTML = "";
             if (arr.length === 0) {
@@ -94,50 +103,51 @@
             }
 
             arr.forEach((c) => {
+              // オッズ計算（総票数 / その組み合わせの票数）
               const odds = c.v > 0 ? Math.floor((totalVotes / c.v) * 10) / 10 : 99.9;
               const names = c.id.split("_");
 
               const item = document.createElement("div");
               item.className = "p-voting__item p-voting__item--odds";
               item.innerHTML = `
-                  <div class="p-voting__info">
-                      <div class="p-voting__combo-names">
-                          <span class="p-voting__tag">3連複</span>
-                          <span class="p-voting__name">${names[0]}</span>
-                          <span class="p-voting__name">${names[1]}</span>
-                          <span class="p-voting__name">${names[2]}</span>
-                      </div>
-                      <div class="p-voting__stats">
-                          <span class="p-voting__votes">${c.v} 票</span>
-                      </div>
+              <div class="p-voting__info">
+                  <div class="p-voting__combo-names">
+                      <span class="p-voting__tag">3連複</span>
+                      <span class="p-voting__name">${names[0]}</span>
+                      <span class="p-voting__name">${names[1]}</span>
+                      <span class="p-voting__name">${names[2]}</span>
                   </div>
-                  <div class="p-voting__odds-display">
-                      <span class="p-voting__label">オッズ</span>
-                      <span class="p-voting__number">${odds.toFixed(1)}</span>
+                  <div class="p-voting__stats">
+                      <span class="p-voting__votes">${c.v} 票</span>
                   </div>
-              `;
+              </div>
+              <div class="p-voting__odds-display">
+                  <span class="p-voting__label">オッズ</span>
+                  <span class="p-voting__number">${odds.toFixed(1)}</span>
+              </div>
+          `;
               oddsListDiv.appendChild(item);
             });
           };
 
-          // フィルタリング処理の共通化
+          // 3. フィルタリングとソート処理
           const getFilteredAndSortedData = (sortOrder = "asc") => {
             const keyword = searchInput.value.toLowerCase();
             let filtered = allCombos.filter((c) => c.id.toLowerCase().includes(keyword));
 
             if (sortOrder === "asc") {
-              return filtered.sort((a, b) => b.v - a.v); // 人気順
+              return filtered.sort((a, b) => b.v - a.v); // 人気順（票数が多い順）
             } else {
-              return filtered.sort((a, b) => a.v - b.v); // 大穴順
+              return filtered.sort((a, b) => a.v - b.v); // 大穴順（票数が少ない順）
             }
           };
 
-          // イベント登録
+          // 4. イベント登録
           document.getElementById("sort-asc").onclick = () => render(getFilteredAndSortedData("asc"));
           document.getElementById("sort-desc").onclick = () => render(getFilteredAndSortedData("desc"));
           searchInput.oninput = () => render(getFilteredAndSortedData("asc"));
 
-          // 初回描画
+          // 5. 初期表示（人気順）
           render(getFilteredAndSortedData("asc"));
         });
       }
