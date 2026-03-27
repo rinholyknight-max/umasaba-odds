@@ -55,12 +55,11 @@
         initMenu();
         document.getElementById("js-logout").onclick = logout;
 
-        // 最新の正しい構成値に差し替え
-        // あなたのConfigをここに貼り付け
+        // 最新の正しい構成値
         const firebaseConfig = {
           apiKey: "AIzaSyBp5Cg6A3v3VZal-orAiwFjphKIDYx9ATo",
           authDomain: "umasaba-odds.firebaseapp.com",
-          databaseURL: "https://umasaba-odds-default-rtdb.firebaseio.com", // ←これが必須です
+          databaseURL: "https://umasaba-odds-default-rtdb.firebaseio.com",
           projectId: "umasaba-odds",
           storageBucket: "umasaba-odds.firebasestorage.app",
           messagingSenderId: "802834774249",
@@ -76,11 +75,27 @@
         const submitBtn = document.getElementById("js-submit-vote");
 
         const updateSelectionUI = () => {
+          // 枠の表示更新
           for (let i = 1; i <= 3; i++) {
             const slot = document.querySelector(`.p-voting__slot[data-slot="${i}"] .slot-name`);
             slot.innerText = selectedHorses[i - 1] ? selectedHorses[i - 1].name : "未選択";
           }
           submitBtn.disabled = selectedHorses.length < 3;
+
+          // ボタンの見た目を更新（選択中のものは色を変えるなど）
+          document.querySelectorAll(".p-voting__item").forEach((item) => {
+            const id = item.getAttribute("data-id");
+            const btn = item.querySelector("button");
+            if (selectedHorses.some((s) => s.id === id)) {
+              btn.innerText = "解除";
+              btn.classList.add("c-button--danger");
+              btn.classList.remove("c-button--secondary");
+            } else {
+              btn.innerText = "選択";
+              btn.classList.remove("c-button--danger");
+              btn.classList.add("c-button--secondary");
+            }
+          });
         };
 
         document.getElementById("js-clear-btn").onclick = () => {
@@ -92,28 +107,35 @@
         submitBtn.onclick = async () => {
           if (selectedHorses.length < 3) return;
 
-          // 重要：名前を取り出してソートする（これでA-B-CとC-B-Aを同じ扱いにする）
           const sortedNames = selectedHorses.map((h) => h.name).sort();
           const ticketId = sortedNames.join("_");
 
+          // 二重クリック防止
+          submitBtn.disabled = true;
+          submitBtn.innerText = "送信中...";
+
           try {
-            // combos 階層に保存（IDが名前順なので重複しない）
+            // combos 階層に保存
             await update(ref(db, `combos/${ticketId}`), {
               votes: increment(1),
               names: sortedNames,
             });
 
+            // ログ保存
             await push(ref(db, "logs"), {
               combination: ticketId,
               timestamp: serverTimestamp(),
             });
 
             alert(`投票完了！\n組み合わせ: ${sortedNames.join(" / ")}`);
-            selectedHorses = [];
-            updateSelectionUI();
+
+            // --- 修正ポイント：オッズ画面へ飛ばす ---
+            window.location.href = "odds.html";
           } catch (e) {
             console.error("投票エラー:", e);
-            alert("エラーが発生しました。詳細はコンソールを確認してください。");
+            alert("エラーが発生しました。");
+            submitBtn.disabled = false;
+            submitBtn.innerText = "投票を確定する";
           }
         };
 
@@ -122,7 +144,7 @@
           const data = snapshot.val();
           horseListDiv.innerHTML = "";
           if (!data) {
-            horseListDiv.innerHTML = "現在、出走登録されているキャラはいません。";
+            horseListDiv.innerHTML = "<p style='text-align:center; padding:20px;'>出走登録されているキャラはいません。</p>";
             return;
           }
 
@@ -130,6 +152,7 @@
             const h = data[id];
             const item = document.createElement("div");
             item.className = "p-voting__item";
+            item.setAttribute("data-id", id); // 状態更新用にIDを保持
 
             item.innerHTML = `
             <div class="p-voting__info">
@@ -141,20 +164,14 @@
             <button class="c-button c-button--secondary">選択</button>
         `;
 
-            item.querySelector("button").onclick = (e) => {
+            item.querySelector("button").onclick = () => {
               const horseIdx = selectedHorses.findIndex((s) => s.id === id);
 
               if (horseIdx > -1) {
-                // すでに選択済みなら解除
                 selectedHorses.splice(horseIdx, 1);
               } else {
-                // 未選択なら追加（3頭まで）
                 if (selectedHorses.length >= 3) {
                   alert("3頭まで選択可能です。");
-                  return;
-                }
-                if (selectedHorses.some((s) => s.id === id)) {
-                  alert("同じキャラは選べません。");
                   return;
                 }
                 selectedHorses.push({ id, name: h.horseName });
@@ -163,6 +180,7 @@
             };
             horseListDiv.appendChild(item);
           }
+          updateSelectionUI(); // リスト描画後にボタン状態を反映
         });
       }
     </script>
