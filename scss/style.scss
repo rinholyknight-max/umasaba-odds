@@ -133,28 +133,43 @@
 }
 
 .c-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 12px 24px;
   border: none;
   border-radius: v.$radius-sm;
   cursor: pointer;
   font-weight: bold;
-  text-align: center;
   transition: 0.2s;
-  &:hover {
-    opacity: 0.8;
+  color: v.$color-white;
+
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    filter: brightness(1.1);
   }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    background: #ccc !important;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
   &--primary {
-    background: v.$color-primary;
-    color: v.$color-white;
+    background: linear-gradient(135deg, #42d392 0%, #647eff 100%);
   }
   &--danger {
-    background: v.$color-danger;
-    color: v.$color-white;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee0979 100%);
   }
   &--secondary {
-    background: v.$color-secondary;
-    color: v.$color-white;
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+    color: v.$color-text-main;
+    border: 1px solid v.$color-border;
   }
 }
 
@@ -224,74 +239,25 @@
 }
 
 .p-voting {
-  @extend %page-card-base;
+  background: v.$color-white;
+  border-radius: v.$radius-md;
+  box-shadow: v.$shadow-lg;
   padding: v.$space-lg;
   max-width: 500px;
   margin: 0 auto;
-  box-shadow: v.$shadow-lg;
-
-  &__title {
-    text-align: center;
-    margin-bottom: v.$space-lg;
-    font-size: 1.4rem;
-  }
-
-  // 投票画面の選択エリア
-  &__selection {
-    background: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px dashed v.$color-border;
-    margin-bottom: 20px;
-  }
-  &__slot {
-    font-size: 0.9rem;
-    padding: 5px 0;
-    border-bottom: 1px solid #eee;
-    .slot-name {
-      font-weight: bold;
-      color: v.$color-primary;
-      margin-left: 10px;
-    }
-  }
-  &__actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-    .c-button {
-      flex: 1;
-      padding: 10px;
-    }
-  }
-
-  // ソートボタン等
-  &__controls {
-    display: flex;
-    gap: 8px;
-    margin-bottom: v.$space-md;
-    .c-button {
-      flex: 1;
-      padding: 10px 5px;
-      font-size: 0.85rem;
-      white-space: nowrap;
-    }
-  }
-
-  &__list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
 
   &__item {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: v.$space-md;
-    border: 1px solid v.$color-border;
-    border-radius: v.$radius-md;
+    justify-content: space-between;
+    padding: 15px;
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    gap: 15px;
+    border: 1px solid #eee;
     transition: 0.2s;
-    background-color: v.$color-white;
+
     &:hover {
       background: lighten(v.$color-primary, 60%);
     }
@@ -301,97 +267,60 @@
   }
 
   &__info {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
     flex: 1;
-    margin-right: 10px;
-    min-width: 0;
+    min-width: 0; // 折り返しを機能させるために必須
   }
 
-  &__combo-names {
+  &__text-group {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    @media (min-width: 480px) {
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-  }
-
-  &__tag {
-    font-size: 0.6rem;
-    background: v.$color-danger;
-    color: white;
-    padding: 2px 4px;
-    border-radius: 3px;
-    margin-right: 5px;
-    width: fit-content;
   }
 
   &__name {
     font-weight: bold;
     font-size: 1rem;
-    line-height: 1.2;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    &::after {
-      content: " / ";
-      color: #ccc;
-      margin: 0 4px;
+    color: v.$color-text-main;
+    line-height: 1.4;
+    white-space: normal; // 改行を許可
+    word-break: break-all; // 長い名前を強制改行
+    overflow: visible;
+
+    small {
+      font-size: 0.75rem;
+      color: v.$color-text-sub;
+      margin-left: 6px;
       font-weight: normal;
     }
-    &:last-child::after {
-      content: "";
+  }
+
+  &__user {
+    font-size: 0.8rem;
+    color: v.$color-text-sub;
+    white-space: normal;
+  }
+
+  // スマホ(SP)専用の調整
+  @media screen and (max-width: 767px) {
+    &__item {
+      padding: 12px;
+    }
+    .c-button {
+      flex-shrink: 0; // ボタンが潰れるのを防ぐ
+      width: 85px;
+      padding: 10px 5px;
+      font-size: 0.85rem;
     }
   }
 
-  &__votes {
-    font-size: 0.85rem;
-    color: v.$color-primary;
-    font-weight: bold;
-    margin-top: 4px;
-  }
-
+  // オッズ画面用
   &__odds-display {
     text-align: right;
-    min-width: 70px;
     flex-shrink: 0;
+    .p-voting__number {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: v.$color-text-main;
+    }
   }
-  &__label {
-    font-size: 0.65rem;
-    color: v.$color-danger;
-    font-weight: bold;
-    display: block;
-  }
-  &__number {
-    font-size: 1.4rem;
-    font-weight: 900;
-    line-height: 1;
-    color: v.$color-text-main;
-  }
-
-  &__total {
-    text-align: center;
-    margin-top: v.$space-lg;
-    padding: v.$space-md;
-    background: v.$color-bg-light;
-    border-radius: v.$radius-sm;
-    font-weight: bold;
-    color: v.$color-text-sub;
-    font-size: 0.9rem;
-  }
-}
-
-.p-voting__horse-group {
-  display: flex;
-  flex-direction: column; /* 縦並びにする */
-  gap: 2px;
-}
-.p-voting__name small {
-  font-size: 0.75rem;
-  color: #666;
-  margin-left: 4px;
 }
