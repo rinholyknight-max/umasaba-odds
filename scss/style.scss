@@ -1,4 +1,227 @@
-// ...（上部は変更なし）
+@use "reset";
+@use "variables" as v;
+
+// --- 1. Layout ---
+.l-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 80px 20px 40px;
+  background-color: v.$color-bg-light;
+}
+
+.l-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: v.$color-primary;
+  color: v.$color-white;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  &__inner {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 v.$space-md;
+  }
+  &__logo {
+    font-weight: bold;
+    margin-left: v.$space-md;
+    font-size: 1.1rem;
+  }
+  &__hamburger {
+    width: 30px;
+    height: 24px;
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 300;
+    span {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: #fff;
+      transition: 0.3s;
+      &:nth-child(1) {
+        top: 0;
+      }
+      &:nth-child(2) {
+        top: 11px;
+      }
+      &:nth-child(3) {
+        bottom: 0;
+      }
+    }
+    &.is-active span {
+      &:nth-child(1) {
+        transform: translateY(11px) rotate(45deg);
+      }
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      &:nth-child(3) {
+        transform: translateY(-11px) rotate(-45deg);
+      }
+    }
+  }
+}
+
+.l-menu {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 260px;
+  height: 100%;
+  background: v.$color-white;
+  z-index: 200;
+  transition: transform 0.3s ease;
+  padding-top: 80px;
+  &.is-active {
+    transform: translateX(260px);
+  }
+  &__item {
+    border-bottom: 1px solid v.$color-border;
+  }
+  &__link {
+    display: block;
+    padding: 20px;
+    color: v.$color-text-main;
+    text-decoration: none;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      background: v.$color-bg-light;
+    }
+  }
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 150;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    &.is-active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+// --- 2. Components ---
+.c-input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: v.$radius-sm;
+  width: 100%;
+  &:focus {
+    outline: none;
+    border-color: v.$color-primary;
+  }
+}
+
+.c-button {
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  border-radius: v.$radius-sm;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  transition: 0.2s;
+  &:hover {
+    opacity: 0.8;
+  }
+  &--primary {
+    background: v.$color-primary;
+    color: v.$color-white;
+  }
+  &--danger {
+    background: v.$color-danger;
+    color: v.$color-white;
+  }
+  &--secondary {
+    background: v.$color-secondary;
+    color: v.$color-white;
+  }
+}
+
+// --- 3. Projects ---
+%page-card-base {
+  background: v.$color-white;
+  border-radius: v.$radius-md;
+  box-shadow: v.$shadow-sm;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.p-login {
+  @extend %page-card-base;
+  padding: v.$space-xl;
+  max-width: 400px;
+  text-align: center;
+  margin: auto;
+  &__title {
+    margin-bottom: v.$space-lg;
+    font-size: 1.5rem;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-md;
+    align-items: center;
+  }
+}
+
+.p-admin {
+  @extend %page-card-base;
+  padding: 30px;
+  max-width: 600px;
+  margin: 0 auto;
+  &__title {
+    margin-bottom: v.$space-md;
+    text-align: center;
+  }
+  &__register {
+    margin-bottom: v.$space-md;
+  }
+  &__register-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    @media (min-width: 600px) {
+      flex-direction: row;
+    }
+  }
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid v.$color-border;
+    &-name {
+      font-weight: bold;
+      font-size: 1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+      margin-right: 10px;
+    }
+  }
+}
 
 .p-voting {
   @extend %page-card-base;
@@ -13,15 +236,42 @@
     font-size: 1.4rem;
   }
 
-  // 追加: ソートボタンのコンテナ
+  // 投票画面の選択エリア
+  &__selection {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px dashed v.$color-border;
+    margin-bottom: 20px;
+  }
+  &__slot {
+    font-size: 0.9rem;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+    .slot-name {
+      font-weight: bold;
+      color: v.$color-primary;
+      margin-left: 10px;
+    }
+  }
+  &__actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    .c-button {
+      flex: 1;
+      padding: 10px;
+    }
+  }
+
+  // ソートボタン等
   &__controls {
     display: flex;
     gap: 8px;
     margin-bottom: v.$space-md;
-
     .c-button {
       flex: 1;
-      padding: 10px 5px; // モバイルで文字が入りきるように調整
+      padding: 10px 5px;
       font-size: 0.85rem;
       white-space: nowrap;
     }
@@ -41,12 +291,10 @@
     border: 1px solid v.$color-border;
     border-radius: v.$radius-md;
     transition: 0.2s;
-    background-color: v.$color-white; // 明示的に指定
-
+    background-color: v.$color-white;
     &:hover {
       background: lighten(v.$color-primary, 60%);
     }
-
     &--odds {
       border-left: 4px solid v.$color-danger;
     }
@@ -61,21 +309,43 @@
     min-width: 0;
   }
 
+  &__combo-names {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    @media (min-width: 480px) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+  }
+
+  &__tag {
+    font-size: 0.6rem;
+    background: v.$color-danger;
+    color: white;
+    padding: 2px 4px;
+    border-radius: 3px;
+    margin-right: 5px;
+    width: fit-content;
+  }
+
   &__name {
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.2;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-
-  &__subtext {
-    font-size: 0.75rem;
-    color: v.$color-text-sub;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    &::after {
+      content: " / ";
+      color: #ccc;
+      margin: 0 4px;
+      font-weight: normal;
+    }
+    &:last-child::after {
+      content: "";
+    }
   }
 
   &__votes {
@@ -90,22 +360,19 @@
     min-width: 70px;
     flex-shrink: 0;
   }
-
-  &__odds-label {
+  &__label {
     font-size: 0.65rem;
     color: v.$color-danger;
     font-weight: bold;
     display: block;
   }
-
-  &__odds-number {
+  &__number {
     font-size: 1.4rem;
     font-weight: 900;
     line-height: 1;
     color: v.$color-text-main;
   }
 
-  // 追加: 総計情報の表示（odds.html用）
   &__total {
     text-align: center;
     margin-top: v.$space-lg;

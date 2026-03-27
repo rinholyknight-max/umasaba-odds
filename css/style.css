@@ -299,6 +299,43 @@ button {
   margin-bottom: 24px;
   font-size: 1.4rem;
 }
+.p-voting__selection {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px dashed #eeeeee;
+  margin-bottom: 20px;
+}
+.p-voting__slot {
+  font-size: 0.9rem;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+.p-voting__slot .slot-name {
+  font-weight: bold;
+  color: #2c7c33;
+  margin-left: 10px;
+}
+.p-voting__actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+.p-voting__actions .c-button {
+  flex: 1;
+  padding: 10px;
+}
+.p-voting__controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.p-voting__controls .c-button {
+  flex: 1;
+  padding: 10px 5px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
 .p-voting__list {
   display: flex;
   flex-direction: column;
@@ -312,6 +349,7 @@ button {
   border: 1px solid #eeeeee;
   border-radius: 8px;
   transition: 0.2s;
+  background-color: #ffffff;
 }
 .p-voting__item:hover {
   background: rgb(228.4285714286, 245.5714285714, 229.9285714286);
@@ -327,20 +365,43 @@ button {
   margin-right: 10px;
   min-width: 0;
 }
+.p-voting__combo-names {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+@media (min-width: 480px) {
+  .p-voting__combo-names {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}
+.p-voting__tag {
+  font-size: 0.6rem;
+  background: #d32f2f;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 3px;
+  margin-right: 5px;
+  width: fit-content;
+}
 .p-voting__name {
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.2;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.p-voting__subtext {
-  font-size: 0.75rem;
-  color: #666666;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.p-voting__name::after {
+  content: " / ";
+  color: #ccc;
+  margin: 0 4px;
+  font-weight: normal;
+}
+.p-voting__name:last-child::after {
+  content: "";
 }
 .p-voting__votes {
   font-size: 0.85rem;
@@ -353,15 +414,25 @@ button {
   min-width: 70px;
   flex-shrink: 0;
 }
-.p-voting__odds-label {
+.p-voting__label {
   font-size: 0.65rem;
   color: #d32f2f;
   font-weight: bold;
   display: block;
 }
-.p-voting__odds-number {
+.p-voting__number {
   font-size: 1.4rem;
   font-weight: 900;
   line-height: 1;
   color: #1a1a1a;
+}
+.p-voting__total {
+  text-align: center;
+  margin-top: 24px;
+  padding: 16px;
+  background: #f4f7f6;
+  border-radius: 4px;
+  font-weight: bold;
+  color: #666666;
+  font-size: 0.9rem;
 }/*# sourceMappingURL=style.css.map */

@@ -3,21 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>リアルタイムオッズ - うまさば</title>
+    <title>オッズ確認画面 - うまさば</title>
     <link rel="stylesheet" href="css/style.css" />
-    <style>
-      /* ボタン周りのレイアウト調整 */
-      .p-voting__controls {
-        display: flex;
-        gap: 8px;
-        margin-bottom: 16px;
-      }
-      .p-voting__controls .c-button {
-        flex: 1;
-        padding: 8px;
-        font-size: 0.85rem;
-      }
-    </style>
   </head>
   <body class="l-page-container">
     <header class="l-header">
@@ -38,7 +25,11 @@
     <div class="l-menu__overlay" id="js-overlay"></div>
 
     <main class="p-voting">
-      <h1 class="p-voting__title">現在のオッズ推移</h1>
+      <h1 class="p-voting__title">3連複オッズ推移</h1>
+
+      <div style="margin-bottom: 15px">
+        <input type="text" id="js-search-input" class="c-input" placeholder="キャラ名で絞り込み..." />
+      </div>
 
       <div class="p-voting__controls">
         <button id="sort-asc" class="c-button c-button--secondary">人気順 ↓</button>
@@ -73,46 +64,51 @@
         const db = getDatabase(app);
         const oddsListDiv = document.getElementById("odds-list");
         const totalInfoDiv = document.getElementById("total-info");
+        const searchInput = document.getElementById("js-search-input");
 
-        // Firebaseからデータ取得
-        onValue(ref(db, "horses"), (snapshot) => {
+        let allCombos = []; // 全データを保持する変数
+
+        onValue(ref(db, "combos"), (snapshot) => {
           const data = snapshot.val();
-
           if (!data) {
-            oddsListDiv.innerHTML = "<p class='p-voting__loading'>データがありません。</p>";
+            oddsListDiv.innerHTML = "<p class='p-voting__loading'>まだ投票データがありません。</p>";
+            totalInfoDiv.innerText = "総投票数: 0 票";
             return;
           }
 
-          // 1. データを配列に変換し、総投票数を計算
           let totalVotes = 0;
-          const horseArray = [];
+          allCombos = [];
           for (let id in data) {
             const v = data[id].votes || 0;
             totalVotes += v;
-            horseArray.push({ id, ...data[id], v });
+            allCombos.push({ id, ...data[id], v });
           }
 
           totalInfoDiv.innerText = `総投票数: ${totalVotes} 票`;
 
-          // 2. 描画用関数（再利用できるように定義）
           const render = (arr) => {
             oddsListDiv.innerHTML = "";
-            arr.forEach((h) => {
-              let odds = 99.9;
-              if (h.v > 0) {
-                odds = Math.floor((totalVotes / h.v) * 10) / 10;
-              }
+            if (arr.length === 0) {
+              oddsListDiv.innerHTML = "<p class='p-voting__loading'>該当する組み合わせはありません。</p>";
+              return;
+            }
+
+            arr.forEach((c) => {
+              const odds = c.v > 0 ? Math.floor((totalVotes / c.v) * 10) / 10 : 99.9;
+              const names = c.id.split("_");
 
               const item = document.createElement("div");
               item.className = "p-voting__item p-voting__item--odds";
               item.innerHTML = `
                   <div class="p-voting__info">
-                      <div class="p-voting__text-group">
-                          <span class="p-voting__name" title="${h.horseName}">${h.horseName}</span>
-                          <span class="p-voting__user">トレーナー: ${h.userName}</span>
+                      <div class="p-voting__combo-names">
+                          <span class="p-voting__tag">3連複</span>
+                          <span class="p-voting__name">${names[0]}</span>
+                          <span class="p-voting__name">${names[1]}</span>
+                          <span class="p-voting__name">${names[2]}</span>
                       </div>
                       <div class="p-voting__stats">
-                          <span class="p-voting__votes">${h.v} 票</span>
+                          <span class="p-voting__votes">${c.v} 票</span>
                       </div>
                   </div>
                   <div class="p-voting__odds-display">
@@ -124,22 +120,25 @@
             });
           };
 
-          // 3. 各ボタンのクリックイベント設定
-          document.getElementById("sort-asc").onclick = () => {
-            // 票数が多い順 = オッズが低い順（人気順）
-            const sorted = [...horseArray].sort((a, b) => b.v - a.v);
-            render(sorted);
+          // フィルタリング処理の共通化
+          const getFilteredAndSortedData = (sortOrder = "asc") => {
+            const keyword = searchInput.value.toLowerCase();
+            let filtered = allCombos.filter((c) => c.id.toLowerCase().includes(keyword));
+
+            if (sortOrder === "asc") {
+              return filtered.sort((a, b) => b.v - a.v); // 人気順
+            } else {
+              return filtered.sort((a, b) => a.v - b.v); // 大穴順
+            }
           };
 
-          document.getElementById("sort-desc").onclick = () => {
-            // 票数が少ない順 = オッズが高い順（大穴順）
-            const sorted = [...horseArray].sort((a, b) => a.v - b.v);
-            render(sorted);
-          };
+          // イベント登録
+          document.getElementById("sort-asc").onclick = () => render(getFilteredAndSortedData("asc"));
+          document.getElementById("sort-desc").onclick = () => render(getFilteredAndSortedData("desc"));
+          searchInput.oninput = () => render(getFilteredAndSortedData("asc"));
 
-          // 4. 初期表示（人気順）
-          const defaultSort = [...horseArray].sort((a, b) => b.v - a.v);
-          render(defaultSort);
+          // 初回描画
+          render(getFilteredAndSortedData("asc"));
         });
       }
     </script>

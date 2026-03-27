@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>オッズ投票 - うまさば</title>
+    <title>3連複投票 - うまさば</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body class="l-page-container">
@@ -25,7 +25,21 @@
     <div class="l-menu__overlay" id="js-overlay"></div>
 
     <main class="p-voting">
-      <h1 class="p-voting__title">レース出走表</h1>
+      <h1 class="p-voting__title">3連複 投票フォーム</h1>
+
+      <div id="selection-area" class="p-voting__selection">
+        <div class="p-voting__slot" data-slot="1">1枠: <span class="slot-name">未選択</span></div>
+        <div class="p-voting__slot" data-slot="2">2枠: <span class="slot-name">未選択</span></div>
+        <div class="p-voting__slot" data-slot="3">3枠: <span class="slot-name">未選択</span></div>
+        <div class="p-voting__actions">
+          <button id="js-clear-btn" class="c-button c-button--danger">クリア</button>
+          <button id="js-submit-vote" class="c-button c-button--primary" disabled>投票を確定する</button>
+        </div>
+      </div>
+
+      <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee" />
+
+      <h2 class="p-voting__subtitle" style="text-align: center; font-size: 1rem; margin-bottom: 15px">出走表（3頭選んでください）</h2>
       <div id="horse-list" class="p-voting__list">読み込み中...</div>
     </main>
 
@@ -33,7 +47,7 @@
       import { checkAuth, logout } from "./js/auth.js";
       import { initMenu } from "./js/menu.js";
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-      import { getDatabase, ref, onValue, update, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+      import { getDatabase, ref, onValue, update, increment, push, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
       if (checkAuth()) {
         initMenu();
@@ -51,39 +65,90 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
+
+        let selectedHorses = [];
         const horseListDiv = document.getElementById("horse-list");
+        const submitBtn = document.getElementById("js-submit-vote");
+
+        const updateSelectionUI = () => {
+          for (let i = 1; i <= 3; i++) {
+            const slot = document.querySelector(`.p-voting__slot[data-slot="${i}"] .slot-name`);
+            slot.innerText = selectedHorses[i - 1] ? selectedHorses[i - 1].name : "未選択";
+          }
+          submitBtn.disabled = selectedHorses.length < 3;
+        };
+
+        document.getElementById("js-clear-btn").onclick = () => {
+          selectedHorses = [];
+          updateSelectionUI();
+        };
+
+        // 投票実行（3連複：順不同対応）
+        submitBtn.onclick = async () => {
+          if (selectedHorses.length < 3) return;
+
+          // 重要：名前を取り出してソートする（これでA-B-CとC-B-Aを同じ扱いにする）
+          const sortedNames = selectedHorses.map((h) => h.name).sort();
+          const ticketId = sortedNames.join("_");
+
+          try {
+            // combos 階層に保存（IDが名前順なので重複しない）
+            await update(ref(db, `combos/${ticketId}`), {
+              votes: increment(1),
+              names: sortedNames,
+            });
+
+            await push(ref(db, "logs"), {
+              combination: ticketId,
+              timestamp: serverTimestamp(),
+            });
+
+            alert(`投票完了！\n組み合わせ: ${sortedNames.join(" / ")}`);
+            selectedHorses = [];
+            updateSelectionUI();
+          } catch (e) {
+            console.error(e);
+            alert("エラーが発生しました。");
+          }
+        };
 
         onValue(ref(db, "horses"), (snapshot) => {
           const data = snapshot.val();
           horseListDiv.innerHTML = "";
-
-          if (!data) {
-            horseListDiv.innerHTML = "<p class='p-voting__loading'>現在、登録されているキャラはいません。</p>";
-            return;
-          }
+          if (!data) return;
 
           for (let id in data) {
             const h = data[id];
             const item = document.createElement("div");
             item.className = "p-voting__item";
 
-            // レイアウト崩れを防ぐため、キャラ名とユーザー名をラップ
+            // 選択済みの場合はスタイルを変えるなどの工夫も可能
             item.innerHTML = `
                 <div class="p-voting__info">
                     <div class="p-voting__text-group">
-                        <span class="p-voting__name" title="${h.horseName}">${h.horseName}</span>
+                        <span class="p-voting__name">${h.horseName}</span>
                         <span class="p-voting__user">トレーナー: ${h.userName}</span>
                     </div>
-                    <div class="p-voting__stats">
-                        <span class="p-voting__votes">${h.votes || 0} 票</span>
-                    </div>
                 </div>
-                <button class="c-button c-button--primary p-voting__button">投票</button>
+                <button class="c-button c-button--secondary">選択</button>
             `;
 
-            item.querySelector("button").onclick = () => {
-              update(ref(db, `horses/${id}`), { votes: increment(1) });
-              alert(`${h.horseName}に投票しました！`);
+            item.querySelector("button").onclick = (e) => {
+              const btn = e.target;
+              const horseIdx = selectedHorses.findIndex((s) => s.id === id);
+
+              if (horseIdx > -1) {
+                // すでに選択済みなら解除
+                selectedHorses.splice(horseIdx, 1);
+              } else {
+                // 未選択なら追加（3頭まで）
+                if (selectedHorses.length >= 3) {
+                  alert("3頭まで選択可能です。");
+                  return;
+                }
+                selectedHorses.push({ id, name: h.horseName });
+              }
+              updateSelectionUI();
             };
             horseListDiv.appendChild(item);
           }
