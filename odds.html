@@ -79,11 +79,11 @@
       import { checkAuth, logout } from "./js/auth.js";
       import { initMenu } from "./js/menu.js";
       import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-      // ★ get をインポートに追加（これがないとエラーになります）
       import { getDatabase, ref, onValue, get } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
 
       initTheme();
 
+      // 「記帳名」として取得
       const userName = sessionStorage.getItem("user_name") || "不明なユーザー";
       const userDisplay = document.getElementById("js-display-user");
       if (userDisplay) {
@@ -164,7 +164,7 @@
               maintainAspectRatio: false,
               plugins: {
                 legend: { position: "bottom", labels: { boxWidth: 12, color: textColor } },
-                title: { display: true, text: "ウウマ娘別・支持率シェア", color: textColor },
+                title: { display: true, text: "出走キャラ別・支持率シェア", color: textColor },
               },
             },
           });
@@ -191,7 +191,7 @@
             const user1 = horseToUserMap[names[1]] || "不明";
             const user2 = horseToUserMap[names[2]] || "不明";
 
-            // ★ 投票者チップの生成
+            // 投票者名の生成
             const voterList = Array.isArray(c.voters) ? c.voters : [];
             const voterTags = voterList.map((vName) => `<span class="p-voting__voter-tag">${vName}</span>`).join("");
 
@@ -207,13 +207,15 @@
                 <span class="p-voting__name">${names[2]} <small>(${user2})</small></span>
               </div>
             </div>
-            <div class="p-voting__voter-list">
-              ${voterTags}
-            </div>
             <div class="p-voting__stats">
               <span class="p-voting__votes">${c.v} 票</span>
             </div>
           </div>
+          
+          <div class="p-voting__voter-list">
+            ${voterTags}
+          </div>
+
           <div class="p-voting__odds-display">
             <span class="p-voting__label">オッズ</span>
             <span class="p-voting__number">${odds.toFixed(1)}</span>
@@ -224,7 +226,6 @@
           updateChart();
         };
 
-        // 初期化とイベント設定
         const themeToggle = document.getElementById("js-dark-mode-toggle");
         if (themeToggle) {
           themeToggle.addEventListener("click", () => setTimeout(updateChart, 10));
@@ -259,8 +260,8 @@
         onValue(ref(db, "combos"), (snapshot) => {
           const data = snapshot.val();
           if (!data) {
-            oddsListDiv.innerHTML = "<p class='p-voting__loading'>まだ投票データがありません。</p>";
-            totalInfoDiv.innerText = "総投票数: 0 票";
+            oddsListDiv.innerHTML = "<p class='p-voting__loading'>まだデータがありません。</p>";
+            totalInfoDiv.innerText = "総数: 0 票";
             return;
           }
           totalVotes = 0;
@@ -268,7 +269,6 @@
           for (let id in data) {
             const v = data[id].votes || 0;
             totalVotes += v;
-            // voters も含めて allCombos に格納
             allCombos.push({ id, ...data[id], v });
           }
           totalInfoDiv.innerText = `総投票数: ${totalVotes} 票`;
