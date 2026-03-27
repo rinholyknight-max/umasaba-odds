@@ -34,7 +34,7 @@
     </main>
 
     <script type="module">
-      // 【修正禁止】管理者以外を追い出す処理。非常に重要です
+      // 【修正禁止】管理者以外を追い出す処理
       import { checkAuth, logout } from "./js/auth.js";
       import { initMenu } from "./js/menu.js";
 
@@ -46,7 +46,7 @@
         initMenu();
         document.getElementById("js-logout").onclick = logout;
 
-        // 【修正禁止】Firebase設定（index.htmlと同じにする必要があります）
+        // 【重要】Firebaseコンソールの「プロジェクトの設定」から本物の値をコピーして貼り付けてください
         const firebaseConfig = {
           apiKey: "YOUR_API_KEY",
           authDomain: "umasaba-odds.firebaseapp.com",
@@ -60,13 +60,20 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // 【修正OK】登録成功時のメッセージを出したいなどはここ
+        // 【修正OK】登録処理の確認用alert追加
         document.getElementById("add-btn").onclick = () => {
-          const name = document.getElementById("horse-name").value;
+          const nameInput = document.getElementById("horse-name");
+          const name = nameInput.value;
           if (name) {
             const newHorseRef = push(ref(db, "horses"));
-            set(newHorseRef, { name: name, votes: 0 });
-            document.getElementById("horse-name").value = "";
+            set(newHorseRef, { name: name, votes: 0 })
+              .then(() => {
+                alert(name + " を登録しました！");
+                nameInput.value = "";
+              })
+              .catch((error) => {
+                alert("エラーが発生しました: " + error.message);
+              });
           }
         };
 
@@ -78,17 +85,16 @@
             for (let id in data) {
               const item = document.createElement("div");
               item.className = "p-admin__item";
-              // 【修正OK】「削除」ボタンの文字や色を変えるのはここ
               item.innerHTML = `
                             <span class="p-admin__item-name">${data[id].name}</span>
-                            <button onclick="deleteHorse('${id}')" class="c-button c-button--danger">削除</button>
+                            <button class="c-button c-button--danger" onclick="deleteHorse('${id}')">削除</button>
                         `;
               list.appendChild(item);
             }
           }
         });
 
-        // 【修正禁止】データを消す命令。ここを間違うと削除ができなくなります
+        // 【修正禁止】データを消す命令
         window.deleteHorse = (id) => {
           if (confirm("本当に削除しますか？")) {
             remove(ref(db, `horses/${id}`));

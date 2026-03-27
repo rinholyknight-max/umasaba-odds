@@ -29,11 +29,11 @@
     </main>
 
     <script type="module">
-      // 【修正禁止】ログインチェックの仕組み。消すと誰でも見れてしまいます
+      // 【修正禁止】ログインチェック
       import { checkAuth, logout } from "./js/auth.js";
       import { initMenu } from "./js/menu.js";
 
-      // 【修正禁止】ライブラリの読み込み。URLを変えると動きません
+      // 【修正禁止】ライブラリ
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
       import { getDatabase, ref, onValue, update, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
@@ -41,7 +41,7 @@
         initMenu();
         document.getElementById("js-logout").onclick = logout;
 
-        // 【修正禁止】Firebaseの接続キー。ここを間違うとデータが消えたり届かなくなります
+        // 【重要】admin.htmlと同じConfigを必ず使用してください
         const firebaseConfig = {
           apiKey: "YOUR_API_KEY",
           authDomain: "umasaba-odds.firebaseapp.com",
@@ -56,30 +56,32 @@
         const db = getDatabase(app);
         const horseListDiv = document.getElementById("horse-list");
 
-        // 【修正OK】表示の仕方を工夫したい（表形式にしたい等）場合はこの中を編集
         onValue(ref(db, "horses"), (snapshot) => {
           const data = snapshot.val();
           horseListDiv.innerHTML = "";
-          if (data) {
-            for (let id in data) {
-              const h = data[id];
-              const item = document.createElement("div");
-              item.className = "p-voting__item";
-              item.innerHTML = `
-                            <div class="p-voting__info">
-                                <span class="p-voting__name">${h.name}</span>
-                                <span class="p-voting__votes">${h.votes || 0} 票</span>
-                            </div>
-                            <button class="c-button c-button--primary p-voting__button">投票する</button>
-                        `;
 
-              // 【修正禁止】投票を増やす命令。ここを変えると投票がカウントされません
-              item.querySelector("button").onclick = () => {
-                update(ref(db, `horses/${id}`), { votes: increment(1) });
-                alert(`${h.name}に投票しました！`);
-              };
-              horseListDiv.appendChild(item);
-            }
+          if (!data) {
+            horseListDiv.innerHTML = "<p class='p-voting__loading'>現在、登録されている馬はいません。</p>";
+            return;
+          }
+
+          for (let id in data) {
+            const h = data[id];
+            const item = document.createElement("div");
+            item.className = "p-voting__item";
+            item.innerHTML = `
+                        <div class="p-voting__info">
+                            <span class="p-voting__name">${h.name}</span>
+                            <span class="p-voting__votes">${h.votes || 0} 票</span>
+                        </div>
+                        <button class="c-button c-button--primary p-voting__button">投票する</button>
+                    `;
+
+            item.querySelector("button").onclick = () => {
+              update(ref(db, `horses/${id}`), { votes: increment(1) });
+              alert(`${h.name}に投票しました！`);
+            };
+            horseListDiv.appendChild(item);
           }
         });
       }
