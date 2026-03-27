@@ -340,27 +340,31 @@ h2,
     flex-direction: column;
     align-items: flex-end;
     justify-content: space-between;
-    min-width: 100px;
+    min-width: 110px; // 縦積みに耐えられるよう少し幅を確保
     text-align: right;
+    gap: 12px;
   }
 
   &__voter-list {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 4px;
-    margin-bottom: 8px;
+    flex-direction: column; // ★ 横並びから縦並びに変更
+    align-items: flex-end; // 右に揃える
+    gap: 4px; // 名前ごとの上下の隙間
+    margin: 0;
+    padding: 0;
+    width: 100%;
   }
 
   &__voter-tag {
     display: inline-block;
-    font-size: 0.65rem;
-    padding: 1px 6px;
+    font-size: 0.7rem;
+    padding: 2px 8px;
     background: var(--bg-page);
     color: var(--text-main);
-    border-radius: 4px;
+    border-radius: 4px; // 縦積みの場合は少し角を立てた方がリストらしく見えます
     border: 1px solid var(--border);
     white-space: nowrap;
+    width: fit-content; // 文字幅に合わせる
   }
 
   &__odds-display {
