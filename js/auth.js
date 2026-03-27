@@ -4,15 +4,17 @@
 
 // パスワードを一括管理
 export const PASSWORDS = {
-  USER: "asahihai",
-  ADMIN: "admin_yuya",
+  // 配列にすることで、複数のパスワードを許可
+  USER: ["01-LastCrop", "02-cocoa", "03-Snowknight", "04-Smile"],
+  ADMIN: "04umasaba-Observers",
 };
 
 /**
  * ログイン実行
  */
 export function login(inputPass) {
-  if (inputPass === PASSWORDS.USER) {
+  // .includes() を使って、入力されたパスワードが配列内にあるかチェック
+  if (PASSWORDS.USER.includes(inputPass)) {
     sessionStorage.setItem("auth_role", "user");
     window.location.href = "index.html";
   } else if (inputPass === PASSWORDS.ADMIN) {
