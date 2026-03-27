@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>管理者画面 - ウマサバ</title>
     <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* 入力欄を横並びにするための簡易調整 */
+      .p-admin__register-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+      }
+      @media (min-width: 600px) {
+        .p-admin__register-group {
+          flex-direction: row;
+        }
+      }
+    </style>
   </head>
   <body class="l-page-container">
     <header class="l-header">
@@ -25,18 +39,25 @@
     <div class="l-menu__overlay" id="js-overlay"></div>
 
     <main class="p-admin">
-      <h1 class="p-admin__title">管理者パネル</h1>
+      <h1 class="p-admin__title">出走登録（キャラ＆ユーザー）</h1>
+
       <section class="p-admin__register">
-        <input type="text" id="horse-name" class="c-input" placeholder="馬の名前を入力" />
-        <button id="add-btn" class="c-button c-button--primary">馬を登録する</button>
+        <div class="p-admin__register-group">
+          <input type="text" id="horse-name" class="c-input" placeholder="登録キャラ名" />
+          <input type="text" id="user-name" class="c-input" placeholder="ユーザー名" />
+          <button id="add-btn" class="c-button c-button--primary">登録する</button>
+        </div>
       </section>
 
       <div id="admin-list" class="p-admin__list"></div>
     </main>
 
     <script type="module">
+      // 【修正禁止】管理者権限チェック
       import { checkAuth, logout } from "./js/auth.js";
       import { initMenu } from "./js/menu.js";
+
+      // 【修正禁止】ライブラリの読み込み
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
       import { getDatabase, ref, push, set, onValue, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
@@ -57,16 +78,31 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
+        // 【修正OK】2つのデータをセットでFirebaseに送信
         document.getElementById("add-btn").onclick = () => {
-          const nameInput = document.getElementById("horse-name");
-          const name = nameInput.value;
-          if (name) {
+          const horseInput = document.getElementById("horse-name");
+          const userInput = document.getElementById("user-name");
+
+          const hName = horseInput.value;
+          const uName = userInput.value;
+
+          if (hName && uName) {
             const newHorseRef = push(ref(db, "horses"));
-            set(newHorseRef, { name: name, votes: 0 });
-            nameInput.value = "";
+            // キャラ名(horseName)とユーザー名(userName)を保存
+            set(newHorseRef, {
+              horseName: hName,
+              userName: uName,
+              votes: 0,
+            }).then(() => {
+              horseInput.value = "";
+              userInput.value = "";
+            });
+          } else {
+            alert("キャラ名とユーザー名の両方を入力してください");
           }
         };
 
+        // 【修正OK】一覧表示にユーザー名も追加
         onValue(ref(db, "horses"), (snapshot) => {
           const data = snapshot.val();
           const list = document.getElementById("admin-list");
@@ -76,7 +112,10 @@
               const item = document.createElement("div");
               item.className = "p-admin__item";
               item.innerHTML = `
-                            <span class="p-admin__item-name">${data[id].name}</span>
+                            <div class="p-admin__info">
+                                <span class="p-admin__item-name" style="display:block;">${data[id].horseName}</span>
+                                <small style="color:#666;">ユーザー: ${data[id].userName}</small>
+                            </div>
                             <button class="c-button c-button--danger" onclick="deleteHorse('${id}')">削除</button>
                         `;
               list.appendChild(item);
@@ -84,6 +123,7 @@
           }
         });
 
+        // 【修正禁止】削除処理
         window.deleteHorse = (id) => {
           if (confirm("本当に削除しますか？")) {
             remove(ref(db, `horses/${id}`));

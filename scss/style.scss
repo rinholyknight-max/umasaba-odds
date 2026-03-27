@@ -126,7 +126,6 @@
   border: 1px solid #ccc;
   border-radius: v.$radius-sm;
   width: 100%;
-  max-width: 300px;
 }
 .c-button {
   display: inline-block;
@@ -190,11 +189,14 @@
     text-align: center;
   }
   &__register {
-    display: flex;
-    gap: 10px;
     margin-bottom: v.$space-md;
-    @media (max-width: 480px) {
-      flex-direction: column;
+  }
+  &__register-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    @media (min-width: 600px) {
+      flex-direction: row;
     }
   }
   &__item {
@@ -205,11 +207,8 @@
     border-bottom: 1px solid v.$color-border;
     &-name {
       font-weight: bold;
+      font-size: 1rem;
     }
-  }
-  &__footer {
-    margin-top: v.$space-lg;
-    text-align: center;
   }
 }
 
@@ -244,14 +243,23 @@
   &__info {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
+    flex: 1;
+    margin-right: 10px;
   }
   &__name {
     font-weight: bold;
     font-size: 1.1rem;
+    line-height: 1.2;
   }
-  &__votes {
-    font-size: 0.9rem;
+  &__subtext {
+    font-size: 0.75rem;
     color: v.$color-text-sub;
+  } // 追加: ユーザー名用
+  &__votes {
+    font-size: 0.85rem;
+    color: v.$color-primary;
+    font-weight: bold;
+    margin-top: 4px;
   }
 }

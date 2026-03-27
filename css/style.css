@@ -192,7 +192,6 @@ button {
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 100%;
-  max-width: 300px;
 }
 
 .c-button {
@@ -255,13 +254,16 @@ button {
   text-align: center;
 }
 .p-admin__register {
-  display: flex;
-  gap: 10px;
   margin-bottom: 16px;
 }
-@media (max-width: 480px) {
-  .p-admin__register {
-    flex-direction: column;
+.p-admin__register-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+@media (min-width: 600px) {
+  .p-admin__register-group {
+    flex-direction: row;
   }
 }
 .p-admin__item {
@@ -273,10 +275,7 @@ button {
 }
 .p-admin__item-name {
   font-weight: bold;
-}
-.p-admin__footer {
-  margin-top: 24px;
-  text-align: center;
+  font-size: 1rem;
 }
 
 .p-voting {
@@ -310,13 +309,22 @@ button {
 .p-voting__info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
+  flex: 1;
+  margin-right: 10px;
 }
 .p-voting__name {
   font-weight: bold;
   font-size: 1.1rem;
+  line-height: 1.2;
+}
+.p-voting__subtext {
+  font-size: 0.75rem;
+  color: #666666;
 }
 .p-voting__votes {
-  font-size: 0.9rem;
-  color: #666666;
+  font-size: 0.85rem;
+  color: #2c7c33;
+  font-weight: bold;
+  margin-top: 4px;
 }/*# sourceMappingURL=style.css.map */

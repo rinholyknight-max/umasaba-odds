@@ -40,7 +40,6 @@
         initMenu();
         document.getElementById("js-logout").onclick = logout;
 
-        // 【重要】他のファイルと同じConfigを使用してください
         const firebaseConfig = {
           apiKey: "YOUR_API_KEY",
           authDomain: "umasaba-odds.firebaseapp.com",
@@ -56,16 +55,16 @@
         const oddsListDiv = document.getElementById("odds-list");
         const totalInfoDiv = document.getElementById("total-info");
 
+        // 【修正OK】horseName と userName を反映したオッズ計算
         onValue(ref(db, "horses"), (snapshot) => {
           const data = snapshot.val();
           oddsListDiv.innerHTML = "";
 
           if (!data) {
-            oddsListDiv.innerHTML = "<p>馬データがありません。</p>";
+            oddsListDiv.innerHTML = "<p>データがありません。</p>";
             return;
           }
 
-          // 全投票数の合計を算出
           let totalVotes = 0;
           for (let id in data) {
             totalVotes += data[id].votes || 0;
@@ -77,7 +76,6 @@
             const h = data[id];
             const v = h.votes || 0;
 
-            // オッズ計算式: 総投票数 / その馬の投票数 (0票の場合は 99.9 とする)
             let odds = 99.9;
             if (v > 0) {
               odds = Math.floor((totalVotes / v) * 10) / 10;
@@ -87,7 +85,8 @@
             item.className = "p-voting__item";
             item.innerHTML = `
                         <div class="p-voting__info">
-                            <span class="p-voting__name">${h.name}</span>
+                            <span class="p-voting__name">${h.horseName}</span>
+                            <small style="color:#666; font-size:0.75rem;">ユーザー: ${h.userName}</small>
                             <span class="p-voting__votes">${v} 票</span>
                         </div>
                         <div style="text-align: right;">
