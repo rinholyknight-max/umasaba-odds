@@ -32,9 +32,15 @@
           <input type="text" id="horse-name" class="c-input" placeholder="登録キャラ名" list="master-chars" autocomplete="off" />
           <datalist id="master-chars"></datalist>
           <input type="text" id="user-name" class="c-input" placeholder="ユーザー名" autocomplete="off" />
-          <button id="add-btn" class="c-button c-button--primary">登録する</button>
+          <button id="add-btn" class="c-button c-button--primary">登録</button>
         </div>
       </section>
+
+      <div class="p-admin__upload" style="margin: 20px 0; padding: 15px; border: 1px dashed #ccc">
+        <p style="font-size: 0.9rem; margin-bottom: 10px">CSVまたはテキストファイルで一括登録</p>
+        <input type="file" id="js-upload-file" accept=".txt,.csv" />
+        <p style="font-size: 0.8rem; color: #666">形式: キャラ名,ユーザー名 (1行に1人)</p>
+      </div>
 
       <div class="p-admin__danger-zone">
         <button id="js-reset-votes" class="c-button c-button--danger">投票データのみリセット</button>
@@ -88,6 +94,44 @@
               charInput.focus();
             });
           }
+        };
+
+        // --- 一括登録機能 (テキストファイル読み込み) ---
+        const fileInput = document.getElementById("js-upload-file");
+
+        fileInput.onchange = (e) => {
+          const file = e.target.files[0];
+          if (!file) return;
+
+          const reader = new FileReader();
+          reader.onload = async (event) => {
+            const content = event.target.result;
+            const lines = content.split(/\r?\n/); // 行ごとに分割
+            let count = 0;
+
+            for (let line of lines) {
+              // カンマ、またはスペースで分割
+              const [hName, uName] = line.split(/[,,、\s]+/).map((s) => s.trim());
+
+              if (hName && uName) {
+                try {
+                  await push(ref(db, "horses"), {
+                    horseName: hName,
+                    userName: uName,
+                    votes: 0,
+                  });
+                  count++;
+                } catch (err) {
+                  console.error("登録エラー:", err);
+                }
+              }
+            }
+
+            alert(`${count}件のキャラクターを登録しました！`);
+            fileInput.value = ""; // 入力をリセット
+          };
+
+          reader.readAsText(file);
         };
 
         // 2. リスト表示と個別削除
