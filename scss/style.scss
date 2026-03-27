@@ -1,6 +1,29 @@
 @use "reset";
 @use "variables" as v;
 
+body {
+  font-family:
+    "Noto Sans JP",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Helvetica Neue",
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
+  -webkit-font-smoothing: antialiased; // 文字を滑らかにする
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// タイトルや強調したい部分にアクセントフォントを適用
+h1,
+h2,
+.p-voting__title,
+.p-voting__number {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  letter-spacing: 0.02em; // 少し字間をあけると高級感が出ます
+}
+
 // --- 1. Layout ---
 .l-page-container {
   display: flex;
@@ -327,6 +350,10 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
+  }
+
+  &__number {
+    font-weight: 900; // オッズの数字をより力強く
   }
 
   &__name {

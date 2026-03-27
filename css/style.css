@@ -71,6 +71,20 @@ button {
     scroll-behavior: auto !important;
   }
 }
+body {
+  font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+.p-voting__title,
+.p-voting__number {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  letter-spacing: 0.02em;
+}
+
 .l-page-container {
   display: flex;
   justify-content: center;
@@ -373,6 +387,9 @@ button {
   display: flex;
   flex-direction: column;
   gap: 2px;
+}
+.p-voting__number {
+  font-weight: 900;
 }
 .p-voting__name {
   font-weight: bold;
