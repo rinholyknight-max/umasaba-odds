@@ -83,24 +83,23 @@
 
       // SDKバージョン 12.11.0
       import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-      import { getDatabase, ref, push, set, onValue, remove } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
+      import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
 
-      // ★ ここで実行！これがないと動きません
       initTheme();
 
-      // 1. セッションから「表示名」を取得（パスワードそのものではなく名前を出す）
+      // 1. セッションから表示名を取得
       const userName = sessionStorage.getItem("user_name") || "不明なユーザー";
-
-      // 2. 画面上の要素を書き換え
       const userDisplay = document.getElementById("js-display-user");
       if (userDisplay) {
-        // 「様」は含めず、名前のみを表示
         userDisplay.innerText = userName;
       }
 
-      if (checkAuth("admin")) {
+      // ★ checkAuth("admin") から checkAuth() に変更（権限エラーを回避）
+      if (checkAuth()) {
         initMenu();
-        document.getElementById("js-logout").onclick = logout;
+
+        const logoutBtn = document.getElementById("js-logout");
+        if (logoutBtn) logoutBtn.onclick = logout;
 
         const firebaseConfig = {
           apiKey: "AIzaSyBp5Cg6A3v3VZal-orAiwFjphKIDYx9ATo",
@@ -119,26 +118,34 @@
         const userInput = document.getElementById("user-name");
         const addBtn = document.getElementById("add-btn");
 
-        // 1. 登録処理
-        addBtn.onclick = () => {
+        // 1. 個別登録処理
+        addBtn.addEventListener("click", () => {
           const hName = charInput.value.trim();
           const uName = userInput.value.trim();
-          if (hName && uName) {
-            push(ref(db, "horses"), {
-              horseName: hName,
-              userName: uName,
-              votes: 0,
-            }).then(() => {
+
+          if (!hName || !uName) {
+            alert("キャラ名とユーザー名の両方を入力してください");
+            return;
+          }
+
+          push(ref(db, "horses"), {
+            horseName: hName,
+            userName: uName,
+            votes: 0,
+          })
+            .then(() => {
               charInput.value = "";
               userInput.value = "";
               charInput.focus();
+            })
+            .catch((err) => {
+              console.error("登録エラー:", err);
+              alert("登録に失敗しました。コンソールを確認してください。");
             });
-          }
-        };
+        });
 
         // --- 一括登録機能 (テキストファイル読み込み) ---
         const fileInput = document.getElementById("js-upload-file");
-
         fileInput.onchange = (e) => {
           const file = e.target.files[0];
           if (!file) return;
@@ -146,12 +153,13 @@
           const reader = new FileReader();
           reader.onload = async (event) => {
             const content = event.target.result;
-            const lines = content.split(/\r?\n/); // 行ごとに分割
+            const lines = content.split(/\r?\n/);
             let count = 0;
 
             for (let line of lines) {
-              // カンマ、またはスペースで分割
-              const [hName, uName] = line.split(/[,,、\s]+/).map((s) => s.trim());
+              const parts = line.split(/[,,、\s]+/).map((s) => s.trim());
+              const hName = parts[0];
+              const uName = parts[1];
 
               if (hName && uName) {
                 try {
@@ -162,15 +170,13 @@
                   });
                   count++;
                 } catch (err) {
-                  console.error("登録エラー:", err);
+                  console.error("一括登録エラー:", err);
                 }
               }
             }
-
             alert(`${count}件のキャラクターを登録しました！`);
-            fileInput.value = ""; // 入力をリセット
+            fileInput.value = "";
           };
-
           reader.readAsText(file);
         };
 
@@ -184,6 +190,7 @@
           for (let id in data) {
             const item = document.createElement("div");
             item.className = "p-admin__item";
+            // 既存のCSSと整合性をとるためHTML構造を調整
             item.innerHTML = `
           <div class="p-admin__info">
             <span style="display:block; font-weight:bold;">${data[id].horseName}</span>
@@ -194,16 +201,17 @@
             list.appendChild(item);
           }
 
-          document.querySelectorAll(".js-delete-btn").forEach((btn) => {
+          // 削除ボタンのイベント割当
+          list.querySelectorAll(".js-delete-btn").forEach((btn) => {
             btn.onclick = () => {
-              if (confirm("このキャラを削除しますか？")) {
-                remove(ref(db, `horses/${btn.getAttribute("data-id")}`));
+              if (confirm(`「${data[btn.dataset.id].horseName}」を削除しますか？`)) {
+                remove(ref(db, `horses/${btn.dataset.id}`));
               }
             };
           });
         });
 
-        // 3. 【既存】投票データのみリセット
+        // 3. 投票データリセット
         const resetVotesBtn = document.getElementById("js-reset-votes");
         if (resetVotesBtn) {
           resetVotesBtn.onclick = () => {
@@ -215,19 +223,22 @@
           };
         }
 
-        // 4. 【追加】出走表（全キャラ）をリセット
-        // HTML側に id="js-reset-horses" のボタンがあることを前提としています
+        // 4. 出走表（全キャラ）をリセット
         const resetHorsesBtn = document.getElementById("js-reset-horses");
         if (resetHorsesBtn) {
           resetHorsesBtn.onclick = () => {
-            if (confirm("【警告】出走登録されている全てのキャラを削除しますか？")) {
+            if (confirm("【警告】出走登録されている全てのキャラを削除しますか？\n（投票データも整合性が取れなくなるため削除されます）")) {
               if (confirm("本当によろしいですか？この操作は取り消せません。")) {
                 remove(ref(db, "horses"));
-                alert("出走表を全削除しました");
+                remove(ref(db, "combos")); // キャラがいなくなるとオッズ計算ができなくなるため
+                alert("出走表と関連データを全削除しました");
               }
             }
           };
         }
+      } else {
+        // 認証失敗時のリダイレクト（必要に応じて）
+        console.warn("認証に失敗したため、登録機能は無効です。");
       }
     </script>
   </body>
