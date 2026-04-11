@@ -394,6 +394,22 @@ h2,
 .p-voting__item--odds {
   border-left: 4px solid #d32f2f;
 }
+@media (max-width: 768px) {
+  .p-voting__item {
+    grid-template-columns: minmax(0, 1fr) 80px;
+    gap: 8px;
+    padding: 12px;
+  }
+  .p-voting__item .p-voting__name {
+    display: block;
+    width: 100%;
+    font-size: 0.9rem;
+    word-break: break-all;
+  }
+  .p-voting__item .p-voting__right-column {
+    text-align: right;
+  }
+}
 .p-voting__info {
   flex: 1;
   display: flex;

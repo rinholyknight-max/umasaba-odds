@@ -71,3 +71,7 @@ $grad-secondary: linear-gradient(135deg, $color-secondary 0%, $color-secondary-l
 
 $shadow-sm: var(--shadow);
 $shadow-lg: $shadow-lg-value;
+
+// --- 5. Breakpoints ---
+$breakpoint-sp: 768px; // 一般的なスマホサイズ
+$breakpoint-tab: 1024px; // タブレットサイズ
