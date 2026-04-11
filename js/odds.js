@@ -43,8 +43,9 @@ export function initOdds() {
   let myChart = null;
 
   // モーダル操作（特定の組み合わせの投票者全員分を表示）
-  const openModal = (voterList, comboNames) => {
-    modalTitle.innerText = `投票コメント一覧\n(${comboNames.join(" / ")})`;
+  const openModal = (voterList) => {
+    // タイトルを固定のシンプルな文言にする
+    modalTitle.innerText = `投票コメント一覧`;
 
     // リストを表示するコンテナ（既存の要素を使い回すか、HTMLに追加したもの）
     const listContainer = document.getElementById("js-modal-comment-list") || modalComment;
