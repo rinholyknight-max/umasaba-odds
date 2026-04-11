@@ -74,208 +74,27 @@
       </div>
     </main>
 
+    <!-- コメントモーダル -->
+    <div id="js-modal" class="c-modal">
+      <div class="c-modal__overlay" id="js-modal-overlay"></div>
+      <div class="c-modal__content">
+        <div class="c-modal__header">
+          <h3 id="js-modal-title" class="c-modal__title">投票者コメント</h3>
+          <button id="js-modal-close" class="c-modal__close-btn">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        <div class="c-modal__body">
+          <p id="js-modal-comment" class="c-modal__comment-text"></p>
+          <p id="js-modal-date" class="c-modal__date"></p>
+        </div>
+      </div>
+    </div>
+    <!-- コメントモーダル -->
+
     <script type="module">
-      import { initTheme } from "./js/theme.js";
-      import { checkAuth, logout } from "./js/auth.js";
-      import { initMenu } from "./js/menu.js";
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-      import { getDatabase, ref, onValue, get } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
-
-      initTheme();
-
-      // 「記帳名」として取得
-      const userName = sessionStorage.getItem("user_name") || "不明なユーザー";
-      const userDisplay = document.getElementById("js-display-user");
-      if (userDisplay) {
-        userDisplay.innerText = userName;
-      }
-
-      if (checkAuth()) {
-        initMenu();
-        const logoutBtn = document.getElementById("js-logout");
-        if (logoutBtn) logoutBtn.onclick = logout;
-
-        const firebaseConfig = {
-          apiKey: "AIzaSyBp5Cg6A3v3VZal-orAiwFjphKIDYx9ATo",
-          authDomain: "umasaba-odds.firebaseapp.com",
-          databaseURL: "https://umasaba-odds-default-rtdb.firebaseio.com",
-          projectId: "umasaba-odds",
-          storageBucket: "umasaba-odds.firebasestorage.app",
-          messagingSenderId: "802834774249",
-          appId: "1:802834774249:web:5623185854ead82c261878",
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-
-        const oddsListDiv = document.getElementById("odds-list");
-        const totalInfoDiv = document.getElementById("total-info");
-        const searchInput = document.getElementById("js-search-input");
-        const sortAscBtn = document.getElementById("sort-asc");
-        const sortDescBtn = document.getElementById("sort-desc");
-
-        let allCombos = [];
-        let totalVotes = 0;
-        let horseToUserMap = {};
-        let currentSortOrder = "asc";
-        let myChart = null;
-
-        const updateChart = () => {
-          const canvas = document.getElementById("oddsChart");
-          if (!canvas) return;
-          const ctx = canvas.getContext("2d");
-          const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-          const textColor = isDark ? "#f5f5f5" : "#333333";
-          const borderColor = isDark ? "#1e1e1e" : "#ffffff";
-
-          const horseVotes = {};
-          allCombos.forEach((c) => {
-            const names = c.id.split("_");
-            names.forEach((name) => {
-              horseVotes[name] = (horseVotes[name] || 0) + c.v;
-            });
-          });
-
-          const sortedHorses = Object.entries(horseVotes)
-            .map(([name, votes]) => ({ name, votes }))
-            .sort((a, b) => b.votes - a.votes);
-
-          const limit = 7;
-          let displayData = sortedHorses.slice(0, limit);
-          const otherVotes = sortedHorses.slice(limit).reduce((sum, h) => sum + h.votes, 0);
-          if (otherVotes > 0) displayData.push({ name: "その他", votes: otherVotes });
-
-          if (myChart) myChart.destroy();
-          myChart = new Chart(ctx, {
-            type: "pie",
-            data: {
-              labels: displayData.map((h) => h.name),
-              datasets: [
-                {
-                  data: displayData.map((h) => h.votes),
-                  backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF", "#FF9F40", "#C9CBCF", "#7BC225"],
-                  borderWidth: 2,
-                  borderColor: borderColor,
-                },
-              ],
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              plugins: {
-                legend: { position: "bottom", labels: { boxWidth: 12, color: textColor } },
-                title: { display: true, text: "出走キャラ別・支持率シェア", color: textColor },
-              },
-            },
-          });
-        };
-
-        const getFilteredAndSortedData = (sortOrder) => {
-          const keyword = (searchInput.value || "").toLowerCase();
-          let filtered = allCombos.filter((c) => c.id.toLowerCase().includes(keyword));
-          return sortOrder === "asc" ? filtered.sort((a, b) => b.v - a.v) : filtered.sort((a, b) => a.v - b.v);
-        };
-
-        const render = (arr) => {
-          if (!oddsListDiv) return;
-          oddsListDiv.innerHTML = "";
-          if (!arr || arr.length === 0) {
-            oddsListDiv.innerHTML = "<p class='p-voting__loading'>該当する組み合わせはありません。</p>";
-            return;
-          }
-
-          arr.forEach((c) => {
-            const odds = c.v > 0 ? Math.floor((totalVotes / c.v) * 10) / 10 : 99.9;
-            const names = c.id.split("_");
-            const user0 = horseToUserMap[names[0]] || "不明";
-            const user1 = horseToUserMap[names[1]] || "不明";
-            const user2 = horseToUserMap[names[2]] || "不明";
-
-            // 投票者名の生成
-            const voterList = Array.isArray(c.voters) ? c.voters : [];
-            const voterTags = voterList.map((vName) => `<span class="p-voting__voter-tag">${vName}</span>`).join("");
-
-            const item = document.createElement("div");
-            item.className = "p-voting__item p-voting__item--odds";
-            item.innerHTML = `
-          <div class="p-voting__info">
-            <div class="p-voting__combo-names">
-              <span class="p-voting__tag">3連複</span>
-              <div class="p-voting__horse-group">
-                <span class="p-voting__name">${names[0]} <small>(${user0})</small></span>
-                <span class="p-voting__name">${names[1]} <small>(${user1})</small></span>
-                <span class="p-voting__name">${names[2]} <small>(${user2})</small></span>
-              </div>
-            </div>
-            <div class="p-voting__stats">
-              <span class="p-voting__votes">${c.v} 票</span>
-            </div>
-          </div>
-          
-          <div class="p-voting__right-column">
-            <div class="p-voting__voter-list">
-              ${voterTags}
-            </div>
-            <div class="p-voting__odds-display">
-              <span class="p-voting__label">オッズ</span>
-              <span class="p-voting__number">${odds.toFixed(1)}</span>
-            </div>
-          </div>
-        `;
-            oddsListDiv.appendChild(item);
-          });
-          updateChart();
-        };
-
-        const themeToggle = document.getElementById("js-dark-mode-toggle");
-        if (themeToggle) {
-          themeToggle.addEventListener("click", () => setTimeout(updateChart, 10));
-        }
-
-        sortAscBtn.onclick = () => {
-          currentSortOrder = "asc";
-          sortAscBtn.classList.add("is-active");
-          sortDescBtn.classList.remove("is-active");
-          render(getFilteredAndSortedData(currentSortOrder));
-        };
-
-        sortDescBtn.onclick = () => {
-          currentSortOrder = "desc";
-          sortDescBtn.classList.add("is-active");
-          sortAscBtn.classList.remove("is-active");
-          render(getFilteredAndSortedData(currentSortOrder));
-        };
-
-        searchInput.oninput = () => render(getFilteredAndSortedData(currentSortOrder));
-        sortAscBtn.classList.add("is-active");
-
-        onValue(ref(db, "horses"), (snapshot) => {
-          const data = snapshot.val();
-          horseToUserMap = {};
-          if (data) {
-            for (let id in data) horseToUserMap[data[id].horseName] = data[id].userName;
-          }
-          if (allCombos.length > 0) render(getFilteredAndSortedData(currentSortOrder));
-        });
-
-        onValue(ref(db, "combos"), (snapshot) => {
-          const data = snapshot.val();
-          if (!data) {
-            oddsListDiv.innerHTML = "<p class='p-voting__loading'>まだデータがありません。</p>";
-            totalInfoDiv.innerText = "総数: 0 票";
-            return;
-          }
-          totalVotes = 0;
-          allCombos = [];
-          for (let id in data) {
-            const v = data[id].votes || 0;
-            totalVotes += v;
-            allCombos.push({ id, ...data[id], v });
-          }
-          totalInfoDiv.innerText = `総投票数: ${totalVotes} 票`;
-          render(getFilteredAndSortedData(currentSortOrder));
-        });
-      }
+      import { initOdds } from "./js/odds.js";
+      initOdds();
     </script>
   </body>
 </html>
