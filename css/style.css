@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ==========================================================================
    Modern Reset for SCSS
    ========================================================================== */
@@ -483,4 +484,77 @@ h2,
 
 [data-theme=dark] canvas {
   filter: brightness(0.9) contrast(1.1);
+}
+
+/* モーダルの基本スタイル */
+.c-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.c-modal.is-show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.c-modal__overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.c-modal__content {
+  position: relative;
+  background: var(--bg-card, #fff);
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(20px);
+  transition: all 0.3s;
+}
+
+.is-show .c-modal__content {
+  transform: translateY(0);
+}
+
+.c-modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.c-modal__close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+}
+
+.c-modal__comment-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  margin-bottom: 15px;
+}
+
+.c-modal__date {
+  font-size: 0.8rem;
+  color: #999;
+  text-align: right;
 }/*# sourceMappingURL=style.css.map */
