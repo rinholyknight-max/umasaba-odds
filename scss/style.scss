@@ -348,8 +348,6 @@ h2,
 
   @media (max-width: 768px) {
     &__chart-container {
-      // ★SPで大きくしたい場合、ここを調整
-      // 画面の高さに応じて変えたい場合は 50vh（画面の半分）なども有効です
       height: 50vh;
       margin-bottom: 12px;
     }
@@ -562,12 +560,6 @@ h2,
 
   // --- SP（スマホ）用のレスポンシブ調整 ---
   @media (max-width: 768px) {
-    &__chart-container {
-      // ★グラフの高さを以前の 140px から 250px 程度に拡大
-      height: 250px;
-      margin-bottom: 12px;
-    }
-
     &__filter-details {
       // ★初期状態で折りたたむ場合は HTMLの 'open' を外すか
       // デフォルトのデザインをここで調整

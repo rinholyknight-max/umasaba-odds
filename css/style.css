@@ -588,10 +588,6 @@ h2,
   padding: 0 12px 12px;
 }
 @media (max-width: 768px) {
-  .p-voting__chart-container {
-    height: 250px;
-    margin-bottom: 12px;
-  }
   .p-voting__filter-details {
     margin: 0;
   }
