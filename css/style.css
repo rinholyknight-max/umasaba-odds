@@ -359,7 +359,7 @@ h2,
   border-color: #2f48d3;
 }
 
-.p-voting__chart-container, .p-voting {
+.p-voting {
   background: var(--bg-card);
   border-radius: 8px;
   box-shadow: var(--shadow);
@@ -374,6 +374,50 @@ h2,
   margin-bottom: 16px;
   text-align: center;
   font-size: 1.25rem;
+}
+.p-voting__subtitle {
+  font-size: 1rem;
+  margin: 24px 0 16px;
+  padding-left: 8px;
+  border-left: 4px solid rgb(27, 183, 0);
+  color: var(--text-main);
+}
+.p-voting__selection-container {
+  position: sticky;
+  top: 60px;
+  z-index: 100;
+  margin: 0 -24px 24px;
+  padding: 16px 24px;
+  background: var(--bg-card);
+  border-bottom: 2px solid var(--border);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+.p-voting__slots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.p-voting__slot {
+  background: var(--bg-page);
+  padding: 10px 4px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-sub);
+}
+.p-voting__slot .slot-name {
+  display: block;
+  margin-top: 2px;
+  font-weight: bold;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.p-voting__list {
+  margin-bottom: 40px;
 }
 .p-voting__item {
   display: grid;
@@ -394,145 +438,15 @@ h2,
 .p-voting__item--odds {
   border-left: 4px solid #d32f2f;
 }
-@media (max-width: 768px) {
-  .p-voting__item {
-    grid-template-columns: minmax(0, 1fr) 80px;
-    gap: 8px;
-    padding: 12px;
-  }
-  .p-voting__item .p-voting__name {
-    display: block;
-    width: 100%;
-    font-size: 0.9rem;
-    word-break: break-all;
-  }
-  .p-voting__item .p-voting__right-column {
-    text-align: right;
-  }
-}
-.p-voting__info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 6px;
-}
-.p-voting__horse-group {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.p-voting__name {
-  font-weight: bold;
-  font-size: 0.95rem;
-  color: var(--text-main);
-  line-height: 1.3;
-}
-.p-voting__name small {
-  font-size: 0.75rem;
-  color: var(--text-sub);
-  display: block;
-}
-.p-voting__right-column {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-between;
-  min-width: 50px;
-  text-align: right;
-  gap: 12px;
-}
-.p-voting__voter-list {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-.p-voting__voter-tag {
-  display: inline-block;
-  font-size: 0.7rem;
-  padding: 2px 8px;
-  background: var(--bg-page);
-  color: var(--text-main);
-  border-radius: 4px;
-  border: 1px solid var(--border);
-  white-space: nowrap;
-  width: fit-content;
-}
-.p-voting__odds-display .p-voting__label {
-  display: block;
-  font-size: 0.6rem;
-  color: var(--text-sub);
-  line-height: 1;
-}
-.p-voting__odds-display .p-voting__number {
-  font-size: 1.5rem;
-  font-weight: 900;
-  line-height: 1;
-  color: var(--text-main);
-}
-.p-voting__tag {
-  display: inline-block;
-  font-size: 0.65rem;
-  padding: 2px 6px;
-  background: var(--bg-page);
-  color: var(--text-sub);
-  border-radius: 4px;
-}
-.p-voting__stats {
-  font-size: 0.75rem;
-  color: var(--text-sub);
-}
-.p-voting__chart-container {
-  margin-bottom: 24px;
+.p-voting__form-footer {
   padding: 24px;
-  height: 350px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.p-voting__chart-container canvas {
-  max-width: 100% !important;
-  max-height: 100% !important;
-}
-.p-voting__selection-container {
-  margin-bottom: 24px;
-  padding: 16px;
   background: var(--bg-page);
   border-radius: 8px;
   border: 1px solid var(--border);
-}
-.p-voting__slots {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-bottom: 20px;
-}
-.p-voting__slot {
-  background: var(--bg-card);
-  padding: 12px 8px;
-  border-radius: 4px;
-  border: 1px solid var(--border);
-  text-align: center;
-  font-size: 0.8rem;
-  color: var(--text-sub);
-  box-shadow: var(--shadow);
-}
-.p-voting__slot .slot-name {
-  display: block;
-  margin-top: 4px;
-  font-weight: bold;
-  color: var(--text-main);
-  font-size: 0.95rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  margin-top: 24px;
 }
 .p-voting__input-group {
-  margin-bottom: 12px;
+  margin-bottom: 15px;
   text-align: left;
 }
 .p-voting__input-group .p-voting__label {
@@ -544,8 +458,7 @@ h2,
 }
 .p-voting__input-group textarea.c-input {
   resize: vertical;
-  min-height: 60px;
-  font-family: inherit;
+  min-height: 80px;
 }
 .p-voting__actions {
   display: grid;
@@ -553,19 +466,45 @@ h2,
   gap: 12px;
   margin-top: 20px;
 }
+.p-voting__name {
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+.p-voting__name small {
+  font-size: 0.75rem;
+  color: var(--text-sub);
+  display: block;
+}
+.p-voting__divider {
+  margin: 40px 0;
+  border: none;
+  border-top: 1px dashed var(--border);
+}
 @media (max-width: 768px) {
+  .p-voting {
+    padding: 16px;
+  }
+  .p-voting__selection-container {
+    top: 60px;
+    margin: 0 -16px 16px;
+    padding: 8px 16px;
+  }
   .p-voting__slots {
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 6px;
   }
   .p-voting__slot {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
+    padding: 8px 12px;
   }
   .p-voting__slot .slot-name {
     margin-top: 0;
+  }
+  .p-voting__item {
+    grid-template-columns: minmax(0, 1fr) 80px;
+    padding: 12px;
   }
   .p-voting__actions {
     grid-template-columns: 1fr;

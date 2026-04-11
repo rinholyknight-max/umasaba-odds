@@ -60,7 +60,14 @@
             <div class="p-voting__slot" data-slot="2">2枠: <span class="slot-name">未選択</span></div>
             <div class="p-voting__slot" data-slot="3">3枠: <span class="slot-name">未選択</span></div>
           </div>
+        </div>
 
+        <h2 class="p-voting__subtitle">出走表（3頭選んでください）</h2>
+        <div id="horse-list" class="p-voting__list">読み込み中...</div>
+
+        <hr class="p-voting__divider" />
+
+        <div class="p-voting__form-footer">
           <div class="p-voting__input-group">
             <label for="js-voter-name" class="p-voting__label">投票者名</label>
             <input type="text" id="js-voter-name" class="c-input" placeholder="あなたの名前を入力" maxlength="15" />
@@ -76,12 +83,6 @@
             <button id="js-submit-vote" class="c-button c-button--primary" disabled>投票を確定する</button>
           </div>
         </div>
-
-        <hr class="p-voting__divider" />
-
-        <h2 class="p-voting__subtitle">出走表（3頭選んでください）</h2>
-
-        <div id="horse-list" class="p-voting__list">読み込み中...</div>
       </div>
     </main>
 
