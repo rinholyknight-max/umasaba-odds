@@ -308,9 +308,10 @@ h2,
   }
 
   &__item {
-    display: flex;
-    align-items: stretch;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+
     padding: 15px;
     background: var(--bg-card);
     border-radius: 8px;
@@ -318,11 +319,34 @@ h2,
     gap: 12px;
     border: 1px solid var(--border);
     transition: 0.2s;
+    cursor: pointer; // どこでも押せるように
     &:hover {
       background: var(--bg-page);
     }
     &--odds {
       border-left: 4px solid v.$color-danger;
+    }
+
+    // SP（スマホ）用の調整
+    @media (max-width: v.$breakpoint-sp) {
+      // 縦並びにするか、横幅を制限したい場合はここを調整
+      // 今回は2列を維持しつつ、左側の名前エリアが広がりすぎないように設定
+      grid-template-columns: minmax(0, 1fr) 80px;
+      gap: 8px;
+      padding: 12px;
+
+      .p-voting__name {
+        // 名前が長い場合に折り返すか、省略するかを設定
+        display: block;
+        width: 100%;
+        font-size: 0.9rem;
+        word-break: break-all; // 長い名前でレイアウトが崩れるのを防ぐ
+      }
+
+      .p-voting__right-column {
+        // 右側のオッズ表示などを右寄せに固定
+        text-align: right;
+      }
     }
   }
 

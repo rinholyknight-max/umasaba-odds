@@ -376,9 +376,9 @@ h2,
   font-size: 1.25rem;
 }
 .p-voting__item {
-  display: flex;
-  align-items: stretch;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
   padding: 15px;
   background: var(--bg-card);
   border-radius: 8px;
@@ -386,6 +386,7 @@ h2,
   gap: 12px;
   border: 1px solid var(--border);
   transition: 0.2s;
+  cursor: pointer;
 }
 .p-voting__item:hover {
   background: var(--bg-page);
