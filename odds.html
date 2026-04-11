@@ -56,19 +56,20 @@
       <div class="p-voting">
         <h1 class="p-voting__title">投票結果</h1>
 
-        <div class="p-voting__chart-container">
-          <canvas id="oddsChart"></canvas>
-        </div>
+        <div class="p-voting__fixed-header">
+          <div class="p-voting__chart-container">
+            <canvas id="oddsChart"></canvas>
+          </div>
 
-        <div style="margin-bottom: 15px">
-          <input type="text" id="js-search-input" class="c-input" placeholder="キャラ名で絞り込み..." />
-        </div>
+          <div class="p-voting__search-box">
+            <input type="text" id="js-search-input" class="c-input" placeholder="キャラ名で絞り込み..." />
+          </div>
 
-        <div class="p-voting__controls">
-          <button id="sort-asc" class="c-button c-button--secondary">人気順 ↓</button>
-          <button id="sort-desc" class="c-button c-button--secondary">大穴順 ↑</button>
+          <div class="p-voting__controls">
+            <button id="sort-asc" class="c-button c-button--secondary">人気順 ↓</button>
+            <button id="sort-desc" class="c-button c-button--secondary">大穴順 ↑</button>
+          </div>
         </div>
-
         <div id="total-info" class="p-voting__total"></div>
         <div id="odds-list" class="p-voting__list"></div>
       </div>

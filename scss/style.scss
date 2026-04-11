@@ -307,7 +307,6 @@ h2,
     font-size: 1.25rem;
   }
 
-  // ★追加：サブタイトル（出走表の上など）
   &__subtitle {
     font-size: 1rem;
     margin: v.$space-lg 0 v.$space-md;
@@ -316,18 +315,48 @@ h2,
     color: var(--text-main);
   }
 
-  // --- 1. 選択エリア（上部固定に対応） ---
+  // --- 1. 固定エリア (結果画面: グラフ・検索・ボタン / 投票画面: スロットコンテナ) ---
+  // 両方の画面で sticky を共通化
+  &__fixed-header,
   &__selection-container {
-    position: sticky; // ★追加：スクロールに追従
-    top: 60px; // ヘッダーの高さ
+    position: sticky;
+    top: 60px; // l-headerの高さ
     z-index: 100;
-    margin: 0 (v.$space-lg * -1) v.$space-lg; // 親のpaddingを打ち消して横いっぱいに
-    padding: v.$space-md v.$space-lg;
     background: var(--bg-card);
+    margin: 0 (v.$space-lg * -1) v.$space-md;
+    padding: v.$space-md v.$space-lg;
     border-bottom: 2px solid var(--border);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
 
+  // 結果画面用の追加スタイル
+  &__chart-container {
+    height: 220px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    canvas {
+      max-width: 100% !important;
+      max-height: 100% !important;
+    }
+  }
+
+  &__search-box {
+    margin-bottom: 12px;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 10px;
+    button {
+      flex: 1;
+      padding: 10px;
+      font-size: 0.9rem;
+    }
+  }
+
+  // 投票画面用のスロットスタイル
   &__slots {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -335,14 +364,13 @@ h2,
   }
 
   &__slot {
-    background: var(--bg-page); // 少し色を変えて「枠」感を出す
+    background: var(--bg-page);
     padding: 10px 4px;
     border-radius: v.$radius-sm;
     border: 1px solid var(--border);
     text-align: center;
     font-size: 0.75rem;
     color: var(--text-sub);
-
     .slot-name {
       display: block;
       margin-top: 2px;
@@ -355,9 +383,16 @@ h2,
     }
   }
 
-  // --- 2. 出走リストエリア（中段） ---
+  // --- 2. リスト・メインエリア ---
+  &__total {
+    padding: 10px 0;
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    text-align: right;
+  }
+
   &__list {
-    margin-bottom: v.$space-xl; // 下の入力フォームとの間隔
+    margin-bottom: v.$space-xl;
   }
 
   &__item {
@@ -375,17 +410,15 @@ h2,
     &:hover {
       background: var(--bg-page);
     }
-    // odds用のスタイルはそのまま維持
     &--odds {
       border-left: 4px solid v.$color-danger;
     }
   }
 
-  // --- 3. フォーム下部エリア（入力・ボタン） ---
-  // 新しく追加したHTMLのまとまりを装飾
+  // --- 3. フォーム下部エリア (投票画面用) ---
   &__form-footer {
     padding: v.$space-lg;
-    background: var(--bg-page); // 入力エリアを薄いグレーにして区別
+    background: var(--bg-page);
     border-radius: v.$radius-md;
     border: 1px solid var(--border);
     margin-top: v.$space-lg;
@@ -399,7 +432,6 @@ h2,
       font-size: 0.85rem;
       font-weight: bold;
       margin-bottom: 6px;
-      color: var(--text-sub);
     }
     textarea.c-input {
       resize: vertical;
@@ -414,10 +446,11 @@ h2,
     margin-top: 20px;
   }
 
-  // --- その他共通パーツ ---
+  // --- 共通パーツ ---
   &__name {
     font-weight: bold;
     font-size: 0.95rem;
+    line-height: 1.3;
     small {
       font-size: 0.75rem;
       color: var(--text-sub);
@@ -425,44 +458,34 @@ h2,
     }
   }
 
-  &__divider {
-    margin: v.$space-xl 0;
-    border: none;
-    border-top: 1px dashed var(--border);
-  }
-
   &__right-column {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    justify-content: center; // 中央寄せに変更
-    min-width: 80px; // 幅をしっかり確保
+    justify-content: center;
+    min-width: 80px;
     text-align: right;
     gap: 8px;
   }
 
-  // 投票者タグのコンテナ
   &__voter-list {
     display: flex;
-    flex-wrap: wrap; // 折り返しを許可
+    flex-wrap: wrap;
     justify-content: flex-end;
     gap: 4px;
-    margin: 0;
-    padding: 0;
     width: 100%;
-    max-width: 120px; // 幅が広がりすぎないように制限
+    max-width: 120px;
   }
 
-  // 個別の投票者名タグ
   &__voter-tag {
     display: inline-block;
-    font-size: 0.65rem; // 少し小さくして収まりを良く
+    font-size: 0.65rem;
     padding: 1px 6px;
     background: var(--bg-page);
     color: var(--text-sub);
     border-radius: 4px;
     border: 1px solid var(--border);
-    white-space: nowrap; // 名前が途中で改行されないように
+    white-space: nowrap;
   }
 
   &__odds-display {
@@ -474,38 +497,31 @@ h2,
       margin-bottom: 2px;
     }
     .p-voting__number {
-      font-size: 1.4rem; // 少しだけサイズ調整
+      font-size: 1.4rem;
       font-weight: 900;
-      color: var(--text-main);
     }
   }
 
-  // --- SP（スマホ）用の微調整 ---
-  @media (max-width: 768px) {
-    &__right-column {
-      min-width: 70px; // スマホでは少しコンパクトに
-    }
-
-    &__voter-list {
-      // スマホでタグが多い場合は、さらに小さくするか
-      // あるいは表示数を絞る（JS側の対応が必要）
-      max-width: 90px;
-    }
-
-    &__voter-tag {
-      font-size: 0.6rem;
-      padding: 0 4px;
-    }
+  &__divider {
+    margin: v.$space-xl 0;
+    border: none;
+    border-top: 1px dashed var(--border);
   }
 
-  // --- SP（スマホ）用のレスポンシブ調整 ---
+  // --- 4. SP (スマホ) 用レスポンシブ ---
   @media (max-width: 768px) {
     padding: v.$space-md;
 
+    // 固定エリアのSP調整
+    &__fixed-header,
     &__selection-container {
       top: 60px;
-      margin: 0 (v.$space-md * -1) v.$space-md;
-      padding: v.$space-sm v.$space-md;
+      margin: 0 -16px 12px;
+      padding: 10px 16px;
+    }
+
+    &__chart-container {
+      height: 140px; // グラフを低く
     }
 
     &__slots {
@@ -526,8 +542,21 @@ h2,
     &__item {
       grid-template-columns: minmax(0, 1fr) 80px;
       padding: 12px;
+      .p-voting__name {
+        font-size: 0.9rem;
+      }
     }
 
+    &__right-column {
+      min-width: 70px;
+    }
+    &__voter-list {
+      max-width: 90px;
+    }
+    &__voter-tag {
+      font-size: 0.6rem;
+      padding: 0 4px;
+    }
     &__actions {
       grid-template-columns: 1fr;
     }
