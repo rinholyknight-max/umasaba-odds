@@ -604,9 +604,6 @@ h2,
     margin: 0 -16px 12px;
     padding: 10px 16px;
   }
-  .p-voting__chart-container {
-    height: 140px;
-  }
   .p-voting__slots {
     grid-template-columns: 1fr;
     gap: 6px;
