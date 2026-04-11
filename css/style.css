@@ -393,15 +393,25 @@ h2,
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 .p-voting__chart-container {
-  height: 220px;
-  margin-bottom: 15px;
+  height: 300px;
+  width: 100%;
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .p-voting__chart-container canvas {
-  max-width: 100% !important;
-  max-height: 100% !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+@media (max-width: 768px) {
+  .p-voting__chart-container {
+    height: 450px;
+    margin-bottom: 12px;
+  }
+  .p-voting__fixed-header {
+    padding: 10px 16px;
+  }
 }
 .p-voting__search-box {
   margin-bottom: 12px;

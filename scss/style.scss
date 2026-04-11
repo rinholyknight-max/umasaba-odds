@@ -331,14 +331,32 @@ h2,
 
   // 結果画面用の追加スタイル
   &__chart-container {
-    height: 220px;
-    margin-bottom: 15px;
+    // PCでの高さ
+    height: 300px;
+    width: 100%;
+    margin-bottom: v.$space-md;
     display: flex;
     align-items: center;
     justify-content: center;
+
     canvas {
-      max-width: 100% !important;
-      max-height: 100% !important;
+      // 親のサイズを無視しないように固定値をリセット
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__chart-container {
+      // ★SPで大きくしたい場合、ここを調整
+      // 画面の高さに応じて変えたい場合は 50vh（画面の半分）なども有効です
+      height: 450px;
+      margin-bottom: 12px;
+    }
+
+    &__fixed-header {
+      // グラフが大きくなる分、固定エリアが縦に伸びすぎないよう調整
+      padding: 10px 16px;
     }
   }
 

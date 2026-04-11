@@ -34,20 +34,18 @@ export function initOdds() {
   const modal = document.getElementById("js-modal");
   const modalComment = document.getElementById("js-modal-comment");
   const modalTitle = document.getElementById("js-modal-title");
-  const modalDate = document.getElementById("js-modal-date");
+
+  // 折りたたみ要素の取得
+  const filterDetails = document.querySelector(".p-voting__filter-details");
 
   let allCombos = [];
   let totalVotes = 0;
   let horseToUserMap = {};
-  let currentSortOrder = "asc";
   let myChart = null;
 
-  // モーダル操作（特定の組み合わせの投票者全員分を表示）
+  // モーダル操作
   const openModal = (voterList) => {
-    // タイトルを固定のシンプルな文言にする
     modalTitle.innerText = `投票コメント一覧`;
-
-    // リストを表示するコンテナ（既存の要素を使い回すか、HTMLに追加したもの）
     const listContainer = document.getElementById("js-modal-comment-list") || modalComment;
     listContainer.innerHTML = "";
 
@@ -58,13 +56,13 @@ export function initOdds() {
       const date = isObj && v.at ? new Date(v.at).toLocaleString() : "";
 
       const item = document.createElement("div");
-      item.className = "c-modal__comment-item"; // CSSで整える用
+      item.className = "c-modal__comment-item";
       item.style.marginBottom = "15px";
       item.style.paddingBottom = "10px";
-      item.style.borderBottom = "1px solid #eee";
+      item.style.borderBottom = "1px solid var(--border)";
 
       item.innerHTML = `
-            <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:#888;">
+            <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-sub);">
                 <strong>${name}</strong>
                 <span>${date}</span>
             </div>
@@ -80,7 +78,7 @@ export function initOdds() {
   document.getElementById("js-modal-close").onclick = closeModal;
   document.getElementById("js-modal-overlay").onclick = closeModal;
 
-  // チャート更新（以前のロジック）
+  // チャート更新
   const updateChart = () => {
     const canvas = document.getElementById("oddsChart");
     if (!canvas) return;
@@ -92,21 +90,36 @@ export function initOdds() {
     const sorted = Object.entries(horseVotes)
       .map(([name, votes]) => ({ name, votes }))
       .sort((a, b) => b.votes - a.votes);
+
     const displayData = sorted.slice(0, 7);
     if (myChart) myChart.destroy();
+
     myChart = new Chart(canvas.getContext("2d"), {
       type: "pie",
       data: {
         labels: displayData.map((h) => h.name),
-        datasets: [{ data: displayData.map((h) => h.votes), backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF", "#FF9F40", "#C9CBCF"] }],
+        datasets: [
+          {
+            data: displayData.map((h) => h.votes),
+            backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF", "#FF9F40", "#C9CBCF"],
+          },
+        ],
       },
-      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: isDark ? "#fff" : "#333" } } } },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false, // ★重要: これでCSSの高さが反映される
+        plugins: {
+          legend: {
+            position: window.innerWidth <= 768 ? "bottom" : "right",
+            labels: { color: isDark ? "#fff" : "#333" },
+          },
+        },
+      },
     });
   };
 
   const render = (arr) => {
     oddsListDiv.innerHTML = "";
-
     arr.forEach((c) => {
       const odds = c.v > 0 ? (totalVotes / c.v).toFixed(1) : "99.9";
       const names = c.id.split("_");
@@ -114,12 +127,8 @@ export function initOdds() {
 
       const item = document.createElement("div");
       item.className = "p-voting__item p-voting__item--odds";
-
-      // ★追加：行全体をクリック可能にし、カーソルを指マークにする
       item.style.cursor = "pointer";
-      item.onclick = () => {
-        openModal(voterList, names);
-      };
+      item.onclick = () => openModal(voterList);
 
       item.innerHTML = `
         <div class="p-voting__info">
@@ -137,32 +146,21 @@ export function initOdds() {
         </div>
       `;
 
-      // 投票者チップを個別に生成
       const chipContainer = item.querySelector(`#voters-${c.id}`);
       voterList.forEach((voter) => {
         const chip = document.createElement("span");
         chip.className = "p-voting__voter-tag";
-        // チップ自体も指マークにする
         chip.style.cursor = "pointer";
-
         const isObject = typeof voter === "object" && voter !== null;
-        const vName = isObject ? voter.name || "不明" : voter;
-        chip.innerText = vName;
-
-        // チップをクリックした時
+        chip.innerText = isObject ? voter.name || "不明" : voter;
         chip.onclick = (e) => {
-          // ★重要：e.stopPropagation() で「行全体のクリックイベント」が
-          // 重複して発生するのを防ぎます
           e.stopPropagation();
-          openModal(voterList, names);
+          openModal(voterList);
         };
-
         chipContainer.appendChild(chip);
       });
-
       oddsListDiv.appendChild(item);
     });
-
     updateChart();
   };
 
@@ -187,18 +185,26 @@ export function initOdds() {
     render(allCombos.sort((a, b) => b.v - a.v));
   });
 
+  // 検索入力
   searchInput.oninput = () => {
     const key = searchInput.value.toLowerCase();
+
+    // 検索されたら自動で開く
+    if (key.length > 0 && filterDetails) {
+      filterDetails.setAttribute("open", "");
+    }
+
     render(allCombos.filter((c) => c.id.toLowerCase().includes(key)));
   };
-}
 
-// ソートボタンが押されたら折りたたみを閉じる（SPのみ）
-document.querySelectorAll(".p-voting__controls button").forEach((button) => {
-  button.addEventListener("click", () => {
-    const details = document.querySelector(".p-voting__filter-details");
-    if (window.innerWidth <= 768) {
-      details.removeAttribute("open");
-    }
-  });
-});
+  // ソートボタンの処理
+  document.getElementById("sort-asc").onclick = () => {
+    render([...allCombos].sort((a, b) => b.v - a.v));
+    if (window.innerWidth <= 768 && filterDetails) filterDetails.removeAttribute("open");
+  };
+
+  document.getElementById("sort-desc").onclick = () => {
+    render([...allCombos].sort((a, b) => a.v - b.v));
+    if (window.innerWidth <= 768 && filterDetails) filterDetails.removeAttribute("open");
+  };
+}
