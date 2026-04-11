@@ -109,9 +109,32 @@ export function initOdds() {
       voterList.forEach((voter) => {
         const chip = document.createElement("span");
         chip.className = "p-voting__voter-tag";
-        chip.innerText = typeof voter === "string" ? voter : voter.name;
         chip.style.cursor = "pointer";
-        chip.onclick = () => openModal(typeof voter === "string" ? { name: voter, comment: "（以前の投票データです）" } : voter);
+
+        // --- データの形式チェック ---
+        const isObject = typeof voter === "object" && voter !== null;
+        const vName = isObject ? voter.name || "不明" : voter;
+        const vComment = isObject ? voter.comment || "コメントはありません。" : "（以前の投票データです）";
+        const vDate = isObject && voter.at ? new Date(voter.at).toLocaleString() : "";
+
+        chip.innerText = vName;
+
+        // チップをクリックした時の動作
+        chip.onclick = () => {
+          // モーダル内の各要素にデータをセット
+          const modalTitle = document.getElementById("js-modal-title");
+          const modalComment = document.getElementById("js-modal-comment");
+          const modalDate = document.getElementById("js-modal-date");
+          const modal = document.getElementById("js-modal");
+
+          if (modalTitle) modalTitle.innerText = `${vName} さんのコメント`;
+          if (modalComment) modalComment.innerText = vComment;
+          if (modalDate) modalDate.innerText = vDate;
+
+          // モーダルを表示
+          if (modal) modal.classList.add("is-show");
+        };
+
         chipContainer.appendChild(chip);
       });
 
