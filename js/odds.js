@@ -105,13 +105,20 @@ export function initOdds() {
 
   const render = (arr) => {
     oddsListDiv.innerHTML = "";
+
     arr.forEach((c) => {
       const odds = c.v > 0 ? (totalVotes / c.v).toFixed(1) : "99.9";
       const names = c.id.split("_");
+      const voterList = Array.isArray(c.voters) ? c.voters : [];
+
       const item = document.createElement("div");
       item.className = "p-voting__item p-voting__item--odds";
 
-      const voterList = Array.isArray(c.voters) ? c.voters : [];
+      // ★追加：行全体をクリック可能にし、カーソルを指マークにする
+      item.style.cursor = "pointer";
+      item.onclick = () => {
+        openModal(voterList, names);
+      };
 
       item.innerHTML = `
         <div class="p-voting__info">
@@ -129,24 +136,23 @@ export function initOdds() {
         </div>
       `;
 
-      // 投票者チップを個別に生成してイベントを付与
+      // 投票者チップを個別に生成
       const chipContainer = item.querySelector(`#voters-${c.id}`);
       voterList.forEach((voter) => {
         const chip = document.createElement("span");
         chip.className = "p-voting__voter-tag";
+        // チップ自体も指マークにする
         chip.style.cursor = "pointer";
 
-        // チップに表示する名前だけ判別
         const isObject = typeof voter === "object" && voter !== null;
         const vName = isObject ? voter.name || "不明" : voter;
         chip.innerText = vName;
 
-        // ★修正ポイント：チップをクリックしたら全員分を表示する
+        // チップをクリックした時
         chip.onclick = (e) => {
-          e.stopPropagation(); // 親要素のクリックイベントがあれば停止
-
-          // 単体の voter ではなく、この外側にある voterList 全体と、
-          // 組み合わせ名（names）を渡す
+          // ★重要：e.stopPropagation() で「行全体のクリックイベント」が
+          // 重複して発生するのを防ぎます
+          e.stopPropagation();
           openModal(voterList, names);
         };
 
@@ -155,6 +161,7 @@ export function initOdds() {
 
       oddsListDiv.appendChild(item);
     });
+
     updateChart();
   };
 
