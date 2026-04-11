@@ -549,6 +549,46 @@ h2,
   border: none;
   border-top: 1px dashed var(--border);
 }
+.p-voting__filter-details {
+  background: var(--bg-page);
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.p-voting__filter-details[open] {
+  margin-bottom: 10px;
+}
+.p-voting__filter-summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  list-style: none;
+}
+.p-voting__filter-summary::-webkit-details-marker {
+  display: none;
+}
+.p-voting__filter-summary .material-symbols-outlined {
+  font-size: 1.2rem;
+}
+.p-voting__filter-content {
+  padding: 0 12px 12px;
+}
+@media (max-width: 768px) {
+  .p-voting__chart-container {
+    height: 250px;
+    margin-bottom: 12px;
+  }
+  .p-voting__filter-details {
+    margin: 0;
+  }
+  .p-voting__fixed-header {
+    padding: 10px 16px;
+  }
+}
 @media (max-width: 768px) {
   .p-voting {
     padding: 16px;

@@ -192,3 +192,13 @@ export function initOdds() {
     render(allCombos.filter((c) => c.id.toLowerCase().includes(key)));
   };
 }
+
+// ソートボタンが押されたら折りたたみを閉じる（SPのみ）
+document.querySelectorAll(".p-voting__controls button").forEach((button) => {
+  button.addEventListener("click", () => {
+    const details = document.querySelector(".p-voting__filter-details");
+    if (window.innerWidth <= 768) {
+      details.removeAttribute("open");
+    }
+  });
+});

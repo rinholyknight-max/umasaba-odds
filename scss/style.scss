@@ -508,6 +508,60 @@ h2,
     border-top: 1px dashed var(--border);
   }
 
+  // --- 折りたたみ（Details/Summary）のスタイル ---
+  &__filter-details {
+    background: var(--bg-page);
+    border-radius: v.$radius-sm;
+    border: 1px solid var(--border);
+    overflow: hidden;
+
+    &[open] {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__filter-summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none; // デフォルトの三角を消す（Chrome用）
+    &::-webkit-details-marker {
+      display: none;
+    } // Safari用
+
+    .material-symbols-outlined {
+      font-size: 1.2rem;
+    }
+  }
+
+  &__filter-content {
+    padding: 0 12px 12px;
+  }
+
+  // --- SP（スマホ）用のレスポンシブ調整 ---
+  @media (max-width: 768px) {
+    &__chart-container {
+      // ★グラフの高さを以前の 140px から 250px 程度に拡大
+      height: 250px;
+      margin-bottom: 12px;
+    }
+
+    &__filter-details {
+      // ★初期状態で折りたたむ場合は HTMLの 'open' を外すか
+      // デフォルトのデザインをここで調整
+      margin: 0;
+    }
+
+    // 折りたたみ時は背景をさらにスッキリさせる
+    &__fixed-header {
+      padding: 10px 16px;
+    }
+  }
+
   // --- 4. SP (スマホ) 用レスポンシブ ---
   @media (max-width: 768px) {
     padding: v.$space-md;
