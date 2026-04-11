@@ -42,11 +42,36 @@ export function initOdds() {
   let currentSortOrder = "asc";
   let myChart = null;
 
-  // モーダル操作
-  const openModal = (voter) => {
-    modalTitle.innerText = `${voter.name} さんのコメント`;
-    modalComment.innerText = voter.comment || "コメントはありません。";
-    modalDate.innerText = voter.at ? new Date(voter.at).toLocaleString() : "";
+  // モーダル操作（特定の組み合わせの投票者全員分を表示）
+  const openModal = (voterList, comboNames) => {
+    modalTitle.innerText = `投票コメント一覧\n(${comboNames.join(" / ")})`;
+
+    // リストを表示するコンテナ（既存の要素を使い回すか、HTMLに追加したもの）
+    const listContainer = document.getElementById("js-modal-comment-list") || modalComment;
+    listContainer.innerHTML = "";
+
+    voterList.forEach((v) => {
+      const isObj = typeof v === "object" && v !== null;
+      const name = isObj ? v.name : v;
+      const comment = isObj ? v.comment : "（以前のデータ）";
+      const date = isObj && v.at ? new Date(v.at).toLocaleString() : "";
+
+      const item = document.createElement("div");
+      item.className = "c-modal__comment-item"; // CSSで整える用
+      item.style.marginBottom = "15px";
+      item.style.paddingBottom = "10px";
+      item.style.borderBottom = "1px solid #eee";
+
+      item.innerHTML = `
+            <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:#888;">
+                <strong>${name}</strong>
+                <span>${date}</span>
+            </div>
+            <p style="margin:5px 0 0; line-height:1.4;">${comment}</p>
+        `;
+      listContainer.appendChild(item);
+    });
+
     modal.classList.add("is-show");
   };
 
@@ -111,28 +136,18 @@ export function initOdds() {
         chip.className = "p-voting__voter-tag";
         chip.style.cursor = "pointer";
 
-        // --- データの形式チェック ---
+        // チップに表示する名前だけ判別
         const isObject = typeof voter === "object" && voter !== null;
         const vName = isObject ? voter.name || "不明" : voter;
-        const vComment = isObject ? voter.comment || "コメントはありません。" : "（以前の投票データです）";
-        const vDate = isObject && voter.at ? new Date(voter.at).toLocaleString() : "";
-
         chip.innerText = vName;
 
-        // チップをクリックした時の動作
-        chip.onclick = () => {
-          // モーダル内の各要素にデータをセット
-          const modalTitle = document.getElementById("js-modal-title");
-          const modalComment = document.getElementById("js-modal-comment");
-          const modalDate = document.getElementById("js-modal-date");
-          const modal = document.getElementById("js-modal");
+        // ★修正ポイント：チップをクリックしたら全員分を表示する
+        chip.onclick = (e) => {
+          e.stopPropagation(); // 親要素のクリックイベントがあれば停止
 
-          if (modalTitle) modalTitle.innerText = `${vName} さんのコメント`;
-          if (modalComment) modalComment.innerText = vComment;
-          if (modalDate) modalDate.innerText = vDate;
-
-          // モーダルを表示
-          if (modal) modal.classList.add("is-show");
+          // 単体の voter ではなく、この外側にある voterList 全体と、
+          // 組み合わせ名（names）を渡す
+          openModal(voterList, names);
         };
 
         chipContainer.appendChild(chip);
