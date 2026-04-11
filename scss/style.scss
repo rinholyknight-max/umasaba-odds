@@ -450,6 +450,99 @@ h2,
       max-height: 100% !important;
     }
   }
+
+  // 選択エリア全体の容器
+  &__selection-container {
+    margin-bottom: v.$space-lg;
+    padding: v.$space-md;
+    background: var(--bg-page);
+    border-radius: v.$radius-md;
+    border: 1px solid var(--border);
+  }
+
+  // 1枠, 2枠, 3枠を包むエリア
+  &__slots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); // PCでは3列
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  // 個別の選択枠
+  &__slot {
+    background: var(--bg-card);
+    padding: 12px 8px;
+    border-radius: v.$radius-sm;
+    border: 1px solid var(--border);
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-sub);
+    box-shadow: var(--shadow);
+
+    .slot-name {
+      display: block;
+      margin-top: 4px;
+      font-weight: bold;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      // 文字が溢れた時の対策
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  // 入力フォームのグループ
+  &__input-group {
+    margin-bottom: 12px;
+    text-align: left;
+
+    .p-voting__label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: var(--text-sub);
+    }
+
+    textarea.c-input {
+      resize: vertical; // 縦方向にのみリサイズ可能
+      min-height: 60px;
+      font-family: inherit;
+    }
+  }
+
+  // ボタンエリア
+  &__actions {
+    display: grid;
+    grid-template-columns: 1fr 2fr; // クリアを小さく、確定を大きく
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  // --- SP（スマホ）用のレスポンシブ調整 ---
+  @media (max-width: 768px) {
+    // 変数エラーが出る場合は直接 768px
+    &__slots {
+      grid-template-columns: 1fr; // スマホでは縦に1列
+      gap: 8px;
+    }
+
+    &__slot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+
+      .slot-name {
+        margin-top: 0;
+      }
+    }
+
+    &__actions {
+      grid-template-columns: 1fr; // ボタンも縦並びに
+    }
+  }
 }
 
 [data-theme="dark"] canvas {
