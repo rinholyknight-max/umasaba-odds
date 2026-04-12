@@ -83,7 +83,6 @@ export async function login(input) {
         status: "active",
       });
       sessionStorage.setItem("user_name", allowedData.userName);
-      alert(`ようこそ、${allowedData.userName}さん！\n初期登録が完了しました。`);
     } else {
       // 既に利用開始しているユーザー
       const userData = userSnap.val();
