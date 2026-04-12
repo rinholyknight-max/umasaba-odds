@@ -360,8 +360,8 @@ h2,
     @media (min-width: 769px) {
       .is-results & {
         position: sticky;
-        top: 20px;
-        flex: 0 0 400px; // 2カラムの左側として幅を固定
+        top: 150px;
+        flex: 0 0 55%;
         z-index: 10;
         border: 1px solid var(--border);
         border-radius: v.$radius-md;
@@ -380,7 +380,7 @@ h2,
   // 結果画面用の追加スタイル
   &__chart-container {
     // PCでの高さ
-    height: 300px;
+    height: 400px;
     width: 100%;
     margin-bottom: v.$space-md;
     display: flex;

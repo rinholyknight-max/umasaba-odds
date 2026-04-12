@@ -420,8 +420,8 @@ h2,
 @media (min-width: 769px) {
   .is-results .p-voting__fixed-header, .is-results .p-voting__selection-container {
     position: sticky;
-    top: 20px;
-    flex: 0 0 400px;
+    top: 150px;
+    flex: 0 0 55%;
     z-index: 10;
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -434,7 +434,7 @@ h2,
   }
 }
 .p-voting__chart-container {
-  height: 300px;
+  height: 400px;
   width: 100%;
   margin-bottom: 16px;
   display: flex;
