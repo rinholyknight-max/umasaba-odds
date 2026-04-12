@@ -406,16 +406,6 @@ h2,
   width: 100% !important;
   height: 100% !important;
 }
-@media (max-width: 768px) {
-  .p-voting__chart-container {
-    height: 40vh;
-    margin-bottom: 12px;
-    max-height: 330px;
-  }
-  .p-voting__fixed-header {
-    padding: 10px 16px;
-  }
-}
 .p-voting__search-box {
   margin-bottom: 12px;
 }
@@ -460,6 +450,7 @@ h2,
   margin-top: 400px;
 }
 .p-voting__list {
+  margin-top: 420px;
   margin-bottom: 40px;
 }
 .p-voting__item {
@@ -604,9 +595,19 @@ h2,
     padding: 16px;
   }
   .p-voting__fixed-header, .p-voting__selection-container {
-    top: 60px;
-    margin: 0 -16px 12px;
-    padding: 10px 16px;
+    position: static;
+    width: auto;
+    margin: 0 0 12px 0;
+    padding: 10px 0;
+    box-shadow: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .p-voting__chart-container {
+    height: 250px;
+    margin-bottom: 12px;
+  }
+  .p-voting__list {
+    margin-top: 0;
   }
   .p-voting__slots {
     grid-template-columns: 1fr;
@@ -640,6 +641,9 @@ h2,
   }
   .p-voting__actions {
     grid-template-columns: 1fr;
+  }
+  .p-voting__filter-details {
+    margin: 0;
   }
 }
 

@@ -315,17 +315,15 @@ h2,
     color: var(--text-main);
   }
 
-  // --- 1. 固定エリア (結果画面: グラフ・検索・ボタン / 投票画面: スロットコンテナ) ---
-  // 両方の画面で sticky を共通化
+  // --- 1. 固定エリア (PC用設定) ---
   &__fixed-header,
   &__selection-container {
-    position: fixed;
+    position: fixed; // PCでは固定
     top: 60px;
     left: 0;
     width: 100%;
     z-index: 100;
     background: var(--bg-card);
-    // margin: 0 (v.$space-lg * -1) v.$space-md;
     padding: v.$space-md v.$space-lg;
     border-bottom: 2px solid var(--border);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -343,22 +341,8 @@ h2,
     justify-content: center;
 
     canvas {
-      // 親のサイズを無視しないように固定値をリセット
       width: 100% !important;
       height: 100% !important;
-    }
-  }
-
-  @media (max-width: 768px) {
-    &__chart-container {
-      height: 40vh;
-      margin-bottom: 12px;
-      max-height: 330px;
-    }
-
-    &__fixed-header {
-      // グラフが大きくなる分、固定エリアが縦に伸びすぎないよう調整
-      padding: 10px 16px;
     }
   }
 
@@ -413,6 +397,7 @@ h2,
   }
 
   &__list {
+    margin-top: 420px; // PCでの固定ヘッダー分の余白
     margin-bottom: v.$space-xl;
   }
 
@@ -577,16 +562,30 @@ h2,
     }
   }
 
-  // --- 4. SP (スマホ) 用レスポンシブ ---
+  // ==========================================
+  // --- SP (スマホ) 用レスポンシブまとめ ---
+  // ==========================================
   @media (max-width: 768px) {
     padding: v.$space-md;
 
-    // 固定エリアのSP調整
+    // 固定を解除し通常フローへ
     &__fixed-header,
     &__selection-container {
-      top: 60px;
-      margin: 0 -16px 12px;
-      padding: 10px 16px;
+      position: static; // 固定解除
+      width: auto;
+      margin: 0 0 12px 0;
+      padding: 10px 0;
+      box-shadow: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    &__chart-container {
+      height: 250px; // SPで見やすい高さ
+      margin-bottom: 12px;
+    }
+
+    &__list {
+      margin-top: 0; // グラフが固定されないので余白も不要
     }
 
     &__slots {
@@ -624,6 +623,9 @@ h2,
     }
     &__actions {
       grid-template-columns: 1fr;
+    }
+    &__filter-details {
+      margin: 0;
     }
   }
 }
