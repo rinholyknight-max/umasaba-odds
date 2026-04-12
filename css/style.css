@@ -645,6 +645,9 @@ h2,
   .p-voting__filter-details {
     margin: 0;
   }
+  .p-voting__total {
+    margin-top: 0;
+  }
 }
 
 [data-theme=dark] canvas {
