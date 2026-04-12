@@ -70,8 +70,11 @@ h2,
 
 .l-main-content {
   width: 100%;
-  max-width: 600px;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    max-width: 600px;
+  }
 }
 
 .l-header {
@@ -433,11 +436,9 @@ h2,
     font-size: 0.85rem;
     color: var(--text-sub);
     text-align: right;
-    margin-top: 400px;
   }
 
   &__list {
-    margin-top: 420px; // PCでの固定ヘッダー分の余白
     margin-bottom: v.$space-xl;
   }
 

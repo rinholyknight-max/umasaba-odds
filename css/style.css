@@ -152,8 +152,12 @@ h2,
 
 .l-main-content {
   width: 100%;
-  max-width: 600px;
   margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .l-main-content {
+    max-width: 600px;
+  }
 }
 
 .l-header {
@@ -483,10 +487,8 @@ h2,
   font-size: 0.85rem;
   color: var(--text-sub);
   text-align: right;
-  margin-top: 400px;
 }
 .p-voting__list {
-  margin-top: 420px;
   margin-bottom: 40px;
 }
 .p-voting__item {
