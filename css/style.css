@@ -372,10 +372,10 @@ h2,
 }
 @media (min-width: 769px) {
   .p-voting {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
+    display: flex !important;
     align-items: flex-start;
+    gap: 30px;
+    position: relative;
   }
 }
 .p-voting__title {
@@ -403,13 +403,9 @@ h2,
 @media (min-width: 769px) {
   .p-voting__fixed-header, .p-voting__selection-container {
     position: sticky;
-    top: 80px;
-    flex: 0 0 450px;
-    z-index: 100;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    box-sizing: border-box;
+    top: 20px;
+    flex: 0 0 400px;
+    z-index: 10;
   }
 }
 .p-voting__chart-container {
@@ -425,10 +421,11 @@ h2,
   height: 100% !important;
 }
 @media (min-width: 769px) {
-  .p-voting__total, .p-voting__list, .p-voting__form-footer {
+  .p-voting__main-content {
     flex: 1;
     min-width: 400px;
-    margin-top: 0;
+    display: flex;
+    flex-direction: column;
   }
 }
 .p-voting__total {
@@ -436,14 +433,14 @@ h2,
   font-size: 0.85rem;
   color: var(--text-sub);
   text-align: right;
+  margin-top: 0;
 }
 .p-voting__list {
   margin-bottom: 40px;
+  margin-top: 0;
 }
-@media (min-width: 769px) {
-  .p-voting__list {
-    margin-top: 0;
-  }
+.p-voting__form-footer {
+  margin-top: 24px;
 }
 .p-voting__search-box {
   margin-bottom: 12px;

@@ -301,12 +301,12 @@ h2,
   padding: v.$space-lg;
   margin-bottom: v.$space-lg;
 
-  // --- PC版：2カラム化の土台 ---
+  // --- PC版：横並びの土台 ---
   @media (min-width: 769px) {
-    display: flex; // 横並び
-    flex-wrap: wrap; // タイトルが上に来るように折り返し許可
+    display: flex !important; // 強制的に横並び
+    align-items: flex-start; // 上揃え
     gap: 30px; // 左右の余白
-    align-items: flex-start;
+    position: relative;
   }
 
   &__title {
@@ -334,14 +334,11 @@ h2,
     border-bottom: 2px solid var(--border);
 
     @media (min-width: 769px) {
-      position: sticky; // fixedからstickyに変更して制御しやすく
-      top: 80px; // ヘッダー分の余白
-      flex: 0 0 450px; // 幅を450pxで固定
-      z-index: 100;
-      border: 1px solid var(--border);
-      border-radius: v.$radius-md;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      box-sizing: border-box;
+      position: sticky; // 【重要】fixedではなくstickyにする
+      top: 20px; // スクロールした時に止まる位置
+      flex: 0 0 400px; // 幅を400pxから動かさない
+      z-index: 10;
+      // paddingなど
     }
   }
 
@@ -361,30 +358,32 @@ h2,
     }
   }
 
-  // --- 2. 右カラム (スクロールエリア) ---
-  // PCでは自動的に残りの幅を使い、スクロールする側になります
-  &__total,
-  &__list,
-  &__form-footer {
+  // --- 2. 右カラム (スクロールエリア全体の箱) ---
+  &__main-content {
     @media (min-width: 769px) {
-      flex: 1; // 残りの幅を埋める
-      min-width: 400px; // 最低幅
-      margin-top: 0; // PCでの潜り込み対策不要
+      flex: 1; // グラフ以外の残りの幅をすべてこの「箱」が使う
+      min-width: 400px; // 最低限の幅を確保
+      display: flex; // 箱の中身を縦に並べるため
+      flex-direction: column;
     }
   }
 
+  // --- 右カラムの中身（個別の設定） ---
   &__total {
     padding: 10px 0;
     font-size: 0.85rem;
     color: var(--text-sub);
     text-align: right;
+    margin-top: 0; // 以前の400pxは削除！
   }
 
   &__list {
     margin-bottom: v.$space-xl;
-    @media (min-width: 769px) {
-      margin-top: 0;
-    } // stickyなら0でOK
+    margin-top: 0; // stickyなので0でOK
+  }
+
+  &__form-footer {
+    margin-top: v.$space-lg;
   }
 
   &__search-box {
