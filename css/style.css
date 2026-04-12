@@ -383,7 +383,7 @@ h2,
   color: var(--text-main);
 }
 .p-voting__fixed-header, .p-voting__selection-container {
-  position: sticky;
+  position: fixed;
   top: 60px;
   z-index: 100;
   background: var(--bg-card);
@@ -455,6 +455,7 @@ h2,
   font-size: 0.85rem;
   color: var(--text-sub);
   text-align: right;
+  margin-top: 400px;
 }
 .p-voting__list {
   margin-bottom: 40px;

@@ -319,7 +319,7 @@ h2,
   // 両方の画面で sticky を共通化
   &__fixed-header,
   &__selection-container {
-    position: sticky;
+    position: fixed;
     top: 60px; // l-headerの高さ
     z-index: 100;
     background: var(--bg-card);
@@ -406,6 +406,7 @@ h2,
     font-size: 0.85rem;
     color: var(--text-sub);
     text-align: right;
+    margin-top: 400px;
   }
 
   &__list {
