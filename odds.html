@@ -55,8 +55,9 @@
 
     <main class="l-main-content">
       <div class="p-voting">
+        <h1 class="p-voting__title">投票結果</h1>
+
         <div class="p-voting__fixed-header">
-          <h1 class="p-voting__title">投票結果</h1>
           <div class="p-voting__chart-container">
             <canvas id="oddsChart"></canvas>
           </div>
@@ -79,8 +80,11 @@
             </div>
           </details>
         </div>
-        <div id="total-info" class="p-voting__total"></div>
-        <div id="odds-list" class="p-voting__list"></div>
+
+        <div class="p-voting__main-content">
+          <div id="total-info" class="p-voting__total"></div>
+          <div id="odds-list" class="p-voting__list"></div>
+        </div>
       </div>
     </main>
 

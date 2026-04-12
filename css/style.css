@@ -370,10 +370,23 @@ h2,
   padding: 24px;
   margin-bottom: 24px;
 }
+@media (min-width: 769px) {
+  .p-voting {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: flex-start;
+  }
+}
 .p-voting__title {
   margin-bottom: 16px;
   text-align: center;
   font-size: 1.25rem;
+}
+@media (min-width: 769px) {
+  .p-voting__title {
+    width: 100%;
+  }
 }
 .p-voting__subtitle {
   font-size: 1rem;
@@ -383,16 +396,21 @@ h2,
   color: var(--text-main);
 }
 .p-voting__fixed-header, .p-voting__selection-container {
-  position: fixed;
-  top: 60px;
-  left: 0;
-  width: 100%;
-  z-index: 100;
   background: var(--bg-card);
   padding: 16px 24px;
   border-bottom: 2px solid var(--border);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  box-sizing: border-box;
+}
+@media (min-width: 769px) {
+  .p-voting__fixed-header, .p-voting__selection-container {
+    position: sticky;
+    top: 80px;
+    flex: 0 0 450px;
+    z-index: 100;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+  }
 }
 .p-voting__chart-container {
   height: 300px;
@@ -405,6 +423,27 @@ h2,
 .p-voting__chart-container canvas {
   width: 100% !important;
   height: 100% !important;
+}
+@media (min-width: 769px) {
+  .p-voting__total, .p-voting__list, .p-voting__form-footer {
+    flex: 1;
+    min-width: 400px;
+    margin-top: 0;
+  }
+}
+.p-voting__total {
+  padding: 10px 0;
+  font-size: 0.85rem;
+  color: var(--text-sub);
+  text-align: right;
+}
+.p-voting__list {
+  margin-bottom: 40px;
+}
+@media (min-width: 769px) {
+  .p-voting__list {
+    margin-top: 0;
+  }
 }
 .p-voting__search-box {
   margin-bottom: 12px;
