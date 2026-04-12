@@ -304,12 +304,14 @@ h2,
   padding: v.$space-lg;
   margin-bottom: v.$space-lg;
 
-  // --- PC版：横並びの土台 ---
-  @media (min-width: 769px) {
-    display: flex !important; // 強制的に横並び
-    align-items: flex-start; // 上揃え
-    gap: 30px; // 左右の余白
-    position: relative;
+  // --- PC版：結果画面（.is-results）の時だけ 2 カラム化 ---
+  &.is-results {
+    @media (min-width: 769px) {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: flex-start;
+    }
   }
 
   &__title {
@@ -329,19 +331,45 @@ h2,
     color: var(--text-main);
   }
 
-  // --- 1. 左カラム (固定エリア) ---
+  // --- 投票画面用の設定（固定ヘッダー） ---
+  // 結果画面ではない（.is-results を持たない）時の設定
+  &:not(.is-results) {
+    .p-voting__selection-container {
+      position: sticky;
+      top: 60px;
+      z-index: 100;
+      background: var(--bg-card);
+      margin: 0 (v.$space-lg * -1) v.$space-md;
+      padding: v.$space-md v.$space-lg;
+      border-bottom: 2px solid var(--border);
+    }
+  }
+
+  // --- 1. 左カラム / 上部固定エリア ---
   &__fixed-header,
   &__selection-container {
     background: var(--bg-card);
     padding: v.$space-md v.$space-lg;
     border-bottom: 2px solid var(--border);
 
+    // 【重要】PCかつ「結果画面」の時だけ横幅を固定して左に寄せる
     @media (min-width: 769px) {
-      position: sticky; // 【重要】fixedではなくstickyにする
-      top: 20px; // スクロールした時に止まる位置
-      flex: 0 0 400px; // 幅を400pxから動かさない
-      z-index: 10;
-      // paddingなど
+      .is-results & {
+        position: sticky;
+        top: 20px;
+        flex: 0 0 400px; // 2カラムの左側として幅を固定
+        z-index: 10;
+        border: 1px solid var(--border);
+        border-radius: v.$radius-md;
+      }
+
+      // 投票画面（.is-resultsがない時）は、今まで通り横幅いっぱいの「上部固定」にする
+      &:not(.is-results &) {
+        position: sticky;
+        top: 60px;
+        width: 100%;
+        z-index: 100;
+      }
     }
   }
 
@@ -361,13 +389,16 @@ h2,
     }
   }
 
-  // --- 2. 右カラム (スクロールエリア全体の箱) ---
+  // --- 2. 右カラム (メインコンテンツ) ---
   &__main-content {
+    // 【重要】PCかつ「結果画面」の時だけ、残りの幅を埋める設定にする
     @media (min-width: 769px) {
-      flex: 1; // グラフ以外の残りの幅をすべてこの「箱」が使う
-      min-width: 400px; // 最低限の幅を確保
-      display: flex; // 箱の中身を縦に並べるため
-      flex-direction: column;
+      .is-results & {
+        flex: 1;
+        min-width: 0; // はみ出し防止
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 

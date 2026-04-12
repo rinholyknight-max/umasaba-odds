@@ -375,11 +375,11 @@ h2,
   margin-bottom: 24px;
 }
 @media (min-width: 769px) {
-  .p-voting {
-    display: flex !important;
-    align-items: flex-start;
+  .p-voting.is-results {
+    display: flex;
+    flex-wrap: wrap;
     gap: 30px;
-    position: relative;
+    align-items: flex-start;
   }
 }
 .p-voting__title {
@@ -399,17 +399,34 @@ h2,
   border-left: 4px solid rgb(27, 183, 0);
   color: var(--text-main);
 }
+.p-voting:not(.is-results) .p-voting__selection-container {
+  position: sticky;
+  top: 60px;
+  z-index: 100;
+  background: var(--bg-card);
+  margin: 0 -24px 16px;
+  padding: 16px 24px;
+  border-bottom: 2px solid var(--border);
+}
 .p-voting__fixed-header, .p-voting__selection-container {
   background: var(--bg-card);
   padding: 16px 24px;
   border-bottom: 2px solid var(--border);
 }
 @media (min-width: 769px) {
-  .p-voting__fixed-header, .p-voting__selection-container {
+  .is-results .p-voting__fixed-header, .is-results .p-voting__selection-container {
     position: sticky;
     top: 20px;
     flex: 0 0 400px;
     z-index: 10;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .p-voting__fixed-header:not(.is-results .p-voting__fixed-header, .is-results .p-voting__selection-container), .p-voting__selection-container:not(.is-results .p-voting__fixed-header, .is-results .p-voting__selection-container) {
+    position: sticky;
+    top: 60px;
+    width: 100%;
+    z-index: 100;
   }
 }
 .p-voting__chart-container {
@@ -425,9 +442,9 @@ h2,
   height: 100% !important;
 }
 @media (min-width: 769px) {
-  .p-voting__main-content {
+  .is-results .p-voting__main-content {
     flex: 1;
-    min-width: 400px;
+    min-width: 0;
     display: flex;
     flex-direction: column;
   }
