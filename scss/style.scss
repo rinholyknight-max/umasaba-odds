@@ -320,13 +320,16 @@ h2,
   &__fixed-header,
   &__selection-container {
     position: fixed;
-    top: 60px; // l-headerの高さ
+    top: 60px;
+    left: 0;
+    width: 100%;
     z-index: 100;
     background: var(--bg-card);
-    margin: 0 (v.$space-lg * -1) v.$space-md;
+    // margin: 0 (v.$space-lg * -1) v.$space-md;
     padding: v.$space-md v.$space-lg;
     border-bottom: 2px solid var(--border);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
   }
 
   // 結果画面用の追加スタイル
