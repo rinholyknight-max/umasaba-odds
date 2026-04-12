@@ -161,7 +161,7 @@ h2,
 }
 
 .odds-content {
-  max-width: 0;
+  max-width: initial;
 }
 
 .l-header {
