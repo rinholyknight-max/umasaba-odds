@@ -159,7 +159,8 @@ h2,
     max-width: 600px;
   }
 }
-.l-main-content:not(.is-results .l-main-content) {
+
+.odds-content {
   max-width: 600px;
 }
 
