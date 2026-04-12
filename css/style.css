@@ -425,7 +425,6 @@ h2,
     z-index: 10;
     border: 1px solid var(--border);
     border-radius: 8px;
-    background-color: #154d00;
   }
   .p-voting__fixed-header:not(.is-results .p-voting__fixed-header, .is-results .p-voting__selection-container), .p-voting__selection-container:not(.is-results .p-voting__fixed-header, .is-results .p-voting__selection-container) {
     position: sticky;
