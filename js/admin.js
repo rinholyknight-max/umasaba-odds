@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
+import { getDatabase, ref, push, onValue, remove, set } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
 import { initTheme } from "./theme.js";
 import { checkAuth, logout } from "./auth.js";
 import { initMenu } from "./menu.js";
@@ -46,6 +46,11 @@ export function initAdmin() {
   const addBtn = document.getElementById("add-btn");
   const fileInput = document.getElementById("js-upload-file");
   const adminList = document.getElementById("admin-list");
+  // --- ★追加：ユーザー許可登録用の要素 ---
+  const allowIdInput = document.getElementById("new-allow-id");
+  const allowNameInput = document.getElementById("new-allow-name");
+  const addAllowBtn = document.getElementById("add-allow-btn");
+  const addAllowMsg = document.getElementById("add-allow-msg");
 
   // 1. 個別登録
   addBtn.addEventListener("click", () => {
@@ -89,10 +94,35 @@ export function initAdmin() {
     reader.readAsText(file);
   };
 
-  // 3. リスト表示
+  // --- ★追加機能：新規ユーザー許可登録（個別） ---
+  addAllowBtn.addEventListener("click", async () => {
+    const id = allowIdInput.value.trim();
+    const name = allowNameInput.value.trim();
+    if (!id || !name) {
+      alert("ゲームIDと表示名の両方を入力してください");
+      return;
+    }
+    try {
+      await set(ref(db, `allowed_users/${id}`), {
+        userName: name,
+        addedAt: Date.now(),
+      });
+      addAllowMsg.innerText = `成功: ${name} (ID:${id}) を追加しました`;
+      addAllowMsg.style.color = "green";
+      allowIdInput.value = "";
+      allowNameInput.value = "";
+    } catch (err) {
+      console.error(err);
+      addAllowMsg.innerText = "エラーが発生しました";
+      addAllowMsg.style.color = "red";
+    }
+  });
+
+  // 3. リスト表示（出走馬）
   onValue(ref(db, "horses"), (snapshot) => {
     const data = snapshot.val();
-    adminList.innerHTML = "";
+    // HTML構造を壊さないよう、既存のリスト表示ロジックを維持
+    adminList.innerHTML = "<h3>現在の出走表</h3>";
     if (!data) return;
 
     for (let id in data) {
@@ -111,6 +141,38 @@ export function initAdmin() {
     adminList.querySelectorAll(".js-delete-btn").forEach((btn) => {
       btn.onclick = () => {
         if (confirm("削除しますか？")) remove(ref(db, `horses/${btn.dataset.id}`));
+      };
+    });
+  });
+
+  // --- ★追加機能：許可済みユーザーリストの表示 ---
+  onValue(ref(db, "allowed_users"), (snapshot) => {
+    const data = snapshot.val();
+    let allowListArea = document.getElementById("allow-list-display");
+    if (!allowListArea) {
+      allowListArea = document.createElement("div");
+      allowListArea.id = "allow-list-display";
+      adminList.after(allowListArea);
+    }
+    allowListArea.innerHTML = "<hr style='margin:20px 0;'><h3>許可済みユーザー（ID連携）</h3>";
+
+    if (!data) return;
+    for (let id in data) {
+      const div = document.createElement("div");
+      div.className = "p-admin__item";
+      div.style.borderLeft = "4px solid var(--color-primary, #4caf50)";
+      div.innerHTML = `
+        <div class="p-admin__info">
+          <b>${data[id].userName}</b><br>
+          <small>ID: ${id}</small>
+        </div>
+        <button class="c-button c-button--danger js-delete-allow" data-id="${id}">許可取消</button>
+      `;
+      allowListArea.appendChild(div);
+    }
+    allowListArea.querySelectorAll(".js-delete-allow").forEach((btn) => {
+      btn.onclick = () => {
+        if (confirm("許可を取り消しますか？")) remove(ref(db, `allowed_users/${btn.dataset.id}`));
       };
     });
   });
