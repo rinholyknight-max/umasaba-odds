@@ -15,15 +15,15 @@
     <main class="p-login">
       <h1 class="p-login__title">ログイン</h1>
       <div class="p-login__form">
-        <input type="password" id="pass" class="c-input" placeholder="パスワードを入力" />
+        <input type="text" id="login-input" class="c-input" placeholder="ゲームID または 共有パスワード" />
         <button id="login-btn" class="c-button c-button--primary">ログイン</button>
       </div>
+      <p style="font-size: 0.7rem; color: var(--text-sub); margin-top: 15px; text-align: center">※初めてのIDでログインすると、自動的に個人登録されます。</p>
     </main>
 
     <script type="module">
       import { initTheme } from "./js/theme.js";
       import { login } from "./js/auth.js";
-      // ★ ここで実行！これがないと動きません
       initTheme();
 
       document.getElementById("login-btn").onclick = () => {
