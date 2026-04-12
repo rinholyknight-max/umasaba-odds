@@ -75,6 +75,10 @@ h2,
   @media (max-width: 768px) {
     max-width: 600px;
   }
+
+  &:not(.is-results &) {
+    max-width: 600px;
+  }
 }
 
 .l-header {
