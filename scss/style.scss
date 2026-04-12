@@ -365,9 +365,10 @@ h2,
         z-index: 10;
         border: 1px solid var(--border);
         border-radius: v.$radius-md;
+        background-color: #154d00;
       }
 
-      // 投票画面（.is-resultsがない時）は、今まで通り横幅いっぱいの「上部固定」にする
+      // 投票画面
       &:not(.is-results &) {
         position: sticky;
         top: 60px;
