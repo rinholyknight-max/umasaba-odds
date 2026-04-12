@@ -18,16 +18,22 @@
         <input type="text" id="login-input" class="c-input" placeholder="ゲームID または 共有パスワード" />
         <button id="login-btn" class="c-button c-button--primary">ログイン</button>
       </div>
-      <p style="font-size: 0.7rem; color: var(--text-sub); margin-top: 15px; text-align: center">※初めてのIDでログインすると、自動的に個人登録されます。</p>
+      <p style="font-size: 0.7rem; color: var(--text-sub); margin-top: 15px; text-align: center">※許可されたゲームIDでログインできない場合は、オブザーバーへお問合せください。</p>
     </main>
 
     <script type="module">
       import { initTheme } from "./js/theme.js";
-      import { login } from "./js/auth.js";
+      import { login } from "./js/auth.js"; // パスが正しいか再確認
       initTheme();
 
-      document.getElementById("login-btn").onclick = () => {
-        login(document.getElementById("pass").value);
+      // onclickに直接 async 関数を割り当てる
+      document.getElementById("login-btn").onclick = async () => {
+        try {
+          const inputVal = document.getElementById("login-input").value; // IDを login-input に変更した場合はここも合わせる
+          await login(inputVal);
+        } catch (err) {
+          console.error("Login call error:", err);
+        }
       };
     </script>
   </body>
