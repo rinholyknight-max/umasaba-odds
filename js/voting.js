@@ -228,8 +228,11 @@ export function initVoting() {
     updateSelectionUI();
   });
 
-  document.getElementById("js-clear-btn").onclick = () => {
-    selectedHorses = [];
-    updateSelectionUI();
-  };
+  const clearBtn = document.getElementById("js-clear-btn");
+  if (clearBtn) {
+    clearBtn.onclick = () => {
+      selectedHorses = [];
+      updateSelectionUI();
+    };
+  }
 }
