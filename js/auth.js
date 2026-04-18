@@ -3,8 +3,7 @@
  */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
 import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
-// ★Firebase Authのインポートを追加
-import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+import { getAuth, signInAnonymously, signOut } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
 // --- Firebase初期化 ---
 const firebaseConfig = {
@@ -19,7 +18,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-const auth = getAuth(app); // ★Authの初期化
+const auth = getAuth(app);
 
 // パスワードと表示名の対応表
 const USER_MAP = {
@@ -43,7 +42,9 @@ export async function login(input) {
     return;
   }
 
-  // ★共通：匿名ログインを実行するヘルパー関数
+  // ログイン前に古いキャッシュを一度クリア（念のため）
+  clearUserCache();
+
   const startFirebaseSession = async (redirectUrl) => {
     try {
       await signInAnonymously(auth);
@@ -54,24 +55,21 @@ export async function login(input) {
     }
   };
 
-  // 1. 管理者チェック
   if (input === PASSWORDS.ADMIN) {
     sessionStorage.setItem("auth_role", "admin");
     sessionStorage.setItem("user_name", "管理者");
-    await startFirebaseSession("admin.html"); // ★匿名ログイン後に遷移
+    await startFirebaseSession("admin.html");
     return;
   }
 
-  // 2. 従来サークル（ゲスト）チェック
   if (PASSWORDS.USER.includes(input)) {
     sessionStorage.setItem("auth_role", "guest");
     sessionStorage.setItem("user_name", USER_MAP[input]);
     sessionStorage.setItem("user_id", "GUEST_USER");
-    await startFirebaseSession("index.html"); // ★匿名ログイン後に遷移
+    await startFirebaseSession("index.html");
     return;
   }
 
-  // --- 3. 個人ログイン（ゲームID）処理 ---
   try {
     const allowedRef = ref(db, `allowed_users/${input}`);
     const allowedSnap = await get(allowedRef);
@@ -82,19 +80,15 @@ export async function login(input) {
     }
 
     const allowedData = allowedSnap.val();
-
-    // ★ここを追加：名簿にあるサークル名をSessionStorageに保存する
-    // これをしないと Settings.js が空文字で上書きしてしまいます
     sessionStorage.setItem("user_circle", allowedData.circleName || "無所属");
 
     const userRef = ref(db, `users/${input}`);
     const userSnap = await get(userRef);
 
     if (!userSnap.exists()) {
-      // ★ここを修正：初回データ作成時にサークル名を含める
       await set(userRef, {
         userName: allowedData.userName,
-        circleName: allowedData.circleName || "無所属", // ★追加
+        circleName: allowedData.circleName || "無所属",
         points: allowedData.initialPoints || 100,
         createdAt: Date.now(),
         status: "active",
@@ -103,14 +97,9 @@ export async function login(input) {
     } else {
       const userData = userSnap.val();
       sessionStorage.setItem("user_name", userData.userName);
-
-      // ★ここを追加：既存ユーザーでも最新のサークル名をSessionに同期する
       sessionStorage.setItem("user_circle", userData.circleName || allowedData.circleName || "無所属");
-
       if (userData.photoURL) {
         sessionStorage.setItem("user_photo_url", userData.photoURL);
-      } else {
-        sessionStorage.removeItem("user_photo_url");
       }
     }
 
@@ -124,55 +113,62 @@ export async function login(input) {
   }
 }
 
-// auth.js 内のログイン成功後の処理
-async function onLoginSuccess(user) {
-  // Firebaseからそのユーザーの favoriteChara を取得
-  const userRef = ref(db, `users/${user.uid}`);
-  const snapshot = await get(userRef);
-
-  if (snapshot.exists()) {
-    const userData = snapshot.val();
-    // 推しキャラ名をセッションに保存
-    sessionStorage.setItem("user_oshi", userData.favoriteChara);
-  }
-}
 /**
  * 権限チェック
- * @param {string} requiredRole - 必要とされる権限 ('admin' など)
  */
 export function checkAuth(requiredRole = null) {
   const currentRole = sessionStorage.getItem("auth_role");
   const userId = sessionStorage.getItem("user_id");
 
-  // 1. そもそもログインしていない場合
   if (!currentRole) {
     window.location.href = "login.html";
-    return null; // false から null に変更 (settings.js の if(!authInfo) に合わせる)
+    return null;
   }
 
-  // 2. 管理者画面へのアクセス制限
-  if (requiredRole === "admin") {
-    if (currentRole !== "admin") {
-      alert("管理者権限が必要です。");
-      window.location.href = "index.html";
-      return null;
-    }
+  if (requiredRole === "admin" && currentRole !== "admin") {
+    alert("管理者権限が必要です。");
+    window.location.href = "index.html";
+    return null;
   }
 
-  // ★ 成功時：settings.js が欲しがっている情報をオブジェクトで返す
+  // ★ 修正：他の JS が期待している userNumericId を含めて返す
   return {
-    uid: userId,
+    uid: userId, // 元のID
+    userNumericId: userId, // settings.js などが参照する数字ID
     role: currentRole,
   };
 }
 
 /**
+ * ユーザー固有キャッシュのクリア
+ */
+function clearUserCache() {
+  // 1. SessionStorageを全削除（名前、役割、一時データ）
+  sessionStorage.clear();
+
+  // 2. LocalStorageからテーマ関連だけを削除
+  // 全削除(localStorage.clear())するとダークモード設定等も消えるため、特定キーを狙い撃ち
+  localStorage.removeItem("user_oshi");
+  localStorage.removeItem("user_oshi_colors");
+
+  console.log("[Auth] User cache cleared.");
+}
+
+/**
  * ログアウト
  */
-export function logout() {
-  sessionStorage.clear();
-  // ★Firebase Authからもサインアウトする
-  auth.signOut().then(() => {
+export async function logout() {
+  try {
+    // キャッシュを先に消す
+    clearUserCache();
+
+    // Firebase Authからサインアウト
+    await signOut(auth);
+
     window.location.href = "login.html";
-  });
+  } catch (error) {
+    console.error("Logout Error:", error);
+    // エラーが起きても強制的に戻す
+    window.location.href = "login.html";
+  }
 }
