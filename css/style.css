@@ -297,57 +297,73 @@ h2,
   transform: translateX(260px);
 }
 .l-menu__user-box {
-  padding: 24px 16px;
+  padding: 20px 12px;
   background: var(--bg-page);
   border-bottom: 1px solid var(--border);
 }
 .l-menu__user-box .l-menu__user-link {
-  display: flex;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas: "icon label" "icon name";
+  column-gap: 12px;
+  row-gap: 2px;
   align-items: center;
-  padding: 12px;
+  padding: 16px;
   background: var(--bg-card);
-  border-radius: 8px;
+  border-radius: 12px;
   text-decoration: none;
   color: inherit;
-  transition: all 0.2s ease;
   border: 1px solid var(--border);
+  transition: all 0.2s ease;
 }
 .l-menu__user-box .l-menu__user-link:hover {
   border-color: var(--chara-main);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  background: var(--bg-hover);
 }
-.l-menu__user-box .l-menu__user-link:active {
-  transform: translateY(0);
+.l-menu__user-box .l-menu__user-link:hover .l-menu__user-name {
+  color: var(--chara-main);
 }
 .l-menu__user-box .l-menu__user-icon {
-  margin-right: 12px;
+  grid-area: icon;
+  width: 48px;
+  height: 48px;
+  background: var(--bg-page);
+  border-radius: 50%;
   display: flex;
   align-items: center;
+  justify-content: center;
   color: var(--chara-main);
+  border: 1px solid var(--border);
 }
 .l-menu__user-box .l-menu__user-icon span {
   font-size: 32px;
 }
-.l-menu__user-box .l-menu__user-text-group {
-  flex-grow: 1;
-}
 .l-menu__user-box p {
-  font-size: 0.7rem;
+  grid-area: label;
+  font-size: 0.65rem;
   color: var(--text-sub);
-  margin-bottom: 2px;
-  font-weight: normal;
+  margin: 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
-.l-menu__user-box #js-display-user {
-  font-size: 1rem;
+.l-menu__user-box .l-menu__user-name {
+  grid-area: name;
+  font-size: 0.95rem;
   font-weight: bold;
   color: var(--text-main);
-  display: block;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.l-menu__user-box .l-menu__user-arrow {
-  font-size: 18px;
-  color: var(--text-sub);
-  opacity: 0.6;
+.l-menu__user-box .l-menu__user-name::after {
+  content: "\e5cc";
+  font-family: "Material Symbols Outlined";
+  font-size: 14px;
+  margin-left: 4px;
+  vertical-align: middle;
+  opacity: 0.5;
 }
 .l-menu__list {
   list-style: none;
