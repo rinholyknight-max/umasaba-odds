@@ -1010,6 +1010,7 @@ h2,
     width: 80vw;
     min-height: 650px;
     align-items: stretch;
+    margin-top: 10px;
   }
 }
 .p-user-profile__header {
