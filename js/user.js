@@ -34,13 +34,23 @@ export async function initUserPage() {
   const userDisplay = document.getElementById("js-display-user");
   if (userDisplay) userDisplay.innerText = myName;
 
+  // --- ★ 修正：IDの取得と補完ロジック ---
   const params = new URLSearchParams(window.location.search);
-  const targetId = params.get("id");
+  let targetId = params.get("id");
 
+  // URLにIDがない場合、自分のIDをストレージから取得して補完する
   if (!targetId) {
-    alert("ユーザーIDが指定されていません。");
-    window.location.href = "main.html";
-    return;
+    targetId = localStorage.getItem("user_uid") || sessionStorage.getItem("user_uid");
+
+    // それでもIDがない（未ログイン）場合はエラーとして戻す
+    if (!targetId) {
+      alert("ユーザーIDが見つかりません。ログインし直してください。");
+      window.location.href = "index.html";
+      return;
+    }
+
+    // URLを書き換えずに処理を続行（マイページ扱い）
+    console.log("Viewing my own profile via storage UID.");
   }
 
   try {
@@ -50,11 +60,12 @@ export async function initUserPage() {
     if (snapshot.exists()) {
       const data = snapshot.val();
       renderProfile(data);
-      // ★ 追加：投票履歴の読み込みを実行
       loadUserHistory(targetId);
     } else {
       const nameEl = document.getElementById("js-user-name");
       if (nameEl) nameEl.innerText = "未登録のユーザーです";
+      const historyListEl = document.getElementById("js-history-list");
+      if (historyListEl) historyListEl.innerHTML = "";
     }
   } catch (err) {
     console.error("Profile Load Error:", err);
