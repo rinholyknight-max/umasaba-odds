@@ -66,6 +66,15 @@
           <option value="race_004">第4レース</option>
           <option value="race_005">第5レース</option>
         </select>
+
+        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border)">
+          <label class="p-voting__label">レース名の設定</label>
+          <div style="display: flex; gap: 8px">
+            <input type="text" id="js-race-title-input" class="c-input" placeholder="例：第4回 合同杯 第2レース" />
+            <button id="js-update-race-title" class="c-button c-button--primary" style="white-space: nowrap; padding: 0 15px">保存</button>
+          </div>
+        </div>
+
         <div style="margin-top: 10px; font-size: 0.8rem; font-weight: bold; color: var(--chara-main)">現在編集中のID: <span id="js-active-race-id">---</span></div>
       </section>
 

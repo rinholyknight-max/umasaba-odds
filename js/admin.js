@@ -28,6 +28,43 @@ export function initAdmin() {
   const params = new URLSearchParams(window.location.search);
   const raceId = params.get("race") || "race_001"; // 指定がなければデフォルト
 
+  const raceTitleInput = document.getElementById("js-race-title-input");
+  const updateTitleBtn = document.getElementById("js-update-race-title");
+
+  // --- 1. 現在のレース名を取得して初期値にセット ---
+  const raceRef = ref(db, `races/${raceId}`);
+  onValue(raceRef, (snapshot) => {
+    const data = snapshot.val();
+    if (data && data.title) {
+      raceTitleInput.value = data.title;
+    } else {
+      raceTitleInput.value = ""; // 未設定の場合
+    }
+  });
+
+  // --- 2. 保存ボタンのクリックイベント ---
+  updateTitleBtn.onclick = async () => {
+    const newTitle = raceTitleInput.value.trim();
+    if (!newTitle) {
+      alert("レース名を入力してください");
+      return;
+    }
+
+    updateTitleBtn.disabled = true;
+    try {
+      // Firebaseの races/raceId/title を更新
+      await update(ref(db, `races/${raceId}`), {
+        title: newTitle,
+      });
+      alert("レース名を更新しました！");
+    } catch (e) {
+      console.error(e);
+      alert("更新に失敗しました");
+    } finally {
+      updateTitleBtn.disabled = false;
+    }
+  };
+
   const activeIdDisp = document.getElementById("js-active-race-id");
   if (activeIdDisp) activeIdDisp.innerText = raceId;
 
