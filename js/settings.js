@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/fireba
 import { getDatabase, ref, get, update } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-storage.js";
 
-import { initTheme } from "./theme.js";
+import { initTheme, applyCharaTheme } from "./theme.js";
 import { checkAuth, logout } from "./auth.js";
 import { initMenu } from "./menu.js";
 
@@ -241,21 +241,18 @@ export function initSettings() {
       saveBtn.disabled = false;
       saveBtn.textContent = "設定を保存する";
     }
-  }); // addEventListener をここで正しく閉じます
+  });
+
+  if (oshiSelect) {
+    oshiSelect.onchange = (e) => {
+      const newOshi = e.target.value;
+      // settings.js の中で applyCharaTheme が使えるように import されている必要があります
+      if (typeof applyCharaTheme === "function") {
+        applyCharaTheme(newOshi);
+      }
+    };
+  }
 
   const logoutBtn = document.getElementById("js-logout");
   if (logoutBtn) logoutBtn.onclick = logout;
-}
-
-// settings.js
-const oshiSelect = document.getElementById("js-oshi-chara");
-
-if (oshiSelect) {
-  oshiSelect.onchange = (e) => {
-    const newOshi = e.target.value;
-    // settings.js の中で applyCharaTheme が使えるように import されている必要があります
-    if (typeof applyCharaTheme === "function") {
-      applyCharaTheme(newOshi);
-    }
-  };
 }
