@@ -1053,7 +1053,6 @@ h2,
     width: 80vw;
     min-height: 650px; // 吹き出しが入るので少し高さを確保
     align-items: stretch;
-    margin-top: 10px;
   }
 
   // --- 左側：ビジュアル＆吹き出しエリア ---
@@ -1234,6 +1233,7 @@ h2,
 // SP版の調整
 @media (max-width: 1024px) {
   .p-user-profile {
+    margin-top: 10px;
     &__header {
       min-height: 400px;
       &::after {
