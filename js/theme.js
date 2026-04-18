@@ -3,16 +3,21 @@ export function initTheme() {
 
   const htmlEl = document.documentElement;
 
-  // 1. ダークモードの設定
+  // 1. 今いるページが login.html かどうかをチェック
+  const isLoginPage = window.location.pathname.includes("login.html");
+
+  // 2. ダークモードの設定（これは全ページ共通でOK）
   const savedTheme = localStorage.getItem("theme") || "light";
   htmlEl.setAttribute("data-theme", savedTheme);
-  console.log("Current data-theme:", savedTheme);
 
-  // --- 【追加】2. 保存された推しキャラテーマの反映 ---
-  const savedOshi = sessionStorage.getItem("user_oshi");
-  if (savedOshi) {
-    console.log("Applying saved oshi theme:", savedOshi);
+  // 3. ログインページ以外の場合のみ、推しテーマの適用とフェードイン制御を行う
+  if (!isLoginPage) {
+    const savedOshi = sessionStorage.getItem("user_oshi");
+    // applyCharaThemeの中で最終的に data-theme-loaded を付与する
     applyCharaTheme(savedOshi);
+  } else {
+    // ログインページの場合は、即座に表示させる
+    htmlEl.setAttribute("data-theme-loaded", "true");
   }
 
   // 3. ボタンを探す処理を関数化
