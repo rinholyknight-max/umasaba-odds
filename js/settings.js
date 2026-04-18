@@ -1,9 +1,22 @@
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
-
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getDatabase, ref, push, onValue, remove, set } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
 import { initTheme } from "./theme.js";
 import { checkAuth, logout } from "./auth.js";
 import { initMenu } from "./menu.js";
+
+// --- 初期設定 ---
+const firebaseConfig = {
+  apiKey: "AIzaSyBp5Cg6A3v3VZal-orAiwFjphKIDYx9ATo",
+  authDomain: "umasaba-odds.firebaseapp.com",
+  databaseURL: "https://umasaba-odds-default-rtdb.firebaseio.com",
+  projectId: "umasaba-odds",
+  storageBucket: "umasaba-odds.firebasestorage.app",
+  messagingSenderId: "802834774249",
+  appId: "1:802834774249:web:5623185854ead82c261878",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
 export function initSettings() {
   if (!checkAuth()) return;
