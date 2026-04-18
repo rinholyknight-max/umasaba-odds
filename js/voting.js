@@ -198,6 +198,7 @@ export function initVoting() {
   };
 
   // --- データ取得（複数レース対応） ---
+  // --- データ取得（複数レース対応） ---
   onValue(ref(db, "races"), (snapshot) => {
     const data = snapshot.val();
     if (!data) {
@@ -219,28 +220,37 @@ export function initVoting() {
       dotsContainer.appendChild(dot);
     });
 
-    // 最初のレースIDをセット
+    // 最初のレースIDとタイトルをセット
     activeRaceId = raceIds[0];
+    const raceTitleDisp = document.getElementById("js-active-race-title");
+    if (raceTitleDisp && data[activeRaceId]) {
+      raceTitleDisp.innerText = data[activeRaceId].title || "投票フォーム";
+    }
 
-    // ボタンにイベント割り当て
+    // ボタンにイベント割り当て（必ずこの中で行う）
     slider.querySelectorAll(".p-voting__item").forEach((item) => {
       const btn = item.querySelector("button");
-      btn.onclick = () => {
-        const id = item.getAttribute("data-id");
-        const name = item.querySelector(".p-voting__name").innerText;
+      if (btn) {
+        // ★安全ガードを追加
+        btn.onclick = () => {
+          const id = item.getAttribute("data-id");
+          const name = item.querySelector(".p-voting__name").innerText;
 
-        const idx = selectedHorses.findIndex((s) => s.id === id);
-        if (idx > -1) {
-          selectedHorses.splice(idx, 1);
-        } else if (selectedHorses.length < 3) {
-          selectedHorses.push({ id, name: name });
-        }
-        updateSelectionUI();
-      };
+          const idx = selectedHorses.findIndex((s) => s.id === id);
+          if (idx > -1) {
+            selectedHorses.splice(idx, 1);
+          } else if (selectedHorses.length < 3) {
+            selectedHorses.push({ id, name: name });
+          }
+          updateSelectionUI();
+        };
+      }
     });
 
     updateSelectionUI();
   });
+
+  // --- ★重要：以下の設定は onValue の外で、かつ要素が存在する場合のみ実行する ---
 
   const clearBtn = document.getElementById("js-clear-btn");
   if (clearBtn) {
