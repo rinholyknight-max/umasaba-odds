@@ -36,34 +36,50 @@ export const PASSWORDS = {
 /**
  * ログイン実行
  */
-// js/auth.js 内の login 関数をこのように書き換えてください
+
 export async function login(input) {
   if (!input) {
-    alert("IDを入力してください");
+    alert("IDまたはパスワードを入力してください");
     return;
   }
 
   try {
-    // 1. Firebaseで匿名サインインを実行し、完了を待つ
-    const userCredential = await signInAnonymously(auth);
-    console.log("Firebaseサインイン成功:", userCredential.user.uid);
+    let role = "guest";
 
-    // 2. 権限判定（ここはご自身のロジックに合わせてください）
-    // 例: 管理者IDなら admin、それ以外は guest
-    const role = input === "admin-id-here" ? "admin" : "guest";
+    // 1. 管理者チェック (PASSWORDS.ADMIN と一致するか)
+    if (input === PASSWORDS.ADMIN) {
+      role = "admin";
+    }
+    // 2. 一般ユーザーチェック (USER_MAP に存在するか)
+    else if (USER_MAP[input]) {
+      role = "guest";
+    } else {
+      alert("有効なIDまたはパスワードではありません");
+      return;
+    }
 
-    // 3. sessionStorage に必要な情報をすべて書き込む
-    // ここが checkAuth の判定基準になります
+    // --- ここからが重要：FirebaseとSessionの同期 ---
+
+    // 3. Firebase 匿名認証を実行 (これがないと checkAuth が resolve しない)
+    await signInAnonymously(auth);
+
+    // 4. SessionStorage に必要な情報を保存
     sessionStorage.setItem("user_id", input);
     sessionStorage.setItem("auth_role", role);
+    sessionStorage.setItem("user_name", role === "admin" ? "管理者" : USER_MAP[input] || "不明なユーザー");
     sessionStorage.setItem("is_logged_in", "true");
 
-    // 4. 確実に書き込みが終わったタイミングで遷移
-    console.log("遷移します...");
-    window.location.replace("index.html"); // replaceを使うと「戻る」でログイン画面に戻らなくなります
+    console.log(`ログイン成功: ${role}権限`);
+
+    // 5. 遷移
+    if (role === "admin") {
+      window.location.href = "admin.html"; // 管理者は管理画面へ
+    } else {
+      window.location.href = "index.html"; // 一般はメインへ
+    }
   } catch (error) {
-    console.error("ログインエラー:", error);
-    alert("ログイン処理中にエラーが発生しました: " + error.message);
+    console.error("Login Error:", error);
+    alert("認証エラーが発生しました。");
   }
 }
 
