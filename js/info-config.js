@@ -27,31 +27,32 @@ const infoMessages = {
 /**
  * Infoボタンの初期化関数
  */
+
 export function initPageInfo(pageKey) {
-  // DOMが確実に構築されてから実行
   const setup = () => {
     const infoBtn = document.getElementById("js-page-info");
-    if (!infoBtn) {
-      console.warn(`Info button (#js-page-info) not found on ${pageKey} page.`);
-      return;
-    }
+    const modal = document.getElementById("js-modal");
+    if (!infoBtn || !modal) return;
 
     const config = infoMessages[pageKey];
     if (!config) return;
 
-    // onclickではなくaddEventListenerを使う（上書き防止）
+    // ボタンクリック時の処理
     infoBtn.addEventListener("click", (e) => {
-      e.preventDefault(); // バブリングやデフォルト動作を防止
+      e.preventDefault();
 
-      const modal = document.getElementById("js-modal");
+      // モーダル内の各パーツを取得（あなたのHTML構造に合わせる）
       const modalTitle = document.getElementById("js-modal-title");
-      const modalBody = document.getElementById("js-modal-comment-list") || document.getElementById("js-modal-comment");
+      const modalBody = modal.querySelector(".c-modal__body");
+      // bodyの中の特定のリストコンテナ（js-modal-comment-list）を取得
+      const listContainer = document.getElementById("js-modal-comment-list");
 
-      if (modal && modalTitle && modalBody) {
+      if (modalTitle && listContainer) {
+        // 1. タイトルを「ページ説明」用に書き換え
         modalTitle.innerText = config.title;
 
-        // モーダルの中身を構築
-        modalBody.innerHTML = `
+        // 2. 中身をInfo用に書き換え
+        listContainer.innerHTML = `
           <div class="p-info-modal" style="padding: 10px 0;">
             <p style="line-height:1.6; margin-bottom:24px; color:var(--text-main); font-size:0.95rem; white-space: pre-wrap;">${config.body}</p>
             <div style="border-top:1px solid var(--border); padding-top:16px; text-align:center;">
@@ -63,14 +64,20 @@ export function initPageInfo(pageKey) {
           </div>
         `;
 
+        // 3. 表示
         modal.classList.add("is-show");
-      } else {
-        console.error("Modal elements missing in the DOM.");
       }
     });
+
+    // ★重要：閉じ処理も「上書き」ではなく「追加」しておく
+    const closeBtn = document.getElementById("js-modal-close");
+    const overlay = document.getElementById("js-modal-overlay");
+    const closeModal = () => modal.classList.remove("is-show");
+
+    if (closeBtn) closeBtn.addEventListener("click", closeModal);
+    if (overlay) overlay.addEventListener("click", closeModal);
   };
 
-  // すでにDOMが準備できていれば実行、そうでなければDOMContentLoadedを待つ
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", setup);
   } else {
