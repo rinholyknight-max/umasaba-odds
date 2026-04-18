@@ -24,35 +24,39 @@ export async function initUserPage() {
   initPageInfo("user");
   initTheme();
 
-  if (!checkAuth("guest")) return;
+  // 1. Firebaseの認証状態を確認し、ユーザー情報を直接取得する
+  // checkAuthがPromiseを返し、認証済みユーザーオブジェクトを返却する前提
+  const user = await checkAuth("guest");
+  if (!user) return; // ログインしていなければAuth側でリダイレクト
 
   initMenu();
   const logoutBtn = document.getElementById("js-logout");
   if (logoutBtn) logoutBtn.onclick = logout;
 
-  const myName = sessionStorage.getItem("user_name") || "不明なユーザー";
+  // 2. ユーザー名の表示更新
+  const myName = user.displayName || sessionStorage.getItem("user_name") || "不明なユーザー";
   const userDisplay = document.getElementById("js-display-user");
   if (userDisplay) userDisplay.innerText = myName;
 
-  // --- ★ 修正：IDの取得と補完ロジック ---
+  // 3. ターゲットIDの決定
   const params = new URLSearchParams(window.location.search);
   let targetId = params.get("id");
 
-  // URLにIDがない場合、自分のIDをストレージから取得して補完する
+  // URLにIDがない＝「マイページ」としてアクセスした場合
   if (!targetId) {
-    targetId = localStorage.getItem("user_uid") || sessionStorage.getItem("user_uid");
+    // ストレージを介さず、認証済みの user.uid を直接使用する
+    targetId = user.uid;
 
-    // それでもIDがない（未ログイン）場合はエラーとして戻す
     if (!targetId) {
-      alert("ユーザーIDが見つかりません。ログインし直してください。");
+      // 万が一UIDが取得できない場合（ほぼありえませんが安全策として）
+      alert("ユーザー情報の取得に失敗しました。再ログインしてください。");
       window.location.href = "index.html";
       return;
     }
-
-    // URLを書き換えずに処理を続行（マイページ扱い）
-    console.log("Viewing my own profile via storage UID.");
+    console.log("Viewing my own profile via Firebase Auth UID.");
   }
 
+  // 4. DBからプロフィールデータを取得
   try {
     const userRef = ref(db, `users/${targetId}`);
     const snapshot = await get(userRef);
@@ -60,8 +64,10 @@ export async function initUserPage() {
     if (snapshot.exists()) {
       const data = snapshot.val();
       renderProfile(data);
+      // 投票履歴の読み込み
       loadUserHistory(targetId);
     } else {
+      // ユーザーデータが存在しない場合
       const nameEl = document.getElementById("js-user-name");
       if (nameEl) nameEl.innerText = "未登録のユーザーです";
       const historyListEl = document.getElementById("js-history-list");
@@ -70,6 +76,7 @@ export async function initUserPage() {
   } catch (err) {
     console.error("Profile Load Error:", err);
   } finally {
+    // ローディング表示を解除
     document.body.classList.remove("is-loading");
   }
 }
