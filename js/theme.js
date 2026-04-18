@@ -12,12 +12,11 @@ export function initTheme() {
 
   // 3. ログインページ以外の場合のみ、推しテーマの適用とフェードイン制御を行う
   if (!isLoginPage) {
-    const savedOshi = sessionStorage.getItem("user_oshi");
-    // applyCharaThemeの中で最終的に data-theme-loaded を付与する
+    const savedOshi = localStorage.getItem("user_oshi");
     applyCharaTheme(savedOshi);
   } else {
     // ログインページの場合は、即座に表示させる
-    htmlEl.setAttribute("data-theme-loaded", "true");
+    document.documentElement.setAttribute("data-theme-loaded", "true");
   }
 
   // 3. ボタンを探す処理を関数化
