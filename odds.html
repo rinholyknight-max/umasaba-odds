@@ -56,11 +56,16 @@
       </ul>
     </nav>
     <div class="l-menu__overlay" id="js-overlay"></div>
-
     <main class="l-main-content odds-content">
-      <div class="p-voting is-results">
+      <div id="js-race-selector" class="p-odds-selector" style="display: none">
+        <h1 class="p-voting__title">公開中のオッズ</h1>
+        <div id="js-race-list" class="p-voting__list"></div>
+      </div>
+
+      <div id="js-odds-detail" class="p-voting is-results" style="display: none">
         <div class="p-voting__fixed-header">
-          <h1 class="p-voting__title">投票結果</h1>
+          <h1 id="js-race-title" class="p-voting__title">投票結果</h1>
+
           <div class="p-voting__chart-container">
             <canvas id="oddsChart"></canvas>
           </div>
@@ -70,18 +75,23 @@
               <span class="material-symbols-outlined">filter_list</span>
               絞り込み・並び替え
             </summary>
-
             <div class="p-voting__filter-content">
               <div class="p-voting__search-box">
                 <input type="text" id="js-search-input" class="c-input" placeholder="キャラ名で絞り込み..." />
               </div>
-
               <div class="p-voting__controls">
                 <button id="sort-asc" class="c-button c-button--secondary">人気順 ↓</button>
                 <button id="sort-desc" class="c-button c-button--secondary">大穴順 ↑</button>
               </div>
             </div>
           </details>
+
+          <div style="margin-top: 15px">
+            <a href="odds.html" class="c-button c-button--secondary" style="width: 100%; font-size: 0.8rem">
+              <span class="material-symbols-outlined" style="font-size: 1.2rem">arrow_back</span>
+              レース一覧へ戻る
+            </a>
+          </div>
         </div>
 
         <div class="p-voting__main-content">

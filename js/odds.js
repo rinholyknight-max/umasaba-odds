@@ -25,17 +25,68 @@ export function initOdds() {
 
   if (!checkAuth()) return;
   initMenu();
-  document.getElementById("js-logout").onclick = logout;
+  const logoutBtn = document.getElementById("js-logout");
+  if (logoutBtn) logoutBtn.onclick = logout;
 
-  // DOM取得
+  // --- URLパラメータ判定 ---
+  const urlParams = new URLSearchParams(window.location.search);
+  const raceId = urlParams.get("race");
+
+  const selectorEl = document.getElementById("js-race-selector");
+  const detailEl = document.getElementById("js-odds-detail");
+
+  if (!raceId) {
+    // 【モードA】レース一覧を表示
+    if (selectorEl) selectorEl.style.display = "block";
+    if (detailEl) detailEl.style.display = "none";
+    loadRaceList();
+  } else {
+    // 【モードB】詳細表示（グラフ・オッズ）
+    if (selectorEl) selectorEl.style.display = "none";
+    if (detailEl) detailEl.style.display = "block"; // または ""
+    loadOddsDetail(raceId);
+  }
+}
+
+// --- 関数: レース一覧の読み込み ---
+function loadRaceList() {
+  const listContainer = document.getElementById("js-race-list");
+  onValue(ref(db, "races"), (snapshot) => {
+    const data = snapshot.val();
+    if (!data) {
+      listContainer.innerHTML = "<p style='padding:20px;'>開催中のレースがありません</p>";
+      return;
+    }
+    let html = "";
+    Object.keys(data).forEach((id) => {
+      const race = data[id];
+      html += `
+        <a href="odds.html?race=${id}" class="p-voting__item" style="text-decoration: none; color: inherit;">
+          <div class="p-voting__info">
+            <div class="p-voting__text-group">
+              <span class="p-voting__name">${race.title || "無題のレース"}</span>
+              <span class="p-voting__user" style="display:block; font-size:0.75rem; color:var(--text-sub);">
+                ${Object.keys(race.horses || {}).length}頭立て
+              </span>
+            </div>
+          </div>
+          <span class="material-symbols-outlined">chevron_right</span>
+        </a>`;
+    });
+    listContainer.innerHTML = html;
+  });
+}
+
+// --- 関数: オッズ詳細の読み込み (元のロジックを統合) ---
+function loadOddsDetail(raceId) {
+  // DOM再取得
   const oddsListDiv = document.getElementById("odds-list");
   const totalInfoDiv = document.getElementById("total-info");
   const searchInput = document.getElementById("js-search-input");
   const modal = document.getElementById("js-modal");
   const modalComment = document.getElementById("js-modal-comment");
   const modalTitle = document.getElementById("js-modal-title");
-
-  // 折りたたみ要素の取得
+  const raceTitleDisp = document.getElementById("js-race-title");
   const filterDetails = document.querySelector(".p-voting__filter-details");
 
   let allCombos = [];
@@ -43,12 +94,11 @@ export function initOdds() {
   let horseToUserMap = {};
   let myChart = null;
 
-  // モーダル操作
+  // モーダル操作、updateChart, render は元のコードと同じため省略せず組み込みます
   const openModal = (voterList) => {
     modalTitle.innerText = `投票コメント一覧`;
     const listContainer = document.getElementById("js-modal-comment-list") || modalComment;
     listContainer.innerHTML = "";
-
     voterList.forEach((v) => {
       const isObj = typeof v === "object" && v !== null;
       const name = isObj ? v.name : v;
@@ -58,20 +108,14 @@ export function initOdds() {
 
       const item = document.createElement("div");
       item.className = "c-modal__comment-item";
-      item.style.marginBottom = "15px";
-      item.style.paddingBottom = "10px";
-      item.style.borderBottom = "1px solid var(--border)";
-
       item.innerHTML = `
         <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-sub);">
             ${uid ? `<a href="user.html?id=${uid}" style="color:var(--chara-main); font-weight:bold; text-decoration:none;">${name}</a>` : `<strong>${name}</strong>`}
             <span>${date}</span>
         </div>
-        <p style="margin:5px 0 0; line-height:1.4;">${comment}</p>
-    `;
+        <p style="margin:5px 0 0; line-height:1.4;">${comment}</p>`;
       listContainer.appendChild(item);
     });
-
     modal.classList.add("is-show");
   };
 
@@ -79,7 +123,6 @@ export function initOdds() {
   document.getElementById("js-modal-close").onclick = closeModal;
   document.getElementById("js-modal-overlay").onclick = closeModal;
 
-  // チャート更新
   const updateChart = () => {
     const canvas = document.getElementById("oddsChart");
     if (!canvas) return;
@@ -94,7 +137,6 @@ export function initOdds() {
 
     const displayData = sorted.slice(0, 7);
     if (myChart) myChart.destroy();
-
     myChart = new Chart(canvas.getContext("2d"), {
       type: "pie",
       data: {
@@ -108,7 +150,7 @@ export function initOdds() {
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false, // ★重要: これでCSSの高さが反映される
+        maintainAspectRatio: false,
         plugins: {
           legend: {
             position: window.innerWidth <= 768 ? "bottom" : "right",
@@ -128,9 +170,7 @@ export function initOdds() {
 
       const item = document.createElement("div");
       item.className = "p-voting__item p-voting__item--odds";
-      item.style.cursor = "pointer";
       item.onclick = () => openModal(voterList);
-
       item.innerHTML = `
         <div class="p-voting__info">
           <div class="p-voting__combo-names">
@@ -144,20 +184,13 @@ export function initOdds() {
         <div class="p-voting__right-column">
           <div class="p-voting__voter-list" id="voters-${c.id}"></div>
           <div class="p-voting__odds-display"><span class="p-voting__number">${odds}</span></div>
-        </div>
-      `;
+        </div>`;
 
       const chipContainer = item.querySelector(`#voters-${c.id}`);
       voterList.forEach((voter) => {
         const chip = document.createElement("span");
         chip.className = "p-voting__voter-tag";
-        chip.style.cursor = "pointer";
-        const isObject = typeof voter === "object" && voter !== null;
-        chip.innerText = isObject ? voter.name || "不明" : voter;
-        chip.onclick = (e) => {
-          e.stopPropagation();
-          openModal(voterList);
-        };
+        chip.innerText = typeof voter === "object" && voter !== null ? voter.name || "不明" : voter;
         chipContainer.appendChild(chip);
       });
       oddsListDiv.appendChild(item);
@@ -165,47 +198,42 @@ export function initOdds() {
     updateChart();
   };
 
-  // リアルタイム監視
-  onValue(ref(db, "horses"), (snap) => {
-    const data = snap.val();
-    if (data) for (let id in data) horseToUserMap[data[id].horseName] = data[id].userName;
-    if (allCombos.length > 0) render(allCombos);
-  });
+  // --- リアルタイム監視 (パスを races/${raceId} 配下に変更) ---
+  onValue(ref(db, `races/${raceId}`), (snap) => {
+    const raceData = snap.val();
+    if (!raceData) return;
 
-  onValue(ref(db, "combos"), (snap) => {
-    const data = snap.val();
-    if (!data) return;
+    // タイトル更新
+    if (raceTitleDisp) raceTitleDisp.innerText = raceData.title || "投票結果";
+
+    // 馬データから名前マップ作成
+    const horses = raceData.horses || {};
+    horseToUserMap = {};
+    for (let hId in horses) {
+      horseToUserMap[horses[hId].horseName] = horses[hId].userName;
+    }
+
+    // オッズ(combos)データ処理
+    const comboData = raceData.combos || {};
     allCombos = [];
     totalVotes = 0;
-    for (let id in data) {
-      const v = data[id].votes || 0;
+    for (let cId in comboData) {
+      const v = comboData[cId].votes || 0;
       totalVotes += v;
-      allCombos.push({ id, ...data[id], v });
+      allCombos.push({ id: cId, ...comboData[cId], v });
     }
-    totalInfoDiv.innerText = `総投票数: ${totalVotes} 票`;
+    if (totalInfoDiv) totalInfoDiv.innerText = `総投票数: ${totalVotes} 票`;
     render(allCombos.sort((a, b) => b.v - a.v));
   });
 
-  // 検索入力
-  searchInput.oninput = () => {
-    const key = searchInput.value.toLowerCase();
-
-    // 検索されたら自動で開く
-    if (key.length > 0 && filterDetails) {
-      filterDetails.setAttribute("open", "");
-    }
-
-    render(allCombos.filter((c) => c.id.toLowerCase().includes(key)));
-  };
-
-  // ソートボタンの処理
-  document.getElementById("sort-asc").onclick = () => {
-    render([...allCombos].sort((a, b) => b.v - a.v));
-    if (window.innerWidth <= 768 && filterDetails) filterDetails.removeAttribute("open");
-  };
-
-  document.getElementById("sort-desc").onclick = () => {
-    render([...allCombos].sort((a, b) => a.v - b.v));
-    if (window.innerWidth <= 768 && filterDetails) filterDetails.removeAttribute("open");
-  };
+  // 検索・ソート処理
+  if (searchInput) {
+    searchInput.oninput = () => {
+      const key = searchInput.value.toLowerCase();
+      if (key.length > 0 && filterDetails) filterDetails.setAttribute("open", "");
+      render(allCombos.filter((c) => c.id.toLowerCase().includes(key)));
+    };
+  }
+  document.getElementById("sort-asc").onclick = () => render([...allCombos].sort((a, b) => b.v - a.v));
+  document.getElementById("sort-desc").onclick = () => render([...allCombos].sort((a, b) => a.v - b.v));
 }
