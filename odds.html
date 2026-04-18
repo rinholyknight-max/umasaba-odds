@@ -31,13 +31,17 @@
 
     <nav class="l-menu" id="js-menu">
       <div class="l-menu__user-box">
-        <div class="l-menu__user-icon">
-          <span class="material-symbols-outlined">account_circle</span>
-        </div>
-        <div class="l-menu__user-info">
-          <p class="l-menu__user-label">ログインユーザー</p>
-          <span id="js-display-user" class="l-menu__user-name"></span>
-        </div>
+        <a href="user.html" class="l-menu__user-link">
+          <div class="l-menu__user-icon">
+            <span class="material-symbols-outlined">account_circle</span>
+          </div>
+
+          <div class="l-menu__user-info">
+            <p>LOGIN USER</p>
+            <span id="js-display-user">読み込み中...</span>
+            <span class="l-menu__user-badge">マイページを表示</span>
+          </div>
+        </a>
       </div>
 
       <ul class="l-menu__list">
