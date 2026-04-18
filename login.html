@@ -23,18 +23,33 @@
 
     <script type="module">
       import { initTheme } from "./js/theme.js";
-      import { login } from "./js/auth.js"; // パスが正しいか再確認
+      import { login } from "./js/auth.js";
+
+      // テーマ初期化（checkAuthは呼ばないのでループしません）
       initTheme();
 
-      // onclickに直接 async 関数を割り当てる
-      document.getElementById("login-btn").onclick = async () => {
-        try {
-          const inputVal = document.getElementById("login-input").value; // IDを login-input に変更した場合はここも合わせる
-          await login(inputVal);
-        } catch (err) {
-          console.error("Login call error:", err);
-        }
-      };
+      const loginBtn = document.getElementById("login-btn");
+      const loginInput = document.getElementById("login-input");
+
+      if (loginBtn) {
+        loginBtn.onclick = async () => {
+          const val = loginInput.value.trim();
+          if (!val) return alert("IDを入力してください");
+
+          loginBtn.disabled = true;
+          loginBtn.innerText = "認証中...";
+
+          try {
+            // ここで auth.js の login を実行
+            await login(val);
+            // 成功すれば login() 内の location.href で飛ばされます
+          } catch (err) {
+            console.error(err);
+            loginBtn.disabled = false;
+            loginBtn.innerText = "ログイン";
+          }
+        };
+      }
     </script>
   </body>
 </html>
