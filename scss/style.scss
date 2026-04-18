@@ -1039,51 +1039,49 @@ h2,
 
 .p-user-profile {
   background: var(--bg-card);
-  border-radius: 20px;
+  border-radius: 24px;
   overflow: hidden;
   box-shadow: var(--shadow);
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
   border: 1px solid var(--border);
-
-  // --- ヘッダー（背景グラデーション） ---
+  // --- ヘッダー（高さを出し、色を強調） ---
   &__header {
-    height: 160px;
-    // メインカラーからサブカラーへの斜めグラデーション
+    height: 200px; // 160pxから拡大
     background: linear-gradient(135deg, var(--chara-main) 0%, var(--chara-sub) 100%);
     position: relative;
     display: flex;
     justify-content: center;
     align-items: flex-end;
 
-    // 公式っぽい斜めの切り込みを入れる場合
+    // 切り込みを少し深く
     &::after {
       content: "";
       position: absolute;
       bottom: -1px;
       left: 0;
       width: 100%;
-      height: 40px;
+      height: 60px;
       background: var(--bg-card);
       clip-path: polygon(0 100%, 100% 100%, 100% 0);
     }
   }
 
-  // --- アイコン部分 ---
+  // --- アイコン（一回り大きく） ---
   &__icon-wrap {
     position: relative;
     z-index: 2;
-    margin-bottom: -40px; // ヘッダーに少し被せる
+    margin-bottom: -50px;
   }
 
   &__icon {
-    width: 110px;
-    height: 110px;
+    width: 140px; // 110pxから拡大
+    height: 140px;
     background: #fff;
     border-radius: 50%;
-    padding: 4px; // 白いフチ
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    border: 3px solid var(--chara-main); // 推しキャラ色で縁取り
+    padding: 5px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    border: 4px solid var(--chara-main);
     overflow: hidden;
 
     img {
@@ -1094,93 +1092,99 @@ h2,
     }
   }
 
-  // --- ボディ部分 ---
+  // --- ボディ（余白をたっぷり） ---
   &__body {
-    padding: 60px 24px 30px;
+    padding: 70px 40px 40px; // 全体的にパディングを増加
     text-align: center;
   }
 
   &__name {
-    font-size: 1.6rem;
+    font-size: 2.2rem; // 1.6remから大幅アップ
     font-weight: 900;
     color: var(--text-main);
-    margin-bottom: 8px;
-    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+    letter-spacing: 0.08em;
   }
 
   &__circle {
     display: inline-block;
-    padding: 4px 16px;
-    background: #f0f0f0;
+    padding: 6px 24px;
+    background: #f5f5f5;
     border-radius: 50px;
-    font-size: 0.85rem;
+    font-size: 1rem; // サイズアップ
     color: var(--text-sub);
     font-weight: bold;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
     border: 1px solid var(--border);
 
-    // ダークモード時は背景を少し明るく
     [data-theme="dark"] & {
-      background: #333;
+      background: #252525;
     }
   }
 
-  // --- コメント（吹き出し風） ---
+  // --- コメント（読みやすく、太めに） ---
   &__status {
     position: relative;
-    background: #f9f9f9;
-    padding: 15px;
-    border-radius: 12px;
-    margin-bottom: 30px;
-    border-left: 5px solid var(--chara-main); // 左側に縦のアクセントライン
+    background: #fdfdfd;
+    padding: 24px 30px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+    border-left: 8px solid var(--chara-main); // アクセントを太く
 
     [data-theme="dark"] & {
       background: #2a2a2a;
     }
-
-    &::before {
-      content: "“";
-      position: absolute;
-      top: 5px;
-      left: 10px;
-      font-size: 2rem;
-      color: var(--chara-main);
-      opacity: 0.2;
-      font-family: serif;
-    }
   }
 
   &__comment {
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 1.15rem; // サイズアップ
+    font-weight: 500;
+    line-height: 1.8;
     color: var(--text-main);
-    word-break: break-all;
   }
 
   // --- インフォメーションリスト ---
   &__info-list {
-    border-top: 1px dashed var(--border);
-    padding-top: 20px;
-    text-align: left;
+    border-top: 2px dashed var(--border); // 線を少し強調
+    padding-top: 30px;
   }
 
   &__info-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 0;
+    padding: 12px 0;
   }
 
   &__label {
-    font-size: 0.8rem;
-    font-weight: bold;
-    color: var(--chara-main); // ラベルを推し色に
-    text-transform: uppercase;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--chara-main);
+    background: rgba(var(--chara-main-rgb, 0, 0, 0), 0.1); // JSでRGBも渡せるとオシャレ
+    padding: 2px 8px;
+    border-radius: 4px;
   }
 
   &__value {
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 1.2rem;
+    font-weight: 900;
     color: var(--text-main);
+  }
+}
+
+// SP用調整
+@media (max-width: 768px) {
+  .p-user-profile {
+    width: 95%;
+    &__body {
+      padding: 60px 20px 30px;
+    }
+    &__name {
+      font-size: 1.8rem;
+    }
+    &__icon {
+      width: 120px;
+      height: 120px;
+    }
   }
 }
