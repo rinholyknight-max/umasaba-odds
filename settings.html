@@ -57,6 +57,19 @@
       <h1 class="p-admin__title">プロフィール設定</h1>
 
       <section class="p-admin__register">
+        <div class="p-settings__icon-section" style="text-align: center; margin-bottom: 25px">
+          <div class="p-settings__icon-viewer" style="position: relative; display: inline-block">
+            <div id="js-icon-preview" class="p-settings__icon-preview l-menu__user-icon" style="width: 80px; height: 80px; font-size: 50px; margin: 0 auto; overflow: hidden; border-radius: 50%">
+              <span class="material-symbols-outlined">account_circle</span>
+            </div>
+            <label for="js-icon-upload" class="p-settings__icon-label" style="position: absolute; bottom: 0; right: 0; background: var(--color-primary); color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3)">
+              <span class="material-symbols-outlined" style="font-size: 20px">photo_camera</span>
+            </label>
+            <input type="file" id="js-icon-upload" accept="image/png, image/jpeg, image/gif" style="display: none" />
+          </div>
+          <p style="font-size: 0.75rem; color: #666; margin-top: 5px">タップしてアイコンを変更</p>
+        </div>
+
         <div style="margin-bottom: 20px">
           <label style="display: block; font-size: 0.8rem; margin-bottom: 5px">表示名</label>
           <input type="text" id="js-display-name" class="c-input" placeholder="名前を入力" maxlength="15" autocomplete="off" />

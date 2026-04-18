@@ -1,6 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
 import { getDatabase, ref, get, update } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
 
+import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-storage.js";
+
 import { initTheme } from "./theme.js";
 import { checkAuth, logout } from "./auth.js";
 import { initMenu } from "./menu.js";
@@ -18,6 +20,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
+const storage = getStorage(app);
 
 export function initSettings() {
   // 1. 認証チェック
@@ -32,6 +35,20 @@ export function initSettings() {
   const stakeInput = document.getElementById("js-default-stake");
   const saveBtn = document.getElementById("js-save-settings");
   const msgArea = document.getElementById("js-status-msg");
+
+  // ★アイコン関連の要素を取得
+  const iconUploadInput = document.getElementById("js-icon-upload");
+  const iconPreviewDiv = document.getElementById("js-icon-preview");
+
+  // ユーザーIDがない、またはゲストの場合はアイコン変更を不可にする
+  if (!userId || userId === "GUEST_USER") {
+    if (iconUploadInput) iconUploadInput.disabled = true;
+    const label = document.querySelector(".p-settings__icon-label");
+    if (label) label.style.display = "none";
+  }
+
+  // アップロード用に選択されたファイルを保持する変数
+  let selectedIconFile = null;
 
   // sessionStorageから現在のユーザーID(ゲームID)を取得
   const userId = sessionStorage.getItem("user_id");
@@ -49,10 +66,44 @@ export function initSettings() {
           const data = snapshot.val();
           nameInput.value = data.userName || "";
           stakeInput.value = data.defaultStake || 1000;
+
+          // ★アイコン画像の反映
+          if (data.photoURL) {
+            iconPreviewDiv.innerHTML = `<img src="${data.photoURL}" alt="アイコン" style="width:100%; height:100%; object-fit:cover;">`;
+          }
         }
       })
       .catch((err) => console.error("データ取得エラー:", err));
   }
+
+  // ★追加：画像が選択された時のプレビュー処理
+  iconUploadInput?.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    // ファイル形式チェック (jpeg, png, gif)
+    if (!file.type.match("image.*")) {
+      alert("画像ファイル(jpg, png, gif)を選択してください");
+      iconUploadInput.value = "";
+      return;
+    }
+
+    // ファイルサイズチェック (例: 2MBまで)
+    if (file.size > 2 * 1024 * 1024) {
+      alert("ファイルサイズは2MB以下にしてください");
+      iconUploadInput.value = "";
+      return;
+    }
+
+    selectedIconFile = file;
+
+    // FileReaderで読み込んでプレビュー表示
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      iconPreviewDiv.innerHTML = `<img src="${event.target.result}" alt="プレビュー" style="width:100%; height:100%; object-fit:cover;">`;
+    };
+    reader.readAsDataURL(file);
+  });
 
   // 5. 保存処理 (Realtime Databaseのupdateを使用)
   saveBtn.addEventListener("click", async () => {
@@ -80,6 +131,30 @@ export function initSettings() {
         defaultStake: newStake,
         updatedAt: Date.now(),
       });
+
+      // ★画像が選択されている場合はアップロードを実行
+      if (selectedIconFile) {
+        msgArea.textContent = "画像をアップロード中...";
+
+        // Storageの保存パス: users/ユーザーID/profile.png (またはjpg)
+        const fileExt = selectedIconFile.type.split("/")[1]; // png, jpeg, gif
+        const storagePath = storageRef(storage, `users/${userId}/profile.${fileExt}`);
+
+        // アップロード実行
+        const snapshot = await uploadBytes(storagePath, selectedIconFile);
+
+        // アップロード後のダウンロードURLを取得
+        const downloadURL = await getDownloadURL(snapshot.ref);
+
+        // データベースに保存するデータに追加
+        updateData.photoURL = downloadURL;
+
+        // sessionStorageにも保存（他のページでの表示用）
+        sessionStorage.setItem("user_photo_url", downloadURL);
+      }
+
+      // Realtime Databaseのデータを更新
+      await update(dbRef(db, `users/${userId}`), updateData);
 
       // sessionStorageも更新しておかないと、画面上の表示が古いままになる
       sessionStorage.setItem("user_name", newName);
