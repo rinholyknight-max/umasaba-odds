@@ -43,7 +43,7 @@ export function initOdds() {
   } else {
     // 【モードB】詳細表示（グラフ・オッズ）
     if (selectorEl) selectorEl.style.display = "none";
-    if (detailEl) detailEl.style.display = "block"; // または ""
+    if (detailEl) detailEl.style.display = "";
     loadOddsDetail(raceId);
   }
 }
