@@ -34,6 +34,15 @@ export function initVoting() {
   const voterNameInput = document.getElementById("js-voter-name");
   const voterCommentInput = document.getElementById("js-voter-comment"); // ★追加
 
+  // --- 自動入力ロジック ---
+  if (voterNameInput) {
+    // sessionStorageに保存されている名前があればセット
+    const savedName = sessionStorage.getItem("user_name");
+    if (savedName) {
+      voterNameInput.value = savedName;
+    }
+  }
+
   // UI更新
   const updateSelectionUI = () => {
     for (let i = 1; i <= 3; i++) {
