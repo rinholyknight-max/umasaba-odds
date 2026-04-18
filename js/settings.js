@@ -20,19 +20,62 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const storage = getStorage(app);
 
-cropper = new Cropper(cropImg, {
-  aspectRatio: 1, // 正方形固定
-  viewMode: 1, // 枠外にはみ出さないように制限
-  dragMode: "move", // 画像をドラッグで動かせる
-  autoCropArea: 1, // 最初に画像いっぱいに枠を表示
-  restore: false,
-  guides: false,
-  center: true,
-  highlight: false,
-  cropBoxMovable: true,
-  cropBoxResizable: false, // 枠のサイズは変えさせず、画像を動かして調整させる
-  toggleDragModeOnDblclick: false,
-});
+/**
+ * ★修正版：cropImg の定義場所を確実に作成する
+ */
+let cropper = null;
+
+async function openCropper(file) {
+  return new Promise((resolve) => {
+    // 1. ここで要素を確実に取得する
+    const modal = document.getElementById("js-crop-modal");
+    const cropImg = document.getElementById("js-crop-image"); // ★これが無いとエラーになります
+    const confirmBtn = document.getElementById("js-crop-confirm");
+    const cancelBtn = document.getElementById("js-crop-cancel");
+
+    // 要素が見つからない場合のガード
+    if (!modal || !cropImg) {
+      console.error("モーダルまたは画像要素が見つかりません。HTMLを確認してください。");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      cropImg.src = e.target.result;
+      modal.style.display = "flex";
+
+      // 2. Cropperの初期化（ここで cropImg を使う）
+      if (cropper) cropper.destroy();
+      cropper = new Cropper(cropImg, {
+        aspectRatio: 1,
+        viewMode: 1,
+        dragMode: "move",
+        autoCropArea: 1,
+        guides: false,
+      });
+    };
+    reader.readAsDataURL(file);
+
+    // 確定ボタン
+    confirmBtn.onclick = () => {
+      const canvas = cropper.getCroppedCanvas({ width: 400, height: 400 });
+      canvas.toBlob(
+        (blob) => {
+          modal.style.display = "none";
+          resolve(new File([blob], file.name, { type: "image/jpeg" }));
+        },
+        "image/jpeg",
+        0.85,
+      );
+    };
+
+    // キャンセルボタン
+    cancelBtn.onclick = () => {
+      modal.style.display = "none";
+      resolve(null);
+    };
+  });
+}
 
 /**
  * ★追加：画像を正方形にクロップ（中央切り抜き）＆リサイズする関数
@@ -135,10 +178,18 @@ export function initSettings() {
     try {
       if (msgArea) msgArea.textContent = "画像を加工中...";
 
-      // ★追加：ここで正方形に切り抜きを実行
-      selectedIconFile = await cropToSquare(file);
+      // 1. 手動切り抜きモーダルを開く
+      // ★ここを openCropper に変更
+      const croppedFile = await openCropper(file);
 
-      if (msgArea) msgArea.textContent = "";
+      // 2. キャンセル（モーダルの「キャンセル」ボタン）された場合は処理を中断
+      if (!croppedFile) {
+        if (msgArea) msgArea.textContent = "";
+        return;
+      }
+
+      // 3. 切り抜かれたファイルを保存用変数に代入
+      selectedIconFile = croppedFile;
 
       // プレビュー表示には加工後の selectedIconFile を使う
       const reader = new FileReader();
