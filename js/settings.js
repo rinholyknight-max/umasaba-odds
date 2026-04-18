@@ -20,6 +20,20 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const storage = getStorage(app);
 
+cropper = new Cropper(cropImg, {
+  aspectRatio: 1, // 正方形固定
+  viewMode: 1, // 枠外にはみ出さないように制限
+  dragMode: "move", // 画像をドラッグで動かせる
+  autoCropArea: 1, // 最初に画像いっぱいに枠を表示
+  restore: false,
+  guides: false,
+  center: true,
+  highlight: false,
+  cropBoxMovable: true,
+  cropBoxResizable: false, // 枠のサイズは変えさせず、画像を動かして調整させる
+  toggleDragModeOnDblclick: false,
+});
+
 /**
  * ★追加：画像を正方形にクロップ（中央切り抜き）＆リサイズする関数
  */
