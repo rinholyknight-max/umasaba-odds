@@ -61,7 +61,7 @@ export async function initUserPage() {
   }
 }
 
-// ★ 追加：投票履歴を取得して描画する関数
+// ★ 追加・修正：全レースから特定のユーザーの投票履歴を抽出する
 async function loadUserHistory(targetId) {
   const historyListEl = document.getElementById("js-history-list");
   if (!historyListEl) return;
@@ -69,42 +69,86 @@ async function loadUserHistory(targetId) {
   historyListEl.innerHTML = '<div class="c-loading">履歴を読み込み中...</div>';
 
   try {
-    // logsフォルダから uid が targetId と一致するものを検索
-    const logsRef = ref(db, "logs");
-    const historyQuery = query(logsRef, orderByChild("uid"), equalTo(targetId));
-    const snapshot = await get(historyQuery);
+    // 1. 全レースデータを取得
+    const racesRef = ref(db, "races");
+    const snapshot = await get(racesRef);
 
     if (snapshot.exists()) {
-      historyListEl.innerHTML = "";
-      const logs = [];
-      snapshot.forEach((child) => {
-        logs.push(child.val());
+      const races = snapshot.val();
+      const userHistory = [];
+
+      // 2. 各レース -> 各コンボ -> 各投票者を走査
+      Object.keys(races).forEach((raceId) => {
+        const race = races[raceId];
+        const combos = race.combos || {};
+
+        Object.keys(combos).forEach((comboId) => {
+          const combo = combos[comboId];
+          const voters = combo.voters || [];
+
+          // voters配列の中からこのユーザー(targetId)の投票を探す
+          const myVote = Array.isArray(voters) ? voters.find((v) => v.uid === targetId || v === targetId) : null;
+
+          if (myVote) {
+            // 履歴用のオブジェクトを作成
+            userHistory.push({
+              raceTitle: race.title || "無題のレース",
+              raceId: raceId,
+              combination: comboId,
+              timestamp: myVote.at || 0, // 投票日時
+              comment: myVote.comment || "",
+            });
+          }
+        });
       });
 
-      // 新しい順（降順）にソート
-      logs.sort((a, b) => b.timestamp - a.timestamp);
+      // 3. 描画
+      if (userHistory.length > 0) {
+        // 新しい順にソート
+        userHistory.sort((a, b) => b.timestamp - a.timestamp);
 
-      logs.forEach((log) => {
-        const date = new Date(log.timestamp).toLocaleString();
-        // 組み合わせのアンダースコアをハイフンに置換して見やすく
-        const comboDisplay = log.combination ? log.combination.split("_").join(" - ") : "不明な組み合わせ";
+        historyListEl.innerHTML = "";
+        userHistory.forEach((item) => {
+          const date = item.timestamp ? new Date(item.timestamp).toLocaleString() : "不明な日時";
+          const comboDisplay = item.combination.split("_").join(" - ");
 
-        const item = document.createElement("div");
-        item.className = "p-user__history-item";
-        item.style.borderLeft = "4px solid var(--chara-main)"; // 推し色でアクセント
-        item.style.marginBottom = "15px";
-        item.style.padding = "10px";
-        item.style.background = "var(--bg-card)";
+          const div = document.createElement("div");
+          div.className = "p-user__history-item";
+          div.style.borderLeft = "4px solid var(--chara-main)";
+          div.style.marginBottom = "15px";
+          div.style.padding = "15px";
+          div.style.background = "var(--bg-card)";
+          div.style.borderRadius = "8px";
+          div.style.boxShadow = "0 2px 5px rgba(0,0,0,0.05)";
 
-        item.innerHTML = `
-          <div style="font-size: 0.75rem; color: var(--text-sub);">${date}</div>
-          <div style="font-weight: bold; margin: 5px 0;">${comboDisplay}</div>
-          <p style="font-size: 0.9rem; margin: 0; color: var(--text-main);">${log.comment || "（コメントなし）"}</p>
-        `;
-        historyListEl.appendChild(item);
-      });
+          div.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+              <div style="font-weight: bold; color: var(--chara-main); font-size: 0.8rem;">
+                <a href="odds.html?race=${item.raceId}" style="text-decoration:none; color:inherit;">
+                  <span class="material-symbols-outlined" style="font-size:1rem; vertical-align:middle;">analytics</span> 
+                  ${item.raceTitle}
+                </a>
+              </div>
+              <div style="font-size: 0.75rem; color: var(--text-sub);">${date}</div>
+            </div>
+            <div style="font-weight: bold; margin-bottom: 8px; font-size: 1rem;">${comboDisplay}</div>
+            ${
+              item.comment
+                ? `
+              <p style="font-size: 0.9rem; margin: 0; color: var(--text-main); background: var(--bg-page); padding: 8px; border-radius: 4px;">
+                ${item.comment}
+              </p>
+            `
+                : ""
+            }
+          `;
+          historyListEl.appendChild(div);
+        });
+      } else {
+        historyListEl.innerHTML = '<p style="text-align:center; padding:20px; color:var(--text-sub);">まだ投票履歴がありません。</p>';
+      }
     } else {
-      historyListEl.innerHTML = '<p style="text-align:center; padding:20px; color:var(--text-sub);">まだ投票履歴がありません。</p>';
+      historyListEl.innerHTML = '<p style="text-align:center; padding:20px; color:var(--text-sub);">データが存在しません。</p>';
     }
   } catch (err) {
     console.error("History Load Error:", err);
