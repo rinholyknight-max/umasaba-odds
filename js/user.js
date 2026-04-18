@@ -24,36 +24,31 @@ export async function initUserPage() {
   initPageInfo("user");
   initTheme();
 
-  // 1. Firebaseの認証状態を確認し、ユーザー情報を直接取得する
-  // checkAuthがPromiseを返し、認証済みユーザーオブジェクトを返却する前提
-  const user = await checkAuth("guest");
-  if (!user) return; // ログインしていなければAuth側でリダイレクト
+  // ★重要：結果を await で受け取る。中身は { uid, fbUser, role }
+  const authInfo = await checkAuth("guest");
+  if (!authInfo) return;
 
   initMenu();
   const logoutBtn = document.getElementById("js-logout");
   if (logoutBtn) logoutBtn.onclick = logout;
 
-  // 2. ユーザー名の表示更新
-  const myName = user.displayName || sessionStorage.getItem("user_name") || "不明なユーザー";
+  const myName = sessionStorage.getItem("user_name") || "不明なユーザー";
   const userDisplay = document.getElementById("js-display-user");
   if (userDisplay) userDisplay.innerText = myName;
 
-  // 3. ターゲットIDの決定
   const params = new URLSearchParams(window.location.search);
   let targetId = params.get("id");
 
-  // URLにIDがない＝「マイページ」としてアクセスした場合
+  // URLにIDがない場合、authInfoから取得したUID（個人ID）を補完
   if (!targetId) {
-    // ストレージを介さず、認証済みの user.uid を直接使用する
-    targetId = user.uid;
+    targetId = authInfo.uid;
+    console.log("My UID detected via authInfo:", targetId);
+  }
 
-    if (!targetId) {
-      // 万が一UIDが取得できない場合（ほぼありえませんが安全策として）
-      alert("ユーザー情報の取得に失敗しました。再ログインしてください。");
-      window.location.href = "index.html";
-      return;
-    }
-    console.log("Viewing my own profile via Firebase Auth UID.");
+  if (!targetId) {
+    alert("ユーザーIDが特定できませんでした。");
+    window.location.href = "main.html";
+    return;
   }
 
   // 4. DBからプロフィールデータを取得
