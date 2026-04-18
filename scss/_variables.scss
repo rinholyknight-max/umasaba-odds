@@ -19,6 +19,11 @@ $color-text-main: #1a1a1a;
 $color-text-sub: #666666;
 $color-border: #eeeeee;
 
+// 変数（公式のイメージカラーに近いもの）
+$color-um-green: #4caf50; // 芝イメージ
+$color-um-gold: #d4af37; // 勝利のゴールド
+$color-um-bg: #fdfdfd;
+
 // --- 2. Design Fixed Values (順序を前に移動) ---
 // CSS変数内で使うために、先に定義しておく必要があります
 $shadow-sm-value: 0 4px 12px rgba(0, 0, 0, 0.1);
