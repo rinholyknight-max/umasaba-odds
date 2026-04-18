@@ -1041,67 +1041,72 @@ h2,
   display: flex;
   flex-direction: column;
   background: var(--bg-card);
-  width: 95%; // SP/TBのデフォルト
+  width: 95%;
   margin: 40px auto;
   border-radius: 40px;
   overflow: hidden;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
   border: 1px solid var(--border);
 
-  // --- PC版：80vwをフル活用 ---
   @media (min-width: 1025px) {
     flex-direction: row;
     width: 80vw;
-    min-height: 600px;
+    min-height: 650px; // 吹き出しが入るので少し高さを確保
     align-items: stretch;
   }
 
-  // --- 左側：ビジュアル＆推しカラーエリア ---
+  // --- 左側：ビジュアル＆吹き出しエリア ---
   &__header {
     background: linear-gradient(135deg, var(--chara-main) 0%, var(--chara-sub) 100%);
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 60px;
+    padding: 60px 20px;
     overflow: hidden;
 
     @media (min-width: 1025px) {
-      flex: 0 0 45%; // 左半分を大きく取る
-      padding: 0;
+      flex: 0 0 45%;
+      padding: 40px;
     }
 
-    // 背景に大きな推し名を透かせる演出（オプション）
     &::before {
-      content: "OSHI PROFILE";
+      content: "OFFICIAL PROFILE";
       position: absolute;
       font-size: 8rem;
       font-weight: 900;
       color: rgba(255, 255, 255, 0.1);
       white-space: nowrap;
       transform: rotate(-90deg);
-      left: -20%;
+      left: -15%;
       pointer-events: none;
     }
   }
 
-  &__icon-wrap {
+  // アイコンと吹き出しをまとめるグループ
+  &__visual-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
     z-index: 10;
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
 
+  &__icon-wrap {
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     &:hover {
-      transform: scale(1.05) translateY(-10px);
+      transform: scale(1.03);
     }
   }
 
   &__icon {
-    width: 280px; // PCでの圧倒的なサイズ
-    height: 280px;
+    width: 240px;
+    height: 240px;
     background: #fff;
     border-radius: 50%;
-    padding: 10px;
-    border: 10px solid var(--chara-main);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    padding: 8px;
+    border: 8px solid var(--chara-main);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 
     img {
       width: 100%;
@@ -1111,12 +1116,59 @@ h2,
     }
 
     @media (max-width: 768px) {
-      width: 180px;
-      height: 180px;
+      width: 160px;
+      height: 160px;
     }
   }
 
-  // --- 右側：ステータスダッシュボード ---
+  // --- 吹き出し（アイコン直下） ---
+  &__status {
+    position: relative;
+    margin-top: 40px; // アイコンとの距離
+    background: var(--bg-card);
+    padding: 24px 30px;
+    border-radius: 24px;
+    border: 3px solid var(--chara-main);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 90%;
+    width: 100%; // PCで横に広がりすぎないように後で調整
+
+    @media (min-width: 1025px) {
+      max-width: 380px; // PCでの吹き出しの最大幅
+    }
+
+    // 吹き出しのしっぽ（上向き）
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-style: solid;
+      border-width: 0 15px 24px 15px;
+    }
+
+    &::before {
+      border-color: transparent transparent var(--chara-main) transparent;
+    }
+
+    &::after {
+      top: -19px; // フチを作るために少し下げる
+      border-color: transparent transparent var(--bg-card) transparent;
+    }
+  }
+
+  &__comment {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-main);
+    font-weight: 700;
+    text-align: center;
+    word-break: break-all;
+  }
+
+  // --- 右側：データエリア ---
   &__body {
     flex: 1;
     padding: 40px;
@@ -1125,15 +1177,15 @@ h2,
     justify-content: center;
 
     @media (min-width: 1025px) {
-      padding: 80px;
+      padding: 60px 80px;
     }
   }
 
   &__name {
-    font-size: clamp(2.5rem, 5vw, 4rem); // 画面幅に合わせて可変
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
     font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 15px;
+    line-height: 1.2;
+    margin-bottom: 10px;
     color: var(--text-main);
     text-align: left;
   }
@@ -1141,49 +1193,19 @@ h2,
   &__circle {
     display: inline-block;
     align-self: flex-start;
-    padding: 8px 24px;
+    padding: 6px 20px;
     background: var(--chara-main);
-    color: #fff; // メインカラー背景に白文字
-    border-radius: 12px;
-    font-size: 1.1rem;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 1rem;
     font-weight: bold;
     margin-bottom: 40px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   }
 
-  &__status {
-    position: relative;
-    padding: 30px;
-    background: rgba(var(--chara-main-rgb, 0, 0, 0), 0.03);
-    border-radius: 20px;
-    margin-bottom: 50px;
-    border-right: 2px solid var(--border);
-    border-bottom: 2px solid var(--border);
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 6px;
-      height: 100%;
-      background: var(--chara-main);
-      border-radius: 20px;
-    }
-  }
-
-  &__comment {
-    font-size: 1.4rem;
-    line-height: 1.8;
-    color: var(--text-main);
-    font-weight: 500;
-  }
-
-  // --- 情報グリッド：PCで横に並べる ---
   &__info-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
     border-top: 1px solid var(--border);
     padding-top: 40px;
   }
@@ -1191,45 +1213,45 @@ h2,
   &__info-item {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
   }
 
   &__label {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--chara-main);
     font-weight: 800;
-    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
 
   &__value {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 900;
     color: var(--text-main);
   }
 }
 
-// SP版の微調整
+// SP版の調整
 @media (max-width: 1024px) {
   .p-user-profile {
     &__header {
-      min-height: 300px;
+      min-height: 400px;
       &::after {
         content: "";
         position: absolute;
         bottom: -1px;
         left: 0;
         width: 100%;
-        height: 80px;
+        height: 60px;
         background: var(--bg-card);
         clip-path: polygon(0 100%, 100% 100%, 100% 0);
       }
     }
     &__body {
-      padding: 60px 30px;
+      padding: 40px 24px;
       text-align: center;
     }
-    &__circle,
-    &__name {
+    &__name,
+    &__circle {
       align-self: center;
       text-align: center;
     }
