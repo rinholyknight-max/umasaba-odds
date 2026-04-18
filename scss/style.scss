@@ -239,7 +239,7 @@ h2,
   }
 
   &__user-box {
-    padding: 30px 10px; // 上下にゆとりを持たせる
+    padding: 15px 10px; // 上下にゆとりを持たせる
     background: var(--bg-page);
     border-bottom: 1px solid var(--border);
 
@@ -249,7 +249,7 @@ h2,
       justify-items: center; // 子要素を中央寄せ
       gap: 12px;
 
-      padding: 24px 12px;
+      padding: 18px 12px;
       background: var(--bg-card);
       border-radius: 20px;
       text-decoration: none;
@@ -334,7 +334,7 @@ h2,
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 20px;
+    padding: 18px;
     color: var(--text-main);
     text-decoration: none;
     font-weight: bold;
