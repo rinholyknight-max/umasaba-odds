@@ -44,22 +44,26 @@ export function initTheme() {
 
 // 推しキャラのテーマを適用する共通関数
 export async function applyCharaTheme(oshiName) {
-  if (!oshiName) return;
-
+  // 最後に必ず実行されるように、try-catch-finally の形にするのが安全です
   try {
-    const response = await fetch("./data/characters.json");
-    if (!response.ok) return;
+    if (oshiName) {
+      const response = await fetch("./data/characters.json");
+      if (response.ok) {
+        const charaMaster = await response.json();
+        const config = charaMaster[oshiName];
 
-    const charaMaster = await response.json();
-    const config = charaMaster[oshiName];
-
-    if (config && config.main && config.sub) {
-      const root = document.documentElement;
-      root.style.setProperty("--chara-main", config.main);
-      root.style.setProperty("--chara-sub", config.sub);
-      console.log(`Theme colors applied for: ${oshiName}`);
+        if (config && config.main && config.sub) {
+          const root = document.documentElement;
+          root.style.setProperty("--chara-main", config.main);
+          root.style.setProperty("--chara-sub", config.sub);
+          console.log(`Theme colors applied for: ${oshiName}`);
+        }
+      }
     }
   } catch (error) {
     console.error("Theme Apply Error:", error);
+  } finally {
+    // 推しがいてもいなくても、エラーが起きても、最後は必ず画面を表示させる
+    document.documentElement.setAttribute("data-theme-loaded", "true");
   }
 }

@@ -126,6 +126,17 @@ button {
   transition: all 0.3s ease;
 }
 
+/* 最初は透明にする */
+html {
+  opacity: 0;
+}
+
+/* 準備ができたら表示（ふわっと出すと高級感が出ます） */
+html[data-theme-loaded=true] {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
 body {
   font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
