@@ -73,12 +73,13 @@ async function openCropper(file) {
     };
   });
 }
+
 /**
  * 設定ページの初期化
  */
 export async function initSettings() {
-  // ★ async を追加
-  // --- ★ 1. 最初に認証をチェックして結果を待つ ---
+  // 1. 認証チェック
+  // auth.js側のcheckAuthがオブジェクト { uid, role } を返す前提です
   const authInfo = await checkAuth();
   if (!authInfo) return;
 
@@ -86,6 +87,7 @@ export async function initSettings() {
   initMenu();
   initPageInfo("settings");
 
+  // DOM要素の取得
   const nameInput = document.getElementById("js-display-name");
   const stakeInput = document.getElementById("js-default-stake");
   const saveBtn = document.getElementById("js-save-settings");
@@ -96,23 +98,29 @@ export async function initSettings() {
   const commentInput = document.getElementById("js-user-comment");
   const oshiSelect = document.getElementById("js-oshi-chara");
 
-  // ★ 2. authInfo から確実に ID と名前を取得する
+  // authInfoから情報を抽出
   const userId = authInfo.uid;
-  const userName = authInfo.fbUser?.displayName || sessionStorage.getItem("user_name") || "不明なユーザー";
+  const userRole = authInfo.role; // 'personal', 'admin', 'guest'
+  const userName = sessionStorage.getItem("user_name") || "不明なユーザー";
 
   if (userDisplay) userDisplay.innerText = userName;
 
-  // ゲストユーザー制限
-  if (!userId || authInfo.role === "guest" || userId === "GUEST_USER") {
+  // ★重要：権限による操作制限の修正
+  // ログインIDがある（userIdが存在する）かつ、ロールが 'guest' ではない場合のみ許可
+  const canEdit = userId && userId !== "GUEST_USER" && userRole !== "guest";
+
+  if (!canEdit) {
     if (iconUploadInput) iconUploadInput.disabled = true;
     const label = document.querySelector(".p-settings__icon-label");
     if (label) label.style.display = "none";
+    // ゲストには保存ボタンも非表示にするか無効化
+    if (saveBtn) saveBtn.style.opacity = "0.5";
   }
 
   let selectedIconFile = null;
 
-  // 3. 初期データ読み込み (Promiseチェーンを await に書き換えるとよりスッキリします)
-  if (userId && authInfo.role !== "guest") {
+  // 3. 初期データ読み込み
+  if (canEdit) {
     try {
       const userRef = ref(db, `users/${userId}`);
       const snapshot = await get(userRef);
@@ -123,7 +131,7 @@ export async function initSettings() {
         if (commentInput) commentInput.value = data.comment || "";
         if (oshiSelect) oshiSelect.value = data.favoriteChara || "";
         if (data.photoURL && iconPreviewDiv) {
-          iconPreviewDiv.innerHTML = `<img src="${data.photoURL}" alt="アイコン" style="width:100%; height:100%; object-fit:cover;">`;
+          iconPreviewDiv.innerHTML = `<img src="${data.photoURL}" alt="アイコン" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">`;
         }
       }
     } catch (err) {
@@ -131,98 +139,54 @@ export async function initSettings() {
     }
   }
 
-  // プレビュー処理
+  // --- 画像選択・クロップ処理 ---
   iconUploadInput?.addEventListener("change", async (e) => {
-    // ★ const から let に変更（後で上書きするため）
+    if (!canEdit) return; // 権限がなければ何もしない
+
     let file = e.target.files[0];
     if (!file) return;
-
-    // 画像ファイルかどうかの基本チェック
-    if (!file.type.match("image.*")) {
-      alert("画像ファイルを選択してください");
-      return;
-    }
 
     try {
       if (msgArea) msgArea.textContent = "画像を加工中...";
 
-      // ============================================================
-      // ★追加：iPhone (HEIC) 対策
-      // ============================================================
-      // 拡張子が .heic か、MIMEタイプが image/heic の場合
+      // iPhone (HEIC) 対策
       if (file.name.toLowerCase().endsWith(".heic") || file.type === "image/heic") {
-        try {
-          if (msgArea) msgArea.textContent = "iPhone形式(.heic)を変換中...";
-
-          // heic2any ライブラリを使って JPEG の Blob に変換
-          // ※ heic2any がグローバルに読み込まれている必要があります
-          const jpegBlob = await heic2any({
-            blob: file,
-            toType: "image/jpeg",
-            quality: 0.85, // 画質 (0.0 ～ 1.0)
-          });
-
-          // 変換された Blob を、Cropperが扱える File オブジェクトに再構築
-          // ファイル名は .jpg に書き換えます
-          const newFileName = file.name.replace(/\.[^/.]+$/, ".jpg");
-          file = new File([jpegBlob], newFileName, { type: "image/jpeg" });
-
-          if (msgArea) msgArea.textContent = "変換完了。加工画面を開きます...";
-        } catch (heicErr) {
-          console.error("HEIC変換エラー:", heicErr);
-          // 変換に失敗した場合は、元のファイルで続行を試みる（おそらくCropperで黒くなる）
-          if (msgArea) msgArea.textContent = "形式変換に失敗しました。";
+        if (typeof heic2any === "function") {
+          const jpegBlob = await heic2any({ blob: file, toType: "image/jpeg", quality: 0.8 });
+          file = new File([jpegBlob], file.name.replace(/\.[^/.]+$/, ".jpg"), { type: "image/jpeg" });
         }
       }
-      // ============================================================
 
-      // 1. 手動切り抜きモーダルを開く
-      // 変換済みの file (JPEG) が渡されます
       const croppedFile = await openCropper(file);
-
-      // 2. キャンセル（モーダルの「キャンセル」ボタン）された場合は処理を中断
       if (!croppedFile) {
         if (msgArea) msgArea.textContent = "";
-        // file input の値をリセット（同じファイルを再度選択できるようにするため）
-        e.target.value = "";
         return;
       }
 
-      if (msgArea) msgArea.textContent = "プレビューを作成中...";
-
-      // 3. 切り抜かれたファイルを保存用変数に代入
       selectedIconFile = croppedFile;
 
-      // プレビュー表示には加工後の selectedIconFile を使う
       const reader = new FileReader();
       reader.onload = (event) => {
         if (iconPreviewDiv) {
-          iconPreviewDiv.innerHTML = `<img src="${event.target.result}" alt="プレビュー" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">`;
+          iconPreviewDiv.innerHTML = `<img src="${event.target.result}" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">`;
         }
         if (msgArea) msgArea.textContent = "準備完了。「設定を保存」を押してください。";
       };
       reader.readAsDataURL(selectedIconFile);
     } catch (err) {
-      console.error("画像処理エラー:", err);
+      console.error(err);
       alert("画像の加工に失敗しました");
-      if (msgArea) msgArea.textContent = "エラーが発生しました。";
     }
   });
 
   // --- 保存処理 ---
-  saveBtn.addEventListener("click", async () => {
-    // 認証情報の再確認
-    if (!userId || authInfo.role === "guest") {
-      alert("ゲストユーザーは設定を変更できません。");
+  saveBtn?.addEventListener("click", async () => {
+    if (!canEdit) {
+      alert("このアカウントでは設定を変更できません。");
       return;
     }
 
-    const nameEl = document.getElementById("js-display-name");
-    const stakeEl = document.getElementById("js-default-stake");
-    const commentEl = document.getElementById("js-user-comment");
-    const oshiEl = document.getElementById("js-oshi-chara");
-    const newName = nameEl ? nameEl.value.trim() : "";
-
+    const newName = nameInput ? nameInput.value.trim() : "";
     if (!newName) {
       alert("表示名を入力してください");
       return;
@@ -233,37 +197,26 @@ export async function initSettings() {
 
     try {
       const userRef = ref(db, `users/${userId}`);
-      const snapshot = await get(userRef);
-      const currentData = snapshot.exists() ? snapshot.val() : {};
-
-      // サークル名の維持
-      const myCircle = sessionStorage.getItem("user_circle") || currentData.circleName || "";
-
       const updateData = {
         userName: newName,
-        defaultStake: stakeEl ? Number(stakeEl.value) : currentData.defaultStake || 1000,
-        comment: commentEl ? commentEl.value.trim() : "",
-        favoriteChara: oshiEl ? oshiEl.value : "",
-        circleName: myCircle,
+        defaultStake: stakeInput ? Number(stakeInput.value) : 1000,
+        comment: commentInput ? commentInput.value.trim() : "",
+        favoriteChara: oshiSelect ? oshiSelect.value : "",
         updatedAt: Date.now(),
       };
 
-      // 画像アップロード処理
+      // 画像がある場合はStorageにアップロード
       if (selectedIconFile) {
-        if (msgArea) msgArea.textContent = "画像をアップロード中...";
         const storagePath = storageRef(storage, `users/${userId}/profile.jpg`);
         const upSnap = await uploadBytes(storagePath, selectedIconFile);
         const downloadURL = await getDownloadURL(upSnap.ref);
         updateData.photoURL = downloadURL;
         sessionStorage.setItem("user_photo_url", downloadURL);
-      } else if (currentData.photoURL) {
-        updateData.photoURL = currentData.photoURL;
       }
 
       await update(userRef, updateData);
 
-      // キャッシュ更新
-      sessionStorage.setItem("user_name", newName); // localStorageからsessionStorageへ
+      sessionStorage.setItem("user_name", newName);
       if (userDisplay) userDisplay.innerText = newName;
 
       if (msgArea) {
@@ -271,24 +224,19 @@ export async function initSettings() {
         msgArea.style.color = "var(--color-primary)";
       }
     } catch (e) {
-      console.error("保存エラー:", e);
-      if (msgArea) msgArea.textContent = "保存に失敗しました。";
+      console.error(e);
+      alert("保存に失敗しました。");
     } finally {
       saveBtn.disabled = false;
       saveBtn.textContent = "設定を保存する";
     }
   });
 
-  // 推しキャラテーマ反映
+  // キャラテーマ、ログアウト、ローディング解除（省略なし）
   if (oshiSelect) {
-    oshiSelect.onchange = (e) => {
-      if (typeof applyCharaTheme === "function") applyCharaTheme(e.target.value);
-    };
+    oshiSelect.onchange = (e) => applyCharaTheme?.(e.target.value);
   }
-
   const logoutBtn = document.getElementById("js-logout");
   if (logoutBtn) logoutBtn.onclick = logout;
-
-  // 全ての初期化が終わったらローディングを消す
   document.body.classList.remove("is-loading");
 }
