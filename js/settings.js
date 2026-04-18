@@ -6,6 +6,11 @@ import { checkAuth, logout } from "./auth.js";
 import { initMenu } from "./menu.js";
 
 export function initSettings() {
+  if (!checkAuth()) return;
+
+  initTheme(); // テーマ（ダークモード）の適用
+  initMenu(); // ハンバーガーメニューのイベント登録
+
   const auth = getAuth();
   const db = getFirestore();
 
