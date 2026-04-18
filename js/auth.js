@@ -2,10 +2,11 @@
  * 認証管理モジュール (js/auth.js)
  */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
-import { getAuth, signInAnonymously, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
+// ★Firebase Authのインポートを追加
+import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
-// --- 初期設定 ---
+// --- Firebase初期化 ---
 const firebaseConfig = {
   apiKey: "AIzaSyBp5Cg6A3v3VZal-orAiwFjphKIDYx9ATo",
   authDomain: "umasaba-odds.firebaseapp.com",
@@ -18,7 +19,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-const auth = getAuth(app);
+const auth = getAuth(app); // ★Authの初期化
 
 // パスワードと表示名の対応表
 const USER_MAP = {
@@ -34,94 +35,135 @@ export const PASSWORDS = {
 };
 
 /**
- * ログイン実行 (DBからユーザーを検索する動的認証)
+ * ログイン実行
  */
 export async function login(input) {
-  const trimmedInput = input.trim();
-  if (!trimmedInput) {
+  if (!input) {
     alert("IDまたはパスワードを入力してください");
     return;
   }
 
-  try {
-    // 1. 管理者チェック (パスワード固定の場合)
-    if (trimmedInput === PASSWORDS.ADMIN) {
+  // ★共通：匿名ログインを実行するヘルパー関数
+  const startFirebaseSession = async (redirectUrl) => {
+    try {
       await signInAnonymously(auth);
-      sessionStorage.setItem("user_id", "admin");
-      sessionStorage.setItem("auth_role", "admin");
-      sessionStorage.setItem("user_name", "管理者");
-      window.location.href = "admin.html";
+      window.location.href = redirectUrl;
+    } catch (error) {
+      console.error("匿名認証失敗:", error);
+      alert("認証セッションの開始に失敗しました。");
+    }
+  };
+
+  // 1. 管理者チェック
+  if (input === PASSWORDS.ADMIN) {
+    sessionStorage.setItem("auth_role", "admin");
+    sessionStorage.setItem("user_name", "管理者");
+    await startFirebaseSession("admin.html"); // ★匿名ログイン後に遷移
+    return;
+  }
+
+  // 2. 従来サークル（ゲスト）チェック
+  if (PASSWORDS.USER.includes(input)) {
+    sessionStorage.setItem("auth_role", "guest");
+    sessionStorage.setItem("user_name", USER_MAP[input]);
+    sessionStorage.setItem("user_id", "GUEST_USER");
+    await startFirebaseSession("index.html"); // ★匿名ログイン後に遷移
+    return;
+  }
+
+  // --- 3. 個人ログイン（ゲームID）処理 ---
+  try {
+    const allowedRef = ref(db, `allowed_users/${input}`);
+    const allowedSnap = await get(allowedRef);
+
+    if (!allowedSnap.exists()) {
+      alert("このIDは登録を許可されていません。\n管理者に連絡してください。");
       return;
     }
 
-    // 2. 登録ユーザーチェック (DBの /users/ パスを確認しに行く)
-    // ※ ユーザーデータが 'users/582530892' のように保存されていると想定
-    const userRef = ref(db, `users/${trimmedInput}`);
-    const snapshot = await get(userRef);
+    const allowedData = allowedSnap.val();
 
-    if (snapshot.exists()) {
-      const userData = snapshot.val();
-      const displayName = userData.userName || "名無しトレーナー";
+    // ★ここを追加：名簿にあるサークル名をSessionStorageに保存する
+    // これをしないと Settings.js が空文字で上書きしてしまいます
+    sessionStorage.setItem("user_circle", allowedData.circleName || "無所属");
 
-      // Firebase 匿名認証を実行
-      await signInAnonymously(auth);
+    const userRef = ref(db, `users/${input}`);
+    const userSnap = await get(userRef);
 
-      // セッション情報を保存
-      sessionStorage.setItem("user_id", trimmedInput); // 582530892
-      sessionStorage.setItem("auth_role", "guest");
-      sessionStorage.setItem("user_name", displayName);
-      sessionStorage.setItem("is_logged_in", "true");
-
-      console.log(`DB認証成功: ${displayName}`);
-      window.location.href = "index.html";
+    if (!userSnap.exists()) {
+      // ★ここを修正：初回データ作成時にサークル名を含める
+      await set(userRef, {
+        userName: allowedData.userName,
+        circleName: allowedData.circleName || "無所属", // ★追加
+        points: allowedData.initialPoints || 100,
+        createdAt: Date.now(),
+        status: "active",
+      });
+      sessionStorage.setItem("user_name", allowedData.userName);
     } else {
-      // DBにそのIDが見つからなかった場合
-      alert("登録されていないIDです。管理者に確認してください。");
+      const userData = userSnap.val();
+      sessionStorage.setItem("user_name", userData.userName);
+
+      // ★ここを追加：既存ユーザーでも最新のサークル名をSessionに同期する
+      sessionStorage.setItem("user_circle", userData.circleName || allowedData.circleName || "無所属");
+
+      if (userData.photoURL) {
+        sessionStorage.setItem("user_photo_url", userData.photoURL);
+      } else {
+        sessionStorage.removeItem("user_photo_url");
+      }
     }
+
+    sessionStorage.setItem("auth_role", "personal");
+    sessionStorage.setItem("user_id", input);
+
+    await startFirebaseSession("index.html");
   } catch (error) {
-    console.error("Login Error:", error);
-    alert("認証中にエラーが発生しました。");
+    console.error(error);
+    alert("通信エラーが発生しました");
   }
 }
 
+// auth.js 内のログイン成功後の処理
+async function onLoginSuccess(user) {
+  // Firebaseからそのユーザーの favoriteChara を取得
+  const userRef = ref(db, `users/${user.uid}`);
+  const snapshot = await get(userRef);
+
+  if (snapshot.exists()) {
+    const userData = snapshot.val();
+    // 推しキャラ名をセッションに保存
+    sessionStorage.setItem("user_oshi", userData.favoriteChara);
+  }
+}
 /**
  * 権限チェック
+ * @param {string} requiredRole - 必要とされる権限 ('admin' など)
  */
 export function checkAuth(requiredRole = null) {
-  return new Promise((resolve) => {
-    // ログインページ自体の場合はチェックをスキップしないと無限ループする
-    if (window.location.pathname.includes("login.html")) {
-      resolve(null);
-      return;
+  const currentRole = sessionStorage.getItem("auth_role");
+  const userId = sessionStorage.getItem("user_id");
+
+  // 1. そもそもログインしていない場合
+  if (!currentRole) {
+    window.location.href = "login.html";
+    return null; // false から null に変更 (settings.js の if(!authInfo) に合わせる)
+  }
+
+  // 2. 管理者画面へのアクセス制限
+  if (requiredRole === "admin") {
+    if (currentRole !== "admin") {
+      alert("管理者権限が必要です。");
+      window.location.href = "index.html";
+      return null;
     }
+  }
 
-    onAuthStateChanged(auth, async (fbUser) => {
-      const currentRole = sessionStorage.getItem("auth_role");
-      const userId = sessionStorage.getItem("user_id");
-
-      // 未ログイン状態の判定
-      if (!fbUser || !currentRole) {
-        console.warn("Not logged in, redirecting to login.html");
-        window.location.href = "login.html";
-        resolve(null);
-        return;
-      }
-
-      // 管理者権限チェック
-      if (requiredRole === "admin" && currentRole !== "admin") {
-        alert("管理者権限が必要です。");
-        window.location.href = "index.html";
-        resolve(null);
-        return;
-      }
-
-      resolve({
-        uid: userId,
-        fbUser: fbUser,
-        role: currentRole,
-      });
-    });
-  });
+  // ★ 成功時：settings.js が欲しがっている情報をオブジェクトで返す
+  return {
+    uid: userId,
+    role: currentRole,
+  };
 }
 
 /**
@@ -129,7 +171,8 @@ export function checkAuth(requiredRole = null) {
  */
 export function logout() {
   sessionStorage.clear();
-  signOut(auth).then(() => {
+  // ★Firebase Authからもサインアウトする
+  auth.signOut().then(() => {
     window.location.href = "login.html";
   });
 }
