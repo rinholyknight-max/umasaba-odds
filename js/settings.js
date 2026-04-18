@@ -247,3 +247,12 @@ export function initSettings() {
   const logoutBtn = document.getElementById("js-logout");
   if (logoutBtn) logoutBtn.onclick = logout;
 }
+
+// settings.js
+const oshiSelect = document.getElementById("js-oshi-select");
+
+oshiSelect.onchange = (e) => {
+  const newOshi = e.target.value;
+  // プレビューとして即座に色を変える
+  applyCharaTheme(newOshi);
+};

@@ -17,7 +17,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-// --- (中略：インポートやConfigはそのまま) ---
 
 export async function initUserPage() {
   initTheme();
@@ -86,7 +85,18 @@ async function applyCharaTheme(oshiName) {
 
 // renderProfileの中でテーマ適用を呼び出す
 function renderProfile(data) {
-  // ★ ここでテーマ適用を実行
+  const headerTitle = document.getElementById("js-header-title");
+  if (headerTitle) {
+    const targetName = data.userName || "名無し";
+    const myName = sessionStorage.getItem("user_name");
+
+    if (targetName === myName) {
+      headerTitle.innerText = "マイプロフィール";
+    } else {
+      headerTitle.innerText = `${targetName}さんのプロフィール`;
+    }
+  }
+
   applyCharaTheme(data.favoriteChara);
 
   // 名前

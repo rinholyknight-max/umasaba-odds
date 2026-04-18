@@ -45,3 +45,25 @@ export function initTheme() {
     setTimeout(() => clearInterval(retryInterval), 3000);
   }
 }
+
+// ★ 追加：推しキャラのテーマを適用する共通関数
+export async function applyCharaTheme(oshiName) {
+  if (!oshiName) return;
+
+  try {
+    // パスは index.html 等から見た位置にするか、絶対パスで指定
+    const response = await fetch("./data/characters.json");
+    if (!response.ok) return;
+
+    const charaMaster = await response.json();
+    const config = charaMaster[oshiName];
+
+    if (config && config.main && config.sub) {
+      const root = document.documentElement;
+      root.style.setProperty("--chara-main", config.main);
+      root.style.setProperty("--chara-sub", config.sub);
+    }
+  } catch (error) {
+    console.error("Theme Apply Error:", error);
+  }
+}

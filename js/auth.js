@@ -124,6 +124,19 @@ export async function login(input) {
   }
 }
 
+// auth.js 内のログイン成功後の処理
+async function onLoginSuccess(user) {
+  // Firebaseからそのユーザーの favoriteChara を取得
+  const userRef = ref(db, `users/${user.uid}`);
+  const snapshot = await get(userRef);
+
+  if (snapshot.exists()) {
+    const userData = snapshot.val();
+    // 推しキャラ名をセッションに保存
+    sessionStorage.setItem("user_oshi", userData.favoriteChara);
+  }
+}
+
 /**
  * 権限チェック
  * @param {string} requiredRole - 必要とされる権限 ('admin' など)
