@@ -142,7 +142,9 @@ h2,
 
     // アイコン自体のサイズ調整
     .material-symbols-outlined {
-      font-size: 20px; // ダークモードボタンとサイズを合わせる
+      color: #fff;
+      font-weight: bold;
+      font-size: 24px; // ダークモードボタンとサイズを合わせる
     }
   }
 

@@ -212,7 +212,9 @@ h2,
   transform: scale(0.95);
 }
 .l-header__info-btn .material-symbols-outlined {
-  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 24px;
 }
 .l-header__logo {
   font-weight: bold;
