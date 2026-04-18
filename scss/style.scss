@@ -1038,57 +1038,51 @@ h2,
 }
 
 .p-user-profile {
+  display: flex;
+  flex-direction: column; // SP用
   background: var(--bg-card);
+  min-height: 500px;
+  width: 100%;
+  max-width: 1000px; // 横幅を広く取る
+  margin: 0 auto;
   border-radius: 30px;
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); // 影を深くして立体感を出す
-  max-width: 600px;
-  margin: 0 auto;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--border);
 
-  // --- ヘッダー（さらに高さを出し、アイコンの舞台を作る） ---
+  // --- 左側：ビジュアルエリア ---
   &__header {
-    height: 240px; // 200pxからさらに拡大
+    flex: 0 0 40%; // PCでは40%の幅を占有
     background: linear-gradient(135deg, var(--chara-main) 0%, var(--chara-sub) 100%);
-    position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
+    position: relative;
+    padding: 40px;
 
-    // 切り込みを少しシャープに
     &::after {
       content: "";
       position: absolute;
-      bottom: -1px;
-      left: 0;
-      width: 100%;
-      height: 70px; // 少し高く
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 100px;
       background: var(--bg-card);
-      clip-path: polygon(0 100%, 100% 100%, 100% 0);
+      clip-path: polygon(100% 0, 0% 100%, 100% 100%); // PC用の斜め切り込み
+      display: none; // デフォルト非表示
     }
-  }
-
-  // --- アイコン（圧倒的存在感へ） ---
-  &__icon-wrap {
-    position: relative;
-    z-index: 2;
-    margin-bottom: -70px; // ボディへの被さりを大きく
   }
 
   &__icon {
-    width: 180px; // 140pxから大幅拡大（PCでの存在感）
-    height: 180px;
+    width: 240px; // PCではさらに巨大に
+    height: 240px;
     background: #fff;
     border-radius: 50%;
-    padding: 7px; // 白いフチを少し広く
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25); // 影を強く
-    border: 6px solid var(--chara-main); // 推し色のフチを太く
-    overflow: hidden;
-    transition: transform 0.3s ease; // ホバー時の遊び心
-
-    &:hover {
-      transform: scale(1.05); // ホバーで少し大きく
-    }
+    padding: 8px;
+    border: 8px solid var(--chara-main);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 5;
 
     img {
       width: 100%;
@@ -1096,117 +1090,110 @@ h2,
       object-fit: cover;
       border-radius: 50%;
     }
-
-    // アイコン画像がない場合のデフォルト（マテリアルアイコンなど）
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .material-symbols-outlined {
-      font-size: 100px; // デフォルトアイコンも巨大に
-      color: #ccc;
-    }
   }
 
-  // --- ボディ（上部余白を巨大アイコンに合わせて調整） ---
+  // --- 右側：コンテンツエリア ---
   &__body {
-    padding: 90px 40px 40px; // 上部パディングをさらに増加
-    text-align: center;
+    flex: 1;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left; // PCでは左寄せで読みやすく
   }
 
-  // --- (以下のスタイルは前のまま継承) ---
   &__name {
-    font-size: 2.2rem;
+    font-size: 3rem; // 圧倒的な名前の大きさ
     font-weight: 900;
+    margin-bottom: 10px;
     color: var(--text-main);
-    margin-bottom: 12px;
-    letter-spacing: 0.08em;
   }
 
   &__circle {
-    display: inline-block;
-    padding: 6px 24px;
-    background: #f5f5f5;
-    border-radius: 50px;
-    font-size: 1rem;
-    color: var(--text-sub);
+    align-self: flex-start; // 左寄せ
+    background: var(--chara-sub);
+    color: var(--chara-main);
+    padding: 6px 20px;
+    border-radius: 8px;
     font-weight: bold;
-    margin-bottom: 32px;
-    border: 1px solid var(--border);
-
-    [data-theme="dark"] & {
-      background: #252525;
-    }
+    margin-bottom: 40px;
   }
 
   &__status {
-    position: relative;
-    background: #fdfdfd;
-    padding: 24px 30px;
-    border-radius: 16px;
-    margin-bottom: 40px;
-    border-left: 8px solid var(--chara-main);
-
-    [data-theme="dark"] & {
-      background: #2a2a2a;
-    }
-  }
-
-  &__comment {
-    font-size: 1.15rem;
-    font-weight: 500;
+    font-size: 1.25rem;
     line-height: 1.8;
-    color: var(--text-main);
+    padding: 20px;
+    background: rgba(var(--chara-main-rgb, 0, 0, 0), 0.05);
+    border-left: 10px solid var(--chara-main);
+    margin-bottom: 40px;
+    border-radius: 4px 16px 16px 4px;
   }
 
   &__info-list {
-    border-top: 2px dashed var(--border);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); // 項目が増えても並ぶ
+    gap: 20px;
+    border-top: 1px solid var(--border);
     padding-top: 30px;
   }
 
   &__info-item {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 0;
+    flex-direction: column;
+    gap: 4px;
   }
 
   &__label {
-    font-size: 0.95rem;
-    font-weight: 800;
-    color: var(--chara-main);
-    background: rgba(0, 0, 0, 0.03); // ほんのり背景
-    padding: 3px 10px;
-    border-radius: 4px;
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    font-weight: bold;
   }
 
   &__value {
-    font-size: 1.2rem;
-    font-weight: 900;
-    color: var(--text-main);
+    font-size: 1.4rem;
+    font-weight: 800;
   }
-}
 
-// SP用調整（スマホでも見やすい巨大さへ）
-@media (max-width: 768px) {
-  .p-user-profile {
-    width: 95%;
+  // --- PC版 (横並び) のレイアウト変更 ---
+  @media (min-width: 769px) {
+    flex-direction: row;
+
     &__header {
-      height: 180px;
+      min-height: 100%;
+      &::after {
+        display: block; // PCのみ斜めラインを表示
+      }
     }
-    &__icon-wrap {
-      margin-bottom: -50px;
+  }
+
+  // --- SP版 ---
+  @media (max-width: 768px) {
+    &__header {
+      height: 200px;
+      &::after {
+        top: auto;
+        right: 0;
+        bottom: -1px;
+        width: 100%;
+        height: 60px;
+        clip-path: polygon(0 100%, 100% 100%, 100% 0);
+        display: block;
+      }
     }
     &__icon {
-      width: 140px; // スマホでも前のPCサイズ並みに
-      height: 140px;
-      border-width: 5px;
-      padding: 5px;
+      width: 160px;
+      height: 160px;
+      margin-bottom: -60px;
     }
     &__body {
-      padding: 70px 20px 30px;
+      padding: 80px 30px 40px;
+      text-align: center;
     }
     &__name {
-      font-size: 1.8rem;
+      font-size: 2rem;
+    }
+    &__circle {
+      align-self: center;
     }
   }
 }
