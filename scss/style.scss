@@ -1039,50 +1039,69 @@ h2,
 
 .p-user-profile {
   display: flex;
-  flex-direction: column; // SP用
+  flex-direction: column;
   background: var(--bg-card);
-  min-height: 500px;
-  width: 100%;
-  max-width: 1000px; // 横幅を広く取る
-  margin: 0 auto;
-  border-radius: 30px;
+  width: 95%; // SP/TBのデフォルト
+  margin: 40px auto;
+  border-radius: 40px;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
   border: 1px solid var(--border);
 
-  // --- 左側：ビジュアルエリア ---
+  // --- PC版：80vwをフル活用 ---
+  @media (min-width: 1025px) {
+    flex-direction: row;
+    width: 80vw;
+    min-height: 600px;
+    align-items: stretch;
+  }
+
+  // --- 左側：ビジュアル＆推しカラーエリア ---
   &__header {
-    flex: 0 0 40%; // PCでは40%の幅を占有
     background: linear-gradient(135deg, var(--chara-main) 0%, var(--chara-sub) 100%);
+    position: relative;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-    padding: 40px;
+    padding: 60px;
+    overflow: hidden;
 
-    &::after {
-      content: "";
+    @media (min-width: 1025px) {
+      flex: 0 0 45%; // 左半分を大きく取る
+      padding: 0;
+    }
+
+    // 背景に大きな推し名を透かせる演出（オプション）
+    &::before {
+      content: "OSHI PROFILE";
       position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      width: 100px;
-      background: var(--bg-card);
-      clip-path: polygon(100% 0, 0% 100%, 100% 100%); // PC用の斜め切り込み
-      display: none; // デフォルト非表示
+      font-size: 8rem;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.1);
+      white-space: nowrap;
+      transform: rotate(-90deg);
+      left: -20%;
+      pointer-events: none;
+    }
+  }
+
+  &__icon-wrap {
+    z-index: 10;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    &:hover {
+      transform: scale(1.05) translateY(-10px);
     }
   }
 
   &__icon {
-    width: 240px; // PCではさらに巨大に
-    height: 240px;
+    width: 280px; // PCでの圧倒的なサイズ
+    height: 280px;
     background: #fff;
     border-radius: 50%;
-    padding: 8px;
-    border: 8px solid var(--chara-main);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    z-index: 5;
+    padding: 10px;
+    border: 10px solid var(--chara-main);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 
     img {
       width: 100%;
@@ -1090,110 +1109,129 @@ h2,
       object-fit: cover;
       border-radius: 50%;
     }
+
+    @media (max-width: 768px) {
+      width: 180px;
+      height: 180px;
+    }
   }
 
-  // --- 右側：コンテンツエリア ---
+  // --- 右側：ステータスダッシュボード ---
   &__body {
     flex: 1;
-    padding: 60px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: left; // PCでは左寄せで読みやすく
+
+    @media (min-width: 1025px) {
+      padding: 80px;
+    }
   }
 
   &__name {
-    font-size: 3rem; // 圧倒的な名前の大きさ
+    font-size: clamp(2.5rem, 5vw, 4rem); // 画面幅に合わせて可変
     font-weight: 900;
-    margin-bottom: 10px;
+    line-height: 1.1;
+    margin-bottom: 15px;
     color: var(--text-main);
+    text-align: left;
   }
 
   &__circle {
-    align-self: flex-start; // 左寄せ
-    background: var(--chara-sub);
-    color: var(--chara-main);
-    padding: 6px 20px;
-    border-radius: 8px;
+    display: inline-block;
+    align-self: flex-start;
+    padding: 8px 24px;
+    background: var(--chara-main);
+    color: #fff; // メインカラー背景に白文字
+    border-radius: 12px;
+    font-size: 1.1rem;
     font-weight: bold;
     margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   }
 
   &__status {
-    font-size: 1.25rem;
-    line-height: 1.8;
-    padding: 20px;
-    background: rgba(var(--chara-main-rgb, 0, 0, 0), 0.05);
-    border-left: 10px solid var(--chara-main);
-    margin-bottom: 40px;
-    border-radius: 4px 16px 16px 4px;
+    position: relative;
+    padding: 30px;
+    background: rgba(var(--chara-main-rgb, 0, 0, 0), 0.03);
+    border-radius: 20px;
+    margin-bottom: 50px;
+    border-right: 2px solid var(--border);
+    border-bottom: 2px solid var(--border);
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background: var(--chara-main);
+      border-radius: 20px;
+    }
   }
 
+  &__comment {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: var(--text-main);
+    font-weight: 500;
+  }
+
+  // --- 情報グリッド：PCで横に並べる ---
   &__info-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); // 項目が増えても並ぶ
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
     border-top: 1px solid var(--border);
-    padding-top: 30px;
+    padding-top: 40px;
   }
 
   &__info-item {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 8px;
   }
 
   &__label {
-    font-size: 0.85rem;
-    color: var(--text-sub);
-    font-weight: bold;
+    font-size: 1rem;
+    color: var(--chara-main);
+    font-weight: 800;
+    letter-spacing: 0.1em;
   }
 
   &__value {
-    font-size: 1.4rem;
-    font-weight: 800;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--text-main);
   }
+}
 
-  // --- PC版 (横並び) のレイアウト変更 ---
-  @media (min-width: 769px) {
-    flex-direction: row;
-
+// SP版の微調整
+@media (max-width: 1024px) {
+  .p-user-profile {
     &__header {
-      min-height: 100%;
+      min-height: 300px;
       &::after {
-        display: block; // PCのみ斜めラインを表示
-      }
-    }
-  }
-
-  // --- SP版 ---
-  @media (max-width: 768px) {
-    &__header {
-      height: 200px;
-      &::after {
-        top: auto;
-        right: 0;
+        content: "";
+        position: absolute;
         bottom: -1px;
+        left: 0;
         width: 100%;
-        height: 60px;
+        height: 80px;
+        background: var(--bg-card);
         clip-path: polygon(0 100%, 100% 100%, 100% 0);
-        display: block;
       }
-    }
-    &__icon {
-      width: 160px;
-      height: 160px;
-      margin-bottom: -60px;
     }
     &__body {
-      padding: 80px 30px 40px;
+      padding: 60px 30px;
       text-align: center;
     }
+    &__circle,
     &__name {
-      font-size: 2rem;
-    }
-    &__circle {
       align-self: center;
+      text-align: center;
     }
   }
 }
