@@ -1258,4 +1258,18 @@ h2,
   margin: 0 -24px 16px;
   padding: 16px 24px;
   border-bottom: 2px solid var(--border);
+}
+
+.p-voting__selection-container.js-sticky-header {
+  position: sticky;
+  top: 60px;
+  z-index: 100;
+  background: var(--bg-card);
+  padding: 15px;
+  border-bottom: 2px solid var(--border);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.p-voting__slider {
+  margin-top: 10px;
 }/*# sourceMappingURL=style.css.map */

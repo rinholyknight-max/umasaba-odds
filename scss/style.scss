@@ -1341,3 +1341,18 @@ h2,
   padding: v.$space-md v.$space-lg;
   border-bottom: 2px solid var(--border);
 }
+
+.p-voting__selection-container.js-sticky-header {
+  position: sticky;
+  top: 60px; // ヘッダーの高さ
+  z-index: 100;
+  background: var(--bg-card);
+  padding: 15px;
+  border-bottom: 2px solid var(--border);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+// スライダーの中身がガタつかないよう調整
+.p-voting__slider {
+  margin-top: 10px;
+}

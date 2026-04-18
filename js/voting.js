@@ -111,20 +111,34 @@ export function initVoting() {
     }
 
     return `
-      <div class="p-voting__slide-item" data-race-id="${raceId}">
-        <div class="p-voting__selection-container">
-          <h1 class="p-voting__title">${raceInfo.title || "投票フォーム"}</h1>
-          <div class="p-voting__slots">
-            <div class="p-voting__slot" data-slot="1">1枠: <span class="slot-name">未選択</span></div>
-            <div class="p-voting__slot" data-slot="2">2枠: <span class="slot-name">未選択</span></div>
-            <div class="p-voting__slot" data-slot="3">3枠: <span class="slot-name">未選択</span></div>
-          </div>
-        </div>
-        <h2 class="p-voting__subtitle">出走表（3頭選んでください）</h2>
-        <div class="p-voting__list">${horseItemsHtml || "出走馬が登録されていません"}</div>
-      </div>
-    `;
+    <div class="p-voting__slide-item" data-race-id="${raceId}">
+      <h2 class="p-voting__subtitle">出走表</h2>
+      <div class="p-voting__list">${horseItemsHtml || "出走馬なし"}</div>
+    </div>
+  `;
   };
+
+  // スクロール検知時の処理にタイトル更新を追加
+  slider.addEventListener("scroll", () => {
+    const slideWidth = slider.offsetWidth;
+    const index = Math.round(slider.scrollLeft / slideWidth);
+    const slides = document.querySelectorAll(".p-voting__slide-item");
+
+    if (slides[index]) {
+      const newRaceId = slides[index].getAttribute("data-race-id");
+      if (activeRaceId !== newRaceId) {
+        activeRaceId = newRaceId;
+
+        // ★追加：外に出したタイトルを更新
+        const raceData = allRacesData[newRaceId];
+        document.getElementById("js-active-race-title").innerText = raceData.title || "投票フォーム";
+
+        selectedHorses = [];
+        updateSelectionUI();
+        updateDots(index);
+      }
+    }
+  });
 
   // 投票処理
   submitBtn.onclick = async () => {
