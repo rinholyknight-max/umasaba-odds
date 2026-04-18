@@ -36,7 +36,6 @@ export const PASSWORDS = {
 /**
  * ログイン実行
  */
-
 export async function login(input) {
   if (!input) {
     alert("IDまたはパスワードを入力してください");
@@ -44,45 +43,48 @@ export async function login(input) {
   }
 
   try {
-    let role = "guest";
+    let role = "";
+    let displayName = "";
 
-    // 1. 管理者チェック (PASSWORDS.ADMIN と一致するか)
+    // 1. 管理者チェック
     if (input === PASSWORDS.ADMIN) {
       role = "admin";
+      displayName = "管理者";
     }
-    // 2. 一般ユーザーチェック (USER_MAP に存在するか)
+    // 2. 登録ユーザーチェック (USER_MAP[input] が存在するか)
     else if (USER_MAP[input]) {
-      role = "guest";
+      role = "guest"; // 一般ユーザーの権限名
+      displayName = USER_MAP[input]; // 登録されている名前
     } else {
       alert("有効なIDまたはパスワードではありません");
       return;
     }
 
-    // --- ここからが重要：FirebaseとSessionの同期 ---
+    // --- ここからFirebaseとセッションの同期 ---
 
-    // 3. Firebase 匿名認証を実行 (これがないと checkAuth が resolve しない)
+    // 3. Firebase 匿名認証
     await signInAnonymously(auth);
 
-    // 4. SessionStorage に必要な情報を保存
+    // 4. SessionStorage への保存（checkAuthがここを絶対に見る）
     sessionStorage.setItem("user_id", input);
     sessionStorage.setItem("auth_role", role);
-    sessionStorage.setItem("user_name", role === "admin" ? "管理者" : USER_MAP[input] || "不明なユーザー");
+    sessionStorage.setItem("user_name", displayName);
     sessionStorage.setItem("is_logged_in", "true");
 
-    console.log(`ログイン成功: ${role}権限`);
+    console.log(`ログイン成功: ${displayName} (${role})`);
 
-    // 5. 遷移
+    // 5. 遷移先の振り分け
     if (role === "admin") {
-      window.location.href = "admin.html"; // 管理者は管理画面へ
+      window.location.href = "admin.html";
     } else {
-      window.location.href = "index.html"; // 一般はメインへ
+      // 一般ユーザーは index.html へ
+      window.location.href = "index.html";
     }
   } catch (error) {
     console.error("Login Error:", error);
-    alert("認証エラーが発生しました。");
+    alert("認証中にエラーが発生しました。");
   }
 }
-
 /**
  * 権限チェック
  */
