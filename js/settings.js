@@ -181,12 +181,16 @@ export function initSettings() {
     msgArea.textContent = "";
 
     try {
-      // ★修正3: 保存するデータのオブジェクトを定義する
+      // sessionStorageからサークル名を取得しておく
+      const myCircle = sessionStorage.getItem("user_circle") || "";
+
+      // ★修正：保存するデータのオブジェクト
       const updateData = {
         userName: newName,
         defaultStake: newStake,
-        comment: commentInput.value.trim(), // ★追加
-        favoriteChara: oshiSelect.value, // ★追加
+        comment: commentInput.value.trim(),
+        favoriteChara: oshiSelect.value,
+        circleName: myCircle, // ★ここにこの1行を追加！
         updatedAt: Date.now(),
       };
 
