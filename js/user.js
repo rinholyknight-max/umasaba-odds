@@ -17,33 +17,27 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
+// --- (中略：インポートやConfigはそのまま) ---
 
 export async function initUserPage() {
   initTheme();
 
-  // 1. ログインチェック (一般ユーザー権限以上が必要)
-  // ログインしていない場合は index.html へ飛ばす処理が auth.js 側で走ります
-  if (!checkAuth("guest")) {
-    return; // ログイン（ゲスト含む）すらしていない人だけを追い返す
-  }
+  if (!checkAuth("guest")) return;
 
-  // 2. 共通メニューとログアウトボタンの初期化
   initMenu();
   const logoutBtn = document.getElementById("js-logout");
   if (logoutBtn) logoutBtn.onclick = logout;
 
-  // 3. 表示名の設定（ヘッダー用）
   const myName = sessionStorage.getItem("user_name") || "不明なユーザー";
   const userDisplay = document.getElementById("js-display-user");
   if (userDisplay) userDisplay.innerText = myName;
 
-  // 4. URLパラメータから表示対象のユーザーIDを取得
   const params = new URLSearchParams(window.location.search);
   const targetId = params.get("id");
 
   if (!targetId) {
     alert("ユーザーIDが指定されていません。");
-    window.location.href = "main.html"; // IDがない場合はメインへ
+    window.location.href = "main.html";
     return;
   }
 
@@ -53,6 +47,7 @@ export async function initUserPage() {
 
     if (snapshot.exists()) {
       const data = snapshot.val();
+      // ★ ここでプロフィール描画（テーマ適用を含む）を実行
       renderProfile(data);
     } else {
       document.getElementById("js-user-name").innerText = "未登録のユーザーです";
@@ -64,15 +59,43 @@ export async function initUserPage() {
   }
 }
 
+// ★ 追加：テーマを適用する関数
+async function applyCharaTheme(oshiName) {
+  if (!oshiName) return;
+
+  try {
+    const response = await fetch("./data/characters.json");
+    const charaMaster = await response.json();
+    const config = charaMaster[oshiName];
+
+    const root = document.documentElement;
+
+    if (config && config.main && config.sub) {
+      // CSS変数を上書き
+      root.style.setProperty("--chara-main", config.main);
+      root.style.setProperty("--chara-sub", config.sub);
+    } else {
+      // 見つからない場合は変数をクリア（SCSSのデフォルト値に戻る）
+      root.style.removeProperty("--chara-main");
+      root.style.removeProperty("--chara-sub");
+    }
+  } catch (error) {
+    console.error("Theme Apply Error:", error);
+  }
+}
+
+// renderProfileの中でテーマ適用を呼び出す
 function renderProfile(data) {
+  // ★ ここでテーマ適用を実行
+  applyCharaTheme(data.favoriteChara);
+
   // 名前
   const nameEl = document.getElementById("js-user-name");
   if (nameEl) nameEl.innerText = data.userName || "名無し";
 
-  // ★サークル情報（ここを追加・変更）
+  // サークル情報
   const circleEl = document.getElementById("js-user-circle");
   if (circleEl) {
-    // data.circleName があれば表示、なければ「無所属」
     circleEl.innerText = data.circleName ? `所属サークル： ${data.circleName}` : "無所属";
   }
 
@@ -91,5 +114,4 @@ function renderProfile(data) {
   }
 }
 
-// 実行
 initUserPage();

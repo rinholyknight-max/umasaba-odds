@@ -97,15 +97,17 @@ button {
 }
 
 :root {
+  --chara-main: rgb(27, 183, 0);
+  --chara-sub: rgb(180, 245, 144);
   --bg-page: #f4f7f6;
   --bg-card: #ffffff;
   --text-main: #1a1a1a;
   --text-sub: #666666;
   --border: #eeeeee;
-  --header-bg: rgb(27, 183, 0);
+  --header-bg: var(--chara-main);
   --header-text: #ffffff;
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --grad-primary: linear-gradient(135deg, rgb(180, 245, 144) 0%, rgb(27, 183, 0) 100%);
+  --grad-primary: linear-gradient(135deg, var(--chara-sub) 0%, var(--chara-main) 100%);
 }
 
 [data-theme=dark] {
@@ -114,10 +116,8 @@ button {
   --text-main: #e0e0e0;
   --text-sub: #a0a0a0;
   --border: #333333;
-  --header-bg: #154d00;
+  --header-bg: var(--chara-main);
   --header-text: #e0e0e0;
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  --grad-primary: linear-gradient(135deg, rgb(27, 183, 0) 0%, #154d00 100%);
 }
 
 .material-symbols-outlined {
@@ -400,7 +400,7 @@ h2,
   font-size: 1rem;
   margin: 24px 0 16px;
   padding-left: 8px;
-  border-left: 4px solid rgb(27, 183, 0);
+  border-left: 4px solid var(--chara-main);
   color: var(--text-main);
 }
 .p-voting:not(.is-results) .p-voting__selection-container {
@@ -991,118 +991,4 @@ h2,
 .p-crop-modal .p-crop-content .p-crop-btns .c-button--confirm {
   background: rgb(27, 183, 0);
   color: white;
-}
-
-.p-user-profile {
-  background: #fdfdfd;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-  max-width: 500px;
-  margin: 0 auto;
-  border: 2px solid #f0f0f0;
-}
-.p-user-profile__header {
-  height: 140px;
-  background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
-  position: relative;
-  border-bottom: 4px solid #4caf50;
-}
-.p-user-profile__header::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 100px;
-  height: 100%;
-  background: radial-gradient(circle, rgba(76, 175, 80, 0.05) 0%, transparent 70%);
-}
-.p-user-profile__icon-wrap {
-  position: absolute;
-  bottom: -35px;
-  left: 25px;
-  z-index: 2;
-}
-.p-user-profile__icon {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  border: 5px solid #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  background: #fff;
-}
-.p-user-profile__body {
-  padding: 45px 25px 25px;
-}
-.p-user-profile__name {
-  font-size: 1.6rem;
-  font-weight: 900;
-  color: #333;
-  letter-spacing: 0.05em;
-  margin-bottom: 5px;
-}
-.p-user-profile__circle {
-  display: inline-block;
-  font-size: 0.8rem;
-  background: #fff;
-  color: #4caf50;
-  border: 1px solid #4caf50;
-  padding: 2px 12px;
-  border-radius: 50px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-.p-user-profile__status {
-  background: #fcfcfc;
-  border: 1px solid #eee;
-  padding: 18px;
-  border-radius: 12px;
-  margin-bottom: 25px;
-  position: relative;
-}
-.p-user-profile__status::before {
-  content: "STATUS";
-  position: absolute;
-  top: -10px;
-  left: 15px;
-  background: #4caf50;
-  color: #fff;
-  font-size: 0.7rem;
-  padding: 0 8px;
-  border-radius: 4px;
-  font-weight: bold;
-}
-.p-user-profile__comment {
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.6;
-}
-.p-user-profile__info-list .p-user-profile__info-item {
-  display: flex;
-  align-items: center;
-  padding: 15px 0;
-  border-bottom: 1px dashed #ddd;
-}
-.p-user-profile__info-list .p-user-profile__info-item:last-child {
-  border-bottom: none;
-}
-.p-user-profile__label {
-  width: 100px;
-  font-size: 0.85rem;
-  color: #999;
-  font-weight: bold;
-  position: relative;
-}
-.p-user-profile__label::before {
-  content: "●";
-  color: #4caf50;
-  font-size: 0.6rem;
-  margin-right: 5px;
-}
-.p-user-profile__value {
-  flex: 1;
-  font-size: 1.05rem;
-  font-weight: bold;
-  color: #333;
-  text-align: right;
 }/*# sourceMappingURL=style.css.map */

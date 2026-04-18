@@ -2,28 +2,36 @@
 @use "variables" as v;
 
 // --- テーマ変数の定義 ---
+// --- テーマ変数の定義 ---
 :root {
+  // ★ 推しキャラカラーを受け取るための変数（デフォルトは緑系）
+  --chara-main: #{v.$color-primary}; // #4caf50 など
+  --chara-sub: #{v.$color-primary-light}; // #81c784 など
+
   --bg-page: #{v.$color-bg-light};
   --bg-card: #{v.$color-white};
   --text-main: #{v.$color-text-main};
   --text-sub: #{v.$color-text-sub};
   --border: #{v.$color-border};
-  --header-bg: #{v.$color-primary};
+
+  // ★ 固定値だった場所を変数に差し替え
+  --header-bg: var(--chara-main);
   --header-text: #ffffff;
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --grad-primary: linear-gradient(135deg, #{v.$color-primary-light} 0%, #{v.$color-primary} 100%);
+  --grad-primary: linear-gradient(135deg, var(--chara-sub) 0%, var(--chara-main) 100%);
 }
 
 [data-theme="dark"] {
+  // ダークモード時は少し彩度を落とした色にする工夫もできますが、
+  // 一旦はキャラ色を優先し、背景色だけを暗くします
   --bg-page: #121212;
   --bg-card: #1e1e1e;
   --text-main: #e0e0e0;
   --text-sub: #a0a0a0;
   --border: #333333;
-  --header-bg: #154d00;
+  // ダークモードでもキャラ色をヘッダーに使う場合
+  --header-bg: var(--chara-main);
   --header-text: #e0e0e0;
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  --grad-primary: linear-gradient(135deg, #{v.$color-primary} 0%, #154d00 100%);
 }
 
 .material-symbols-outlined {
@@ -273,7 +281,7 @@ h2,
     filter: brightness(1.1);
   }
   &--primary {
-    background: v.$grad-primary;
+    background: var(--grad-primary); // ここが自動で変わる
   }
   &--danger {
     background: v.$grad-danger;
@@ -331,7 +339,7 @@ h2,
     font-size: 1rem;
     margin: v.$space-lg 0 v.$space-md;
     padding-left: 8px;
-    border-left: 4px solid v.$color-primary;
+    border-left: 4px solid var(--chara-main); // ここも連動
     color: var(--text-main);
   }
 
@@ -1026,142 +1034,5 @@ h2,
         color: white;
       }
     }
-  }
-}
-
-.p-user-profile {
-  background: v.$color-um-bg;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-  max-width: 500px;
-  margin: 0 auto;
-  border: 2px solid #f0f0f0; // 外枠をうっすらつける
-
-  // ヘッダー：公式の背景のように少し斜めのグラデ
-  &__header {
-    height: 140px;
-    background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
-    position: relative;
-    border-bottom: 4px solid v.$color-um-green; // 芝の緑ライン
-
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 100px;
-      height: 100%;
-      background: radial-gradient(circle, rgba(v.$color-um-green, 0.05) 0%, transparent 70%);
-    }
-  }
-
-  &__icon-wrap {
-    position: absolute;
-    bottom: -35px;
-    left: 25px;
-    z-index: 2;
-  }
-
-  &__icon {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    border: 5px solid #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    background: #fff;
-  }
-
-  &__body {
-    padding: 45px 25px 25px;
-  }
-
-  // 名前：太字で存在感を出す
-  &__name {
-    font-size: 1.6rem;
-    font-weight: 900;
-    color: #333;
-    letter-spacing: 0.05em;
-    margin-bottom: 5px;
-  }
-
-  // サークル名：公式の称号バッジ風
-  &__circle {
-    display: inline-block;
-    font-size: 0.8rem;
-    background: #fff;
-    color: v.$color-um-green;
-    border: 1px solid v.$color-um-green;
-    padding: 2px 12px;
-    border-radius: 50px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-
-  // ステータス（コメント）エリア：ノートのような質感
-  &__status {
-    background: #fcfcfc;
-    border: 1px solid #eee;
-    padding: 18px;
-    border-radius: 12px;
-    margin-bottom: 25px;
-    position: relative;
-
-    &::before {
-      content: "STATUS";
-      position: absolute;
-      top: -10px;
-      left: 15px;
-      background: v.$color-um-green;
-      color: #fff;
-      font-size: 0.7rem;
-      padding: 0 8px;
-      border-radius: 4px;
-      font-weight: bold;
-    }
-  }
-
-  &__comment {
-    font-size: 0.95rem;
-    color: #555;
-    line-height: 1.6;
-  }
-
-  // 詳細リスト：横のラインを「ステータスバー」風に
-  &__info-list {
-    .p-user-profile__info-item {
-      display: flex;
-      align-items: center;
-      padding: 15px 0;
-      border-bottom: 1px dashed #ddd;
-
-      &:last-child {
-        border-bottom: none;
-      }
-    }
-  }
-
-  &__label {
-    width: 100px;
-    font-size: 0.85rem;
-    color: #999;
-    font-weight: bold;
-    position: relative;
-
-    // ラベルの横に小さなドットをつける（公式UI風）
-    &::before {
-      content: "●";
-      color: v.$color-um-green;
-      font-size: 0.6rem;
-      margin-right: 5px;
-    }
-  }
-
-  &__value {
-    flex: 1;
-    font-size: 1.05rem;
-    font-weight: bold;
-    color: #333;
-    text-align: right;
   }
 }
