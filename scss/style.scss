@@ -803,3 +803,224 @@ h2,
 .is-loading {
   display: none !important;
 }
+
+.p-admin__register {
+  // アイコンセクション
+  .p-settings__icon-section {
+    text-align: center;
+    margin-bottom: 25px;
+
+    .p-settings__icon-viewer {
+      position: relative;
+      display: inline-block;
+    }
+
+    .p-settings__icon-preview {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 50%;
+      border: 3px solid var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-bg-sub);
+
+      .material-symbols-outlined {
+        font-size: 100px;
+        color: var(--color-text-sub);
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .p-settings__icon-label {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      background: var(--color-primary);
+      color: white;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      border: 2px solid white;
+
+      .material-symbols-outlined {
+        font-size: 24px;
+      }
+    }
+
+    .p-settings__icon-text {
+      font-size: 0.85rem;
+      color: var(--color-text-sub);
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  }
+
+  // 設定項目共通
+  .p-settings__item {
+    margin-bottom: 20px;
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      margin-bottom: 5px;
+    }
+  }
+
+  // 保存ボタン
+  #js-save-settings {
+    width: 100%;
+  }
+
+  // ステータスメッセージ
+  #js-status-msg {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+}
+
+// 切り抜きモーダル
+#js-crop-modal {
+  display: none; // JSで flex に切り替え
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .p-crop-content {
+    width: 95%;
+    max-width: 450px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+
+    h3 {
+      margin-top: 0;
+      color: #333;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .p-crop-image-container {
+      max-height: 60vh;
+      margin-bottom: 20px;
+      background: #eee;
+      overflow: hidden;
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+    }
+
+    .p-crop-btns {
+      display: flex;
+      gap: 10px;
+
+      button {
+        flex: 1;
+        padding: 12px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      #js-crop-cancel {
+        background: #ccc;
+        color: #333;
+      }
+
+      #js-crop-confirm {
+        background: rgb(27, 183, 0);
+        color: white;
+      }
+    }
+  }
+}
+
+.p-crop-modal {
+  display: none; // JSで flex に切り替えて表示
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .p-crop-content {
+    width: 95%;
+    max-width: 450px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+
+    .p-crop-title {
+      margin-top: 0;
+      color: #333;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .p-crop-image-container {
+      max-height: 60vh;
+      margin-bottom: 20px;
+      background: #eee;
+      overflow: hidden;
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+    }
+
+    .p-crop-btns {
+      display: flex;
+      gap: 10px;
+
+      button {
+        flex: 1;
+        padding: 12px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .c-button--cancel {
+        background: #ccc;
+        color: #333;
+      }
+
+      .c-button--confirm {
+        background: rgb(27, 183, 0);
+        color: white;
+      }
+    }
+  }
+}

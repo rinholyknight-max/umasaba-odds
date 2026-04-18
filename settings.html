@@ -59,19 +59,20 @@
       <h1 class="p-admin__title">プロフィール設定</h1>
 
       <section class="p-admin__register">
-        <div class="p-settings__icon-section" style="text-align: center; margin-bottom: 25px">
-          <div class="p-settings__icon-viewer" style="position: relative; display: inline-block">
-            <div id="js-icon-preview" class="p-settings__icon-preview l-menu__user-icon" style="width: 150px; height: 150px; font-size: 100px; margin: 0 auto; overflow: hidden; border-radius: 50%; border: 3px solid var(--color-primary); display: flex; align-items: center; justify-content: center; background: var(--color-bg-sub)">
-              <span class="material-symbols-outlined" style="font-size: 100px; color: var(--color-text-sub)">account_circle</span>
+        <div class="p-settings__icon-section">
+          <div class="p-settings__icon-viewer">
+            <div id="js-icon-preview" class="p-settings__icon-preview l-menu__user-icon">
+              <span class="material-symbols-outlined">account_circle</span>
             </div>
 
-            <label for="js-icon-upload" class="p-settings__icon-label" style="position: absolute; bottom: 5px; right: 5px; background: var(--color-primary); color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border: 2px solid white">
-              <span class="material-symbols-outlined" style="font-size: 24px">photo_camera</span>
+            <label for="js-icon-upload" class="p-settings__icon-label">
+              <span class="material-symbols-outlined">photo_camera</span>
             </label>
 
-            <input type="file" id="js-icon-upload" accept="image/png, image/jpeg, image/gif" style="display: none" />
+            <input type="file" id="js-icon-upload" accept="image/png, image/jpeg, image/gif" />
           </div>
-          <p style="font-size: 0.85rem; color: var(--color-text-sub); margin-top: 10px; font-weight: bold">タップしてアイコンを変更</p>
+
+          <p class="p-settings__icon-text">タップしてアイコンを変更</p>
         </div>
 
         <div style="margin-bottom: 20px">
@@ -81,7 +82,7 @@
 
         <div class="p-settings__item">
           <label class="c-label">ひとこと（ステータス）</label>
-          <input type="text" id="js-user-comment" class="c-input" placeholder="例：3連複専門です！" maxlength="30" />
+          <input type="text" id="js-user-comment" class="c-input" placeholder="例：出遅淵鈍化！" maxlength="30" />
         </div>
 
         <div class="p-settings__item">
@@ -224,15 +225,17 @@
       </section>
     </main>
 
-    <div id="js-crop-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 9999; align-items: center; justify-content: center; flex-direction: column">
-      <div style="width: 95%; max-width: 450px; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5)">
-        <h3 style="margin-top: 0; color: #333; text-align: center; font-size: 1.1rem">アイコンを切り抜く</h3>
-        <div style="max-height: 60vh; margin-bottom: 20px; background: #eee; overflow: hidden">
-          <img id="js-crop-image" style="max-width: 100%; display: block" />
+    <div id="js-crop-modal" class="p-crop-modal">
+      <div class="p-crop-content">
+        <h3 class="p-crop-title">アイコンを切り抜く</h3>
+
+        <div class="p-crop-image-container">
+          <img id="js-crop-image" />
         </div>
-        <div style="display: flex; gap: 10px">
-          <button id="js-crop-cancel" style="flex: 1; padding: 12px; border: none; border-radius: 6px; background: #ccc; color: #333; cursor: pointer; font-weight: bold">キャンセル</button>
-          <button id="js-crop-confirm" style="flex: 1; padding: 12px; border: none; border-radius: 6px; background: rgb(27, 183, 0); color: white; cursor: pointer; font-weight: bold">この位置で確定</button>
+
+        <div class="p-crop-btns">
+          <button id="js-crop-cancel" class="c-button--cancel">キャンセル</button>
+          <button id="js-crop-confirm" class="c-button--confirm">この位置で確定</button>
         </div>
       </div>
     </div>
