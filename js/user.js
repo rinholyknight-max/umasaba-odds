@@ -4,6 +4,7 @@ import { getDatabase, ref, get, query, orderByChild, equalTo } from "https://www
 import { initTheme } from "./theme.js";
 import { checkAuth, logout } from "./auth.js";
 import { initMenu } from "./menu.js";
+import { initPageInfo } from "./info-config.js";
 
 // --- 初期設定 ---
 const firebaseConfig = {
@@ -20,6 +21,7 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 export async function initUserPage() {
+  initPageInfo("odds");
   initTheme();
 
   if (!checkAuth("guest")) return;

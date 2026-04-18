@@ -3,6 +3,7 @@ import { getDatabase, ref, set, push, onValue, remove, update } from "https://ww
 import { initTheme } from "./theme.js";
 import { checkAuth, logout } from "./auth.js";
 import { initMenu } from "./menu.js";
+import { initPageInfo } from "./info-config.js";
 
 // --- 初期設定 ---
 const firebaseConfig = {
@@ -22,6 +23,7 @@ const db = getDatabase(app);
  * 管理画面の初期化
  */
 export function initAdmin() {
+  initPageInfo("odds");
   initTheme();
 
   // ★1. 編集対象のレースIDを取得 (例: admin.html?race=race_001)

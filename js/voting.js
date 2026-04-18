@@ -3,6 +3,7 @@ import { getDatabase, ref, onValue, update, increment, push, serverTimestamp, ge
 import { initTheme } from "./theme.js";
 import { checkAuth, logout } from "./auth.js";
 import { initMenu } from "./menu.js";
+import { initPageInfo } from "./info-config.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBp5Cg6A3v3VZal-orAiwFjphKIDYx9ATo",
@@ -18,6 +19,7 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 export function initVoting() {
+  initPageInfo("odds");
   initTheme();
 
   const userName = sessionStorage.getItem("user_name") || "不明なユーザー";

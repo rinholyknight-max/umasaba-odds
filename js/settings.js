@@ -5,6 +5,7 @@ import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "http
 import { initTheme, applyCharaTheme } from "./theme.js";
 import { checkAuth, logout } from "./auth.js";
 import { initMenu } from "./menu.js";
+import { initPageInfo } from "./info-config.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBp5Cg6A3v3VZal-orAiwFjphKIDYx9ATo",
@@ -78,6 +79,7 @@ export function initSettings() {
 
   initTheme();
   initMenu();
+  initPageInfo("odds");
 
   const nameInput = document.getElementById("js-display-name");
   const stakeInput = document.getElementById("js-default-stake");
