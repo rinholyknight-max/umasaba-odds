@@ -995,15 +995,15 @@ h2,
 
 .p-user-profile {
   background: var(--bg-card);
-  border-radius: 24px;
+  border-radius: 30px;
   overflow: hidden;
-  box-shadow: var(--shadow);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   max-width: 600px;
   margin: 0 auto;
   border: 1px solid var(--border);
 }
 .p-user-profile__header {
-  height: 200px;
+  height: 240px;
   background: linear-gradient(135deg, var(--chara-main) 0%, var(--chara-sub) 100%);
   position: relative;
   display: flex;
@@ -1016,24 +1016,28 @@ h2,
   bottom: -1px;
   left: 0;
   width: 100%;
-  height: 60px;
+  height: 70px;
   background: var(--bg-card);
   clip-path: polygon(0 100%, 100% 100%, 100% 0);
 }
 .p-user-profile__icon-wrap {
   position: relative;
   z-index: 2;
-  margin-bottom: -50px;
+  margin-bottom: -70px;
 }
 .p-user-profile__icon {
-  width: 140px;
-  height: 140px;
+  width: 180px;
+  height: 180px;
   background: #fff;
   border-radius: 50%;
-  padding: 5px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-  border: 4px solid var(--chara-main);
+  padding: 7px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  border: 6px solid var(--chara-main);
   overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.p-user-profile__icon:hover {
+  transform: scale(1.05);
 }
 .p-user-profile__icon img {
   width: 100%;
@@ -1041,8 +1045,17 @@ h2,
   object-fit: cover;
   border-radius: 50%;
 }
+.p-user-profile__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.p-user-profile__icon .material-symbols-outlined {
+  font-size: 100px;
+  color: #ccc;
+}
 .p-user-profile__body {
-  padding: 70px 40px 40px;
+  padding: 90px 40px 40px;
   text-align: center;
 }
 .p-user-profile__name {
@@ -1097,8 +1110,8 @@ h2,
   font-size: 0.95rem;
   font-weight: 800;
   color: var(--chara-main);
-  background: rgba(var(--chara-main-rgb, 0, 0, 0), 0.1);
-  padding: 2px 8px;
+  background: rgba(0, 0, 0, 0.03);
+  padding: 3px 10px;
   border-radius: 4px;
 }
 .p-user-profile__value {
@@ -1111,14 +1124,22 @@ h2,
   .p-user-profile {
     width: 95%;
   }
+  .p-user-profile__header {
+    height: 180px;
+  }
+  .p-user-profile__icon-wrap {
+    margin-bottom: -50px;
+  }
+  .p-user-profile__icon {
+    width: 140px;
+    height: 140px;
+    border-width: 5px;
+    padding: 5px;
+  }
   .p-user-profile__body {
-    padding: 60px 20px 30px;
+    padding: 70px 20px 30px;
   }
   .p-user-profile__name {
     font-size: 1.8rem;
-  }
-  .p-user-profile__icon {
-    width: 120px;
-    height: 120px;
   }
 }/*# sourceMappingURL=style.css.map */
