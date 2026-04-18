@@ -23,7 +23,7 @@ const db = getDatabase(app);
  * 管理画面の初期化
  */
 export function initAdmin() {
-  initPageInfo("odds");
+  initPageInfo("admin");
   initTheme();
 
   // ★1. 編集対象のレースIDを取得 (例: admin.html?race=race_001)
