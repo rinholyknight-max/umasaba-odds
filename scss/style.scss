@@ -239,82 +239,87 @@ h2,
   }
 
   &__user-box {
-    padding: 20px 12px;
+    padding: 30px 10px; // 上下にゆとりを持たせる
     background: var(--bg-page);
     border-bottom: 1px solid var(--border);
 
     .l-menu__user-link {
       display: grid;
-      // アイコン(64px) | ラベルと矢印
-      grid-template-columns: 64px 1fr auto;
-      grid-template-rows: auto auto;
-      grid-template-areas:
-        "icon label arrow"
-        "icon name  name"; // 名前は下の行で横幅を広く使う
-      align-items: center;
-      gap: 4px 16px;
+      grid-template-columns: 1fr; // 1列に固定
+      justify-items: center; // 子要素を中央寄せ
+      gap: 12px;
 
-      padding: 20px 16px;
+      padding: 24px 12px;
       background: var(--bg-card);
-      border-radius: 16px;
+      border-radius: 20px;
       text-decoration: none;
       color: inherit;
       border: 1px solid var(--border);
-      transition: all 0.2s ease;
+      transition: all 0.3s ease;
 
       &:hover {
         border-color: var(--chara-main);
-        background: var(--bg-hover);
-        .l-menu__user-arrow {
-          transform: translateX(4px);
-          color: var(--chara-main);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        .l-menu__user-icon {
+          transform: scale(1.02);
         }
       }
     }
 
     .l-menu__user-icon {
-      grid-area: icon;
-      width: 64px; // アイコンを大きく
-      height: 64px;
+      width: 180px;
+      height: 180px;
       background: var(--bg-page);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--chara-main);
-      border: 2px solid var(--border);
+      border: 3px solid var(--chara-sub); // 推し馬のサブカラーで縁取り
+      transition: transform 0.3s ease;
+      overflow: hidden; // 画像を入れた時用
 
       span {
-        font-size: 40px;
-      } // アイコン自体も大きく
+        font-size: 100px;
+      } // アイコン自体も超巨大に
+    }
+
+    .l-menu__user-info {
+      text-align: center; // テキストも中央揃え
+      width: 100%;
     }
 
     p {
-      grid-area: label;
       font-size: 0.75rem;
       color: var(--text-sub);
-      margin: 0;
-      font-weight: bold;
+      margin-bottom: 4px;
+      letter-spacing: 0.1em;
     }
 
     #js-display-user {
-      grid-area: name;
-      font-size: 1.1rem; // 名前を大きく、読みやすく
+      font-size: 1.25rem; // 名前を大きく堂々と
       font-weight: bold;
       color: var(--text-main);
-      margin: 0;
-      white-space: nowrap;
+      display: block;
       overflow: hidden;
       text-overflow: ellipsis;
-      align-self: start;
+      white-space: nowrap;
+      margin-bottom: 8px;
     }
 
-    .l-menu__user-arrow {
-      grid-area: arrow;
-      font-size: 20px;
-      color: var(--text-sub);
-      opacity: 0.5;
-      transition: transform 0.2s;
+    .l-menu__user-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.8rem;
+      color: var(--chara-main);
+      font-weight: bold;
+
+      &::after {
+        content: "chevron_right";
+        font-family: "Material Symbols Outlined";
+        font-size: 16px;
+      }
     }
   }
 
