@@ -82,12 +82,19 @@ export async function login(input) {
     }
 
     const allowedData = allowedSnap.val();
+
+    // ★ここを追加：名簿にあるサークル名をSessionStorageに保存する
+    // これをしないと Settings.js が空文字で上書きしてしまいます
+    sessionStorage.setItem("user_circle", allowedData.circleName || "無所属");
+
     const userRef = ref(db, `users/${input}`);
     const userSnap = await get(userRef);
 
     if (!userSnap.exists()) {
+      // ★ここを修正：初回データ作成時にサークル名を含める
       await set(userRef, {
         userName: allowedData.userName,
+        circleName: allowedData.circleName || "無所属", // ★追加
         points: allowedData.initialPoints || 100,
         createdAt: Date.now(),
         status: "active",
@@ -97,10 +104,12 @@ export async function login(input) {
       const userData = userSnap.val();
       sessionStorage.setItem("user_name", userData.userName);
 
+      // ★ここを追加：既存ユーザーでも最新のサークル名をSessionに同期する
+      sessionStorage.setItem("user_circle", userData.circleName || allowedData.circleName || "無所属");
+
       if (userData.photoURL) {
         sessionStorage.setItem("user_photo_url", userData.photoURL);
       } else {
-        // 前のユーザーのアイコンが残らないように削除
         sessionStorage.removeItem("user_photo_url");
       }
     }
@@ -108,7 +117,7 @@ export async function login(input) {
     sessionStorage.setItem("auth_role", "personal");
     sessionStorage.setItem("user_id", input);
 
-    await startFirebaseSession("index.html"); // ★匿名ログイン後に遷移
+    await startFirebaseSession("index.html");
   } catch (error) {
     console.error(error);
     alert("通信エラーが発生しました");
