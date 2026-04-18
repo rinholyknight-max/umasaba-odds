@@ -35,54 +35,51 @@ export const PASSWORDS = {
 
 /**
  * ログイン実行
- */
-export async function login(input) {
-  if (!input) {
+ */ export async function login(input) {
+  // 空文字チェック
+  const trimmedInput = input.trim();
+  if (!trimmedInput) {
     alert("IDまたはパスワードを入力してください");
     return;
   }
+
+  // --- デバッグ用ログ（後で消してOK） ---
+  console.log("入力された値:", trimmedInput);
+  console.log("USER_MAPの全キー:", Object.keys(USER_MAP));
+  console.log("USER_MAP判定結果:", USER_MAP[trimmedInput]);
+  // ------------------------------------
 
   try {
     let role = "";
     let displayName = "";
 
     // 1. 管理者チェック
-    if (input === PASSWORDS.ADMIN) {
+    if (trimmedInput === PASSWORDS.ADMIN) {
       role = "admin";
       displayName = "管理者";
     }
-    // 2. 登録ユーザーチェック (USER_MAP[input] が存在するか)
-    else if (USER_MAP[input]) {
-      role = "guest"; // 一般ユーザーの権限名
-      displayName = USER_MAP[input]; // 登録されている名前
+    // 2. 登録ユーザーチェック
+    // ※ USER_MAP[trimmedInput] が undefined でないか確認
+    else if (USER_MAP.hasOwnProperty(trimmedInput) || USER_MAP[trimmedInput]) {
+      role = "guest";
+      displayName = USER_MAP[trimmedInput];
     } else {
+      // ★ ここでアラートが出ている
       alert("有効なIDまたはパスワードではありません");
       return;
     }
 
-    // --- ここからFirebaseとセッションの同期 ---
-
-    // 3. Firebase 匿名認証
+    // --- 以下、FirebaseサインインとsessionStorage保存 ---
     await signInAnonymously(auth);
-
-    // 4. SessionStorage への保存（checkAuthがここを絶対に見る）
-    sessionStorage.setItem("user_id", input);
+    sessionStorage.setItem("user_id", trimmedInput);
     sessionStorage.setItem("auth_role", role);
     sessionStorage.setItem("user_name", displayName);
     sessionStorage.setItem("is_logged_in", "true");
 
-    console.log(`ログイン成功: ${displayName} (${role})`);
-
-    // 5. 遷移先の振り分け
-    if (role === "admin") {
-      window.location.href = "admin.html";
-    } else {
-      // 一般ユーザーは index.html へ
-      window.location.href = "index.html";
-    }
+    window.location.href = role === "admin" ? "admin.html" : "index.html";
   } catch (error) {
-    console.error("Login Error:", error);
-    alert("認証中にエラーが発生しました。");
+    console.error("Firebase Login Error:", error);
+    alert("認証中にエラーが発生しました");
   }
 }
 /**
