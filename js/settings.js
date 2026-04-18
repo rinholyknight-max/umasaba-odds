@@ -131,10 +131,82 @@ export async function initSettings() {
     }
   }
 
-  // --- プレビュー処理 (イベントリスナー内は既存のままでOK) ---
+  // プレビュー処理
   iconUploadInput?.addEventListener("change", async (e) => {
-    /* ... 既存のHEIC変換・Cropper処理 ... */
-    // (ここは元のコードが既に async/await を適切に使っているのでそのままで大丈夫です)
+    // ★ const から let に変更（後で上書きするため）
+    let file = e.target.files[0];
+    if (!file) return;
+
+    // 画像ファイルかどうかの基本チェック
+    if (!file.type.match("image.*")) {
+      alert("画像ファイルを選択してください");
+      return;
+    }
+
+    try {
+      if (msgArea) msgArea.textContent = "画像を加工中...";
+
+      // ============================================================
+      // ★追加：iPhone (HEIC) 対策
+      // ============================================================
+      // 拡張子が .heic か、MIMEタイプが image/heic の場合
+      if (file.name.toLowerCase().endsWith(".heic") || file.type === "image/heic") {
+        try {
+          if (msgArea) msgArea.textContent = "iPhone形式(.heic)を変換中...";
+
+          // heic2any ライブラリを使って JPEG の Blob に変換
+          // ※ heic2any がグローバルに読み込まれている必要があります
+          const jpegBlob = await heic2any({
+            blob: file,
+            toType: "image/jpeg",
+            quality: 0.85, // 画質 (0.0 ～ 1.0)
+          });
+
+          // 変換された Blob を、Cropperが扱える File オブジェクトに再構築
+          // ファイル名は .jpg に書き換えます
+          const newFileName = file.name.replace(/\.[^/.]+$/, ".jpg");
+          file = new File([jpegBlob], newFileName, { type: "image/jpeg" });
+
+          if (msgArea) msgArea.textContent = "変換完了。加工画面を開きます...";
+        } catch (heicErr) {
+          console.error("HEIC変換エラー:", heicErr);
+          // 変換に失敗した場合は、元のファイルで続行を試みる（おそらくCropperで黒くなる）
+          if (msgArea) msgArea.textContent = "形式変換に失敗しました。";
+        }
+      }
+      // ============================================================
+
+      // 1. 手動切り抜きモーダルを開く
+      // 変換済みの file (JPEG) が渡されます
+      const croppedFile = await openCropper(file);
+
+      // 2. キャンセル（モーダルの「キャンセル」ボタン）された場合は処理を中断
+      if (!croppedFile) {
+        if (msgArea) msgArea.textContent = "";
+        // file input の値をリセット（同じファイルを再度選択できるようにするため）
+        e.target.value = "";
+        return;
+      }
+
+      if (msgArea) msgArea.textContent = "プレビューを作成中...";
+
+      // 3. 切り抜かれたファイルを保存用変数に代入
+      selectedIconFile = croppedFile;
+
+      // プレビュー表示には加工後の selectedIconFile を使う
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        if (iconPreviewDiv) {
+          iconPreviewDiv.innerHTML = `<img src="${event.target.result}" alt="プレビュー" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">`;
+        }
+        if (msgArea) msgArea.textContent = "準備完了。「設定を保存」を押してください。";
+      };
+      reader.readAsDataURL(selectedIconFile);
+    } catch (err) {
+      console.error("画像処理エラー:", err);
+      alert("画像の加工に失敗しました");
+      if (msgArea) msgArea.textContent = "エラーが発生しました。";
+    }
   });
 
   // --- 保存処理 ---
