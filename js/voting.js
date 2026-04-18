@@ -68,7 +68,8 @@ export function initVoting() {
   // 投票処理
   submitBtn.onclick = async () => {
     const voterName = voterNameInput.value.trim();
-    const voterComment = voterCommentInput.value.trim(); // ★追加
+    const voterComment = voterCommentInput.value.trim();
+    const userId = sessionStorage.getItem("user_id");
 
     if (!voterName) {
       alert("投票者名を入力してください");
@@ -91,6 +92,7 @@ export function initVoting() {
       const currentVoters = Array.isArray(currentData.voters) ? currentData.voters : [];
       currentVoters.push({
         name: voterName,
+        uid: userId,
         comment: voterComment,
         at: new Date().getTime(),
       });
@@ -103,6 +105,7 @@ export function initVoting() {
 
       await push(ref(db, "logs"), {
         user: voterName,
+        uid: userId,
         comment: voterComment,
         combination: ticketId,
         timestamp: serverTimestamp(),

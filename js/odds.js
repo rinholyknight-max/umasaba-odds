@@ -52,6 +52,7 @@ export function initOdds() {
     voterList.forEach((v) => {
       const isObj = typeof v === "object" && v !== null;
       const name = isObj ? v.name : v;
+      const uid = isObj ? v.uid : null;
       const comment = isObj ? v.comment : "（以前のデータ）";
       const date = isObj && v.at ? new Date(v.at).toLocaleString() : "";
 
@@ -62,12 +63,12 @@ export function initOdds() {
       item.style.borderBottom = "1px solid var(--border)";
 
       item.innerHTML = `
-            <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-sub);">
-                <strong>${name}</strong>
-                <span>${date}</span>
-            </div>
-            <p style="margin:5px 0 0; line-height:1.4;">${comment}</p>
-        `;
+        <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-sub);">
+            ${uid ? `<a href="user.html?id=${uid}" style="color:var(--chara-main); font-weight:bold; text-decoration:none;">${name}</a>` : `<strong>${name}</strong>`}
+            <span>${date}</span>
+        </div>
+        <p style="margin:5px 0 0; line-height:1.4;">${comment}</p>
+    `;
       listContainer.appendChild(item);
     });
 
