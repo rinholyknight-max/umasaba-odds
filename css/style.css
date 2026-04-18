@@ -1184,6 +1184,7 @@ h2,
   .p-user-profile__body {
     padding: 40px 24px;
     text-align: center;
+    padding-top: 0;
   }
   .p-user-profile__name, .p-user-profile__circle {
     align-self: center;
