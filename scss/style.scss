@@ -358,8 +358,8 @@ h2,
   // 結果画面ではない（.is-results を持たない）時の設定
   &:not(.is-results) {
     .p-voting__selection-container {
-      position: sticky;
-      top: 60px;
+      position: sticky !important; // スマホでも固定を維持
+      top: 60px !important;
       z-index: 100;
       background: var(--bg-card);
       padding: v.$space-md v.$space-lg;
@@ -1331,11 +1331,13 @@ h2,
   }
 }
 
-// 固定ヘッダー（選択中のスロット）の微調整
-// スライドアイテムの中にこれを入れる場合、stickyが効くように調整
+// 各スライドの中にあるコンテナも固定を維持
 .p-voting__slide-item .p-voting__selection-container {
   position: sticky;
   top: 60px;
   z-index: 50;
-  margin-bottom: v.$space-md;
+  background: var(--bg-card); // 背景を敷かないと透けます
+  margin: 0 calc(v.$space-lg * -1) v.$space-md; // 左右いっぱいに広げる
+  padding: v.$space-md v.$space-lg;
+  border-bottom: 2px solid var(--border);
 }
