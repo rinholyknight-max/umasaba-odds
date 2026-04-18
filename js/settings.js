@@ -179,21 +179,39 @@ export async function initSettings() {
       alert("画像の加工に失敗しました");
     }
   });
-
   // --- 保存処理 ---
   saveBtn?.addEventListener("click", async () => {
-    if (!canEdit) return;
+    if (!canEdit) {
+      // 権限がない場合はメッセージエリアに警告を出す
+      if (msgArea) {
+        msgArea.textContent = "このアカウントでは設定を変更できません。";
+        msgArea.style.color = "red";
+        msgArea.style.opacity = "1";
+      }
+      return;
+    }
 
     const newName = nameInput ? nameInput.value.trim() : "";
     const newOshi = oshiSelect ? oshiSelect.value : "";
 
     if (!newName) {
-      alert("表示名を入力してください");
+      if (msgArea) {
+        msgArea.textContent = "表示名を入力してください";
+        msgArea.style.color = "red";
+        msgArea.style.opacity = "1";
+      }
       return;
     }
 
+    // 保存開始時のUIフィードバック
     saveBtn.disabled = true;
     saveBtn.textContent = "保存中...";
+    if (msgArea) {
+      msgArea.style.transition = "none"; // 前回のフェードをリセット
+      msgArea.textContent = "保存しています...";
+      msgArea.style.color = "var(--p-color-primary)";
+      msgArea.style.opacity = "1";
+    }
 
     try {
       const userRef = ref(db, `users/${userNumericId}`);
@@ -218,17 +236,31 @@ export async function initSettings() {
       // ★ ローカルキャッシュの更新（これが遷移時のチラつきを防ぐ）
       sessionStorage.setItem("user_name", newName);
       localStorage.setItem("user_oshi", newOshi);
-      // applyCharaTheme内で user_oshi_colors も更新される
+
+      // applyCharaTheme内で user_oshi_colors も更新され、即座に画面色が変わる
       await applyCharaTheme(newOshi);
 
       if (userDisplay) userDisplay.innerText = newName;
+
+      // 成功メッセージの表示
       if (msgArea) {
         msgArea.textContent = "設定を保存しました！";
         msgArea.style.color = "var(--p-color-primary)";
+        msgArea.style.opacity = "1";
+
+        // 3秒後にスッと消す（UX向上）
+        setTimeout(() => {
+          msgArea.style.transition = "opacity 0.8s ease";
+          msgArea.style.opacity = "0";
+        }, 3000);
       }
     } catch (e) {
       console.error(e);
-      alert("保存に失敗しました。");
+      if (msgArea) {
+        msgArea.textContent = "保存に失敗しました。";
+        msgArea.style.color = "red";
+        msgArea.style.opacity = "1";
+      }
     } finally {
       saveBtn.disabled = false;
       saveBtn.textContent = "設定を保存する";
