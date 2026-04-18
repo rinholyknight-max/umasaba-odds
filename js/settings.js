@@ -193,8 +193,6 @@ export function initSettings() {
       const snapshot = await get(userRef);
       const currentData = snapshot.exists() ? snapshot.val() : {};
 
-      // 2. sessionStorage にサークル名がない場合、DBにある今の値を優先する
-      // これで、管理画面などで設定されたサークル名が消えるのを防ぎます
       const myCircle = sessionStorage.getItem("user_circle") || currentData.circleName || "";
 
       // 3. 保存用データを作成
@@ -226,6 +224,7 @@ export function initSettings() {
 
       // キャッシュ（sessionStorage）も更新
       sessionStorage.setItem("user_name", newName);
+      sessionStorage.setItem("user_oshi", updateData.favoriteChara);
       if (userDisplay) userDisplay.innerText = newName;
 
       if (msgArea) {
@@ -249,10 +248,14 @@ export function initSettings() {
 }
 
 // settings.js
-const oshiSelect = document.getElementById("js-oshi-select");
+const oshiSelect = document.getElementById("js-oshi-chara");
 
-oshiSelect.onchange = (e) => {
-  const newOshi = e.target.value;
-  // プレビューとして即座に色を変える
-  applyCharaTheme(newOshi);
-};
+if (oshiSelect) {
+  oshiSelect.onchange = (e) => {
+    const newOshi = e.target.value;
+    // settings.js の中で applyCharaTheme が使えるように import されている必要があります
+    if (typeof applyCharaTheme === "function") {
+      applyCharaTheme(newOshi);
+    }
+  };
+}
