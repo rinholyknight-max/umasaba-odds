@@ -21,7 +21,7 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 export async function initUserPage() {
-  initPageInfo("odds");
+  initPageInfo("user");
   initTheme();
 
   if (!checkAuth("guest")) return;

@@ -79,7 +79,7 @@ export function initSettings() {
 
   initTheme();
   initMenu();
-  initPageInfo("odds");
+  initPageInfo("settings");
 
   const nameInput = document.getElementById("js-display-name");
   const stakeInput = document.getElementById("js-default-stake");

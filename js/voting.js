@@ -19,7 +19,7 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 export function initVoting() {
-  initPageInfo("odds");
+  initPageInfo("index");
   initTheme();
 
   const userName = sessionStorage.getItem("user_name") || "不明なユーザー";
