@@ -223,8 +223,8 @@ export function initSettings() {
       await update(userRef, updateData);
 
       // キャッシュ（sessionStorage）も更新
-      sessionStorage.setItem("user_name", newName);
-      sessionStorage.setItem("user_oshi", updateData.favoriteChara);
+      localStorage.setItem("user_name", newName);
+      localStorage.setItem("user_oshi", updateData.favoriteChara);
       if (userDisplay) userDisplay.innerText = newName;
 
       if (msgArea) {
