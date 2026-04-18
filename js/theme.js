@@ -24,9 +24,10 @@ function injectColorVariables(main, sub) {
 export async function applyCharaTheme(oshiName) {
   const root = document.documentElement;
   try {
-    if (!oshiName || oshiName === "なし") {
+    if (!oshiName || oshiName === "なし" || oshiName === "") {
       root.style.removeProperty("--chara-main");
       root.style.removeProperty("--chara-sub");
+      root.classList.remove("p-theme--custom"); // ★追加：クラスも外す
       localStorage.removeItem("user_oshi_colors");
       localStorage.removeItem("user_oshi");
       return;
@@ -90,21 +91,30 @@ export async function initTheme(userNumericId = null) {
   if (userNumericId) {
     try {
       const db = getDatabase();
-      const snap = await get(ref(db, `users/${userNumericId}/settings/favoriteCharacter`));
+      // ★修正箇所1：参照パスを実際のDB構造に合わせて users/ID/favoriteChara に変更
+      const snap = await get(ref(db, `users/${userNumericId}/favoriteChara`));
+
       if (snap.exists()) {
         const latestOshi = snap.val();
+        // ★修正箇所2：DBにデータがあれば、キャッシュと違わなくても強制適用して整合性を保つ
+        // (アカウント切り替え直後はキャッシュが消えているため、ここを通る必要がある)
         if (latestOshi !== currentOshiName) {
           await applyCharaTheme(latestOshi);
         }
+      } else {
+        // ★追加：DBにデータがない（または「なし」）ならテーマを解除
+        if (currentOshiName) {
+          await applyCharaTheme("なし");
+        }
       }
     } catch (e) {
-      console.warn("[Theme] Firebase sync failed.");
+      console.warn("[Theme] Firebase sync failed.", e);
     }
   } else if (currentOshiName && !cachedColors) {
     await applyCharaTheme(currentOshiName);
   }
 
-  // 最終防衛線：何らかの理由で loaded が付かなかった場合
+  // 最終防衛線
   if (htmlEl.getAttribute("data-theme-loaded") !== "true") {
     htmlEl.setAttribute("data-theme-loaded", "true");
   }

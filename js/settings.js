@@ -123,7 +123,7 @@ export async function initSettings() {
 
   let selectedIconFile = null;
 
-  // --- 4. 初期データ読み込み (users/数字ID/直下を参照) ---
+  // 4. 初期データ読み込み
   if (canEdit) {
     try {
       const userRef = ref(db, `users/${userNumericId}`);
@@ -131,25 +131,31 @@ export async function initSettings() {
 
       if (snapshot.exists()) {
         const data = snapshot.val();
-        console.log("[Settings] DB Data:", data);
 
-        // 各フィールドにセット
+        // --- 画面への値セット ---
         if (nameInput) nameInput.value = data.userName || "";
         if (commentInput) commentInput.value = data.comment || "";
 
-        // ★ キー名を favoriteChara に修正
+        const savedOshi = data.favoriteChara || "";
         if (oshiSelect) {
-          oshiSelect.value = data.favoriteChara || "";
+          oshiSelect.value = savedOshi;
+        }
+
+        // --- ★ここが重要：DBから取得した推しキャラを「今すぐ」画面に反映する ---
+        if (savedOshi) {
+          console.log("[Settings] Initial theme apply:", savedOshi);
+          // localStorageも更新しておく（他ページ遷移時のチラつき防止）
+          localStorage.setItem("user_oshi", savedOshi);
+          // テーマ適用（色の注入とキャッシュ作成を同時に行う）
+          await applyCharaTheme(savedOshi);
         }
 
         if (data.photoURL && iconPreviewDiv) {
           iconPreviewDiv.innerHTML = `<img src="${data.photoURL}" class="p-settings__icon-img" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">`;
         }
-
-        if (userDisplay) userDisplay.innerText = data.userName || "不明なユーザー";
       }
     } catch (err) {
-      console.error("[Settings] Load Error:", err);
+      console.error("データ取得エラー:", err);
     }
   }
 
