@@ -5,17 +5,32 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/fireba
 import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
 import { getAuth, signInAnonymously, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
+// --- 初期設定 ---
 const firebaseConfig = {
-  /* ... 既存の通り ... */
+  apiKey: "AIzaSyBp5Cg6A3v3VZal-orAiwFjphKIDYx9ATo",
+  authDomain: "umasaba-odds.firebaseapp.com",
+  databaseURL: "https://umasaba-odds-default-rtdb.firebaseio.com",
+  projectId: "umasaba-odds",
+  storageBucket: "umasaba-odds.firebasestorage.app",
+  messagingSenderId: "802834774249",
+  appId: "1:802834774249:web:5623185854ead82c261878",
 };
+
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const auth = getAuth(app);
 
-// IDと役割の対応マップ（例）
+// パスワードと表示名の対応表
 const USER_MAP = {
-  "admin-id": "admin",
-  "guest-id": "guest",
+  "01-LastCrop": "ラスクロメンバー",
+  "02-cocoa": "へべれけメンバー",
+  "03-Snowknight": "スノウナイトメンバー",
+  "04-Smile": "Smileメンバー",
+};
+
+export const PASSWORDS = {
+  USER: Object.keys(USER_MAP),
+  ADMIN: "04umasaba-Observers",
 };
 
 /**
