@@ -86,6 +86,8 @@ export function initSettings() {
   const iconUploadInput = document.getElementById("js-icon-upload");
   const iconPreviewDiv = document.getElementById("js-icon-preview");
   const userDisplay = document.getElementById("js-display-user");
+  const commentInput = document.getElementById("js-user-comment"); // HTMLのIDと一致させる
+  const oshiSelect = document.getElementById("js-oshi-chara"); // HTMLのIDと一致させる
 
   // ★修正1: 先にsessionStorageから取得する（順番を上に上げた）
   const userId = sessionStorage.getItem("user_id");
@@ -188,8 +190,8 @@ export function initSettings() {
       const updateData = {
         userName: newName,
         defaultStake: newStake,
-        comment: commentInput.value.trim(),
-        favoriteChara: oshiSelect.value,
+        comment: commentInput ? commentInput.value.trim() : "", // 安全な書き方
+        favoriteChara: oshiSelect ? oshiSelect.value : "", // 安全な書き方
         circleName: myCircle, // ★ここにこの1行を追加！
         updatedAt: Date.now(),
       };
