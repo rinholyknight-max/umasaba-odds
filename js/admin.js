@@ -28,6 +28,12 @@ export function initAdmin() {
   const params = new URLSearchParams(window.location.search);
   const raceId = params.get("race") || "race_001"; // 指定がなければデフォルト
 
+  const activeIdDisp = document.getElementById("js-active-race-id");
+  if (activeIdDisp) activeIdDisp.innerText = raceId;
+
+  const raceSelect = document.getElementById("js-race-select");
+  if (raceSelect) raceSelect.value = raceId;
+
   // 表示名の設定
   const userName = sessionStorage.getItem("user_name") || "不明なユーザー";
   const userDisplay = document.getElementById("js-display-user");
