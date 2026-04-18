@@ -813,6 +813,10 @@ h2,
     .p-settings__icon-viewer {
       position: relative;
       display: inline-block;
+
+      #js-icon-upload {
+        display: none;
+      }
     }
 
     .p-settings__icon-preview {

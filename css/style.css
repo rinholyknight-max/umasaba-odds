@@ -811,6 +811,9 @@ h2,
   position: relative;
   display: inline-block;
 }
+.p-admin__register .p-settings__icon-section .p-settings__icon-viewer #js-icon-upload {
+  display: none;
+}
 .p-admin__register .p-settings__icon-section .p-settings__icon-preview {
   width: 150px;
   height: 150px;
