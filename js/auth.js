@@ -96,9 +96,12 @@ export async function login(input) {
     } else {
       const userData = userSnap.val();
       sessionStorage.setItem("user_name", userData.userName);
-      // ★既に photoURL がある場合は sessionStorage に入れておく
+
       if (userData.photoURL) {
         sessionStorage.setItem("user_photo_url", userData.photoURL);
+      } else {
+        // 前のユーザーのアイコンが残らないように削除
+        sessionStorage.removeItem("user_photo_url");
       }
     }
 
@@ -114,15 +117,33 @@ export async function login(input) {
 
 /**
  * 権限チェック
+ * @param {string} requiredRole - 必要とされる権限 ('admin' など)
  */
 export function checkAuth(requiredRole = null) {
   const currentRole = sessionStorage.getItem("auth_role");
+  const userId = sessionStorage.getItem("user_id");
+
+  // 1. そもそもログインしていない場合
   if (!currentRole) {
     window.location.href = "login.html";
     return false;
   }
-  // ※ここでFirebase Authのログイン状態まで厳密にチェックすることも可能ですが、
-  // ページ遷移が多発するため、基本はsessionStorageでOKです。
+
+  // 2. 管理者画面へのアクセス制限
+  if (requiredRole === "admin") {
+    // 役割が admin ではない、またはユーザーIDが管理者用ではない場合
+    if (currentRole !== "admin") {
+      alert("管理者権限が必要です。");
+      window.location.href = "index.html"; // 一般画面へ強制送還
+      return false;
+    }
+  }
+
+  // 3. 一般ユーザー画面で管理者が混ざらないようにする場合（任意）
+  if (requiredRole === "personal" && currentRole === "admin") {
+    // 管理者が一般画面を見るのはOKならここは不要です
+  }
+
   return true;
 }
 
