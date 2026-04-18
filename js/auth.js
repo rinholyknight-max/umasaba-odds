@@ -34,54 +34,56 @@ export const PASSWORDS = {
 };
 
 /**
- * ログイン実行
- */ export async function login(input) {
-  // 空文字チェック
+ * ログイン実行 (DBからユーザーを検索する動的認証)
+ */
+export async function login(input) {
   const trimmedInput = input.trim();
   if (!trimmedInput) {
     alert("IDまたはパスワードを入力してください");
     return;
   }
 
-  // --- デバッグ用ログ（後で消してOK） ---
-  console.log("入力された値:", trimmedInput);
-  console.log("USER_MAPの全キー:", Object.keys(USER_MAP));
-  console.log("USER_MAP判定結果:", USER_MAP[trimmedInput]);
-  // ------------------------------------
-
   try {
-    let role = "";
-    let displayName = "";
-
-    // 1. 管理者チェック
+    // 1. 管理者チェック (パスワード固定の場合)
     if (trimmedInput === PASSWORDS.ADMIN) {
-      role = "admin";
-      displayName = "管理者";
-    }
-    // 2. 登録ユーザーチェック
-    // ※ USER_MAP[trimmedInput] が undefined でないか確認
-    else if (USER_MAP.hasOwnProperty(trimmedInput) || USER_MAP[trimmedInput]) {
-      role = "guest";
-      displayName = USER_MAP[trimmedInput];
-    } else {
-      // ★ ここでアラートが出ている
-      alert("有効なIDまたはパスワードではありません");
+      await signInAnonymously(auth);
+      sessionStorage.setItem("user_id", "admin");
+      sessionStorage.setItem("auth_role", "admin");
+      sessionStorage.setItem("user_name", "管理者");
+      window.location.href = "admin.html";
       return;
     }
 
-    // --- 以下、FirebaseサインインとsessionStorage保存 ---
-    await signInAnonymously(auth);
-    sessionStorage.setItem("user_id", trimmedInput);
-    sessionStorage.setItem("auth_role", role);
-    sessionStorage.setItem("user_name", displayName);
-    sessionStorage.setItem("is_logged_in", "true");
+    // 2. 登録ユーザーチェック (DBの /users/ パスを確認しに行く)
+    // ※ ユーザーデータが 'users/582530892' のように保存されていると想定
+    const userRef = ref(db, `users/${trimmedInput}`);
+    const snapshot = await get(userRef);
 
-    window.location.href = role === "admin" ? "admin.html" : "index.html";
+    if (snapshot.exists()) {
+      const userData = snapshot.val();
+      const displayName = userData.userName || "名無しトレーナー";
+
+      // Firebase 匿名認証を実行
+      await signInAnonymously(auth);
+
+      // セッション情報を保存
+      sessionStorage.setItem("user_id", trimmedInput); // 582530892
+      sessionStorage.setItem("auth_role", "guest");
+      sessionStorage.setItem("user_name", displayName);
+      sessionStorage.setItem("is_logged_in", "true");
+
+      console.log(`DB認証成功: ${displayName}`);
+      window.location.href = "index.html";
+    } else {
+      // DBにそのIDが見つからなかった場合
+      alert("登録されていないIDです。管理者に確認してください。");
+    }
   } catch (error) {
-    console.error("Firebase Login Error:", error);
-    alert("認証中にエラーが発生しました");
+    console.error("Login Error:", error);
+    alert("認証中にエラーが発生しました。");
   }
 }
+
 /**
  * 権限チェック
  */
