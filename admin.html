@@ -96,14 +96,9 @@
         <p style="font-size: 0.8rem; color: #666">形式: キャラ名,ユーザー名 (1行に1人)</p>
       </div>
 
-      <div class="p-admin__danger-zone" style="margin-top: 20px; padding: 15px; background: rgba(255, 0, 0, 0.05); border-radius: 8px">
-        <p style="font-size: 0.8rem; color: #d32f2f; margin-bottom: 10px; font-weight: bold">※このレース（現在表示中のレース）のデータを削除します</p>
-        <button id="js-reset-votes" class="c-button c-button--danger">レース内の全データをリセット</button>
-      </div>
+      <h2 style="font-size: 1rem; margin-top: 50px; border-left: 4px solid var(--chara-main); padding-left: 10px">ログインメンバー管理</h2>
 
-      <h2 style="font-size: 1rem; margin-bottom: 15px; border-left: 4px solid var(--chara-main); padding-left: 10px">ログインメンバー管理</h2>
-
-      <section class="p-admin__register" style="margin-top: 50px; border-top: 3px double var(--border); padding-top: 30px">
+      <section class="p-admin__register" style="margin-top: 20px; border-top: 3px double var(--border); padding-top: 30px">
         <h2 style="font-size: 1rem; margin-bottom: 10px; color: var(--text-sub)">ユーザー許可登録 / 名簿管理（全レース共通）</h2>
 
         <div class="p-admin__register-group" style="display: flex; gap: 10px; flex-wrap: wrap">
@@ -129,6 +124,11 @@
           <p style="font-size: 0.75rem; color: #666; margin-top: 5px">形式: ゲームID, 表示名, サークル名 (1行に1人)</p>
         </div>
       </section>
+
+      <div class="p-admin__danger-zone" style="margin-top: 20px; padding: 15px; background: rgba(255, 0, 0, 0.05); border-radius: 8px">
+        <p style="font-size: 0.8rem; color: #d32f2f; margin-bottom: 10px; font-weight: bold">※このレース（現在表示中のレース）のデータを削除します</p>
+        <button id="js-reset-votes" class="c-button c-button--danger">レース内の全データをリセット</button>
+      </div>
       <div id="admin-list" class="p-admin__list"></div>
     </main>
 
