@@ -76,8 +76,7 @@ function loadRaceList() {
     listContainer.innerHTML = html;
   });
 }
-
-// --- 関数: オッズ詳細の読み込み (元のロジックを統合) ---
+// --- 関数: オッズ詳細の読み込み (クイック切り替え対応版) ---
 function loadOddsDetail(raceId) {
   // DOM再取得
   const oddsListDiv = document.getElementById("odds-list");
@@ -89,12 +88,46 @@ function loadOddsDetail(raceId) {
   const raceTitleDisp = document.getElementById("js-race-title");
   const filterDetails = document.querySelector(".p-voting__filter-details");
 
+  // ★追加：クイックセレクター
+  const quickSelect = document.getElementById("js-race-quick-select");
+
   let allCombos = [];
   let totalVotes = 0;
   let horseToUserMap = {};
   let myChart = null;
 
-  // モーダル操作、updateChart, render は元のコードと同じため省略せず組み込みます
+  // --- ★追加：クイック切り替えプルダウンの構築 ---
+  if (quickSelect) {
+    onValue(
+      ref(db, "races"),
+      (snapshot) => {
+        const allRaces = snapshot.val();
+        if (!allRaces) return;
+
+        // プルダウンをリセット
+        quickSelect.innerHTML = '<option value="">他のレースに切り替え...</option>';
+
+        Object.keys(allRaces).forEach((id) => {
+          const opt = document.createElement("option");
+          opt.value = id;
+          opt.innerText = allRaces[id].title || "無題のレース";
+          if (id === raceId) opt.selected = true; // 現在のレースを選択状態に
+          quickSelect.appendChild(opt);
+        });
+      },
+      { onlyOnce: true },
+    ); // 何度も書き換わらないよう1回のみ取得
+
+    // 選択イベント
+    quickSelect.onchange = (e) => {
+      const selectedId = e.target.value;
+      if (selectedId && selectedId !== raceId) {
+        window.location.href = `odds.html?race=${selectedId}`;
+      }
+    };
+  }
+
+  // モーダル操作
   const openModal = (voterList) => {
     modalTitle.innerText = `投票コメント一覧`;
     const listContainer = document.getElementById("js-modal-comment-list") || modalComment;
@@ -108,6 +141,9 @@ function loadOddsDetail(raceId) {
 
       const item = document.createElement("div");
       item.className = "c-modal__comment-item";
+      item.style.marginBottom = "15px";
+      item.style.paddingBottom = "10px";
+      item.style.borderBottom = "1px solid var(--border)";
       item.innerHTML = `
         <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-sub);">
             ${uid ? `<a href="user.html?id=${uid}" style="color:var(--chara-main); font-weight:bold; text-decoration:none;">${name}</a>` : `<strong>${name}</strong>`}
@@ -203,17 +239,14 @@ function loadOddsDetail(raceId) {
     const raceData = snap.val();
     if (!raceData) return;
 
-    // タイトル更新
     if (raceTitleDisp) raceTitleDisp.innerText = raceData.title || "投票結果";
 
-    // 馬データから名前マップ作成
     const horses = raceData.horses || {};
     horseToUserMap = {};
     for (let hId in horses) {
       horseToUserMap[horses[hId].horseName] = horses[hId].userName;
     }
 
-    // オッズ(combos)データ処理
     const comboData = raceData.combos || {};
     allCombos = [];
     totalVotes = 0;
