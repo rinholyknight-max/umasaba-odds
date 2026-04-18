@@ -1,12 +1,11 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-// ★ query, orderByChild, equalTo を追加
-import { getDatabase, ref, get, query, orderByChild, equalTo } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
-import { initTheme } from "./theme.js";
+import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
+import { initTheme, applyCharaTheme } from "./theme.js"; // ★ applyCharaTheme もインポート
 import { checkAuth, logout } from "./auth.js";
 import { initMenu } from "./menu.js";
 import { initPageInfo } from "./info-config.js";
 
-// --- 初期設定 ---
+// --- Firebase初期化 (既存のまま) ---
 const firebaseConfig = {
   apiKey: "AIzaSyBp5Cg6A3v3VZal-orAiwFjphKIDYx9ATo",
   authDomain: "umasaba-odds.firebaseapp.com",
@@ -20,11 +19,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
+/**
+ * ユーザープロフィールの初期化
+ */
 export async function initUserPage() {
   initPageInfo("user");
-  initTheme();
 
-  // ★重要：結果を await で受け取る。中身は { uid, fbUser, role }
+  // ★ 1. テーマと認証を順番に待つ
+  await initTheme();
   const authInfo = await checkAuth("guest");
   if (!authInfo) return;
 
@@ -32,26 +34,28 @@ export async function initUserPage() {
   const logoutBtn = document.getElementById("js-logout");
   if (logoutBtn) logoutBtn.onclick = logout;
 
+  // ヘッダーのユーザー表示
   const myName = sessionStorage.getItem("user_name") || "不明なユーザー";
   const userDisplay = document.getElementById("js-display-user");
   if (userDisplay) userDisplay.innerText = myName;
 
+  // URLパラメータからターゲットIDを取得
   const params = new URLSearchParams(window.location.search);
   let targetId = params.get("id");
 
-  // URLにIDがない場合、authInfoから取得したUID（個人ID）を補完
+  // IDがなければ自分のIDを表示
   if (!targetId) {
     targetId = authInfo.uid;
-    console.log("My UID detected via authInfo:", targetId);
+    console.log("Viewing my own profile:", targetId);
   }
 
   if (!targetId) {
     alert("ユーザーIDが特定できませんでした。");
-    window.location.href = "main.html";
+    window.location.href = "index.html";
     return;
   }
 
-  // 4. DBからプロフィールデータを取得
+  // ★ 2. データの取得と描画
   try {
     const userRef = ref(db, `users/${targetId}`);
     const snapshot = await get(userRef);
@@ -59,10 +63,9 @@ export async function initUserPage() {
     if (snapshot.exists()) {
       const data = snapshot.val();
       renderProfile(data);
-      // 投票履歴の読み込み
+      // 履歴の読み込み（非同期だが待たずに実行開始してOK）
       loadUserHistory(targetId);
     } else {
-      // ユーザーデータが存在しない場合
       const nameEl = document.getElementById("js-user-name");
       if (nameEl) nameEl.innerText = "未登録のユーザーです";
       const historyListEl = document.getElementById("js-history-list");
@@ -71,12 +74,48 @@ export async function initUserPage() {
   } catch (err) {
     console.error("Profile Load Error:", err);
   } finally {
-    // ローディング表示を解除
+    // 全ての準備が整ったらローディングを消す
     document.body.classList.remove("is-loading");
   }
 }
 
-// ★ 追加・修正：全レースから特定のユーザーの投票履歴を抽出する
+/**
+ * プロフィール描画
+ */
+function renderProfile(data) {
+  const headerTitle = document.getElementById("js-header-title");
+  if (headerTitle) {
+    const targetName = data.userName || "名無し";
+    const myName = sessionStorage.getItem("user_name");
+    headerTitle.innerText = targetName === myName ? "マイプロフィール" : `${targetName}さんのプロフィール`;
+  }
+
+  // ターゲットユーザーの推しキャラテーマを適用
+  if (data.favoriteChara) {
+    applyCharaTheme(data.favoriteChara);
+  }
+
+  const nameEl = document.getElementById("js-user-name");
+  if (nameEl) nameEl.innerText = data.userName || "名無し";
+
+  const circleEl = document.getElementById("js-user-circle");
+  if (circleEl) circleEl.innerText = data.circleName ? `所属サークル： ${data.circleName}` : "無所属";
+
+  const commentEl = document.getElementById("js-user-comment");
+  if (commentEl) commentEl.innerText = data.comment || "よろしくお願いします！";
+
+  const oshiEl = document.getElementById("js-user-oshi");
+  if (oshiEl) oshiEl.innerText = data.favoriteChara || "未設定";
+
+  const iconEl = document.getElementById("js-user-icon");
+  if (data.photoURL && iconEl) {
+    iconEl.innerHTML = `<img src="${data.photoURL}" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">`;
+  }
+}
+
+/**
+ * 投票履歴の取得
+ */
 async function loadUserHistory(targetId) {
   const historyListEl = document.getElementById("js-history-list");
   if (!historyListEl) return;
@@ -84,7 +123,6 @@ async function loadUserHistory(targetId) {
   historyListEl.innerHTML = '<div class="c-loading">履歴を読み込み中...</div>';
 
   try {
-    // 1. 全レースデータを取得
     const racesRef = ref(db, "races");
     const snapshot = await get(racesRef);
 
@@ -92,7 +130,6 @@ async function loadUserHistory(targetId) {
       const races = snapshot.val();
       const userHistory = [];
 
-      // 2. 各レース -> 各コンボ -> 各投票者を走査
       Object.keys(races).forEach((raceId) => {
         const race = races[raceId];
         const combos = race.combos || {};
@@ -101,69 +138,54 @@ async function loadUserHistory(targetId) {
           const combo = combos[comboId];
           const voters = combo.voters || [];
 
-          // voters配列の中からこのユーザー(targetId)の投票を探す
           const myVote = Array.isArray(voters) ? voters.find((v) => v.uid === targetId || v === targetId) : null;
 
           if (myVote) {
-            // 履歴用のオブジェクトを作成
             userHistory.push({
               raceTitle: race.title || "無題のレース",
               raceId: raceId,
               combination: comboId,
-              timestamp: myVote.at || 0, // 投票日時
+              timestamp: myVote.at || 0,
               comment: myVote.comment || "",
             });
           }
         });
       });
 
-      // 3. 描画
       if (userHistory.length > 0) {
-        // 新しい順にソート
         userHistory.sort((a, b) => b.timestamp - a.timestamp);
-
         historyListEl.innerHTML = "";
+
         userHistory.forEach((item) => {
           const date = item.timestamp ? new Date(item.timestamp).toLocaleString() : "不明な日時";
           const comboDisplay = item.combination.split("_").join(" - ");
 
           const div = document.createElement("div");
           div.className = "p-user__history-item";
+          // ... (スタイル設定は既存のまま)
           div.style.borderLeft = "4px solid var(--chara-main)";
           div.style.marginBottom = "15px";
           div.style.padding = "15px";
           div.style.background = "var(--bg-card)";
           div.style.borderRadius = "8px";
-          div.style.boxShadow = "0 2px 5px rgba(0,0,0,0.05)";
 
           div.innerHTML = `
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
               <div style="font-weight: bold; color: var(--chara-main); font-size: 0.8rem;">
                 <a href="odds.html?race=${item.raceId}" style="text-decoration:none; color:inherit;">
-                  <span class="material-symbols-outlined" style="font-size:1rem; vertical-align:middle;">analytics</span> 
-                  ${item.raceTitle}
+                  <span class="material-symbols-outlined" style="font-size:1rem; vertical-align:middle;">analytics</span> ${item.raceTitle}
                 </a>
               </div>
               <div style="font-size: 0.75rem; color: var(--text-sub);">${date}</div>
             </div>
             <div style="font-weight: bold; margin-bottom: 8px; font-size: 1rem;">${comboDisplay}</div>
-            ${
-              item.comment
-                ? `
-              <p style="font-size: 0.9rem; margin: 0; color: var(--text-main); background: var(--bg-page); padding: 8px; border-radius: 4px;">
-                ${item.comment}
-              </p>
-            `
-                : ""
-            }
+            ${item.comment ? `<p style="font-size: 0.9rem; margin: 0; color: var(--text-main); background: var(--bg-page); padding: 8px; border-radius: 4px;">${item.comment}</p>` : ""}
           `;
           historyListEl.appendChild(div);
         });
       } else {
         historyListEl.innerHTML = '<p style="text-align:center; padding:20px; color:var(--text-sub);">まだ投票履歴がありません。</p>';
       }
-    } else {
-      historyListEl.innerHTML = '<p style="text-align:center; padding:20px; color:var(--text-sub);">データが存在しません。</p>';
     }
   } catch (err) {
     console.error("History Load Error:", err);
@@ -171,43 +193,5 @@ async function loadUserHistory(targetId) {
   }
 }
 
-// --- 他の関数はそのまま ---
-async function applyCharaTheme(oshiName) {
-  if (!oshiName) return;
-  try {
-    const response = await fetch("./data/characters.json");
-    const charaMaster = await response.json();
-    const config = charaMaster[oshiName];
-    const root = document.documentElement;
-    if (config && config.main && config.sub) {
-      root.style.setProperty("--chara-main", config.main);
-      root.style.setProperty("--chara-sub", config.sub);
-    }
-  } catch (error) {
-    console.error("Theme Apply Error:", error);
-  }
-}
-
-function renderProfile(data) {
-  const headerTitle = document.getElementById("js-header-title");
-  if (headerTitle) {
-    const targetName = data.userName || "名無し";
-    const myName = sessionStorage.getItem("user_name");
-    headerTitle.innerText = targetName === myName ? "マイプロフィール" : `${targetName}さんのプロフィール`;
-  }
-  applyCharaTheme(data.favoriteChara);
-  const nameEl = document.getElementById("js-user-name");
-  if (nameEl) nameEl.innerText = data.userName || "名無し";
-  const circleEl = document.getElementById("js-user-circle");
-  if (circleEl) circleEl.innerText = data.circleName ? `所属サークル： ${data.circleName}` : "無所属";
-  const commentEl = document.getElementById("js-user-comment");
-  if (commentEl) commentEl.innerText = data.comment || "よろしくお願いします！";
-  const oshiEl = document.getElementById("js-user-oshi");
-  if (oshiEl) oshiEl.innerText = data.favoriteChara || "未設定";
-  const iconEl = document.getElementById("js-user-icon");
-  if (data.photoURL && iconEl) {
-    iconEl.innerHTML = `<img src="${data.photoURL}" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">`;
-  }
-}
-
+// 実行
 initUserPage();

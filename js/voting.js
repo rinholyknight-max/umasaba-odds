@@ -18,18 +18,27 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-export function initVoting() {
+/**
+ * 投票ページの初期化
+ */
+export async function initVoting() {
+  // ★ async を追加
   initPageInfo("index");
-  initTheme();
 
-  const userName = sessionStorage.getItem("user_name") || "不明なユーザー";
-  const userDisplay = document.getElementById("js-display-user");
-  if (userDisplay) userDisplay.innerText = userName;
+  // ★ 1. テーマと認証を順番に待つ
+  await initTheme();
+  const authInfo = await checkAuth();
+  if (!authInfo) return; // 未ログインなら終了
 
-  if (!checkAuth()) return;
   initMenu();
   const logoutBtn = document.getElementById("js-logout");
   if (logoutBtn) logoutBtn.onclick = logout;
+
+  // --- ユーザー情報の表示 ---
+  // authInfo.fbUser から最新の名前を取得
+  const userName = authInfo.fbUser?.displayName || sessionStorage.getItem("user_name") || "不明なユーザー";
+  const userDisplay = document.getElementById("js-display-user");
+  if (userDisplay) userDisplay.innerText = userName;
 
   // --- 状態管理用変数 ---
   let allRacesData = {};
@@ -42,24 +51,21 @@ export function initVoting() {
   const submitBtn = document.getElementById("js-submit-vote");
   const voterNameInput = document.getElementById("js-voter-name");
   const voterCommentInput = document.getElementById("js-voter-comment");
-  const raceTitleDisp = document.getElementById("js-active-race-title"); // タイトル表示用
+  const raceTitleDisp = document.getElementById("js-active-race-title");
 
+  // ログイン済みの名前を初期値にセット
   if (voterNameInput) {
-    const savedName = sessionStorage.getItem("user_name");
-    if (savedName) voterNameInput.value = savedName;
+    voterNameInput.value = userName;
   }
 
-  // UI更新関数
+  // --- UI更新関数 (既存のまま) ---
   const updateSelectionUI = () => {
-    // スロットの更新（index.htmlの外に出した新しい構造に対応）
     for (let i = 1; i <= 3; i++) {
       const slot = document.querySelector(`.p-voting__slot[data-slot="${i}"] .slot-name`);
       if (slot) slot.innerText = selectedHorses[i - 1] ? selectedHorses[i - 1].name : "未選択";
     }
-
     if (submitBtn) submitBtn.disabled = selectedHorses.length < 3;
 
-    // リスト内のボタン状態更新
     const activeSlide = document.querySelector(`.p-voting__slide-item[data-race-id="${activeRaceId}"]`);
     if (activeSlide) {
       activeSlide.querySelectorAll(".p-voting__item").forEach((item) => {
@@ -74,7 +80,7 @@ export function initVoting() {
     }
   };
 
-  // スライダーのスクロール検知（1箇所にまとめました）
+  // --- スライダー・ドット制御 (既存のまま) ---
   if (slider) {
     slider.addEventListener("scroll", () => {
       const slideWidth = slider.offsetWidth;
@@ -84,13 +90,10 @@ export function initVoting() {
         const newRaceId = slides[index].getAttribute("data-race-id");
         if (activeRaceId !== newRaceId) {
           activeRaceId = newRaceId;
-
-          // タイトル更新（存在チェック付き）
           if (raceTitleDisp && allRacesData[newRaceId]) {
             raceTitleDisp.innerText = allRacesData[newRaceId].title || "投票フォーム";
           }
-
-          selectedHorses = [];
+          selectedHorses = []; // レースが変わったら選択をリセット
           updateSelectionUI();
           if (dotsContainer) updateDots(index);
         }
@@ -105,6 +108,7 @@ export function initVoting() {
     });
   };
 
+  // --- スライド生成ロジック ---
   const createSlideHtml = (raceId, raceInfo) => {
     const horses = raceInfo.horses || {};
     let horseItemsHtml = "";
@@ -130,12 +134,12 @@ export function initVoting() {
     `;
   };
 
-  // 投票処理（存在チェックを追加）
+  // --- 投票処理 ---
   if (submitBtn) {
     submitBtn.onclick = async () => {
       const voterName = voterNameInput ? voterNameInput.value.trim() : "";
       const voterComment = voterCommentInput ? voterCommentInput.value.trim() : "";
-      const userId = sessionStorage.getItem("user_id");
+      const userId = authInfo.uid; // ★ authInfo から取得
 
       if (!voterName) {
         alert("投票者名を入力してください");
@@ -187,7 +191,7 @@ export function initVoting() {
     };
   }
 
-  // --- データ取得 ---
+  // --- データ取得（リアルタイム監視） ---
   onValue(ref(db, "races"), (snapshot) => {
     const data = snapshot.val();
     if (!data || !slider) {
@@ -211,6 +215,7 @@ export function initVoting() {
       raceTitleDisp.innerText = data[activeRaceId].title || "投票フォーム";
     }
 
+    // 選択ボタンのイベント貼り直し
     slider.querySelectorAll(".p-voting__item").forEach((item) => {
       const btn = item.querySelector("button");
       if (btn) {
@@ -227,7 +232,10 @@ export function initVoting() {
         };
       }
     });
+
     updateSelectionUI();
+    // 全ての描画準備が整ったらローディングを消す
+    document.body.classList.remove("is-loading");
   });
 
   const clearBtn = document.getElementById("js-clear-btn");

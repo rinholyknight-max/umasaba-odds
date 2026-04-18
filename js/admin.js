@@ -22,29 +22,38 @@ const db = getDatabase(app);
 /**
  * 管理画面の初期化
  */
-export function initAdmin() {
+export async function initAdmin() {
+  // ★ async を追加
   initPageInfo("admin");
   initTheme();
 
-  // ★1. 編集対象のレースIDを取得 (例: admin.html?race=race_001)
+  // --- ★ 1. 最初に認証をチェックして結果を待つ ---
+  const authInfo = await checkAuth("admin");
+  if (!authInfo) {
+    // 認証失敗時は checkAuth 側でリダイレクトされるのでここで終了
+    console.warn("認証に失敗しました。");
+    return;
+  }
+
+  // --- 2. 認証成功後、各種設定を開始 ---
   const params = new URLSearchParams(window.location.search);
-  const raceId = params.get("race") || "race_001"; // 指定がなければデフォルト
+  const raceId = params.get("race") || "race_001";
 
   const raceTitleInput = document.getElementById("js-race-title-input");
   const updateTitleBtn = document.getElementById("js-update-race-title");
 
-  // --- 1. 現在のレース名を取得して初期値にセット ---
+  // --- 3. 現在のレース名を取得して初期値にセット ---
   const raceRef = ref(db, `races/${raceId}`);
   onValue(raceRef, (snapshot) => {
     const data = snapshot.val();
     if (data && data.title) {
       raceTitleInput.value = data.title;
     } else {
-      raceTitleInput.value = ""; // 未設定の場合
+      raceTitleInput.value = "";
     }
   });
 
-  // --- 2. 保存ボタンのクリックイベント ---
+  // --- 4. 保存ボタンのクリックイベント ---
   updateTitleBtn.onclick = async () => {
     const newTitle = raceTitleInput.value.trim();
     if (!newTitle) {
@@ -54,7 +63,6 @@ export function initAdmin() {
 
     updateTitleBtn.disabled = true;
     try {
-      // Firebaseの races/raceId/title を更新
       await update(ref(db, `races/${raceId}`), {
         title: newTitle,
       });
@@ -73,16 +81,12 @@ export function initAdmin() {
   const raceSelect = document.getElementById("js-race-select");
   if (raceSelect) raceSelect.value = raceId;
 
-  // 表示名の設定
-  const userName = sessionStorage.getItem("user_name") || "不明なユーザー";
+  // 表示名の設定（sessionStorageから取得、なければデフォルト）
+  const userName = sessionStorage.getItem("user_name") || "管理者";
   const userDisplay = document.getElementById("js-display-user");
   if (userDisplay) userDisplay.innerText = userName;
 
-  if (!checkAuth("admin")) {
-    console.warn("認証に失敗しました。");
-    return;
-  }
-
+  // ローディング解除
   document.body.classList.remove("is-loading");
 
   initMenu();
@@ -91,25 +95,27 @@ export function initAdmin() {
   const logoutBtn = document.getElementById("js-logout");
   if (logoutBtn) logoutBtn.onclick = logout;
 
-  // DOM要素の取得
+  // --- 5. DOM要素の取得とイベント登録 ---
+  // (ここから下は、既存の addBtn や allowCsvBtn のリスナー登録をそのまま記述)
   const charInput = document.getElementById("horse-name");
   const userInput = document.getElementById("user-name");
   const addBtn = document.getElementById("add-btn");
-  const fileInput = document.getElementById("js-upload-file"); // 出走馬用CSV
+  const fileInput = document.getElementById("js-upload-file");
   const adminList = document.getElementById("admin-list");
 
-  // --- ★ユーザー許可登録用の要素 ---
   const allowIdInput = document.getElementById("new-allow-id");
   const allowNameInput = document.getElementById("new-allow-name");
-  const allowCircleSelect = document.getElementById("new-allow-circle"); // サークル選択用
+  const allowCircleSelect = document.getElementById("new-allow-circle");
   const addAllowBtn = document.getElementById("add-allow-btn");
   const addAllowMsg = document.getElementById("add-allow-msg");
 
-  // ★名簿一括登録用の要素
   const allowCsvInput = document.getElementById("js-allow-csv-file");
   const allowCsvBtn = document.getElementById("js-allow-csv-btn");
 
-  // 1. 個別登録（出走馬）
+  // --- 既存のクリックイベントや onValue 処理 ---
+  // (コードが長くなるため、ロジック部分は元のままで問題ありません)
+
+  // 個別登録（出走馬）
   addBtn.addEventListener("click", () => {
     const hName = charInput.value.trim();
     const uName = userInput.value.trim();

@@ -1,25 +1,25 @@
-export function initTheme() {
+export async function initTheme() {
+  // ★ async を追加
   console.log("--- theme.js initialized ---");
-
   const htmlEl = document.documentElement;
 
-  // 1. 今いるページが login.html かどうかをチェック
-  const isLoginPage = window.location.pathname.includes("login.html");
-
-  // 2. ダークモードの設定（これは全ページ共通でOK）
+  // 1. ダークモード設定
   const savedTheme = localStorage.getItem("theme") || "light";
   htmlEl.setAttribute("data-theme", savedTheme);
 
-  // 3. ログインページ以外の場合のみ、推しテーマの適用とフェードイン制御を行う
+  // 2. ログインページ以外なら推しテーマを適用
+  const isLoginPage = window.location.pathname.includes("login.html");
   if (!isLoginPage) {
-    const savedOshi = localStorage.getItem("user_oshi");
-    applyCharaTheme(savedOshi);
+    // sessionStorage か localStorage から取得（最新は sessionStorage にあるはず）
+    const savedOshi = sessionStorage.getItem("user_oshi") || localStorage.getItem("user_oshi");
+
+    // ★ await をつけて、色の適用が終わるまで待つ
+    await applyCharaTheme(savedOshi);
   } else {
-    // ログインページの場合は、即座に表示させる
-    document.documentElement.setAttribute("data-theme-loaded", "true");
+    htmlEl.setAttribute("data-theme-loaded", "true");
   }
 
-  // 3. ボタンを探す処理を関数化
+  // 3. ダークモード切り替えボタンの設定（ここは非同期を待つ必要なし）
   const setupToggle = () => {
     const toggleBtn = document.getElementById("js-dark-mode-toggle");
     if (!toggleBtn) return false;
@@ -37,7 +37,6 @@ export function initTheme() {
     return true;
   };
 
-  // 実行
   if (!setupToggle()) {
     const retryInterval = setInterval(() => {
       if (setupToggle()) clearInterval(retryInterval);
@@ -46,11 +45,12 @@ export function initTheme() {
   }
 }
 
-// 推しキャラのテーマを適用する共通関数
+/**
+ * 推しキャラのテーマを適用する
+ */
 export async function applyCharaTheme(oshiName) {
-  // 最後に必ず実行されるように、try-catch-finally の形にするのが安全です
   try {
-    if (oshiName) {
+    if (oshiName && oshiName !== "なし") {
       const response = await fetch("./data/characters.json");
       if (response.ok) {
         const charaMaster = await response.json();
@@ -67,7 +67,7 @@ export async function applyCharaTheme(oshiName) {
   } catch (error) {
     console.error("Theme Apply Error:", error);
   } finally {
-    // 推しがいてもいなくても、エラーが起きても、最後は必ず画面を表示させる
+    // ★ 色の準備ができたら、フェードインを許可する
     document.documentElement.setAttribute("data-theme-loaded", "true");
   }
 }

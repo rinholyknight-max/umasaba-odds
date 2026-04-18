@@ -18,20 +18,29 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-export function initOdds() {
+/**
+ * オッズページの初期化
+ */
+export async function initOdds() {
+  // ★ async を追加
   initPageInfo("odds");
-
   initTheme();
-  const userName = sessionStorage.getItem("user_name") || "不明なユーザー";
+
+  // --- ★ 1. 認証をチェックして結果を待つ ---
+  const authInfo = await checkAuth();
+  if (!authInfo) return; // 未ログイン時は checkAuth 側でリダイレクト
+
+  // --- 2. ユーザー情報の表示更新 ---
+  // sessionStorage だけでなく、authInfo からも取得可能
+  const userName = authInfo.fbUser?.displayName || sessionStorage.getItem("user_name") || "不明なユーザー";
   const userDisplay = document.getElementById("js-display-user");
   if (userDisplay) userDisplay.innerText = userName;
 
-  if (!checkAuth()) return;
   initMenu();
   const logoutBtn = document.getElementById("js-logout");
   if (logoutBtn) logoutBtn.onclick = logout;
 
-  // --- URLパラメータ判定 ---
+  // --- 3. URLパラメータ判定 ---
   const urlParams = new URLSearchParams(window.location.search);
   const raceId = urlParams.get("race");
 
@@ -49,9 +58,12 @@ export function initOdds() {
     if (detailEl) detailEl.style.display = "";
     loadOddsDetail(raceId);
   }
+
+  // ローディング解除
+  document.body.classList.remove("is-loading");
 }
 
-// --- 関数: レース一覧の読み込み ---
+// --- 関数: レース一覧の読み込み (変更なし) ---
 function loadRaceList() {
   const listContainer = document.getElementById("js-race-list");
   onValue(ref(db, "races"), (snapshot) => {
@@ -79,9 +91,9 @@ function loadRaceList() {
     listContainer.innerHTML = html;
   });
 }
-// --- 関数: オッズ詳細の読み込み (クイック切り替え対応版) ---
+
+// --- 関数: オッズ詳細の読み込み (変更なし) ---
 function loadOddsDetail(raceId) {
-  // DOM再取得
   const oddsListDiv = document.getElementById("odds-list");
   const totalInfoDiv = document.getElementById("total-info");
   const searchInput = document.getElementById("js-search-input");
@@ -90,8 +102,6 @@ function loadOddsDetail(raceId) {
   const modalTitle = document.getElementById("js-modal-title");
   const raceTitleDisp = document.getElementById("js-race-title");
   const filterDetails = document.querySelector(".p-voting__filter-details");
-
-  // ★追加：クイックセレクター
   const quickSelect = document.getElementById("js-race-quick-select");
 
   let allCombos = [];
@@ -99,29 +109,25 @@ function loadOddsDetail(raceId) {
   let horseToUserMap = {};
   let myChart = null;
 
-  // --- ★追加：クイック切り替えプルダウンの構築 ---
+  // クイックセレクター構築
   if (quickSelect) {
     onValue(
       ref(db, "races"),
       (snapshot) => {
         const allRaces = snapshot.val();
         if (!allRaces) return;
-
-        // プルダウンをリセット
         quickSelect.innerHTML = '<option value="">他のレースに切り替え...</option>';
-
         Object.keys(allRaces).forEach((id) => {
           const opt = document.createElement("option");
           opt.value = id;
           opt.innerText = allRaces[id].title || "無題のレース";
-          if (id === raceId) opt.selected = true; // 現在のレースを選択状態に
+          if (id === raceId) opt.selected = true;
           quickSelect.appendChild(opt);
         });
       },
       { onlyOnce: true },
-    ); // 何度も書き換わらないよう1回のみ取得
+    );
 
-    // 選択イベント
     quickSelect.onchange = (e) => {
       const selectedId = e.target.value;
       if (selectedId && selectedId !== raceId) {
@@ -144,9 +150,6 @@ function loadOddsDetail(raceId) {
 
       const item = document.createElement("div");
       item.className = "c-modal__comment-item";
-      item.style.marginBottom = "15px";
-      item.style.paddingBottom = "10px";
-      item.style.borderBottom = "1px solid var(--border)";
       item.innerHTML = `
         <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-sub);">
             ${uid ? `<a href="user.html?id=${uid}" style="color:var(--chara-main); font-weight:bold; text-decoration:none;">${name}</a>` : `<strong>${name}</strong>`}
@@ -237,11 +240,9 @@ function loadOddsDetail(raceId) {
     updateChart();
   };
 
-  // --- リアルタイム監視 (パスを races/${raceId} 配下に変更) ---
   onValue(ref(db, `races/${raceId}`), (snap) => {
     const raceData = snap.val();
     if (!raceData) return;
-
     if (raceTitleDisp) raceTitleDisp.innerText = raceData.title || "投票結果";
 
     const horses = raceData.horses || {};
@@ -262,7 +263,6 @@ function loadOddsDetail(raceId) {
     render(allCombos.sort((a, b) => b.v - a.v));
   });
 
-  // 検索・ソート処理
   if (searchInput) {
     searchInput.oninput = () => {
       const key = searchInput.value.toLowerCase();
