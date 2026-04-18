@@ -126,19 +126,35 @@ export async function initSettings() {
   // 4. 初期データ読み込み（DBから現在の設定を取得）
   if (canEdit) {
     try {
-      // プロジェクト仕様に基づき、数字IDのパスを参照
+      console.log(`[Settings] Loading data for: users/${userNumericId}`);
       const userRef = ref(db, `users/${userNumericId}`);
       const snapshot = await get(userRef);
-      if (snapshot.exists()) {
-        const data = snapshot.val();
-        if (nameInput) nameInput.value = data.userName || "";
-        if (stakeInput) stakeInput.value = data.defaultStake || 1000;
-        if (commentInput) commentInput.value = data.comment || "";
-        if (oshiSelect) oshiSelect.value = data.favoriteCharacter || ""; // キー名を favoriteCharacter に統一
 
-        if (data.photoURL && iconPreviewDiv) {
-          iconPreviewDiv.innerHTML = `<img src="${data.photoURL}" alt="アイコン" class="p-settings__icon-img">`;
+      if (snapshot.exists()) {
+        const rawData = snapshot.val();
+
+        // --- データ構造の正規化 ---
+        // data.settings があればそれを使う、なければ直下のデータを使う
+        const data = rawData.settings ? { ...rawData, ...rawData.settings } : rawData;
+
+        // 各入力フィールドにセット
+        if (nameInput) nameInput.value = data.userName || "";
+        if (commentInput) commentInput.value = data.comment || "";
+
+        // 推しウマ娘（favoriteCharacter または favoriteChara 両方対応）
+        if (oshiSelect) {
+          oshiSelect.value = data.favoriteCharacter || data.favoriteChara || "";
         }
+
+        // アイコン表示
+        if (data.photoURL && iconPreviewDiv) {
+          iconPreviewDiv.innerHTML = `<img src="${data.photoURL}" alt="アイコン" class="p-settings__icon-img" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">`;
+        }
+
+        // 隠しフィールド等（もしあれば）
+        if (stakeInput) stakeInput.value = data.defaultStake || 1000;
+
+        console.log("[Settings] Loaded Data:", data);
       }
     } catch (err) {
       console.error("データ取得エラー:", err);
