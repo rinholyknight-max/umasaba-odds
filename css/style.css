@@ -796,4 +796,9 @@ h2,
   font-size: 0.8rem;
   color: #999;
   text-align: right;
+}
+
+/* 画面全体を隠すためのクラス */
+.is-loading {
+  display: none !important;
 }/*# sourceMappingURL=style.css.map */

@@ -798,3 +798,8 @@ h2,
   color: #999;
   text-align: right;
 }
+
+/* 画面全体を隠すためのクラス */
+.is-loading {
+  display: none !important;
+}

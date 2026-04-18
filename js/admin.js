@@ -34,6 +34,8 @@ export function initAdmin() {
     return;
   }
 
+  document.body.classList.remove("is-loading");
+
   initMenu();
 
   // ログアウト
