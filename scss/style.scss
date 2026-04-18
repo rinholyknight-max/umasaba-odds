@@ -1270,3 +1270,72 @@ h2,
     }
   }
 }
+
+// ==========================================
+// --- 4. Flick Slider (Multiple Race Support) ---
+// ==========================================
+
+// スライダー全体のコンテナ
+.p-voting__slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory; // 横方向にピタッと止まる
+  scrollbar-width: none; // Firefoxでスクロールバーを隠す
+  -webkit-overflow-scrolling: touch; // iOSの慣性スクロール
+  margin: 0 calc(v.$space-lg * -1); // 親のパディングを打ち消して画面端まで広げる
+  padding-bottom: 20px; // インジケーター用の余白
+
+  &::-webkit-scrollbar {
+    display: none; // Chrome/Safariでスクロールバーを隠す
+  }
+}
+
+// 各レースの塊（1スライド）
+.p-voting__slide-item {
+  flex: 0 0 100%; // 1枚が画面幅100%
+  min-width: 100%;
+  scroll-snap-align: start; // フリックが止まる基準点
+  box-sizing: border-box;
+  padding: 0 v.$space-lg; // 打ち消した分の余白を中で確保
+
+  // 1つの時はフリックの「遊び」を消す
+  &:only-child {
+    padding: 0 v.$space-lg;
+  }
+}
+
+// 現在のページを示すドット（インジケーター）
+.p-voting__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 15px;
+
+  span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: 0.3s;
+
+    &.is-active {
+      background: var(--chara-main);
+      transform: scale(1.3);
+    }
+  }
+
+  // 1つしかない時はドットを隠す
+  &:empty,
+  &:has(span:only-child) {
+    display: none;
+  }
+}
+
+// 固定ヘッダー（選択中のスロット）の微調整
+// スライドアイテムの中にこれを入れる場合、stickyが効くように調整
+.p-voting__slide-item .p-voting__selection-container {
+  position: sticky;
+  top: 60px;
+  z-index: 50;
+  margin-bottom: v.$space-md;
+}

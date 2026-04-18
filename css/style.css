@@ -1204,4 +1204,55 @@ h2,
     align-self: center;
     text-align: center;
   }
+}
+.p-voting__slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 -24px;
+  padding-bottom: 20px;
+}
+.p-voting__slider::-webkit-scrollbar {
+  display: none;
+}
+
+.p-voting__slide-item {
+  flex: 0 0 100%;
+  min-width: 100%;
+  scroll-snap-align: start;
+  box-sizing: border-box;
+  padding: 0 24px;
+}
+.p-voting__slide-item:only-child {
+  padding: 0 24px;
+}
+
+.p-voting__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+.p-voting__dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: 0.3s;
+}
+.p-voting__dots span.is-active {
+  background: var(--chara-main);
+  transform: scale(1.3);
+}
+.p-voting__dots:empty, .p-voting__dots:has(span:only-child) {
+  display: none;
+}
+
+.p-voting__slide-item .p-voting__selection-container {
+  position: sticky;
+  top: 60px;
+  z-index: 50;
+  margin-bottom: 16px;
 }/*# sourceMappingURL=style.css.map */

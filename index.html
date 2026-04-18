@@ -53,37 +53,30 @@
       </ul>
     </nav>
     <div class="l-menu__overlay" id="js-overlay"></div>
-
     <main class="l-main-content">
+      <div id="js-race-dots" class="p-voting__dots"></div>
+
       <div class="p-voting">
-        <div id="selection-area" class="p-voting__selection-container">
-          <h1 class="p-voting__title">3連複 投票フォーム</h1>
-          <div class="p-voting__slots">
-            <div class="p-voting__slot" data-slot="1">1枠: <span class="slot-name">未選択</span></div>
-            <div class="p-voting__slot" data-slot="2">2枠: <span class="slot-name">未選択</span></div>
-            <div class="p-voting__slot" data-slot="3">3枠: <span class="slot-name">未選択</span></div>
+        <div id="js-race-slider" class="p-voting__slider">
+          <div class="p-voting__slide-item">
+            <div class="p-voting__selection-container">
+              <h1 class="p-voting__title">3連複 投票フォーム</h1>
+              <div class="p-voting__slots">
+                <div class="p-voting__slot" data-slot="1">1枠: <span class="slot-name">未選択</span></div>
+                <div class="p-voting__slot" data-slot="2">2枠: <span class="slot-name">未選択</span></div>
+                <div class="p-voting__slot" data-slot="3">3枠: <span class="slot-name">未選択</span></div>
+              </div>
+            </div>
+
+            <h2 class="p-voting__subtitle">出走表（3頭選んでください）</h2>
+            <div class="p-voting__list js-horse-list">読み込み中...</div>
           </div>
         </div>
-
-        <h2 class="p-voting__subtitle">出走表（3頭選んでください）</h2>
-        <div id="horse-list" class="p-voting__list">読み込み中...</div>
-
-        <hr class="p-voting__divider" />
 
         <div class="p-voting__form-footer">
           <div class="p-voting__input-group">
             <label for="js-voter-name" class="p-voting__label">投票者名</label>
             <input type="text" id="js-voter-name" class="c-input" placeholder="あなたの名前を入力" maxlength="15" />
-          </div>
-
-          <div class="p-voting__input-group" style="margin-top: 15px">
-            <label for="js-voter-comment" class="p-voting__label">一言コメント（任意）</label>
-            <textarea id="js-voter-comment" class="c-input" placeholder="意気込みや応援コメントをどうぞ！" rows="2" maxlength="50"></textarea>
-          </div>
-
-          <div class="p-voting__actions">
-            <button id="js-clear-btn" class="c-button c-button--danger">クリア</button>
-            <button id="js-submit-vote" class="c-button c-button--primary" disabled>投票を確定する</button>
           </div>
         </div>
       </div>

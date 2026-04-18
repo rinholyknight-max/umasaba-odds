@@ -24,6 +24,10 @@ const db = getDatabase(app);
 export function initAdmin() {
   initTheme();
 
+  // ★1. 編集対象のレースIDを取得 (例: admin.html?race=race_001)
+  const params = new URLSearchParams(window.location.search);
+  const raceId = params.get("race") || "race_001"; // 指定がなければデフォルト
+
   // 表示名の設定
   const userName = sessionStorage.getItem("user_name") || "不明なユーザー";
   const userDisplay = document.getElementById("js-display-user");
@@ -68,7 +72,7 @@ export function initAdmin() {
       alert("キャラ名とユーザー名の両方を入力してください");
       return;
     }
-    push(ref(db, "horses"), { horseName: hName, userName: uName, votes: 0 }).then(() => {
+    push(ref(db, `races/${raceId}/horses`), { horseName: hName, userName: uName, votes: 0 }).then(() => {
       charInput.value = "";
       userInput.value = "";
       charInput.focus();
@@ -87,7 +91,7 @@ export function initAdmin() {
         const [hName, uName] = line.split(/[,,、\s]+/).map((s) => s.trim());
         if (hName && uName) {
           try {
-            await push(ref(db, "horses"), { horseName: hName, userName: uName, votes: 0 });
+            await push(ref(db, `races/${raceId}/horses`), { horseName: hName, userName: uName, votes: 0 });
             count++;
           } catch (err) {
             console.error(err);
@@ -174,7 +178,7 @@ export function initAdmin() {
   });
 
   // 3. リスト表示（出走馬）
-  onValue(ref(db, "horses"), (snapshot) => {
+  onValue(ref(db, `races/${raceId}/horses`), (snapshot) => {
     const data = snapshot.val();
     adminList.innerHTML = "<h3>現在の出走表</h3>";
     if (!data) return;
@@ -194,7 +198,7 @@ export function initAdmin() {
 
     adminList.querySelectorAll(".js-delete-btn").forEach((btn) => {
       btn.onclick = () => {
-        if (confirm("削除しますか？")) remove(ref(db, `horses/${btn.dataset.id}`));
+        if (confirm("削除しますか？")) remove(ref(db, `races/${raceId}/horses/${btn.dataset.id}`));
       };
     });
   });
@@ -233,16 +237,16 @@ export function initAdmin() {
 
   // 4. リセット系
   document.getElementById("js-reset-votes")?.addEventListener("click", () => {
-    if (confirm("投票データのみリセットしますか？")) {
-      remove(ref(db, "combos"));
-      remove(ref(db, "logs"));
+    if (confirm("このレースの全キャラを削除しますか？")) {
+      remove(ref(db, `races/${raceId}/horses`));
+      remove(ref(db, `races/${raceId}/combos`));
+      // ※ logsは全レース共通にするか、logs内にもraceIdを持たせる運用がおすすめ
     }
   });
 
   document.getElementById("js-reset-horses")?.addEventListener("click", () => {
-    if (confirm("全キャラ削除しますか？")) {
-      remove(ref(db, "horses"));
-      remove(ref(db, "combos"));
+    if (confirm(`レース [${raceId}] の全データを削除しますか？`)) {
+      remove(ref(db, `races/${raceId}`)); // そのレースのフォルダごと消すのが確実
     }
   });
 }
