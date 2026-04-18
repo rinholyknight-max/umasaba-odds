@@ -123,41 +123,33 @@ export async function initSettings() {
 
   let selectedIconFile = null;
 
-  // 4. 初期データ読み込み（DBから現在の設定を取得）
+  // --- 4. 初期データ読み込み (users/数字ID/直下を参照) ---
   if (canEdit) {
     try {
-      console.log(`[Settings] Loading data for: users/${userNumericId}`);
       const userRef = ref(db, `users/${userNumericId}`);
       const snapshot = await get(userRef);
 
       if (snapshot.exists()) {
-        const rawData = snapshot.val();
+        const data = snapshot.val();
+        console.log("[Settings] DB Data:", data);
 
-        // --- データ構造の正規化 ---
-        // data.settings があればそれを使う、なければ直下のデータを使う
-        const data = rawData.settings ? { ...rawData, ...rawData.settings } : rawData;
-
-        // 各入力フィールドにセット
+        // 各フィールドにセット
         if (nameInput) nameInput.value = data.userName || "";
         if (commentInput) commentInput.value = data.comment || "";
 
-        // 推しウマ娘（favoriteCharacter または favoriteChara 両方対応）
+        // ★ キー名を favoriteChara に修正
         if (oshiSelect) {
-          oshiSelect.value = data.favoriteCharacter || data.favoriteChara || "";
+          oshiSelect.value = data.favoriteChara || "";
         }
 
-        // アイコン表示
         if (data.photoURL && iconPreviewDiv) {
-          iconPreviewDiv.innerHTML = `<img src="${data.photoURL}" alt="アイコン" class="p-settings__icon-img" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">`;
+          iconPreviewDiv.innerHTML = `<img src="${data.photoURL}" class="p-settings__icon-img" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">`;
         }
 
-        // 隠しフィールド等（もしあれば）
-        if (stakeInput) stakeInput.value = data.defaultStake || 1000;
-
-        console.log("[Settings] Loaded Data:", data);
+        if (userDisplay) userDisplay.innerText = data.userName || "不明なユーザー";
       }
     } catch (err) {
-      console.error("データ取得エラー:", err);
+      console.error("[Settings] Load Error:", err);
     }
   }
 
@@ -235,7 +227,7 @@ export async function initSettings() {
         userName: newName,
         defaultStake: stakeInput ? Number(stakeInput.value) : 1000,
         comment: commentInput ? commentInput.value.trim() : "",
-        favoriteCharacter: newOshi,
+        favoriteChara: newOshi, // ★ favoriteCharacter から favoriteChara へ修正
         updatedAt: Date.now(),
       };
 
@@ -282,7 +274,6 @@ export async function initSettings() {
       saveBtn.textContent = "設定を保存する";
     }
   });
-
   // セレクトボックス変更時に即座にテーマをプレビュー
   if (oshiSelect) {
     oshiSelect.onchange = async (e) => {
