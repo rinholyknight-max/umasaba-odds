@@ -1,50 +1,53 @@
 /**
  * theme.js
- * ユーザーの推しキャラ設定とダークモードを同期・適用する
  */
+import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.x/firebase-database.js";
 
 /**
- * 推しキャラのテーマ（CSS変数）を適用する
- * @param {string} oshiName - キャラクター名（マスターデータのキー）
+ * カラー変数をDOMに直接注入する（同期処理）
+ */
+function injectColorVariables(main, sub) {
+  const root = document.documentElement;
+  if (main && sub) {
+    root.style.setProperty("--chara-main", main);
+    root.style.setProperty("--chara-sub", sub);
+    root.classList.add("p-theme--custom");
+  }
+}
+
+/**
+ * 推しキャラのテーマを適用する
  */
 export async function applyCharaTheme(oshiName) {
   const root = document.documentElement;
-
   try {
-    // 「なし」または未設定の場合はデフォルト値をセットして終了
     if (!oshiName || oshiName === "なし") {
       root.style.removeProperty("--chara-main");
       root.style.removeProperty("--chara-sub");
+      localStorage.removeItem("user_oshi_colors"); // 色キャッシュも消す
       return;
     }
 
+    // 1. JSONを取得（マスタデータ）
     const response = await fetch("./data/characters.json");
-    if (!response.ok) throw new Error("Character master not found");
+    if (!response.ok) return;
 
     const charaMaster = await response.json();
     const config = charaMaster[oshiName];
 
     if (config && config.main && config.sub) {
-      // プロジェクト接頭辞を意識した命名ではないが、既存の変数名を維持
-      // BEM設計に合わせるなら .p-theme--[name] クラスの付与が望ましいが、
-      // 柔軟な色変更のためにCSS変数を採用
-      root.style.setProperty("--chara-main", config.main);
-      root.style.setProperty("--chara-sub", config.sub);
+      // 変数注入
+      injectColorVariables(config.main, config.sub);
 
-      // BEM用のクラスも付与（CSS側での微調整用）
-      // 既存の p-theme-- クラスをクリアしてから付与
-      const currentClasses = Array.from(root.classList);
-      currentClasses.forEach((c) => {
-        if (c.startsWith("p-theme--")) root.classList.remove(c);
-      });
-      root.classList.add(`p-theme--custom`);
-
-      console.log(`[Theme] Colors applied for: ${oshiName}`);
+      // 【重要】次回ページ遷移時にfetchを待たずに済むよう、色自体を保存しておく
+      const colorCache = JSON.stringify({ main: config.main, sub: config.sub });
+      localStorage.setItem("user_oshi_colors", colorCache);
+      localStorage.setItem("user_oshi", oshiName);
     }
   } catch (error) {
-    console.error("[Theme] Theme Apply Error:", error);
+    console.error("[Theme] Apply Error:", error);
   } finally {
-    // 色の準備ができたら、フェードインを許可（CSS側で[data-theme-loaded="true"]時に表示制御）
+    // 色のセット（または失敗）が確定したら表示
     root.setAttribute("data-theme-loaded", "true");
   }
 }
@@ -52,55 +55,65 @@ export async function applyCharaTheme(oshiName) {
 /**
  * 初期化処理
  */
-export async function initTheme() {
-  console.log("--- theme.js initialized ---");
+export async function initTheme(userNumericId = null) {
   const htmlEl = document.documentElement;
 
-  // 1. ダークモード設定（LocalStorage優先）
+  // 1. ダークモード適用（即時）
   const savedDarkMode = localStorage.getItem("theme") || "light";
   htmlEl.setAttribute("data-theme", savedDarkMode);
 
-  // 2. 推しテーマの適用
-  const isLoginPage = window.location.pathname.includes("login.html");
+  // 2. ログインページ以外でのテーマ適用
+  if (window.location.pathname.includes("login.html")) {
+    htmlEl.setAttribute("data-theme-loaded", "true");
+    return;
+  }
 
-  if (!isLoginPage) {
-    // 【改善】SessionStorageを優先し、なければLocalを参照
-    // ログイン直後はSessionStorageに最新が入る仕様に準拠
-    const savedOshi = sessionStorage.getItem("user_oshi") || localStorage.getItem("user_oshi");
+  // --- 高速化ロジック：fetchを待たずにLocalStorageの色を即座に当てる ---
+  const cachedColors = localStorage.getItem("user_oshi_colors");
+  if (cachedColors) {
+    const { main, sub } = JSON.parse(cachedColors);
+    injectColorVariables(main, sub);
+    // 色を当てたらすぐに表示許可（fetchを待たない）
+    htmlEl.setAttribute("data-theme-loaded", "true");
+  }
+  // -----------------------------------------------------------
 
-    // 適用が終わるまで待機
-    await applyCharaTheme(savedOshi);
-  } else {
-    // ログインページは即時表示
+  // 3. 最新情報の同期（Firebase or LocalStorage名）
+  // DBに繋がるまではキャッシュで表示を維持し、DB確定後に必要なら再描画する
+  const currentOshiName = localStorage.getItem("user_oshi");
+
+  if (userNumericId) {
+    // Firebaseから最新の推しを取得して同期
+    try {
+      const db = getDatabase();
+      const snap = await get(ref(db, `users/${userNumericId}/settings/favoriteCharacter`));
+      if (snap.exists() && snap.val() !== currentOshiName) {
+        await applyCharaTheme(snap.val()); // 変更があれば再適用
+      }
+    } catch (e) {
+      console.warn("[Theme] Sync failed");
+    }
+  } else if (currentOshiName && !cachedColors) {
+    // IDはないが名前の記録だけある場合（初回など）
+    await applyCharaTheme(currentOshiName);
+  } else if (!cachedColors) {
+    // 何も設定がない場合
     htmlEl.setAttribute("data-theme-loaded", "true");
   }
 
-  // 3. ダークモード切り替えボタンの設定（js- 接頭辞を使用）
-  const setupToggle = () => {
-    const toggleBtn = document.getElementById("js-dark-mode-toggle");
-    if (!toggleBtn) return false;
+  // 4. トグル設定
+  setupDarkModeToggle();
+}
 
-    // 二重イベント登録防止
-    if (toggleBtn.dataset.themeBound) return true;
-
-    toggleBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const current = htmlEl.getAttribute("data-theme");
-      const next = current === "light" ? "dark" : "light";
-
-      htmlEl.setAttribute("data-theme", next);
-      localStorage.setItem("theme", next);
-    });
-
-    toggleBtn.dataset.themeBound = "true";
-    return true;
-  };
-
-  // DOM構築タイミングによりボタンがない場合があるためリトライ
-  if (!setupToggle()) {
-    const retryInterval = setInterval(() => {
-      if (setupToggle()) clearInterval(retryInterval);
-    }, 100);
-    setTimeout(() => clearInterval(retryInterval), 3000);
-  }
+function setupDarkModeToggle() {
+  const btn = document.getElementById("js-dark-mode-toggle");
+  if (!btn || btn.dataset.themeBound) return;
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const html = document.documentElement;
+    const next = html.getAttribute("data-theme") === "light" ? "dark" : "light";
+    html.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+  });
+  btn.dataset.themeBound = "true";
 }

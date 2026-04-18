@@ -17,30 +17,46 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-
 /**
  * オッズページの初期化
  */
 export async function initOdds() {
-  // ★ async を追加
-  initPageInfo("odds");
-  initTheme();
+  console.log("--- odds.js initialized ---");
 
-  // --- ★ 1. 認証をチェックして結果を待つ ---
+  // --- 1. 認証をチェックして結果を待つ ---
+  // authInfo = { uid, role, userNumericId, fbUser }
   const authInfo = await checkAuth();
-  if (!authInfo) return; // 未ログイン時は checkAuth 側でリダイレクト
+  if (!authInfo) {
+    console.warn("認証に失敗したか、未ログインです。");
+    return; // 未ログイン時は checkAuth 側でリダイレクトされる想定
+  }
 
-  // --- 2. ユーザー情報の表示更新 ---
-  // sessionStorage だけでなく、authInfo からも取得可能
-  const userName = authInfo.fbUser?.displayName || sessionStorage.getItem("user_name") || "不明なユーザー";
+  // --- 2. 認証成功後、テーマを初期化 ---
+  // 認証結果の userNumericId を渡して、最新の推し色を同期・適用する
+  await initTheme(authInfo.userNumericId);
+
+  // --- 3. ページ基本情報の初期化 ---
+  if (typeof initPageInfo === "function") {
+    initPageInfo("odds");
+  }
+
+  // ユーザー情報の表示更新
+  const userName = sessionStorage.getItem("user_name") || "不明なユーザー";
   const userDisplay = document.getElementById("js-display-user");
-  if (userDisplay) userDisplay.innerText = userName;
+  if (userDisplay) {
+    userDisplay.innerText = userName;
+  }
 
-  initMenu();
+  // メニューとログアウトの設定
+  if (typeof initMenu === "function") {
+    initMenu();
+  }
   const logoutBtn = document.getElementById("js-logout");
-  if (logoutBtn) logoutBtn.onclick = logout;
+  if (logoutBtn) {
+    logoutBtn.onclick = logout;
+  }
 
-  // --- 3. URLパラメータ判定 ---
+  // --- 4. URLパラメータによる表示切り替え ---
   const urlParams = new URLSearchParams(window.location.search);
   const raceId = urlParams.get("race");
 
@@ -51,15 +67,20 @@ export async function initOdds() {
     // 【モードA】レース一覧を表示
     if (selectorEl) selectorEl.style.display = "block";
     if (detailEl) detailEl.style.display = "none";
-    loadRaceList();
+    if (typeof loadRaceList === "function") {
+      loadRaceList();
+    }
   } else {
     // 【モードB】詳細表示（グラフ・オッズ）
     if (selectorEl) selectorEl.style.display = "none";
-    if (detailEl) detailEl.style.display = "";
-    loadOddsDetail(raceId);
+    if (detailEl) detailEl.style.display = "block"; // "" よりも "block" 等が明示的
+    if (typeof loadOddsDetail === "function") {
+      loadOddsDetail(raceId);
+    }
   }
 
   // ローディング解除
+  // theme.js の [data-theme-loaded="true"] による opacity 制御と合わせることでスムーズに表示されます
   document.body.classList.remove("is-loading");
 }
 

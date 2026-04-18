@@ -19,24 +19,30 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 /**
+ * voting.js
  * 投票ページの初期化
  */
 export async function initVoting() {
-  // ★ async を追加
-  initPageInfo("index");
+  console.log("--- voting.js initialized ---");
+  const db = getDatabase();
 
-  // ★ 1. テーマと認証を順番に待つ
-  await initTheme();
+  // 1. 認証チェックを最初に行い、結果を待つ
   const authInfo = await checkAuth();
-  if (!authInfo) return; // 未ログインなら終了
+  if (!authInfo) return; // 未ログイン時は checkAuth 内でリダイレクト
 
-  initMenu();
+  // 2. 認証後の ID を使ってテーマを初期化
+  // これにより DB 上の最新の推しキャラ設定が同期される
+  await initTheme(authInfo.userNumericId);
+
+  // 3. ページ基本情報の初期化
+  if (typeof initPageInfo === "function") initPageInfo("index");
+  if (typeof initMenu === "function") initMenu();
+
   const logoutBtn = document.getElementById("js-logout");
   if (logoutBtn) logoutBtn.onclick = logout;
 
   // --- ユーザー情報の表示 ---
-  // authInfo.fbUser から最新の名前を取得
-  const userName = authInfo.fbUser?.displayName || sessionStorage.getItem("user_name") || "不明なユーザー";
+  const userName = sessionStorage.getItem("user_name") || "不明なユーザー";
   const userDisplay = document.getElementById("js-display-user");
   if (userDisplay) userDisplay.innerText = userName;
 
@@ -53,12 +59,9 @@ export async function initVoting() {
   const voterCommentInput = document.getElementById("js-voter-comment");
   const raceTitleDisp = document.getElementById("js-active-race-title");
 
-  // ログイン済みの名前を初期値にセット
-  if (voterNameInput) {
-    voterNameInput.value = userName;
-  }
+  if (voterNameInput) voterNameInput.value = userName;
 
-  // --- UI更新関数 (既存のまま) ---
+  // --- UI更新関数 ---
   const updateSelectionUI = () => {
     for (let i = 1; i <= 3; i++) {
       const slot = document.querySelector(`.p-voting__slot[data-slot="${i}"] .slot-name`);
@@ -80,7 +83,7 @@ export async function initVoting() {
     }
   };
 
-  // --- スライダー・ドット制御 (既存のまま) ---
+  // --- スライダー制御 ---
   if (slider) {
     slider.addEventListener("scroll", () => {
       const slideWidth = slider.offsetWidth;
@@ -93,7 +96,7 @@ export async function initVoting() {
           if (raceTitleDisp && allRacesData[newRaceId]) {
             raceTitleDisp.innerText = allRacesData[newRaceId].title || "投票フォーム";
           }
-          selectedHorses = []; // レースが変わったら選択をリセット
+          selectedHorses = [];
           updateSelectionUI();
           if (dotsContainer) updateDots(index);
         }
@@ -108,7 +111,7 @@ export async function initVoting() {
     });
   };
 
-  // --- スライド生成ロジック ---
+  // --- スライド生成 ---
   const createSlideHtml = (raceId, raceInfo) => {
     const horses = raceInfo.horses || {};
     let horseItemsHtml = "";
@@ -139,7 +142,7 @@ export async function initVoting() {
     submitBtn.onclick = async () => {
       const voterName = voterNameInput ? voterNameInput.value.trim() : "";
       const voterComment = voterCommentInput ? voterCommentInput.value.trim() : "";
-      const userId = authInfo.uid; // ★ authInfo から取得
+      const userId = authInfo.uid;
 
       if (!voterName) {
         alert("投票者名を入力してください");
@@ -191,7 +194,7 @@ export async function initVoting() {
     };
   }
 
-  // --- データ取得（リアルタイム監視） ---
+  // --- データ取得 ---
   onValue(ref(db, "races"), (snapshot) => {
     const data = snapshot.val();
     if (!data || !slider) {
@@ -215,7 +218,6 @@ export async function initVoting() {
       raceTitleDisp.innerText = data[activeRaceId].title || "投票フォーム";
     }
 
-    // 選択ボタンのイベント貼り直し
     slider.querySelectorAll(".p-voting__item").forEach((item) => {
       const btn = item.querySelector("button");
       if (btn) {
@@ -234,7 +236,6 @@ export async function initVoting() {
     });
 
     updateSelectionUI();
-    // 全ての描画準備が整ったらローディングを消す
     document.body.classList.remove("is-loading");
   });
 
