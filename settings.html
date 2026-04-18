@@ -78,10 +78,147 @@
           <label style="display: block; font-size: 0.8rem; margin-bottom: 5px">表示名</label>
           <input type="text" id="js-display-name" class="c-input" placeholder="名前を入力" maxlength="15" autocomplete="off" />
         </div>
-        <div style="margin-bottom: 20px">
-          <label style="display: block; font-size: 0.8rem; margin-bottom: 5px">デフォルト賭け金（pt）</label>
-          <input type="number" id="js-default-stake" class="c-input" inputmode="numeric" placeholder="1000" />
+
+        <div class="p-settings__item">
+          <label class="c-label">ひとこと（ステータス）</label>
+          <input type="text" id="js-user-comment" class="c-input" placeholder="例：3連複専門です！" maxlength="30" />
         </div>
+
+        <div class="p-settings__item">
+          <label class="c-label">推しウマ娘</label>
+          <select id="js-oshi-chara" class="c-input">
+            <option value="">設定なし</option>
+            <option value="アイネスフウジン">アイネスフウジン</option>
+            <option value="アグネスタキオン">アグネスタキオン</option>
+            <option value="アグネスデジタル">アグネスデジタル</option>
+            <option value="アストンマーチャン">アストンマーチャン</option>
+            <option value="アドマイヤベガ">アドマイヤベガ</option>
+            <option value="アヌビス">アヌビス</option>
+            <option value="アーモンドアイ">アーモンドアイ</option>
+            <option value="イクノディクタス">イクノディクタス</option>
+            <option value="イナリワン">イナリワン</option>
+            <option value="ヴィブロス">ヴィブロス</option>
+            <option value="ヴィルシーナ">ヴィルシーナ</option>
+            <option value="ヴィクトワールピサ">ヴィクトワールピサ</option>
+            <option value="ウイニングチケット">ウイニングチケット</option>
+            <option value="ウオッカ">ウオッカ</option>
+            <option value="ウインバリアシオン">ウインバリアシオン</option>
+            <option value="エアグルーヴ">エアグルーヴ</option>
+            <option value="エアシャカール">エアシャカール</option>
+            <option value="エアメサイア">エアメサイア</option>
+            <option value="エイシンフラッシュ">エイシンフラッシュ</option>
+            <option value="エスポワールシチー">エスポワールシチー</option>
+            <option value="エルコンドルパサー">エルコンドルパサー</option>
+            <option value="オグリキャップ">オグリキャップ</option>
+            <option value="オルフェーヴル">オルフェーヴル</option>
+            <option value="カツラギエース">カツラギエース</option>
+            <option value="カレンチャン">カレンチャン</option>
+            <option value="カワカミプリンセス">カワカミプリンセス</option>
+            <option value="カルストンライトオ">カルストンライトオ</option>
+            <option value="キタサンブラック">キタサンブラック</option>
+            <option value="キセキ">キセキ</option>
+            <option value="キングヘイロー">キングヘイロー</option>
+            <option value="グラスワンダー">グラスワンダー</option>
+            <option value="グランアレグリア">グランアレグリア</option>
+            <option value="クロノジェネシス">クロノジェネシス</option>
+            <option value="ケイエスミラクル">ケイエスミラクル</option>
+            <option value="コパノリッキー">コパノリッキー</option>
+            <option value="ゴールドシチー">ゴールドシチー</option>
+            <option value="ゴールドシップ">ゴールドシップ</option>
+            <option value="サイレンススズカ">サイレンススズカ</option>
+            <option value="サクラバクシンオー">サクラバクシンオー</option>
+            <option value="サクラチヨノオー">サクラチヨノオー</option>
+            <option value="サクラローレル">サクラローレル</option>
+            <option value="サクラアルダン">サクラアルダン</option>
+            <option value="サトノダイヤモンド">サトノダイヤモンド</option>
+            <option value="サトノクラウン">サトノクラウン</option>
+            <option value="サウンズオブアース">サウンズオブアース</option>
+            <option value="シーキングザパール">シーキングザパール</option>
+            <option value="シーザリオ">シーザリオ</option>
+            <option value="ジェンティルドンナ">ジェンティルドンナ</option>
+            <option value="ジャングルポケット">ジャングルポケット</option>
+            <option value="シュヴァルグラン">シュヴァルグラン</option>
+            <option value="シリウスシンボリ">シリウスシンボリ</option>
+            <option value="シンボリルドルフ">シンボリルドルフ</option>
+            <option value="シンボリクリスエス">シンボリクリスエス</option>
+            <option value="シンコウウインディ">シンコウウインディ</option>
+            <option value="スイープトウショウ">スイープトウショウ</option>
+            <option value="スーパークリーク">スーパークリーク</option>
+            <option value="スカイ">セイウンスカイ</option>
+            <option value="ステイゴールド">ステイゴールド</option>
+            <option value="スティルインラブ">スティルインラブ</option>
+            <option value="スマートファルコン">スマートファルコン</option>
+            <option value="ゼンノロブロイ">ゼンノロブロイ</option>
+            <option value="タイキシャトル">タイキシャトル</option>
+            <option value="ダイタクヘリオス">ダイタクヘリオス</option>
+            <option value="ダイワスカーレット">ダイワスカーレット</option>
+            <option value="ダイイチルビー">ダイイチルビー</option>
+            <option value="タニノギムレット">タニノギムレット</option>
+            <option value="タマモクロス">タマモクロス</option>
+            <option value="タップダンスシチー">タップダンスシチー</option>
+            <option value="ダンツフレーム">ダンツフレーム</option>
+            <option value="ツインターボ">ツインターボ</option>
+            <option value="ツルマルツヨシ">ツルマルツヨシ</option>
+            <option value="テイエムオペラオー">テイエムオペラオー</option>
+            <option value="ディクタス">イクノディクタス</option>
+            <option value="デュランダル">デュランダル</option>
+            <option value="トウカイテイオー">トウカイテイオー</option>
+            <option value="トーセンジョーダン">トーセンジョーダン</option>
+            <option value="ドゥラメンテ">ドゥラメンテ</option>
+            <option value="トウカイテイオー">トウカイテイオー</option>
+            <option value="ドリームジャーニー">ドリームジャーニー</option>
+            <option value="トランセンド">トランセンド</option>
+            <option value="ナカヤマフェスタ">ナカヤマフェスタ</option>
+            <option value="ナイスネイチャ">ナイスネイチャ</option>
+            <option value="ナリタタイシン">ナリタタイシン</option>
+            <option value="ナリタブライアン">ナリタブライアン</option>
+            <option value="ナリタトップロード">ナリタトップロード</option>
+            <option value="ニシノフラワー">ニシノフラワー</option>
+            <option value="ネオユニヴァース">ネオユニヴァース</option>
+            <option value="ノースフライト">ノースフライト</option>
+            <option value="ノーリーズン">ノーリーズン</option>
+            <option value="ハルウララ">ハルウララ</option>
+            <option value="バンブーメモリー">バンブーメモリー</option>
+            <option value="バブルガムフェロー">バブルガムフェロー</option>
+            <option value="ビコーペガサス">ビコーペガサス</option>
+            <option value="ヒシアマゾン">ヒシアマゾン</option>
+            <option value="ヒシアケボノ">ヒシアケボノ</option>
+            <option value="ヒシミラクル">ヒシミラクル</option>
+            <option value="ビワハヤヒデ">ビワハヤヒデ</option>
+            <option value="ピサ">ヴィクトワールピサ</option>
+            <option value="ファインモーション">ファインモーション</option>
+            <option value="フサイチパンドラ">フサイチパンドラ</option>
+            <option value="フジキセキ">フジキセキ</option>
+            <option value="フリオーソ">フリオーソ</option>
+            <option value="ブエナビスタ">ブエナビスタ</option>
+            <option value="ホッコータルマエ">ホッコータルマエ</option>
+            <option value="マーベラスサンデー">マーベラスサンデー</option>
+            <option value="マチカネフクキタル">マチカネフクキタル</option>
+            <option value="マチカネタンホイザ">マチカネタンホイザ</option>
+            <option value="マヤノトップガン">マヤノトップガン</option>
+            <option value="マンハッタンカフェ">マンハッタンカフェ</option>
+            <option value="マルゼンスキー">マルゼンスキー</option>
+            <option value="ミスターシービー">ミスターシービー</option>
+            <option value="ミホノブルボン">ミホノブルボン</option>
+            <option value="メイショウドトウ">メイショウドトウ</option>
+            <option value="メジロライアン">メジロライアン</option>
+            <option value="メジロマックイーン">メジロマックイーン</option>
+            <option value="メジロドーベル">メジロドーベル</option>
+            <option value="メジロアルダン">メジロアルダン</option>
+            <option value="メジロブライト">メジロブライト</option>
+            <option value="メジロパーマー">メジロパーマー</option>
+            <option value="メジロラモーヌ">メジロラモーヌ</option>
+            <option value="ヤエノムテキ">ヤエノムテキ</option>
+            <option value="ヤマニンゼファー">ヤマニンゼファー</option>
+            <option value="ユキノビジン">ユキノビジン</option>
+            <option value="ライスシャワー">ライスシャワー</option>
+            <option value="ラインクラフト">ラインクラフト</option>
+            <option value="ラヴズオンリーユー">ラヴズオンリーユー</option>
+            <option value="ロイスアンドロイス">ロイスアンドロイス</option>
+            <option value="ワンダーアキュート">ワンダーアキュート</option>
+          </select>
+        </div>
+
         <button id="js-save-settings" class="c-button c-button--primary" style="width: 100%">設定を保存する</button>
         <p id="js-status-msg" style="margin-top: 15px; font-size: 0.85rem; text-align: center"></p>
       </section>

@@ -111,6 +111,8 @@ export function initSettings() {
           const data = snapshot.val();
           if (nameInput) nameInput.value = data.userName || "";
           if (stakeInput) stakeInput.value = data.defaultStake || 1000;
+          if (commentInput) commentInput.value = data.comment || "";
+          if (oshiSelect) oshiSelect.value = data.favoriteChara || "";
           if (data.photoURL && iconPreviewDiv) {
             iconPreviewDiv.innerHTML = `<img src="${data.photoURL}" alt="アイコン" style="width:100%; height:100%; object-fit:cover;">`;
           }
@@ -183,6 +185,8 @@ export function initSettings() {
       const updateData = {
         userName: newName,
         defaultStake: newStake,
+        comment: commentInput.value.trim(), // ★追加
+        favoriteChara: oshiSelect.value, // ★追加
         updatedAt: Date.now(),
       };
 

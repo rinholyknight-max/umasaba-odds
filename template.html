@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>設定変更 - うまさば</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body class="l-page-container">
+    <header class="l-header">
+      <div class="l-header__inner">
+        <button class="l-header__hamburger" id="js-hamburger"><span></span><span></span><span></span></button>
+        <span class="l-header__logo">設定変更</span>
+        <button id="js-dark-mode-toggle" class="l-header__theme-toggle" aria-label="テーマ切り替え">
+          <span class="material-symbols-outlined icon-sun">toggle_off</span>
+          <span class="material-symbols-outlined icon-moon">toggle_on</span>
+        </button>
+      </div>
+    </header>
+
+    <nav class="l-menu" id="js-menu">
+      <div class="l-menu__user-box">
+        <div class="l-menu__user-icon">
+          <span class="material-symbols-outlined">account_circle</span>
+        </div>
+        <div class="l-menu__user-info">
+          <p class="l-menu__user-label">ログインユーザー</p>
+          <span id="js-display-user" class="l-menu__user-name"></span>
+        </div>
+      </div>
+
+      <ul class="l-menu__list">
+        <li class="l-menu__item">
+          <a href="index.html" class="l-menu__link"><span class="material-symbols-outlined">how_to_vote</span>投票画面</a>
+        </li>
+        <li class="l-menu__item">
+          <a href="odds.html" class="l-menu__link"><span class="material-symbols-outlined">leaderboard</span>オッズ確認</a>
+        </li>
+        <li class="l-menu__item">
+          <a href="settings.html" class="l-menu__link"><span class="material-symbols-outlined">settings</span>設定変更</a>
+        </li>
+        <li class="l-menu__item">
+          <a href="admin.html" class="l-menu__link"><span class="material-symbols-outlined">admin_panel_settings</span>管理者画面</a>
+        </li>
+        <li class="l-menu__item">
+          <button id="js-logout" class="l-menu__link"><span class="material-symbols-outlined">logout</span>ログアウト</button>
+        </li>
+      </ul>
+    </nav>
+    <div class="l-menu__overlay" id="js-overlay"></div>
+
+    <main>
+      <!-- ここに新しくmainを作成 -->
+    </main>
+  </body>
+</html>
