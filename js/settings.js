@@ -20,6 +20,48 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const storage = getStorage(app);
 
+/**
+ * ★追加：画像を正方形にクロップ（中央切り抜き）＆リサイズする関数
+ */
+async function cropToSquare(file) {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+
+        // 短い方の辺を基準にする
+        const size = Math.min(img.width, img.height);
+
+        // 出力サイズ (400x400程度がアイコンとして最適)
+        const outputSize = 400;
+        canvas.width = outputSize;
+        canvas.height = outputSize;
+
+        // 中央を切り抜く計算
+        const offsetX = (img.width - size) / 2;
+        const offsetY = (img.height - size) / 2;
+
+        // Canvasに描画
+        ctx.drawImage(img, offsetX, offsetY, size, size, 0, 0, outputSize, outputSize);
+
+        // Blob形式に変換してFileオブジェクトとして返す
+        canvas.toBlob(
+          (blob) => {
+            resolve(new File([blob], file.name, { type: "image/jpeg" }));
+          },
+          "image/jpeg",
+          0.85,
+        ); // 画質 0.85
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
 export function initSettings() {
   if (!checkAuth()) return;
 
@@ -67,21 +109,35 @@ export function initSettings() {
   }
 
   // プレビュー処理
-  iconUploadInput?.addEventListener("change", (e) => {
+  iconUploadInput?.addEventListener("change", async (e) => {
     const file = e.target.files[0];
     if (!file) return;
+
     if (!file.type.match("image.*")) {
       alert("画像ファイルを選択してください");
       return;
     }
-    selectedIconFile = file;
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      if (iconPreviewDiv) {
-        iconPreviewDiv.innerHTML = `<img src="${event.target.result}" alt="プレビュー" style="width:100%; height:100%; object-fit:cover;">`;
-      }
-    };
-    reader.readAsDataURL(file);
+
+    try {
+      if (msgArea) msgArea.textContent = "画像を加工中...";
+
+      // ★追加：ここで正方形に切り抜きを実行
+      selectedIconFile = await cropToSquare(file);
+
+      if (msgArea) msgArea.textContent = "";
+
+      // プレビュー表示には加工後の selectedIconFile を使う
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        if (iconPreviewDiv) {
+          iconPreviewDiv.innerHTML = `<img src="${event.target.result}" alt="プレビュー" style="width:100%; height:100%; object-fit:cover;">`;
+        }
+      };
+      reader.readAsDataURL(selectedIconFile);
+    } catch (err) {
+      console.error("画像処理エラー:", err);
+      alert("画像の加工に失敗しました");
+    }
   });
 
   // 5. 保存処理
@@ -114,8 +170,7 @@ export function initSettings() {
       // 画像アップロード
       if (selectedIconFile) {
         msgArea.textContent = "画像をアップロード中...";
-        const fileExt = selectedIconFile.type.split("/")[1];
-        const storagePath = storageRef(storage, `users/${userId}/profile.${fileExt}`);
+        const storagePath = storageRef(storage, `users/${userId}/profile.jpg`);
         const snapshot = await uploadBytes(storagePath, selectedIconFile);
         const downloadURL = await getDownloadURL(snapshot.ref);
 
