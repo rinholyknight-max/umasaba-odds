@@ -20,22 +20,19 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const storage = getStorage(app);
 
-/**
- * ★修正版：cropImg の定義場所を確実に作成する
- */
 let cropper = null;
 
 async function openCropper(file) {
+  // ★要素の取得を関数の「中」で、実行されるタイミングで行う
   return new Promise((resolve) => {
-    // 1. ここで要素を確実に取得する
     const modal = document.getElementById("js-crop-modal");
-    const cropImg = document.getElementById("js-crop-image"); // ★これが無いとエラーになります
+    const cropImg = document.getElementById("js-crop-image");
     const confirmBtn = document.getElementById("js-crop-confirm");
     const cancelBtn = document.getElementById("js-crop-cancel");
 
-    // 要素が見つからない場合のガード
+    // 要素が取得できなかった場合のチェック
     if (!modal || !cropImg) {
-      console.error("モーダルまたは画像要素が見つかりません。HTMLを確認してください。");
+      alert("システムエラー: 切り抜き画面が見つかりません。");
       return;
     }
 
@@ -44,7 +41,7 @@ async function openCropper(file) {
       cropImg.src = e.target.result;
       modal.style.display = "flex";
 
-      // 2. Cropperの初期化（ここで cropImg を使う）
+      // Cropperの初期化
       if (cropper) cropper.destroy();
       cropper = new Cropper(cropImg, {
         aspectRatio: 1,
@@ -56,7 +53,7 @@ async function openCropper(file) {
     };
     reader.readAsDataURL(file);
 
-    // 確定ボタン
+    // 確定・キャンセル処理
     confirmBtn.onclick = () => {
       const canvas = cropper.getCroppedCanvas({ width: 400, height: 400 });
       canvas.toBlob(
@@ -69,53 +66,10 @@ async function openCropper(file) {
       );
     };
 
-    // キャンセルボタン
     cancelBtn.onclick = () => {
       modal.style.display = "none";
       resolve(null);
     };
-  });
-}
-
-/**
- * ★追加：画像を正方形にクロップ（中央切り抜き）＆リサイズする関数
- */
-async function cropToSquare(file) {
-  return new Promise((resolve) => {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const img = new Image();
-      img.onload = () => {
-        const canvas = document.createElement("canvas");
-        const ctx = canvas.getContext("2d");
-
-        // 短い方の辺を基準にする
-        const size = Math.min(img.width, img.height);
-
-        // 出力サイズ (400x400程度がアイコンとして最適)
-        const outputSize = 400;
-        canvas.width = outputSize;
-        canvas.height = outputSize;
-
-        // 中央を切り抜く計算
-        const offsetX = (img.width - size) / 2;
-        const offsetY = (img.height - size) / 2;
-
-        // Canvasに描画
-        ctx.drawImage(img, offsetX, offsetY, size, size, 0, 0, outputSize, outputSize);
-
-        // Blob形式に変換してFileオブジェクトとして返す
-        canvas.toBlob(
-          (blob) => {
-            resolve(new File([blob], file.name, { type: "image/jpeg" }));
-          },
-          "image/jpeg",
-          0.85,
-        ); // 画質 0.85
-      };
-      img.src = e.target.result;
-    };
-    reader.readAsDataURL(file);
   });
 }
 
