@@ -46,24 +46,28 @@ export function initAdmin() {
   const charInput = document.getElementById("horse-name");
   const userInput = document.getElementById("user-name");
   const addBtn = document.getElementById("add-btn");
-  const fileInput = document.getElementById("js-upload-file");
+  const fileInput = document.getElementById("js-upload-file"); // 出走馬用CSV
   const adminList = document.getElementById("admin-list");
-  // --- ★追加：ユーザー許可登録用の要素 ---
+
+  // --- ★ユーザー許可登録用の要素 ---
   const allowIdInput = document.getElementById("new-allow-id");
   const allowNameInput = document.getElementById("new-allow-name");
+  const allowCircleSelect = document.getElementById("new-allow-circle"); // サークル選択用
   const addAllowBtn = document.getElementById("add-allow-btn");
   const addAllowMsg = document.getElementById("add-allow-msg");
 
-  // 1. 個別登録
+  // ★名簿一括登録用の要素
+  const allowCsvInput = document.getElementById("js-allow-csv-file");
+  const allowCsvBtn = document.getElementById("js-allow-csv-btn");
+
+  // 1. 個別登録（出走馬）
   addBtn.addEventListener("click", () => {
     const hName = charInput.value.trim();
     const uName = userInput.value.trim();
-
     if (!hName || !uName) {
       alert("キャラ名とユーザー名の両方を入力してください");
       return;
     }
-
     push(ref(db, "horses"), { horseName: hName, userName: uName, votes: 0 }).then(() => {
       charInput.value = "";
       userInput.value = "";
@@ -71,7 +75,7 @@ export function initAdmin() {
     });
   });
 
-  // 2. 一括登録
+  // 2. 一括登録（出走馬：キャラ名,ユーザー名）
   fileInput.onchange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -96,10 +100,11 @@ export function initAdmin() {
     reader.readAsText(file);
   };
 
-  // --- ★追加機能：新規ユーザー許可登録（個別） ---
+  // --- ★新規ユーザー許可登録（個別：サークル名対応） ---
   addAllowBtn.addEventListener("click", async () => {
     const id = allowIdInput.value.trim();
     const name = allowNameInput.value.trim();
+    const circle = allowCircleSelect.value; // 追加
     if (!id || !name) {
       alert("ゲームIDと表示名の両方を入力してください");
       return;
@@ -107,10 +112,12 @@ export function initAdmin() {
     try {
       await set(ref(db, `allowed_users/${id}`), {
         userName: name,
+        circleName: circle, // 追加
+        initialPoints: 100, // デフォルトポイント
         addedAt: Date.now(),
       });
-      addAllowMsg.innerText = `成功: ${name} (ID:${id}) を追加しました`;
-      addAllowMsg.style.color = "green";
+      addAllowMsg.innerText = `成功: ${name} / ${circle} を追加しました`;
+      addAllowMsg.style.color = "var(--color-primary)";
       allowIdInput.value = "";
       allowNameInput.value = "";
     } catch (err) {
@@ -120,10 +127,55 @@ export function initAdmin() {
     }
   });
 
+  // --- ★名簿一括登録（名簿用CSV：ID,名前,サークル名） ---
+  allowCsvBtn?.addEventListener("click", () => {
+    const file = allowCsvInput.files[0];
+    if (!file) {
+      alert("CSVファイルを選択してください");
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      const lines = e.target.result.split(/\r?\n/).filter((l) => l.trim() !== "");
+      const updates = {};
+      let count = 0;
+
+      lines.forEach((line) => {
+        const [id, name, circle] = line.split(",").map((s) => s?.trim());
+        if (id && name) {
+          updates[`allowed_users/${id}`] = {
+            userName: name,
+            circleName: circle || "未設定",
+            initialPoints: 100,
+            addedAt: Date.now(),
+          };
+          count++;
+        }
+      });
+
+      if (count === 0) {
+        alert("有効なデータがありませんでした");
+        return;
+      }
+
+      try {
+        allowCsvBtn.disabled = true;
+        await update(ref(db), updates); // まとめて更新
+        alert(`${count}件の名簿を登録しました！`);
+        allowCsvInput.value = "";
+      } catch (err) {
+        console.error(err);
+        alert("一括登録に失敗しました");
+      } finally {
+        allowCsvBtn.disabled = false;
+      }
+    };
+    reader.readAsText(file);
+  });
+
   // 3. リスト表示（出走馬）
   onValue(ref(db, "horses"), (snapshot) => {
     const data = snapshot.val();
-    // HTML構造を壊さないよう、既存のリスト表示ロジックを維持
     adminList.innerHTML = "<h3>現在の出走表</h3>";
     if (!data) return;
 
@@ -147,7 +199,7 @@ export function initAdmin() {
     });
   });
 
-  // --- ★追加機能：許可済みユーザーリストの表示 ---
+  // --- ★許可済みユーザーリストの表示（サークル名表示対応） ---
   onValue(ref(db, "allowed_users"), (snapshot) => {
     const data = snapshot.val();
     let allowListArea = document.getElementById("allow-list-display");
@@ -165,7 +217,7 @@ export function initAdmin() {
       div.style.borderLeft = "4px solid var(--color-primary, #4caf50)";
       div.innerHTML = `
         <div class="p-admin__info">
-          <b>${data[id].userName}</b><br>
+          <b>${data[id].userName}</b> <span style="font-size:0.8rem; color:#888;">[${data[id].circleName || "サークル未設定"}]</span><br>
           <small>ID: ${id}</small>
         </div>
         <button class="c-button c-button--danger js-delete-allow" data-id="${id}">許可取消</button>
