@@ -65,13 +65,29 @@ export async function initUserPage() {
 }
 
 function renderProfile(data) {
-  document.getElementById("js-user-name").innerText = data.userName || "名無し";
-  document.getElementById("js-user-circle").innerText = data.circleName ? `所属: ${data.circleName}` : "無所属";
-  document.getElementById("js-user-comment").innerText = data.comment || "よろしくお願いします！";
-  document.getElementById("js-user-oshi").innerText = data.favoriteChara || "未設定";
+  // 名前
+  const nameEl = document.getElementById("js-user-name");
+  if (nameEl) nameEl.innerText = data.userName || "名無し";
 
-  if (data.photoURL) {
-    document.getElementById("js-user-icon").innerHTML = `<img src="${data.photoURL}" style="width:100%; height:100%; object-fit:cover;">`;
+  // ★サークル情報（ここを追加・変更）
+  const circleEl = document.getElementById("js-user-circle");
+  if (circleEl) {
+    // data.circleName があれば表示、なければ「無所属」
+    circleEl.innerText = data.circleName ? `所属サークル： ${data.circleName}` : "無所属";
+  }
+
+  // ひとこと（ステータス）
+  const commentEl = document.getElementById("js-user-comment");
+  if (commentEl) commentEl.innerText = data.comment || "よろしくお願いします！";
+
+  // 推しウマ娘
+  const oshiEl = document.getElementById("js-user-oshi");
+  if (oshiEl) oshiEl.innerText = data.favoriteChara || "未設定";
+
+  // アイコン画像
+  const iconEl = document.getElementById("js-user-icon");
+  if (data.photoURL && iconEl) {
+    iconEl.innerHTML = `<img src="${data.photoURL}" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">`;
   }
 }
 
