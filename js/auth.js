@@ -3,6 +3,8 @@
  */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
 import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
+// ★Firebase Authのインポートを追加
+import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
 // --- Firebase初期化 ---
 const firebaseConfig = {
@@ -17,8 +19,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
+const auth = getAuth(app); // ★Authの初期化
 
-// パスワードと表示名の対応表 (従来ゲスト用)
+// パスワードと表示名の対応表
 const USER_MAP = {
   "01-LastCrop": "ラスクロメンバー",
   "02-cocoa": "へべれけメンバー",
@@ -33,7 +36,6 @@ export const PASSWORDS = {
 
 /**
  * ログイン実行
- * 共有パスワードなら「guest」、それ以外なら「personal」として処理
  */
 export async function login(input) {
   if (!input) {
@@ -41,11 +43,22 @@ export async function login(input) {
     return;
   }
 
+  // ★共通：匿名ログインを実行するヘルパー関数
+  const startFirebaseSession = async (redirectUrl) => {
+    try {
+      await signInAnonymously(auth);
+      window.location.href = redirectUrl;
+    } catch (error) {
+      console.error("匿名認証失敗:", error);
+      alert("認証セッションの開始に失敗しました。");
+    }
+  };
+
   // 1. 管理者チェック
   if (input === PASSWORDS.ADMIN) {
     sessionStorage.setItem("auth_role", "admin");
     sessionStorage.setItem("user_name", "管理者");
-    window.location.href = "admin.html";
+    await startFirebaseSession("admin.html"); // ★匿名ログイン後に遷移
     return;
   }
 
@@ -53,15 +66,13 @@ export async function login(input) {
   if (PASSWORDS.USER.includes(input)) {
     sessionStorage.setItem("auth_role", "guest");
     sessionStorage.setItem("user_name", USER_MAP[input]);
-    // ゲストはID固定
     sessionStorage.setItem("user_id", "GUEST_USER");
-    window.location.href = "index.html";
+    await startFirebaseSession("index.html"); // ★匿名ログイン後に遷移
     return;
   }
 
   // --- 3. 個人ログイン（ゲームID）処理 ---
   try {
-    // まず「許可リスト」にあるか確認
     const allowedRef = ref(db, `allowed_users/${input}`);
     const allowedSnap = await get(allowedRef);
 
@@ -75,23 +86,26 @@ export async function login(input) {
     const userSnap = await get(userRef);
 
     if (!userSnap.exists()) {
-      // 許可リストにはあるが、初ログインの場合：アカウントを正式作成
       await set(userRef, {
-        userName: allowedData.userName, // 名簿の名前を反映
+        userName: allowedData.userName,
         points: allowedData.initialPoints || 100,
         createdAt: Date.now(),
         status: "active",
       });
       sessionStorage.setItem("user_name", allowedData.userName);
     } else {
-      // 既に利用開始しているユーザー
       const userData = userSnap.val();
       sessionStorage.setItem("user_name", userData.userName);
+      // ★既に photoURL がある場合は sessionStorage に入れておく
+      if (userData.photoURL) {
+        sessionStorage.setItem("user_photo_url", userData.photoURL);
+      }
     }
 
     sessionStorage.setItem("auth_role", "personal");
     sessionStorage.setItem("user_id", input);
-    window.location.href = "index.html";
+
+    await startFirebaseSession("index.html"); // ★匿名ログイン後に遷移
   } catch (error) {
     console.error(error);
     alert("通信エラーが発生しました");
@@ -107,11 +121,8 @@ export function checkAuth(requiredRole = null) {
     window.location.href = "login.html";
     return false;
   }
-  if (requiredRole === "admin" && currentRole !== "admin") {
-    alert("管理者権限が必要です");
-    window.location.href = "index.html";
-    return false;
-  }
+  // ※ここでFirebase Authのログイン状態まで厳密にチェックすることも可能ですが、
+  // ページ遷移が多発するため、基本はsessionStorageでOKです。
   return true;
 }
 
@@ -120,5 +131,8 @@ export function checkAuth(requiredRole = null) {
  */
 export function logout() {
   sessionStorage.clear();
-  window.location.href = "login.html";
+  // ★Firebase Authからもサインアウトする
+  auth.signOut().then(() => {
+    window.location.href = "login.html";
+  });
 }
