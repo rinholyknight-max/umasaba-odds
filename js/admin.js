@@ -29,7 +29,7 @@ export function initAdmin() {
   const userDisplay = document.getElementById("js-display-user");
   if (userDisplay) userDisplay.innerText = userName;
 
-  if (!checkAuth()) {
+  if (!checkAuth("admin")) {
     console.warn("認証に失敗しました。");
     return;
   }
