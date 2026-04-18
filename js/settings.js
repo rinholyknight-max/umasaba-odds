@@ -169,17 +169,14 @@ export function initSettings() {
       alert("ゲストユーザーは設定を変更できません。");
       return;
     }
-    // ボタンが押された瞬間に、HTMLから直接値を持ってくる（エラー回避策）
+
+    // ボタンが押された瞬間に、HTMLから直接値を持ってくる
     const nameEl = document.getElementById("js-display-name");
     const stakeEl = document.getElementById("js-default-stake");
     const commentEl = document.getElementById("js-user-comment");
     const oshiEl = document.getElementById("js-oshi-chara");
 
-    // 部品が見つからない場合に備えて安全に値を取得
     const newName = nameEl ? nameEl.value.trim() : "";
-    const newStake = stakeEl ? Number(stakeEl.value) : 1000;
-    const newComment = commentEl ? commentEl.value.trim() : "";
-    const newOshi = oshiEl ? oshiEl.value : "";
 
     if (!newName) {
       alert("表示名を入力してください");
@@ -188,50 +185,64 @@ export function initSettings() {
 
     saveBtn.disabled = true;
     saveBtn.textContent = "保存中...";
-    msgArea.textContent = "";
+    if (msgArea) msgArea.textContent = "";
 
     try {
-      // sessionStorageからサークル名を取得しておく
-      const myCircle = sessionStorage.getItem("user_circle") || "";
+      // 1. まず、現在のデータベースにある最新情報を取得する
+      const userRef = ref(db, `users/${userId}`);
+      const snapshot = await get(userRef);
+      const currentData = snapshot.exists() ? snapshot.val() : {};
 
+      // 2. sessionStorage にサークル名がない場合、DBにある今の値を優先する
+      // これで、管理画面などで設定されたサークル名が消えるのを防ぎます
+      const myCircle = sessionStorage.getItem("user_circle") || currentData.circleName || "";
+
+      // 3. 保存用データを作成
       const updateData = {
         userName: newName,
-        defaultStake: newStake,
-        comment: newComment, // 取得した値をセット
-        favoriteChara: newOshi, // 取得した値をセット
-        circleName: myCircle,
+        defaultStake: stakeEl ? Number(stakeEl.value) : currentData.defaultStake || 1000,
+        comment: commentEl ? commentEl.value.trim() : "",
+        favoriteChara: oshiEl ? oshiEl.value : "",
+        circleName: myCircle, // 取得したサークル名をセット
         updatedAt: Date.now(),
       };
 
       // 画像アップロード
       if (selectedIconFile) {
-        msgArea.textContent = "画像をアップロード中...";
+        if (msgArea) msgArea.textContent = "画像をアップロード中...";
         const storagePath = storageRef(storage, `users/${userId}/profile.jpg`);
         const snapshot = await uploadBytes(storagePath, selectedIconFile);
         const downloadURL = await getDownloadURL(snapshot.ref);
 
-        // オブジェクトにURLを追加
         updateData.photoURL = downloadURL;
         sessionStorage.setItem("user_photo_url", downloadURL);
+      } else if (currentData.photoURL) {
+        // 新しい画像がない場合は、元の画像URLを維持
+        updateData.photoURL = currentData.photoURL;
       }
 
       // Realtime Databaseを一括更新
-      await update(ref(db, `users/${userId}`), updateData);
+      await update(userRef, updateData);
 
+      // キャッシュ（sessionStorage）も更新
       sessionStorage.setItem("user_name", newName);
       if (userDisplay) userDisplay.innerText = newName;
 
-      msgArea.textContent = "設定を保存しました！";
-      msgArea.style.color = "var(--color-primary)";
+      if (msgArea) {
+        msgArea.textContent = "設定を保存しました！";
+        msgArea.style.color = "var(--color-primary)";
+      }
     } catch (e) {
-      console.error(e);
-      msgArea.textContent = "保存に失敗しました。";
-      msgArea.style.color = "var(--color-danger)";
+      console.error("保存エラー:", e);
+      if (msgArea) {
+        msgArea.textContent = "保存に失敗しました。";
+        msgArea.style.color = "var(--color-danger)";
+      }
     } finally {
       saveBtn.disabled = false;
       saveBtn.textContent = "設定を保存する";
     }
-  });
+  }); // addEventListener をここで正しく閉じます
 
   const logoutBtn = document.getElementById("js-logout");
   if (logoutBtn) logoutBtn.onclick = logout;
