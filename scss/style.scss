@@ -117,6 +117,35 @@ h2,
     height: 100%;
     padding: 0 v.$space-md;
   }
+
+  &__info-btn {
+    background: none;
+    border: none;
+    color: var(--text-main); /* 既存のテキスト色変数 */
+    cursor: pointer;
+    padding: 8px;
+    margin-left: auto; /* 右寄せにする場合（ハンバーガーとロゴが左にある想定） */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+    // ホバー時の処理（マウスが乗った時）
+    &:hover {
+      opacity: 0.7;
+      transform: scale(1.1); // ほんの少し大きくして「押せる感」を出す
+    }
+
+    // アクティブ時（クリックした瞬間）
+    &:active {
+      transform: scale(0.95);
+    }
+
+    // アイコン自体のサイズ調整
+    .material-symbols-outlined {
+      font-size: 20px; // ダークモードボタンとサイズを合わせる
+    }
+  }
+
   &__logo {
     font-weight: bold;
     margin-left: v.$space-md;
@@ -127,7 +156,7 @@ h2,
     border: none;
     cursor: pointer;
     color: var(--header-text);
-    margin-left: auto;
+    margin-left: 4px; // インフォボタンとの適度な距離感
     display: flex;
     align-items: center;
     .icon-moon {

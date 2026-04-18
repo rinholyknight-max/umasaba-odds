@@ -192,6 +192,28 @@ h2,
   height: 100%;
   padding: 0 16px;
 }
+.l-header__info-btn {
+  background: none;
+  border: none;
+  color: var(--text-main); /* 既存のテキスト色変数 */
+  cursor: pointer;
+  padding: 8px;
+  margin-left: auto; /* 右寄せにする場合（ハンバーガーとロゴが左にある想定） */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+.l-header__info-btn:hover {
+  opacity: 0.7;
+  transform: scale(1.1);
+}
+.l-header__info-btn:active {
+  transform: scale(0.95);
+}
+.l-header__info-btn .material-symbols-outlined {
+  font-size: 20px;
+}
 .l-header__logo {
   font-weight: bold;
   margin-left: 16px;
@@ -202,7 +224,7 @@ h2,
   border: none;
   cursor: pointer;
   color: var(--header-text);
-  margin-left: auto;
+  margin-left: 4px;
   display: flex;
   align-items: center;
 }
