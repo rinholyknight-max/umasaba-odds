@@ -169,9 +169,17 @@ export function initSettings() {
       alert("ゲストユーザーは設定を変更できません。");
       return;
     }
+    // ボタンが押された瞬間に、HTMLから直接値を持ってくる（エラー回避策）
+    const nameEl = document.getElementById("js-display-name");
+    const stakeEl = document.getElementById("js-default-stake");
+    const commentEl = document.getElementById("js-user-comment");
+    const oshiEl = document.getElementById("js-oshi-chara");
 
-    const newName = nameInput.value.trim();
-    const newStake = Number(stakeInput.value);
+    // 部品が見つからない場合に備えて安全に値を取得
+    const newName = nameEl ? nameEl.value.trim() : "";
+    const newStake = stakeEl ? Number(stakeEl.value) : 1000;
+    const newComment = commentEl ? commentEl.value.trim() : "";
+    const newOshi = oshiEl ? oshiEl.value : "";
 
     if (!newName) {
       alert("表示名を入力してください");
