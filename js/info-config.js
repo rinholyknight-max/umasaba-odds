@@ -26,41 +26,54 @@ const infoMessages = {
 
 /**
  * Infoボタンの初期化関数
- * @param {string} pageKey - infoMessagesのキー（index, oddsなど）
  */
 export function initPageInfo(pageKey) {
-  const infoBtn = document.getElementById("js-page-info");
-  if (!infoBtn) return;
-
-  const config = infoMessages[pageKey];
-  if (!config) return;
-
-  infoBtn.onclick = () => {
-    // 既存のモーダル要素を取得
-    const modal = document.getElementById("js-modal");
-    const modalTitle = document.getElementById("js-modal-title");
-    // 既存のコメント一覧表示場所などを流用
-    const modalBody = document.getElementById("js-modal-comment-list") || document.getElementById("js-modal-comment");
-
-    if (modal && modalTitle && modalBody) {
-      modalTitle.innerText = config.title;
-
-      // モーダルの中身を構築
-      modalBody.innerHTML = `
-        <div class="p-info-modal">
-          <p style="line-height:1.6; margin-bottom:24px; color:var(--text-main); font-size:0.95rem;">
-            ${config.body}
-          </p>
-          <div style="border-top:1px solid var(--border); padding-top:16px; text-align:center;">
-            <a href="help.html" style="color:var(--chara-main); font-weight:bold; text-decoration:none; font-size:0.85rem; display:inline-flex; align-items:center; gap:4px;">
-              <span class="material-symbols-outlined" style="font-size:1.2rem;">help</span>
-              詳しく知りたい・規約を見る
-            </a>
-          </div>
-        </div>
-      `;
-
-      modal.classList.add("is-show");
+  // DOMが確実に構築されてから実行
+  const setup = () => {
+    const infoBtn = document.getElementById("js-page-info");
+    if (!infoBtn) {
+      console.warn(`Info button (#js-page-info) not found on ${pageKey} page.`);
+      return;
     }
+
+    const config = infoMessages[pageKey];
+    if (!config) return;
+
+    // onclickではなくaddEventListenerを使う（上書き防止）
+    infoBtn.addEventListener("click", (e) => {
+      e.preventDefault(); // バブリングやデフォルト動作を防止
+
+      const modal = document.getElementById("js-modal");
+      const modalTitle = document.getElementById("js-modal-title");
+      const modalBody = document.getElementById("js-modal-comment-list") || document.getElementById("js-modal-comment");
+
+      if (modal && modalTitle && modalBody) {
+        modalTitle.innerText = config.title;
+
+        // モーダルの中身を構築
+        modalBody.innerHTML = `
+          <div class="p-info-modal" style="padding: 10px 0;">
+            <p style="line-height:1.6; margin-bottom:24px; color:var(--text-main); font-size:0.95rem; white-space: pre-wrap;">${config.body}</p>
+            <div style="border-top:1px solid var(--border); padding-top:16px; text-align:center;">
+              <a href="help.html" style="color:var(--chara-main); font-weight:bold; text-decoration:none; font-size:0.85rem; display:inline-flex; align-items:center; gap:4px; justify-content: center;">
+                <span class="material-symbols-outlined" style="font-size:1.2rem;">help</span>
+                詳しく知りたい・規約を見る
+              </a>
+            </div>
+          </div>
+        `;
+
+        modal.classList.add("is-show");
+      } else {
+        console.error("Modal elements missing in the DOM.");
+      }
+    });
   };
+
+  // すでにDOMが準備できていれば実行、そうでなければDOMContentLoadedを待つ
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setup);
+  } else {
+    setup();
+  }
 }
