@@ -1,6 +1,10 @@
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 
+import { initTheme } from "./theme.js";
+import { checkAuth, logout } from "./auth.js";
+import { initMenu } from "./menu.js";
+
 export function initSettings() {
   const auth = getAuth();
   const db = getFirestore();
