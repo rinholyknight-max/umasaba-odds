@@ -206,14 +206,37 @@ export async function initVoting() {
     if (dotsContainer) dotsContainer.innerHTML = "";
 
     const raceIds = Object.keys(data);
-    raceIds.forEach((id, idx) => {
+    let activeSlideCount = 0; // 表示するレースをカウント用
+    let firstActiveId = null; // 最初の有効なレースIDを保持用
+
+    raceIds.forEach((id) => {
+      // 【修正ポイント】status が "closed" ならスライドを作らない
+      if (data[id].status === "closed") {
+        return;
+      }
+
+      // 表示対象のレースがある場合のみ処理
       slider.insertAdjacentHTML("beforeend", createSlideHtml(id, data[id]));
       const dot = document.createElement("span");
-      if (idx === 0) dot.className = "is-active";
+      if (activeSlideCount === 0) {
+        dot.className = "is-active";
+        firstActiveId = id; // 最初に見つかった開いているレースを初期IDにする
+      }
       if (dotsContainer) dotsContainer.appendChild(dot);
+
+      activeSlideCount++;
     });
 
-    activeRaceId = raceIds[0];
+    // 【修正ポイント】表示できるレースが一つもなかった場合
+    if (activeSlideCount === 0) {
+      slider.innerHTML = "<p style='padding:20px; text-align:center;'>現在開催中のレースはありません</p>";
+      if (raceTitleDisp) raceTitleDisp.innerText = "投票受付外";
+      document.body.classList.remove("is-loading");
+      return;
+    }
+
+    // 最初の有効なレースをアクティブに設定
+    activeRaceId = firstActiveId;
     if (raceTitleDisp && data[activeRaceId]) {
       raceTitleDisp.innerText = data[activeRaceId].title || "投票フォーム";
     }
