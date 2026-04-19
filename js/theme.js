@@ -61,7 +61,7 @@ export async function applyCharaTheme(oshiName) {
             modalBody.innerHTML = `
             <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; color: #333; padding: 10px;">
                 <img src="./images/tazuna.png" alt="駿川たづな" 
-                    style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; border: 2px solid #44A705; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    style="width: 300px; height: 220px; object-fit: cover; border: 2px solid #44A705; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
                 
                 <div style="flex: 1; line-height: 1.8;">
                   <p style="margin-top: 0; font-weight: bold;">お疲れ様です、駿川です。</p>
