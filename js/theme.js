@@ -46,29 +46,41 @@ export async function applyCharaTheme(oshiName) {
     if (config && config.main && config.sub) {
       injectColorVariables(config.main, config.sub);
 
-      // --- 🌸 たづなさん隠し演出：モーダル版 ---
+      // --- 🌸 たづなさん隠し演出：セッションにつき1回だけ ---
       if (oshiName === "駿川たづな") {
-        const modal = document.getElementById("js-modal");
-        const modalTitle = document.getElementById("js-modal-title");
-        const modalBody = document.getElementById("js-modal-comment-list");
+        // セッションストレージを確認
+        const hasBeenWarned = sessionStorage.getItem("tazuna_warned");
 
-        if (modal && modalTitle && modalBody) {
-          // 1. モーダルの内容を書き換える
-          modalTitle.innerHTML = '<span style="color: #ff3750;">⚠️ 業務連絡</span>';
-          modalBody.innerHTML = `
-      <div style="line-height: 1.8; color: #333;">
-        <p>お疲れ様です、駿川です。</p>
-        <p>……あの、何か勘違いをされていませんか？<br>
-        私はあくまで『理事長秘書』であって、レースに出走する立場ではありません。</p>
-        <p style="color: #d32f2f; font-weight: bold; font-size: 1.2rem; text-align: center; margin: 15px 0;">
-          「私はウマ娘ではありません」
-        </p>
-        <p>速やかに他の候補者を選択し、適切なトレーニングプランを再構成してください。期待していますよ？</p>
-      </div>
-    `;
+        if (!hasBeenWarned) {
+          const modal = document.getElementById("js-modal");
+          const modalTitle = document.getElementById("js-modal-title");
+          const modalBody = document.getElementById("js-modal-comment-list");
 
-          // 2. モーダルを表示させる（既存のCSSクラスに合わせて調整）
-          modal.classList.add("is-show");
+          if (modal && modalTitle && modalBody) {
+            modalTitle.innerHTML = '<span style="color: #ff3750;">⚠️ 業務連絡</span>';
+            modalBody.innerHTML = `
+            <div style="display: flex; align-items: flex-start; gap: 15px; color: #333;">
+              <img src="./images/tazuna.png" alt="駿川たづな" 
+                  style="width: 400px; height: auto; border-radius: 50%; border: 2px solid #44A705;">
+              
+              <div style="flex: 1; line-height: 1.6;">
+                <p style="margin-top: 0;">お疲れ様です、駿川です。</p>
+                <p>…あの、何か勘違いをされていませんか？</p>
+                <p style="color: #d32f2f; font-weight: bold; font-size: 1.1rem; margin: 10px 0;">
+                  「私はウマ娘ではありません」
+                </p>
+                <p style="font-size: 0.85rem; color: #666;">
+                  速やかに適切なウマ娘を選択してください。<br>期待していますよ？
+                </p>
+              </div>
+            </div>
+          `;
+
+            modal.classList.add("is-show");
+
+            // 一度表示したらフラグを立てる
+            sessionStorage.setItem("tazuna_warned", "true");
+          }
         }
       }
 
