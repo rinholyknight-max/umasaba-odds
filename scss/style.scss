@@ -439,53 +439,48 @@ h2,
       align-items: flex-start;
     }
   }
-
   &__title {
     margin: 0 auto v.$space-lg;
-    padding: 16px 40px;
+    padding: 12px 60px 12px 40px;
     text-align: center;
     font-size: 1.6rem;
     font-weight: 900;
     color: #fff;
 
-    // 芝の奥行きを出す複雑なグラデーション
-    background: linear-gradient(to bottom, v.$color-um-green 0%, #388e3c 50%, #2e7d32 100%);
+    // 1. スラッシュ背景：緑と濃い緑を斜めに分けることで「疾走感」を出す
+    background: linear-gradient(115deg, v.$color-um-green 0%, v.$color-um-green 70%, #2e7d32 70%, #2e7d32 100%);
 
-    // 黒板感を消すための「重厚なフチ」
-    border: 4px double v.$color-um-gold; // 二重線にして高級感を出す
-    border-radius: 4px;
+    // 2. 形状：右側を斜めにカット（clip-path）
+    // これだけで「四角い黒板」から「動的なプレート」に変わります
+    clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
 
-    // 立体感を出すための複数の影（重要！）
-    box-shadow:
-      0 0 0 2px #2e7d32,
-      // 外側の細い緑のフチ
-      0 4px 10px rgba(0, 0, 0, 0.3),
-      // 全体の影
-      inset 0 1px 0 rgba(255, 255, 255, 0.4); // 上部の光（反射）
+    // 3. 枠線：全体を囲わず、上下だけにゴールドの太いラインを入れる
+    border-top: 4px solid v.$color-um-gold;
+    border-bottom: 4px solid v.$color-um-gold;
+    border-left: none;
+    border-right: none;
 
-    // 文字をクッキリさせる
-    text-shadow:
-      1px 1px 0 rgba(0, 0, 0, 0.5),
-      0 0 8px rgba(0, 0, 0, 0.3);
+    // 4. 文字の装飾：メタルのような反射
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.05em;
 
     position: relative;
     width: fit-content;
-    min-width: 280px;
+    min-width: 300px;
 
-    // 上部にハイライト（光沢）を乗せる「隠し味」
+    // 5. 装飾：左端にチェッカーフラッグ風のアクセント
     &::before {
       content: "";
       position: absolute;
-      top: 0;
       left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, transparent 100%);
-      pointer-events: none;
+      top: 0;
+      bottom: 0;
+      width: 15px;
+      background: repeating-linear-gradient(45deg, v.$color-um-gold, v.$color-um-gold 5px, #aa8a28 5px, #aa8a28 10px);
     }
 
     @media (min-width: 769px) {
-      font-size: 2rem;
+      font-size: 2.2rem;
     }
   }
 
