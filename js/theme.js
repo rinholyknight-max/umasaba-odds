@@ -59,22 +59,22 @@ export async function applyCharaTheme(oshiName) {
           if (modal && modalTitle && modalBody) {
             modalTitle.innerHTML = '<span style="color: #ff3750;">⚠️ 業務連絡</span>';
             modalBody.innerHTML = `
-           <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; color: #333; padding: 10px;">
-              <img src="./images/tazuna.png" alt="駿川たづな" 
-                  style="width: 400px; height: auto; border-radius: 50%; border: 2px solid #44A705;">
-              
-              <div style="flex: 1; line-height: 1.6;">
-                <p style="margin-top: 0;">お疲れ様です、駿川です。</p>
-                <p>…あの、何か勘違いをされていませんか？</p>
-                <p style="color: #d32f2f; font-weight: bold; font-size: 1.1rem; margin: 10px 0;">
-                  「私はウマ娘ではありません」
-                </p>
-                <p style="font-size: 0.85rem; color: #666;">
-                  速やかに適切なウマ娘を選択してください。<br>期待していますよ？
-                </p>
+            <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; color: #333; padding: 10px;">
+                <img src="./images/tazuna.png" alt="駿川たづな" 
+                    style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; border: 2px solid #44A705; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                
+                <div style="flex: 1; line-height: 1.8;">
+                  <p style="margin-top: 0; font-weight: bold;">お疲れ様です、駿川です。</p>
+                  <p>…あの、何か勘違いをされていませんか？</p>
+                  <p style="color: #d32f2f; font-weight: bold; font-size: 1.2rem; margin: 15px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 10px 0;">
+                    「私はウマ娘ではありません」
+                  </p>
+                  <p style="font-size: 0.85rem; color: #666;">
+                    速やかに適切なウマ娘を選択してください。<br>期待していますよ？
+                  </p>
+                </div>
               </div>
-            </div>
-          `;
+            `;
 
             modal.classList.add("is-show");
 
