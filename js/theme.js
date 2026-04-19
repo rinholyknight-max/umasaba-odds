@@ -59,7 +59,7 @@ export async function applyCharaTheme(oshiName) {
           if (modal && modalTitle && modalBody) {
             modalTitle.innerHTML = '<span style="color: #ff3750;">⚠️ 業務連絡</span>';
             modalBody.innerHTML = `
-            <div style="display: flex; align-items: flex-start; gap: 15px; color: #333;">
+           <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; color: #333; padding: 10px;">
               <img src="./images/tazuna.png" alt="駿川たづな" 
                   style="width: 400px; height: auto; border-radius: 50%; border: 2px solid #44A705;">
               
