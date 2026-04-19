@@ -65,7 +65,12 @@
     <main class="l-main-content odds-content">
       <div id="js-race-selector" class="p-odds-selector" style="display: none">
         <h1 class="p-voting__title">公開中のオッズ</h1>
-        <div id="js-race-list" class="p-voting__list"></div>
+
+        <h2 class="p-voting__subtitle" style="font-size: 1rem; margin: 20px 0 10px; border-left: 4px solid var(--chara-main); padding-left: 10px">開催中のレース</h2>
+        <div id="js-race-list-open" class="p-voting__list"></div>
+
+        <h2 class="p-voting__subtitle" style="font-size: 1rem; margin: 40px 0 10px; border-left: 4px solid #999; padding-left: 10px; color: #777">終了したレース</h2>
+        <div id="js-race-list-closed" class="p-voting__list"></div>
       </div>
 
       <div id="js-odds-detail" class="p-voting is-results" style="display: none">

@@ -86,30 +86,60 @@ export async function initOdds() {
 
 // --- 関数: レース一覧の読み込み (変更なし) ---
 function loadRaceList() {
-  const listContainer = document.getElementById("js-race-list");
+  const openContainer = document.getElementById("js-race-list-open");
+  const closedContainer = document.getElementById("js-race-list-closed");
+
   onValue(ref(db, "races"), (snapshot) => {
     const data = snapshot.val();
     if (!data) {
-      listContainer.innerHTML = "<p style='padding:20px;'>開催中のレースがありません</p>";
+      if (openContainer) openContainer.innerHTML = "<p style='padding:20px;'>レースデータがありません</p>";
       return;
     }
-    let html = "";
-    Object.keys(data).forEach((id) => {
-      const race = data[id];
-      html += `
-        <a href="odds.html?race=${id}" class="p-voting__item" style="text-decoration: none; color: inherit;">
+
+    let openHtml = "";
+    let closedHtml = "";
+
+    // IDの降順（新しい順）でループ
+    Object.keys(data)
+      .reverse()
+      .forEach((id) => {
+        const race = data[id];
+        const horseCount = Object.keys(race.horses || {}).length;
+
+        // ステータスに応じたラベルを作成
+        const isClosed = race.status === "closed";
+        const statusTag = isClosed ? `<span class="p-voting__tag" style="background:#888; color:#fff;">終了</span>` : `<span class="p-voting__tag">開催中</span>`;
+
+        const itemHtml = `
+        <a href="odds.html?race=${id}" class="p-voting__item" style="text-decoration: none; color: inherit; ${isClosed ? "opacity: 0.8;" : ""}">
           <div class="p-voting__info">
             <div class="p-voting__text-group">
-              <span class="p-voting__name">${race.title || "無題のレース"}</span>
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+                ${statusTag}
+                <span class="p-voting__name">${race.title || "無題のレース"}</span>
+              </div>
               <span class="p-voting__user" style="display:block; font-size:0.75rem; color:var(--text-sub);">
-                ${Object.keys(race.horses || {}).length}頭立て
+                ${horseCount}頭立て
               </span>
             </div>
           </div>
           <span class="material-symbols-outlined">chevron_right</span>
         </a>`;
-    });
-    listContainer.innerHTML = html;
+
+        if (isClosed) {
+          closedHtml += itemHtml;
+        } else {
+          openHtml += itemHtml;
+        }
+      });
+
+    // 各コンテナに流し込み（データがない場合のメッセージも用意）
+    if (openContainer) {
+      openContainer.innerHTML = openHtml || "<p style='padding:20px; font-size:0.9rem; color:#888;'>現在開催中のレースはありません</p>";
+    }
+    if (closedContainer) {
+      closedContainer.innerHTML = closedHtml || "<p style='padding:20px; font-size:0.9rem; color:#888;'>終了したレースはありません</p>";
+    }
   });
 }
 
