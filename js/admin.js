@@ -169,6 +169,39 @@ export async function initAdmin() {
     initMenu();
   }
 
+  // --- レース一覧をセレクトボックスに反映させる処理 ---
+  if (raceSelect) {
+    // 全てのレースデータを取得
+    onValue(ref(db, "races"), (snapshot) => {
+      const allRaces = snapshot.val();
+      if (!allRaces) {
+        raceSelect.innerHTML = '<option value="">レースがありません</option>';
+        return;
+      }
+
+      // セレクトボックスを一旦クリア
+      raceSelect.innerHTML = '<option value="">レースを選択してください</option>';
+
+      // 取得したデータをループして option を作成
+      Object.keys(allRaces)
+        .reverse()
+        .forEach((id) => {
+          const race = allRaces[id];
+          const opt = document.createElement("option");
+          opt.value = id;
+
+          // ステータスが終了なら【終了】と付けると分かりやすい
+          const statusLabel = race.status === "closed" ? "【終了】" : "【開催中】";
+          opt.innerText = `${statusLabel} ${race.title || "無題のレース"} (${id})`;
+
+          // 現在編集中のIDなら選択状態にする
+          if (id === raceId) opt.selected = true;
+
+          raceSelect.appendChild(opt);
+        });
+    });
+  }
+
   // ログアウト
   const logoutBtn = document.getElementById("js-logout");
   if (logoutBtn) logoutBtn.onclick = logout;
