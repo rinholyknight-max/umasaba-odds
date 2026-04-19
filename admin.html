@@ -81,6 +81,12 @@
             <input type="text" id="js-race-title-input" class="c-input" placeholder="例：第4回 合同杯 第2レース" />
             <button id="js-update-race-title" class="c-button c-button--primary" style="white-space: nowrap; padding: 0 15px">保存</button>
           </div>
+
+          <div style="display: flex; gap: 8px; margin-top: 12px">
+            <button id="js-close-race" class="c-button" style="flex: 1; background: #666; color: #fff; border: none; font-size: 0.85rem; padding: 10px 0">このレースを終了</button>
+            <button id="js-create-new-race" class="c-button" style="flex: 1; background: var(--chara-sub); color: #fff; border: none; font-size: 0.85rem; padding: 10px 0">新規レースとして公開</button>
+          </div>
+          <p style="font-size: 0.7rem; color: #888; margin-top: 8px; text-align: center">※「新規」を押すと履歴を上書きせずに別レースを登録します</p>
         </div>
 
         <div style="margin-top: 10px; font-size: 0.8rem; font-weight: bold; color: var(--chara-main)">現在編集中のID: <span id="js-active-race-id">---</span></div>

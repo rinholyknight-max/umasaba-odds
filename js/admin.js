@@ -60,7 +60,7 @@ export async function initAdmin() {
     }
   });
 
-  // 保存ボタン
+  // --- 保存ボタン（新規登録として動作） ---
   if (updateTitleBtn) {
     updateTitleBtn.onclick = async () => {
       const newTitle = raceTitleInput.value.trim();
@@ -68,15 +68,85 @@ export async function initAdmin() {
         alert("レース名を入力してください");
         return;
       }
+
+      if (!confirm("新しいレースとして登録しますか？（現在の履歴は保存されます）")) return;
+
       updateTitleBtn.disabled = true;
       try {
-        await update(ref(db, `races/${raceId}`), { title: newTitle });
-        alert("レース名を更新しました！");
+        // 【重要】既存のraceIdを更新するのではなく、push()で新しいIDを作る
+        const racesRef = ref(db, "races");
+        const newRaceRef = push(racesRef);
+
+        await set(newRaceRef, {
+          title: newTitle,
+          status: "open", // 初期状態は「開催中」
+          createdAt: Date.now(),
+        });
+
+        alert("新しいレースを登録しました！");
+
+        // 新しいレースの管理画面へ移動
+        window.location.href = `admin.html?race=${newRaceRef.key}`;
       } catch (e) {
         console.error(e);
-        alert("更新に失敗しました");
+        alert("登録に失敗しました");
       } finally {
         updateTitleBtn.disabled = false;
+      }
+    };
+  }
+
+  // --- 追加箇所：レース終了ボタン ---
+  const closeRaceBtn = document.getElementById("js-close-race");
+  if (closeRaceBtn) {
+    closeRaceBtn.onclick = async () => {
+      if (!confirm("このレースを『終了済』に設定しますか？\n（投票の一覧などには表示されなくなります）")) return;
+
+      try {
+        // 削除（remove）ではなく、statusを closed に更新する
+        await update(ref(db, `races/${raceId}`), { status: "closed" });
+        alert("レースを終了済みにしました。");
+        location.reload(); // 状態を反映
+      } catch (e) {
+        alert("エラーが発生しました");
+      }
+    };
+  }
+
+  // --- 追加：新規レース発行ロジック ---
+  const createNewRaceBtn = document.getElementById("js-create-new-race");
+
+  if (createNewRaceBtn) {
+    createNewRaceBtn.onclick = async () => {
+      const newTitle = raceTitleInput.value.trim();
+      if (!newTitle) {
+        alert("新しいレース名を入力してください");
+        return;
+      }
+
+      if (!confirm("既存のレースを上書きせず、新しいレースとして登録しますか？")) return;
+
+      createNewRaceBtn.disabled = true;
+      try {
+        // 1. Firebaseの 'races' フォルダ内に新しいユニークIDを作成
+        const newRaceRef = push(ref(db, "races"));
+
+        // 2. その場所にデータをセット（初期状態は open）
+        await set(newRaceRef, {
+          title: newTitle,
+          status: "open",
+          createdAt: Date.now(),
+        });
+
+        alert("新規レースを登録しました！");
+
+        // 3. 登録した新しいレースの編集画面へ移動（URLパラメータを新しいIDに書き換え）
+        window.location.href = `admin.html?race=${newRaceRef.key}`;
+      } catch (e) {
+        console.error("新規登録エラー:", e);
+        alert("登録に失敗しました");
+      } finally {
+        createNewRaceBtn.disabled = false;
       }
     };
   }
@@ -304,9 +374,13 @@ export async function initAdmin() {
     }
   });
 
+  // --- 修正箇所：リセット系 ---
   document.getElementById("js-reset-horses")?.addEventListener("click", () => {
-    if (confirm(`レース [${raceId}] の全データを削除しますか？`)) {
+    // 「全データ」という言葉を「このレース単体」に変更
+    if (confirm(`【警告】レース [${raceId}] の履歴を完全に削除しますか？\n※一度消すと元に戻せません。`)) {
       remove(ref(db, `races/${raceId}`));
+      // 削除後は一覧に戻る
+      window.location.href = "admin.html";
     }
   });
 }
