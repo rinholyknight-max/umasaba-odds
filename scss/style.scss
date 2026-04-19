@@ -445,42 +445,66 @@ h2,
     text-align: center;
     font-size: 1.6rem;
     font-weight: 900;
-    color: #fff;
 
-    // 1. スラッシュ背景：緑と濃い緑を斜めに分けることで「疾走感」を出す
-    background: linear-gradient(115deg, v.$color-um-green 0%, v.$color-um-green 70%, #2e7d32 70%, #2e7d32 100%);
+    // 1. 白基調の背景（ガラスのような光沢感をわずかに追加）
+    background: linear-gradient(135deg, #ffffff 0%, v.$color-um-bg 100%);
 
-    // 2. 形状：右側を斜めにカット（clip-path）
-    // これだけで「四角い黒板」から「動的なプレート」に変わります
-    clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
+    // 2. 文字色は「芝の緑」でクッキリと
+    color: v.$color-um-green;
 
-    // 3. 枠線：全体を囲わず、上下だけにゴールドの太いラインを入れる
-    border-top: 4px solid v.$color-um-gold;
-    border-bottom: 4px solid v.$color-um-gold;
-    border-left: none;
-    border-right: none;
+    // 3. 形状：右側を鋭角にカット（疾走感）
+    clip-path: polygon(0% 0%, 92% 0%, 100% 50%, 92% 100%, 0% 100%);
 
-    // 4. 文字の装飾：メタルのような反射
-    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
-    letter-spacing: 0.05em;
+    // 4. 縁取り：上下に「ゴールド」と「緑」の二重ライン
+    // これが表彰状のような気品を作ります
+    border-top: 3px solid v.$color-um-gold;
+    border-bottom: 3px solid v.$color-um-gold;
+    border-left: 8px solid v.$color-um-green; // 左端だけ太い緑で引き締める
+
+    // 5. 影：白背景に映える、柔らかく深い影
+    box-shadow:
+      0 10px 20px rgba(0, 0, 0, 0.05),
+      0 4px 6px rgba(0, 0, 0, 0.1);
 
     position: relative;
     width: fit-content;
-    min-width: 300px;
+    min-width: 320px;
+    letter-spacing: 0.1em;
 
-    // 5. 装飾：左端にチェッカーフラッグ風のアクセント
+    // 6. 装飾：右上と右下にゴールドの小さな三角形（コーナー金具風）
     &::before {
       content: "";
       position: absolute;
-      left: 0;
+      right: 15%;
       top: 0;
-      bottom: 0;
-      width: 15px;
-      background: repeating-linear-gradient(45deg, v.$color-um-gold, v.$color-um-gold 5px, #aa8a28 5px, #aa8a28 10px);
+      width: 20px;
+      height: 3px;
+      background: v.$color-um-gold;
     }
 
     @media (min-width: 769px) {
       font-size: 2.2rem;
+      padding: 16px 80px 16px 50px;
+    }
+
+    // --- レース別バリエーション（白基調を維持しつつアクセントを変える） ---
+    &.is-g1 {
+      // G1は文字をゴールドにし、背景に薄くシャンパンゴールドを混ぜる
+      background: linear-gradient(135deg, #fff 0%, #fff9e6 100%);
+      color: #b8860b; // 濃いゴールド
+      border-top-color: v.$color-um-gold;
+      border-bottom-color: v.$color-um-gold;
+      border-left-color: v.$color-um-gold;
+    }
+
+    &.is-g2 {
+      color: #c2185b; // ローズ
+      border-left-color: #c2185b;
+    }
+
+    &.is-g3 {
+      color: #0288d1; // ブルー
+      border-left-color: #0288d1;
     }
   }
 
