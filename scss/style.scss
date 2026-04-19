@@ -439,44 +439,58 @@ h2,
       align-items: flex-start;
     }
   }
+
   &__title {
-    display: block; // 幅を文字に合わせるなら inline-block
+    display: block;
     margin: 0 auto v.$space-lg;
-    padding: 10px 20px 12px;
-    font-size: 1.8rem;
+    padding: 10px 0 15px; // 下線の余白を確保
+    font-size: 2rem;
     font-weight: 900;
     text-align: center;
-    color: var(--text-main); // または v.$color-um-green
 
-    // 背景は白基調でスッキリ
-    background: transparent;
+    // --- A. 文字グラデーション ---
+    // 芝の緑から、少し明るい緑への変化
+    background: linear-gradient(to bottom, v.$color-um-green 20%, #2e7d32 100%);
+    -webkit-background-clip: text; // 背景を文字の形に切り抜く
+    -webkit-text-fill-color: transparent; // 文字自体の色を透明にする
 
-    // --- ここがポイント：2つのグラデーション下線 ---
-    // 1. メインの芝カラーからゴールドへの変化
-    // 2. 右側を透明にすることで「鋭さ」を演出
-    background-image: linear-gradient(90deg, v.$color-um-green 0%, v.$color-um-gold 60%, transparent 100%);
-    background-position: left bottom;
-    background-size: 80% 5px; // 下線の長さを80%にして「抜け感」を出す
-    background-repeat: no-repeat;
+    // --- B. 疾走感（斜体） ---
+    font-style: italic;
+    letter-spacing: 0.12em; // 余裕のある字間
 
-    letter-spacing: 0.15em;
+    // --- C. 文字の厚み（シャドウ） ---
+    // 背景を透過させて文字を浮かび上がらせる
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.1));
+
+    // --- D. 下線グラデーション（ご希望の手法） ---
     position: relative;
-
-    // 装飾：左端にドットを入れて「計測ライン」のようなアクセント
-    &::before {
+    &::after {
       content: "";
       position: absolute;
-      left: 0;
       bottom: 0;
-      width: 8px;
-      height: 8px;
-      background-color: v.$color-um-gold;
-      border-radius: 50%;
+      left: 50%;
+      transform: translateX(-50%); // 中央配置
+      width: 60%; // 線を少し短くして上品に
+      height: 4px;
+      background: linear-gradient(90deg, transparent, v.$color-um-gold 20%, v.$color-um-gold 80%, transparent);
+      border-radius: 2px;
     }
 
     @media (min-width: 769px) {
-      font-size: 2.4rem;
-      background-size: 60% 6px; // PCでは少し短く太くして高級感を
+      font-size: 2.8rem;
+      &::after {
+        width: 40%; // PCではさらに絞ってシャープに
+        height: 6px;
+      }
+    }
+
+    // --- レース別カラー（文字色も変わる！） ---
+    &.is-g1 {
+      background: linear-gradient(to bottom, v.$color-um-gold 20%, #8d7220 100%);
+      -webkit-background-clip: text;
+      &::after {
+        background: linear-gradient(90deg, transparent, #fff, v.$color-um-gold, #fff, transparent);
+      }
     }
   }
 
