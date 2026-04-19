@@ -452,10 +452,9 @@ h2,
     // 芝の緑から、少し明るい緑への変化
     background: linear-gradient(to bottom, v.$color-um-green 20%, #2e7d32 100%);
     -webkit-background-clip: text; // 背景を文字の形に切り抜く
+    background-clip: text;
     -webkit-text-fill-color: transparent; // 文字自体の色を透明にする
 
-    // --- B. 疾走感（斜体） ---
-    font-style: italic;
     letter-spacing: 0.12em; // 余裕のある字間
 
     // --- C. 文字の厚み（シャドウ） ---
@@ -488,6 +487,7 @@ h2,
     &.is-g1 {
       background: linear-gradient(to bottom, v.$color-um-gold 20%, #8d7220 100%);
       -webkit-background-clip: text;
+      background-clip: text;
       &::after {
         background: linear-gradient(90deg, transparent, #fff, v.$color-um-gold, #fff, transparent);
       }
