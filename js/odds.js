@@ -73,7 +73,7 @@ export async function initOdds() {
   } else {
     // 【モードB】詳細表示（グラフ・オッズ）
     if (selectorEl) selectorEl.style.display = "none";
-    if (detailEl) detailEl.style.display = "block"; // "" よりも "block" 等が明示的
+    if (detailEl) detailEl.style.display = "";
     if (typeof loadOddsDetail === "function") {
       loadOddsDetail(raceId);
     }
