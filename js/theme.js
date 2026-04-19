@@ -68,8 +68,7 @@ export async function applyCharaTheme(oshiName) {
     `;
 
           // 2. モーダルを表示させる（既存のCSSクラスに合わせて調整）
-          modal.classList.add("is-active"); // または display = "block" など、既存の仕様に合わせて
-          // modal.style.display = "flex"; // クラス制御でない場合はこちら
+          modal.classList.add("is-show");
         }
       }
 
