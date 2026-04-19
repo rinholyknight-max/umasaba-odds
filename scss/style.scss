@@ -442,73 +442,50 @@ h2,
 
   &__title {
     margin: 0 auto v.$space-lg;
-    padding: 12px 24px;
+    padding: 16px 40px;
     text-align: center;
     font-size: 1.6rem;
     font-weight: 900;
     color: #fff;
 
-    // レースパネル風の背景
-    background: linear-gradient(135deg, v.$color-um-green 0%, #2e7d32 100%);
+    // 芝の奥行きを出す複雑なグラデーション
+    background: linear-gradient(to bottom, v.$color-um-green 0%, #388e3c 50%, #2e7d32 100%);
 
-    // 立体感のあるゴールドの縁取り
-    border: 3px solid v.$color-um-gold;
-    border-radius: v.$radius-sm;
+    // 黒板感を消すための「重厚なフチ」
+    border: 4px double v.$color-um-gold; // 二重線にして高級感を出す
+    border-radius: 4px;
 
-    // 看板のようなドロップシャドウ
+    // 立体感を出すための複数の影（重要！）
     box-shadow:
-      0 4px 0 rgba(0, 0, 0, 0.2),
-      // 下の厚み
-      inset 0 0 10px rgba(0, 0, 0, 0.1); // 内側の深み
+      0 0 0 2px #2e7d32,
+      // 外側の細い緑のフチ
+      0 4px 10px rgba(0, 0, 0, 0.3),
+      // 全体の影
+      inset 0 1px 0 rgba(255, 255, 255, 0.4); // 上部の光（反射）
+
+    // 文字をクッキリさせる
+    text-shadow:
+      1px 1px 0 rgba(0, 0, 0, 0.5),
+      0 0 8px rgba(0, 0, 0, 0.3);
 
     position: relative;
-    width: fit-content; // 文字数に合わせて幅を調整
+    width: fit-content;
     min-width: 280px;
 
-    // 装飾的なサイドライン（リボン風）
-    &::before,
-    &::after {
+    // 上部にハイライト（光沢）を乗せる「隠し味」
+    &::before {
       content: "";
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 6px;
-      height: 70%;
-      background: v.$color-um-gold;
-      border-radius: 2px;
-    }
-    &::before {
-      left: 8px;
-    }
-    &::after {
-      right: 8px;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, transparent 100%);
+      pointer-events: none;
     }
 
     @media (min-width: 769px) {
-      font-size: 2.2rem;
-      padding: 16px 60px;
-    }
-
-    // --- レース種別によるバリエーション ---
-    // JSで .is-g1 などを付与することを想定
-    &.is-g1 {
-      background: linear-gradient(135deg, v.$color-um-gold 0%, #b8860b 100%);
-      color: #fff;
-      border-color: #fff; // G1は縁を白にして輝かせる
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-      box-shadow:
-        0 4px 0 #8b6b0d,
-        0 8px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    &.is-g2 {
-      background: linear-gradient(135deg, #e91e63 0%, #880e4f 100%); // ローズ・赤系
-      border-color: v.$color-um-gold;
-    }
-
-    &.is-g3 {
-      background: linear-gradient(135deg, #0288d1 0%, #01579b 100%); // ブルー系
-      border-color: v.$color-um-gold;
+      font-size: 2rem;
     }
   }
 
