@@ -164,6 +164,7 @@ h2,
 .l-main-content {
   width: 100%;
   margin: 0 auto;
+  max-width: 70vw;
 }
 @media (max-width: 768px) {
   .l-main-content {
