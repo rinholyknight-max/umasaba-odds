@@ -23,6 +23,9 @@ function injectColorVariables(main, sub) {
  */
 export async function applyCharaTheme(oshiName) {
   const root = document.documentElement;
+  const titleEl = document.querySelector(".p-voting__title"); // タイトル要素
+  const originalTitle = "現在のオッズ状況"; // または元のタイトルを取得するロジック
+
   try {
     if (!oshiName || oshiName === "なし" || oshiName === "") {
       root.style.removeProperty("--chara-main");
@@ -30,6 +33,7 @@ export async function applyCharaTheme(oshiName) {
       root.classList.remove("p-theme--custom"); // ★追加：クラスも外す
       localStorage.removeItem("user_oshi_colors");
       localStorage.removeItem("user_oshi");
+      if (titleEl) titleEl.textContent = originalTitle; // 元に戻す
       return;
     }
 
@@ -41,6 +45,33 @@ export async function applyCharaTheme(oshiName) {
 
     if (config && config.main && config.sub) {
       injectColorVariables(config.main, config.sub);
+
+      // --- 🌸 たづなさん隠し演出：モーダル版 ---
+      if (oshiName === "駿川たづな") {
+        const modal = document.getElementById("js-modal");
+        const modalTitle = document.getElementById("js-modal-title");
+        const modalBody = document.getElementById("js-modal-comment-list");
+
+        if (modal && modalTitle && modalBody) {
+          // 1. モーダルの内容を書き換える
+          modalTitle.innerHTML = '<span style="color: #ff3750;">⚠️ 業務連絡</span>';
+          modalBody.innerHTML = `
+      <div style="line-height: 1.8; color: #333;">
+        <p>お疲れ様です、駿川です。</p>
+        <p>……あの、何か勘違いをされていませんか？<br>
+        私はあくまで『理事長秘書』であって、レースに出走する立場ではありません。</p>
+        <p style="color: #d32f2f; font-weight: bold; font-size: 1.2rem; text-align: center; margin: 15px 0;">
+          「私はウマ娘ではありません」
+        </p>
+        <p>速やかに他の候補者を選択し、適切なトレーニングプランを再構成してください。期待していますよ？</p>
+      </div>
+    `;
+
+          // 2. モーダルを表示させる（既存のCSSクラスに合わせて調整）
+          modal.classList.add("is-active"); // または display = "block" など、既存の仕様に合わせて
+          // modal.style.display = "flex"; // クラス制御でない場合はこちら
+        }
+      }
 
       // 次回ページ遷移時の高速反映用キャッシュ
       const colorCache = JSON.stringify({ main: config.main, sub: config.sub });
