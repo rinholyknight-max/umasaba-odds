@@ -188,7 +188,7 @@
         // ログアウトボタンがメニュー等にある場合の処理（任意）
         const logoutBtn = document.getElementById("js-logout");
         if (logoutBtn) {
-          import("./auth.js").then(({ logout }) => {
+          import("/js/auth.js").then(({ logout }) => {
             logoutBtn.onclick = logout;
           });
         }
