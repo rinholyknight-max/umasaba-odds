@@ -198,8 +198,7 @@ async function loadUserHistory(targetId) {
                 <a href="odds.html?race=${item.raceId}" style="text-decoration:none; color:inherit; display: flex; align-items: center; gap: 4px;">
                   <span class="material-symbols-outlined" style="font-size:1rem;">analytics</span> ${item.raceTitle}
                 </a>
-                ${item.isHit ? `<span class="p-voting__tag" style="background:var(--color-um-gold); color:#000; font-size:0.6rem; padding:1px 4px;">的中！</span>` : ""}
-              </div>
+                </div>
               <div style="font-size: 0.75rem; color: var(--text-sub);">${date}</div>
             </div>
             <div style="font-weight: bold; margin-bottom: 8px; font-size: 1rem;">${comboDisplay}</div>
