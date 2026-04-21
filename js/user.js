@@ -114,7 +114,7 @@ function renderProfile(data) {
 }
 
 /**
- * 投票履歴の取得
+ * 投票履歴の取得（的中判定付き）
  */
 async function loadUserHistory(targetId) {
   const historyListEl = document.getElementById("js-history-list");
@@ -134,19 +134,37 @@ async function loadUserHistory(targetId) {
         const race = races[raceId];
         const combos = race.combos || {};
 
+        // --- 【追加】そのレースの馬名→ユーザー名マップを作成 ---
+        const horseToUserMap = {};
+        if (race.horses) {
+          Object.values(race.horses).forEach((h) => {
+            horseToUserMap[h.horseName] = h.userName;
+          });
+        }
+
+        // レース結果（1〜3着）を配列化
+        const results = race.results;
+        const top3 = results ? [results["1"], results["2"], results["3"]] : [];
+
         Object.keys(combos).forEach((comboId) => {
           const combo = combos[comboId];
           const voters = combo.voters || [];
-
           const myVote = Array.isArray(voters) ? voters.find((v) => v.uid === targetId || v === targetId) : null;
 
           if (myVote) {
+            // --- 【追加】的中判定 ---
+            const names = comboId.split("_");
+            const myFullNames = names.map((n) => `${n}(${horseToUserMap[n] || "不明"})`);
+            const isHit = top3.length >= 3 && myFullNames.every((fullName) => top3.includes(fullName));
+
             userHistory.push({
               raceTitle: race.title || "無題のレース",
               raceId: raceId,
               combination: comboId,
               timestamp: myVote.at || 0,
               comment: myVote.comment || "",
+              isHit: isHit, // 的中フラグを保存
+              status: race.status, // レース終了済みかどうかの確認用
             });
           }
         });
@@ -161,20 +179,26 @@ async function loadUserHistory(targetId) {
           const comboDisplay = item.combination.split("_").join(" - ");
 
           const div = document.createElement("div");
-          div.className = "p-user__history-item";
-          // ... (スタイル設定は既存のまま)
-          div.style.borderLeft = "4px solid var(--chara-main)";
+          // --- 【修正】的中している場合は is-hit クラスを付与 ---
+          div.className = `p-user__history-item p-voting__item ${item.isHit ? "is-hit" : ""}`;
+
+          // SCSSの .p-voting__item スタイルと競合しないよう、既存のインラインスタイルは適宜調整
           div.style.marginBottom = "15px";
           div.style.padding = "15px";
           div.style.background = "var(--bg-card)";
           div.style.borderRadius = "8px";
+          div.style.border = "1px solid var(--border)";
+          if (!item.isHit) {
+            div.style.borderLeft = "4px solid var(--chara-main)";
+          }
 
           div.innerHTML = `
             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-              <div style="font-weight: bold; color: var(--chara-main); font-size: 0.8rem;">
-                <a href="odds.html?race=${item.raceId}" style="text-decoration:none; color:inherit;">
-                  <span class="material-symbols-outlined" style="font-size:1rem; vertical-align:middle;">analytics</span> ${item.raceTitle}
+              <div style="font-weight: bold; color: var(--chara-main); font-size: 0.8rem; display: flex; align-items: center; gap: 8px;">
+                <a href="odds.html?race=${item.raceId}" style="text-decoration:none; color:inherit; display: flex; align-items: center; gap: 4px;">
+                  <span class="material-symbols-outlined" style="font-size:1rem;">analytics</span> ${item.raceTitle}
                 </a>
+                ${item.isHit ? `<span class="p-voting__tag" style="background:var(--color-um-gold); color:#000; font-size:0.6rem; padding:1px 4px;">的中！</span>` : ""}
               </div>
               <div style="font-size: 0.75rem; color: var(--text-sub);">${date}</div>
             </div>
