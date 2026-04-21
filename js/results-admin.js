@@ -15,7 +15,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-// 現在編集中のレースIDを保持
+// 状態管理
+let currentData = null;
 let editingRaceId = null;
 
 export async function initResultsAdmin() {
@@ -25,14 +26,11 @@ export async function initResultsAdmin() {
   const container = document.getElementById("js-results-list");
   if (!container) return;
 
-  onValue(ref(db, "races"), (snapshot) => {
-    const data = snapshot.val();
-    if (!data) {
-      container.innerHTML = `<p class="u-text-center">レースデータがありません</p>`;
-      return;
-    }
+  // 描画関数を定義
+  const render = () => {
+    if (!currentData) return;
 
-    const closedRaces = Object.entries(data)
+    const closedRaces = Object.entries(currentData)
       .filter(([id, race]) => race && race.status === "closed")
       .sort((a, b) => (b[1].createdAt || 0) - (a[1].createdAt || 0));
 
@@ -41,18 +39,35 @@ export async function initResultsAdmin() {
       return;
     }
 
-    // モード切り替え描画
-    if (editingRaceId && data[editingRaceId]) {
-      container.innerHTML = createEditForm(editingRaceId, data[editingRaceId]);
+    // 編集モードか一覧モードかを判定して描画
+    if (editingRaceId && currentData[editingRaceId]) {
+      container.innerHTML = createEditForm(editingRaceId, currentData[editingRaceId]);
     } else {
       container.innerHTML = createListView(closedRaces);
     }
+  };
+
+  // Firebase監視
+  onValue(ref(db, "races"), (snapshot) => {
+    currentData = snapshot.val();
+    render(); // データ更新時に再描画
   });
+
+  // グローバル関数（windowオブジェクト）に登録してHTMLから呼べるようにする
+  window.setEditMode = (id) => {
+    editingRaceId = id;
+    render(); // 明示的に再描画
+  };
+
+  window.clearEditMode = () => {
+    editingRaceId = null;
+    render(); // 明示的に再描画
+  };
 }
 
-// --- 1. 一覧表示（選択画面） ---
+// --- 1. 一覧表示 ---
 function createListView(closedRaces) {
-  const listItems = closedRaces
+  return closedRaces
     .map(([id, race]) => {
       const isSettled = race.results && Object.keys(race.results).length > 0;
       return `
@@ -64,31 +79,27 @@ function createListView(closedRaces) {
             ${isSettled ? '<span style="color:#4caf50;">● 結果登録済み</span>' : '<span style="color:#ffa000;">● 未登録</span>'}
           </div>
         </div>
-        <button class="c-button" style="padding: 8px 16px; font-size: 0.8rem;" onclick="setEditMode('${id}')">
-          選択
+        <button class="c-button" style="padding: 8px 16px; font-size: 0.8rem; background: var(--chara-main); color: #fff; border-radius: 4px;" onclick="setEditMode('${id}')">
+          編集
         </button>
       </div>
     `;
     })
     .join("");
-
-  return `<div class="p-admin-list-view">${listItems}</div>`;
 }
 
-// --- 2. 編集フォーム（ここが探されていた関数です） ---
+// --- 2. 編集フォーム ---
 function createEditForm(id, race) {
   const results = race.results || {};
   const horses = race.horses ? Object.values(race.horses) : [];
 
   const rankRows = [1, 2, 3, 4, 5]
     .map((num) => {
-      // 保存されている「馬名(ユーザー名)」を取得
       const savedValue = results[num] || "";
-
       return `
       <div class="p-result-row" style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
         <span style="width: 45px; font-weight: bold; color: var(--chara-main);">${num}着</span>
-        <select class="js-result-select c-input" data-rank="${num}" onchange="handleSelectDuplicate(this)" style="flex: 1; padding: 10px; border-radius: 4px; border: 1px solid var(--border); background: var(--bg-input);">
+        <select class="js-result-select c-input" data-rank="${num}" onchange="handleSelectDuplicate(this)" style="flex: 1; padding: 10px; border-radius: 4px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main);">
           <option value="">-- 未確定 --</option>
           ${horses
             .map((h) => {
@@ -109,28 +120,19 @@ function createEditForm(id, race) {
       </button>
       
       <div class="c-card" style="padding: 20px; border-top: 4px solid var(--chara-main); border-radius: 8px; background: var(--bg-card);">
-        <h3 style="margin-bottom: 15px;">${race.title}</h3>
+        <h3 style="margin-bottom: 15px; color: var(--text-main);">${race.title}</h3>
         <div class="p-result-inputs">${rankRows}</div>
         
         <div style="display: flex; gap: 10px; margin-top: 20px;">
-          <button class="c-button c-button--primary" style="flex: 2;" onclick="saveResults('${id}')">保存する</button>
-          <button class="c-button" style="flex: 1; background:#eee; color:#333;" onclick="clearEditMode()">キャンセル</button>
+          <button class="c-button c-button--primary" style="flex: 2; padding: 12px; border-radius: 6px;" onclick="saveResults('${id}')">保存する</button>
+          <button class="c-button" style="flex: 1; background:#eee; color:#333; padding: 12px; border-radius: 6px;" onclick="clearEditMode()">キャンセル</button>
         </div>
       </div>
     </div>
   `;
 }
 
-// --- 3. グローバル関数 ---
-
-window.setEditMode = (id) => {
-  editingRaceId = id;
-};
-window.clearEditMode = () => {
-  editingRaceId = null;
-};
-
-// リアルタイム重複チェック
+// --- 3. 重複チェック & 保存 ---
 window.handleSelectDuplicate = (target) => {
   const selects = document.querySelectorAll(".js-result-select");
   const currentValues = Array.from(selects)
@@ -140,7 +142,7 @@ window.handleSelectDuplicate = (target) => {
 
   if (hasDuplicate) {
     alert("この馬（トレーナー）は既に他の着順で選択されています。");
-    target.value = ""; // リセット
+    target.value = "";
   }
 };
 
@@ -160,7 +162,7 @@ window.saveResults = async (raceId) => {
   try {
     await update(ref(db, `races/${raceId}`), { results: resultsData });
     alert("結果を保存しました！");
-    clearEditMode();
+    window.clearEditMode(); // 保存後、一覧に戻る
   } catch (err) {
     alert("エラー: " + err.message);
   }
