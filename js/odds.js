@@ -143,48 +143,51 @@ function loadRaceList() {
   });
 }
 
-//
-// --- 追加: 結果を表示する関数 ---
-function renderRaceResults(results, container) {
-  if (!results) {
-    container.innerHTML = "";
-    container.style.display = "none";
-    return;
-  }
+// --- 1. 結果表示用の独立したHTMLを生成する関数 ---
+function renderResultSection(results) {
+  if (!results) return "";
 
   const sortedRanks = Object.entries(results).sort((a, b) => a[0] - b[0]);
-
-  // メダルカラーの定義
   const medals = { 1: "#ffd700", 2: "#c0c0c0", 3: "#cd7f32" };
 
-  let html = `
-    <div class="p-odds-result-card" style="margin-bottom: 20px; background: var(--bg-card); border-radius: 12px; padding: 16px; border-top: 4px solid var(--chara-main); box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-      <h2 style="font-size: 1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-        <span class="material-symbols-outlined" style="color: var(--chara-main)">emoji_events</span>
-        最終着順 確定
-      </h2>
-      <div style="display: flex; flex-direction: column; gap: 8px;">
-  `;
-
-  html += sortedRanks
+  let rowsHtml = sortedRanks
     .map(([rank, horseInfo]) => {
-      const medalColor = medals[rank] || "transparent";
-      const rankLabel = rank <= 3 ? "" : `<span style="font-size:0.7rem; margin-right:5px;">${rank}位</span>`;
+      const medalColor = medals[rank] || "var(--bg-input)";
+      const isTop3 = rank <= 3;
 
       return `
-      <div style="display: flex; align-items: center; gap: 12px; padding: 8px 12px; background: var(--bg-input); border-radius: 8px;">
-        <span style="background: ${medalColor || "#888"}; color: ${rank <= 3 ? "#000" : "#fff"}; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.8rem; flex-shrink: 0;">
+      <div style="display: flex; align-items: center; gap: 15px; padding: 12px; background: var(--bg-card); border-radius: 10px; border: 1px solid var(--border);">
+        <div style="
+          background: ${medalColor}; 
+          color: ${isTop3 ? "#000" : "var(--text-main)"}; 
+          width: 32px; height: 32px; 
+          border-radius: 50%; 
+          display: flex; align-items: center; justify-content: center; 
+          font-weight: 900; font-family: 'Zen Kaku Gothic New';
+          flex-shrink: 0;
+          box-shadow: ${isTop3 ? "0 2px 4px rgba(0,0,0,0.2)" : "none"};
+        ">
           ${rank}
-        </span>
-        <span style="font-weight: bold; font-size: 0.95rem; color: var(--text-main);">${horseInfo}</span>
+        </div>
+        <div style="font-weight: bold; font-size: 1.05rem; color: var(--text-main);">
+          ${horseInfo}
+        </div>
       </div>
     `;
     })
     .join("");
 
-  html += `</div></div>`;
-  container.innerHTML = html;
-  container.style.display = "block";
+  return `
+    <div class="p-result-content">
+      <h2 class="p-voting__subtitle" style="font-size: 1.1rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; color: var(--chara-main);">
+        <span class="material-symbols-outlined">stars</span> 最終着順
+      </h2>
+      <div style="display: grid; gap: 10px;">
+        ${rowsHtml}
+      </div>
+      <hr style="margin: 25px 0; border: none; border-top: 1px dashed var(--border);">
+    </div>
+  `;
 }
 
 // --- 関数: オッズ詳細の読み込み (変更なし) ---
@@ -338,8 +341,23 @@ function loadOddsDetail(raceId) {
   onValue(ref(db, `races/${raceId}`), (snap) => {
     const raceData = snap.val();
     if (!raceData) return;
+
+    // タイトル反映
     if (raceTitleDisp) raceTitleDisp.innerText = raceData.title || "投票結果";
 
+    // 【追加】独立した結果セクションの描画
+    const resultContainer = document.getElementById("js-race-result-section");
+    if (resultContainer) {
+      if (raceData.status === "closed" && raceData.results) {
+        resultContainer.innerHTML = renderResultSection(raceData.results);
+        resultContainer.style.display = "block";
+      } else {
+        resultContainer.style.display = "none";
+      }
+    }
+
+    // --- 以降、既存の horseToUserMap 作成や render(allCombos) の処理 ---
+    // (的中ハイライトを入れる場合は、前の回答の render 修正分も合わせて適用してください)
     const horses = raceData.horses || {};
     horseToUserMap = {};
     for (let hId in horses) {
@@ -354,8 +372,12 @@ function loadOddsDetail(raceId) {
       totalVotes += v;
       allCombos.push({ id: cId, ...comboData[cId], v });
     }
+
     if (totalInfoDiv) totalInfoDiv.innerText = `総投票数: ${totalVotes} 票`;
-    render(allCombos.sort((a, b) => b.v - a.v));
+    render(
+      allCombos.sort((a, b) => b.v - a.v),
+      raceData.results,
+    );
   });
 
   if (searchInput) {
