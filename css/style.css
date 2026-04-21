@@ -172,6 +172,10 @@ h2,
   }
 }
 
+.p-index {
+  padding-top: 60px !important;
+}
+
 .odds-content {
   max-width: initial;
 }
