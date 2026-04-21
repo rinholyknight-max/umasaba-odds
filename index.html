@@ -61,7 +61,10 @@
     <div class="l-menu__overlay" id="js-overlay"></div>
 
     <main class="l-main-content">
-      <div class="p-voting__selection-container js-sticky-header">
+      <div class="p-voting__selection-container js-sticky-header" style="position: relative; display: flex; align-items: center">
+        <button id="js-prev-race" class="c-slider-arrow" style="position: absolute; left: 0; z-index: 10; background: rgba(255, 255, 255, 0.8); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)">
+          <span class="material-symbols-outlined" style="font-size: 24px">chevron_left</span>
+        </button>
         <div id="js-race-dots" class="p-voting__dots"></div>
         <h1 id="js-active-race-title" class="p-voting__title">読み込み中...</h1>
 
@@ -70,19 +73,15 @@
           <div class="p-voting__slot" data-slot="2">2枠: <span class="slot-name">未選択</span></div>
           <div class="p-voting__slot" data-slot="3">3枠: <span class="slot-name">未選択</span></div>
         </div>
+
+        <button id="js-next-race" class="c-slider-arrow" style="position: absolute; right: 0; z-index: 10; background: rgba(255, 255, 255, 0.8); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)">
+          <span class="material-symbols-outlined" style="font-size: 24px">chevron_right</span>
+        </button>
       </div>
 
       <div class="p-voting">
-        <div class="p-voting__slider-wrapper" style="position: relative; display: flex; align-items: center">
-          <button id="js-prev-race" class="c-slider-arrow" style="position: absolute; left: 0; z-index: 10; background: rgba(255, 255, 255, 0.8); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)">
-            <span class="material-symbols-outlined" style="font-size: 24px">chevron_left</span>
-          </button>
-
+        <div class="p-voting__slider-wrapper">
           <div id="js-race-slider" class="p-voting__slider" style="flex: 1"></div>
-
-          <button id="js-next-race" class="c-slider-arrow" style="position: absolute; right: 0; z-index: 10; background: rgba(255, 255, 255, 0.8); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)">
-            <span class="material-symbols-outlined" style="font-size: 24px">chevron_right</span>
-          </button>
         </div>
 
         <div class="p-voting__form-footer">
