@@ -143,6 +143,50 @@ function loadRaceList() {
   });
 }
 
+//
+// --- 追加: 結果を表示する関数 ---
+function renderRaceResults(results, container) {
+  if (!results) {
+    container.innerHTML = "";
+    container.style.display = "none";
+    return;
+  }
+
+  const sortedRanks = Object.entries(results).sort((a, b) => a[0] - b[0]);
+
+  // メダルカラーの定義
+  const medals = { 1: "#ffd700", 2: "#c0c0c0", 3: "#cd7f32" };
+
+  let html = `
+    <div class="p-odds-result-card" style="margin-bottom: 20px; background: var(--bg-card); border-radius: 12px; padding: 16px; border-top: 4px solid var(--chara-main); box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      <h2 style="font-size: 1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+        <span class="material-symbols-outlined" style="color: var(--chara-main)">emoji_events</span>
+        最終着順 確定
+      </h2>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+  `;
+
+  html += sortedRanks
+    .map(([rank, horseInfo]) => {
+      const medalColor = medals[rank] || "transparent";
+      const rankLabel = rank <= 3 ? "" : `<span style="font-size:0.7rem; margin-right:5px;">${rank}位</span>`;
+
+      return `
+      <div style="display: flex; align-items: center; gap: 12px; padding: 8px 12px; background: var(--bg-input); border-radius: 8px;">
+        <span style="background: ${medalColor || "#888"}; color: ${rank <= 3 ? "#000" : "#fff"}; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.8rem; flex-shrink: 0;">
+          ${rank}
+        </span>
+        <span style="font-weight: bold; font-size: 0.95rem; color: var(--text-main);">${horseInfo}</span>
+      </div>
+    `;
+    })
+    .join("");
+
+  html += `</div></div>`;
+  container.innerHTML = html;
+  container.style.display = "block";
+}
+
 // --- 関数: オッズ詳細の読み込み (変更なし) ---
 function loadOddsDetail(raceId) {
   const oddsListDiv = document.getElementById("odds-list");
