@@ -3,6 +3,17 @@
 import { ref, onValue, update } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
 import { db, checkAuth } from "./auth.js"; // auth.jsからdbと認証チェックをインポート
 
+// --- 初期設定 ---
+const firebaseConfig = {
+  apiKey: "AIzaSyBp5Cg6A3v3VZal-orAiwFjphKIDYx9ATo",
+  authDomain: "umasaba-odds.firebaseapp.com",
+  databaseURL: "https://umasaba-odds-default-rtdb.firebaseio.com",
+  projectId: "umasaba-odds",
+  storageBucket: "umasaba-odds.firebasestorage.app",
+  messagingSenderId: "802834774249",
+  appId: "1:802834774249:web:5623185854ead82c261878",
+};
+
 export async function initResultsAdmin() {
   // 1. 認証チェック（管理者以外は追い出すなどの処理）
   const user = await checkAuth();
