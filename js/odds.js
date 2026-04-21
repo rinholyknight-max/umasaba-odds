@@ -318,8 +318,26 @@ function loadOddsDetail(raceId) {
       const names = c.id.split("_");
       const voterList = Array.isArray(c.voters) ? c.voters : [];
 
+      // --- 【追加】的中判定ロジック ---
+      // 1. 自分の投票内容を「馬名(ユーザー名)」のリストに変換
+      const myFullNames = names.map((n) => {
+        const uName = horseToUserMap[n] || "不明";
+        return `${n}(${uName})`;
+      });
+
+      // 2. 3連複の判定：自分の選んだ3頭がすべてTop3に含まれているか
+      const isHit = top3.length >= 3 && myFullNames.every((fullName) => top3.includes(fullName));
+
+      // 【デバッグ】的中した時だけログを出す
+      if (isHit) {
+        console.log("★的中！:", c.id, "フルネーム:", myFullNames);
+      }
+      // --- 判定ロジックここまで ---
+
       const item = document.createElement("div");
-      item.className = "p-voting__item p-voting__item--odds";
+      // 3. クラス付与（半角スペースを忘れずに！）
+      item.className = `p-voting__item p-voting__item--odds ${isHit ? "is-hit" : ""}`;
+
       item.onclick = () => openModal(voterList);
       item.innerHTML = `
         <div class="p-voting__info">
