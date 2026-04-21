@@ -191,32 +191,27 @@ async function loadUserHistory(targetId) {
           if (!item.isHit) {
             div.style.borderLeft = "4px solid var(--chara-main)";
           }
+          // userHistory.forEach 内
+          div.className = `p-user__history-item p-voting__item ${item.isHit ? "is-hit" : ""}`;
 
+          // インラインスタイルを削除し、クラス（SCSS）で制御するようにします
           div.innerHTML = `
+          <div class="p-user__history-content">
             <div class="p-user__history-header">
-              <div class="p-user__history-title-group">
-                <a href="odds.html?race=${item.raceId}" class="p-user__history-link">
-                  <span class="material-symbols-outlined">analytics</span>
-                  <span class="p-user__history-race-name">${item.raceTitle}</span>
-                </a>
-              </div>
-              <div class="p-user__history-date">${date}</div>
+              <a href="odds.html?race=${item.raceId}" class="p-user__history-race-link">
+                <span class="material-symbols-outlined">analytics</span>
+                ${item.raceTitle}
+              </a>
+              <span class="p-user__history-date">${date}</span>
             </div>
-            
-            <div class="p-user__history-combo">
+
+            <div class="p-user__history-main">
               ${comboDisplay}
             </div>
 
-            ${
-              item.comment
-                ? `
-              <div class="p-user__history-comment">
-                ${item.comment}
-              </div>
-            `
-                : ""
-            }
-          `;
+            ${item.comment ? `<p class="p-user__history-comment">${item.comment}</p>` : ""}
+          </div>
+        `;
           historyListEl.appendChild(div);
         });
       } else {

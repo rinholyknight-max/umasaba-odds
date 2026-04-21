@@ -1648,61 +1648,71 @@ h2,
 }
 
 .p-user__history-item {
-  display: flex;
-  flex-direction: column; // 基本は縦並び
-  gap: 8px;
+  // 共通設定
+  margin-bottom: 15px;
+  padding: 15px;
+  background: var(--bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--border);
 
-  // ヘッダー（タイトルと日付）
+  // 的中していない時のデフォルト左線（的中時は SCSSの .is-hit が優先される）
+  &:not(.is-hit) {
+    border-left: 4px solid var(--chara-main);
+  }
+
   .p-user__history-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: 10px;
+    align-items: center;
+    margin-bottom: 8px;
 
+    // ★ SPのみ：縦に並べて日付を小さくする
     @media (max-width: 768px) {
-      flex-direction: column; // スマホでは日付をタイトルの下に
+      flex-direction: column;
+      align-items: flex-start;
       gap: 4px;
     }
   }
 
-  .p-user__history-link {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+  .p-user__history-race-link {
     text-decoration: none;
     color: var(--chara-main);
     font-weight: bold;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 
     .material-symbols-outlined {
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
   }
 
   .p-user__history-date {
     font-size: 0.75rem;
     color: var(--text-sub);
-    white-space: nowrap; // PCでは1行
   }
 
-  // 馬名コンボ部分
-  .p-user__history-combo {
-    font-weight: 900;
-    font-size: 1.05rem;
+  .p-user__history-main {
+    font-weight: bold;
+    font-size: 1rem;
     line-height: 1.4;
-    word-break: break-all; // 長い馬名でも強制改行して溢れ防止
     color: var(--text-main);
-    margin: 4px 0;
+
+    // ★ SPのみ：長い馬名の折り返しを許容し、文字サイズを少し調整
+    @media (max-width: 768px) {
+      font-size: 0.95rem;
+      word-break: break-all;
+    }
   }
 
-  // コメント部分
   .p-user__history-comment {
     font-size: 0.9rem;
+    margin: 8px 0 0;
     color: var(--text-main);
     background: var(--bg-page);
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
+    padding: 8px;
+    border-radius: 4px;
     line-height: 1.5;
   }
 }
