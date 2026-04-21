@@ -104,6 +104,16 @@ export async function initVoting() {
     });
   }
 
+  // --- 左右ボタンの制御を追加 ---
+  const prevBtn = document.getElementById("js-prev-race");
+  const nextBtn = document.getElementById("js-next-race");
+
+  if (prevBtn && nextBtn && slider) {
+    // scrollBy を使うことで、既存の「scroll」リスナーが自動的に反応します
+    nextBtn.onclick = () => slider.scrollBy({ left: slider.offsetWidth, behavior: "smooth" });
+    prevBtn.onclick = () => slider.scrollBy({ left: -slider.offsetWidth, behavior: "smooth" });
+  }
+
   const updateDots = (index) => {
     if (!dotsContainer) return;
     dotsContainer.querySelectorAll("span").forEach((dot, i) => {
