@@ -301,8 +301,18 @@ function loadOddsDetail(raceId) {
     });
   };
 
-  const render = (arr) => {
+  const render = (arr, raceResults) => {
     oddsListDiv.innerHTML = "";
+
+    // 【デバッグ用ログ】これがコンソールに出れば第一歩成功です
+    console.log("--- render実行 ---");
+    console.log("全コンボ数:", arr.length);
+    console.log("レース結果データ:", raceResults);
+
+    // 1〜3着の「馬名(ユーザー名)」リストを作成
+    const top3 = raceResults ? [raceResults["1"], raceResults["2"], raceResults["3"]] : [];
+    console.log("的中判定の基準（Top3）:", top3);
+
     arr.forEach((c) => {
       const odds = c.v > 0 ? (totalVotes / c.v).toFixed(1) : "99.9";
       const names = c.id.split("_");
