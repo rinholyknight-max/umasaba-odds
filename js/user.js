@@ -193,16 +193,29 @@ async function loadUserHistory(targetId) {
           }
 
           div.innerHTML = `
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-              <div style="font-weight: bold; color: var(--chara-main); font-size: 0.8rem; display: flex; align-items: center; gap: 8px;">
-                <a href="odds.html?race=${item.raceId}" style="text-decoration:none; color:inherit; display: flex; align-items: center; gap: 4px;">
-                  <span class="material-symbols-outlined" style="font-size:1rem;">analytics</span> ${item.raceTitle}
+            <div class="p-user__history-header">
+              <div class="p-user__history-title-group">
+                <a href="odds.html?race=${item.raceId}" class="p-user__history-link">
+                  <span class="material-symbols-outlined">analytics</span>
+                  <span class="p-user__history-race-name">${item.raceTitle}</span>
                 </a>
-                </div>
-              <div style="font-size: 0.75rem; color: var(--text-sub);">${date}</div>
+              </div>
+              <div class="p-user__history-date">${date}</div>
             </div>
-            <div style="font-weight: bold; margin-bottom: 8px; font-size: 1rem;">${comboDisplay}</div>
-            ${item.comment ? `<p style="font-size: 0.9rem; margin: 0; color: var(--text-main); background: var(--bg-page); padding: 8px; border-radius: 4px;">${item.comment}</p>` : ""}
+            
+            <div class="p-user__history-combo">
+              ${comboDisplay}
+            </div>
+
+            ${
+              item.comment
+                ? `
+              <div class="p-user__history-comment">
+                ${item.comment}
+              </div>
+            `
+                : ""
+            }
           `;
           historyListEl.appendChild(div);
         });

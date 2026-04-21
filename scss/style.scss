@@ -1646,3 +1646,63 @@ h2,
     margin-top: 40px;
   }
 }
+
+.p-user__history-item {
+  display: flex;
+  flex-direction: column; // 基本は縦並び
+  gap: 8px;
+
+  // ヘッダー（タイトルと日付）
+  .p-user__history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+
+    @media (max-width: 768px) {
+      flex-direction: column; // スマホでは日付をタイトルの下に
+      gap: 4px;
+    }
+  }
+
+  .p-user__history-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    color: var(--chara-main);
+    font-weight: bold;
+    font-size: 0.85rem;
+
+    .material-symbols-outlined {
+      font-size: 1.1rem;
+    }
+  }
+
+  .p-user__history-date {
+    font-size: 0.75rem;
+    color: var(--text-sub);
+    white-space: nowrap; // PCでは1行
+  }
+
+  // 馬名コンボ部分
+  .p-user__history-combo {
+    font-weight: 900;
+    font-size: 1.05rem;
+    line-height: 1.4;
+    word-break: break-all; // 長い馬名でも強制改行して溢れ防止
+    color: var(--text-main);
+    margin: 4px 0;
+  }
+
+  // コメント部分
+  .p-user__history-comment {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    background: var(--bg-page);
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    line-height: 1.5;
+  }
+}
