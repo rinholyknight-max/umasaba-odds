@@ -1,7 +1,10 @@
 // --- インポート ---
-// firebase-database.js のバージョンは admin.js に合わせて 12.11.0 を使用
-import { ref, onValue, update } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
-import { db, checkAuth } from "./auth.js"; // auth.jsからdbと認証チェックをインポート
+// 1. Firebaseの初期化に必要な initializeApp と getDatabase を追加
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
+
+// 2. auth.js からは checkAuth だけをインポート（dbは消す）
+import { checkAuth } from "./auth.js";
 
 // --- 初期設定 ---
 const firebaseConfig = {
@@ -13,6 +16,10 @@ const firebaseConfig = {
   messagingSenderId: "802834774249",
   appId: "1:802834774249:web:5623185854ead82c261878",
 };
+
+// 3. このファイル専用の db インスタンスを作成
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
 export async function initResultsAdmin() {
   // 1. 認証チェック（管理者以外は追い出すなどの処理）
