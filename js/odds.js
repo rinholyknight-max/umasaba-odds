@@ -357,7 +357,6 @@ function loadOddsDetail(raceId) {
     }
 
     // --- 以降、既存の horseToUserMap 作成や render(allCombos) の処理 ---
-    // (的中ハイライトを入れる場合は、前の回答の render 修正分も合わせて適用してください)
     const horses = raceData.horses || {};
     horseToUserMap = {};
     for (let hId in horses) {

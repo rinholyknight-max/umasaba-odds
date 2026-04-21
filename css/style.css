@@ -655,12 +655,57 @@ h2,
   border: 1px solid var(--border);
   transition: 0.2s;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 .p-voting__item:hover {
   background: var(--bg-page);
 }
 .p-voting__item--odds {
   border-left: 4px solid #d32f2f;
+}
+.p-voting__item.is-hit {
+  border: 2px solid #d4af37 !important;
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(212, 175, 55, 0.08) 50%, rgba(212, 175, 55, 0.15) 100%) !important;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+  z-index: 1;
+  border-left: 6px solid #d4af37 !important;
+}
+.p-voting__item.is-hit::before {
+  content: "的中";
+  position: absolute;
+  top: 6px;
+  right: -28px;
+  width: 90px;
+  height: 22px;
+  background: #d4af37;
+  color: #000;
+  font-size: 0.7rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(45deg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+.p-voting__item.is-hit .p-voting__tag {
+  background: #d4af37 !important;
+  color: #000 !important;
+  font-weight: bold;
+}
+.p-voting__item.is-hit .p-voting__number {
+  color: #d4af37;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+.p-voting__result-content {
+  background: var(--bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 24px;
+  margin-bottom: 40px;
+  border-top: 4px solid #d4af37;
 }
 .p-voting__form-footer {
   padding: 24px;

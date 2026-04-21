@@ -659,12 +659,73 @@ h2,
     border: 1px solid var(--border);
     transition: 0.2s;
     cursor: pointer;
+
+    position: relative;
+    overflow: hidden;
+
     &:hover {
       background: var(--bg-page);
     }
     &--odds {
       border-left: 4px solid v.$color-danger;
     }
+
+    // --- 的中時の特別スタイル ---
+    &.is-hit {
+      border: 2px solid v.$color-um-gold !important;
+      // ほんのり金色のグラデーション背景
+      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(212, 175, 55, 0.08) 50%, rgba(212, 175, 55, 0.15) 100%) !important;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+      z-index: 1;
+
+      // 左側のボーダーを太く、より強調
+      border-left: 6px solid v.$color-um-gold !important;
+
+      // 右上の「的中」リボン
+      &::before {
+        content: "的中";
+        position: absolute;
+        top: 6px;
+        right: -28px;
+        width: 90px;
+        height: 22px;
+        background: v.$color-um-gold;
+        color: #000;
+        font-size: 0.7rem;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: rotate(45deg);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        z-index: 2;
+        // 702行目付近を以下に書き換え
+        font-family: "Zen Kaku Gothic New", sans-serif;
+      }
+
+      // 的中したアイテム内のタグ色も変更
+      .p-voting__tag {
+        background: v.$color-um-gold !important;
+        color: #000 !important;
+        font-weight: bold;
+      }
+
+      // 的中したアイテム内のオッズ数字を強調
+      .p-voting__number {
+        color: v.$color-um-gold;
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  // 結果発表用コンテンツ（js-race-result-section用）
+  &__result-content {
+    background: var(--bg-card);
+    border-radius: v.$radius-md;
+    border: 1px solid var(--border);
+    padding: v.$space-lg;
+    margin-bottom: v.$space-xl;
+    border-top: 4px solid v.$color-um-gold;
   }
 
   // --- 3. フォーム下部エリア (投票画面用) ---
