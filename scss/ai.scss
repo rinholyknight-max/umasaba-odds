@@ -14,6 +14,11 @@ $transition-speed: 0.3s;
   align-items: flex-end;
   font-family: "Helvetica Neue", Arial, sans-serif;
 
+  // ★ SPのみ：長い馬名の折り返しを許容し、文字サイズを少し調整
+  @media (max-width: 768px) {
+    right: -10px;
+  }
+
   // 1. トリガーエリア（吹き出し＋理事長）
   .ai-trigger-area {
     position: relative;

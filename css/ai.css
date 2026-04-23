@@ -8,6 +8,11 @@
   align-items: flex-end;
   font-family: "Helvetica Neue", Arial, sans-serif;
 }
+@media (max-width: 768px) {
+  .ai-consultant-container {
+    right: -10px;
+  }
+}
 .ai-consultant-container .ai-trigger-area {
   position: relative;
   cursor: pointer;
