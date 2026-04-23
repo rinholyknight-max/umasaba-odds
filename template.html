@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/ai.css" />
   </head>
 
   <body class="l-page-container">
@@ -66,6 +67,25 @@
       <!-- ここに新しくmainを作成 -->
     </main>
 
+    <div id="ai-consultant-container" class="ai-consultant-container">
+      <div id="ai-bubble" class="ai-bubble h-hidden">
+        <div class="ai-bubble-content">
+          <p id="ai-text">どのスタンスで攻めるか教えてほしいな！</p>
+          <div id="ai-options" class="ai-options">
+            <button onclick="handleStanceSelect('safe')">堅実派</button>
+            <button onclick="handleStanceSelect('gamble')">高配当</button>
+            <button onclick="handleStanceSelect('free')">おまかせ</button>
+          </div>
+          <div id="ai-loading" class="ai-loading h-hidden"><span>●</span><span>●</span><span>●</span></div>
+        </div>
+      </div>
+
+      <button id="ai-trigger" class="ai-trigger-btn" onclick="toggleAiBubble()">
+        <img id="ai-oshi-img" src="assets/images/characters/goldship.png" alt="推しキャラ" />
+        <span id="ai-ticket-badge" class="ai-ticket-badge">1</span>
+      </button>
+    </div>
+
     <div id="js-modal" class="c-modal">
       <div id="js-modal-overlay" class="c-modal__overlay"></div>
       <div class="c-modal__content">
@@ -84,5 +104,6 @@
       // テーマ初期化（checkAuthは呼ばないのでループしません）
       initTheme();
     </script>
+    <script src="js/ai-consultant.js"></script>
   </body>
 </html>
