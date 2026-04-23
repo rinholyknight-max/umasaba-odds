@@ -76,5 +76,13 @@
         <div id="js-modal-comment-list" class="c-modal__body"></div>
       </div>
     </div>
+
+    <script type="module">
+      import { initTheme } from "./js/theme.js";
+      import { login } from "./js/auth.js";
+
+      // テーマ初期化（checkAuthは呼ばないのでループしません）
+      initTheme();
+    </script>
   </body>
 </html>
