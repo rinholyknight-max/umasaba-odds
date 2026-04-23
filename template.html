@@ -68,22 +68,25 @@
     </main>
 
     <div id="ai-consultant-container" class="ai-consultant-container">
+      <div id="ai-trigger" class="ai-trigger-area" onclick="toggleAiBubble()">
+        <div class="ai-ask-bubble">
+          <span class="ai-ask-text">理事長に相談</span>
+          <span id="ai-ticket-badge" class="ai-ticket-badge">1</span>
+        </div>
+        <img id="ai-reporter-img" class="ai-oshi-cling-img" src="assets/images/system/yayoi_cling.png" alt="秋川理事長" />
+      </div>
+
       <div id="ai-bubble" class="ai-bubble h-hidden">
         <div class="ai-bubble-content">
-          <p id="ai-text">どのスタンスで攻めるか教えてほしいな！</p>
+          <p id="ai-text">**【諮問！】** どのスタンスで挑むつもりかね！？</p>
           <div id="ai-options" class="ai-options">
-            <button onclick="handleStanceSelect('safe')">堅実派</button>
+            <button onclick="handleStanceSelect('safe')">堅実</button>
             <button onclick="handleStanceSelect('gamble')">高配当</button>
-            <button onclick="handleStanceSelect('free')">おまかせ</button>
+            <button onclick="handleStanceSelect('free')">直感</button>
           </div>
           <div id="ai-loading" class="ai-loading h-hidden"><span>●</span><span>●</span><span>●</span></div>
         </div>
       </div>
-
-      <button id="ai-trigger" class="ai-trigger-btn" onclick="toggleAiBubble()">
-        <img id="ai-oshi-img" src="assets/images/characters/goldship.png" alt="推しキャラ" />
-        <span id="ai-ticket-badge" class="ai-ticket-badge">1</span>
-      </button>
     </div>
 
     <div id="js-modal" class="c-modal">
