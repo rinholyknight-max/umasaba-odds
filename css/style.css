@@ -847,6 +847,7 @@ h2,
   .p-voting__slots {
     grid-template-columns: 1fr;
     gap: 6px;
+    flex-flow: column;
   }
   .p-voting__slot {
     display: flex;

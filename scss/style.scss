@@ -898,6 +898,7 @@ h2,
     &__slots {
       grid-template-columns: 1fr;
       gap: 6px;
+      flex-flow: column;
     }
 
     &__slot {
