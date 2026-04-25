@@ -71,6 +71,9 @@ export async function login(input) {
   }
 
   try {
+    // 1. まず先に匿名認証を済ませる（これで auth != null になる）
+    await signInAnonymously(auth);
+
     const allowedRef = ref(db, `allowed_users/${input}`);
     const allowedSnap = await get(allowedRef);
 
