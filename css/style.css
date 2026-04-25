@@ -1442,7 +1442,7 @@ h2,
 
 @media (max-width: 1024px) {
   .p-voting__title-area {
-    gap: 20px;
+    gap: 20px !important;
   }
 }
 
