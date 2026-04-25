@@ -1440,6 +1440,12 @@ h2,
   margin-top: 10px;
 }
 
+@media (max-width: 1024px) {
+  .p-voting__title-area {
+    gap: 20px;
+  }
+}
+
 .p-info-modal {
   padding: 8px 4px;
 }

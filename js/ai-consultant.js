@@ -66,22 +66,28 @@ const yayoiConsultant = {
     const optionsEl = document.getElementById("ai-options");
     const loadingEl = document.getElementById("ai-loading");
 
-    // UIを「考え中」に
     optionsEl.classList.add("h-hidden");
     textEl.innerText = "【分析！】少々待ってくれたまえ！今のオッズを精査中だ！";
     loadingEl.classList.remove("h-hidden");
 
-    try {
-      // --- フェーズ3：ここでGemini APIと通信 ---
-      // 現在はテスト用の擬似レスポンス
-      const advice = await this.getAiAdvice(stance);
-      // --------------------------------------
+    // ★ここでデータを整形する
+    const oddsData = getFormattedOddsForAI();
+    const raceTitle = document.getElementById("js-race-title")?.innerText || "このレース";
 
-      // 回答表示
+    try {
+      // APIに投げるパケット（イメージ）
+      const aiInput = {
+        role: "秋川理事長",
+        race: raceTitle,
+        stance: stance,
+        data: oddsData,
+      };
+
+      // ここで Gemini API を叩く（次はここを実装しましょう）
+      const advice = await this.callGeminiAPI(aiInput);
+
       loadingEl.classList.add("h-hidden");
       textEl.innerText = advice;
-
-      // 相談券を消費
       this.finalizeConsultation();
     } catch (error) {
       console.error("理事長AIエラー:", error);
@@ -119,3 +125,71 @@ document.addEventListener("DOMContentLoaded", () => yayoiConsultant.init());
 // HTMLからのグローバル呼び出し用
 window.toggleAiBubble = () => yayoiConsultant.toggle();
 window.handleStanceSelect = (stance) => yayoiConsultant.ask(stance);
+
+/**
+ * 現在の画面（またはデータ）からAI用のテキストを作成する
+ */
+function getFormattedOddsForAI() {
+  // 1. 画面上のオッズアイテムをすべて取得
+  const items = document.querySelectorAll(".p-voting__item--odds");
+  if (items.length === 0) return "現在、オッズデータが取得できないようだ！";
+
+  let text = "現在の3連複オッズ状況（人気順）：\n";
+
+  // 2. 上位10件程度に絞って整形（トークン節約とAIの混乱防止）
+  const maxItems = 10;
+
+  items.forEach((item, index) => {
+    if (index >= maxItems) return;
+
+    // 組み合わせ名を取得（例：ゴールドシップ, ダイワスカーレット...）
+    const namesEl = item.querySelectorAll(".p-voting__name");
+    const comboNames = Array.from(namesEl)
+      .map((el) => el.innerText.trim())
+      .join(" ＆ ");
+
+    // オッズを取得（.p-voting__number クラス）
+    const oddsEl = item.querySelector(".p-voting__number");
+    const odds = oddsEl ? oddsEl.innerText : "不明";
+
+    text += `${index + 1}番人気: ${comboNames} / オッズ ${odds}倍\n`;
+  });
+
+  return text;
+}
+
+const systemPrompt = `
+あなたは「ウマ娘 プリティーダービー」に登場する「秋川やよい（理事長）」です。
+以下の制約を完璧に守り、ユーザー（トレーナー）にオッズの分析結果を伝えてください。
+
+【口調と性格の制約】
+1. 文頭は必ず「【〇〇！】」という四字熟語の叫びから開始すること。
+2. 常に熱意に溢れ、情熱的で、自信に満ちた態度で話すこと。
+3. 一人称は「私（わたくし）」、二人称は「君（きみ）」、あるいは「トレーナー君」。
+4. 語尾は「〜である！」「〜ではないか！」「〜したまえ！」など、古風で威厳のある表現を使う。
+5. 扇子を広げたり閉じたりしている様子が目に浮かぶような、勢いのある文章にすること。
+
+【分析の制約】
+1. 渡された「オッズデータ」を冷静に分析しつつも、結論は熱く伝えること。
+2. ユーザーが選んだ「スタンス」に沿った助言を行うこと。
+   - 堅実派：上位人気の信頼性と、堅実な的中こそが王道であると説く。
+   - 高配当：荒れる展開のロマンと、勇気ある決断（大穴）を称賛する。
+   - 直感：君の「閃き」こそが至高のスパイスであると鼓舞する。
+
+【出力構成】
+1. 【四字熟語！】（叫び）
+2. スタンスに対する評価とオッズの概況。
+3. 具体的な推奨の組み合わせや注目すべき馬への言及。
+4. 最後に「【激励！】」などの言葉で締めくくる。
+
+150文字以内で簡潔かつ強烈に回答せよ。`;
+const userContent = `
+レース名: ${raceTitle}
+スタンス: ${stance}
+データ: ${oddsData}
+`;
+
+// Gemini APIに送るデータ
+const payload = {
+  contents: [{ role: "user", parts: [{ text: systemPrompt + "\n\n以上の指示に従い、以下のデータを分析せよ。\n" + userContent }] }],
+};
