@@ -3,8 +3,9 @@
  */
 
 // 1. Firebase SDKのインポート（AppとFunctions）
-import { initializeApp, getApp, getApps } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import { getApp, getApps, initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-functions.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 // --- 初期設定 ---
 const firebaseConfig = {
@@ -17,9 +18,10 @@ const firebaseConfig = {
   appId: "1:802834774249:web:5623185854ead82c261878",
 };
 
-// 重複初期化を避けるためのチェック
-const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
-const functions = getFunctions(app); // これで確実にFunctionsがつながる
+// 既に初期化済みのAppを使い、ログイン状態を共有する
+const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const functions = getFunctions(app);
 
 const yayoiConsultant = {
   state: {
@@ -78,6 +80,15 @@ const yayoiConsultant = {
 
   // スタンス選択（ここからAIへ）
   async ask(stance) {
+    // 【重要】ここで現在のユーザー（匿名含む）をチェック
+    const user = auth.currentUser;
+    console.log("現在のユーザー:", user);
+
+    if (!user) {
+      this.showFixedMessage("【遺憾！】ログイン（匿名含む）が確認できん！再読み込みしてくれたまえ！");
+      return;
+    }
+
     if (this.state.isConsulted) return;
 
     const textEl = document.getElementById("ai-text");
