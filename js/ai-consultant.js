@@ -165,9 +165,23 @@ const yayoiConsultant = {
     this.state.isConsulted = true;
     this.updateBadge();
 
+    const today = new Date().toLocaleDateString(); // "2026/04/27" のような形式
     const history = JSON.parse(localStorage.getItem("yayoi_consult_history") || "{}");
-    history[this.state.currentRaceId] = true;
+
+    // 単なる true ではなく、相談した日付を記録する
+    history[this.state.currentRaceId] = today;
     localStorage.setItem("yayoi_consult_history", JSON.stringify(history));
+  },
+
+  // 相談済みかチェックする際、日付が今日かどうかを確認
+  checkStatus() {
+    const history = JSON.parse(localStorage.getItem("yayoi_consult_history") || "{}");
+    const consultDate = history[this.state.currentRaceId];
+    const today = new Date().toLocaleDateString();
+
+    // 「履歴がある」かつ「その日付が今日である」場合のみ相談済みとする
+    this.state.isConsulted = consultDate === today;
+    this.updateBadge();
   },
 };
 
