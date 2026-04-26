@@ -3,6 +3,9 @@
  * ロジック管理（相談券・状態遷移）
  */
 
+// Firebase SDKから必要な関数をインポート
+import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-functions.js";
+
 const yayoiConsultant = {
   state: {
     currentRaceId: null,
@@ -12,7 +15,7 @@ const yayoiConsultant = {
 
   // 初期化
   init() {
-    // 1. URLパラメータからレースIDを取得（一意に特定するため）
+    // 1. URLパラメータからレースIDを取得
     const params = new URLSearchParams(window.location.search);
     this.state.currentRaceId = params.get("id") || "default_race";
 
@@ -70,95 +73,17 @@ const yayoiConsultant = {
     textEl.innerText = "【分析！】少々待ってくれたまえ！今のオッズを精査中だ！";
     loadingEl.classList.remove("h-hidden");
 
-    // ★ここでデータを整形する
+    // データを整形
     const oddsData = getFormattedOddsForAI();
     const raceTitle = document.getElementById("js-race-title")?.innerText || "このレース";
 
     try {
-      // APIに投げるパケット（イメージ）
-      const aiInput = {
-        role: "秋川理事長",
-        race: raceTitle,
-        stance: stance,
-        data: oddsData,
-      };
+      // --- Firebase Functions 連携部分 ---
+      const functions = getFunctions();
+      const askYayoi = httpsCallable(functions, "askYayoi");
 
-      // ここで Gemini API を叩く（次はここを実装しましょう）
-      const advice = await this.callGeminiAPI(aiInput);
-
-      loadingEl.classList.add("h-hidden");
-      textEl.innerText = advice;
-      this.finalizeConsultation();
-    } catch (error) {
-      console.error("理事長AIエラー:", error);
-      textEl.innerText = "【遺憾！】通信環境に不備があるようだ…！";
-      loadingEl.classList.add("h-hidden");
-      optionsEl.classList.remove("h-hidden");
-    }
-  },
-
-  // 擬似AIレスポンス（テスト用）
-  async getAiAdvice(stance) {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    const messages = {
-      safe: "【堅実！】上位人気の安定感は抜群だ！この2人を軸に添えるのが定石だろう！",
-      gamble: "【大胆！】人気薄の彼に光るものを感じる！一発逆転を狙うのも一興だ！",
-      free: "【直感！】自分の信じた道を往け！それが勝利への最短ルートだ！",
-    };
-    return messages[stance] || "【激励！】君の決断を私は支持するぞ！";
-  },
-
-  // 相談済みとして保存
-  finalizeConsultation() {
-    this.state.isConsulted = true;
-    this.updateBadge();
-
-    const history = JSON.parse(localStorage.getItem("yayoi_consult_history") || "{}");
-    history[this.state.currentRaceId] = true;
-    localStorage.setItem("yayoi_consult_history", JSON.stringify(history));
-  },
-};
-
-// 実行
-document.addEventListener("DOMContentLoaded", () => yayoiConsultant.init());
-
-// HTMLからのグローバル呼び出し用
-window.toggleAiBubble = () => yayoiConsultant.toggle();
-window.handleStanceSelect = (stance) => yayoiConsultant.ask(stance);
-
-/**
- * 現在の画面（またはデータ）からAI用のテキストを作成する
- */
-function getFormattedOddsForAI() {
-  // 1. 画面上のオッズアイテムをすべて取得
-  const items = document.querySelectorAll(".p-voting__item--odds");
-  if (items.length === 0) return "現在、オッズデータが取得できないようだ！";
-
-  let text = "現在の3連複オッズ状況（人気順）：\n";
-
-  // 2. 上位10件程度に絞って整形（トークン節約とAIの混乱防止）
-  const maxItems = 10;
-
-  items.forEach((item, index) => {
-    if (index >= maxItems) return;
-
-    // 組み合わせ名を取得（例：ゴールドシップ, ダイワスカーレット...）
-    const namesEl = item.querySelectorAll(".p-voting__name");
-    const comboNames = Array.from(namesEl)
-      .map((el) => el.innerText.trim())
-      .join(" ＆ ");
-
-    // オッズを取得（.p-voting__number クラス）
-    const oddsEl = item.querySelector(".p-voting__number");
-    const odds = oddsEl ? oddsEl.innerText : "不明";
-
-    text += `${index + 1}番人気: ${comboNames} / オッズ ${odds}倍\n`;
-  });
-
-  return text;
-}
-
-const systemPrompt = `
+      // 元のプロンプトをそのまま使用
+      const systemPrompt = `
 あなたは「ウマ娘 プリティーダービー」に登場する「秋川やよい（理事長）」です。
 以下の制約を完璧に守り、ユーザー（トレーナー）にオッズの分析結果を伝えてください。
 
@@ -183,13 +108,73 @@ const systemPrompt = `
 4. 最後に「【激励！】」などの言葉で締めくくる。
 
 150文字以内で簡潔かつ強烈に回答せよ。`;
-const userContent = `
-レース名: ${raceTitle}
-スタンス: ${stance}
-データ: ${oddsData}
-`;
 
-// Gemini APIに送るデータ
-const payload = {
-  contents: [{ role: "user", parts: [{ text: systemPrompt + "\n\n以上の指示に従い、以下のデータを分析せよ。\n" + userContent }] }],
+      // Functionsを呼び出し
+      const result = await askYayoi({
+        stance: stance,
+        raceTitle: raceTitle,
+        oddsData: oddsData,
+        systemPrompt: systemPrompt,
+      });
+
+      // AIからの回答を表示
+      loadingEl.classList.add("h-hidden");
+      textEl.innerText = result.data.advice;
+      this.finalizeConsultation();
+    } catch (error) {
+      console.error("理事長AIエラー:", error);
+      loadingEl.classList.add("h-hidden");
+      optionsEl.classList.remove("h-hidden");
+
+      if (error.code === "unauthenticated") {
+        textEl.innerText = "【遺憾！】まずはログインしたまえ！話はそれからだ！！";
+      } else {
+        textEl.innerText = "【遺憾！】通信環境に不備があるようだ…！";
+      }
+    }
+  },
+
+  // 相談済みとして保存
+  finalizeConsultation() {
+    this.state.isConsulted = true;
+    this.updateBadge();
+
+    const history = JSON.parse(localStorage.getItem("yayoi_consult_history") || "{}");
+    history[this.state.currentRaceId] = true;
+    localStorage.setItem("yayoi_consult_history", JSON.stringify(history));
+  },
 };
+
+// 実行
+document.addEventListener("DOMContentLoaded", () => yayoiConsultant.init());
+
+// HTMLからのグローバル呼び出し用
+window.toggleAiBubble = () => yayoiConsultant.toggle();
+window.handleStanceSelect = (stance) => yayoiConsultant.ask(stance);
+
+/**
+ * 現在の画面（またはデータ）からAI用のテキストを作成する
+ */
+function getFormattedOddsForAI() {
+  const items = document.querySelectorAll(".p-voting__item--odds");
+  if (items.length === 0) return "現在、オッズデータが取得できないようだ！";
+
+  let text = "現在の3連複オッズ状況（人気順）：\n";
+  const maxItems = 10;
+
+  items.forEach((item, index) => {
+    if (index >= maxItems) return;
+
+    const namesEl = item.querySelectorAll(".p-voting__name");
+    const comboNames = Array.from(namesEl)
+      .map((el) => el.innerText.trim())
+      .join(" ＆ ");
+
+    const oddsEl = item.querySelector(".p-voting__number");
+    const odds = oddsEl ? oddsEl.innerText : "不明";
+
+    text += `${index + 1}番人気: ${comboNames} / オッズ ${odds}倍\n`;
+  });
+
+  return text;
+}
