@@ -1,10 +1,25 @@
 /**
  * パカレポAI相談所：理事長Ver.
- * ロジック管理（相談券・状態遷移）
  */
 
-// Firebase SDKから必要な関数をインポート
+// 1. Firebase SDKのインポート（AppとFunctions）
+import { initializeApp, getApp, getApps } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-functions.js";
+
+// --- 初期設定 ---
+const firebaseConfig = {
+  apiKey: "AIzaSyBp5Cg6A3v3VZal-orAiwFjphKIDYx9ATo",
+  authDomain: "umasaba-odds.firebaseapp.com",
+  databaseURL: "https://umasaba-odds-default-rtdb.firebaseio.com",
+  projectId: "umasaba-odds",
+  storageBucket: "umasaba-odds.firebasestorage.app",
+  messagingSenderId: "802834774249",
+  appId: "1:802834774249:web:5623185854ead82c261878",
+};
+
+// 重複初期化を避けるためのチェック
+const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
+const functions = getFunctions(app); // これで確実にFunctionsがつながる
 
 const yayoiConsultant = {
   state: {
