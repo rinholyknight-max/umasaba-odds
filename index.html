@@ -107,6 +107,18 @@
       </div>
     </main>
 
+    <div id="ai-bubble" class="ai-bubble h-hidden">
+      <div class="ai-bubble-content">
+        <p id="ai-text">**【諮問！】** どのスタンスで挑むつもりかね！？</p>
+        <div id="ai-options" class="ai-options">
+          <button onclick="handleStanceSelect('safe')">堅実</button>
+          <button onclick="handleStanceSelect('gamble')">高配当</button>
+          <button onclick="handleStanceSelect('free')">直感</button>
+        </div>
+        <div id="ai-loading" class="ai-loading h-hidden"><span>●</span><span>●</span><span>●</span></div>
+      </div>
+    </div>
+
     <div id="js-modal" class="c-modal">
       <div id="js-modal-overlay" class="c-modal__overlay"></div>
       <div class="c-modal__content">
@@ -122,5 +134,6 @@
       import { initVoting } from "./js/voting.js";
       initVoting();
     </script>
+    <script type="module" src="js/ai-consultant.js"></script>
   </body>
 </html>
