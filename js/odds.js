@@ -282,37 +282,25 @@ function loadOddsDetail(raceId) {
     arr.forEach((c) => {
       const odds = c.v > 0 ? (totalVotes / c.v).toFixed(1) : "99.9";
 
+      // 【修正】horseIds がなくても names さえあれば表示できるようにする
+      // それでもなければ c.id (ticketId) をバラす
+      let horseNames = c.names || (c.id ? c.id.split("_") : []);
       let horseIds = c.horseIds || [];
-      let horseNames = c.names || [];
-
-      // もし horseNames が空の場合、古いデータ形式（c.id）から復元を試みる
-      if (horseNames.length === 0 && c.id.includes("_")) {
-        horseNames = c.id.split("_");
-      }
 
       const voterList = Array.isArray(c.voters) ? c.voters : [];
 
-      // 的中判定
-      const myFullNames = horseNames.map((hName, index) => {
-        // IDがある場合はIDから、ない場合は名前をキーにユーザー名を探す
-        const hId = horseIds[index];
-        const uName = hId ? currentMap[hId] || "不明" : "不明";
-        return `${hName}(${uName})`;
-      });
-      const isHit = top3.length >= 3 && myFullNames.every((fullName) => top3.includes(fullName));
-
-      const item = document.createElement("div");
-      item.className = `p-voting__item p-voting__item--odds ${isHit ? "is-hit" : ""}`;
-      item.onclick = () => openModal(voterList);
-
-      // 【表示ロジックの修正】horseNames を基準にループを回す
+      // 表示用HTMLの生成
       const horseHtml = horseNames
         .map((hName, index) => {
           const hId = horseIds[index];
+          // IDがあればIDから、なければ名前そのものを使って馬主を探す（フォールバック）
           const uName = hId ? currentMap[hId] || "不明" : "不明";
           return `<span class="p-voting__name">${hName} <small>(${uName})</small></span>`;
         })
         .join("");
+
+      const item = document.createElement("div");
+      item.className = "p-voting__item p-voting__item--odds";
 
       item.innerHTML = `
       <div class="p-voting__info">

@@ -180,10 +180,12 @@ export async function initVoting() {
           at: Date.now(),
         });
 
+        // voting.js の中
         await update(comboRef, {
           votes: increment(1),
           voters: currentVoters,
-          // どのIDの馬が選ばれたかのスナップショット
+          horseIds: selectedHorses.map((h) => h.id), // ★これが抜けていると保存されません
+          names: selectedHorses.map((h) => h.name), // ★これもセットで保存
           selection: selectedHorses.reduce((acc, h) => {
             acc[h.id] = h.name;
             return acc;
