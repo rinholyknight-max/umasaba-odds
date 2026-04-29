@@ -78,13 +78,23 @@
         </div>
 
         <div class="p-user-profile__body">
-          <h2 id="js-user-name" class="p-user-profile__name">読み込み中...</h2>
+          <div class="p-user-profile__main-info">
+            <h2 id="js-user-name" class="p-user-profile__name">読み込み中...</h2>
+
+            <div id="js-user-action-area" class="p-user-profile__action"></div>
+          </div>
+
           <p id="js-user-circle" class="p-user-profile__circle"></p>
 
           <div class="p-user-profile__info-list">
             <div class="p-user-profile__info-item">
               <span class="p-user-profile__label">推しウマ娘</span>
               <span id="js-user-oshi" class="p-user-profile__value">-</span>
+            </div>
+
+            <div id="js-social-stats" class="p-user-profile__social-stats" style="display: flex; gap: 15px; margin-top: 10px; font-size: 0.9rem">
+              <span id="js-following-count"></span>
+              <span id="js-follower-count"></span>
             </div>
           </div>
 

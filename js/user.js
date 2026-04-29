@@ -1,11 +1,10 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
-import { initTheme, applyCharaTheme } from "./theme.js"; // ★ applyCharaTheme もインポート
+import { getDatabase, ref, get, onValue } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js"; // ★ onValue もインポートに必要
+import { initTheme, applyCharaTheme } from "./theme.js";
 import { checkAuth, logout } from "./auth.js";
 import { initMenu } from "./menu.js";
 import { initPageInfo } from "./info-config.js";
 
-// --- Firebase初期化 (既存のまま) ---
 const firebaseConfig = {
   apiKey: "AIzaSyBp5Cg6A3v3VZal-orAiwFjphKIDYx9ATo",
   authDomain: "umasaba-odds.firebaseapp.com",
@@ -25,29 +24,22 @@ const db = getDatabase(app);
 export async function initUserPage() {
   initPageInfo("user");
 
-  // ★ 1. テーマと認証を順番に待つ
   await initTheme();
   const authInfo = await checkAuth("guest");
+  const myUid = authInfo ? authInfo.uid : null;
+
   if (!authInfo) return;
 
   initMenu();
   const logoutBtn = document.getElementById("js-logout");
   if (logoutBtn) logoutBtn.onclick = logout;
 
-  // ヘッダーのユーザー表示
   const myName = sessionStorage.getItem("user_name") || "不明なユーザー";
   const userDisplay = document.getElementById("js-display-user");
   if (userDisplay) userDisplay.innerText = myName;
 
-  // URLパラメータからターゲットIDを取得
   const params = new URLSearchParams(window.location.search);
-  let targetId = params.get("id");
-
-  // IDがなければ自分のIDを表示
-  if (!targetId) {
-    targetId = authInfo.uid;
-    console.log("Viewing my own profile:", targetId);
-  }
+  let targetId = params.get("id") || myUid; // IDがなければ自分のID
 
   if (!targetId) {
     alert("ユーザーIDが特定できませんでした。");
@@ -55,48 +47,78 @@ export async function initUserPage() {
     return;
   }
 
-  // ★ 2. データの取得と描画
   try {
     const userRef = ref(db, `users/${targetId}`);
     const snapshot = await get(userRef);
 
     if (snapshot.exists()) {
       const data = snapshot.val();
-      renderProfile(data);
-      // 履歴の読み込み（非同期だが待たずに実行開始してOK）
+      // ★ 修正点: 必要な引数をすべて渡して1回だけ実行
+      renderProfile(data, targetId, myUid);
       loadUserHistory(targetId);
     } else {
       const nameEl = document.getElementById("js-user-name");
       if (nameEl) nameEl.innerText = "未登録のユーザーです";
-      const historyListEl = document.getElementById("js-history-list");
-      if (historyListEl) historyListEl.innerHTML = "";
     }
   } catch (err) {
     console.error("Profile Load Error:", err);
   } finally {
-    // 全ての準備が整ったらローディングを消す
     document.body.classList.remove("is-loading");
   }
+  // ★ 修正点: 関数末尾にあった重複した renderProfile 呼び出しを削除
 }
 
 /**
  * プロフィール描画
  */
-function renderProfile(data) {
+function renderProfile(data, targetId, myUid) {
   const headerTitle = document.getElementById("js-header-title");
   if (headerTitle) {
     const targetName = data.userName || "名無し";
     const myName = sessionStorage.getItem("user_name");
-    headerTitle.innerText = targetName === myName ? "マイプロフィール" : `${targetName}さんのプロフィール`;
+    // ID比較で「マイプロフィール」かどうかを判定
+    headerTitle.innerText = targetId === myUid ? "マイプロフィール" : `${targetName}さんのプロフィール`;
   }
 
-  // ターゲットユーザーの推しキャラテーマを適用
   if (data.favoriteChara) {
     applyCharaTheme(data.favoriteChara);
   }
 
   const nameEl = document.getElementById("js-user-name");
   if (nameEl) nameEl.innerText = data.userName || "名無し";
+
+  // フォローボタンの制御
+  const actionArea = document.getElementById("js-user-action-area");
+  if (actionArea) {
+    if (targetId === myUid || !myUid) {
+      actionArea.innerHTML = "";
+    } else {
+      const followingRef = ref(db, `social/following/${myUid}/${targetId}`);
+      onValue(followingRef, (snapshot) => {
+        const isFollowing = snapshot.exists();
+
+        actionArea.innerHTML = `
+          <button id="js-follow-btn" class="c-btn ${isFollowing ? "is-active" : ""}" style="
+            display: flex; align-items: center; gap: 8px; margin-top: 10px;
+            background: ${isFollowing ? "var(--bg-input)" : "var(--chara-main)"};
+            color: ${isFollowing ? "var(--text-main)" : "#fff"};
+            padding: 8px 20px; border-radius: 20px; border: 1px solid var(--border); 
+            font-weight: bold; cursor: pointer; transition: 0.2s;
+          ">
+            <span class="material-symbols-outlined" style="font-size: 18px;">
+              ${isFollowing ? "person_remove" : "person_add"}
+            </span>
+            ${isFollowing ? "フォロー解除" : "フォローする"}
+          </button>
+        `;
+
+        const followBtn = document.getElementById("js-follow-btn");
+        if (followBtn) {
+          followBtn.onclick = () => handleFollow(myUid, targetId, isFollowing);
+        }
+      });
+    }
+  }
 
   const circleEl = document.getElementById("js-user-circle");
   if (circleEl) circleEl.innerText = data.circleName ? `所属サークル： ${data.circleName}` : "無所属";
@@ -114,7 +136,7 @@ function renderProfile(data) {
 }
 
 /**
- * 投票履歴の取得（的中判定付き）
+ * 投票履歴の取得
  */
 async function loadUserHistory(targetId) {
   const historyListEl = document.getElementById("js-history-list");
@@ -134,13 +156,12 @@ async function loadUserHistory(targetId) {
         const race = races[raceId];
         const combos = race.combos || {};
 
-        // --- 【修正】IDからも名前からも引けるマップを作成 ---
         const horseMap = {};
         if (race.horses) {
           Object.keys(race.horses).forEach((hId) => {
             const hData = race.horses[hId];
             horseMap[hId] = hData.userName;
-            horseMap[hData.horseName] = hData.userName; // 旧データ用
+            horseMap[hData.horseName] = hData.userName;
           });
         }
 
@@ -153,11 +174,9 @@ async function loadUserHistory(targetId) {
           const myVote = Array.isArray(voters) ? voters.find((v) => v.uid === targetId || v === targetId) : null;
 
           if (myVote) {
-            // --- 【修正】新旧両方のデータ形式に対応した馬名取得 ---
             const horseNames = combo.names || comboId.split("_");
             const horseIds = combo.horseIds || [];
 
-            // 的中判定用のフルネームリスト作成
             const myFullNames = horseNames.map((hName, index) => {
               const hId = horseIds[index];
               const uName = hId ? horseMap[hId] || "不明" : horseMap[hName] || "不明";
@@ -169,7 +188,7 @@ async function loadUserHistory(targetId) {
             userHistory.push({
               raceTitle: race.title || "無題のレース",
               raceId: raceId,
-              combination: horseNames.join(" - "), // 表示用
+              combination: horseNames.join(" - "),
               timestamp: myVote.at || 0,
               comment: myVote.comment || "",
               isHit: isHit,
@@ -186,11 +205,7 @@ async function loadUserHistory(targetId) {
         userHistory.forEach((item) => {
           const date = item.timestamp ? new Date(item.timestamp).toLocaleString() : "不明な日時";
           const div = document.createElement("div");
-
-          // 的中時は is-hit クラスを付与
           div.className = `p-user__history-item p-voting__item ${item.isHit ? "is-hit" : ""}`;
-
-          // インラインスタイルは最小限にし、CSS側で .is-hit を装飾することを推奨
           div.style.marginBottom = "15px";
 
           div.innerHTML = `
@@ -202,12 +217,10 @@ async function loadUserHistory(targetId) {
               </a>
               <span class="p-user__history-date">${date}</span>
             </div>
-
             <div class="p-user__history-main">
               <span class="p-user__history-combo">${item.combination}</span>
               ${item.isHit ? '<span class="c-tag c-tag--hit" style="margin-left:8px; background:#ffd700; color:#000; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:bold;">的中</span>' : ""}
             </div>
-
             ${item.comment ? `<p class="p-user__history-comment">${item.comment}</p>` : ""}
           </div>
         `;
@@ -220,6 +233,26 @@ async function loadUserHistory(targetId) {
   } catch (err) {
     console.error("History Load Error:", err);
     historyListEl.innerHTML = '<p style="color:var(--color-danger);">履歴の読み込みに失敗しました。</p>';
+  }
+}
+
+/**
+ * フォローの実行/解除処理
+ */
+async function handleFollow(myUid, targetId, isFollowing) {
+  const { set, remove } = await import("https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js");
+
+  const followingRef = ref(db, `social/following/${myUid}/${targetId}`);
+  const followerRef = ref(db, `social/followers/${targetId}/${myUid}`);
+
+  try {
+    if (isFollowing) {
+      await Promise.all([remove(followingRef), remove(followerRef)]);
+    } else {
+      await Promise.all([set(followingRef, true), set(followerRef, true)]);
+    }
+  } catch (err) {
+    console.error("Follow Error:", err);
   }
 }
 
