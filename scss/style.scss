@@ -1412,7 +1412,7 @@ h2,
     line-height: 1.2;
     margin-bottom: 10px;
     color: var(--text-main);
-    text-align: left;
+    text-align: center;
   }
 
   &__circle {
@@ -1456,6 +1456,7 @@ h2,
   }
 
   &__main-info {
+    margin: 20px auto;
     @media (min-width: 1025px) {
     }
   }

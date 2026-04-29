@@ -1308,7 +1308,7 @@ h2,
   line-height: 1.2;
   margin-bottom: 10px;
   color: var(--text-main);
-  text-align: left;
+  text-align: center;
 }
 .p-user-profile__circle {
   display: inline-block;
@@ -1344,6 +1344,9 @@ h2,
   font-size: 1.6rem;
   font-weight: 900;
   color: var(--text-main);
+}
+.p-user-profile__main-info {
+  margin: 20px auto;
 }
 @media (max-width: 1024px) {
   .p-user-profile {
