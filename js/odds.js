@@ -281,26 +281,34 @@ function loadOddsDetail(raceId) {
 
     arr.forEach((c) => {
       const odds = c.v > 0 ? (totalVotes / c.v).toFixed(1) : "99.9";
-
-      // 【修正】horseIds がなくても names さえあれば表示できるようにする
-      // それでもなければ c.id (ticketId) をバラす
       let horseNames = c.names || (c.id ? c.id.split("_") : []);
       let horseIds = c.horseIds || [];
-
       const voterList = Array.isArray(c.voters) ? c.voters : [];
 
-      // 表示用HTMLの生成
+      // --- 【修正ポイント1】的中判定の修正（horseNamesベース） ---
+      const myFullNames = horseNames.map((hName, index) => {
+        const hId = horseIds[index];
+        const uName = hId ? currentMap[hId] || "不明" : currentMap[hName] || "不明";
+        return `${hName}(${uName})`;
+      });
+      const isHit = top3.length >= 3 && myFullNames.every((fullName) => top3.includes(fullName));
+
+      const item = document.createElement("div");
+      item.className = `p-voting__item p-voting__item--odds ${isHit ? "is-hit" : ""}`;
+
+      // --- 【修正ポイント2】モーダル起動を確実にする ---
+      item.onclick = (e) => {
+        console.log("Item clicked, voterList:", voterList); // デバッグ用
+        openModal(voterList);
+      };
+
       const horseHtml = horseNames
         .map((hName, index) => {
           const hId = horseIds[index];
-          // IDがあればIDから、なければ名前そのものを使って馬主を探す（フォールバック）
-          const uName = hId ? currentMap[hId] || "不明" : "不明";
+          const uName = hId ? currentMap[hId] || "不明" : currentMap[hName] || "不明";
           return `<span class="p-voting__name">${hName} <small>(${uName})</small></span>`;
         })
         .join("");
-
-      const item = document.createElement("div");
-      item.className = "p-voting__item p-voting__item--odds";
 
       item.innerHTML = `
       <div class="p-voting__info">
@@ -311,24 +319,22 @@ function loadOddsDetail(raceId) {
         <div class="p-voting__stats"><span class="p-voting__votes">${c.v} 票</span></div>
       </div>
       <div class="p-voting__right-column">
-        <div class="p-voting__voter-list" id="voters-${c.id}"></div>
-        <div class="p-voting__odds-display"><span class="p-voting__number">${odds}</span></div>
+        <div class="p-voting__voter-list"></div> <div class="p-voting__odds-display"><span class="p-voting__number">${odds}</span></div>
       </div>`;
 
-      const chipContainer = item.querySelector(`#voters-${c.id}`);
-      if (chipContainer) {
-        voterList.forEach((voter) => {
-          const chip = document.createElement("span");
-          chip.className = "p-voting__voter-tag";
-          chip.innerText = typeof voter === "object" && voter !== null ? voter.name || "不明" : voter;
-          chipContainer.appendChild(chip);
-        });
-      }
+      // --- 【修正ポイント3】チップ（投票者名）の描画 ---
+      const chipContainer = item.querySelector(".p-voting__voter-list");
+      voterList.forEach((voter) => {
+        const chip = document.createElement("span");
+        chip.className = "p-voting__voter-tag";
+        chip.innerText = typeof voter === "object" && voter !== null ? voter.name || "不明" : voter;
+        chipContainer.appendChild(chip);
+      });
+
       oddsListDiv.appendChild(item);
     });
     updateChart();
   };
-
   // データ購読
   onValue(ref(db, `races/${raceId}`), (snap) => {
     const raceData = snap.val();
