@@ -334,27 +334,53 @@ function loadOddsDetail(raceId) {
     const raceData = snap.val();
     if (!raceData) return;
 
+    // タイトル反映
     if (raceTitleDisp) raceTitleDisp.innerText = raceData.title || "投票結果";
 
+    // --- 【修正ポイント1】IDからも名前からもユーザー名を引けるようにする ---
     const horses = raceData.horses || {};
-    horseIdToUserMap = {}; // 広域変数を更新
+    horseIdToUserMap = {}; // 広域変数を初期化
+
     for (let hId in horses) {
-      horseIdToUserMap[hId] = horses[hId].userName;
+      const horseData = horses[hId];
+      const hName = horseData.horseName;
+      const uName = horseData.userName;
+
+      // ID（例: horse_001）でユーザー名を紐付け
+      horseIdToUserMap[hId] = uName;
+
+      // 名前（例: オグリキャップ）でもユーザー名を紐付け
+      // ※horseIdsがない古い投票データや、検索・表示のフォールバック用
+      if (hName) {
+        horseIdToUserMap[hName] = uName;
+      }
     }
 
+    // --- 【修正ポイント2】コンボデータの読み込み ---
     const comboData = raceData.combos || {};
     allCombos = [];
     totalVotes = 0;
+
     for (let cId in comboData) {
-      const v = comboData[cId].votes || 0;
+      const combo = comboData[cId];
+      const v = combo.votes || 0;
       totalVotes += v;
-      allCombos.push({ id: cId, ...comboData[cId], v });
+
+      // allCombos にデータを格納
+      // ここで names や horseIds が無くても、render 側で補完するように作っています
+      allCombos.push({
+        id: cId,
+        ...combo,
+        v,
+      });
     }
 
-    raceResultsCache = raceData.results; // キャッシュに保存
+    // キャッシュ更新と総数表示
+    raceResultsCache = raceData.results;
     if (totalInfoDiv) totalInfoDiv.innerText = `総投票数: ${totalVotes} 票`;
 
     // render実行
+    // ※ horseIdToUserMap はこの時点で ID と 名前の両方のキーを持っています
     render(
       allCombos.sort((a, b) => b.v - a.v),
       raceResultsCache,
