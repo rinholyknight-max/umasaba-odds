@@ -315,14 +315,15 @@ function loadOddsDetail(raceId) {
 
     arr.forEach((c) => {
       const odds = c.v > 0 ? (totalVotes / c.v).toFixed(1) : "99.9";
-      const names = c.id.split("_");
+      const horseNames = c.names || [];
       const voterList = Array.isArray(c.voters) ? c.voters : [];
 
       // --- 【追加】的中判定ロジック ---
       // 1. 自分の投票内容を「馬名(ユーザー名)」のリストに変換
-      const myFullNames = names.map((n) => {
-        const uName = horseToUserMap[n] || "不明";
-        return `${n}(${uName})`;
+      const myFullNames = horseIds.map((hId, index) => {
+        const uName = horseIdToUserMap[hId] || "不明"; // IDから正しい馬主を取得
+        const hName = horseNames[index] || "不明な馬";
+        return `${hName}(${uName})`; // "オグリキャップ(トレーナーA)" という形式で比較
       });
 
       // 2. 3連複の判定：自分の選んだ3頭がすべてTop3に含まれているか
@@ -388,7 +389,7 @@ function loadOddsDetail(raceId) {
     const horses = raceData.horses || {};
     horseToUserMap = {};
     for (let hId in horses) {
-      horseToUserMap[horses[hId].horseName] = horses[hId].userName;
+      horseIdToUserMap[hId] = horses[hId].userName;
     }
 
     const comboData = raceData.combos || {};
@@ -411,7 +412,12 @@ function loadOddsDetail(raceId) {
     searchInput.oninput = () => {
       const key = searchInput.value.toLowerCase();
       if (key.length > 0 && filterDetails) filterDetails.setAttribute("open", "");
-      render(allCombos.filter((c) => c.id.toLowerCase().includes(key)));
+      render(
+        allCombos.filter((c) => {
+          const namesStr = (c.names || []).join("").toLowerCase(); // 名前配列を結合して検索
+          return namesStr.includes(key);
+        }),
+      );
     };
   }
   document.getElementById("sort-asc").onclick = () => render([...allCombos].sort((a, b) => b.v - a.v));
