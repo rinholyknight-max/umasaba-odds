@@ -1344,6 +1344,10 @@ h2,
   font-weight: 900;
   color: var(--text-main);
 }
+.p-user-profile__main-info {
+  display: flex;
+  gap: 10px;
+}
 
 @media (max-width: 1024px) {
   .p-user-profile {

@@ -1453,6 +1453,11 @@ h2,
     font-weight: 900;
     color: var(--text-main);
   }
+
+  &__main-info {
+    display: flex;
+    gap: 10px;
+  }
 }
 
 // SP版の調整
