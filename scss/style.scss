@@ -1424,6 +1424,7 @@ h2,
     border-radius: 8px;
     font-size: 1rem;
     font-weight: bold;
+    margin: 0 auto;
     margin-bottom: 40px;
   }
 
@@ -1455,11 +1456,7 @@ h2,
   }
 
   &__main-info {
-    display: flex;
-    gap: 10px;
-
     @media (min-width: 1025px) {
-      justify-content: center;
     }
   }
 }
