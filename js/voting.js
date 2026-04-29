@@ -125,7 +125,7 @@ export async function initVoting() {
   const createSlideHtml = (raceId, raceInfo) => {
     const horses = raceInfo.horses || {};
     let horseItemsHtml = "";
-    for (let id in horses) {
+    for (let [id, h] of Object.entries(horses)) {
       const h = horses[id];
       horseItemsHtml += `
         <div class="p-voting__item" data-id="${id}">
@@ -153,6 +153,7 @@ export async function initVoting() {
       const voterName = voterNameInput ? voterNameInput.value.trim() : "";
       const voterComment = voterCommentInput ? voterCommentInput.value.trim() : "";
       const userId = authInfo.uid;
+      const sortedHorseIds = selectedHorses.map((h) => h.id).sort();
 
       if (!voterName) {
         alert("投票者名を入力してください");
@@ -161,7 +162,7 @@ export async function initVoting() {
       }
 
       const sortedNames = selectedHorses.map((h) => h.name).sort();
-      const ticketId = sortedNames.join("_");
+      const ticketId = sortedHorseIds.join("_");
 
       submitBtn.disabled = true;
       submitBtn.innerText = "送信中...";
@@ -182,7 +183,11 @@ export async function initVoting() {
         await update(comboRef, {
           votes: increment(1),
           voters: currentVoters,
-          names: sortedNames,
+          // どのIDの馬が選ばれたかのスナップショット
+          selection: selectedHorses.reduce((acc, h) => {
+            acc[h.id] = h.name;
+            return acc;
+          }, {}),
         });
 
         await push(ref(db, `races/${activeRaceId}/logs`), {
