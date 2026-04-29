@@ -190,7 +190,7 @@ function renderResultSection(results) {
   `;
 }
 
-// --- 関数: オッズ詳細の読み込み (変更なし) ---
+// --- 関数: オッズ詳細の読み込み ---
 function loadOddsDetail(raceId) {
   const oddsListDiv = document.getElementById("odds-list");
   const totalInfoDiv = document.getElementById("total-info");
@@ -202,39 +202,14 @@ function loadOddsDetail(raceId) {
   const filterDetails = document.querySelector(".p-voting__filter-details");
   const quickSelect = document.getElementById("js-race-quick-select");
 
+  // 状態管理
   let allCombos = [];
   let totalVotes = 0;
-  let horseToUserMap = {};
+  let horseIdToUserMap = {}; // ここで定義
+  let raceResultsCache = null; // 的中判定用に結果を保持
   let myChart = null;
 
-  // クイックセレクター構築
-  if (quickSelect) {
-    onValue(
-      ref(db, "races"),
-      (snapshot) => {
-        const allRaces = snapshot.val();
-        if (!allRaces) return;
-        quickSelect.innerHTML = '<option value="">他のレースに切り替え...</option>';
-        Object.keys(allRaces).forEach((id) => {
-          const opt = document.createElement("option");
-          opt.value = id;
-          opt.innerText = allRaces[id].title || "無題のレース";
-          if (id === raceId) opt.selected = true;
-          quickSelect.appendChild(opt);
-        });
-      },
-      { onlyOnce: true },
-    );
-
-    quickSelect.onchange = (e) => {
-      const selectedId = e.target.value;
-      if (selectedId && selectedId !== raceId) {
-        window.location.href = `odds.html?race=${selectedId}`;
-      }
-    };
-  }
-
-  // モーダル操作
+  // モーダル操作用関数 (内部で定義)
   const openModal = (voterList) => {
     modalTitle.innerText = `投票コメント一覧`;
     const listContainer = document.getElementById("js-modal-comment-list") || modalComment;
@@ -245,7 +220,6 @@ function loadOddsDetail(raceId) {
       const uid = isObj ? v.uid : null;
       const comment = isObj ? v.comment : "（以前のデータ）";
       const date = isObj && v.at ? new Date(v.at).toLocaleString() : "";
-
       const item = document.createElement("div");
       item.className = "c-modal__comment-item";
       item.innerHTML = `
@@ -260,8 +234,8 @@ function loadOddsDetail(raceId) {
   };
 
   const closeModal = () => modal.classList.remove("is-show");
-  document.getElementById("js-modal-close").onclick = closeModal;
-  document.getElementById("js-modal-overlay").onclick = closeModal;
+  if (document.getElementById("js-modal-close")) document.getElementById("js-modal-close").onclick = closeModal;
+  if (document.getElementById("js-modal-overlay")) document.getElementById("js-modal-overlay").onclick = closeModal;
 
   const updateChart = () => {
     const canvas = document.getElementById("oddsChart");
@@ -269,12 +243,12 @@ function loadOddsDetail(raceId) {
     const isDark = document.documentElement.getAttribute("data-theme") === "dark";
     const horseVotes = {};
     allCombos.forEach((c) => {
-      c.id.split("_").forEach((name) => (horseVotes[name] = (horseVotes[name] || 0) + c.v));
+      const horseNames = c.names || [];
+      horseNames.forEach((name) => (horseVotes[name] = (horseVotes[name] || 0) + c.v));
     });
     const sorted = Object.entries(horseVotes)
       .map(([name, votes]) => ({ name, votes }))
       .sort((a, b) => b.votes - a.votes);
-
     const displayData = sorted.slice(0, 7);
     if (myChart) myChart.destroy();
     myChart = new Chart(canvas.getContext("2d"), {
@@ -292,61 +266,50 @@ function loadOddsDetail(raceId) {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
-          legend: {
-            position: window.innerWidth <= 768 ? "bottom" : "right",
-            labels: { color: isDark ? "#fff" : "#333" },
-          },
+          legend: { position: window.innerWidth <= 768 ? "bottom" : "right", labels: { color: isDark ? "#fff" : "#333" } },
         },
       },
     });
   };
 
-  const render = (arr, raceResults) => {
+  // --- 描画関数 ---
+  // 引数にマップを渡すことで undefined を回避
+  const render = (arr, raceResults, currentMap) => {
+    if (!oddsListDiv) return;
     oddsListDiv.innerHTML = "";
-
-    // 【デバッグ用ログ】これがコンソールに出れば第一歩成功です
-    console.log("--- render実行 ---");
-    console.log("全コンボ数:", arr.length);
-    console.log("レース結果データ:", raceResults);
-
-    // 1〜3着の「馬名(ユーザー名)」リストを作成
     const top3 = raceResults ? [raceResults["1"], raceResults["2"], raceResults["3"]] : [];
-    console.log("的中判定の基準（Top3）:", top3);
 
     arr.forEach((c) => {
       const odds = c.v > 0 ? (totalVotes / c.v).toFixed(1) : "99.9";
+      const horseIds = c.horseIds || [];
       const horseNames = c.names || [];
       const voterList = Array.isArray(c.voters) ? c.voters : [];
 
-      // --- 【追加】的中判定ロジック ---
-      // 1. 自分の投票内容を「馬名(ユーザー名)」のリストに変換
+      // 的中判定
       const myFullNames = horseIds.map((hId, index) => {
-        const uName = horseIdToUserMap[hId] || "不明"; // IDから正しい馬主を取得
+        const uName = currentMap[hId] || "不明";
         const hName = horseNames[index] || "不明な馬";
-        return `${hName}(${uName})`; // "オグリキャップ(トレーナーA)" という形式で比較
+        return `${hName}(${uName})`;
       });
-
-      // 2. 3連複の判定：自分の選んだ3頭がすべてTop3に含まれているか
       const isHit = top3.length >= 3 && myFullNames.every((fullName) => top3.includes(fullName));
 
-      // 【デバッグ】的中した時だけログを出す
-      if (isHit) {
-        console.log("★的中！:", c.id, "フルネーム:", myFullNames);
-      }
-      // --- 判定ロジックここまで ---
-
       const item = document.createElement("div");
-      // 3. クラス付与（半角スペースを忘れずに！）
       item.className = `p-voting__item p-voting__item--odds ${isHit ? "is-hit" : ""}`;
-
       item.onclick = () => openModal(voterList);
+
+      const horseHtml = horseIds
+        .map((hId, index) => {
+          const hName = horseNames[index] || "不明な馬";
+          const uName = currentMap[hId] || "不明";
+          return `<span class="p-voting__name">${hName} <small>(${uName})</small></span>`;
+        })
+        .join("");
+
       item.innerHTML = `
         <div class="p-voting__info">
           <div class="p-voting__combo-names">
             <span class="p-voting__tag">3連複</span>
-            <div class="p-voting__horse-group">
-              ${names.map((n) => `<span class="p-voting__name">${n} <small>(${horseToUserMap[n] || "不明"})</small></span>`).join("")}
-            </div>
+            <div class="p-voting__horse-group">${horseHtml}</div>
           </div>
           <div class="p-voting__stats"><span class="p-voting__votes">${c.v} 票</span></div>
         </div>
@@ -367,27 +330,15 @@ function loadOddsDetail(raceId) {
     updateChart();
   };
 
+  // データ購読
   onValue(ref(db, `races/${raceId}`), (snap) => {
     const raceData = snap.val();
     if (!raceData) return;
 
-    // タイトル反映
     if (raceTitleDisp) raceTitleDisp.innerText = raceData.title || "投票結果";
 
-    // 【追加】独立した結果セクションの描画
-    const resultContainer = document.getElementById("js-race-result-section");
-    if (resultContainer) {
-      if (raceData.status === "closed" && raceData.results) {
-        resultContainer.innerHTML = renderResultSection(raceData.results);
-        resultContainer.style.display = "block";
-      } else {
-        resultContainer.style.display = "none";
-      }
-    }
-
-    // --- 以降、既存の horseToUserMap 作成や render(allCombos) の処理 ---
     const horses = raceData.horses || {};
-    horseToUserMap = {};
+    horseIdToUserMap = {}; // 広域変数を更新
     for (let hId in horses) {
       horseIdToUserMap[hId] = horses[hId].userName;
     }
@@ -401,25 +352,42 @@ function loadOddsDetail(raceId) {
       allCombos.push({ id: cId, ...comboData[cId], v });
     }
 
+    raceResultsCache = raceData.results; // キャッシュに保存
     if (totalInfoDiv) totalInfoDiv.innerText = `総投票数: ${totalVotes} 票`;
+
+    // render実行
     render(
       allCombos.sort((a, b) => b.v - a.v),
-      raceData.results,
+      raceResultsCache,
+      horseIdToUserMap,
     );
   });
 
+  // 検索
   if (searchInput) {
     searchInput.oninput = () => {
       const key = searchInput.value.toLowerCase();
       if (key.length > 0 && filterDetails) filterDetails.setAttribute("open", "");
-      render(
-        allCombos.filter((c) => {
-          const namesStr = (c.names || []).join("").toLowerCase(); // 名前配列を結合して検索
-          return namesStr.includes(key);
-        }),
-      );
+      const filtered = allCombos.filter((c) => (c.names || []).join("").toLowerCase().includes(key));
+      render(filtered, raceResultsCache, horseIdToUserMap);
     };
   }
-  document.getElementById("sort-asc").onclick = () => render([...allCombos].sort((a, b) => b.v - a.v));
-  document.getElementById("sort-desc").onclick = () => render([...allCombos].sort((a, b) => a.v - b.v));
+
+  // ソート
+  const sortAscBtn = document.getElementById("sort-asc");
+  if (sortAscBtn)
+    sortAscBtn.onclick = () =>
+      render(
+        [...allCombos].sort((a, b) => b.v - a.v),
+        raceResultsCache,
+        horseIdToUserMap,
+      );
+  const sortDescBtn = document.getElementById("sort-desc");
+  if (sortDescBtn)
+    sortDescBtn.onclick = () =>
+      render(
+        [...allCombos].sort((a, b) => a.v - b.v),
+        raceResultsCache,
+        horseIdToUserMap,
+      );
 }
