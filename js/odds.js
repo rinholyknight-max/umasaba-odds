@@ -345,20 +345,25 @@ function loadOddsDetail(raceId) {
 
     // --- 【修正ポイント1】IDからも名前からもユーザー名を引けるようにする ---
     const horses = raceData.horses || {};
-    horseIdToUserMap = {}; // 広域変数を初期化
-
+    horseIdToUserMap = {};
     for (let hId in horses) {
       const horseData = horses[hId];
       const hName = horseData.horseName;
       const uName = horseData.userName;
-
-      // ID（例: horse_001）でユーザー名を紐付け
       horseIdToUserMap[hId] = uName;
+      if (hName) horseIdToUserMap[hName] = uName;
+    }
 
-      // 名前（例: オグリキャップ）でもユーザー名を紐付け
-      // ※horseIdsがない古い投票データや、検索・表示のフォールバック用
-      if (hName) {
-        horseIdToUserMap[hName] = uName;
+    // --- 【追加】結果セクションの描画 ---
+    // これが抜けていたため、登録しても「最終着順」が表示されませんでした
+    const resultContainer = document.getElementById("js-race-result-section");
+    if (resultContainer) {
+      // ステータスが closed かつ結果が存在する場合に表示
+      if (raceData.status === "closed" && raceData.results) {
+        resultContainer.innerHTML = renderResultSection(raceData.results);
+        resultContainer.style.display = "block";
+      } else {
+        resultContainer.style.display = "none";
       }
     }
 
@@ -366,19 +371,11 @@ function loadOddsDetail(raceId) {
     const comboData = raceData.combos || {};
     allCombos = [];
     totalVotes = 0;
-
     for (let cId in comboData) {
       const combo = comboData[cId];
       const v = combo.votes || 0;
       totalVotes += v;
-
-      // allCombos にデータを格納
-      // ここで names や horseIds が無くても、render 側で補完するように作っています
-      allCombos.push({
-        id: cId,
-        ...combo,
-        v,
-      });
+      allCombos.push({ id: cId, ...combo, v });
     }
 
     // キャッシュ更新と総数表示
@@ -386,7 +383,6 @@ function loadOddsDetail(raceId) {
     if (totalInfoDiv) totalInfoDiv.innerText = `総投票数: ${totalVotes} 票`;
 
     // render実行
-    // ※ horseIdToUserMap はこの時点で ID と 名前の両方のキーを持っています
     render(
       allCombos.sort((a, b) => b.v - a.v),
       raceResultsCache,
