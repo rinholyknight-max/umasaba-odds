@@ -281,14 +281,22 @@ function loadOddsDetail(raceId) {
 
     arr.forEach((c) => {
       const odds = c.v > 0 ? (totalVotes / c.v).toFixed(1) : "99.9";
-      const horseIds = c.horseIds || [];
-      const horseNames = c.names || [];
+
+      let horseIds = c.horseIds || [];
+      let horseNames = c.names || [];
+
+      // もし horseNames が空の場合、古いデータ形式（c.id）から復元を試みる
+      if (horseNames.length === 0 && c.id.includes("_")) {
+        horseNames = c.id.split("_");
+      }
+
       const voterList = Array.isArray(c.voters) ? c.voters : [];
 
       // 的中判定
-      const myFullNames = horseIds.map((hId, index) => {
-        const uName = currentMap[hId] || "不明";
-        const hName = horseNames[index] || "不明な馬";
+      const myFullNames = horseNames.map((hName, index) => {
+        // IDがある場合はIDから、ない場合は名前をキーにユーザー名を探す
+        const hId = horseIds[index];
+        const uName = hId ? currentMap[hId] || "不明" : "不明";
         return `${hName}(${uName})`;
       });
       const isHit = top3.length >= 3 && myFullNames.every((fullName) => top3.includes(fullName));
@@ -297,34 +305,37 @@ function loadOddsDetail(raceId) {
       item.className = `p-voting__item p-voting__item--odds ${isHit ? "is-hit" : ""}`;
       item.onclick = () => openModal(voterList);
 
-      const horseHtml = horseIds
-        .map((hId, index) => {
-          const hName = horseNames[index] || "不明な馬";
-          const uName = currentMap[hId] || "不明";
+      // 【表示ロジックの修正】horseNames を基準にループを回す
+      const horseHtml = horseNames
+        .map((hName, index) => {
+          const hId = horseIds[index];
+          const uName = hId ? currentMap[hId] || "不明" : "不明";
           return `<span class="p-voting__name">${hName} <small>(${uName})</small></span>`;
         })
         .join("");
 
       item.innerHTML = `
-        <div class="p-voting__info">
-          <div class="p-voting__combo-names">
-            <span class="p-voting__tag">3連複</span>
-            <div class="p-voting__horse-group">${horseHtml}</div>
-          </div>
-          <div class="p-voting__stats"><span class="p-voting__votes">${c.v} 票</span></div>
+      <div class="p-voting__info">
+        <div class="p-voting__combo-names">
+          <span class="p-voting__tag">3連複</span>
+          <div class="p-voting__horse-group">${horseHtml}</div>
         </div>
-        <div class="p-voting__right-column">
-          <div class="p-voting__voter-list" id="voters-${c.id}"></div>
-          <div class="p-voting__odds-display"><span class="p-voting__number">${odds}</span></div>
-        </div>`;
+        <div class="p-voting__stats"><span class="p-voting__votes">${c.v} 票</span></div>
+      </div>
+      <div class="p-voting__right-column">
+        <div class="p-voting__voter-list" id="voters-${c.id}"></div>
+        <div class="p-voting__odds-display"><span class="p-voting__number">${odds}</span></div>
+      </div>`;
 
       const chipContainer = item.querySelector(`#voters-${c.id}`);
-      voterList.forEach((voter) => {
-        const chip = document.createElement("span");
-        chip.className = "p-voting__voter-tag";
-        chip.innerText = typeof voter === "object" && voter !== null ? voter.name || "不明" : voter;
-        chipContainer.appendChild(chip);
-      });
+      if (chipContainer) {
+        voterList.forEach((voter) => {
+          const chip = document.createElement("span");
+          chip.className = "p-voting__voter-tag";
+          chip.innerText = typeof voter === "object" && voter !== null ? voter.name || "不明" : voter;
+          chipContainer.appendChild(chip);
+        });
+      }
       oddsListDiv.appendChild(item);
     });
     updateChart();
