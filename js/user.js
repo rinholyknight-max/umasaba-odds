@@ -134,15 +134,16 @@ async function loadUserHistory(targetId) {
         const race = races[raceId];
         const combos = race.combos || {};
 
-        // --- 【追加】そのレースの馬名→ユーザー名マップを作成 ---
-        const horseToUserMap = {};
+        // --- 【修正】IDからも名前からも引けるマップを作成 ---
+        const horseMap = {};
         if (race.horses) {
-          Object.values(race.horses).forEach((h) => {
-            horseToUserMap[h.horseName] = h.userName;
+          Object.keys(race.horses).forEach((hId) => {
+            const hData = race.horses[hId];
+            horseMap[hId] = hData.userName;
+            horseMap[hData.horseName] = hData.userName; // 旧データ用
           });
         }
 
-        // レース結果（1〜3着）を配列化
         const results = race.results;
         const top3 = results ? [results["1"], results["2"], results["3"]] : [];
 
@@ -152,19 +153,27 @@ async function loadUserHistory(targetId) {
           const myVote = Array.isArray(voters) ? voters.find((v) => v.uid === targetId || v === targetId) : null;
 
           if (myVote) {
-            // --- 【追加】的中判定 ---
-            const names = comboId.split("_");
-            const myFullNames = names.map((n) => `${n}(${horseToUserMap[n] || "不明"})`);
+            // --- 【修正】新旧両方のデータ形式に対応した馬名取得 ---
+            const horseNames = combo.names || comboId.split("_");
+            const horseIds = combo.horseIds || [];
+
+            // 的中判定用のフルネームリスト作成
+            const myFullNames = horseNames.map((hName, index) => {
+              const hId = horseIds[index];
+              const uName = hId ? horseMap[hId] || "不明" : horseMap[hName] || "不明";
+              return `${hName}(${uName})`;
+            });
+
             const isHit = top3.length >= 3 && myFullNames.every((fullName) => top3.includes(fullName));
 
             userHistory.push({
               raceTitle: race.title || "無題のレース",
               raceId: raceId,
-              combination: comboId,
+              combination: horseNames.join(" - "), // 表示用
               timestamp: myVote.at || 0,
               comment: myVote.comment || "",
-              isHit: isHit, // 的中フラグを保存
-              status: race.status, // レース終了済みかどうかの確認用
+              isHit: isHit,
+              status: race.status,
             });
           }
         });
@@ -176,25 +185,14 @@ async function loadUserHistory(targetId) {
 
         userHistory.forEach((item) => {
           const date = item.timestamp ? new Date(item.timestamp).toLocaleString() : "不明な日時";
-          const comboDisplay = item.combination.split("_").join(" - ");
-
           const div = document.createElement("div");
-          // --- 【修正】的中している場合は is-hit クラスを付与 ---
+
+          // 的中時は is-hit クラスを付与
           div.className = `p-user__history-item p-voting__item ${item.isHit ? "is-hit" : ""}`;
 
-          // SCSSの .p-voting__item スタイルと競合しないよう、既存のインラインスタイルは適宜調整
+          // インラインスタイルは最小限にし、CSS側で .is-hit を装飾することを推奨
           div.style.marginBottom = "15px";
-          div.style.padding = "15px";
-          div.style.background = "var(--bg-card)";
-          div.style.borderRadius = "8px";
-          div.style.border = "1px solid var(--border)";
-          if (!item.isHit) {
-            div.style.borderLeft = "4px solid var(--chara-main)";
-          }
-          // userHistory.forEach 内
-          div.className = `p-user__history-item p-voting__item ${item.isHit ? "is-hit" : ""}`;
 
-          // インラインスタイルを削除し、クラス（SCSS）で制御するようにします
           div.innerHTML = `
           <div class="p-user__history-content">
             <div class="p-user__history-header">
@@ -206,7 +204,8 @@ async function loadUserHistory(targetId) {
             </div>
 
             <div class="p-user__history-main">
-              ${comboDisplay}
+              <span class="p-user__history-combo">${item.combination}</span>
+              ${item.isHit ? '<span class="c-tag c-tag--hit" style="margin-left:8px; background:#ffd700; color:#000; padding:2px 6px; border-radius:4px; font-size:0.7rem; font-weight:bold;">的中</span>' : ""}
             </div>
 
             ${item.comment ? `<p class="p-user__history-comment">${item.comment}</p>` : ""}
