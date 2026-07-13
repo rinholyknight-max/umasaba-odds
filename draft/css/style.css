@@ -10,16 +10,10 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   width: 100%;
+  transition: all 0.4s ease;
 }
-@media (max-width: 900px) {
-  .members-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 600px) {
-  .members-grid {
-    grid-template-columns: 1fr;
-  }
+.members-grid:has(.member-card.is-active) {
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .member-card {
@@ -28,45 +22,57 @@
   border-radius: 12px;
   padding: 24px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   box-sizing: border-box;
-}
-.member-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-}
-.member-card .member-content {
-  margin-top: 16px;
-  padding: 20px;
-  border-radius: 8px;
-  height: 120px;
-  box-sizing: border-box;
-  background-image: repeating-linear-gradient(45deg, #e8e8ed, #e8e8ed 10px, #f5f5f7 10px, #f5f5f7 20px);
-  background-size: cover;
-}
-.member-card .member-content p {
-  opacity: 0;
-  transition: opacity 0.2s ease;
+  aspect-ratio: 4/3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .member-card.is-active {
-  grid-column: 1/-1;
+  grid-column: 1/6;
+  grid-row: 1;
   border-color: #0071e3;
   box-shadow: 0 12px 24px rgba(0, 113, 227, 0.12);
   cursor: default;
 }
 .member-card.is-active .member-content {
-  height: auto;
   background-image: none;
   background-color: #f5f5f7;
   border: 1px solid #d2d2d7;
+  flex-grow: 1;
 }
 .member-card.is-active .member-content p {
   opacity: 1;
 }
-.member-card.is-active .toggle-badge {
-  background-color: #0071e3;
-  color: #ffffff;
+.members-grid:has(.member-card.is-active) .member-card:not(.is-active) {
+  grid-row: 2;
+  padding: 12px;
+}
+.members-grid:has(.member-card.is-active) .member-card:not(.is-active) h3 {
+  font-size: 14px;
+}
+.members-grid:has(.member-card.is-active) .member-card:not(.is-active) .toggle-badge {
+  display: none;
+}
+.members-grid:has(.member-card.is-active) .member-card:not(.is-active) .member-content {
+  height: 100%;
+  margin-top: 8px;
+}
+.member-card .member-content {
+  margin-top: 16px;
+  border-radius: 8px;
+  flex-grow: 1;
+  background-image: repeating-linear-gradient(45deg, #e8e8ed, #e8e8ed 10px, #f5f5f7 10px, #f5f5f7 20px);
+  background-size: cover;
+  transition: all 0.3s ease;
+}
+.member-card .member-content p {
+  opacity: 0;
+  margin: 12px;
+  line-height: 1.6;
+  color: #1d1d1f;
+  font-size: 16px;
 }
 .member-card .member-header {
   display: flex;
@@ -77,6 +83,7 @@
   margin: 0;
   font-size: 18px;
   font-weight: 600;
+  transition: font-size 0.3s ease;
 }
 .member-card .member-header .toggle-badge {
   font-size: 12px;
@@ -84,5 +91,4 @@
   background: #e8e8ed;
   padding: 6px 12px;
   border-radius: 20px;
-  font-weight: 500;
 }/*# sourceMappingURL=style.css.map */
