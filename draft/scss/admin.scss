@@ -1,0 +1,172 @@
+// ==========================================================================
+// 1. 変数定義（デザインシステム）
+// ==========================================================================
+$color-bg-light: #f5f5f7; // プレミアム感のある上品な薄いグレー
+$color-card-bg: #ffffff; // カードの背景色（白）
+$color-primary: #0071e3; // アクセントのブルー（Apple風）
+$color-primary-hover: #005bb5; // ボタンホバー時の濃いブルー
+$color-text-main: #1d1d1f; // メインのテキスト（ほぼ黒に近いダークグレー）
+$color-text-sub: #86868b; // 補足テキスト用のグレー
+$color-border: #d2d2d7; // ボーダー用の薄いグレー
+$color-error: #ff3b30; // エラー表示用の赤
+
+$font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+// ==========================================================================
+// 2. 状態管理用の共通クラス
+// ==========================================================================
+// Vanilla JSから最優先で表示・非表示を制御するための!important指定
+.hidden {
+  display: none !important;
+}
+
+// ==========================================================================
+// 3. ログイン画面のスタイリング
+// ==========================================================================
+#login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: $color-bg-light;
+  font-family: $font-sans;
+  padding: 20px;
+  box-sizing: border-box;
+
+  .login-box {
+    background-color: $color-card-bg;
+    padding: 40px 32px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    text-align: center;
+
+    h2 {
+      margin: 0 0 24px 0;
+      font-size: 24px;
+      font-weight: 600;
+      color: $color-text-main;
+      letter-spacing: -0.5px;
+    }
+
+    form {
+      .input-group {
+        margin-bottom: 16px;
+        text-align: left;
+
+        input {
+          width: 100%;
+          padding: 14px 16px;
+          font-size: 16px;
+          border: 1px solid $color-border;
+          border-radius: 8px;
+          background-color: #fafafa;
+          color: $color-text-main;
+          transition: all 0.2s ease;
+          box-sizing: border-box;
+
+          &:focus {
+            outline: none;
+            border-color: $color-primary;
+            background-color: #fff;
+            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15); // ふんわり光るエフェクト
+          }
+
+          &::placeholder {
+            color: $color-text-sub;
+          }
+        }
+      }
+
+      button[type="submit"] {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #ffffff;
+        background-color: $color-primary;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition:
+          background-color 0.2s ease,
+          transform 0.1s ease;
+        margin-top: 8px;
+
+        &:hover {
+          background-color: $color-primary-hover;
+        }
+
+        &:active {
+          transform: scale(0.98); // クリックしたときに少し沈む小気味いいエフェクト
+        }
+      }
+    }
+
+    .error-text {
+      min-height: 20px; // メッセージの有無でボックスの高さがガタつかないように固定
+      margin: 16px 0 0 0;
+      font-size: 14px;
+      color: $color-error;
+      font-weight: 500;
+    }
+  }
+}
+
+// ==========================================================================
+// 4. 管理画面（ダッシュボード）のスタイリング
+// ==========================================================================
+#admin-content {
+  font-family: $font-sans;
+  background-color: #ffffff;
+  min-height: 100vh;
+  color: $color-text-main;
+
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    border-bottom: 1px solid $color-border;
+    background-color: #ffffff;
+
+    h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    #logout-btn {
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      color: $color-text-main;
+      background-color: transparent;
+      border: 1px solid $color-border;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: $color-bg-light;
+        border-color: #acacb1;
+      }
+    }
+  }
+
+  .admin-body {
+    padding: 40px 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: $color-text-main;
+    }
+
+    // 💡 今後、管理画面のUIパーツ（カードやテーブル）をここに追記していくと綺麗にまとまるよ！
+  }
+}

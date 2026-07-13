@@ -14,8 +14,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
     <!-- css -->
     <link rel="stylesheet" href="/draft/css/style.css" />
+    <link rel="stylesheet" href="/draft/css/admin.css" />
   </head>
 
-  <body></body>
-  <script type="module" src="/draft/js/index.js"></script>
+  <body>
+    <div id="login-container" class="hidden">
+      <div class="login-box">
+        <h2>管理画面ログイン</h2>
+        <form id="login-form">
+          <div class="input-group">
+            <input type="text" id="username-input" placeholder="ユーザー名" required autocomplete="username" />
+          </div>
+          <div class="input-group">
+            <input type="password" id="password-input" placeholder="パスワード" required autocomplete="current-password" />
+          </div>
+          <button type="submit">ログイン</button>
+        </form>
+        <p id="error-message" class="error-text"></p>
+      </div>
+    </div>
+
+    <main id="admin-content" class="hidden">
+      <header class="admin-header">
+        <h1>管理画面ダッシュボード</h1>
+        <button id="logout-btn">ログアウト</button>
+      </header>
+
+      <section class="admin-body">
+        <p>ここは認証された6人のユーザーのみが閲覧できる保護されたスペースです。</p>
+      </section>
+    </main>
+
+    <script type="module" src="../js/admin.js"></script>
+  </body>
 </html>
