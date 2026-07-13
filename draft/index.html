@@ -13,7 +13,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
     <!-- css -->
-    <link rel="stylesheet" href="/draft/css/style.css" />
+    <!-- <link rel="stylesheet" href="/draft/css/style.css" /> -->
+
+    <script>
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      const timestamp = new Date().getTime();
+      link.href = `/draft/css/style.css?v=${timestamp}`;
+
+      document.head.appendChild(link);
+    </script>
   </head>
 
   <body>
