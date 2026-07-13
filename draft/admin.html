@@ -43,6 +43,13 @@
       <section class="admin-body">
         <p>ここは認証された6人のユーザーのみが閲覧できる保護されたスペースです。</p>
       </section>
+      <div class="canvas-area">
+        <p>手書きで予想や図を描いてください：</p>
+        <canvas id="drawing-canvas" width="400" height="300" style="border: 1px solid #d2d2d7; border-radius: 8px; background: #fff"></canvas>
+
+        <br />
+        <button type="button" id="clear-btn">書き直す（消去）</button>
+      </div>
     </main>
 
     <script type="module" src="/draft/js/admin.js"></script>

@@ -35,12 +35,12 @@ body {
 .member-card.is-active {
   grid-column: 1/-1;
   grid-row: 1;
+  justify-self: center;
   width: 100%;
   max-width: 500px;
-  height: 340px;
+  height: auto;
   aspect-ratio: auto;
-  justify-self: center;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   border-color: #0071e3;
   box-shadow: 0 12px 24px rgba(0, 113, 227, 0.12);
   cursor: default;
@@ -49,8 +49,8 @@ body {
   background-image: none;
   background-color: #f5f5f7;
   border: 1px solid #d2d2d7;
-  flex-grow: 1;
   height: auto;
+  overflow: visible;
 }
 .member-card.is-active .member-content p {
   opacity: 1;
@@ -69,6 +69,7 @@ body {
 .members-grid:has(.member-card.is-active) .member-card:not(.is-active) .member-content {
   height: 100%;
   margin-top: 8px;
+  overflow: hidden;
 }
 .member-card .member-content {
   margin-top: 16px;
@@ -76,6 +77,7 @@ body {
   flex-grow: 1;
   background-image: repeating-linear-gradient(45deg, #e8e8ed, #e8e8ed 10px, #f5f5f7 10px, #f5f5f7 20px);
   background-size: cover;
+  overflow: hidden;
 }
 .member-card .member-content p {
   opacity: 0;

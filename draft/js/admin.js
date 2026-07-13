@@ -78,3 +78,72 @@ document.addEventListener("DOMContentLoaded", () => {
     checkAuth();
   });
 });
+
+const canvas = document.getElementById("drawing-canvas");
+const ctx = canvas.getContext("2d");
+let isDrawing = false;
+
+// 線のスタイル設定
+ctx.strokeStyle = "#000000"; // 黒色
+ctx.lineWidth = 3; // 線の太さ
+ctx.lineCap = "round"; // 線の角を丸く
+
+// 描画開始（マウス・タッチ共通）
+function startDrawing(e) {
+  isDrawing = true;
+  draw(e);
+}
+
+// 描画終了
+function stopDrawing() {
+  isDrawing = false;
+  ctx.beginPath(); // パスをリセット
+}
+
+// 描画中
+function draw(e) {
+  if (!isDrawing) return;
+
+  // マウスとスマホのタッチ両方の座標に対応
+  const rect = canvas.getBoundingClientRect();
+  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+  const x = clientX - rect.left;
+  const y = clientY - rect.top;
+
+  ctx.lineTo(x, y);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+}
+
+// イベントリスナー登録（PC・スマホ対応）
+canvas.addEventListener("mousedown", startDrawing);
+canvas.addEventListener("mousemove", draw);
+window.addEventListener("mouseup", stopDrawing);
+
+canvas.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  startDrawing(e);
+});
+canvas.addEventListener("touchmove", (e) => {
+  e.preventDefault();
+  draw(e);
+});
+canvas.addEventListener("touchend", stopDrawing);
+
+// 消去ボタンの挙動
+document.getElementById("clear-btn").addEventListener("click", () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
+
+// 🎉 Canvasの内容を「data:image/png;base64,xxxx...」というテキストに変換！
+const drawingDataUrl = canvas.toDataURL("image/png");
+
+// あとはこの文字データを、いつものようにPOSTで送ってFirebaseに保存するだけ！
+const dataToSend = {
+  username: "team01",
+  text: "今週の狙い目",
+  image: drawingDataUrl, // 💡 これで手書きデータも一緒に保存完了！
+};

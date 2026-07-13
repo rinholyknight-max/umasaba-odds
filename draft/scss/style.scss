@@ -19,12 +19,10 @@ body {
 }
 
 // ==========================================================================
-// 📊 グリッドシステム（基本の 3×2 を常にキープ！）
+// 📊 グリッドシステム（基本は横3列固定）
 // ==========================================================================
 .members-grid {
   display: grid;
-  // 💡 フォーカス中も、グリッド自体の形は「3列」のまま一切動かさない！
-  // これが画面の左右の揺れを完璧に防ぐ一番確実な方法だよ。
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   width: 100%;
@@ -40,6 +38,8 @@ body {
   padding: 24px;
   cursor: pointer;
   box-sizing: border-box;
+
+  // 通常時は4:3の比率
   aspect-ratio: 4 / 3;
 
   display: flex;
@@ -52,20 +52,19 @@ body {
 
   // 🔓 【クリックされて「フォーカス」が当たった状態（.is-active）】
   &.is-active {
-    // 💡 3列グリッドの中で「3列分丸ごと」ぶち抜く！
     grid-column: 1 / -1;
-    grid-row: 1; // 常に最上段へ
-
-    // 💡 ここが修正ポイント：％でも固定値（px）でもなく、「max-width」だけを設定する。
-    // これにより、Gridの枠（3列分の幅）の中で綺麗に収まり、はみ出しが完全に消える！
-    width: 100%;
-    max-width: 500px; // 大きすぎないちょうどいいサイズ
-    height: 340px; // 縦幅も程よく固定
-    aspect-ratio: auto;
-
-    // 💡 3列をぶち抜いたエリアの中で、自分を「完全にど真ん中」に寄せる
+    grid-row: 1;
     justify-self: center;
-    margin-bottom: 16px; // 下の5つとの隙間
+
+    width: 100%;
+    max-width: 500px; // 横幅は大きすぎないサイズに制限
+
+    // 🔥 【ここが修正ポイント：高さを完全に自動にする】
+    // 固定値をやめて auto（または指定しない）にすることで、二重スクロールを完全に撲滅！
+    height: auto;
+    aspect-ratio: auto; // 縦伸びを許容するため、通常時の4:3比率ロックを解除
+
+    margin-bottom: 24px;
 
     border-color: $color-primary;
     box-shadow: 0 12px 24px rgba(0, 113, 227, 0.12);
@@ -75,8 +74,10 @@ body {
       background-image: none;
       background-color: #f5f5f7;
       border: 1px solid $color-border;
-      flex-grow: 1;
+
+      // 💡 中身をしっかり全部露出させる設定
       height: auto;
+      overflow: visible;
 
       p {
         opacity: 1;
@@ -85,13 +86,10 @@ body {
   }
 
   // 💤 【自分がフォーカスされておらず、他の誰かがフォーカスされている時】
-  // ここでおかしな5列等分をしようとしていたのをやめ、Gridの自動流し込みに任せる！
   .members-grid:has(&.is-active) &:not(.is-active) {
-    // grid-row: 2; を指定すると、自動的に2行目以降に綺麗に並び直す。
-    // 元々3列のグリッドなので、下段は「3つ」と「2つ」の2行に自動で美しく収まるよ！
     grid-row: auto;
     padding: 16px;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 4 / 3; // 小さい状態のときは綺麗な比率を維持
 
     h3 {
       font-size: 15px;
@@ -102,6 +100,7 @@ body {
     .member-content {
       height: 100%;
       margin-top: 8px;
+      overflow: hidden; // 隠れているときははみ出さないように
     }
   }
 
@@ -112,6 +111,7 @@ body {
     flex-grow: 1;
     background-image: repeating-linear-gradient(45deg, #e8e8ed, #e8e8ed 10px, #f5f5f7 10px, #f5f5f7 20px);
     background-size: cover;
+    overflow: hidden;
 
     p {
       opacity: 0;
