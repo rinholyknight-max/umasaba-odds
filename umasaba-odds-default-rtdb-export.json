@@ -1,0 +1,3308 @@
+{
+  "allowed_users": {
+    "129772031": {
+      "addedAt": 1777122160352,
+      "circleName": "LastCrop",
+      "initialPoints": 100,
+      "userName": "御影"
+    },
+    "155018449": {
+      "addedAt": 1777120947085,
+      "circleName": "LastCrop",
+      "initialPoints": 100,
+      "userName": "白飯屋"
+    },
+    "158384798": {
+      "addedAt": 1776776158728,
+      "circleName": "LastCrop",
+      "initialPoints": 100,
+      "userName": "あさひ"
+    },
+    "170632981": {
+      "addedAt": 1777122769053,
+      "circleName": "へーべーえりゅえけ",
+      "initialPoints": 100,
+      "userName": "れもんそーだ"
+    },
+    "180953487": {
+      "addedAt": 1777206712028,
+      "circleName": "Snowknight",
+      "initialPoints": 100,
+      "userName": "アポラー"
+    },
+    "190722015": {
+      "addedAt": 1777121057683,
+      "circleName": "Snowknight",
+      "initialPoints": 100,
+      "userName": "ぴょん！"
+    },
+    "218705656": {
+      "addedAt": 1777121103818,
+      "circleName": "Snowknight",
+      "initialPoints": 100,
+      "userName": "猫影"
+    },
+    "245969340": {
+      "addedAt": 1777121000149,
+      "circleName": "Snowknight",
+      "initialPoints": 100,
+      "userName": "マッシュ"
+    },
+    "280984927": {
+      "addedAt": 1777121876498,
+      "circleName": "Smile",
+      "initialPoints": 100,
+      "userName": "れる"
+    },
+    "306529343": {
+      "addedAt": 1777120908330,
+      "circleName": "Smile",
+      "initialPoints": 100,
+      "userName": "kou"
+    },
+    "377161854": {
+      "addedAt": 1777122275895,
+      "circleName": "LastCrop",
+      "initialPoints": 100,
+      "userName": "う！"
+    },
+    "399261650": {
+      "addedAt": 1777122769053,
+      "circleName": "ここあ親衛隊",
+      "initialPoints": 100,
+      "userName": "えび"
+    },
+    "406070960": {
+      "addedAt": 1777122769053,
+      "circleName": "ここあ親衛隊",
+      "initialPoints": 100,
+      "userName": "すず"
+    },
+    "449294968": {
+      "addedAt": 1777122020150,
+      "circleName": "Smile",
+      "initialPoints": 100,
+      "userName": "しん"
+    },
+    "449650115": {
+      "addedAt": 1777122769053,
+      "circleName": "へーべーえりゅえけ",
+      "initialPoints": 100,
+      "userName": "アドレナリン"
+    },
+    "582530892": {
+      "addedAt": 1776497569214,
+      "circleName": "Snowknight",
+      "initialPoints": 100,
+      "userName": "かじ"
+    },
+    "583167554": {
+      "addedAt": 1777121807553,
+      "circleName": "Snowknight",
+      "initialPoints": 100,
+      "userName": "れたす"
+    },
+    "618182241": {
+      "addedAt": 1777122317665,
+      "circleName": "LastCrop",
+      "initialPoints": 100,
+      "userName": "捨之介"
+    },
+    "627688703": {
+      "addedAt": 1777122292753,
+      "circleName": "Snowknight",
+      "initialPoints": 100,
+      "userName": "夕凪"
+    },
+    "680127192": {
+      "addedAt": 1777122046458,
+      "circleName": "LastCrop",
+      "initialPoints": 100,
+      "userName": "やん"
+    },
+    "774519246": {
+      "addedAt": 1777121821562,
+      "circleName": "Snowknight",
+      "initialPoints": 100,
+      "userName": "クランケ"
+    },
+    "815849526": {
+      "addedAt": 1777122769053,
+      "circleName": "へーべーえりゅえけ",
+      "initialPoints": 100,
+      "userName": "Blue"
+    },
+    "836284890": {
+      "addedAt": 1777122769053,
+      "circleName": "ここあ親衛隊",
+      "initialPoints": 100,
+      "userName": "ここあ"
+    },
+    "851210084": {
+      "addedAt": 1777120500488,
+      "circleName": "LastCrop",
+      "initialPoints": 100,
+      "userName": "P助"
+    },
+    "857202528": {
+      "addedAt": 1777121900049,
+      "circleName": "LastCrop",
+      "initialPoints": 100,
+      "userName": "槐"
+    },
+    "882116701": {
+      "addedAt": 1777121367516,
+      "circleName": "LastCrop",
+      "initialPoints": 100,
+      "userName": "まー。"
+    },
+    "902327775": {
+      "addedAt": 1776516193941,
+      "circleName": "Snowknight",
+      "initialPoints": 100,
+      "userName": "おーの"
+    },
+    "917782232": {
+      "addedAt": 1783170344337,
+      "circleName": "cocoa",
+      "initialPoints": 100,
+      "userName": "なび"
+    },
+    "934614619": {
+      "addedAt": 1777122088704,
+      "circleName": "Snowknight",
+      "initialPoints": 100,
+      "userName": "黒炭酸"
+    },
+    "1234567890": {
+      "addedAt": 1783607550547,
+      "circleName": "Hebeeryueke",
+      "initialPoints": 100,
+      "userName": "テスト"
+    },
+    "115740687296": {
+      "addedAt": 1777122214212,
+      "circleName": "LastCrop",
+      "initialPoints": 100,
+      "userName": "央太"
+    },
+    "159448194364": {
+      "addedAt": 1777121851065,
+      "circleName": "LastCrop",
+      "initialPoints": 100,
+      "userName": "１０００"
+    },
+    "173189090244": {
+      "addedAt": 1777122769053,
+      "circleName": "へーべーえりゅえけ",
+      "initialPoints": 100,
+      "userName": "時雨"
+    },
+    "232378513977": {
+      "addedAt": 1783170270426,
+      "circleName": "Smile",
+      "initialPoints": 100,
+      "userName": "るりたそ"
+    },
+    "333793317839": {
+      "addedAt": 1777122227695,
+      "circleName": "LastCrop",
+      "initialPoints": 100,
+      "userName": "モル"
+    },
+    "361072473900": {
+      "addedAt": 1777122114926,
+      "circleName": "Smile",
+      "initialPoints": 100,
+      "userName": "いぶりー"
+    },
+    "368853925509": {
+      "addedAt": 1777122173083,
+      "circleName": "LastCrop",
+      "initialPoints": 100,
+      "userName": "ぷらむ"
+    },
+    "409908049920": {
+      "addedAt": 1777121924644,
+      "circleName": "Snowknight",
+      "initialPoints": 100,
+      "userName": "チェス"
+    },
+    "504646885442": {
+      "addedAt": 1777122136714,
+      "circleName": "Snowknight",
+      "initialPoints": 100,
+      "userName": "かも"
+    },
+    "527448974991": {
+      "addedAt": 1777122335715,
+      "circleName": "Snowknight",
+      "initialPoints": 100,
+      "userName": "マイチョスター/Utd"
+    },
+    "544753146108": {
+      "addedAt": 1778067429528,
+      "circleName": "LastCrop",
+      "initialPoints": 100,
+      "userName": "キノ"
+    },
+    "614168265703": {
+      "addedAt": 1777121224561,
+      "circleName": "Smile",
+      "initialPoints": 100,
+      "userName": "ゆきの"
+    },
+    "614335047297": {
+      "addedAt": 1777121994939,
+      "circleName": "Snowknight",
+      "initialPoints": 100,
+      "userName": "テル"
+    },
+    "619973318761": {
+      "addedAt": 1777121421281,
+      "circleName": "LastCrop",
+      "initialPoints": 100,
+      "userName": "Nuk4s"
+    },
+    "681998972135": {
+      "addedAt": 1777122769053,
+      "circleName": "へーべーえりゅえけ",
+      "initialPoints": 100,
+      "userName": "あかや"
+    },
+    "709914763354": {
+      "addedAt": 1777121498777,
+      "circleName": "Smile",
+      "initialPoints": 100,
+      "userName": "こも"
+    },
+    "838039949986": {
+      "addedAt": 1778067029279,
+      "circleName": "LastCrop",
+      "initialPoints": 100,
+      "userName": "貼るカイロ"
+    },
+    "853020996540": {
+      "addedAt": 1778067074321,
+      "circleName": "LastCrop",
+      "initialPoints": 100,
+      "userName": "cvoda"
+    },
+    "853797574356": {
+      "addedAt": 1777121788918,
+      "circleName": "LastCrop",
+      "initialPoints": 100,
+      "userName": "まこ"
+    }
+  },
+  "races": {
+    "-Or2sJFnWvjrc8SAscMP": {
+      "combos": {
+        "グラスワンダー（ヒーラー）_シュヴァルグラン（水着）_ナリタトップロード（クリスマス）": {
+          "names": ["グラスワンダー（ヒーラー）", "シュヴァルグラン（水着）", "ナリタトップロード（クリスマス）"],
+          "voters": [
+            {
+              "at": 1777119523078,
+              "comment": "槐最凶！！",
+              "name": "あさひ",
+              "uid": "158384798"
+            }
+          ],
+          "votes": 1
+        },
+        "グラスワンダー（ヒーラー）_ナリタトップロード（クリスマス）_マチカネフクキタル（フルアーマー）": {
+          "names": ["グラスワンダー（ヒーラー）", "ナリタトップロード（クリスマス）", "マチカネフクキタル（フルアーマー）"],
+          "voters": [
+            {
+              "at": 1777108447963,
+              "comment": "何かやってくれると、そう信じています",
+              "name": "かじ",
+              "uid": "582530892"
+            },
+            {
+              "at": 1777119417964,
+              "comment": "れもんそーだ最強！！",
+              "name": "あさひ",
+              "uid": "158384798"
+            }
+          ],
+          "votes": 2
+        }
+      },
+      "createdAt": 1777107813498,
+      "horses": {
+        "-Or2tQAUtK_bXF1EZ1Qb": {
+          "horseName": "シュヴァルグラン（水着）",
+          "userName": "ここあ",
+          "votes": 0
+        },
+        "-Or2tQCz8qzQlnF5jiVK": {
+          "horseName": "サクラバクシンオー（ドレス）",
+          "userName": "アドレナリン",
+          "votes": 0
+        },
+        "-Or2tQFR91e6lYmvoorR": {
+          "horseName": "シュヴァルグラン（水着）",
+          "userName": "Blue",
+          "votes": 0
+        },
+        "-Or2tQHtfsDW9oEPUgx-": {
+          "horseName": "マチカネフクキタル（フルアーマー）",
+          "userName": "れもんそーだ",
+          "votes": 0
+        },
+        "-Or2tQKKqxXKXoi_MCkP": {
+          "horseName": "メジロブライト（通常）",
+          "userName": "奏",
+          "votes": 0
+        },
+        "-Or2tQMlbFL4VKewXOG_": {
+          "horseName": "ナリタトップロード（クリスマス）",
+          "userName": "まいちょ",
+          "votes": 0
+        },
+        "-Or2tQPCDjNEAoxzf2fA": {
+          "horseName": "グラスワンダー（ヒーラー）",
+          "userName": "槐",
+          "votes": 0
+        },
+        "-Or3MQ4IROvTXlCb4IW0": {
+          "horseName": "キタサンブラック（赤キタ）",
+          "userName": "捨之介",
+          "votes": 0
+        },
+        "-Or3MTdoyGyV7K0zWKlv": {
+          "horseName": "ゼンノロブロイ",
+          "userName": "クランケ",
+          "votes": 0
+        },
+        "-Or3MXpRcFEp51In3T66": {
+          "horseName": "スペシャルウィーク（総大将）",
+          "userName": "小日向未来",
+          "votes": 0
+        },
+        "-Or3Ma4wtJGFC0Xw4CRG": {
+          "horseName": "キセキ",
+          "userName": "白飯屋",
+          "votes": 0
+        },
+        "-Or3nhpbKKONSsuQPlKS": {
+          "horseName": "サクラローレル(和服)",
+          "userName": "いぶりー",
+          "votes": 0
+        },
+        "-Or3nwqQcBVr0G6ZTEBh": {
+          "horseName": "マンハッタンカフェ(猫カフェ)",
+          "userName": "アカヤ",
+          "votes": 0
+        }
+      },
+      "results": [null, "グラスワンダー（ヒーラー）(槐)", "ゼンノロブロイ(クランケ)", "サクラローレル(和服)(いぶりー)", "シュヴァルグラン（水着）(ここあ)", "シュヴァルグラン（水着）(Blue)"],
+      "status": "closed",
+      "title": "へべれけ杯202604"
+    },
+    "-Or6p0HD3LmaNb4nW05V": {
+      "combos": {
+        "グラスワンダー（ヒーラー）_サクラローレル（正月）_メジロマックイーン（水着）": {
+          "names": ["グラスワンダー（ヒーラー）", "サクラローレル（正月）", "メジロマックイーン（水着）"],
+          "voters": [
+            {
+              "at": 1777203492707,
+              "comment": "槐の連覇が見てみたいよね？",
+              "name": "こも",
+              "uid": "709914763354"
+            }
+          ],
+          "votes": 1
+        },
+        "グラスワンダー（ヒーラー）_ゼンノロブロイ_メジロマックイーン（水着）": {
+          "names": ["グラスワンダー（ヒーラー）", "ゼンノロブロイ", "メジロマックイーン（水着）"],
+          "voters": [
+            {
+              "at": 1777203603011,
+              "comment": "槐さん連覇や！",
+              "name": "かじ",
+              "uid": "582530892"
+            }
+          ],
+          "votes": 1
+        },
+        "シンボリクリスエス_ナリタブライアン（餓狼ナリブ）_メジロマックイーン（水着）": {
+          "names": ["シンボリクリスエス", "ナリタブライアン（餓狼ナリブ）", "メジロマックイーン（水着）"],
+          "voters": [
+            {
+              "at": 1777206180924,
+              "comment": "がんばれれるえもん",
+              "name": "kou",
+              "uid": "306529343"
+            }
+          ],
+          "votes": 1
+        }
+      },
+      "createdAt": 1777174058234,
+      "horses": {
+        "-Or6p2f33ICvYOGdVA2A": {
+          "horseName": "シンボリクリスエス",
+          "userName": "れる",
+          "votes": 0
+        },
+        "-Or6p5G8u6pH_gXV30Bu": {
+          "horseName": "フェノーメノ",
+          "userName": "ゆきの",
+          "votes": 0
+        },
+        "-Or6pK9ZDoZfEhaNgmCR": {
+          "horseName": "サクラローレル（正月）",
+          "userName": "いぶりー",
+          "votes": 0
+        },
+        "-Or8YcWbT43eVGkC2s0w": {
+          "horseName": "ナリタブライアン（餓狼ナリブ）",
+          "userName": "まいちょ",
+          "votes": 0
+        },
+        "-Or8YcZ9KK1HnPJw_Yqh": {
+          "horseName": "ゼンノロブロイ",
+          "userName": "クランケ",
+          "votes": 0
+        },
+        "-Or8Ycac1mOUfGyAcoUG": {
+          "horseName": "グラスワンダー（ヒーラー）",
+          "userName": "槐",
+          "votes": 0
+        },
+        "-Or8Ycd5x6N6FFttnBxx": {
+          "horseName": "マチカネフクキタル（フルアーマー）",
+          "userName": "れもんそーだ",
+          "votes": 0
+        },
+        "-Or8YcfZ76X-bv2Rsdr8": {
+          "horseName": "キタサンブラック（赤キタ）",
+          "userName": "捨乃介",
+          "votes": 0
+        },
+        "-Or8Yci0oQUwPDHd3J6M": {
+          "horseName": "メジロブライト（クリスマス）",
+          "userName": "ぴょん！",
+          "votes": 0
+        },
+        "-Or8YckV88q7-7l0wvx-": {
+          "horseName": "メジロマックイーン（水着）",
+          "userName": "愛と努力だけが友達さ",
+          "votes": 0
+        },
+        "-Or8YlRYAvlFG0e2PhtD": {
+          "horseName": "ナリタブライアン（餓狼ナリブ）",
+          "userName": "小日向未来",
+          "votes": 0
+        },
+        "-Or8qjv3fPvPmfwDsCW2": {
+          "horseName": "ファインモーション",
+          "userName": "白飯屋",
+          "votes": 0
+        },
+        "-Or8qrXH8xVGYKyrvt7l": {
+          "horseName": "メジロマックイーン（水着）",
+          "userName": "重課金戦車のKou",
+          "votes": 0
+        },
+        "-Or8qwPY3Vm5Uflq5Gp9": {
+          "horseName": "メイショウドトウ",
+          "userName": "しん",
+          "votes": 0
+        }
+      },
+      "logs": {
+        "-Or8_IU1ZGq2a7Z69-cz": {
+          "combination": "グラスワンダー（ヒーラー）_サクラローレル（正月）_メジロマックイーン（水着）",
+          "comment": "槐の連覇が見てみたいよね？",
+          "timestamp": 1777203492960,
+          "uid": "709914763354",
+          "user": "こも"
+        },
+        "-Or8_iPT3_6WfSlRA5nB": {
+          "combination": "グラスワンダー（ヒーラー）_ゼンノロブロイ_メジロマックイーン（水着）",
+          "comment": "槐さん連覇や！",
+          "timestamp": 1777203603257,
+          "uid": "582530892",
+          "user": "かじ"
+        },
+        "-Or8jYsL0gADKX9kB8pz": {
+          "combination": "シンボリクリスエス_ナリタブライアン（餓狼ナリブ）_メジロマックイーン（水着）",
+          "comment": "がんばれれるえもん",
+          "timestamp": 1777206181636,
+          "uid": "306529343",
+          "user": "kou"
+        }
+      },
+      "results": [null, "メジロブライト（クリスマス）(ぴょん！)", "マチカネフクキタル（フルアーマー）(れもんそーだ)", "サクラローレル（正月）(いぶりー)", "グラスワンダー（ヒーラー）(槐)", "フェノーメノ(ゆきの)"],
+      "status": "closed",
+      "title": "第32回SMILE杯"
+    },
+    "-Or9huF_uLOZKkVw3efX": {
+      "combos": {
+        "キタサンブラック（赤キタ）_グラスワンダー（ヒーラー）_メジロブライト（クリスマス）": {
+          "names": ["キタサンブラック（赤キタ）", "グラスワンダー（ヒーラー）", "メジロブライト（クリスマス）"],
+          "voters": [
+            {
+              "at": 1777293785458,
+              "comment": "てすと",
+              "name": "槐",
+              "uid": "857202528"
+            }
+          ],
+          "votes": 1
+        }
+      },
+      "createdAt": 1777222526058,
+      "horses": {
+        "-Or9hw0msSO_TgZfoYp6": {
+          "horseName": "ナリタブライアン（餓狼ナリブ）",
+          "userName": "まいちょ",
+          "votes": 0
+        },
+        "-Or9hw3GeExwFUrkzx9t": {
+          "horseName": "ゼンノロブロイ",
+          "userName": "クランケ",
+          "votes": 0
+        },
+        "-Or9hw5fy7jyVC3YhF9r": {
+          "horseName": "グラスワンダー（ヒーラー）",
+          "userName": "槐",
+          "votes": 0
+        },
+        "-Or9hw83cMs5oX7SNxNN": {
+          "horseName": "マチカネフクキタル（フルアーマー）",
+          "userName": "れもんそーだ",
+          "votes": 0
+        },
+        "-Or9hwATDs0mQjGqkfDk": {
+          "horseName": "キタサンブラック（赤キタ）",
+          "userName": "捨乃介",
+          "votes": 0
+        },
+        "-Or9hwCu6oh8PsAqHAb1": {
+          "horseName": "メジロブライト（クリスマス）",
+          "userName": "ぴょん！",
+          "votes": 0
+        },
+        "-Or9hwFJZUirJtk7RFto": {
+          "horseName": "メジロマックイーン（水着）",
+          "userName": "愛と努力だけが友達さ",
+          "votes": 0
+        }
+      },
+      "logs": {
+        "-OrDxjcenDKN_owB1KGI": {
+          "combination": "キタサンブラック（赤キタ）_グラスワンダー（ヒーラー）_メジロブライト（クリスマス）",
+          "comment": "てすと",
+          "timestamp": 1777293785837,
+          "uid": "857202528",
+          "user": "槐"
+        }
+      },
+      "status": "closed",
+      "title": "テストレース"
+    },
+    "-OrJvArRJXS1pSKHBClQ": {
+      "combos": {
+        "-OrJvIaMW0oF3XT1u_Ad_-OrJvMvG-kYKM8UaQorm_-OrJvTbEBo2L-tqyPCye": {
+          "horseIds": ["-OrJvIaMW0oF3XT1u_Ad", "-OrJvMvG-kYKM8UaQorm", "-OrJvTbEBo2L-tqyPCye"],
+          "names": ["ファインモーション【通常】", "アグネスデジタル【通常】", "スティルインラブ【通常】"],
+          "selection": {
+            "-OrJvIaMW0oF3XT1u_Ad": "ファインモーション【通常】",
+            "-OrJvMvG-kYKM8UaQorm": "アグネスデジタル【通常】",
+            "-OrJvTbEBo2L-tqyPCye": "スティルインラブ【通常】"
+          },
+          "voters": [
+            {
+              "at": 1777466889875,
+              "comment": "勝つぞ！！",
+              "name": "あさひ",
+              "uid": "158384798"
+            }
+          ],
+          "votes": 1
+        },
+        "-OrJvIaMW0oF3XT1u_Ad_-OrJvMvG-kYKM8UaQorm_-OrMwNGvQPEwmXtYDOEN": {
+          "horseIds": ["-OrJvIaMW0oF3XT1u_Ad", "-OrJvMvG-kYKM8UaQorm", "-OrMwNGvQPEwmXtYDOEN"],
+          "names": ["ファインモーション【通常】", "アグネスデジタル【通常】", "メジロアルダン【通常】"],
+          "selection": {
+            "-OrJvIaMW0oF3XT1u_Ad": "ファインモーション【通常】",
+            "-OrJvMvG-kYKM8UaQorm": "アグネスデジタル【通常】",
+            "-OrMwNGvQPEwmXtYDOEN": "メジロアルダン【通常】"
+          },
+          "voters": [
+            {
+              "at": 1777466604217,
+              "comment": "そろそろ初心者マーク外したいお…",
+              "name": "やん",
+              "uid": "680127192"
+            }
+          ],
+          "votes": 1
+        },
+        "-OrJvIaMW0oF3XT1u_Ad_-OrJvYeM9ucLi8XoGiM0_-OrLwfOtpA4s0jQ1hqrV": {
+          "horseIds": ["-OrJvIaMW0oF3XT1u_Ad", "-OrLwfOtpA4s0jQ1hqrV", "-OrJvYeM9ucLi8XoGiM0"],
+          "names": ["ファインモーション【通常】", "アドマイヤグルーヴ【通常】", "ミスターシービー【通常】"],
+          "selection": {
+            "-OrJvIaMW0oF3XT1u_Ad": "ファインモーション【通常】",
+            "-OrJvYeM9ucLi8XoGiM0": "ミスターシービー【通常】",
+            "-OrLwfOtpA4s0jQ1hqrV": "アドマイヤグルーヴ【通常】"
+          },
+          "voters": [
+            {
+              "at": 1777466656122,
+              "comment": "",
+              "name": "Nuk4s",
+              "uid": "619973318761"
+            }
+          ],
+          "votes": 1
+        },
+        "-OrJvIaMW0oF3XT1u_Ad_-OrJvYeM9ucLi8XoGiM0_-OrMwSmJn170KaBYjnQD": {
+          "horseIds": ["-OrJvIaMW0oF3XT1u_Ad", "-OrJvYeM9ucLi8XoGiM0", "-OrMwSmJn170KaBYjnQD"],
+          "names": ["ファインモーション【通常】", "ミスターシービー【通常】", "ヴィクトワールピサ【通常】"],
+          "selection": {
+            "-OrJvIaMW0oF3XT1u_Ad": "ファインモーション【通常】",
+            "-OrJvYeM9ucLi8XoGiM0": "ミスターシービー【通常】",
+            "-OrMwSmJn170KaBYjnQD": "ヴィクトワールピサ【通常】"
+          },
+          "voters": [
+            {
+              "at": 1777466678621,
+              "comment": "また仕掛けを・・・",
+              "name": "マイチョスター/Utd",
+              "uid": "527448974991"
+            }
+          ],
+          "votes": 1
+        },
+        "-OrJvIaMW0oF3XT1u_Ad_-OrLwfOtpA4s0jQ1hqrV_-OrNxhZINkza0jNfB377": {
+          "horseIds": ["-OrJvIaMW0oF3XT1u_Ad", "-OrLwfOtpA4s0jQ1hqrV", "-OrNxhZINkza0jNfB377"],
+          "names": ["ファインモーション【通常】", "アドマイヤグルーヴ【通常】", "クロノジェネシス【通常】"],
+          "selection": {
+            "-OrJvIaMW0oF3XT1u_Ad": "ファインモーション【通常】",
+            "-OrLwfOtpA4s0jQ1hqrV": "アドマイヤグルーヴ【通常】",
+            "-OrNxhZINkza0jNfB377": "クロノジェネシス【通常】"
+          },
+          "voters": [
+            {
+              "at": 1777466729389,
+              "comment": "そろそろ勝つんだリーダー！",
+              "name": "御影",
+              "uid": "129772031"
+            }
+          ],
+          "votes": 1
+        },
+        "-OrJvIaMW0oF3XT1u_Ad_-OrLwk9J9ispRSpL_WAe_-OrMwYOZhlc7ZRiKOe_E": {
+          "horseIds": ["-OrJvIaMW0oF3XT1u_Ad", "-OrLwk9J9ispRSpL_WAe", "-OrMwYOZhlc7ZRiKOe_E"],
+          "names": ["ファインモーション【通常】", "サイレンススズカ【水着】", "シュヴァルグラン【通常】"],
+          "selection": {
+            "-OrJvIaMW0oF3XT1u_Ad": "ファインモーション【通常】",
+            "-OrLwk9J9ispRSpL_WAe": "サイレンススズカ【水着】",
+            "-OrMwYOZhlc7ZRiKOe_E": "シュヴァルグラン【通常】"
+          },
+          "voters": [
+            {
+              "at": 1777466680910,
+              "comment": "この三連複にあさひのめにしゅきを賭ける！",
+              "name": "P助",
+              "uid": "851210084"
+            }
+          ],
+          "votes": 1
+        },
+        "-OrJvIaMW0oF3XT1u_Ad_-OrLwsTPMMlj_bRtYn3P_-OrNneJP5BXYtlIpCH_d": {
+          "horseIds": ["-OrJvIaMW0oF3XT1u_Ad", "-OrLwsTPMMlj_bRtYn3P", "-OrNneJP5BXYtlIpCH_d"],
+          "names": ["ファインモーション【通常】", "ラッキーライラック【通常】", "ナリタブライアン"],
+          "selection": {
+            "-OrJvIaMW0oF3XT1u_Ad": "ファインモーション【通常】",
+            "-OrLwsTPMMlj_bRtYn3P": "ラッキーライラック【通常】",
+            "-OrNneJP5BXYtlIpCH_d": "ナリタブライアン"
+          },
+          "voters": [
+            {
+              "at": 1777466669934,
+              "comment": "がんばれーーー！",
+              "name": "ぷらむ",
+              "uid": "368853925509"
+            }
+          ],
+          "votes": 1
+        },
+        "-OrJvMvG-kYKM8UaQorm_-OrJvTbEBo2L-tqyPCye_-OrLwfOtpA4s0jQ1hqrV": {
+          "horseIds": ["-OrJvTbEBo2L-tqyPCye", "-OrLwfOtpA4s0jQ1hqrV", "-OrJvMvG-kYKM8UaQorm"],
+          "names": ["スティルインラブ【通常】", "アドマイヤグルーヴ【通常】", "アグネスデジタル【通常】"],
+          "selection": {
+            "-OrJvMvG-kYKM8UaQorm": "アグネスデジタル【通常】",
+            "-OrJvTbEBo2L-tqyPCye": "スティルインラブ【通常】",
+            "-OrLwfOtpA4s0jQ1hqrV": "アドマイヤグルーヴ【通常】"
+          },
+          "voters": [
+            {
+              "at": 1777466644210,
+              "comment": "打倒スティルさん",
+              "name": "まこ",
+              "uid": "853797574356"
+            }
+          ],
+          "votes": 1
+        },
+        "-OrJvMvG-kYKM8UaQorm_-OrLwfOtpA4s0jQ1hqrV_-OrLwsTPMMlj_bRtYn3P": {
+          "horseIds": ["-OrLwsTPMMlj_bRtYn3P", "-OrLwfOtpA4s0jQ1hqrV", "-OrJvMvG-kYKM8UaQorm"],
+          "names": ["ラッキーライラック【通常】", "アドマイヤグルーヴ【通常】", "アグネスデジタル【通常】"],
+          "selection": {
+            "-OrJvMvG-kYKM8UaQorm": "アグネスデジタル【通常】",
+            "-OrLwfOtpA4s0jQ1hqrV": "アドマイヤグルーヴ【通常】",
+            "-OrLwsTPMMlj_bRtYn3P": "ラッキーライラック【通常】"
+          },
+          "voters": [
+            {
+              "at": 1777466698214,
+              "comment": "ふれーふれー赤組ぃ！🔥",
+              "name": "１０００",
+              "uid": "159448194364"
+            }
+          ],
+          "votes": 1
+        },
+        "-OrJvTbEBo2L-tqyPCye_-OrLwfOtpA4s0jQ1hqrV_-OrLx2TgvWZclAuvqsg2": {
+          "selection": {
+            "-OrJvTbEBo2L-tqyPCye": "スティルインラブ【通常】",
+            "-OrLwfOtpA4s0jQ1hqrV": "アドマイヤグルーヴ【通常】",
+            "-OrLx2TgvWZclAuvqsg2": "ラッキーライラック【通常】"
+          },
+          "voters": [
+            {
+              "at": 1777465622339,
+              "comment": "職場より応援を込めて。まーちゃんの予想忘れないでね。",
+              "name": "まー。",
+              "uid": "882116701"
+            }
+          ],
+          "votes": 1
+        },
+        "-OrJvTbEBo2L-tqyPCye_-OrLwsTPMMlj_bRtYn3P_-OrMwSmJn170KaBYjnQD": {
+          "horseIds": ["-OrLwsTPMMlj_bRtYn3P", "-OrMwSmJn170KaBYjnQD", "-OrJvTbEBo2L-tqyPCye"],
+          "names": ["ラッキーライラック【通常】", "ヴィクトワールピサ【通常】", "スティルインラブ【通常】"],
+          "selection": {
+            "-OrJvTbEBo2L-tqyPCye": "スティルインラブ【通常】",
+            "-OrLwsTPMMlj_bRtYn3P": "ラッキーライラック【通常】",
+            "-OrMwSmJn170KaBYjnQD": "ヴィクトワールピサ【通常】"
+          },
+          "voters": [
+            {
+              "at": 1777466855740,
+              "comment": "差し切りに期待！",
+              "name": "れもんそーだ",
+              "uid": "170632981"
+            }
+          ],
+          "votes": 1
+        },
+        "-OrJvYeM9ucLi8XoGiM0_-OrLwfOtpA4s0jQ1hqrV_-OrLwsTPMMlj_bRtYn3P": {
+          "horseIds": ["-OrLwsTPMMlj_bRtYn3P", "-OrLwfOtpA4s0jQ1hqrV", "-OrJvYeM9ucLi8XoGiM0"],
+          "names": ["ラッキーライラック【通常】", "アドマイヤグルーヴ【通常】", "ミスターシービー【通常】"],
+          "selection": {
+            "-OrJvYeM9ucLi8XoGiM0": "ミスターシービー【通常】",
+            "-OrLwfOtpA4s0jQ1hqrV": "アドマイヤグルーヴ【通常】",
+            "-OrLwsTPMMlj_bRtYn3P": "ラッキーライラック【通常】"
+          },
+          "voters": [
+            {
+              "at": 1777466640056,
+              "comment": "勝てえええええええ",
+              "name": "槐",
+              "uid": "857202528"
+            }
+          ],
+          "votes": 1
+        },
+        "-OrLwfOtpA4s0jQ1hqrV_-OrLwk9J9ispRSpL_WAe_-OrMw6zKnd90D9wYCA1R": {
+          "horseIds": ["-OrLwk9J9ispRSpL_WAe", "-OrLwfOtpA4s0jQ1hqrV", "-OrMw6zKnd90D9wYCA1R"],
+          "names": ["サイレンススズカ【水着】", "アドマイヤグルーヴ【通常】", "キタサンブラック【正月】"],
+          "selection": {
+            "-OrLwfOtpA4s0jQ1hqrV": "アドマイヤグルーヴ【通常】",
+            "-OrLwk9J9ispRSpL_WAe": "サイレンススズカ【水着】",
+            "-OrMw6zKnd90D9wYCA1R": "キタサンブラック【正月】"
+          },
+          "voters": [
+            {
+              "at": 1777466663744,
+              "comment": "デバッグがんばれー！",
+              "name": "捨之介",
+              "uid": "618182241"
+            }
+          ],
+          "votes": 1
+        },
+        "-OrLwsTPMMlj_bRtYn3P_-OrMw6zKnd90D9wYCA1R_-OrNxhZINkza0jNfB377": {
+          "horseIds": ["-OrLwsTPMMlj_bRtYn3P", "-OrNxhZINkza0jNfB377", "-OrMw6zKnd90D9wYCA1R"],
+          "names": ["ラッキーライラック【通常】", "クロノジェネシス【通常】", "キタサンブラック【正月】"],
+          "selection": {
+            "-OrLwsTPMMlj_bRtYn3P": "ラッキーライラック【通常】",
+            "-OrMw6zKnd90D9wYCA1R": "キタサンブラック【正月】",
+            "-OrNxhZINkza0jNfB377": "クロノジェネシス【通常】"
+          },
+          "voters": [
+            {
+              "at": 1777466900809,
+              "comment": "ラスクロ杯もキリのよい20回目ー！！いつも企画･運営ありがとうございます☺️\n全然予想難しいですが、選ばせていただきました！みなさん頑張りましょー💪",
+              "name": "お隣さん",
+              "uid": "333793317839"
+            },
+            {
+              "at": 1777467020053,
+              "comment": "📣",
+              "name": "テル",
+              "uid": "614335047297"
+            }
+          ],
+          "votes": 2
+        },
+        "-OrLwsTPMMlj_bRtYn3P_-OrMwNGvQPEwmXtYDOEN_-OrMwYOZhlc7ZRiKOe_E": {
+          "horseIds": ["-OrMwYOZhlc7ZRiKOe_E", "-OrLwsTPMMlj_bRtYn3P", "-OrMwNGvQPEwmXtYDOEN"],
+          "names": ["シュヴァルグラン【通常】", "ラッキーライラック【通常】", "メジロアルダン【通常】"],
+          "selection": {
+            "-OrLwsTPMMlj_bRtYn3P": "ラッキーライラック【通常】",
+            "-OrMwNGvQPEwmXtYDOEN": "メジロアルダン【通常】",
+            "-OrMwYOZhlc7ZRiKOe_E": "シュヴァルグラン【通常】"
+          },
+          "voters": [
+            {
+              "at": 1777466633225,
+              "comment": "今回は育成輝いてる人が多い！応援！応援！",
+              "name": "白飯屋",
+              "uid": "155018449"
+            }
+          ],
+          "votes": 1
+        },
+        "アドマイヤグルーヴ【通常】_スティルインラブ【通常】_ラッキーライラック【通常】": {
+          "names": ["アドマイヤグルーヴ【通常】", "スティルインラブ【通常】", "ラッキーライラック【通常】"],
+          "voters": [
+            {
+              "at": 1777455865675,
+              "comment": "職場より応援を込めて。\nまーちゃんの予想忘れないでね。",
+              "name": "まー。",
+              "uid": "882116701"
+            }
+          ],
+          "votes": 1
+        },
+        "サイレンススズカ【水着】_ファインモーション【通常】_ラッキーライラック【通常】": {
+          "names": ["サイレンススズカ【水着】", "ファインモーション【通常】", "ラッキーライラック【通常】"],
+          "voters": [
+            {
+              "at": 1777451908309,
+              "comment": "ラスクロ3バカを応援します",
+              "name": "かじ",
+              "uid": "582530892"
+            }
+          ],
+          "votes": 2
+        }
+      },
+      "createdAt": 1777393778881,
+      "horses": {
+        "-OrJvIaMW0oF3XT1u_Ad": {
+          "horseName": "ファインモーション【通常】",
+          "userName": "あさひ",
+          "votes": 0
+        },
+        "-OrJvMvG-kYKM8UaQorm": {
+          "horseName": "アグネスデジタル【通常】",
+          "userName": "やん",
+          "votes": 0
+        },
+        "-OrJvTbEBo2L-tqyPCye": {
+          "horseName": "スティルインラブ【通常】",
+          "userName": "Nuk4s",
+          "votes": 0
+        },
+        "-OrJvYeM9ucLi8XoGiM0": {
+          "horseName": "ミスターシービー【通常】",
+          "userName": "１０００",
+          "votes": 0
+        },
+        "-OrLwfOtpA4s0jQ1hqrV": {
+          "horseName": "アドマイヤグルーヴ【通常】",
+          "userName": "まこ",
+          "votes": 0
+        },
+        "-OrLwk9J9ispRSpL_WAe": {
+          "horseName": "サイレンススズカ【水着】",
+          "userName": "白飯屋",
+          "votes": 0
+        },
+        "-OrLwnY0SkiZx07EJcyK": {
+          "horseName": "トウカイテイオー【通常】",
+          "userName": "御影",
+          "votes": 0
+        },
+        "-OrLwsTPMMlj_bRtYn3P": {
+          "horseName": "ラッキーライラック【通常】",
+          "userName": "槐",
+          "votes": 0
+        },
+        "-OrLx-MzUAlosfW5HPRa": {
+          "horseName": "ジャングルポケット【通常】",
+          "userName": "まー。",
+          "votes": 0
+        },
+        "-OrLx2TgvWZclAuvqsg2": {
+          "horseName": "ラッキーライラック【通常】",
+          "userName": "う！",
+          "votes": 0
+        },
+        "-OrMw6zKnd90D9wYCA1R": {
+          "horseName": "キタサンブラック【正月】",
+          "userName": "捨之介",
+          "votes": 0
+        },
+        "-OrMwNGvQPEwmXtYDOEN": {
+          "horseName": "メジロアルダン【通常】",
+          "userName": "モル＠おとなりさん",
+          "votes": 0
+        },
+        "-OrMwSmJn170KaBYjnQD": {
+          "horseName": "ヴィクトワールピサ【通常】",
+          "userName": "P助",
+          "votes": 0
+        },
+        "-OrMwYOZhlc7ZRiKOe_E": {
+          "horseName": "シュヴァルグラン【通常】",
+          "userName": "コー",
+          "votes": 0
+        },
+        "-OrNneJP5BXYtlIpCH_d": {
+          "horseName": "ナリタブライアン",
+          "userName": "キノ",
+          "votes": 0
+        },
+        "-OrNxhZINkza0jNfB377": {
+          "horseName": "クロノジェネシス【通常】",
+          "userName": "エダ",
+          "votes": 0
+        }
+      },
+      "logs": {
+        "-OrNNvqMbhNkd72WyOWX": {
+          "combination": "サイレンススズカ【水着】_ファインモーション【通常】_ラッキーライラック【通常】",
+          "comment": "ラスクロ3バカを応援します",
+          "timestamp": 1777451908657,
+          "uid": "582530892",
+          "user": "かじ"
+        },
+        "-OrNc0wxHOiDpgAs-vEc": {
+          "combination": "アドマイヤグルーヴ【通常】_スティルインラブ【通常】_ラッキーライラック【通常】",
+          "comment": "職場より応援を込めて。\nまーちゃんの予想忘れないでね。",
+          "timestamp": 1777455865908,
+          "uid": "882116701",
+          "user": "まー。"
+        },
+        "-OrOCEyTLjgJjI5UFazo": {
+          "combination": "-OrJvTbEBo2L-tqyPCye_-OrLwfOtpA4s0jQ1hqrV_-OrLx2TgvWZclAuvqsg2",
+          "comment": "職場より応援を込めて。まーちゃんの予想忘れないでね。",
+          "timestamp": 1777465622585,
+          "uid": "882116701",
+          "user": "まー。"
+        },
+        "-OrOFzgVn7AnG45Lg65G": {
+          "combination": "-OrJvIaMW0oF3XT1u_Ad_-OrJvMvG-kYKM8UaQorm_-OrMwNGvQPEwmXtYDOEN",
+          "comment": "そろそろ初心者マーク外したいお…",
+          "timestamp": 1777466604487,
+          "uid": "680127192",
+          "user": "やん"
+        },
+        "-OrOG6HBICZdMPVbBVAd": {
+          "combination": "-OrLwsTPMMlj_bRtYn3P_-OrMwNGvQPEwmXtYDOEN_-OrMwYOZhlc7ZRiKOe_E",
+          "comment": "今回は育成輝いてる人が多い！応援！応援！",
+          "timestamp": 1777466635567,
+          "uid": "155018449",
+          "user": "白飯屋"
+        },
+        "-OrOG7MwYfC-82dDMtzI": {
+          "combination": "-OrJvYeM9ucLi8XoGiM0_-OrLwfOtpA4s0jQ1hqrV_-OrLwsTPMMlj_bRtYn3P",
+          "comment": "勝てえええええええ",
+          "timestamp": 1777466640367,
+          "uid": "857202528",
+          "user": "槐"
+        },
+        "-OrOG7tGR8c_PGtaF9aN": {
+          "combination": "-OrJvMvG-kYKM8UaQorm_-OrJvTbEBo2L-tqyPCye_-OrLwfOtpA4s0jQ1hqrV",
+          "comment": "打倒スティルさん",
+          "timestamp": 1777466642163,
+          "uid": "853797574356",
+          "user": "まこ"
+        },
+        "-OrOGBPvcKABFBaf7AEL": {
+          "combination": "-OrJvIaMW0oF3XT1u_Ad_-OrJvYeM9ucLi8XoGiM0_-OrLwfOtpA4s0jQ1hqrV",
+          "comment": "",
+          "timestamp": 1777466656600,
+          "uid": "619973318761",
+          "user": "Nuk4s"
+        },
+        "-OrOGDU--lVM1T0IdtDi": {
+          "combination": "-OrLwfOtpA4s0jQ1hqrV_-OrLwk9J9ispRSpL_WAe_-OrMw6zKnd90D9wYCA1R",
+          "comment": "デバッグがんばれー！",
+          "timestamp": 1777466665122,
+          "uid": "618182241",
+          "user": "捨之介"
+        },
+        "-OrOGEjUKdQFBkuRVuSM": {
+          "combination": "-OrJvIaMW0oF3XT1u_Ad_-OrLwsTPMMlj_bRtYn3P_-OrNneJP5BXYtlIpCH_d",
+          "comment": "がんばれーーー！",
+          "timestamp": 1777466670210,
+          "uid": "368853925509",
+          "user": "ぷらむ"
+        },
+        "-OrOGGYJoVZo-tNvNrjm": {
+          "combination": "-OrJvIaMW0oF3XT1u_Ad_-OrJvYeM9ucLi8XoGiM0_-OrMwSmJn170KaBYjnQD",
+          "comment": "また仕掛けを・・・",
+          "timestamp": 1777466677640,
+          "uid": "527448974991",
+          "user": "マイチョスター/Utd"
+        },
+        "-OrOGHDF2cFiLIySgXcp": {
+          "combination": "-OrJvIaMW0oF3XT1u_Ad_-OrLwk9J9ispRSpL_WAe_-OrMwYOZhlc7ZRiKOe_E",
+          "comment": "この三連複にあさひのめにしゅきを賭ける！",
+          "timestamp": 1777466680385,
+          "uid": "851210084",
+          "user": "P助"
+        },
+        "-OrOGLeCjRxNbug0NiiO": {
+          "combination": "-OrJvMvG-kYKM8UaQorm_-OrLwfOtpA4s0jQ1hqrV_-OrLwsTPMMlj_bRtYn3P",
+          "comment": "ふれーふれー赤組ぃ！🔥",
+          "timestamp": 1777466698612,
+          "uid": "159448194364",
+          "user": "１０００"
+        },
+        "-OrOGTEsWlCUw5kV20ML": {
+          "combination": "-OrJvIaMW0oF3XT1u_Ad_-OrLwfOtpA4s0jQ1hqrV_-OrNxhZINkza0jNfB377",
+          "comment": "そろそろ勝つんだリーダー！",
+          "timestamp": 1777466729650,
+          "uid": "129772031",
+          "user": "御影"
+        },
+        "-OrOGx-NSdKKaZ6whbnc": {
+          "combination": "-OrJvTbEBo2L-tqyPCye_-OrLwsTPMMlj_bRtYn3P_-OrMwSmJn170KaBYjnQD",
+          "comment": "差し切りに期待！",
+          "timestamp": 1777466855703,
+          "uid": "170632981",
+          "user": "れもんそーだ"
+        },
+        "-OrOH4VwmqF_2fUzxWJs": {
+          "combination": "-OrJvIaMW0oF3XT1u_Ad_-OrJvMvG-kYKM8UaQorm_-OrJvTbEBo2L-tqyPCye",
+          "comment": "勝つぞ！！",
+          "timestamp": 1777466890455,
+          "uid": "158384798",
+          "user": "あさひ"
+        },
+        "-OrOH779X9hA74I5ji-D": {
+          "combination": "-OrLwsTPMMlj_bRtYn3P_-OrMw6zKnd90D9wYCA1R_-OrNxhZINkza0jNfB377",
+          "comment": "ラスクロ杯もキリのよい20回目ー！！いつも企画･運営ありがとうございます☺️\n全然予想難しいですが、選ばせていただきました！みなさん頑張りましょー💪",
+          "timestamp": 1777466901202,
+          "uid": "333793317839",
+          "user": "お隣さん"
+        },
+        "-OrOH_CqEYWcUh4bG9vH": {
+          "combination": "-OrLwsTPMMlj_bRtYn3P_-OrMw6zKnd90D9wYCA1R_-OrNxhZINkza0jNfB377",
+          "comment": "📣",
+          "timestamp": 1777467020312,
+          "uid": "614335047297",
+          "user": "テル"
+        }
+      },
+      "results": [null, "ラッキーライラック【通常】(槐)", "スティルインラブ【通常】(Nuk4s)", "キタサンブラック【正月】(捨之介)", "トウカイテイオー【通常】(御影)", "アドマイヤグルーヴ【通常】(まこ)"],
+      "status": "closed",
+      "title": "第20回ラスクロ杯[2026.04.29]"
+    },
+    "-Orx2vJa0Svnk0C6lv51": {
+      "combos": {
+        "-Orx309qaTB5-Zbnp6rB_-Orx346el2JHJax3FQ7f_-Orx3UE_LXlmju8JeQGv": {
+          "horseIds": ["-Orx346el2JHJax3FQ7f", "-Orx3UE_LXlmju8JeQGv", "-Orx309qaTB5-Zbnp6rB"],
+          "names": ["ウインバリアシオン", "ファインモーション", "サイレンススズカ"],
+          "selection": {
+            "-Orx309qaTB5-Zbnp6rB": "サイレンススズカ",
+            "-Orx346el2JHJax3FQ7f": "ウインバリアシオン",
+            "-Orx3UE_LXlmju8JeQGv": "ファインモーション"
+          },
+          "voters": [
+            {
+              "at": 1778067676668,
+              "comment": "ラスクロへようこそ！！\n絶対負けない！",
+              "name": "Nuk4s",
+              "uid": "619973318761"
+            }
+          ],
+          "votes": 1
+        },
+        "-Orx309qaTB5-Zbnp6rB_-Orx3OeT-hzrnKq5bu64_-Orx3nfqT28XDPCgE_Dl": {
+          "horseIds": ["-Orx3nfqT28XDPCgE_Dl", "-Orx3OeT-hzrnKq5bu64", "-Orx309qaTB5-Zbnp6rB"],
+          "names": ["エイシンフラッシュ", "ノースフライト", "サイレンススズカ"],
+          "selection": {
+            "-Orx309qaTB5-Zbnp6rB": "サイレンススズカ",
+            "-Orx3OeT-hzrnKq5bu64": "ノースフライト",
+            "-Orx3nfqT28XDPCgE_Dl": "エイシンフラッシュ"
+          },
+          "voters": [
+            {
+              "at": 1778067670829,
+              "comment": "当たる未来が見える",
+              "name": "キノ",
+              "uid": "544753146108"
+            }
+          ],
+          "votes": 1
+        },
+        "-Orx309qaTB5-Zbnp6rB_-Orx3UE_LXlmju8JeQGv_-Orx3nfqT28XDPCgE_Dl": {
+          "horseIds": ["-Orx3UE_LXlmju8JeQGv", "-Orx3nfqT28XDPCgE_Dl", "-Orx309qaTB5-Zbnp6rB"],
+          "names": ["ファインモーション", "エイシンフラッシュ", "サイレンススズカ"],
+          "selection": {
+            "-Orx309qaTB5-Zbnp6rB": "サイレンススズカ",
+            "-Orx3UE_LXlmju8JeQGv": "ファインモーション",
+            "-Orx3nfqT28XDPCgE_Dl": "エイシンフラッシュ"
+          },
+          "voters": [
+            {
+              "at": 1778067698458,
+              "comment": "",
+              "name": "cvoda",
+              "uid": "853020996540"
+            }
+          ],
+          "votes": 1
+        },
+        "-Orx309qaTB5-Zbnp6rB_-Orx3WTqed2BwOBr-i8q_-Orx3nfqT28XDPCgE_Dl": {
+          "horseIds": ["-Orx309qaTB5-Zbnp6rB", "-Orx3nfqT28XDPCgE_Dl", "-Orx3WTqed2BwOBr-i8q"],
+          "names": ["サイレンススズカ", "エイシンフラッシュ", "タニノギムレット"],
+          "selection": {
+            "-Orx309qaTB5-Zbnp6rB": "サイレンススズカ",
+            "-Orx3WTqed2BwOBr-i8q": "タニノギムレット",
+            "-Orx3nfqT28XDPCgE_Dl": "エイシンフラッシュ"
+          },
+          "voters": [
+            {
+              "at": 1778067796125,
+              "comment": "",
+              "name": "貼るカイロ",
+              "uid": "838039949986"
+            }
+          ],
+          "votes": 1
+        },
+        "-Orx309qaTB5-Zbnp6rB_-Orx3_8g71rQ1ebaBjG3_-Orx3doqxZnjk-2WdE12": {
+          "horseIds": ["-Orx309qaTB5-Zbnp6rB", "-Orx3_8g71rQ1ebaBjG3", "-Orx3doqxZnjk-2WdE12"],
+          "names": ["サイレンススズカ", "スティルインラブ", "ブエナビスタ"],
+          "selection": {
+            "-Orx309qaTB5-Zbnp6rB": "サイレンススズカ",
+            "-Orx3_8g71rQ1ebaBjG3": "スティルインラブ",
+            "-Orx3doqxZnjk-2WdE12": "ブエナビスタ"
+          },
+          "voters": [
+            {
+              "at": 1778067752367,
+              "comment": "今回勝ちたいけど応援だ！！！！！！がんばれええええええええええ",
+              "name": "あさひ",
+              "uid": "158384798"
+            }
+          ],
+          "votes": 1
+        },
+        "-Orx309qaTB5-Zbnp6rB_-Orx3bBIWEKmZxa99sWF_-Orx3l06Jz1MzE3JKC2U": {
+          "horseIds": ["-Orx3bBIWEKmZxa99sWF", "-Orx309qaTB5-Zbnp6rB", "-Orx3l06Jz1MzE3JKC2U"],
+          "names": ["セイウンスカイ", "サイレンススズカ", "ダイタクヘリオス"],
+          "selection": {
+            "-Orx309qaTB5-Zbnp6rB": "サイレンススズカ",
+            "-Orx3bBIWEKmZxa99sWF": "セイウンスカイ",
+            "-Orx3l06Jz1MzE3JKC2U": "ダイタクヘリオス"
+          },
+          "voters": [
+            {
+              "at": 1778067728651,
+              "comment": "3人で逃げきれー！",
+              "name": "捨之介",
+              "uid": "618182241"
+            }
+          ],
+          "votes": 1
+        },
+        "-Orx346el2JHJax3FQ7f_-Orx3C3GaQvdMkbB3FLb_-Orx3bBIWEKmZxa99sWF": {
+          "horseIds": ["-Orx346el2JHJax3FQ7f", "-Orx3C3GaQvdMkbB3FLb", "-Orx3bBIWEKmZxa99sWF"],
+          "names": ["ウインバリアシオン", "アグネスデジタル", "セイウンスカイ"],
+          "selection": {
+            "-Orx346el2JHJax3FQ7f": "ウインバリアシオン",
+            "-Orx3C3GaQvdMkbB3FLb": "アグネスデジタル",
+            "-Orx3bBIWEKmZxa99sWF": "セイウンスカイ"
+          },
+          "voters": [
+            {
+              "at": 1778067672053,
+              "comment": "新人さんに挟まれるこもがいたっていい",
+              "name": "こも",
+              "uid": "709914763354"
+            }
+          ],
+          "votes": 1
+        },
+        "-Orx38oa3Vawo8mFJaBL_-Orx3RvgWoj5Jv8dbtxp_-Orx3nfqT28XDPCgE_Dl": {
+          "horseIds": ["-Orx3nfqT28XDPCgE_Dl", "-Orx3RvgWoj5Jv8dbtxp", "-Orx38oa3Vawo8mFJaBL"],
+          "names": ["エイシンフラッシュ", "メジロラモーヌ", "バブルガムフェロー"],
+          "selection": {
+            "-Orx38oa3Vawo8mFJaBL": "バブルガムフェロー",
+            "-Orx3RvgWoj5Jv8dbtxp": "メジロラモーヌ",
+            "-Orx3nfqT28XDPCgE_Dl": "エイシンフラッシュ"
+          },
+          "voters": [
+            {
+              "at": 1778067697529,
+              "comment": "んまーまーまーまーっ！",
+              "name": "１０００",
+              "uid": "159448194364"
+            }
+          ],
+          "votes": 1
+        },
+        "-Orx3OeT-hzrnKq5bu64_-Orx3RvgWoj5Jv8dbtxp_-Orx3UE_LXlmju8JeQGv": {
+          "horseIds": ["-Orx3RvgWoj5Jv8dbtxp", "-Orx3UE_LXlmju8JeQGv", "-Orx3OeT-hzrnKq5bu64"],
+          "names": ["メジロラモーヌ", "ファインモーション", "ノースフライト"],
+          "selection": {
+            "-Orx3OeT-hzrnKq5bu64": "ノースフライト",
+            "-Orx3RvgWoj5Jv8dbtxp": "メジロラモーヌ",
+            "-Orx3UE_LXlmju8JeQGv": "ファインモーション"
+          },
+          "voters": [
+            {
+              "at": 1778067713099,
+              "comment": "しっかり育成していてスキルもしっかり考えてて、まじ強そう！応援してます⸜(*ˊᗜˋ*)⸝",
+              "name": "央太",
+              "uid": "115740687296"
+            }
+          ],
+          "votes": 1
+        },
+        "-Orx3OeT-hzrnKq5bu64_-Orx3RvgWoj5Jv8dbtxp_-Orx3doqxZnjk-2WdE12": {
+          "horseIds": ["-Orx3doqxZnjk-2WdE12", "-Orx3OeT-hzrnKq5bu64", "-Orx3RvgWoj5Jv8dbtxp"],
+          "names": ["ブエナビスタ", "ノースフライト", "メジロラモーヌ"],
+          "selection": {
+            "-Orx3OeT-hzrnKq5bu64": "ノースフライト",
+            "-Orx3RvgWoj5Jv8dbtxp": "メジロラモーヌ",
+            "-Orx3doqxZnjk-2WdE12": "ブエナビスタ"
+          },
+          "voters": [
+            {
+              "at": 1778067802441,
+              "comment": "これ当てて俺はあさひから焼肉を奢ってもらう",
+              "name": "おーの",
+              "uid": "902327775"
+            }
+          ],
+          "votes": 1
+        },
+        "-Orx3OeT-hzrnKq5bu64_-Orx3UE_LXlmju8JeQGv_-Orx3nfqT28XDPCgE_Dl": {
+          "horseIds": ["-Orx3nfqT28XDPCgE_Dl", "-Orx3OeT-hzrnKq5bu64", "-Orx3UE_LXlmju8JeQGv"],
+          "names": ["エイシンフラッシュ", "ノースフライト", "ファインモーション"],
+          "selection": {
+            "-Orx3OeT-hzrnKq5bu64": "ノースフライト",
+            "-Orx3UE_LXlmju8JeQGv": "ファインモーション",
+            "-Orx3nfqT28XDPCgE_Dl": "エイシンフラッシュ"
+          },
+          "voters": [
+            {
+              "at": 1778067862716,
+              "comment": "みんなの推しが見れるぞ、このラスクロでは！！\nいやぁ〜好きですねぇ〜",
+              "name": "モル",
+              "uid": "333793317839"
+            }
+          ],
+          "votes": 1
+        },
+        "-Orx3OeT-hzrnKq5bu64_-Orx3_8g71rQ1ebaBjG3_-Orx3nfqT28XDPCgE_Dl": {
+          "horseIds": ["-Orx3_8g71rQ1ebaBjG3", "-Orx3nfqT28XDPCgE_Dl", "-Orx3OeT-hzrnKq5bu64"],
+          "names": ["スティルインラブ", "エイシンフラッシュ", "ノースフライト"],
+          "selection": {
+            "-Orx3OeT-hzrnKq5bu64": "ノースフライト",
+            "-Orx3_8g71rQ1ebaBjG3": "スティルインラブ",
+            "-Orx3nfqT28XDPCgE_Dl": "エイシンフラッシュ"
+          },
+          "voters": [
+            {
+              "at": 1778067671850,
+              "comment": "差し勝つぞ！",
+              "name": "まこ",
+              "uid": "853797574356"
+            }
+          ],
+          "votes": 1
+        },
+        "-Orx3OeT-hzrnKq5bu64_-Orx3doqxZnjk-2WdE12_-Orx3qci2F4mNruH6_AH": {
+          "horseIds": ["-Orx3doqxZnjk-2WdE12", "-Orx3OeT-hzrnKq5bu64", "-Orx3qci2F4mNruH6_AH"],
+          "names": ["ブエナビスタ", "ノースフライト", "ミスターシービー"],
+          "selection": {
+            "-Orx3OeT-hzrnKq5bu64": "ノースフライト",
+            "-Orx3doqxZnjk-2WdE12": "ブエナビスタ",
+            "-Orx3qci2F4mNruH6_AH": "ミスターシービー"
+          },
+          "voters": [
+            {
+              "at": 1778067647295,
+              "comment": "珍しく今日は追込を推す",
+              "name": "槐",
+              "uid": "857202528"
+            },
+            {
+              "at": 1778067691036,
+              "comment": "追込最強！追込最強！船橋最強！",
+              "name": "御影",
+              "uid": "129772031"
+            }
+          ],
+          "votes": 2
+        },
+        "-Orx3OeT-hzrnKq5bu64_-Orx3nfqT28XDPCgE_Dl_-Orx3ujc2aUDtAkoZsCQ": {
+          "horseIds": ["-Orx3nfqT28XDPCgE_Dl", "-Orx3ujc2aUDtAkoZsCQ", "-Orx3OeT-hzrnKq5bu64"],
+          "names": ["エイシンフラッシュ", "フジキセキ", "ノースフライト"],
+          "selection": {
+            "-Orx3OeT-hzrnKq5bu64": "ノースフライト",
+            "-Orx3nfqT28XDPCgE_Dl": "エイシンフラッシュ",
+            "-Orx3ujc2aUDtAkoZsCQ": "フジキセキ"
+          },
+          "voters": [
+            {
+              "at": 1778067677358,
+              "comment": "切れは強いよ！",
+              "name": "白飯屋",
+              "uid": "155018449"
+            }
+          ],
+          "votes": 1
+        },
+        "-Orx3RvgWoj5Jv8dbtxp_-Orx3UE_LXlmju8JeQGv_-Orx3nfqT28XDPCgE_Dl": {
+          "horseIds": ["-Orx3nfqT28XDPCgE_Dl", "-Orx3UE_LXlmju8JeQGv", "-Orx3RvgWoj5Jv8dbtxp"],
+          "names": ["エイシンフラッシュ", "ファインモーション", "メジロラモーヌ"],
+          "selection": {
+            "-Orx3RvgWoj5Jv8dbtxp": "メジロラモーヌ",
+            "-Orx3UE_LXlmju8JeQGv": "ファインモーション",
+            "-Orx3nfqT28XDPCgE_Dl": "エイシンフラッシュ"
+          },
+          "voters": [
+            {
+              "at": 1778067647452,
+              "comment": "おらも勝つんだ！うおおおおおお",
+              "name": "ぷらむ",
+              "uid": "368853925509"
+            }
+          ],
+          "votes": 1
+        },
+        "-Orx3_8g71rQ1ebaBjG3_-Orx3i1JLeTMAUA43OhB_-Orx3qci2F4mNruH6_AH": {
+          "horseIds": ["-Orx3qci2F4mNruH6_AH", "-Orx3_8g71rQ1ebaBjG3", "-Orx3i1JLeTMAUA43OhB"],
+          "names": ["ミスターシービー", "スティルインラブ", "メジロアルダン"],
+          "selection": {
+            "-Orx3_8g71rQ1ebaBjG3": "スティルインラブ",
+            "-Orx3i1JLeTMAUA43OhB": "メジロアルダン",
+            "-Orx3qci2F4mNruH6_AH": "ミスターシービー"
+          },
+          "voters": [
+            {
+              "at": 1778067709123,
+              "comment": "いつものキャラへの応援バ券",
+              "name": "やん",
+              "uid": "680127192"
+            }
+          ],
+          "votes": 1
+        }
+      },
+      "createdAt": 1778067158106,
+      "horses": {
+        "-Orx309qaTB5-Zbnp6rB": {
+          "horseName": "サイレンススズカ",
+          "userName": "白飯屋",
+          "votes": 0
+        },
+        "-Orx346el2JHJax3FQ7f": {
+          "horseName": "ウインバリアシオン",
+          "userName": "貼るカイロ",
+          "votes": 0
+        },
+        "-Orx38oa3Vawo8mFJaBL": {
+          "horseName": "バブルガムフェロー",
+          "userName": "おうた",
+          "votes": 0
+        },
+        "-Orx3C3GaQvdMkbB3FLb": {
+          "horseName": "アグネスデジタル",
+          "userName": "cvoda",
+          "votes": 0
+        },
+        "-Orx3GVGBDdy33Wm7aHO": {
+          "horseName": "エスポワールシチー",
+          "userName": "やん",
+          "votes": 0
+        },
+        "-Orx3OeT-hzrnKq5bu64": {
+          "horseName": "ノースフライト",
+          "userName": "槐",
+          "votes": 0
+        },
+        "-Orx3RvgWoj5Jv8dbtxp": {
+          "horseName": "メジロラモーヌ",
+          "userName": "ぷらむ",
+          "votes": 0
+        },
+        "-Orx3UE_LXlmju8JeQGv": {
+          "horseName": "ファインモーション",
+          "userName": "あさひ",
+          "votes": 0
+        },
+        "-Orx3WTqed2BwOBr-i8q": {
+          "horseName": "タニノギムレット",
+          "userName": "キノ",
+          "votes": 0
+        },
+        "-Orx3_8g71rQ1ebaBjG3": {
+          "horseName": "スティルインラブ",
+          "userName": "Nuk4s",
+          "votes": 0
+        },
+        "-Orx3bBIWEKmZxa99sWF": {
+          "horseName": "セイウンスカイ",
+          "userName": "こも",
+          "votes": 0
+        },
+        "-Orx3doqxZnjk-2WdE12": {
+          "horseName": "ブエナビスタ",
+          "userName": "御影",
+          "votes": 0
+        },
+        "-Orx3i1JLeTMAUA43OhB": {
+          "horseName": "メジロアルダン",
+          "userName": "モル@おとなりさん",
+          "votes": 0
+        },
+        "-Orx3l06Jz1MzE3JKC2U": {
+          "horseName": "ダイタクヘリオス",
+          "userName": "捨之介",
+          "votes": 0
+        },
+        "-Orx3nfqT28XDPCgE_Dl": {
+          "horseName": "エイシンフラッシュ",
+          "userName": "まこ",
+          "votes": 0
+        },
+        "-Orx3qci2F4mNruH6_AH": {
+          "horseName": "ミスターシービー",
+          "userName": "１０００",
+          "votes": 0
+        },
+        "-Orx3ujc2aUDtAkoZsCQ": {
+          "horseName": "フジキセキ",
+          "userName": "おーの＠本日も仕事",
+          "votes": 0
+        }
+      },
+      "logs": {
+        "-Orx4mitzxb-AUbQYjvV": {
+          "combination": "-Orx3OeT-hzrnKq5bu64_-Orx3doqxZnjk-2WdE12_-Orx3qci2F4mNruH6_AH",
+          "comment": "珍しく今日は追込を推す",
+          "timestamp": 1778067647613,
+          "uid": "857202528",
+          "user": "槐"
+        },
+        "-Orx4mkTpEVrHbjvigiJ": {
+          "combination": "-Orx3RvgWoj5Jv8dbtxp_-Orx3UE_LXlmju8JeQGv_-Orx3nfqT28XDPCgE_Dl",
+          "comment": "おらも勝つんだ！うおおおおおお",
+          "timestamp": 1778067647716,
+          "uid": "368853925509",
+          "user": "ぷらむ"
+        },
+        "-Orx4sTPKG2pqWnj_V5u": {
+          "combination": "-Orx309qaTB5-Zbnp6rB_-Orx3OeT-hzrnKq5bu64_-Orx3nfqT28XDPCgE_Dl",
+          "comment": "当たる未来が見える",
+          "timestamp": 1778067671102,
+          "uid": "544753146108",
+          "user": "キノ"
+        },
+        "-Orx4sjOEt7C9M0sklpT": {
+          "combination": "-Orx3OeT-hzrnKq5bu64_-Orx3_8g71rQ1ebaBjG3_-Orx3nfqT28XDPCgE_Dl",
+          "comment": "差し勝つぞ！",
+          "timestamp": 1778067672191,
+          "uid": "853797574356",
+          "user": "まこ"
+        },
+        "-Orx4sm3FZrN05M5Ljdw": {
+          "combination": "-Orx346el2JHJax3FQ7f_-Orx3C3GaQvdMkbB3FLb_-Orx3bBIWEKmZxa99sWF",
+          "comment": "新人さんに挟まれるこもがいたっていい",
+          "timestamp": 1778067672354,
+          "uid": "709914763354",
+          "user": "こも"
+        },
+        "-Orx4tsXvFlAT6s7eFa0": {
+          "combination": "-Orx3OeT-hzrnKq5bu64_-Orx3nfqT28XDPCgE_Dl_-Orx3ujc2aUDtAkoZsCQ",
+          "comment": "切れは強いよ！",
+          "timestamp": 1778067676870,
+          "uid": "155018449",
+          "user": "白飯屋"
+        },
+        "-Orx4tuGX71C3JRu3Ro5": {
+          "combination": "-Orx309qaTB5-Zbnp6rB_-Orx346el2JHJax3FQ7f_-Orx3UE_LXlmju8JeQGv",
+          "comment": "ラスクロへようこそ！！\n絶対負けない！",
+          "timestamp": 1778067676975,
+          "uid": "619973318761",
+          "user": "Nuk4s"
+        },
+        "-Orx4xF4Ix7dnzG_3iq5": {
+          "combination": "-Orx3OeT-hzrnKq5bu64_-Orx3doqxZnjk-2WdE12_-Orx3qci2F4mNruH6_AH",
+          "comment": "追込最強！追込最強！船橋最強！",
+          "timestamp": 1778067690690,
+          "uid": "129772031",
+          "user": "御影"
+        },
+        "-Orx4yzS886fE0xlxisf": {
+          "combination": "-Orx38oa3Vawo8mFJaBL_-Orx3RvgWoj5Jv8dbtxp_-Orx3nfqT28XDPCgE_Dl",
+          "comment": "んまーまーまーまーっ！",
+          "timestamp": 1778067697822,
+          "uid": "159448194364",
+          "user": "１０００"
+        },
+        "-Orx4zD_1QaqxiCOj2xK": {
+          "combination": "-Orx309qaTB5-Zbnp6rB_-Orx3UE_LXlmju8JeQGv_-Orx3nfqT28XDPCgE_Dl",
+          "comment": "",
+          "timestamp": 1778067698778,
+          "uid": "853020996540",
+          "user": "cvoda"
+        },
+        "-Orx50oz9bvn_kZIM0U3": {
+          "combination": "-Orx3_8g71rQ1ebaBjG3_-Orx3i1JLeTMAUA43OhB_-Orx3qci2F4mNruH6_AH",
+          "comment": "いつものキャラへの応援バ券",
+          "timestamp": 1778067709414,
+          "uid": "680127192",
+          "user": "やん"
+        },
+        "-Orx51mS87yk3yrKoiDZ": {
+          "combination": "-Orx3OeT-hzrnKq5bu64_-Orx3RvgWoj5Jv8dbtxp_-Orx3UE_LXlmju8JeQGv",
+          "comment": "しっかり育成していてスキルもしっかり考えてて、まじ強そう！応援してます⸜(*ˊᗜˋ*)⸝",
+          "timestamp": 1778067713341,
+          "uid": "115740687296",
+          "user": "央太"
+        },
+        "-Orx55gttIpu4jDriV3u": {
+          "combination": "-Orx309qaTB5-Zbnp6rB_-Orx3bBIWEKmZxa99sWF_-Orx3l06Jz1MzE3JKC2U",
+          "comment": "3人で逃げきれー！",
+          "timestamp": 1778067729425,
+          "uid": "618182241",
+          "user": "捨之介"
+        },
+        "-Orx5BRwe-LgXa8UZSj4": {
+          "combination": "-Orx309qaTB5-Zbnp6rB_-Orx3_8g71rQ1ebaBjG3_-Orx3doqxZnjk-2WdE12",
+          "comment": "今回勝ちたいけど応援だ！！！！！！がんばれええええええええええ",
+          "timestamp": 1778067752921,
+          "uid": "158384798",
+          "user": "あさひ"
+        },
+        "-Orx5M3Ldbc-509QTekO": {
+          "combination": "-Orx309qaTB5-Zbnp6rB_-Orx3WTqed2BwOBr-i8q_-Orx3nfqT28XDPCgE_Dl",
+          "comment": "",
+          "timestamp": 1778067796414,
+          "uid": "838039949986",
+          "user": "貼るカイロ"
+        },
+        "-Orx5NbIq1d9DJ_YSPpC": {
+          "combination": "-Orx3OeT-hzrnKq5bu64_-Orx3RvgWoj5Jv8dbtxp_-Orx3doqxZnjk-2WdE12",
+          "comment": "これ当てて俺はあさひから焼肉を奢ってもらう",
+          "timestamp": 1778067802755,
+          "uid": "902327775",
+          "user": "おーの"
+        },
+        "-Orx5bUivTe9ryMQC0j1": {
+          "combination": "-Orx3OeT-hzrnKq5bu64_-Orx3UE_LXlmju8JeQGv_-Orx3nfqT28XDPCgE_Dl",
+          "comment": "みんなの推しが見れるぞ、このラスクロでは！！\nいやぁ〜好きですねぇ〜",
+          "timestamp": 1778067863734,
+          "uid": "333793317839",
+          "user": "モル"
+        }
+      },
+      "results": [null, "ノースフライト(槐)", "タニノギムレット(キノ)", "メジロラモーヌ(ぷらむ)", "ファインモーション(あさひ)", "バブルガムフェロー(おうた)"],
+      "status": "closed",
+      "title": "ラスクロ新規歓迎会"
+    },
+    "-Otxm9YSy06FnScx6pHh": {
+      "combos": {
+        "-Otxn2DiV9-14CPN5cZj_-Otxn4jkPkgJ4sDYBXdx_-OtxnHrWmpzhFTXRthis": {
+          "horseIds": ["-Otxn4jkPkgJ4sDYBXdx", "-Otxn2DiV9-14CPN5cZj", "-OtxnHrWmpzhFTXRthis"],
+          "names": ["アドマイヤグルーヴ", "ファインモーション", "トウカイテイオー"],
+          "selection": {
+            "-Otxn2DiV9-14CPN5cZj": "ファインモーション",
+            "-Otxn4jkPkgJ4sDYBXdx": "アドマイヤグルーヴ",
+            "-OtxnHrWmpzhFTXRthis": "トウカイテイオー"
+          },
+          "voters": [
+            {
+              "at": 1780230140237,
+              "comment": "キレてるよー、キレてるよー、覚醒してるよー！！！\nいいよお！",
+              "name": "こも",
+              "uid": "709914763354"
+            },
+            {
+              "at": 1780231136491,
+              "comment": "ぜったい勝つ！💪",
+              "name": "Nuk4s",
+              "uid": "619973318761"
+            }
+          ],
+          "votes": 2
+        },
+        "-Otxn2DiV9-14CPN5cZj_-Otxn4jkPkgJ4sDYBXdx_-OtxnZB3HNmjgkJA1HQ_": {
+          "horseIds": ["-Otxn2DiV9-14CPN5cZj", "-OtxnZB3HNmjgkJA1HQ_", "-Otxn4jkPkgJ4sDYBXdx"],
+          "names": ["ファインモーション", "アグネスデジタル", "アドマイヤグルーヴ"],
+          "selection": {
+            "-Otxn2DiV9-14CPN5cZj": "ファインモーション",
+            "-Otxn4jkPkgJ4sDYBXdx": "アドマイヤグルーヴ",
+            "-OtxnZB3HNmjgkJA1HQ_": "アグネスデジタル"
+          },
+          "voters": [
+            {
+              "at": 1780231129522,
+              "comment": "そろそろ初心者マーク外したいお",
+              "name": "やん",
+              "uid": "680127192"
+            }
+          ],
+          "votes": 1
+        },
+        "-Otxn2DiV9-14CPN5cZj_-Otxn4jkPkgJ4sDYBXdx_-OtxnbonBOzn9aQXzZh9": {
+          "horseIds": ["-OtxnbonBOzn9aQXzZh9", "-Otxn4jkPkgJ4sDYBXdx", "-Otxn2DiV9-14CPN5cZj"],
+          "names": ["タニノギムレット", "アドマイヤグルーヴ", "ファインモーション"],
+          "selection": {
+            "-Otxn2DiV9-14CPN5cZj": "ファインモーション",
+            "-Otxn4jkPkgJ4sDYBXdx": "アドマイヤグルーヴ",
+            "-OtxnbonBOzn9aQXzZh9": "タニノギムレット"
+          },
+          "voters": [
+            {
+              "at": 1780231103651,
+              "comment": "酔い痴れた",
+              "name": "キノ",
+              "uid": "544753146108"
+            }
+          ],
+          "votes": 1
+        },
+        "-Otxn2DiV9-14CPN5cZj_-Otxn8kB86Rk2CZdKIz5_-OtxnB-Z6LjWxXs66ylx": {
+          "horseIds": ["-Otxn8kB86Rk2CZdKIz5", "-OtxnB-Z6LjWxXs66ylx", "-Otxn2DiV9-14CPN5cZj"],
+          "names": ["サイレンススズカ", "スティルインラブ", "ファインモーション"],
+          "selection": {
+            "-Otxn2DiV9-14CPN5cZj": "ファインモーション",
+            "-Otxn8kB86Rk2CZdKIz5": "サイレンススズカ",
+            "-OtxnB-Z6LjWxXs66ylx": "スティルインラブ"
+          },
+          "voters": [
+            {
+              "at": 1780231290163,
+              "comment": "",
+              "name": "れもんそーだ",
+              "uid": "170632981"
+            }
+          ],
+          "votes": 1
+        },
+        "-Otxn2DiV9-14CPN5cZj_-OtxnZB3HNmjgkJA1HQ__-OtxnoPtpgrWjGz4J4Ch": {
+          "horseIds": ["-Otxn2DiV9-14CPN5cZj", "-OtxnoPtpgrWjGz4J4Ch", "-OtxnZB3HNmjgkJA1HQ_"],
+          "names": ["ファインモーション", "アーモンドアイ", "アグネスデジタル"],
+          "selection": {
+            "-Otxn2DiV9-14CPN5cZj": "ファインモーション",
+            "-OtxnZB3HNmjgkJA1HQ_": "アグネスデジタル",
+            "-OtxnoPtpgrWjGz4J4Ch": "アーモンドアイ"
+          },
+          "voters": [
+            {
+              "at": 1780231092618,
+              "comment": "",
+              "name": "アドレナリン",
+              "uid": "449650115"
+            }
+          ],
+          "votes": 1
+        },
+        "-Otxn2DiV9-14CPN5cZj_-OtxnZB3HNmjgkJA1HQ__-Oty2GVUGpQ1CA9sUfE-": {
+          "horseIds": ["-Oty2GVUGpQ1CA9sUfE-", "-Otxn2DiV9-14CPN5cZj", "-OtxnZB3HNmjgkJA1HQ_"],
+          "names": ["マチカネフクキタル", "ファインモーション", "アグネスデジタル"],
+          "selection": {
+            "-Otxn2DiV9-14CPN5cZj": "ファインモーション",
+            "-OtxnZB3HNmjgkJA1HQ_": "アグネスデジタル",
+            "-Oty2GVUGpQ1CA9sUfE-": "マチカネフクキタル"
+          },
+          "voters": [
+            {
+              "at": 1780231487581,
+              "comment": "鶏ガラ系醤油が最近の推し",
+              "name": "アドレナリン",
+              "uid": "449650115"
+            }
+          ],
+          "votes": 1
+        },
+        "-Otxn2DiV9-14CPN5cZj_-OtxnbonBOzn9aQXzZh9_-Otxni-oesK3kkgUN9qI": {
+          "horseIds": ["-Otxn2DiV9-14CPN5cZj", "-OtxnbonBOzn9aQXzZh9", "-Otxni-oesK3kkgUN9qI"],
+          "names": ["ファインモーション", "タニノギムレット", "ドゥラメンテ"],
+          "selection": {
+            "-Otxn2DiV9-14CPN5cZj": "ファインモーション",
+            "-OtxnbonBOzn9aQXzZh9": "タニノギムレット",
+            "-Otxni-oesK3kkgUN9qI": "ドゥラメンテ"
+          },
+          "voters": [
+            {
+              "at": 1780231125127,
+              "comment": "推し愛で出す素晴らしさに乾杯🍻！！！\n頑張れええ！！！！",
+              "name": "央太",
+              "uid": "115740687296"
+            }
+          ],
+          "votes": 1
+        },
+        "-Otxn2DiV9-14CPN5cZj_-Otxnf6alBw_5GjBC4Xx_-OtxnoPtpgrWjGz4J4Ch": {
+          "horseIds": ["-Otxnf6alBw_5GjBC4Xx", "-Otxn2DiV9-14CPN5cZj", "-OtxnoPtpgrWjGz4J4Ch"],
+          "names": ["マチカネタンホイザ", "ファインモーション", "アーモンドアイ"],
+          "selection": {
+            "-Otxn2DiV9-14CPN5cZj": "ファインモーション",
+            "-Otxnf6alBw_5GjBC4Xx": "マチカネタンホイザ",
+            "-OtxnoPtpgrWjGz4J4Ch": "アーモンドアイ"
+          },
+          "voters": [
+            {
+              "at": 1780228827161,
+              "comment": "ダービーに続けて勝たせていただきます",
+              "name": "れる",
+              "uid": "280984927"
+            }
+          ],
+          "votes": 1
+        },
+        "-Otxn2DiV9-14CPN5cZj_-OtxnoPtpgrWjGz4J4Ch_-Otxv2jrnSI4EQgxFjZh": {
+          "horseIds": ["-Otxn2DiV9-14CPN5cZj", "-OtxnoPtpgrWjGz4J4Ch", "-Otxv2jrnSI4EQgxFjZh"],
+          "names": ["ファインモーション", "アーモンドアイ", "アグネスタキオン"],
+          "selection": {
+            "-Otxn2DiV9-14CPN5cZj": "ファインモーション",
+            "-OtxnoPtpgrWjGz4J4Ch": "アーモンドアイ",
+            "-Otxv2jrnSI4EQgxFjZh": "アグネスタキオン"
+          },
+          "voters": [
+            {
+              "at": 1780231274520,
+              "comment": "あさひさん、れもそさん、こもちんを応援します",
+              "name": "マイチョスター/Utd",
+              "uid": "527448974991"
+            }
+          ],
+          "votes": 1
+        },
+        "-Otxn4jkPkgJ4sDYBXdx_-OtxnHrWmpzhFTXRthis_-OtxnW85DBgAx5Lh8zg0": {
+          "horseIds": ["-Otxn4jkPkgJ4sDYBXdx", "-OtxnHrWmpzhFTXRthis", "-OtxnW85DBgAx5Lh8zg0"],
+          "names": ["アドマイヤグルーヴ", "トウカイテイオー", "シュヴァルグラン"],
+          "selection": {
+            "-Otxn4jkPkgJ4sDYBXdx": "アドマイヤグルーヴ",
+            "-OtxnHrWmpzhFTXRthis": "トウカイテイオー",
+            "-OtxnW85DBgAx5Lh8zg0": "シュヴァルグラン"
+          },
+          "voters": [
+            {
+              "at": 1780231089694,
+              "comment": "適応するマコ",
+              "name": "まこ",
+              "uid": "853797574356"
+            }
+          ],
+          "votes": 1
+        },
+        "-Otxn4jkPkgJ4sDYBXdx_-OtxnHrWmpzhFTXRthis_-OtxnZB3HNmjgkJA1HQ_": {
+          "horseIds": ["-Otxn4jkPkgJ4sDYBXdx", "-OtxnZB3HNmjgkJA1HQ_", "-OtxnHrWmpzhFTXRthis"],
+          "names": ["アドマイヤグルーヴ", "アグネスデジタル", "トウカイテイオー"],
+          "selection": {
+            "-Otxn4jkPkgJ4sDYBXdx": "アドマイヤグルーヴ",
+            "-OtxnHrWmpzhFTXRthis": "トウカイテイオー",
+            "-OtxnZB3HNmjgkJA1HQ_": "アグネスデジタル"
+          },
+          "voters": [
+            {
+              "at": 1780231117484,
+              "comment": "完成度がすごい！！！",
+              "name": "白飯屋",
+              "uid": "155018449"
+            }
+          ],
+          "votes": 1
+        },
+        "-Otxn4jkPkgJ4sDYBXdx_-OtxnHrWmpzhFTXRthis_-Otxnf6alBw_5GjBC4Xx": {
+          "horseIds": ["-OtxnHrWmpzhFTXRthis", "-Otxn4jkPkgJ4sDYBXdx", "-Otxnf6alBw_5GjBC4Xx"],
+          "names": ["トウカイテイオー", "アドマイヤグルーヴ", "マチカネタンホイザ"],
+          "selection": {
+            "-Otxn4jkPkgJ4sDYBXdx": "アドマイヤグルーヴ",
+            "-OtxnHrWmpzhFTXRthis": "トウカイテイオー",
+            "-Otxnf6alBw_5GjBC4Xx": "マチカネタンホイザ"
+          },
+          "voters": [
+            {
+              "at": 1780231144498,
+              "comment": "マチタンに負けちゃいマチタン♩っていう心の準備はOK？",
+              "name": "槐",
+              "uid": "857202528"
+            },
+            {
+              "at": 1780231506453,
+              "comment": "この３連単に次シナリオ曲のあさひさんソロ動画をかけるぜ！",
+              "name": "御影",
+              "uid": "129772031"
+            }
+          ],
+          "votes": 2
+        },
+        "-Otxn4jkPkgJ4sDYBXdx_-OtxnHrWmpzhFTXRthis_-OtxnoPtpgrWjGz4J4Ch": {
+          "horseIds": ["-OtxnHrWmpzhFTXRthis", "-OtxnoPtpgrWjGz4J4Ch", "-Otxn4jkPkgJ4sDYBXdx"],
+          "names": ["トウカイテイオー", "アーモンドアイ", "アドマイヤグルーヴ"],
+          "selection": {
+            "-Otxn4jkPkgJ4sDYBXdx": "アドマイヤグルーヴ",
+            "-OtxnHrWmpzhFTXRthis": "トウカイテイオー",
+            "-OtxnoPtpgrWjGz4J4Ch": "アーモンドアイ"
+          },
+          "voters": [
+            {
+              "at": 1780231152245,
+              "comment": "この３連単にあさひさんの次回シナリオ曲のソロ動画をかけるぜ！",
+              "name": "御影",
+              "uid": "129772031"
+            }
+          ],
+          "votes": 1
+        },
+        "-Otxn8kB86Rk2CZdKIz5_-OtxnERS0inlOhRCkd_w_-OtxnoPtpgrWjGz4J4Ch": {
+          "horseIds": ["-Otxn8kB86Rk2CZdKIz5", "-OtxnERS0inlOhRCkd_w", "-OtxnoPtpgrWjGz4J4Ch"],
+          "names": ["サイレンススズカ", "キタサンブラック", "アーモンドアイ"],
+          "selection": {
+            "-Otxn8kB86Rk2CZdKIz5": "サイレンススズカ",
+            "-OtxnERS0inlOhRCkd_w": "キタサンブラック",
+            "-OtxnoPtpgrWjGz4J4Ch": "アーモンドアイ"
+          },
+          "voters": [
+            {
+              "at": 1780231146544,
+              "comment": "",
+              "name": "捨之介",
+              "uid": "618182241"
+            }
+          ],
+          "votes": 1
+        },
+        "-Otxn8kB86Rk2CZdKIz5_-OtxnHrWmpzhFTXRthis_-OtxnZB3HNmjgkJA1HQ_": {
+          "horseIds": ["-OtxnHrWmpzhFTXRthis", "-Otxn8kB86Rk2CZdKIz5", "-OtxnZB3HNmjgkJA1HQ_"],
+          "names": ["トウカイテイオー", "サイレンススズカ", "アグネスデジタル"],
+          "selection": {
+            "-Otxn8kB86Rk2CZdKIz5": "サイレンススズカ",
+            "-OtxnHrWmpzhFTXRthis": "トウカイテイオー",
+            "-OtxnZB3HNmjgkJA1HQ_": "アグネスデジタル"
+          },
+          "voters": [
+            {
+              "at": 1780231226758,
+              "comment": "毎度みなさまの推しを見るのが楽しみなのです！\nみんな応援してるぞ〜！",
+              "name": "モルさん",
+              "uid": "333793317839"
+            }
+          ],
+          "votes": 1
+        },
+        "-OtxnB-Z6LjWxXs66ylx_-OtxnZB3HNmjgkJA1HQ__-OtxnbonBOzn9aQXzZh9": {
+          "horseIds": ["-OtxnZB3HNmjgkJA1HQ_", "-OtxnbonBOzn9aQXzZh9", "-OtxnB-Z6LjWxXs66ylx"],
+          "names": ["アグネスデジタル", "タニノギムレット", "スティルインラブ"],
+          "selection": {
+            "-OtxnB-Z6LjWxXs66ylx": "スティルインラブ",
+            "-OtxnZB3HNmjgkJA1HQ_": "アグネスデジタル",
+            "-OtxnbonBOzn9aQXzZh9": "タニノギムレット"
+          },
+          "voters": [
+            {
+              "at": 1780231152517,
+              "comment": "応援！！！！！！！！呪いじゃなくてお祝いの言葉を言わせてくれーー！！！",
+              "name": "あさひ",
+              "uid": "158384798"
+            }
+          ],
+          "votes": 1
+        },
+        "-OtxnHrWmpzhFTXRthis_-Oty3JQ-bzlaP0z_dQhf_-Oty3lS5xDh3phh5swfr": {
+          "horseIds": ["-Oty3lS5xDh3phh5swfr", "-Oty3JQ-bzlaP0z_dQhf", "-OtxnHrWmpzhFTXRthis"],
+          "names": ["ステイゴールド", "ジェンティルドンナ", "トウカイテイオー"],
+          "selection": {
+            "-OtxnHrWmpzhFTXRthis": "トウカイテイオー",
+            "-Oty3JQ-bzlaP0z_dQhf": "ジェンティルドンナ",
+            "-Oty3lS5xDh3phh5swfr": "ステイゴールド"
+          },
+          "voters": [
+            {
+              "at": 1780231837142,
+              "comment": "御影さん、覚醒レベル７おめでとう！！！(精一杯のこび)",
+              "name": "あさひ",
+              "uid": "158384798"
+            }
+          ],
+          "votes": 1
+        },
+        "-OtxnbonBOzn9aQXzZh9_-Otxnf6alBw_5GjBC4Xx_-Otxni-oesK3kkgUN9qI": {
+          "horseIds": ["-OtxnbonBOzn9aQXzZh9", "-Otxnf6alBw_5GjBC4Xx", "-Otxni-oesK3kkgUN9qI"],
+          "names": ["タニノギムレット", "マチカネタンホイザ", "ドゥラメンテ"],
+          "selection": {
+            "-OtxnbonBOzn9aQXzZh9": "タニノギムレット",
+            "-Otxnf6alBw_5GjBC4Xx": "マチカネタンホイザ",
+            "-Otxni-oesK3kkgUN9qI": "ドゥラメンテ"
+          },
+          "voters": [
+            {
+              "at": 1780231074466,
+              "comment": "ﾌｧｲｯｯ",
+              "name": "ぷらむ",
+              "uid": "368853925509"
+            }
+          ],
+          "votes": 1
+        }
+      },
+      "createdAt": 1780226761896,
+      "horses": {
+        "-Otxn2DiV9-14CPN5cZj": {
+          "horseName": "ファインモーション",
+          "userName": "あさひ",
+          "votes": 0
+        },
+        "-Otxn4jkPkgJ4sDYBXdx": {
+          "horseName": "アドマイヤグルーヴ",
+          "userName": "まこ",
+          "votes": 0
+        },
+        "-Otxn8kB86Rk2CZdKIz5": {
+          "horseName": "サイレンススズカ",
+          "userName": "白飯屋",
+          "votes": 0
+        },
+        "-OtxnB-Z6LjWxXs66ylx": {
+          "horseName": "スティルインラブ",
+          "userName": "Nuk4s",
+          "votes": 0
+        },
+        "-OtxnERS0inlOhRCkd_w": {
+          "horseName": "キタサンブラック",
+          "userName": "捨之介",
+          "votes": 0
+        },
+        "-OtxnHrWmpzhFTXRthis": {
+          "horseName": "トウカイテイオー",
+          "userName": "御影",
+          "votes": 0
+        },
+        "-OtxnQpb1ZVmOM5F3VlO": {
+          "horseName": "ウインバリアシオン",
+          "userName": "貼るカイロ",
+          "votes": 0
+        },
+        "-OtxnUSwr-1QfdZoBMIT": {
+          "horseName": "アドマイヤグルーヴ",
+          "userName": "P助",
+          "votes": 0
+        },
+        "-OtxnW85DBgAx5Lh8zg0": {
+          "horseName": "シュヴァルグラン",
+          "userName": "おうた",
+          "votes": 0
+        },
+        "-OtxnZB3HNmjgkJA1HQ_": {
+          "horseName": "アグネスデジタル",
+          "userName": "やん",
+          "votes": 0
+        },
+        "-OtxnbonBOzn9aQXzZh9": {
+          "horseName": "タニノギムレット",
+          "userName": "キノ",
+          "votes": 0
+        },
+        "-Otxnf6alBw_5GjBC4Xx": {
+          "horseName": "マチカネタンホイザ",
+          "userName": "槐",
+          "votes": 0
+        },
+        "-Otxni-oesK3kkgUN9qI": {
+          "horseName": "ドゥラメンテ",
+          "userName": "１０００",
+          "votes": 0
+        },
+        "-Otxv2jrnSI4EQgxFjZh": {
+          "horseName": "アグネスタキオン",
+          "userName": "こも",
+          "votes": 0
+        },
+        "-Oty2GVUGpQ1CA9sUfE-": {
+          "horseName": "マチカネフクキタル",
+          "userName": "れもんそーだ",
+          "votes": 0
+        },
+        "-Oty3JQ-bzlaP0z_dQhf": {
+          "horseName": "ジェンティルドンナ",
+          "userName": "れる",
+          "votes": 0
+        },
+        "-Oty3lS5xDh3phh5swfr": {
+          "horseName": "ステイゴールド",
+          "userName": "まいちょ",
+          "votes": 0
+        }
+      },
+      "logs": {
+        "-Otxu1YVyRKJWhJf88dr": {
+          "combination": "-Otxn2DiV9-14CPN5cZj_-Otxnf6alBw_5GjBC4Xx_-OtxnoPtpgrWjGz4J4Ch",
+          "comment": "ダービーに続けて勝たせていただきます",
+          "timestamp": 1780228827521,
+          "uid": "280984927",
+          "user": "れる"
+        },
+        "-Otxz29_07PovK-X_l2q": {
+          "combination": "-Otxn2DiV9-14CPN5cZj_-Otxn4jkPkgJ4sDYBXdx_-OtxnHrWmpzhFTXRthis",
+          "comment": "キレてるよー、キレてるよー、覚醒してるよー！！！\nいいよお！",
+          "timestamp": 1780230140743,
+          "uid": "709914763354",
+          "user": "こも"
+        },
+        "-Oty1bB_MBTaMjW9wPHu": {
+          "combination": "-OtxnbonBOzn9aQXzZh9_-Otxnf6alBw_5GjBC4Xx_-Otxni-oesK3kkgUN9qI",
+          "comment": "ﾌｧｲｯｯ",
+          "timestamp": 1780231074765,
+          "uid": "368853925509",
+          "user": "ぷらむ"
+        },
+        "-Oty1euKxh-6yy9QilJu": {
+          "combination": "-Otxn4jkPkgJ4sDYBXdx_-OtxnHrWmpzhFTXRthis_-OtxnW85DBgAx5Lh8zg0",
+          "comment": "適応するマコ",
+          "timestamp": 1780231089978,
+          "uid": "853797574356",
+          "user": "まこ"
+        },
+        "-Oty1feROVOk9yQ9z-ng": {
+          "combination": "-Otxn2DiV9-14CPN5cZj_-OtxnZB3HNmjgkJA1HQ__-OtxnoPtpgrWjGz4J4Ch",
+          "comment": "",
+          "timestamp": 1780231093072,
+          "uid": "449650115",
+          "user": "アドレナリン"
+        },
+        "-Oty1iJ1AIdDKJOXG7cm": {
+          "combination": "-Otxn2DiV9-14CPN5cZj_-Otxn4jkPkgJ4sDYBXdx_-OtxnbonBOzn9aQXzZh9",
+          "comment": "酔い痴れた",
+          "timestamp": 1780231103910,
+          "uid": "544753146108",
+          "user": "キノ"
+        },
+        "-Oty1lg8XFJvwsB1sAc_": {
+          "combination": "-Otxn4jkPkgJ4sDYBXdx_-OtxnHrWmpzhFTXRthis_-OtxnZB3HNmjgkJA1HQ_",
+          "comment": "完成度がすごい！！！",
+          "timestamp": 1780231117741,
+          "uid": "155018449",
+          "user": "白飯屋"
+        },
+        "-Oty1nYSBoICDwZxpQN_": {
+          "combination": "-Otxn2DiV9-14CPN5cZj_-OtxnbonBOzn9aQXzZh9_-Otxni-oesK3kkgUN9qI",
+          "comment": "推し愛で出す素晴らしさに乾杯🍻！！！\n頑張れええ！！！！",
+          "timestamp": 1780231125383,
+          "uid": "115740687296",
+          "user": "央太"
+        },
+        "-Oty1ocjCBIDdueZWfno": {
+          "combination": "-Otxn2DiV9-14CPN5cZj_-Otxn4jkPkgJ4sDYBXdx_-OtxnZB3HNmjgkJA1HQ_",
+          "comment": "そろそろ初心者マーク外したいお",
+          "timestamp": 1780231129814,
+          "uid": "680127192",
+          "user": "やん"
+        },
+        "-Oty1qKBQgce0rJ_QIlx": {
+          "combination": "-Otxn2DiV9-14CPN5cZj_-Otxn4jkPkgJ4sDYBXdx_-OtxnHrWmpzhFTXRthis",
+          "comment": "ぜったい勝つ！💪",
+          "timestamp": 1780231136749,
+          "uid": "619973318761",
+          "user": "Nuk4s"
+        },
+        "-Oty1sGWQxuVy8xKFlmc": {
+          "combination": "-Otxn4jkPkgJ4sDYBXdx_-OtxnHrWmpzhFTXRthis_-Otxnf6alBw_5GjBC4Xx",
+          "comment": "マチタンに負けちゃいマチタン♩っていう心の準備はOK？",
+          "timestamp": 1780231144764,
+          "uid": "857202528",
+          "user": "槐"
+        },
+        "-Oty1syu-EJIQW-_ZjgL": {
+          "combination": "-Otxn8kB86Rk2CZdKIz5_-OtxnERS0inlOhRCkd_w_-OtxnoPtpgrWjGz4J4Ch",
+          "comment": "",
+          "timestamp": 1780231147640,
+          "uid": "618182241",
+          "user": "捨之介"
+        },
+        "-Oty1u6sRx23cavA1dZi": {
+          "combination": "-Otxn4jkPkgJ4sDYBXdx_-OtxnHrWmpzhFTXRthis_-OtxnoPtpgrWjGz4J4Ch",
+          "comment": "この３連単にあさひさんの次回シナリオ曲のソロ動画をかけるぜ！",
+          "timestamp": 1780231152309,
+          "uid": "129772031",
+          "user": "御影"
+        },
+        "-Oty1uFbjBKyV8-QrQsm": {
+          "combination": "-OtxnB-Z6LjWxXs66ylx_-OtxnZB3HNmjgkJA1HQ__-OtxnbonBOzn9aQXzZh9",
+          "comment": "応援！！！！！！！！呪いじゃなくてお祝いの言葉を言わせてくれーー！！！",
+          "timestamp": 1780231152832,
+          "uid": "158384798",
+          "user": "あさひ"
+        },
+        "-Oty2BEPJOKjGCnwFr4_": {
+          "combination": "-Otxn8kB86Rk2CZdKIz5_-OtxnHrWmpzhFTXRthis_-OtxnZB3HNmjgkJA1HQ_",
+          "comment": "毎度みなさまの推しを見るのが楽しみなのです！\nみんな応援してるぞ〜！",
+          "timestamp": 1780231226536,
+          "uid": "333793317839",
+          "user": "モルさん"
+        },
+        "-Oty2NUoBAnsJxjzAnii": {
+          "combination": "-Otxn2DiV9-14CPN5cZj_-OtxnoPtpgrWjGz4J4Ch_-Otxv2jrnSI4EQgxFjZh",
+          "comment": "あさひさん、れもそさん、こもちんを応援します",
+          "timestamp": 1780231276711,
+          "uid": "527448974991",
+          "user": "マイチョスター/Utd"
+        },
+        "-Oty2QsoRM5lxzO64vL1": {
+          "combination": "-Otxn2DiV9-14CPN5cZj_-Otxn8kB86Rk2CZdKIz5_-OtxnB-Z6LjWxXs66ylx",
+          "comment": "",
+          "timestamp": 1780231290658,
+          "uid": "170632981",
+          "user": "れもんそーだ"
+        },
+        "-Oty3B3PCpTC9vzxDUqq": {
+          "combination": "-Otxn2DiV9-14CPN5cZj_-OtxnZB3HNmjgkJA1HQ__-Oty2GVUGpQ1CA9sUfE-",
+          "comment": "鶏ガラ系醤油が最近の推し",
+          "timestamp": 1780231487947,
+          "uid": "449650115",
+          "user": "アドレナリン"
+        },
+        "-Oty3F_jfksHf_4oiQsO": {
+          "combination": "-Otxn4jkPkgJ4sDYBXdx_-OtxnHrWmpzhFTXRthis_-Otxnf6alBw_5GjBC4Xx",
+          "comment": "この３連単に次シナリオ曲のあさひさんソロ動画をかけるぜ！",
+          "timestamp": 1780231506489,
+          "uid": "129772031",
+          "user": "御影"
+        },
+        "-Oty4WOeACC9RoxUPl-y": {
+          "combination": "-OtxnHrWmpzhFTXRthis_-Oty3JQ-bzlaP0z_dQhf_-Oty3lS5xDh3phh5swfr",
+          "comment": "御影さん、覚醒レベル７おめでとう！！！(精一杯のこび)",
+          "timestamp": 1780231837449,
+          "uid": "158384798",
+          "user": "あさひ"
+        }
+      },
+      "status": "closed",
+      "title": "第21回ラスクロ杯[2026.04.29]"
+    },
+    "-OwgtWjrQgM28jhr-krv": {
+      "combos": {
+        "-OwguanMqsy1YCezRZAo_-OwgvP5WY1-66PpvE1g3_-OwgvRqtdyUi_aXenFUZ": {
+          "horseIds": ["-OwguanMqsy1YCezRZAo", "-OwgvP5WY1-66PpvE1g3", "-OwgvRqtdyUi_aXenFUZ"],
+          "names": ["ファインモーション", "ウインバリアシオン", "キセキ"],
+          "selection": {
+            "-OwguanMqsy1YCezRZAo": "ファインモーション",
+            "-OwgvP5WY1-66PpvE1g3": "ウインバリアシオン",
+            "-OwgvRqtdyUi_aXenFUZ": "キセキ"
+          },
+          "voters": [
+            {
+              "at": 1783170903981,
+              "comment": "",
+              "name": "Nuk4s",
+              "uid": "619973318761"
+            }
+          ],
+          "votes": 1
+        },
+        "-OwguanMqsy1YCezRZAo_-OwgvP5WY1-66PpvE1g3_-OwgwTa0LSf_EBNWDpcW": {
+          "horseIds": ["-OwgvP5WY1-66PpvE1g3", "-OwguanMqsy1YCezRZAo", "-OwgwTa0LSf_EBNWDpcW"],
+          "names": ["ウインバリアシオン", "ファインモーション", "スティルインラブ"],
+          "selection": {
+            "-OwguanMqsy1YCezRZAo": "ファインモーション",
+            "-OwgvP5WY1-66PpvE1g3": "ウインバリアシオン",
+            "-OwgwTa0LSf_EBNWDpcW": "スティルインラブ"
+          },
+          "voters": [
+            {
+              "at": 1783170484313,
+              "comment": "あーしは慎ましやかに走らせてもらいます",
+              "name": "るりたそ",
+              "uid": "232378513977"
+            }
+          ],
+          "votes": 1
+        },
+        "-OwguanMqsy1YCezRZAo_-OwgvRqtdyUi_aXenFUZ_-OwgxCAiD4cmY65bF2wS": {
+          "horseIds": ["-OwguanMqsy1YCezRZAo", "-OwgvRqtdyUi_aXenFUZ", "-OwgxCAiD4cmY65bF2wS"],
+          "names": ["ファインモーション", "キセキ", "マヤノトップガン"],
+          "selection": {
+            "-OwguanMqsy1YCezRZAo": "ファインモーション",
+            "-OwgvRqtdyUi_aXenFUZ": "キセキ",
+            "-OwgxCAiD4cmY65bF2wS": "マヤノトップガン"
+          },
+          "voters": [
+            {
+              "at": 1783170243324,
+              "comment": "今回こそあさひにラスクロの魂を賭ける",
+              "name": "P助",
+              "uid": "851210084"
+            }
+          ],
+          "votes": 1
+        },
+        "-OwguanMqsy1YCezRZAo_-Owgw8ctk9hFAWMpkGMI_-OwgwP2dco9QryPvNkK2": {
+          "horseIds": ["-OwguanMqsy1YCezRZAo", "-OwgwP2dco9QryPvNkK2", "-Owgw8ctk9hFAWMpkGMI"],
+          "names": ["ファインモーション", "トウカイテイオー", "マンハッタンカフェ"],
+          "selection": {
+            "-OwguanMqsy1YCezRZAo": "ファインモーション",
+            "-Owgw8ctk9hFAWMpkGMI": "マンハッタンカフェ",
+            "-OwgwP2dco9QryPvNkK2": "トウカイテイオー"
+          },
+          "voters": [
+            {
+              "at": 1783170215186,
+              "comment": "頑張れ！！！\nちなみに俺とあさひが初めてエンカしてから2周年ね",
+              "name": "おーの",
+              "uid": "902327775"
+            }
+          ],
+          "votes": 1
+        },
+        "-OwguanMqsy1YCezRZAo_-OwgwJ9epBukxJ_cRGtz_-OwgxCAiD4cmY65bF2wS": {
+          "horseIds": ["-OwgwJ9epBukxJ_cRGtz", "-OwguanMqsy1YCezRZAo", "-OwgxCAiD4cmY65bF2wS"],
+          "names": ["キタサンブラック", "ファインモーション", "マヤノトップガン"],
+          "selection": {
+            "-OwguanMqsy1YCezRZAo": "ファインモーション",
+            "-OwgwJ9epBukxJ_cRGtz": "キタサンブラック",
+            "-OwgxCAiD4cmY65bF2wS": "マヤノトップガン"
+          },
+          "voters": [
+            {
+              "at": 1783170116956,
+              "comment": "",
+              "name": "れもんそーだ",
+              "uid": "170632981"
+            }
+          ],
+          "votes": 1
+        },
+        "-Owgunk6drNdpcHffdlL_-OwgutSmE7rmcZQxcJWK_-OwgvP5WY1-66PpvE1g3": {
+          "horseIds": ["-OwgutSmE7rmcZQxcJWK", "-OwgvP5WY1-66PpvE1g3", "-Owgunk6drNdpcHffdlL"],
+          "names": ["サイレンススズカ", "ウインバリアシオン", "カレンブーケドール"],
+          "selection": {
+            "-Owgunk6drNdpcHffdlL": "カレンブーケドール",
+            "-OwgutSmE7rmcZQxcJWK": "サイレンススズカ",
+            "-OwgvP5WY1-66PpvE1g3": "ウインバリアシオン"
+          },
+          "voters": [
+            {
+              "at": 1783170421574,
+              "comment": "",
+              "name": "なび",
+              "uid": "917782232"
+            }
+          ],
+          "votes": 1
+        },
+        "-Owgunk6drNdpcHffdlL_-OwgxCAiD4cmY65bF2wS_-OwgxIHUwYhG9UdIbpXU": {
+          "horseIds": ["-OwgxCAiD4cmY65bF2wS", "-OwgxIHUwYhG9UdIbpXU", "-Owgunk6drNdpcHffdlL"],
+          "names": ["マヤノトップガン", "メジロアルダン", "カレンブーケドール"],
+          "selection": {
+            "-Owgunk6drNdpcHffdlL": "カレンブーケドール",
+            "-OwgxCAiD4cmY65bF2wS": "マヤノトップガン",
+            "-OwgxIHUwYhG9UdIbpXU": "メジロアルダン"
+          },
+          "voters": [
+            {
+              "at": 1783170051832,
+              "comment": "",
+              "name": "えび",
+              "uid": "399261650"
+            }
+          ],
+          "votes": 1
+        },
+        "-OwgutSmE7rmcZQxcJWK_-Owgw8ctk9hFAWMpkGMI_-OwgwJ9epBukxJ_cRGtz": {
+          "horseIds": ["-OwgutSmE7rmcZQxcJWK", "-OwgwJ9epBukxJ_cRGtz", "-Owgw8ctk9hFAWMpkGMI"],
+          "names": ["サイレンススズカ", "キタサンブラック", "マンハッタンカフェ"],
+          "selection": {
+            "-OwgutSmE7rmcZQxcJWK": "サイレンススズカ",
+            "-Owgw8ctk9hFAWMpkGMI": "マンハッタンカフェ",
+            "-OwgwJ9epBukxJ_cRGtz": "キタサンブラック"
+          },
+          "voters": [
+            {
+              "at": 1783170111748,
+              "comment": "",
+              "name": "捨之介",
+              "uid": "618182241"
+            }
+          ],
+          "votes": 1
+        },
+        "-OwgutSmE7rmcZQxcJWK_-OwgwJ9epBukxJ_cRGtz_-OwgwTa0LSf_EBNWDpcW": {
+          "horseIds": ["-OwgutSmE7rmcZQxcJWK", "-OwgwTa0LSf_EBNWDpcW", "-OwgwJ9epBukxJ_cRGtz"],
+          "names": ["サイレンススズカ", "スティルインラブ", "キタサンブラック"],
+          "selection": {
+            "-OwgutSmE7rmcZQxcJWK": "サイレンススズカ",
+            "-OwgwJ9epBukxJ_cRGtz": "キタサンブラック",
+            "-OwgwTa0LSf_EBNWDpcW": "スティルインラブ"
+          },
+          "voters": [
+            {
+              "at": 1783170308194,
+              "comment": "ラーメン喰って強くなるんだぞ…！",
+              "name": "モル",
+              "uid": "333793317839"
+            }
+          ],
+          "votes": 1
+        },
+        "-OwgvP5WY1-66PpvE1g3_-Owgw8ctk9hFAWMpkGMI_-OwgwTa0LSf_EBNWDpcW": {
+          "horseIds": ["-Owgw8ctk9hFAWMpkGMI", "-OwgwTa0LSf_EBNWDpcW", "-OwgvP5WY1-66PpvE1g3"],
+          "names": ["マンハッタンカフェ", "スティルインラブ", "ウインバリアシオン"],
+          "selection": {
+            "-OwgvP5WY1-66PpvE1g3": "ウインバリアシオン",
+            "-Owgw8ctk9hFAWMpkGMI": "マンハッタンカフェ",
+            "-OwgwTa0LSf_EBNWDpcW": "スティルインラブ"
+          },
+          "voters": [
+            {
+              "at": 1783170137740,
+              "comment": "いつもありがとう！応援してるぞ！",
+              "name": "あさひ",
+              "uid": "158384798"
+            }
+          ],
+          "votes": 1
+        },
+        "-OwgvRqtdyUi_aXenFUZ_-Owgv_iB1s5MvPA494Ir_-Owgx8iZd34O0heKpFye": {
+          "horseIds": ["-Owgv_iB1s5MvPA494Ir", "-Owgx8iZd34O0heKpFye", "-OwgvRqtdyUi_aXenFUZ"],
+          "names": ["シュヴァルグラン", "ミスターシービー", "キセキ"],
+          "selection": {
+            "-OwgvRqtdyUi_aXenFUZ": "キセキ",
+            "-Owgv_iB1s5MvPA494Ir": "シュヴァルグラン",
+            "-Owgx8iZd34O0heKpFye": "ミスターシービー"
+          },
+          "voters": [
+            {
+              "at": 1783170024079,
+              "comment": "適応するマコ",
+              "name": "まこ",
+              "uid": "853797574356"
+            }
+          ],
+          "votes": 1
+        },
+        "-OwgvRqtdyUi_aXenFUZ_-OwgwJ9epBukxJ_cRGtz_-OwgwZue4lyjyzVxIAlC": {
+          "horseIds": ["-OwgwJ9epBukxJ_cRGtz", "-OwgwZue4lyjyzVxIAlC", "-OwgvRqtdyUi_aXenFUZ"],
+          "names": ["キタサンブラック", "ナリタブライアン", "キセキ"],
+          "selection": {
+            "-OwgvRqtdyUi_aXenFUZ": "キセキ",
+            "-OwgwJ9epBukxJ_cRGtz": "キタサンブラック",
+            "-OwgwZue4lyjyzVxIAlC": "ナリタブライアン"
+          },
+          "voters": [
+            {
+              "at": 1783170039436,
+              "comment": "滾るな",
+              "name": "キノ",
+              "uid": "544753146108"
+            }
+          ],
+          "votes": 1
+        },
+        "-OwgvRqtdyUi_aXenFUZ_-OwgwZue4lyjyzVxIAlC_-Owgx8iZd34O0heKpFye": {
+          "horseIds": ["-Owgx8iZd34O0heKpFye", "-OwgwZue4lyjyzVxIAlC", "-OwgvRqtdyUi_aXenFUZ"],
+          "names": ["ミスターシービー", "ナリタブライアン", "キセキ"],
+          "selection": {
+            "-OwgvRqtdyUi_aXenFUZ": "キセキ",
+            "-OwgwZue4lyjyzVxIAlC": "ナリタブライアン",
+            "-Owgx8iZd34O0heKpFye": "ミスターシービー"
+          },
+          "voters": [
+            {
+              "at": 1783170073150,
+              "comment": "",
+              "name": "貼るカイロ",
+              "uid": "838039949986"
+            }
+          ],
+          "votes": 1
+        },
+        "-OwgvRqtdyUi_aXenFUZ_-OwgwZue4lyjyzVxIAlC_-OwgxCAiD4cmY65bF2wS": {
+          "horseIds": ["-OwgxCAiD4cmY65bF2wS", "-OwgwZue4lyjyzVxIAlC", "-OwgvRqtdyUi_aXenFUZ"],
+          "names": ["マヤノトップガン", "ナリタブライアン", "キセキ"],
+          "selection": {
+            "-OwgvRqtdyUi_aXenFUZ": "キセキ",
+            "-OwgwZue4lyjyzVxIAlC": "ナリタブライアン",
+            "-OwgxCAiD4cmY65bF2wS": "マヤノトップガン"
+          },
+          "voters": [
+            {
+              "at": 1783170079484,
+              "comment": "マヤノが勝つ\n分かっちゃったのだ",
+              "name": "槐",
+              "uid": "857202528"
+            }
+          ],
+          "votes": 1
+        },
+        "-OwgvRqtdyUi_aXenFUZ_-Owgx4evWWBP-ygR3OkO_-OwgxCAiD4cmY65bF2wS": {
+          "horseIds": ["-OwgxCAiD4cmY65bF2wS", "-Owgx4evWWBP-ygR3OkO", "-OwgvRqtdyUi_aXenFUZ"],
+          "names": ["マヤノトップガン", "メジロマックイーン", "キセキ"],
+          "selection": {
+            "-OwgvRqtdyUi_aXenFUZ": "キセキ",
+            "-Owgx4evWWBP-ygR3OkO": "メジロマックイーン",
+            "-OwgxCAiD4cmY65bF2wS": "マヤノトップガン"
+          },
+          "voters": [
+            {
+              "at": 1783170060764,
+              "comment": "まこくん応援隊！！！！！\n頑張れ！！！\n水着仲間の2人に乾杯🍻！！！",
+              "name": "央太",
+              "uid": "115740687296"
+            }
+          ],
+          "votes": 1
+        },
+        "-Owgv_iB1s5MvPA494Ir_-Owgw8ctk9hFAWMpkGMI_-OwgwZue4lyjyzVxIAlC": {
+          "horseIds": ["-Owgv_iB1s5MvPA494Ir", "-OwgwZue4lyjyzVxIAlC", "-Owgw8ctk9hFAWMpkGMI"],
+          "names": ["シュヴァルグラン", "ナリタブライアン", "マンハッタンカフェ"],
+          "selection": {
+            "-Owgv_iB1s5MvPA494Ir": "シュヴァルグラン",
+            "-Owgw8ctk9hFAWMpkGMI": "マンハッタンカフェ",
+            "-OwgwZue4lyjyzVxIAlC": "ナリタブライアン"
+          },
+          "voters": [
+            {
+              "at": 1783170032073,
+              "comment": "あいだね！！！！",
+              "name": "１０００",
+              "uid": "159448194364"
+            }
+          ],
+          "votes": 1
+        },
+        "-Owgv_iB1s5MvPA494Ir_-OwgwP2dco9QryPvNkK2_-Owgx8iZd34O0heKpFye": {
+          "horseIds": ["-OwgwP2dco9QryPvNkK2", "-Owgv_iB1s5MvPA494Ir", "-Owgx8iZd34O0heKpFye"],
+          "names": ["トウカイテイオー", "シュヴァルグラン", "ミスターシービー"],
+          "selection": {
+            "-Owgv_iB1s5MvPA494Ir": "シュヴァルグラン",
+            "-OwgwP2dco9QryPvNkK2": "トウカイテイオー",
+            "-Owgx8iZd34O0heKpFye": "ミスターシービー"
+          },
+          "voters": [
+            {
+              "at": 1783170096515,
+              "comment": "推し推し強そうの３連複で",
+              "name": "御影",
+              "uid": "129772031"
+            }
+          ],
+          "votes": 1
+        },
+        "-Owgw8ctk9hFAWMpkGMI_-OwgwTa0LSf_EBNWDpcW_-OwgxIHUwYhG9UdIbpXU": {
+          "horseIds": ["-OwgwTa0LSf_EBNWDpcW", "-Owgw8ctk9hFAWMpkGMI", "-OwgxIHUwYhG9UdIbpXU"],
+          "names": ["スティルインラブ", "マンハッタンカフェ", "メジロアルダン"],
+          "selection": {
+            "-Owgw8ctk9hFAWMpkGMI": "マンハッタンカフェ",
+            "-OwgwTa0LSf_EBNWDpcW": "スティルインラブ",
+            "-OwgxIHUwYhG9UdIbpXU": "メジロアルダン"
+          },
+          "voters": [
+            {
+              "at": 1783170066781,
+              "comment": "推し応援馬券と誕生日バフ",
+              "name": "やん",
+              "uid": "680127192"
+            }
+          ],
+          "votes": 1
+        },
+        "-OwgwJ9epBukxJ_cRGtz_-OwgwZue4lyjyzVxIAlC_-OwgxCAiD4cmY65bF2wS": {
+          "horseIds": ["-OwgwZue4lyjyzVxIAlC", "-OwgwJ9epBukxJ_cRGtz", "-OwgxCAiD4cmY65bF2wS"],
+          "names": ["ナリタブライアン", "キタサンブラック", "マヤノトップガン"],
+          "selection": {
+            "-OwgwJ9epBukxJ_cRGtz": "キタサンブラック",
+            "-OwgwZue4lyjyzVxIAlC": "ナリタブライアン",
+            "-OwgxCAiD4cmY65bF2wS": "マヤノトップガン"
+          },
+          "voters": [
+            {
+              "at": 1783170348891,
+              "comment": "長距離は誰が勝つかわからん！\nみんながんばれー！！！",
+              "name": "白飯屋",
+              "uid": "155018449"
+            }
+          ],
+          "votes": 1
+        }
+      },
+      "createdAt": 1783164705692,
+      "horses": {
+        "-OwguanMqsy1YCezRZAo": {
+          "horseName": "ファインモーション",
+          "userName": "あさひ",
+          "votes": 0
+        },
+        "-Owgunk6drNdpcHffdlL": {
+          "horseName": "カレンブーケドール",
+          "userName": "P助",
+          "votes": 0
+        },
+        "-OwgutSmE7rmcZQxcJWK": {
+          "horseName": "サイレンススズカ",
+          "userName": "白飯屋",
+          "votes": 0
+        },
+        "-OwgvP5WY1-66PpvE1g3": {
+          "horseName": "ウインバリアシオン",
+          "userName": "貼るカイロ",
+          "votes": 0
+        },
+        "-OwgvRqtdyUi_aXenFUZ": {
+          "horseName": "キセキ",
+          "userName": "まこ",
+          "votes": 0
+        },
+        "-Owgv_iB1s5MvPA494Ir": {
+          "horseName": "シュヴァルグラン",
+          "userName": "おうた",
+          "votes": 0
+        },
+        "-Owgw1d2jzOzYwwxCh8O": {
+          "horseName": "メジロマックイーン",
+          "userName": "ぷらむ",
+          "votes": 0
+        },
+        "-Owgw8ctk9hFAWMpkGMI": {
+          "horseName": "マンハッタンカフェ",
+          "userName": "るりたそ",
+          "votes": 0
+        },
+        "-OwgwJ9epBukxJ_cRGtz": {
+          "horseName": "キタサンブラック",
+          "userName": "捨之介",
+          "votes": 0
+        },
+        "-OwgwP2dco9QryPvNkK2": {
+          "horseName": "トウカイテイオー",
+          "userName": "御影",
+          "votes": 0
+        },
+        "-OwgwTa0LSf_EBNWDpcW": {
+          "horseName": "スティルインラブ",
+          "userName": "Nuk4s",
+          "votes": 0
+        },
+        "-OwgwZue4lyjyzVxIAlC": {
+          "horseName": "ナリタブライアン",
+          "userName": "キノ",
+          "votes": 0
+        },
+        "-Owgx4evWWBP-ygR3OkO": {
+          "horseName": "メジロマックイーン",
+          "userName": "体重マシマシ334㎏",
+          "votes": 0
+        },
+        "-Owgx8iZd34O0heKpFye": {
+          "horseName": "ミスターシービー",
+          "userName": "１０００",
+          "votes": 0
+        },
+        "-OwgxCAiD4cmY65bF2wS": {
+          "horseName": "マヤノトップガン",
+          "userName": "槐",
+          "votes": 0
+        },
+        "-OwgxIHUwYhG9UdIbpXU": {
+          "horseName": "メジロアルダン",
+          "userName": "モル＠おとなりさん",
+          "votes": 0
+        }
+      },
+      "logs": {
+        "-OwhCoAmhdQihUq1CfPq": {
+          "combination": "-OwgvRqtdyUi_aXenFUZ_-Owgv_iB1s5MvPA494Ir_-Owgx8iZd34O0heKpFye",
+          "comment": "適応するマコ",
+          "timestamp": 1783170024355,
+          "uid": "853797574356",
+          "user": "まこ"
+        },
+        "-OwhCq7mj1BtMjfu00Jv": {
+          "combination": "-Owgv_iB1s5MvPA494Ir_-Owgw8ctk9hFAWMpkGMI_-OwgwZue4lyjyzVxIAlC",
+          "comment": "あいだね！！！！",
+          "timestamp": 1783170032347,
+          "uid": "159448194364",
+          "user": "１０００"
+        },
+        "-OwhCrxXyyt7moWE4nbr": {
+          "combination": "-OwgvRqtdyUi_aXenFUZ_-OwgwJ9epBukxJ_cRGtz_-OwgwZue4lyjyzVxIAlC",
+          "comment": "滾るな",
+          "timestamp": 1783170039817,
+          "uid": "544753146108",
+          "user": "キノ"
+        },
+        "-OwhCv5t0JhQsV-3WtVN": {
+          "combination": "-Owgunk6drNdpcHffdlL_-OwgxCAiD4cmY65bF2wS_-OwgxIHUwYhG9UdIbpXU",
+          "comment": "",
+          "timestamp": 1783170052713,
+          "uid": "399261650",
+          "user": "えび"
+        },
+        "-OwhCx9K3FzMKbvGOMiL": {
+          "combination": "-OwgvRqtdyUi_aXenFUZ_-Owgx4evWWBP-ygR3OkO_-OwgxCAiD4cmY65bF2wS",
+          "comment": "まこくん応援隊！！！！！\n頑張れ！！！\n水着仲間の2人に乾杯🍻！！！",
+          "timestamp": 1783170061114,
+          "uid": "115740687296",
+          "user": "央太"
+        },
+        "-OwhCyb2529iMhSu5IIK": {
+          "combination": "-Owgw8ctk9hFAWMpkGMI_-OwgwTa0LSf_EBNWDpcW_-OwgxIHUwYhG9UdIbpXU",
+          "comment": "推し応援馬券と誕生日バフ",
+          "timestamp": 1783170067053,
+          "uid": "680127192",
+          "user": "やん"
+        },
+        "-OwhD-9bx42TGT2aChIl": {
+          "combination": "-OwgvRqtdyUi_aXenFUZ_-OwgwZue4lyjyzVxIAlC_-Owgx8iZd34O0heKpFye",
+          "comment": "",
+          "timestamp": 1783170073424,
+          "uid": "838039949986",
+          "user": "貼るカイロ"
+        },
+        "-OwhD0hnlqDi292XHL3Y": {
+          "combination": "-OwgvRqtdyUi_aXenFUZ_-OwgwZue4lyjyzVxIAlC_-OwgxCAiD4cmY65bF2wS",
+          "comment": "マヤノが勝つ\n分かっちゃったのだ",
+          "timestamp": 1783170079797,
+          "uid": "857202528",
+          "user": "槐"
+        },
+        "-OwhD4eqL5dvEw1UEmFq": {
+          "combination": "-Owgv_iB1s5MvPA494Ir_-OwgwP2dco9QryPvNkK2_-Owgx8iZd34O0heKpFye",
+          "comment": "推し推し強そうの３連複で",
+          "timestamp": 1783170096019,
+          "uid": "129772031",
+          "user": "御影"
+        },
+        "-OwhD93hm550J96QjffZ": {
+          "combination": "-OwgutSmE7rmcZQxcJWK_-Owgw8ctk9hFAWMpkGMI_-OwgwJ9epBukxJ_cRGtz",
+          "comment": "",
+          "timestamp": 1783170114109,
+          "uid": "618182241",
+          "user": "捨之介"
+        },
+        "-OwhD9UOC78It3AwVZVL": {
+          "combination": "-OwguanMqsy1YCezRZAo_-OwgwJ9epBukxJ_cRGtz_-OwgxCAiD4cmY65bF2wS",
+          "comment": "",
+          "timestamp": 1783170115765,
+          "uid": "170632981",
+          "user": "れもんそーだ"
+        },
+        "-OwhDF0V9DwqzXaUanIQ": {
+          "combination": "-OwgvP5WY1-66PpvE1g3_-Owgw8ctk9hFAWMpkGMI_-OwgwTa0LSf_EBNWDpcW",
+          "comment": "いつもありがとう！応援してるぞ！",
+          "timestamp": 1783170138367,
+          "uid": "158384798",
+          "user": "あさひ"
+        },
+        "-OwhDSsSkXEfLw84AuHB": {
+          "combination": "-OwguanMqsy1YCezRZAo_-Owgw8ctk9hFAWMpkGMI_-OwgwP2dco9QryPvNkK2",
+          "comment": "頑張れ！！！\nちなみに俺とあさひが初めてエンカしてから2周年ね",
+          "timestamp": 1783170195128,
+          "uid": "902327775",
+          "user": "おーの"
+        },
+        "-OwhDdiRYog7Iidet-UB": {
+          "combination": "-OwguanMqsy1YCezRZAo_-OwgvRqtdyUi_aXenFUZ_-OwgxCAiD4cmY65bF2wS",
+          "comment": "今回こそあさひにラスクロの魂を賭ける",
+          "timestamp": 1783170243683,
+          "uid": "851210084",
+          "user": "P助"
+        },
+        "-OwhDtYZcjYSjWfyc36r": {
+          "combination": "-OwgutSmE7rmcZQxcJWK_-OwgwJ9epBukxJ_cRGtz_-OwgwTa0LSf_EBNWDpcW",
+          "comment": "ラーメン喰って強くなるんだぞ…！",
+          "timestamp": 1783170308514,
+          "uid": "333793317839",
+          "user": "モル"
+        },
+        "-OwhE330UV9w0qypEIUp": {
+          "combination": "-OwgwJ9epBukxJ_cRGtz_-OwgwZue4lyjyzVxIAlC_-OwgxCAiD4cmY65bF2wS",
+          "comment": "長距離は誰が勝つかわからん！\nみんながんばれー！！！",
+          "timestamp": 1783170351551,
+          "uid": "155018449",
+          "user": "白飯屋"
+        },
+        "-OwhEKQInX-7P_UZTat8": {
+          "combination": "-Owgunk6drNdpcHffdlL_-OwgutSmE7rmcZQxcJWK_-OwgvP5WY1-66PpvE1g3",
+          "comment": "",
+          "timestamp": 1783170422643,
+          "uid": "917782232",
+          "user": "なび"
+        },
+        "-OwhEZXzMSo0ZIBi5J6d": {
+          "combination": "-OwguanMqsy1YCezRZAo_-OwgvP5WY1-66PpvE1g3_-OwgwTa0LSf_EBNWDpcW",
+          "comment": "あーしは慎ましやかに走らせてもらいます",
+          "timestamp": 1783170484573,
+          "uid": "232378513977",
+          "user": "るりたそ"
+        },
+        "-OwhGA-jNWUnQFnVgjHL": {
+          "combination": "-OwguanMqsy1YCezRZAo_-OwgvP5WY1-66PpvE1g3_-OwgvRqtdyUi_aXenFUZ",
+          "comment": "",
+          "timestamp": 1783170904275,
+          "uid": "619973318761",
+          "user": "Nuk4s"
+        }
+      },
+      "results": [null, "ファインモーション(あさひ)", "マヤノトップガン(槐)", "カレンブーケドール(P助)", "キタサンブラック(捨之介)", "サイレンススズカ(白飯屋)"],
+      "status": "closed",
+      "title": "第22回ラスクロ杯[2026.07.04]"
+    },
+    "race_001": {
+      "horses": {
+        "-Otxl3dW9P7otrTEPWG4": {
+          "horseName": "ファインモーション",
+          "userName": "あさひ",
+          "votes": 0
+        },
+        "-Otxl7pxhEJCLVghig2w": {
+          "horseName": "アドマイヤグルーヴ",
+          "userName": "まこ",
+          "votes": 0
+        },
+        "-OtxlAnudw0l13xcNLdg": {
+          "horseName": "サイレンススズカ",
+          "userName": "白飯屋",
+          "votes": 0
+        },
+        "-OtxlFkhyEnAu6eM-Lqy": {
+          "horseName": "スティルインラブ",
+          "userName": "Nuk4s",
+          "votes": 0
+        },
+        "-OtxlJjVsLWlCacT1tcN": {
+          "horseName": "キタサンブラック",
+          "userName": "捨之介",
+          "votes": 0
+        },
+        "-OtxlN9jqa7-tV8S-Qi6": {
+          "horseName": "トウカイテイオー",
+          "userName": "御影",
+          "votes": 0
+        },
+        "-OtxlQiyFgAUoAH5auTR": {
+          "horseName": "ウインバリアシオン",
+          "userName": "貼るカイロ",
+          "votes": 0
+        },
+        "-OtxlUObW-iFcPtZa8eg": {
+          "horseName": "アドマイヤグルーヴ",
+          "userName": "P助",
+          "votes": 0
+        },
+        "-OtxlXtgeIn1NzWpSDws": {
+          "horseName": "シュヴァルグラン",
+          "userName": "おうた",
+          "votes": 0
+        },
+        "-Otxl_ZXyqhQSa2odgCm": {
+          "horseName": "アグネスデジタル",
+          "userName": "やん",
+          "votes": 0
+        },
+        "-OtxldmmQHrOZklZfHov": {
+          "horseName": "タニノギムレット",
+          "userName": "キノ",
+          "votes": 0
+        },
+        "-OtxlkwodJEQqCmEY6Ke": {
+          "horseName": "マチカネタンホイザ",
+          "userName": "槐",
+          "votes": 0
+        },
+        "-Otxlo3u3Lcx1_kVb2OR": {
+          "horseName": "ドゥラメンテ",
+          "userName": "１０００",
+          "votes": 0
+        }
+      },
+      "status": "closed"
+    }
+  },
+  "social": {
+    "followers": {
+      "158384798": {
+        "582530892": true
+      }
+    },
+    "following": {
+      "582530892": {
+        "158384798": true
+      }
+    }
+  },
+  "users": {
+    "129772031": {
+      "circleName": "LastCrop",
+      "comment": "ていていお～",
+      "createdAt": 1777126796971,
+      "defaultStake": 1000,
+      "favoriteChara": "トウカイテイオー",
+      "photoURL": "https://firebasestorage.googleapis.com/v0/b/umasaba-odds.firebasestorage.app/o/users%2F129772031%2Fprofile.jpg?alt=media&token=36677061-d347-4191-9823-a0221ad72859",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1777466625069,
+      "userName": "御影"
+    },
+    "155018449": {
+      "circleName": "LastCrop",
+      "comment": "先頭の景色は譲らない！",
+      "createdAt": 1777126414021,
+      "defaultStake": 1000,
+      "favoriteChara": "サイレンススズカ",
+      "photoURL": "https://firebasestorage.googleapis.com/v0/b/umasaba-odds.firebasestorage.app/o/users%2F155018449%2Fprofile.jpg?alt=media&token=54f06d2c-4a96-4371-a3b9-ddb3c7c3134a",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1777466871324,
+      "userName": "白飯屋"
+    },
+    "158384798": {
+      "circleName": "LastCrop",
+      "comment": "領域展開",
+      "createdAt": 1776776293335,
+      "defaultStake": 1000,
+      "favoriteChara": "ファインモーション",
+      "photoURL": "https://firebasestorage.googleapis.com/v0/b/umasaba-odds.firebasestorage.app/o/users%2F158384798%2Fprofile.jpg?alt=media&token=fe39cdd3-023c-41b8-99de-bdf75ace2fa2",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1777466842881,
+      "userName": "あさひ"
+    },
+    "170632981": {
+      "circleName": "へーべーえりゅえけ",
+      "comment": "",
+      "createdAt": 1777126833927,
+      "defaultStake": 1000,
+      "favoriteChara": "マチカネフクキタル",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1777466964785,
+      "userName": "れもんそーだ"
+    },
+    "180953487": {
+      "circleName": "Snowknight",
+      "createdAt": 1777206767528,
+      "points": 100,
+      "status": "active",
+      "userName": "アポラー"
+    },
+    "190722015": {
+      "circleName": "Snowknight",
+      "comment": "ウマ娘かわいいこ多すぎ？？！？！？！",
+      "createdAt": 1777126844682,
+      "defaultStake": 1000,
+      "favoriteChara": "スティルインラブ",
+      "photoURL": "https://firebasestorage.googleapis.com/v0/b/umasaba-odds.firebasestorage.app/o/users%2F190722015%2Fprofile.jpg?alt=media&token=5013f0c5-006b-4c48-a518-772e66fe5ade",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1777508589689,
+      "userName": "ぴょん！"
+    },
+    "218705656": {
+      "circleName": "Snowknight",
+      "createdAt": 1777126856363,
+      "points": 100,
+      "status": "active",
+      "userName": "猫影"
+    },
+    "245969340": {
+      "circleName": "Snowknight",
+      "createdAt": 1777126869707,
+      "points": 100,
+      "status": "active",
+      "userName": "マッシュ"
+    },
+    "280984927": {
+      "circleName": "Smile",
+      "createdAt": 1777126881470,
+      "points": 100,
+      "status": "active",
+      "userName": "れる"
+    },
+    "306529343": {
+      "circleName": "Smile",
+      "createdAt": 1777126893940,
+      "points": 100,
+      "status": "active",
+      "userName": "kou"
+    },
+    "377161854": {
+      "circleName": "LastCrop",
+      "createdAt": 1777126905955,
+      "points": 100,
+      "status": "active",
+      "userName": "う！"
+    },
+    "399261650": {
+      "circleName": "ここあ親衛隊",
+      "createdAt": 1777126920251,
+      "points": 100,
+      "status": "active",
+      "userName": "えび"
+    },
+    "406070960": {
+      "circleName": "ここあ親衛隊",
+      "createdAt": 1777126935401,
+      "points": 100,
+      "status": "active",
+      "userName": "すず"
+    },
+    "449294968": {
+      "circleName": "Smile",
+      "createdAt": 1777126948934,
+      "points": 100,
+      "status": "active",
+      "userName": "しん"
+    },
+    "449650115": {
+      "circleName": "へーべーえりゅえけ",
+      "createdAt": 1777126962749,
+      "points": 100,
+      "status": "active",
+      "userName": "アドレナリン"
+    },
+    "582530892": {
+      "circleName": "Snowknight",
+      "comment": "かじです。",
+      "createdAt": 1776022969548,
+      "defaultStake": 1000,
+      "favoriteChara": "キングヘイロー",
+      "photoURL": "https://firebasestorage.googleapis.com/v0/b/umasaba-odds.firebasestorage.app/o/users%2F582530892%2Fprofile.jpg?alt=media&token=8f9e99e9-6bfa-499d-8dc8-de521e1e0dd3",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1777136699211,
+      "userName": "かじ"
+    },
+    "583167554": {
+      "circleName": "Snowknight",
+      "comment": "",
+      "createdAt": 1777480234321,
+      "defaultStake": 1000,
+      "favoriteChara": "エスポワールシチー",
+      "photoURL": "https://firebasestorage.googleapis.com/v0/b/umasaba-odds.firebasestorage.app/o/users%2F583167554%2Fprofile.jpg?alt=media&token=ed734e94-0518-4128-969c-1c678bef01d6",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1777480312191,
+      "userName": "れたす"
+    },
+    "618182241": {
+      "circleName": "LastCrop",
+      "comment": "先手必勝！",
+      "createdAt": 1777466532280,
+      "defaultStake": 1000,
+      "favoriteChara": "キタサンブラック",
+      "photoURL": "https://firebasestorage.googleapis.com/v0/b/umasaba-odds.firebasestorage.app/o/users%2F618182241%2Fprofile.jpg?alt=media&token=2ecc847b-9a40-4d19-8b76-e8cfeda6792b",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1777489551178,
+      "userName": "捨之介"
+    },
+    "627688703": {
+      "circleName": "Snowknight",
+      "createdAt": 1777477365205,
+      "points": 100,
+      "status": "active",
+      "userName": "夕凪"
+    },
+    "680127192": {
+      "circleName": "LastCrop",
+      "comment": "萌到譲我活過来了！",
+      "createdAt": 1777262336766,
+      "defaultStake": 1000,
+      "favoriteChara": "アグネスデジタル",
+      "photoURL": "https://firebasestorage.googleapis.com/v0/b/umasaba-odds.firebasestorage.app/o/users%2F680127192%2Fprofile.jpg?alt=media&token=59fc87f5-e57b-441b-aa6f-9874a3dfe49f",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1777295059522,
+      "userName": "やん"
+    },
+    "774519246": {
+      "circleName": "Snowknight",
+      "comment": "祈っているだけ",
+      "createdAt": 1777554629665,
+      "defaultStake": 1000,
+      "favoriteChara": "ワンダーアキュート",
+      "photoURL": "https://firebasestorage.googleapis.com/v0/b/umasaba-odds.firebasestorage.app/o/users%2F774519246%2Fprofile.jpg?alt=media&token=468375b3-52f6-4458-9ea6-600f74dc0f86",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1777554896770,
+      "userName": "クランケ"
+    },
+    "836284890": {
+      "circleName": "ここあ親衛隊",
+      "createdAt": 1778144001695,
+      "points": 100,
+      "status": "active",
+      "userName": "ここあ"
+    },
+    "851210084": {
+      "circleName": "LastCrop",
+      "comment": "キュンキュンたらっちゅらめ〜にめに〜",
+      "createdAt": 1777120790815,
+      "defaultStake": 1000,
+      "favoriteChara": "サクラチヨノオー",
+      "photoURL": "https://firebasestorage.googleapis.com/v0/b/umasaba-odds.firebasestorage.app/o/users%2F851210084%2Fprofile.jpg?alt=media&token=eab70a5d-11f5-4df0-809c-d6a4f8ce44b4",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1777466643457,
+      "userName": "P助"
+    },
+    "857202528": {
+      "circleName": "LastCrop",
+      "comment": "目が合ったらバトルでは？？？",
+      "createdAt": 1777293733051,
+      "defaultStake": 1000,
+      "favoriteChara": "ナイスネイチャ",
+      "photoURL": "https://firebasestorage.googleapis.com/v0/b/umasaba-odds.firebasestorage.app/o/users%2F857202528%2Fprofile.jpg?alt=media&token=755833d4-1c0b-4235-bcf0-2e66aa32cd82",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1777445140597,
+      "userName": "槐"
+    },
+    "882116701": {
+      "circleName": "LastCrop",
+      "createdAt": 1777455674708,
+      "points": 100,
+      "status": "active",
+      "userName": "まー。"
+    },
+    "902327775": {
+      "circleName": "Snowknight",
+      "comment": "限界社畜",
+      "createdAt": 1776516290052,
+      "defaultStake": 1000,
+      "favoriteChara": "ライスシャワー",
+      "photoURL": "https://firebasestorage.googleapis.com/v0/b/umasaba-odds.firebasestorage.app/o/users%2F902327775%2Fprofile.jpg?alt=media&token=b6f9abc8-8130-4f24-a9f2-4a6d563fdfef",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1776539447925,
+      "userName": "おーの"
+    },
+    "917782232": {
+      "circleName": "cocoa",
+      "comment": "ふたいてん",
+      "createdAt": 1783170370751,
+      "defaultStake": 1000,
+      "favoriteChara": "グラスワンダー",
+      "photoURL": "https://firebasestorage.googleapis.com/v0/b/umasaba-odds.firebasestorage.app/o/users%2F917782232%2Fprofile.jpg?alt=media&token=6b5e136d-fa6c-43a5-ab00-9815e8380718",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1783171728584,
+      "userName": "なび"
+    },
+    "1234567890": {
+      "circleName": "Hebeeryueke",
+      "createdAt": 1783607743944,
+      "points": 100,
+      "status": "active",
+      "userName": "テスト"
+    },
+    "115740687296": {
+      "circleName": "LastCrop",
+      "createdAt": 1777126988899,
+      "points": 100,
+      "status": "active",
+      "userName": "央太"
+    },
+    "159448194364": {
+      "circleName": "LastCrop",
+      "comment": "えい、むん！えい、むん！",
+      "createdAt": 1777127002800,
+      "defaultStake": 1000,
+      "favoriteChara": "マチカネタンホイザ",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1777466953750,
+      "userName": "１０００"
+    },
+    "173189090244": {
+      "circleName": "へーべーえりゅえけ",
+      "createdAt": 1777127016591,
+      "points": 100,
+      "status": "active",
+      "userName": "時雨"
+    },
+    "232378513977": {
+      "circleName": "Smile",
+      "createdAt": 1783170403830,
+      "points": 100,
+      "status": "active",
+      "userName": "るりたそ"
+    },
+    "333793317839": {
+      "circleName": "LastCrop",
+      "createdAt": 1777466603057,
+      "points": 100,
+      "status": "active",
+      "userName": "モル"
+    },
+    "368853925509": {
+      "circleName": "LastCrop",
+      "comment": "",
+      "createdAt": 1777466582512,
+      "defaultStake": 1000,
+      "favoriteChara": "カツラギエース",
+      "photoURL": "https://firebasestorage.googleapis.com/v0/b/umasaba-odds.firebasestorage.app/o/users%2F368853925509%2Fprofile.jpg?alt=media&token=ac25dc54-cfaf-4c72-ac8b-0a0899b3b3b8",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1777466939856,
+      "userName": "ぷらむ"
+    },
+    "527448974991": {
+      "circleName": "Snowknight",
+      "comment": "",
+      "createdAt": 1777125627145,
+      "defaultStake": 1000,
+      "favoriteChara": "マーベラスサンデー",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1777466895442,
+      "userName": "マイチョスター/Utd"
+    },
+    "544753146108": {
+      "circleName": "LastCrop",
+      "comment": "デスキャノン",
+      "createdAt": 1778067530682,
+      "defaultStake": 1000,
+      "favoriteChara": "ナリタブライアン",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1778069607157,
+      "userName": "キノ"
+    },
+    "614168265703": {
+      "circleName": "Smile",
+      "comment": "いっちょよろしくお願いいたしますわ〜！",
+      "createdAt": 1777472613178,
+      "defaultStake": 1000,
+      "favoriteChara": "カワカミプリンセス",
+      "photoURL": "https://firebasestorage.googleapis.com/v0/b/umasaba-odds.firebasestorage.app/o/users%2F614168265703%2Fprofile.jpg?alt=media&token=b13f1b5a-6ab8-4275-b331-d452a5de53be",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1777472883411,
+      "userName": "ゆきの"
+    },
+    "614335047297": {
+      "circleName": "Snowknight",
+      "comment": "がんばれー",
+      "createdAt": 1777466835401,
+      "defaultStake": 1000,
+      "favoriteChara": "ライスシャワー",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1777467108609,
+      "userName": "テル"
+    },
+    "619973318761": {
+      "circleName": "LastCrop",
+      "comment": "Still in love",
+      "createdAt": 1777466494006,
+      "defaultStake": 1000,
+      "favoriteChara": "スティルインラブ",
+      "photoURL": "https://firebasestorage.googleapis.com/v0/b/umasaba-odds.firebasestorage.app/o/users%2F619973318761%2Fprofile.jpg?alt=media&token=04e2dce4-c835-41f5-a9fd-034c6092e2bb",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1777472828553,
+      "userName": "Nuk4s"
+    },
+    "681998972135": {
+      "circleName": "へーべーえりゅえけ",
+      "comment": "",
+      "createdAt": 1777474915056,
+      "defaultStake": 1000,
+      "favoriteChara": "レッドディザイア",
+      "photoURL": "https://firebasestorage.googleapis.com/v0/b/umasaba-odds.firebasestorage.app/o/users%2F681998972135%2Fprofile.jpg?alt=media&token=83751f51-f111-482d-b65d-c3862b1c0ffb",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1779190394315,
+      "userName": "あかや"
+    },
+    "709914763354": {
+      "circleName": "Smile",
+      "comment": "",
+      "createdAt": 1777203398401,
+      "defaultStake": 1000,
+      "favoriteChara": "セイウンスカイ",
+      "photoURL": "https://firebasestorage.googleapis.com/v0/b/umasaba-odds.firebasestorage.app/o/users%2F709914763354%2Fprofile.jpg?alt=media&token=b902c00e-0b7b-4f2a-9d21-7f7916d04a16",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1778067957345,
+      "userName": "こも"
+    },
+    "838039949986": {
+      "circleName": "LastCrop",
+      "createdAt": 1778067561208,
+      "points": 100,
+      "status": "active",
+      "userName": "貼るカイロ"
+    },
+    "853020996540": {
+      "circleName": "LastCrop",
+      "createdAt": 1778067572464,
+      "points": 100,
+      "status": "active",
+      "userName": "cvoda"
+    },
+    "853797574356": {
+      "circleName": "LastCrop",
+      "comment": "ユニスティ",
+      "createdAt": 1777466521572,
+      "defaultStake": 1000,
+      "favoriteChara": "ネオユニヴァース",
+      "photoURL": "https://firebasestorage.googleapis.com/v0/b/umasaba-odds.firebasestorage.app/o/users%2F853797574356%2Fprofile.jpg?alt=media&token=0ff57a33-baba-431e-a168-262b40e88fbf",
+      "points": 100,
+      "status": "active",
+      "updatedAt": 1777466772821,
+      "userName": "まこ"
+    }
+  },
+
+  "draft_member": {
+    "user1": {
+      "username": "team01",
+      "password": "draft_team01"
+    },
+    "user2": {
+      "username": "team02",
+      "password": "draft_team02"
+    },
+    "user3": {
+      "username": "team03",
+      "password": "draft_team03"
+    },
+    "user4": {
+      "username": "team04",
+      "password": "draft_team04"
+    },
+    "user5": {
+      "username": "team05",
+      "password": "draft_team05"
+    },
+    "user6": {
+      "username": "team06",
+      "password": "draft_team06"
+    }
+  }
+}
