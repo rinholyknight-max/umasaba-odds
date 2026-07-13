@@ -1,5 +1,12 @@
+html,
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
 .container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 40px 20px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -10,7 +17,6 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   width: 100%;
-  transition: all 0.4s ease;
 }
 .members-grid:has(.member-card.is-active) {
   grid-template-columns: repeat(5, 1fr);
@@ -27,15 +33,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .member-card.is-active {
-  grid-column: 1/6;
+  grid-column: 1/-1;
   grid-row: 1;
-  width: 100%;
-  max-width: 650px;
-  margin: 0 auto 24px auto;
-  aspect-ratio: 4/3;
+  width: 480px;
+  height: 320px;
+  aspect-ratio: auto;
+  margin: 0 auto 32px auto;
   border-color: #0071e3;
   box-shadow: 0 12px 24px rgba(0, 113, 227, 0.12);
   cursor: default;
@@ -45,6 +51,7 @@
   background-color: #f5f5f7;
   border: 1px solid #d2d2d7;
   flex-grow: 1;
+  height: auto;
 }
 .member-card.is-active .member-content p {
   opacity: 1;
@@ -52,6 +59,7 @@
 .members-grid:has(.member-card.is-active) .member-card:not(.is-active) {
   grid-row: 2;
   padding: 12px;
+  aspect-ratio: 4/3;
 }
 .members-grid:has(.member-card.is-active) .member-card:not(.is-active) h3 {
   font-size: 14px;
@@ -69,14 +77,13 @@
   flex-grow: 1;
   background-image: repeating-linear-gradient(45deg, #e8e8ed, #e8e8ed 10px, #f5f5f7 10px, #f5f5f7 20px);
   background-size: cover;
-  transition: all 0.3s ease;
 }
 .member-card .member-content p {
   opacity: 0;
   margin: 12px;
   line-height: 1.6;
   color: #1d1d1f;
-  font-size: 16px;
+  font-size: 15px;
 }
 .member-card .member-header {
   display: flex;

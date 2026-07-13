@@ -4,8 +4,16 @@ $color-primary: #0071e3;
 $color-border: #d2d2d7;
 $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
+// 💡 ページ全体の左右の揺れ（予期せぬ横スクロール）を根本からシャットアウト
+html,
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
 .container {
-  max-width: 1200px; // 全体の最大幅
+  max-width: 1000px;
   margin: 0 auto;
   padding: 40px 20px;
   font-family: $font-sans;
@@ -16,19 +24,20 @@ $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 // ==========================================================================
 .members-grid {
   display: grid;
+  // 初期状態は3列
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   width: 100%;
-  transition: all 0.4s ease;
 
-  // 誰かがフォーカスされている時は下段を5列にする
+  // 💡 フォーカス中も、グリッド自体の列数は「5列」に急変化させず、
+  // あえて「5列」と明記して、グリッド全体の横幅の計算を100%安定させる
   &:has(.member-card.is-active) {
     grid-template-columns: repeat(5, 1fr);
   }
 }
 
 // ==========================================================================
-// 🃏 カードと比率固定のロジック
+// 🃏 カードのスタイリング
 // ==========================================================================
 .member-card {
   background-color: $color-card-bg;
@@ -38,27 +47,29 @@ $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   cursor: pointer;
   box-sizing: border-box;
 
-  // 通常時の比率（横4:縦3）
+  // 通常時は4:3の比率
   aspect-ratio: 4 / 3;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 
   // 🔓 【クリックされて「フォーカス」が当たった状態（.is-active）】
   &.is-active {
-    grid-column: 1 / 6;
+    grid-column: 1 / -1; // グリッドの全幅の枠自体は確保するが…
     grid-row: 1;
 
-    // 💡 【ここを追加！】横幅が90vwを超えないように、最大幅を制限する
-    // 600px〜700pxくらいにすると、PC画面でも圧倒的に見やすくなるよ！
-    width: 100%;
-    max-width: 650px;
-    margin: 0 auto 24px auto; // 中央に寄せて、下の5つとの間に程よい隙間を作る
+    // 🔥 【ここがサイズダウン＆左右の揺れ防止のキモ】
+    // ％ではなく固定値（px）で「これ以上大きくならない」ジャストサイズを指定
+    width: 480px;
+    height: 320px; // 縦幅も固定して、大きくなりすぎるのを完全に阻止
+    aspect-ratio: auto; // 固定サイズにするため比率ロックは解除
 
-    // 📐 比率を4:3のままにするか、ここで好みの比率（例: 16/9など）に変えることも可能
-    aspect-ratio: 4 / 3;
+    margin: 0 auto 32px auto; // 中央寄せにしつつ、下の5つと綺麗な隙間を作る
 
     border-color: $color-primary;
     box-shadow: 0 12px 24px rgba(0, 113, 227, 0.12);
@@ -69,6 +80,7 @@ $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: #f5f5f7;
       border: 1px solid $color-border;
       flex-grow: 1;
+      height: auto;
 
       p {
         opacity: 1;
@@ -80,6 +92,7 @@ $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   .members-grid:has(&.is-active) &:not(.is-active) {
     grid-row: 2;
     padding: 12px;
+    aspect-ratio: 4 / 3; // 小さいカードたちも比率を維持
 
     h3 {
       font-size: 14px;
@@ -100,14 +113,13 @@ $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     flex-grow: 1;
     background-image: repeating-linear-gradient(45deg, #e8e8ed, #e8e8ed 10px, #f5f5f7 10px, #f5f5f7 20px);
     background-size: cover;
-    transition: all 0.3s ease;
 
     p {
       opacity: 0;
       margin: 12px;
       line-height: 1.6;
       color: #1d1d1f;
-      font-size: 16px;
+      font-size: 15px;
     }
   }
 
