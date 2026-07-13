@@ -99,6 +99,10 @@ body {
       p {
         opacity: 1;
       }
+
+      .canvas-img-wrap {
+        display: flex !important;
+      }
     }
   }
 
@@ -141,14 +145,6 @@ body {
         border: 1px solid #e8e8ed;
         background: #ffffff; // 手書きの背景を白にして見やすく
         box-sizing: border-box;
-      }
-    }
-  }
-
-  .member-card.is-active {
-    .member-content {
-      .canvas-img-wrap {
-        display: flex; // ここで初めて表示されるから、閉じているときは絶対に貫通しない
       }
     }
   }
