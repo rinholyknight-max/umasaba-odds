@@ -216,4 +216,42 @@ document.addEventListener("DOMContentLoaded", () => {
   clearBtn.addEventListener("click", () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   });
+
+  // 💡 1. テキストエリアに入力があった時の処理
+  textInput.addEventListener("input", () => {
+    if (textInput.value.trim() !== "") {
+      // テキストに文字があるなら、Canvasを全消去して「半透明＆操作不能」にする
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      canvas.style.pointerEvents = "none"; // マウス・タッチ操作を完全に無効化
+      canvas.style.opacity = "0.3"; // 無効化されている見た目（半透明）にする
+      clearBtn.disabled = true; // 消去ボタンも押せなくする
+    } else {
+      // テキストが空っぽになったら、Canvasのロックを解除
+      canvas.style.pointerEvents = "auto";
+      canvas.style.opacity = "1.0";
+      clearBtn.disabled = false;
+    }
+  });
+
+  // 💡 2. Canvasでお絵描きが始まった時の処理
+  // 既存の「startDrawing」関数を見つけて、以下のように1行（★の部分）を追加してね！
+  function startDrawing(e) {
+    // ★ 手書きを始めたら、テキストエリアを空っぽにして入力不能（disabled）にする
+    textInput.value = "";
+    textInput.disabled = true;
+    textInput.style.opacity = "0.5"; // 見た目をグレーアウト
+
+    isDrawing = true;
+    draw(e);
+  }
+
+  // 💡 3. 消去ボタン（clearBtn）が押された時の処理
+  // 既存の「clearBtn.addEventListener」の中に、テキストエリアのロック解除（★の部分）を追加してね！
+  clearBtn.addEventListener("click", () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // ★ Canvasを全消去したら、テキストエリアのロックを解除して元に戻す
+    textInput.disabled = false;
+    textInput.style.opacity = "1.0";
+  });
 });
