@@ -70,4 +70,65 @@ button {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  padding: 20px;
+}
+
+.member-card {
+  background-color: #ffffff;
+  border: 1px solid #d2d2d7;
+  border-radius: 12px;
+  padding: 24px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.member-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  border-color: #0071e3;
+}
+.member-card.is-active {
+  grid-column: 1/-1;
+  border-color: #0071e3;
+  box-shadow: 0 12px 24px rgba(0, 113, 227, 0.12);
+  cursor: default;
+}
+.member-card.is-active .member-content {
+  max-height: 1000px;
+  opacity: 1;
+  margin-top: 16px;
+  padding-top: 16px;
+}
+.member-card .member-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.member-card .member-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+.member-card .member-header .toggle-badge {
+  font-size: 12px;
+  color: #86868b;
+  background: #e8e8ed;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.member-card .member-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  border-top: 1px dashed #d2d2d7;
+  transition: all 0.3s ease;
+}
+.member-card .member-content p {
+  margin: 0;
+  line-height: 1.6;
+  color: #1d1d1f;
 }/*# sourceMappingURL=style.css.map */
