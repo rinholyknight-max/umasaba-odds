@@ -1,80 +1,73 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // DOM要素の取得
-  const loginContainer = document.getElementById("login-container");
-  const adminContent = document.getElementById("admin-content");
-  const loginForm = document.getElementById("login-form");
-  const usernameInput = document.getElementById("username-input");
-  const passwordInput = document.getElementById("password-input");
-  const errorMessage = document.getElementById("error-message");
-  const logoutBtn = document.getElementById("logout-btn");
+import admin from "firebase-admin";
 
-  // ブラウザのLocalStorageに保存するトークンのキー名
-  const AUTH_KEY = "umasaba_admin_session_token";
+// 1. Firebase Admin SDK の初期化（2重初期化の防止）
+if (!admin.apps.length) {
+  try {
+    admin.initializeApp({
+      credential: admin.credential.cert({
+        projectId: process.env.FIREBASE_PROJECT_ID,
+        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+        // Vercel上の環境変数の改行コードを安全に処理
+        privateKey: process.env.FIREBASE_PRIVATE_KEY ? process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n") : undefined,
+      }),
+      // あなたのRealtime DatabaseのURL
+      databaseURL: "https://umasaba-odds-default-rtdb.firebaseio.com",
+    });
+  } catch (error) {
+    console.error("Firebase admin initialization error", error.stack);
+  }
+}
 
-  // 1. ページ読み込み時に即座に認証状態をチェック
-  checkAuth();
+// 2. Realtime Databaseのインスタンスを取得
+const db = admin.database();
 
-  /**
-   * 認証状態をチェックし、表示を切り替える関数
-   */
-  function checkAuth() {
-    const token = localStorage.getItem(AUTH_KEY);
+export default async function handler(req, res) {
+  // CORSプリフライト対応
+  if (req.method === "OPTIONS") return res.status(200).end();
+  // POSTメソッド以外は弾く
+  if (req.method !== "POST") return res.status(405).json({ error: "Method Not Allowed" });
 
-    // 簡易的に、特定のプレフィックスで始まるトークンがあれば認証済みと判定
-    if (token && token.startsWith("auth_token_for_")) {
-      loginContainer.classList.add("hidden");
-      adminContent.classList.remove("hidden");
-    } else {
-      adminContent.classList.add("hidden");
-      loginContainer.classList.remove("hidden");
-    }
+  const { username, password } = req.body;
+
+  // 入力チェック
+  if (!username || !password) {
+    return res.status(400).json({ success: false, error: "ユーザー名とパスワードを入力してください。" });
   }
 
-  // 2. ログインフォームの送信イベント（非同期処理）
-  loginForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    errorMessage.textContent = ""; // 前のエラーをクリア
+  try {
+    // 💡 注目：ここで Firebase の 'draft_member' ノードをしっかり参照しているよ！
+    const ref = db.ref("draft_member");
 
-    const username = usernameInput.value.trim();
-    const password = passwordInput.value;
+    // 入力された username と一致するデータをデータベース内から検索
+    const snapshot = await ref.orderByChild("username").equalTo(username).once("value");
 
-    try {
-      // Vercel Serverless Function (api/auth.js) へPOSTリクエストを送信
-      const response = await fetch("/api/auth", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        // 認証成功：返ってきたトークンをLocalStorageに保存
-        localStorage.setItem(AUTH_KEY, data.token);
-        // 画面の表示を更新
-        checkAuth();
-        // フォームをクリア
-        passwordInput.value = "";
-      } else {
-        // 認証失敗：APIから返ってきたエラーメッセージを表示
-        errorMessage.textContent = data.error || "ログインに失敗しました。";
-      }
-    } catch (error) {
-      console.error("Auth Error:", error);
-      errorMessage.textContent = "通信エラーが発生しました。サーバーの状態を確認してください。";
+    // データが存在しない（ユーザー名が登録されていない）場合は401
+    if (!snapshot.exists()) {
+      return res.status(401).json({ success: false, error: "ユーザー名またはパスワードが違います。" });
     }
-  });
 
-  // 3. ログアウト処理
-  logoutBtn.addEventListener("click", () => {
-    // トークンを破棄
-    localStorage.removeItem(AUTH_KEY);
-    // 入力欄を綺麗にする
-    usernameInput.value = "";
-    passwordInput.value = "";
-    // 画面の表示を更新してログイン画面に戻す
-    checkAuth();
-  });
-});
+    const usersData = snapshot.val();
+    let isAuthenticated = false;
+
+    // 取得したデータ内のパスワードと、入力されたパスワードが一致するか検証
+    Object.keys(usersData).forEach((key) => {
+      if (usersData[key].password === password) {
+        isAuthenticated = true;
+      }
+    });
+
+    // パスワードが一致したらトークンを返して認証成功！
+    if (isAuthenticated) {
+      return res.status(200).json({
+        success: true,
+        token: `auth_token_for_${username}`,
+      });
+    } else {
+      // パスワードが違ったら401
+      return res.status(401).json({ success: false, error: "ユーザー名またはパスワードが違います。" });
+    }
+  } catch (error) {
+    console.error("Database Error:", error);
+    return res.status(500).json({ success: false, error: "サーバー内部エラーが発生しました。" });
+  }
+}
