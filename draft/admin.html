@@ -36,19 +36,25 @@
 
     <main>
       <div id="admin-content" class="hidden">
-        <button id="logout-btn">ログアウト</button>
+        <div class="admin-header">
+          <h2>チーム別 管理ダッシュボード</h2>
+          <button id="logout-btn">ログアウト</button>
+        </div>
 
-        <h2>管理画面</h2>
+        <div class="editor-layout">
+          <div class="field-group">
+            <label for="admin-text-input">テキスト入力はこちら</label>
+            <textarea id="admin-text-input" placeholder="ここにテキストを入力してください（自動で改行や縦伸びに対応します）"></textarea>
+          </div>
 
-        <textarea id="admin-text-input" rows="4" placeholder="ここにテキストを入力"></textarea>
-
-        <br /><br />
-
-        <canvas id="drawing-canvas" width="400" height="300" style="border: 1px solid #ccc"></canvas>
-        <br />
-        <button id="clear-btn">書き直す</button>
-
-        <br /><br />
+          <div class="field-group">
+            <label>手書きはこちら</label>
+            <div class="canvas-wrapper">
+              <canvas id="drawing-canvas" width="400" height="300"></canvas>
+              <button id="clear-btn" type="button">描き直す（全消去）</button>
+            </div>
+          </div>
+        </div>
 
         <button id="save-submit-btn">この内容で保存する</button>
       </div>
