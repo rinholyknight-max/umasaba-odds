@@ -121,6 +121,28 @@ body {
       color: #1d1d1f;
       font-size: 15px;
     }
+
+    .canvas-img-wrap {
+      margin-top: 12px;
+      width: 100%; // 親であるカードの横幅いっぱいに広げる
+      max-width: 100%; // 絶対にそれ以上はみ出させない
+      display: flex;
+      justify-content: center;
+      box-sizing: border-box;
+
+      img {
+        // 🔥 【ここが最重要！】
+        // 400pxなどの固定幅を完全に無視させて、カードの幅（100%）に強制追従させる
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important; // 縦横比を崩さずに縮小する
+
+        border-radius: 6px;
+        border: 1px solid #e8e8ed;
+        background: #ffffff; // 手書きの背景を白にして見やすく
+        box-sizing: border-box;
+      }
+    }
   }
 
   .member-header {
