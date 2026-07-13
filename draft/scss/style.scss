@@ -57,7 +57,7 @@ body {
     justify-self: center;
 
     width: 100%;
-    max-width: 500px; // 横幅を程よく制限
+    max-width: 800px; // 横幅を程よく制限
 
     // 🔥 【高さの指定を完全にリセット】
     // 親要素の高さも、縦横比もすべて解除し、完全に「中身の文字量」だけで縦幅が決まるようにする
@@ -68,6 +68,11 @@ body {
     border-color: $color-primary;
     box-shadow: 0 12px 24px rgba(0, 113, 227, 0.12);
     cursor: default;
+    padding: 5rem 3rem;
+
+    h3 {
+      font-size: 2rem;
+    }
 
     .member-content {
       background-image: none;
@@ -119,10 +124,10 @@ body {
 
     p {
       opacity: 0;
-      margin: 12px;
+      margin: 5rem 2.5rem;
       line-height: 1.6;
       color: #1d1d1f;
-      font-size: 15px;
+      font-size: 2rem;
     }
   }
 
