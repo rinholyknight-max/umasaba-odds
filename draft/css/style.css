@@ -27,9 +27,7 @@ body {
   cursor: pointer;
   box-sizing: border-box;
   aspect-ratio: 4/3;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: block;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .member-card.is-active {
@@ -38,8 +36,8 @@ body {
   justify-self: center;
   width: 100%;
   max-width: 500px;
-  height: auto;
-  aspect-ratio: auto;
+  height: auto !important;
+  aspect-ratio: auto !important;
   margin-bottom: 24px;
   border-color: #0071e3;
   box-shadow: 0 12px 24px rgba(0, 113, 227, 0.12);
@@ -49,8 +47,9 @@ body {
   background-image: none;
   background-color: #f5f5f7;
   border: 1px solid #d2d2d7;
-  height: auto;
-  overflow: visible;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
 }
 .member-card.is-active .member-content p {
   opacity: 1;
@@ -67,17 +66,18 @@ body {
   display: none;
 }
 .members-grid:has(.member-card.is-active) .member-card:not(.is-active) .member-content {
-  height: 100%;
+  height: calc(100% - 40px);
   margin-top: 8px;
   overflow: hidden;
 }
 .member-card .member-content {
   margin-top: 16px;
   border-radius: 8px;
-  flex-grow: 1;
+  height: calc(100% - 45px);
   background-image: repeating-linear-gradient(45deg, #e8e8ed, #e8e8ed 10px, #f5f5f7 10px, #f5f5f7 20px);
   background-size: cover;
   overflow: hidden;
+  box-sizing: border-box;
 }
 .member-card .member-content p {
   opacity: 0;
