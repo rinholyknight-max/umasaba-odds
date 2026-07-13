@@ -9,29 +9,45 @@ body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  background-color: $color-bg-light;
 }
 
+// 💡 1. コンテナ自体を画面の「完全な左右中央」に配置する
 .container {
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 0 auto; // 左右の余白を自動計算してど真ん中へ
   padding: 40px 20px;
   font-family: $font-sans;
+  box-sizing: border-box;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
 }
 
 // ==========================================================================
-// 📊 グリッドシステム（常に美しい横3列に完全固定！）
+// 📊 グリッドシステム（常に横3列固定・ズレる余地をゼロにする）
 // ==========================================================================
 .members-grid {
   display: grid;
-  // 💡 誰が何個開こうが、グリッドの形（3列）は一切動かさない。
-  // これにより、複数同時に開いても位置の奪い合いが起きず、絶対にレイアウトが崩れません。
+  // 💡 1fr（均等な幅）で3列に完全固定。
+  // active時も含めて列数や全体の幅をいじる特殊な命令（:hasなど）はすべて撤去！
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   width: 100%;
+  box-sizing: border-box;
+
+  // スマホなど、画面が狭いときは自動で1列にする（レスポンシブの安全ガード）
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 // ==========================================================================
-// 🃏 カードのスタイリング（その場でスマートに開閉する仕様）
+// 🃏 カードのスタイリング（自分のマス目の中だけで自律開閉）
 // ==========================================================================
 .member-card {
   background-color: $color-card-bg;
@@ -40,6 +56,7 @@ body {
   padding: 24px;
   cursor: pointer;
   box-sizing: border-box;
+  width: 100%; // 💡 3等分されたグリッドの枠線内にぴったり100%で収める
 
   // 通常時は綺麗な4:3の比率
   aspect-ratio: 4 / 3;
@@ -51,26 +68,27 @@ body {
     border-color 0.3s ease;
 
   &:hover {
-    transform: translateY(-2px); // ホバー時にちょっと浮かせると気持ちいい
+    transform: translateY(-2px);
   }
 
   // 🔓 【クリックされて「オープン」した状態（.is-active）】
   &.is-active {
-    // 💡 変に全幅に広げたり最上段に移動させたりせず、3列の「自分のマスの中」で下へスッと伸ばす
+    // ⚠️ 以前の古いバグの原因（grid-columnやjustify-self）はここに書かない！
+    // 3列の「自分の定位置」をキープしたまま、下へスッと伸びるようにする
     height: auto !important;
-    aspect-ratio: auto !important; // 縦伸びを許容するために比率ロックを解除
+    aspect-ratio: auto !important; // 縦伸びを許容するために比率を解除
 
     border-color: $color-primary;
     box-shadow: 0 12px 24px rgba(0, 113, 227, 0.12);
     cursor: default;
-    transform: none; // 開いている時はホバーの浮きを無効化
+    transform: none;
 
     .member-content {
       background-image: none;
       background-color: #f5f5f7;
       border: 1px solid $color-border;
 
-      // 中身のテキスト量や手書きCanvas画像に合わせて、自動で縦に100%露出させる
+      // 中身のテキストや手書き画像に合わせて、自動で縦に100%露出させる
       height: auto !important;
       max-height: none !important;
       overflow: visible !important;
@@ -86,7 +104,7 @@ body {
     margin-top: 16px;
     border-radius: 8px;
 
-    // 通常時はカードの高さ（4:3）の中にすっぽり収まる高さに計算
+    // 通常時はカードの高さ（4:3）の中にすっぽり収まる高さ
     height: calc(100% - 45px);
     background-image: repeating-linear-gradient(45deg, #e8e8ed, #e8e8ed 10px, #f5f5f7 10px, #f5f5f7 20px);
     background-size: cover;
@@ -121,26 +139,5 @@ body {
       padding: 6px 12px;
       border-radius: 20px;
     }
-  }
-}
-// 一括非表示ボタンのスタイリング
-.reset-btn {
-  background-color: #e8e8ed;
-  color: #1d1d1f;
-  border: none;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  margin-bottom: 20px;
-
-  &:hover {
-    background-color: #d2d2d7;
-  }
-
-  &:active {
-    transform: scale(0.98);
   }
 }
