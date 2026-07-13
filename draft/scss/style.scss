@@ -6,7 +6,6 @@ $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
 html,
 body {
-  // 💡 画面全体の横揺れ防止
   overflow-x: hidden;
   margin: 0;
   padding: 0;
@@ -20,17 +19,19 @@ body {
 }
 
 // ==========================================================================
-// 📊 グリッドシステム（基本は横3列固定）
+// 📊 グリッドシステム（常に美しい横3列に完全固定！）
 // ==========================================================================
 .members-grid {
   display: grid;
+  // 💡 誰が何個開こうが、グリッドの形（3列）は一切動かさない。
+  // これにより、複数同時に開いても位置の奪い合いが起きず、絶対にレイアウトが崩れません。
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   width: 100%;
 }
 
 // ==========================================================================
-// 🃏 カードのスタイリング
+// 🃏 カードのスタイリング（その場でスマートに開閉する仕様）
 // ==========================================================================
 .member-card {
   background-color: $color-card-bg;
@@ -40,109 +41,65 @@ body {
   cursor: pointer;
   box-sizing: border-box;
 
-  // 通常時は4:3の比率を維持
+  // 通常時は綺麗な4:3の比率
   aspect-ratio: 4 / 3;
 
-  // 💡 二重スクロールの原因になる flex 配置をやめ、通常のブロック配置にする
   display: block;
   transition:
-    transform 0.3s ease,
+    transform 0.2s ease,
     box-shadow 0.3s ease,
     border-color 0.3s ease;
 
-  // 🔓 【クリックされて「フォーカス」が当たった状態（.is-active）】
+  &:hover {
+    transform: translateY(-2px); // ホバー時にちょっと浮かせると気持ちいい
+  }
+
+  // 🔓 【クリックされて「オープン」した状態（.is-active）】
   &.is-active {
-    grid-column: 1 / -1;
-    grid-row: 1;
-    justify-self: center;
-
-    width: 100%;
-    max-width: 800px; // 横幅を程よく制限
-
-    // 🔥 【高さの指定を完全にリセット】
-    // 親要素の高さも、縦横比もすべて解除し、完全に「中身の文字量」だけで縦幅が決まるようにする
+    // 💡 変に全幅に広げたり最上段に移動させたりせず、3列の「自分のマスの中」で下へスッと伸ばす
     height: auto !important;
-    aspect-ratio: auto !important;
+    aspect-ratio: auto !important; // 縦伸びを許容するために比率ロックを解除
 
-    margin-bottom: 24px;
     border-color: $color-primary;
     box-shadow: 0 12px 24px rgba(0, 113, 227, 0.12);
     cursor: default;
-    padding: 5rem 3rem;
-
-    h3 {
-      font-size: 2rem;
-    }
+    transform: none; // 開いている時はホバーの浮きを無効化
 
     .member-content {
       background-image: none;
       background-color: #f5f5f7;
       border: 1px solid $color-border;
 
-      // 🔥 【最重要】スクロールバーが出る可能性を100%排除
+      // 中身のテキスト量や手書きCanvas画像に合わせて、自動で縦に100%露出させる
       height: auto !important;
       max-height: none !important;
-      overflow: visible !important; // スクロールバー（scrollやauto）を絶対に許可しない
+      overflow: visible !important;
 
       p {
         opacity: 1;
       }
-
-      .canvas-img-wrap {
-        margin-top: 12px;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-
-        img {
-          max-width: 100%;
-          height: auto;
-          border-radius: 6px;
-          border: 1px solid #e8e8ed;
-          background: #ffffff; // 手書きの背景を白で見やすく
-        }
-      }
     }
   }
 
-  // 💤 【自分がフォーカスされておらず、他の誰かがフォーカスされている時】
-  .members-grid:has(&.is-active) &:not(.is-active) {
-    grid-row: auto;
-    padding: 16px;
-    aspect-ratio: 4 / 3;
-
-    h3 {
-      font-size: 15px;
-    }
-    .toggle-badge {
-      display: none;
-    }
-    .member-content {
-      // 通常時はカードの高さ（4:3）からはみ出さないように、高さを固定して隠す
-      height: calc(100% - 40px);
-      margin-top: 8px;
-      overflow: hidden;
-    }
-  }
-
-  // 🔒 初期状態の目隠しエリア
+  // 🔒 初期状態（閉じてる時）の目隠しエリア
   .member-content {
     margin-top: 16px;
     border-radius: 8px;
 
-    // 💡 通常時（3×2並び）のときは、カードの高さ（4:3）に合わせて程よく伸びるように設定
+    // 通常時はカードの高さ（4:3）の中にすっぽり収まる高さに計算
     height: calc(100% - 45px);
     background-image: repeating-linear-gradient(45deg, #e8e8ed, #e8e8ed 10px, #f5f5f7 10px, #f5f5f7 20px);
     background-size: cover;
     overflow: hidden;
     box-sizing: border-box;
+    transition: all 0.2s ease;
 
     p {
       opacity: 0;
-      margin: 5rem 2.5rem;
+      margin: 12px;
       line-height: 1.6;
       color: #1d1d1f;
-      font-size: 2rem;
+      font-size: 15px;
     }
   }
 
@@ -164,5 +121,26 @@ body {
       padding: 6px 12px;
       border-radius: 20px;
     }
+  }
+}
+// 一括非表示ボタンのスタイリング
+.reset-btn {
+  background-color: #e8e8ed;
+  color: #1d1d1f;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 20px;
+
+  &:hover {
+    background-color: #d2d2d7;
+  }
+
+  &:active {
+    transform: scale(0.98);
   }
 }

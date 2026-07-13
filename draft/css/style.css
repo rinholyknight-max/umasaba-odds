@@ -28,24 +28,18 @@ body {
   box-sizing: border-box;
   aspect-ratio: 4/3;
   display: block;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.member-card:hover {
+  transform: translateY(-2px);
 }
 .member-card.is-active {
-  grid-column: 1/-1;
-  grid-row: 1;
-  justify-self: center;
-  width: 100%;
-  max-width: 800px;
   height: auto !important;
   aspect-ratio: auto !important;
-  margin-bottom: 24px;
   border-color: #0071e3;
   box-shadow: 0 12px 24px rgba(0, 113, 227, 0.12);
   cursor: default;
-  padding: 5rem 3rem;
-}
-.member-card.is-active h3 {
-  font-size: 2rem;
+  transform: none;
 }
 .member-card.is-active .member-content {
   background-image: none;
@@ -58,35 +52,6 @@ body {
 .member-card.is-active .member-content p {
   opacity: 1;
 }
-.member-card.is-active .member-content .canvas-img-wrap {
-  margin-top: 12px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-.member-card.is-active .member-content .canvas-img-wrap img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 6px;
-  border: 1px solid #e8e8ed;
-  background: #ffffff;
-}
-.members-grid:has(.member-card.is-active) .member-card:not(.is-active) {
-  grid-row: auto;
-  padding: 16px;
-  aspect-ratio: 4/3;
-}
-.members-grid:has(.member-card.is-active) .member-card:not(.is-active) h3 {
-  font-size: 15px;
-}
-.members-grid:has(.member-card.is-active) .member-card:not(.is-active) .toggle-badge {
-  display: none;
-}
-.members-grid:has(.member-card.is-active) .member-card:not(.is-active) .member-content {
-  height: calc(100% - 40px);
-  margin-top: 8px;
-  overflow: hidden;
-}
 .member-card .member-content {
   margin-top: 16px;
   border-radius: 8px;
@@ -95,13 +60,14 @@ body {
   background-size: cover;
   overflow: hidden;
   box-sizing: border-box;
+  transition: all 0.2s ease;
 }
 .member-card .member-content p {
   opacity: 0;
-  margin: 5rem 2.5rem;
+  margin: 12px;
   line-height: 1.6;
   color: #1d1d1f;
-  font-size: 2rem;
+  font-size: 15px;
 }
 .member-card .member-header {
   display: flex;
@@ -119,4 +85,23 @@ body {
   background: #e8e8ed;
   padding: 6px 12px;
   border-radius: 20px;
+}
+
+.reset-btn {
+  background-color: #e8e8ed;
+  color: #1d1d1f;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 20px;
+}
+.reset-btn:hover {
+  background-color: #d2d2d7;
+}
+.reset-btn:active {
+  transform: scale(0.98);
 }/*# sourceMappingURL=style.css.map */
