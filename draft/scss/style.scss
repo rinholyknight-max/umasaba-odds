@@ -5,7 +5,7 @@ $color-border: #d2d2d7;
 $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
 .container {
-  max-width: 1200px;
+  max-width: 1200px; // 全体の最大幅
   margin: 0 auto;
   padding: 40px 20px;
   font-family: $font-sans;
@@ -16,16 +16,14 @@ $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 // ==========================================================================
 .members-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); // 初期状態は均等な3列
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   width: 100%;
   transition: all 0.4s ease;
 
-  // 💡 【ここが最大のポイント】
-  // グリッドの中に「.is-active（フォーカス中）」のカードが1つでも存在するとき、
-  // グリッド全体のルールを「残りの5つが下に1列（5列横並び）で収まる設定」に一瞬で書き換える！
+  // 誰かがフォーカスされている時は下段を5列にする
   &:has(.member-card.is-active) {
-    grid-template-columns: repeat(5, 1fr); // 下段を5分割にする
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
@@ -40,22 +38,27 @@ $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   cursor: pointer;
   box-sizing: border-box;
 
-  // 📐 四角の比率（アスペクト比）を完全に固定する（例：横4:縦3のきれいな長方形）
-  // これにより、カードがどれだけ横に広がっても、同じ比率を保って縦にも自動拡大するよ
+  // 通常時の比率（横4:縦3）
   aspect-ratio: 4 / 3;
 
-  // 中身を上下左右中央に配置するための設定
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 
   // 🔓 【クリックされて「フォーカス」が当たった状態（.is-active）】
   &.is-active {
-    // 💡 下段が5列に変わったので、1番目から最後の列（6つ目）までぶち抜いて最上段に居座る
     grid-column: 1 / 6;
-    grid-row: 1; // 常に最上段（1行目）に強制配置
+    grid-row: 1;
+
+    // 💡 【ここを追加！】横幅が90vwを超えないように、最大幅を制限する
+    // 600px〜700pxくらいにすると、PC画面でも圧倒的に見やすくなるよ！
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto 24px auto; // 中央に寄せて、下の5つとの間に程よい隙間を作る
+
+    // 📐 比率を4:3のままにするか、ここで好みの比率（例: 16/9など）に変えることも可能
+    aspect-ratio: 4 / 3;
 
     border-color: $color-primary;
     box-shadow: 0 12px 24px rgba(0, 113, 227, 0.12);
@@ -65,7 +68,7 @@ $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-image: none;
       background-color: #f5f5f7;
       border: 1px solid $color-border;
-      flex-grow: 1; // 広がったスペースいっぱいに中身を伸ばす
+      flex-grow: 1;
 
       p {
         opacity: 1;
@@ -73,20 +76,19 @@ $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
   }
 
-  // 💤 【自分がフォーカスされておらず、他の誰かがフォーカスされている時の状態】
-  // 自動的に2行目に配置され、5列に縮小したスペースに綺麗に収まる
+  // 💤 【自分がフォーカスされておらず、他の誰かがフォーカスされている時】
   .members-grid:has(&.is-active) &:not(.is-active) {
-    grid-row: 2; // 常に2行目（下段）に並ぶ
-    padding: 12px; // 5列で小さくなるので余白を少しタイトに調整
+    grid-row: 2;
+    padding: 12px;
 
     h3 {
-      font-size: 14px; // 文字も少し小さくしてバランスを取る
+      font-size: 14px;
     }
     .toggle-badge {
-      display: none; // 小さい時はバッジを隠すときれい
+      display: none;
     }
     .member-content {
-      height: 100%; // 小さい状態でも比率を維持して目隠しを敷き詰める
+      height: 100%;
       margin-top: 8px;
     }
   }
@@ -118,7 +120,6 @@ $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       margin: 0;
       font-size: 18px;
       font-weight: 600;
-      transition: font-size 0.3s ease;
     }
 
     .toggle-badge {
