@@ -60,16 +60,20 @@ body {
 
   // 🔓 【クリックされて「フォーカス」が当たった状態（.is-active）】
   &.is-active {
-    grid-column: 1 / -1; // グリッドの全幅の枠自体は確保するが…
-    grid-row: 1;
+    grid-column: 1 / -1; // 1列目から最後の列まで全幅の枠を確保
+    grid-row: 1; // 常に1行目（最上段）に配置
 
-    // 🔥 【ここがサイズダウン＆左右の揺れ防止のキモ】
-    // ％ではなく固定値（px）で「これ以上大きくならない」ジャストサイズを指定
+    // 🔥 【ここが最大の修正ポイント！】
+    // 確保した全幅の枠の中で、このカード自体を「左右真ん中」に強制配置する
+    justify-self: center;
+
+    // サイズをちょうどよく固定（画面が狭いときははみ出さないように max-width も指定）
     width: 480px;
-    height: 320px; // 縦幅も固定して、大きくなりすぎるのを完全に阻止
-    aspect-ratio: auto; // 固定サイズにするため比率ロックは解除
+    max-width: 100%;
+    height: 320px;
+    aspect-ratio: auto;
 
-    margin: 0 auto 32px auto; // 中央寄せにしつつ、下の5つと綺麗な隙間を作る
+    margin: 0 0 32px 0; // justify-self で中央に寄せるため、左右の auto マージンは不要に（0にする）
 
     border-color: $color-primary;
     box-shadow: 0 12px 24px rgba(0, 113, 227, 0.12);
