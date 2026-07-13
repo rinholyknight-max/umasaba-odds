@@ -6,16 +6,17 @@ $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
 html,
 body {
+  // 💡 万が一はみ出しても、画面全体が右に横スクロール（ガタつき）するのを強制防御
   overflow-x: hidden;
   margin: 0;
   padding: 0;
   background-color: $color-bg-light;
 }
 
-// 💡 1. コンテナ自体を画面の「完全な左右中央」に配置する
+// 💡 1. コンテナ自体を確実に中央へ
 .container {
   max-width: 1000px;
-  margin: 0 auto; // 左右の余白を自動計算してど真ん中へ
+  margin: 0 auto; // 左右の余白を等しくして中央配置
   padding: 40px 20px;
   font-family: $font-sans;
   box-sizing: border-box;
@@ -29,25 +30,27 @@ body {
 }
 
 // ==========================================================================
-// 📊 グリッドシステム（常に横3列固定・ズレる余地をゼロにする）
+// 📊 グリッドシステム（はみ出しを物理的にブロック！）
 // ==========================================================================
 .members-grid {
   display: grid;
-  // 💡 1fr（均等な幅）で3列に完全固定。
-  // active時も含めて列数や全体の幅をいじる特殊な命令（:hasなど）はすべて撤去！
-  grid-template-columns: repeat(3, 1fr);
+  // 💡 1fr（比率分配）ではなく、minmax(0, 1fr) を使うのがCSS Gridの鉄則！
+  // これをしないと、中の文字や画像が長いときにグリッド自体が外側へ無理やり引き伸ばされます。
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
+
+  // 🔥 【超重要：はみ出し撲滅設定】
   width: 100%;
+  max-width: 100%; // 親要素（1000px）より絶対に大きくならないように制限
   box-sizing: border-box;
 
-  // スマホなど、画面が狭いときは自動で1列にする（レスポンシブの安全ガード）
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
 }
 
 // ==========================================================================
-// 🃏 カードのスタイリング（自分のマス目の中だけで自律開閉）
+// 🃏 カードのスタイリング
 // ==========================================================================
 .member-card {
   background-color: $color-card-bg;
@@ -55,10 +58,13 @@ body {
   border-radius: 12px;
   padding: 24px;
   cursor: pointer;
-  box-sizing: border-box;
-  width: 100%; // 💡 3等分されたグリッドの枠線内にぴったり100%で収める
 
-  // 通常時は綺麗な4:3の比率
+  // 🔥 【超重要】カード自体の幅が3等分された枠線を絶対に超えないようにする
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  // 通常時は4:3の比率
   aspect-ratio: 4 / 3;
 
   display: block;
@@ -73,10 +79,8 @@ body {
 
   // 🔓 【クリックされて「オープン」した状態（.is-active）】
   &.is-active {
-    // ⚠️ 以前の古いバグの原因（grid-columnやjustify-self）はここに書かない！
-    // 3列の「自分の定位置」をキープしたまま、下へスッと伸びるようにする
     height: auto !important;
-    aspect-ratio: auto !important; // 縦伸びを許容するために比率を解除
+    aspect-ratio: auto !important; // 縦伸びを許容
 
     border-color: $color-primary;
     box-shadow: 0 12px 24px rgba(0, 113, 227, 0.12);
@@ -88,7 +92,6 @@ body {
       background-color: #f5f5f7;
       border: 1px solid $color-border;
 
-      // 中身のテキストや手書き画像に合わせて、自動で縦に100%露出させる
       height: auto !important;
       max-height: none !important;
       overflow: visible !important;
@@ -104,12 +107,11 @@ body {
     margin-top: 16px;
     border-radius: 8px;
 
-    // 通常時はカードの高さ（4:3）の中にすっぽり収まる高さ
     height: calc(100% - 45px);
     background-image: repeating-linear-gradient(45deg, #e8e8ed, #e8e8ed 10px, #f5f5f7 10px, #f5f5f7 20px);
     background-size: cover;
     overflow: hidden;
-    box-sizing: border-box;
+    box-sizing: border-box; // はみ出し防止
     transition: all 0.2s ease;
 
     p {
