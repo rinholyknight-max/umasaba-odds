@@ -34,21 +34,23 @@
       </div>
     </div>
 
-    <main id="admin-content" class="hidden">
-      <header class="admin-header">
-        <h1>管理画面ダッシュボード</h1>
+    <main>
+      <div id="admin-content" class="hidden">
         <button id="logout-btn">ログアウト</button>
-      </header>
 
-      <section class="admin-body">
-        <p>ここは認証された6人のユーザーのみが閲覧できる保護されたスペースです。</p>
-      </section>
-      <div class="canvas-area">
-        <p>手書きで予想や図を描いてください：</p>
-        <canvas id="drawing-canvas" width="400" height="300" style="border: 1px solid #d2d2d7; border-radius: 8px; background: #fff"></canvas>
+        <h2>管理画面</h2>
 
+        <textarea id="admin-text-input" rows="4" placeholder="ここにテキストを入力"></textarea>
+
+        <br /><br />
+
+        <canvas id="drawing-canvas" width="400" height="300" style="border: 1px solid #ccc"></canvas>
         <br />
-        <button type="button" id="clear-btn">書き直す（消去）</button>
+        <button id="clear-btn">書き直す</button>
+
+        <br /><br />
+
+        <button id="save-submit-btn">この内容で保存する</button>
       </div>
     </main>
 
