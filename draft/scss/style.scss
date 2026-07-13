@@ -5,30 +5,33 @@ $color-border: #d2d2d7;
 $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
 .container {
-  max-width: 1000px; // 画面が広がりすぎないように程よくガード
+  max-width: 1200px; // 3列並ぶので少し広めのマックス幅に調整
   margin: 0 auto;
   padding: 40px 20px;
   font-family: $font-sans;
 }
 
 // ==========================================================================
-// 📊 グリッドシステム（基本は2列 × 3行）
+// 📊 グリッドシステム（基本は横3列 × 縦2行）
 // ==========================================================================
 .members-grid {
   display: grid;
-  // 💡 ここで強制的に「綺麗な2列（均等50%ずつ）」を作っているよ
-  grid-template-columns: repeat(2, 1fr);
+  // 💡 ここを3列（均等33.3%ずつ）に修正！ これで 3×2 になるよ
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   width: 100%;
 
-  // スマホなど画面が狭いときは1列にするレスポンシブ対応
+  // タブレットやスマホなど、画面が狭いときは崩れないようにレスポンシブ化
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr); // 中間は2列
+  }
   @media (max-width: 600px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; // スマホは1列
   }
 }
 
 // ==========================================================================
-// 🃏 カード単体のスタイリング
+// 🃏 カードと背景画像による目隠しロジック
 // ==========================================================================
 .member-card {
   background-color: $color-card-bg;
@@ -43,26 +46,49 @@ $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-    border-color: #acacb1;
   }
 
-  // ────────────────────────────────────────────────────────────────────────
-  // 🔥 【超重要】クリックされて「フォーカス」が当たった状態（.is-active）
-  // ────────────────────────────────────────────────────────────────────────
+  // 🔒 【初期状態（非表示・フォーカス前）】
+  // コンテンツエリアにダミーの背景画像を敷いて中身を隠す
+  .member-content {
+    margin-top: 16px;
+    padding: 20px;
+    border-radius: 8px;
+    height: 120px; // 中身を隠すための固定の高さ
+    box-sizing: border-box;
+
+    // 💡 ここでお好みの画像（砂嵐、グラデーション、モザイク画像など）を指定
+    // ここではCSSだけで作れる「ストライプ模様」を目隠し代わりに入れているよ
+    background-image: repeating-linear-gradient(45deg, #e8e8ed, #e8e8ed 10px, #f5f5f7 10px, #f5f5f7 20px);
+    background-size: cover;
+
+    p {
+      // 最初は文字を完全に透明にして隠す
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+  }
+
+  // 🔓 【クリックされて「フォーカス」が当たった状態（.is-active）】
   &.is-active {
-    // 💡 1列目から最後の列までをぶち抜く（＝2列分の幅、つまり画面いっぱいになる）
+    // 💡 3列になっても、これだけで1列目〜最後の列までを綺麗にぶち抜いて画面いっぱいに広がる！
     grid-column: 1 / -1;
     border-color: $color-primary;
     box-shadow: 0 12px 24px rgba(0, 113, 227, 0.12);
     cursor: default;
-    transform: none; // フォーカス時は浮き上がりアニメーションをオフに
 
-    // 隠されていた中身をスッと出す
     .member-content {
-      max-height: 1000px; // 十分な高さを確保して開く
-      opacity: 1;
-      margin-top: 16px;
-      padding-top: 16px;
+      height: auto; // 全幅に広がったら中身に応じて高さを自動に
+
+      // 🔥 背景画像を OFF (none) にして目隠しを解除！
+      background-image: none;
+      background-color: #f5f5f7; // 読みやすくするために薄いグレー背景に
+      border: 1px solid $color-border;
+
+      p {
+        // 文字を表示する
+        opacity: 1;
+      }
     }
 
     .toggle-badge {
@@ -71,7 +97,6 @@ $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
   }
 
-  // カードのヘッダー（名前とか）
   .member-header {
     display: flex;
     justify-content: space-between;
@@ -81,7 +106,6 @@ $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       margin: 0;
       font-size: 18px;
       font-weight: 600;
-      color: #1d1d1f;
     }
 
     .toggle-badge {
@@ -91,23 +115,6 @@ $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       padding: 6px 12px;
       border-radius: 20px;
       font-weight: 500;
-      transition: all 0.2s ease;
-    }
-  }
-
-  // 🔒 初期状態は「高さをゼロ」にして完全に隠しておくエリア
-  .member-content {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    border-top: 1px dashed $color-border;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); // 滑らかな開閉感
-
-    p {
-      margin: 0;
-      line-height: 1.6;
-      color: #1d1d1f;
-      font-size: 15px;
     }
   }
 }
