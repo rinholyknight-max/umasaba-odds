@@ -4,7 +4,6 @@ $color-primary: #0071e3;
 $color-border: #d2d2d7;
 $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-// 💡 ページ全体の左右の揺れ（予期せぬ横スクロール）を根本からシャットアウト
 html,
 body {
   overflow-x: hidden;
@@ -20,20 +19,15 @@ body {
 }
 
 // ==========================================================================
-// 📊 グリッドシステム（基本は横3列）
+// 📊 グリッドシステム（基本の 3×2 を常にキープ！）
 // ==========================================================================
 .members-grid {
   display: grid;
-  // 初期状態は3列
+  // 💡 フォーカス中も、グリッド自体の形は「3列」のまま一切動かさない！
+  // これが画面の左右の揺れを完璧に防ぐ一番確実な方法だよ。
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   width: 100%;
-
-  // 💡 フォーカス中も、グリッド自体の列数は「5列」に急変化させず、
-  // あえて「5列」と明記して、グリッド全体の横幅の計算を100%安定させる
-  &:has(.member-card.is-active) {
-    grid-template-columns: repeat(5, 1fr);
-  }
 }
 
 // ==========================================================================
@@ -46,8 +40,6 @@ body {
   padding: 24px;
   cursor: pointer;
   box-sizing: border-box;
-
-  // 通常時は4:3の比率
   aspect-ratio: 4 / 3;
 
   display: flex;
@@ -60,20 +52,20 @@ body {
 
   // 🔓 【クリックされて「フォーカス」が当たった状態（.is-active）】
   &.is-active {
-    grid-column: 1 / -1; // 1列目から最後の列まで全幅の枠を確保
-    grid-row: 1; // 常に1行目（最上段）に配置
+    // 💡 3列グリッドの中で「3列分丸ごと」ぶち抜く！
+    grid-column: 1 / -1;
+    grid-row: 1; // 常に最上段へ
 
-    // 🔥 【ここが最大の修正ポイント！】
-    // 確保した全幅の枠の中で、このカード自体を「左右真ん中」に強制配置する
-    justify-self: center;
-
-    // サイズをちょうどよく固定（画面が狭いときははみ出さないように max-width も指定）
-    width: 480px;
-    max-width: 100%;
-    height: 320px;
+    // 💡 ここが修正ポイント：％でも固定値（px）でもなく、「max-width」だけを設定する。
+    // これにより、Gridの枠（3列分の幅）の中で綺麗に収まり、はみ出しが完全に消える！
+    width: 100%;
+    max-width: 500px; // 大きすぎないちょうどいいサイズ
+    height: 340px; // 縦幅も程よく固定
     aspect-ratio: auto;
 
-    margin: 0 0 32px 0; // justify-self で中央に寄せるため、左右の auto マージンは不要に（0にする）
+    // 💡 3列をぶち抜いたエリアの中で、自分を「完全にど真ん中」に寄せる
+    justify-self: center;
+    margin-bottom: 16px; // 下の5つとの隙間
 
     border-color: $color-primary;
     box-shadow: 0 12px 24px rgba(0, 113, 227, 0.12);
@@ -93,13 +85,16 @@ body {
   }
 
   // 💤 【自分がフォーカスされておらず、他の誰かがフォーカスされている時】
+  // ここでおかしな5列等分をしようとしていたのをやめ、Gridの自動流し込みに任せる！
   .members-grid:has(&.is-active) &:not(.is-active) {
-    grid-row: 2;
-    padding: 12px;
-    aspect-ratio: 4 / 3; // 小さいカードたちも比率を維持
+    // grid-row: 2; を指定すると、自動的に2行目以降に綺麗に並び直す。
+    // 元々3列のグリッドなので、下段は「3つ」と「2つ」の2行に自動で美しく収まるよ！
+    grid-row: auto;
+    padding: 16px;
+    aspect-ratio: 4 / 3;
 
     h3 {
-      font-size: 14px;
+      font-size: 15px;
     }
     .toggle-badge {
       display: none;

@@ -18,9 +18,6 @@ body {
   gap: 24px;
   width: 100%;
 }
-.members-grid:has(.member-card.is-active) {
-  grid-template-columns: repeat(5, 1fr);
-}
 
 .member-card {
   background-color: #ffffff;
@@ -38,12 +35,12 @@ body {
 .member-card.is-active {
   grid-column: 1/-1;
   grid-row: 1;
-  justify-self: center;
-  width: 480px;
-  max-width: 100%;
-  height: 320px;
+  width: 100%;
+  max-width: 500px;
+  height: 340px;
   aspect-ratio: auto;
-  margin: 0 0 32px 0;
+  justify-self: center;
+  margin-bottom: 16px;
   border-color: #0071e3;
   box-shadow: 0 12px 24px rgba(0, 113, 227, 0.12);
   cursor: default;
@@ -59,12 +56,12 @@ body {
   opacity: 1;
 }
 .members-grid:has(.member-card.is-active) .member-card:not(.is-active) {
-  grid-row: 2;
-  padding: 12px;
+  grid-row: auto;
+  padding: 16px;
   aspect-ratio: 4/3;
 }
 .members-grid:has(.member-card.is-active) .member-card:not(.is-active) h3 {
-  font-size: 14px;
+  font-size: 15px;
 }
 .members-grid:has(.member-card.is-active) .member-card:not(.is-active) .toggle-badge {
   display: none;
