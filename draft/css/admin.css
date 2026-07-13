@@ -1,126 +1,212 @@
+body {
+  background-color: #f5f5f7;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #1d1d1f;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
 .hidden {
   display: none !important;
 }
 
 #login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-height: 100vh;
-  background-color: #f5f5f7;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  padding: 20px;
-  box-sizing: border-box;
-}
-#login-container .login-box {
-  background-color: #ffffff;
-  padding: 40px 32px;
-  width: 100%;
-  max-width: 400px;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  max-width: 380px;
+  margin: 100px auto 0 auto;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 18px;
+  border: 1px solid #d2d2d7;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
   text-align: center;
 }
-#login-container .login-box h2 {
-  margin: 0 0 24px 0;
+#login-container h2 {
+  margin-top: 0;
+  margin-bottom: 24px;
   font-size: 24px;
   font-weight: 600;
-  color: #1d1d1f;
-  letter-spacing: -0.5px;
 }
-#login-container .login-box form .input-group {
-  margin-bottom: 16px;
+#login-container .input-group {
+  margin-bottom: 20px;
   text-align: left;
 }
-#login-container .login-box form .input-group input {
-  width: 100%;
-  padding: 14px 16px;
-  font-size: 16px;
-  border: 1px solid #d2d2d7;
-  border-radius: 8px;
-  background-color: #fafafa;
-  color: #1d1d1f;
-  transition: all 0.2s ease;
-  box-sizing: border-box;
-}
-#login-container .login-box form .input-group input:focus {
-  outline: none;
-  border-color: #0071e3;
-  background-color: #fff;
-  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15);
-}
-#login-container .login-box form .input-group input::placeholder {
+#login-container .input-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
   color: #86868b;
+  margin-bottom: 6px;
 }
-#login-container .login-box form button[type=submit] {
+#login-container .input-group input {
   width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d2d2d7;
+  border-radius: 10px;
+  font-size: 15px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+}
+#login-container .input-group input:focus {
+  border-color: #0071e3;
+}
+#login-container button {
+  width: 100%;
+  background-color: #0071e3;
+  color: #fff;
+  border: none;
   padding: 14px;
   font-size: 16px;
-  font-weight: 600;
-  color: #ffffff;
-  background-color: #0071e3;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-  margin-top: 8px;
-}
-#login-container .login-box form button[type=submit]:hover {
-  background-color: #005bb5;
-}
-#login-container .login-box form button[type=submit]:active {
-  transform: scale(0.98);
-}
-#login-container .login-box .error-text {
-  min-height: 20px;
-  margin: 16px 0 0 0;
-  font-size: 14px;
-  color: #ff3b30;
   font-weight: 500;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+#login-container button:hover {
+  background-color: #0077ed;
+}
+#login-container #error-message {
+  color: #ff3b30;
+  font-size: 14px;
+  margin-top: 16px;
+  min-height: 20px;
 }
 
 #admin-content {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background-color: #ffffff;
-  min-height: 100vh;
-  color: #1d1d1f;
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid #d2d2d7;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
 }
 #admin-content .admin-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 32px;
   border-bottom: 1px solid #d2d2d7;
-  background-color: #ffffff;
+  padding-bottom: 20px;
+  margin-bottom: 28px;
 }
-#admin-content .admin-header h1 {
+#admin-content .admin-header h2 {
   margin: 0;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
 }
 #admin-content .admin-header #logout-btn {
-  padding: 8px 16px;
-  font-size: 14px;
-  font-weight: 500;
+  background: #e8e8ed;
   color: #1d1d1f;
-  background-color: transparent;
-  border: 1px solid #d2d2d7;
-  border-radius: 6px;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background-color 0.2s;
 }
 #admin-content .admin-header #logout-btn:hover {
-  background-color: #f5f5f7;
-  border-color: #acacb1;
+  background-color: #d2d2d7;
 }
-#admin-content .admin-body {
-  padding: 40px 32px;
-  max-width: 1200px;
-  margin: 0 auto;
+#admin-content .editor-layout {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 32px;
 }
-#admin-content .admin-body p {
-  font-size: 16px;
-  line-height: 1.5;
+@media (max-width: 768px) {
+  #admin-content .editor-layout {
+    flex-direction: column;
+  }
+}
+#admin-content .editor-layout .field-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+#admin-content .editor-layout .field-group label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
   color: #1d1d1f;
+}
+#admin-content .editor-layout .field-group textarea {
+  width: 100%;
+  flex-grow: 1;
+  min-height: 200px;
+  padding: 16px;
+  border: 1px solid #d2d2d7;
+  border-radius: 12px;
+  font-size: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  box-sizing: border-box;
+  resize: none;
+  outline: none;
+  background-color: #f5f5f7;
+}
+#admin-content .editor-layout .field-group textarea:focus {
+  border-color: #0071e3;
+  background-color: #fff;
+}
+#admin-content .editor-layout .field-group .canvas-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#admin-content .editor-layout .field-group .canvas-wrapper canvas {
+  background-color: #ffffff;
+  border: 1px solid #d2d2d7;
+  border-radius: 12px;
+  cursor: crosshair;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+  max-width: 100%;
+  height: auto;
+}
+#admin-content .editor-layout .field-group .canvas-wrapper #clear-btn {
+  background: none;
+  border: 1px solid #d2d2d7;
+  color: #86868b;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: all 0.2s;
+}
+#admin-content .editor-layout .field-group .canvas-wrapper #clear-btn:hover {
+  border-color: #86868b;
+  color: #1d1d1f;
+  background-color: #f5f5f7;
+}
+#admin-content #save-submit-btn {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  background-color: #0071e3;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.2);
+  transition: all 0.2s;
+}
+#admin-content #save-submit-btn:hover {
+  background-color: #0077ed;
+  transform: translateY(-1px);
+}
+#admin-content #save-submit-btn:active {
+  transform: translateY(0);
+}
+#admin-content #save-submit-btn:disabled {
+  background-color: #d2d2d7;
+  box-shadow: none;
+  cursor: not-allowed;
 }/*# sourceMappingURL=admin.css.map */
