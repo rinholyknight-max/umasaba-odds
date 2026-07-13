@@ -91,7 +91,7 @@ body {
   margin-top: 12px;
   width: 100%;
   max-width: 100%;
-  display: flex;
+  display: none;
   justify-content: center;
   box-sizing: border-box;
 }
@@ -103,6 +103,9 @@ body {
   border: 1px solid #e8e8ed;
   background: #ffffff;
   box-sizing: border-box;
+}
+.member-card .member-card.is-active .member-content .canvas-img-wrap {
+  display: flex;
 }
 .member-card .member-header {
   display: flex;

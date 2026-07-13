@@ -126,7 +126,7 @@ body {
       margin-top: 12px;
       width: 100%; // 親であるカードの横幅いっぱいに広げる
       max-width: 100%; // 絶対にそれ以上はみ出させない
-      display: flex;
+      display: none;
       justify-content: center;
       box-sizing: border-box;
 
@@ -141,6 +141,14 @@ body {
         border: 1px solid #e8e8ed;
         background: #ffffff; // 手書きの背景を白にして見やすく
         box-sizing: border-box;
+      }
+    }
+  }
+
+  .member-card.is-active {
+    .member-content {
+      .canvas-img-wrap {
+        display: flex; // ここで初めて表示されるから、閉じているときは絶対に貫通しない
       }
     }
   }
