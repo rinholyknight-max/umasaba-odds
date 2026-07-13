@@ -87,6 +87,21 @@ body {
       p {
         opacity: 1;
       }
+
+      .canvas-img-wrap {
+        margin-top: 12px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 6px;
+          border: 1px solid #e8e8ed;
+          background: #ffffff; // 手書きの背景を白で見やすく
+        }
+      }
     }
   }
 

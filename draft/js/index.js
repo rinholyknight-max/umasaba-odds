@@ -1,42 +1,52 @@
-const mockData = [
-  { id: "team01", name: "チーム01", text: "【極秘】チーム01の今週の本命馬とオッズ分析テキスト。" },
-  { id: "team02", name: "チーム02", text: "【極秘】チーム02の今週の本命馬とオッズ分析テキスト。" },
-  { id: "team03", name: "チーム03", text: "【極秘】チーム03の今週の本命馬とオッズ分析テキスト。" },
-  { id: "team04", name: "チーム04", text: "【極秘】チーム04の今週の本命馬とオッズ分析テキスト。" },
-  { id: "team05", name: "チーム05", text: "【極秘】チーム05の今週の本命馬とオッズ分析テキスト。" },
-  { id: "team06", name: "チーム06", text: "【極秘】チーム06の今週の本命馬とオッズ分析テキスト。" },
-];
+// js/index.js (公開画面側のロジック)
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const container = document.getElementById("members-container");
 
-  mockData.forEach((member) => {
-    const card = document.createElement("div");
-    card.className = "member-card";
-    card.innerHTML = `
-      <div class="member-header">
-        <h3>${member.name}</h3>
-        <span class="toggle-badge">中身を見る</span>
-      </div>
-      <div class="member-content">
-        <p>${member.text}</p>
-      </div>
-    `;
+  try {
+    // 1. Firebaseから6人の最新データを取ってくるAPIを叩く
+    const response = await fetch("/api/get-members");
+    const result = await response.json();
 
-    card.addEventListener("click", () => {
-      const currentActive = container.querySelector(".member-card.is-active");
+    if (!result.success) {
+      container.innerHTML = `<p>データの読み込みに失敗しました。</p>`;
+      return;
+    }
 
-      // 他に開いているカードがあれば閉じる（1人だけにフォーカス）
-      if (currentActive && currentActive !== card) {
-        currentActive.classList.remove("is-active");
-        currentActive.querySelector(".toggle-badge").textContent = "中身を見る";
-      }
+    const membersData = result.data; // 6人分の配列が入ってくる
 
-      // 自分のアクティブ状態をトグル
-      const isActive = card.classList.toggle("is-active");
-      card.querySelector(".toggle-badge").textContent = isActive ? "閉じる" : "中身を見る";
+    // 2. 取得した本物のデータでカードを生成
+    membersData.forEach((member) => {
+      const card = document.createElement("div");
+      card.className = "member-card";
+
+      // 💡 中身にテキストと「手書き画像（<img>）」の両方を仕込む
+      card.innerHTML = `
+        <div class="member-header">
+          <h3>${member.name || member.username}</h3>
+          <span class="toggle-badge">中身を見る</span>
+        </div>
+        <div class="member-content">
+          ${member.text ? `<p class="memo-text">${member.text}</p>` : ""}
+          ${member.image ? `<div class="canvas-img-wrap"><img src="${member.image}" alt="手書き予想" /></div>` : ""}
+        </div>
+      `;
+
+      // クリックイベント（以前作った比率維持＆全幅フォーカスロジック）
+      card.addEventListener("click", () => {
+        const currentActive = container.querySelector(".member-card.is-active");
+        if (currentActive && currentActive !== card) {
+          currentActive.classList.remove("is-active");
+          currentActive.querySelector(".toggle-badge").textContent = "中身を見る";
+        }
+        const isActive = card.classList.toggle("is-active");
+        card.querySelector(".toggle-badge").textContent = isActive ? "閉じる" : "中身を見る";
+      });
+
+      container.appendChild(card);
     });
-
-    container.appendChild(card);
-  });
+  } catch (error) {
+    console.error("Fetch Members Error:", error);
+    container.innerHTML = `<p>エラーが発生しました。</p>`;
+  }
 });

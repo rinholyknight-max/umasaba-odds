@@ -58,6 +58,19 @@ body {
 .member-card.is-active .member-content p {
   opacity: 1;
 }
+.member-card.is-active .member-content .canvas-img-wrap {
+  margin-top: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.member-card.is-active .member-content .canvas-img-wrap img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid #e8e8ed;
+  background: #ffffff;
+}
 .members-grid:has(.member-card.is-active) .member-card:not(.is-active) {
   grid-row: auto;
   padding: 16px;
