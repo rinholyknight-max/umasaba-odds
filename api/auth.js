@@ -31,7 +31,7 @@ export default async function handler(req, res) {
 
   try {
     // `admin_users` ノードを参照
-    const ref = db.ref("admin_users");
+    const ref = db.ref("draft_member");
 
     // usernameが一致するデータを検索
     const snapshot = await ref.orderByChild("username").equalTo(username).once("value");
