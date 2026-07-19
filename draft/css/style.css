@@ -235,10 +235,11 @@ body {
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 .member-card.is-active .member-header .toggle-badge {
-  background: linear-gradient(135deg, #0071e3, #0051a8);
-  color: #fff;
-  font-weight: bold;
-  box-shadow: 0 0 10px rgba(0, 113, 227, 0.5);
+  background: linear-gradient(135deg, #ffd700, #b8860b);
+  color: #0f1115;
+  font-weight: 800;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  text-shadow: none;
 }
 .member-card.is-active .member-content {
   background-image: none;

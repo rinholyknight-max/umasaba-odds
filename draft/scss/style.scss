@@ -217,10 +217,11 @@ body {
         text-shadow: 0 0 10px rgba($color-gold-light, 0.5);
       }
       .toggle-badge {
-        background: linear-gradient(135deg, $color-primary, #0051a8);
-        color: #fff;
-        font-weight: bold;
-        box-shadow: 0 0 10px rgba($color-primary, 0.5);
+        background: linear-gradient(135deg, $color-gold-light, $color-gold-dark);
+        color: #0f1115; // 文字色を漆黒（$color-draft-darkと同等）にして視認性を確保
+        font-weight: 800; // より力強い太さに
+        box-shadow: 0 0 15px rgba($color-gold-light, 0.4); // 金色のグロー効果
+        text-shadow: none;
       }
     }
 
