@@ -254,7 +254,10 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
-.member-card.is-active .member-content .canvas-img-wrap {
+.member-card.is-active .member-content .canvas-img-wrap[style*="display: none"] {
+  display: none !important;
+}
+.member-card.is-active .member-content .canvas-img-wrap:not([style*="display: none"]) {
   display: flex !important;
   animation: imgReveal 0.4s 0.2s ease-out both;
 }
