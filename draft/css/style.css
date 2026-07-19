@@ -3,7 +3,8 @@ body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
-  background-color: #f5f5f7;
+  background-color: #0f1115;
+  color: #ffffff;
 }
 
 .container {
@@ -18,13 +19,26 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
+  border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+  padding-bottom: 16px;
+}
+.main-header h1,
+.main-header .h1-style {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, #ffffff 0%, #ffd700 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
 }
 
 .members-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
+  gap: 32px;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -36,59 +50,86 @@ body {
 }
 
 .member-card {
-  background-color: #ffffff;
-  border: 1px solid #d2d2d7;
-  border-radius: 12px;
+  background: linear-gradient(145deg, #1a1d24, #15181c);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
   padding: 24px;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
   aspect-ratio: 4/3;
   display: block;
-  transition: transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .member-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(255, 215, 0, 0.6);
+  box-shadow: 0 12px 30px rgba(255, 215, 0, 0.15);
+}
+.member-card:hover .toggle-badge {
+  background: #ffd700;
+  color: #000;
 }
 .member-card.is-active {
   height: auto !important;
   aspect-ratio: auto !important;
-  border-color: #0071e3;
-  box-shadow: 0 12px 24px rgba(0, 113, 227, 0.12);
+  border-color: #ffd700;
+  background: linear-gradient(145deg, #221e16, #15181c);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.3), inset 0 0 15px rgba(255, 215, 0, 0.2);
   cursor: default;
   transform: none;
+  animation: flashOpen 0.6s ease-out forwards;
+}
+.member-card.is-active .member-header h3 {
+  color: #ffd700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+.member-card.is-active .member-header .toggle-badge {
+  background: linear-gradient(135deg, #0071e3, #0051a8);
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0, 113, 227, 0.5);
 }
 .member-card.is-active .member-content {
   background-image: none;
-  background-color: #f5f5f7;
-  border: 1px solid #d2d2d7;
+  background-color: #ffffff;
+  border: 1px solid #b8860b;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
   height: auto !important;
   max-height: none !important;
   overflow: visible !important;
 }
 .member-card.is-active .member-content p {
   opacity: 1;
+  transform: translateY(0);
 }
 .member-card.is-active .member-content .canvas-img-wrap {
   display: flex !important;
+  animation: imgReveal 0.4s 0.2s ease-out both;
 }
 .member-card .member-content {
   margin-top: 16px;
-  border-radius: 8px;
+  border-radius: 12px;
   height: calc(100% - 45px);
-  background-image: repeating-linear-gradient(45deg, #e8e8ed, #e8e8ed 10px, #f5f5f7 10px, #f5f5f7 20px);
+  background-image: repeating-linear-gradient(45deg, #252932, #252932 10px, #1e222b 10px, #1e222b 20px);
   background-size: cover;
   overflow: hidden;
   box-sizing: border-box;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 .member-card .member-content p {
   opacity: 0;
-  margin: 12px;
+  transform: translateY(10px);
+  margin: 16px;
   line-height: 1.6;
   color: #1d1d1f;
   font-size: 15px;
+  font-weight: 500;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 .member-card .member-content .canvas-img-wrap {
   margin-top: 12px;
@@ -97,15 +138,17 @@ body {
   display: none;
   justify-content: center;
   box-sizing: border-box;
+  padding: 0 16px 16px 16px;
 }
 .member-card .member-content .canvas-img-wrap img {
   width: 100% !important;
   max-width: 100% !important;
   height: auto !important;
-  border-radius: 6px;
-  border: 1px solid #e8e8ed;
+  border-radius: 8px;
+  border: 2px solid #b8860b;
   background: #ffffff;
   box-sizing: border-box;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 .member-card .member-header {
   display: flex;
@@ -114,13 +157,41 @@ body {
 }
 .member-card .member-header h3 {
   margin: 0;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  transition: color 0.3s ease;
 }
 .member-card .member-header .toggle-badge {
   font-size: 12px;
-  color: #86868b;
-  background: #e8e8ed;
-  padding: 6px 12px;
+  font-weight: 600;
+  color: #a0a5b5;
+  background: #252932;
+  padding: 6px 16px;
   border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+@keyframes flashOpen {
+  0% {
+    transform: scale(0.96);
+    filter: brightness(2);
+  }
+  50% {
+    filter: brightness(1.5);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+@keyframes imgReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }/*# sourceMappingURL=style.css.map */
