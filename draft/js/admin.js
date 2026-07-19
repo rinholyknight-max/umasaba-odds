@@ -8,19 +8,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const errorMessage = document.getElementById("error-message");
   const logoutBtn = document.getElementById("logout-btn");
 
-  // 📝 追加：管理画面の入力項目と保存ボタンのDOM取得
+  // 管理画面の入力項目と保存ボタンのDOM取得
   const canvas = document.getElementById("drawing-canvas");
   const ctx = canvas.getContext("2d");
-  const textInput = document.getElementById("admin-text-input"); // HTML側のtextareaのidに合わせてね
-  const saveBtn = document.getElementById("save-submit-btn"); // HTML側の保存ボタンのidに合わせてね
+  const textInput = document.getElementById("admin-text-input");
+  const saveBtn = document.getElementById("save-submit-btn");
   const clearBtn = document.getElementById("clear-btn");
+
+  // 🎨 追加：カラー選択エリアのDOM取得
+  const colorPicker = document.getElementById("color-picker");
+  const colorButtons = document.querySelectorAll(".color-btn");
 
   // ブラウザのLocalStorageに保存するトークンのキー名
   const AUTH_KEY = "umasaba_admin_session_token";
 
   let isDrawing = false;
 
-  // 線のスタイル設定
+  // 線のスタイル初期設定
   ctx.strokeStyle = "#000000"; // 黒色
   ctx.lineWidth = 3; // 線の太さ
   ctx.lineCap = "round"; // 線の角を丸く
@@ -38,10 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
       loginContainer.classList.add("hidden");
       adminContent.classList.remove("hidden");
 
-      // 💡 トークンからログイン中のユーザー名（team01など）を抽出
       const loggedInUser = token.replace("auth_token_for_", "");
 
-      // 💡 ログインに成功したら、そのユーザーが前回保存したデータを自動で読み込んで復元する
+      // ログインに成功したら、そのユーザーが前回保存したデータを自動で読み込んで復元する
       await loadCurrentUserData(loggedInUser);
     } else {
       adminContent.classList.add("hidden");
@@ -50,11 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /**
-   * 💡 ログイン中のユーザーの既存データをFirebaseから取得して画面に復元する関数
+   * ログイン中のユーザーの既存データをFirebaseから取得して画面に復元する関数
    */
   async function loadCurrentUserData(username) {
     try {
-      // ユーザー個別のデータを取得するAPIを叩く（後ほど作成）
       const response = await fetch(`/api/get-user-data?username=${username}`);
       const result = await response.json();
 
@@ -67,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const img = new Image();
           img.onload = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(img, 0, 0); // 保存されていた画像をCanvasに描き直す
+            ctx.drawImage(img, 0, 0);
           };
           img.src = result.data.image;
         }
@@ -96,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (response.ok && data.success) {
         localStorage.setItem(AUTH_KEY, data.token);
-        await checkAuth(); // ここで自動データ復元も走るよ
+        await checkAuth();
         passwordInput.value = "";
       } else {
         errorMessage.textContent = data.error || "ログインに失敗しました。";
@@ -112,10 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem(AUTH_KEY);
     if (!token) return alert("セッションが切れています。再ログインしてください。");
 
-    // トークンから現在のユーザー名を動的に取得（これでteam01〜06に自動対応！）
     const currentUsername = token.replace("auth_token_for_", "");
 
-    // Canvasの内容を「Base64文字列」に変換
     const drawingDataUrl = canvas.toDataURL("image/png");
     const textValue = textInput.value;
 
@@ -155,15 +155,53 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.removeItem(AUTH_KEY);
     usernameInput.value = "";
     passwordInput.value = "";
-    textInput.value = ""; // テキスト入力欄もクリア
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // Canvasもクリア
+    textInput.value = "";
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    resetColorToDefault(); // 🎨 色の設定もデフォルトに戻す
     checkAuth();
   });
 
   // ==========================================================================
-  // ✍️ お絵描きロジック（お引っ越ししてDOMContentLoadedの内部に安全に配置）
+  // 🎨 カラー変更ロジック
+  // ==========================================================================
+  // パレットボタンをクリックした時
+  colorButtons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      colorButtons.forEach((b) => b.classList.remove("active"));
+      e.target.classList.add("active");
+
+      const selectedColor = e.target.getAttribute("data-color");
+      ctx.strokeStyle = selectedColor;
+      if (colorPicker) colorPicker.value = selectedColor;
+    });
+  });
+
+  // 自由選択カラーピッカーを変更した時
+  if (colorPicker) {
+    colorPicker.addEventListener("input", (e) => {
+      ctx.strokeStyle = e.target.value;
+      colorButtons.forEach((b) => b.classList.remove("active"));
+    });
+  }
+
+  // カラー設定をデフォルトの黒に戻す共通関数
+  function resetColorToDefault() {
+    ctx.strokeStyle = "#000000";
+    if (colorPicker) colorPicker.value = "#000000";
+    colorButtons.forEach((b) => b.classList.remove("active"));
+    const defaultBtn = document.querySelector('.color-btn[data-color="#000000"]');
+    if (defaultBtn) defaultBtn.classList.add("active");
+  }
+
+  // ==========================================================================
+  // ✍️ お絵描きロジック
   // ==========================================================================
   function startDrawing(e) {
+    // 手書きを始めたら、テキストエリアを空っぽにして入力不能（disabled）にする
+    textInput.value = "";
+    textInput.disabled = true;
+    textInput.style.opacity = "0.5";
+
     isDrawing = true;
     draw(e);
   }
@@ -212,46 +250,43 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   canvas.addEventListener("touchend", stopDrawing);
 
-  // 消去ボタンの挙動
-  clearBtn.addEventListener("click", () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-  });
+  // ==========================================================================
+  // 💡 排他制御・クリアボタン連動
+  // ==========================================================================
 
-  // 💡 1. テキストエリアに入力があった時の処理
+  // 1. テキストエリアに入力があった時の処理
   textInput.addEventListener("input", () => {
     if (textInput.value.trim() !== "") {
       // テキストに文字があるなら、Canvasを全消去して「半透明＆操作不能」にする
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      canvas.style.pointerEvents = "none"; // マウス・タッチ操作を完全に無効化
-      canvas.style.opacity = "0.3"; // 無効化されている見た目（半透明）にする
-      clearBtn.disabled = true; // 消去ボタンも押せなくする
+      canvas.style.pointerEvents = "none";
+      canvas.style.opacity = "0.3";
+      clearBtn.disabled = true;
+
+      // 🎨 カラーパレットも操作不能にする
+      if (colorPicker) colorPicker.disabled = true;
+      colorButtons.forEach((b) => (b.disabled = true));
     } else {
       // テキストが空っぽになったら、Canvasのロックを解除
       canvas.style.pointerEvents = "auto";
       canvas.style.opacity = "1.0";
       clearBtn.disabled = false;
+
+      // 🎨 カラーパレットのロックを解除
+      if (colorPicker) colorPicker.disabled = false;
+      colorButtons.forEach((b) => (b.disabled = false));
     }
   });
 
-  // 💡 2. Canvasでお絵描きが始まった時の処理
-  // 既存の「startDrawing」関数を見つけて、以下のように1行（★の部分）を追加してね！
-  function startDrawing(e) {
-    // ★ 手書きを始めたら、テキストエリアを空っぽにして入力不能（disabled）にする
-    textInput.value = "";
-    textInput.disabled = true;
-    textInput.style.opacity = "0.5"; // 見た目をグレーアウト
-
-    isDrawing = true;
-    draw(e);
-  }
-
-  // 💡 3. 消去ボタン（clearBtn）が押された時の処理
-  // 既存の「clearBtn.addEventListener」の中に、テキストエリアのロック解除（★の部分）を追加してね！
+  // 2. 消去ボタン（clearBtn）が押された時の処理
   clearBtn.addEventListener("click", () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // ★ Canvasを全消去したら、テキストエリアのロックを解除して元に戻す
+    // Canvasを全消去したら、テキストエリアのロックを解除して元に戻す
     textInput.disabled = false;
     textInput.style.opacity = "1.0";
+
+    // 🎨 消去時はカラー設定もデフォルト（黒）に戻す
+    resetColorToDefault();
   });
 });

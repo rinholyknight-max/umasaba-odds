@@ -8,8 +8,7 @@ $color-border: #d2d2d7;
 $color-error: #ff3b30;
 $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-// ドラフト会議の緊迫感を演出するゴールド系の追加アクセント
-$color-draft-dark: #0f1115;
+// ドラフトの豪華さを添えるゴールドアクセント
 $color-gold-light: #ffd700;
 $color-gold-dark: #b8860b;
 
@@ -17,8 +16,8 @@ body {
   font-family: $font-sans;
   margin: 0;
   padding: 0;
-  color: #ffffff;
-  background-color: $color-draft-dark !important; // インラインの白を強制上書きして漆黒へ
+  color: #1d1d1f;
+  background-color: $color-bg-light !important; // 視認性の高い明るい背景を維持
 }
 
 .container {
@@ -38,13 +37,11 @@ body {
 #login-container {
   max-width: 380px;
   margin: 100px auto 0 auto;
-  background: linear-gradient(145deg, #1a1d24, #15181c);
+  background: $color-card-bg;
   padding: 40px;
   border-radius: 18px;
-  border: 2px solid rgba($color-gold-light, 0.2); // 金のフレームで重厚に
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba($color-gold-light, 0.05);
+  border: 1px solid $color-border;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
   text-align: center;
 
   h2 {
@@ -52,8 +49,9 @@ body {
     margin-bottom: 24px;
     font-size: 24px;
     font-weight: 800;
-    letter-spacing: 1px;
-    background: linear-gradient(135deg, #ffffff 0%, $color-gold-light 100%);
+    letter-spacing: 0.5px;
+    // 白背景に映えるディープゴールド〜ブラックのグラデーション
+    background: linear-gradient(135deg, #1d1d1f 0%, $color-gold-dark 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -67,25 +65,25 @@ body {
       display: block;
       font-size: 13px;
       font-weight: 600;
-      color: #a0a5b5;
+      color: #86868b;
       margin-bottom: 6px;
     }
 
     input {
       width: 100%;
       padding: 12px 16px;
-      background-color: #111318;
-      border: 2px solid rgba(255, 255, 255, 0.1);
+      background-color: #ffffff;
+      border: 1px solid $color-border;
       border-radius: 10px;
       font-size: 15px;
-      color: #ffffff;
+      color: #1d1d1f;
       box-sizing: border-box;
       outline: none;
       transition: all 0.2s;
 
       &:focus {
         border-color: $color-primary;
-        box-shadow: 0 0 12px rgba($color-primary, 0.3);
+        box-shadow: 0 0 0 3px rgba($color-primary, 0.15);
       }
     }
   }
@@ -100,13 +98,13 @@ body {
     font-weight: 700;
     border-radius: 10px;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba($color-primary, 0.3);
+    box-shadow: 0 4px 12px rgba($color-primary, 0.24);
     transition: all 0.2s;
 
     &:hover {
       background: linear-gradient(135deg, $color-primary-hover 0%, $color-primary 100%);
       transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba($color-primary, 0.5);
+      box-shadow: 0 6px 16px rgba($color-primary, 0.35);
     }
   }
 
@@ -123,18 +121,18 @@ body {
 // 🛠️ 2. ログイン後のダッシュボード（入力 ＆ Canvasエリア）
 // ==========================================================================
 #admin-content {
-  background: linear-gradient(145deg, #1a1d24, #15181c);
+  background: $color-card-bg;
   padding: 32px;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  border: 1px solid $color-border;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
 
   // ログアウトなどの上部ヘッダー
   .admin-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid rgba($color-gold-light, 0.2);
+    border-bottom: 2px solid $color-border;
     padding-bottom: 20px;
     margin-bottom: 28px;
 
@@ -143,16 +141,16 @@ body {
       font-size: 22px;
       font-weight: 800;
       letter-spacing: 0.5px;
-      background: linear-gradient(135deg, #ffffff 0%, $color-gold-light 100%);
+      background: linear-gradient(135deg, #1d1d1f 0%, $color-gold-dark 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     #logout-btn {
-      background: rgba(255, 255, 255, 0.05);
-      color: #ffd2d2; // 警告感のある淡い赤
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #f5f5f7;
+      color: #ff3b30; // ログアウトは品のある赤文字に
+      border: 1px solid $color-border;
       padding: 8px 16px;
       border-radius: 20px;
       cursor: pointer;
@@ -161,21 +159,22 @@ body {
       transition: all 0.2s;
 
       &:hover {
-        background: rgba(235, 87, 87, 0.15);
-        border-color: #eb5757;
-        box-shadow: 0 0 10px rgba(235, 87, 87, 0.3);
+        background-color: #ff3b30;
+        color: #ffffff;
+        border-color: #ff3b30;
+        box-shadow: 0 4px 10px rgba(#ff3b30, 0.2);
       }
     }
   }
 
-  // 📝 左右2列配置のラッパー（左：テキスト、右：Canvasでお絵描き）
+  // 📝 左右2列配置のラッパー
   .editor-layout {
     display: flex;
     gap: 32px;
     margin-bottom: 32px;
 
     @media (max-width: 768px) {
-      flex-direction: column; // スマホなど狭い画面では縦に並べる
+      flex-direction: column;
     }
 
     .field-group {
@@ -187,7 +186,7 @@ body {
         font-size: 15px;
         font-weight: 700;
         margin-bottom: 10px;
-        color: #e8e8ed;
+        color: #1d1d1f;
         border-left: 4px solid $color-primary;
         padding-left: 10px;
         letter-spacing: 0.5px;
@@ -197,9 +196,9 @@ body {
       textarea {
         width: 100%;
         flex-grow: 1;
-        min-height: 300px; // キャンバスの高さ(300px)と揃えて綺麗に見せる
+        min-height: 300px; // Canvasの高さと統一
         padding: 16px;
-        border: 2px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid $color-border;
         border-radius: 12px;
         font-size: 15px;
         font-family: $font-sans;
@@ -207,25 +206,25 @@ body {
         box-sizing: border-box;
         resize: none;
         outline: none;
-        background-color: #111318;
-        color: #ffffff;
-        transition: all 0.3s ease;
+        background-color: #f5f5f7;
+        color: #1d1d1f;
+        transition: all 0.2s ease;
 
         &:focus {
           border-color: $color-primary;
-          background-color: #15181e;
-          box-shadow: 0 0 15px rgba($color-primary, 0.3);
+          background-color: #fff;
+          box-shadow: 0 0 0 3px rgba($color-primary, 0.15);
         }
 
         &::placeholder {
-          color: #636e72;
+          color: #86868b;
         }
 
-        // 💡 JSで手書きが開始され、テキスト入力がロックされた時（排他制御）
+        // 💡 JS排他制御：手書き開始によりテキスト入力がロックされた時
         &:disabled {
-          background-color: #0b0c0f !important;
-          border-color: rgba(255, 255, 255, 0.02) !important;
-          color: #3a3f4d !important;
+          background-color: #e8e8ed !important;
+          border-color: $color-border !important;
+          color: #86868b !important;
           cursor: not-allowed;
         }
       }
@@ -238,27 +237,83 @@ body {
         width: 100%;
 
         canvas {
-          background-color: #ffffff; // 手書き視認性のため白ベースをキープ
-          border: 2px solid rgba(255, 255, 255, 0.1);
+          background-color: #ffffff;
+          border: 1px solid $color-border;
           border-radius: 12px;
           cursor: crosshair;
-          box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.15);
+          box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.06);
           max-width: 100%;
           height: auto;
           transition: all 0.3s ease;
         }
 
-        // 💡 JSでテキスト入力があり、Canvas操作がロックされた時（排他制御）
-        // opacity: 0.3に対して、ダークUIに馴染むように暗転とモノクロ化をブレンド
+        .color-palette {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-top: 12px;
+          width: 100%;
+
+          .color-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            transition: all 0.2s ease;
+            padding: 0;
+
+            &:hover:not(:disabled) {
+              transform: scale(1.15);
+            }
+
+            &.active {
+              border-color: #1d1d1f; // 選択中のインジケータ枠
+              transform: scale(1.1);
+              box-shadow:
+                0 0 0 2px #ffffff,
+                0 4px 10px rgba(0, 0, 0, 0.3);
+            }
+
+            &:disabled {
+              opacity: 0.2;
+              cursor: not-allowed;
+              transform: none;
+              box-shadow: none;
+            }
+          }
+
+          // カラーピッカー（自由選択）の調整
+          #color-picker {
+            border: 1px solid $color-border;
+            background: #ffffff;
+            width: 40px;
+            height: 30px;
+            padding: 2px;
+            border-radius: 6px;
+            cursor: pointer;
+            box-sizing: border-box;
+
+            &:disabled {
+              opacity: 0.3;
+              cursor: not-allowed;
+            }
+          }
+        }
+
+        // 💡 JS排他制御：テキスト入力によりCanvasが非アクティブ（opacity: 0.3）になった時
+        // 白ベースの画面で文字が見やすいよう、薄いグレーのベールをかける表現に
         canvas[style*="pointer-events: none"] {
-          filter: brightness(0.4) grayscale(0.5);
-          border-color: rgba(255, 255, 255, 0.05);
+          filter: contrast(0.8) brightness(0.95);
+          background-color: #e8e8ed;
+          border-color: $color-border;
         }
 
         #clear-btn {
-          background: #252932;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          color: #a0a5b5;
+          background: #ffffff;
+          border: 1px solid $color-border;
+          color: #515154;
           padding: 8px 16px;
           border-radius: 6px;
           font-size: 13px;
@@ -268,14 +323,14 @@ body {
           transition: all 0.2s;
 
           &:hover:not(:disabled) {
-            background: #323844;
-            color: #ffffff;
-            border-color: rgba(255, 255, 255, 0.3);
+            border-color: #86868b;
+            color: #1d1d1f;
+            background-color: #f5f5f7;
           }
 
           &:disabled {
-            background: #111318;
-            color: #3a3f4d;
+            background: #e8e8ed;
+            color: #a0a5b5;
             border-color: transparent;
             cursor: not-allowed;
           }
@@ -297,30 +352,26 @@ body {
     font-size: 18px;
     font-weight: 800;
     letter-spacing: 1px;
-    border-radius: 50px; // よりシンボリックな丸型に
+    border-radius: 50px;
     cursor: pointer;
-    box-shadow:
-      0 8px 24px rgba($color-primary, 0.4),
-      0 0 0 2px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 6px 20px rgba($color-primary, 0.3);
     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 
     &:hover:not(:disabled) {
       background: linear-gradient(135deg, #0080ff 0%, $color-primary 100%);
-      transform: translateY(-4px);
-      box-shadow:
-        0 12px 32px rgba($color-primary, 0.6),
-        0 0 20px rgba($color-primary, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba($color-primary, 0.45);
     }
 
     &:active:not(:disabled) {
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba($color-primary, 0.3);
+      box-shadow: 0 4px 12px rgba($color-primary, 0.2);
     }
 
     // 保存処理中（disabled）のスタイル
     &:disabled {
-      background: #252932;
-      color: #636e72;
+      background: #d2d2d7;
+      color: #86868b;
       box-shadow: none;
       cursor: wait;
       transform: none;

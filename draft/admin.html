@@ -51,6 +51,14 @@
             <label>手書きはこちら</label>
             <div class="canvas-wrapper">
               <canvas id="drawing-canvas" width="400" height="300"></canvas>
+              <div class="color-palette">
+                <button type="button" class="color-btn active" data-color="#000000" style="background-color: #000000"></button>
+                <button type="button" class="color-btn" data-color="#ed3838" style="background-color: #ed3838"></button>
+                <button type="button" class="color-btn" data-color="#3893ed" style="background-color: #3893ed"></button>
+                <button type="button" class="color-btn" data-color="#34c759" style="background-color: #34c759"></button>
+                <!-- 自由な色を選ばせたい場合はインプットも併用可能です -->
+                <input type="color" id="color-picker" value="#000000" />
+              </div>
               <button id="clear-btn" type="button">描き直す（全消去）</button>
             </div>
           </div>
