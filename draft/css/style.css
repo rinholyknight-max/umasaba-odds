@@ -94,7 +94,7 @@ body {
   align-items: center;
   margin-bottom: 32px;
   padding-bottom: 20px;
-  border-bottom: 1px solid #d2d2d7;
+  border-bottom: 2px solid rgba(255, 215, 0, 0.2);
 }
 @media (max-width: 600px) {
   .main-header {
@@ -117,7 +117,7 @@ body {
 .main-header .header-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 @media (max-width: 600px) {
   .main-header .header-actions {
@@ -129,20 +129,21 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  height: 40px;
-  padding: 0 16px;
+  gap: 8px;
+  height: 42px;
+  padding: 0 18px;
   font-size: 14px;
-  font-weight: 600;
-  border-radius: 20px;
+  font-weight: 700;
+  border-radius: 30px;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
   box-sizing: border-box;
+  background: linear-gradient(145deg, #1a1d24, #15181c);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .main-header .header-actions .refresh-btn .material-symbols-outlined,
 .main-header .header-actions .reset-btn .material-symbols-outlined {
   font-size: 18px;
-  font-variation-settings: "FILL" 0, "WIGHT" 500, "GRAD" 0, "opsz" 24;
+  font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 24;
 }
 @media (max-width: 600px) {
   .main-header .header-actions .refresh-btn,
@@ -151,30 +152,34 @@ body {
   }
 }
 .main-header .header-actions .refresh-btn {
-  background-color: #ffffff;
-  border: 1px solid rgba(0, 113, 227, 0.4);
-  color: #0071e3;
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  color: #ffd700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 215, 0, 0.05);
 }
 .main-header .header-actions .refresh-btn:hover:not(:disabled) {
-  background-color: rgba(0, 113, 227, 0.05);
-  border-color: #0071e3;
-  color: #0077ed;
+  border-color: #ffd700;
+  color: #ffffff;
+  background: linear-gradient(145deg, #222630, #1a1d24);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 215, 0, 0.25);
 }
 .main-header .header-actions .refresh-btn:disabled {
-  background-color: #f5f5f7;
-  border-color: transparent;
-  color: #a0a5b5;
+  background: #111318;
+  border-color: rgba(255, 255, 255, 0.05);
+  color: #4a4f5d;
   cursor: wait;
+  transform: none;
+  box-shadow: none;
 }
 .main-header .header-actions .reset-btn {
-  background-color: #f5f5f7;
-  border: 1px solid #d2d2d7;
-  color: #515154;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #a0a5b5;
 }
 .main-header .header-actions .reset-btn:hover {
-  background-color: #e8e8ed;
-  border-color: #86868b;
-  color: #1d1d1f;
+  background: linear-gradient(145deg, #222630, #1a1d24);
+  border-color: rgba(235, 87, 87, 0.4);
+  color: #ff8e8e;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .members-grid {
@@ -292,19 +297,19 @@ body {
   box-sizing: border-box;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-.member-card .member-header {
+.member-card .member-card .member-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.member-card .member-header h3 {
+.member-card .member-card .member-header h3 {
   margin: 0;
   font-size: 20px;
   font-weight: 700;
   color: #ffffff;
   transition: color 0.3s ease;
 }
-.member-card .member-header .toggle-badge {
+.member-card .member-card .member-header .toggle-badge {
   font-size: 12px;
   font-weight: 600;
   color: #a0a5b5;

@@ -36,7 +36,7 @@ body {
   align-items: center;
   margin-bottom: 32px;
   padding-bottom: 20px;
-  border-bottom: 1px solid $color-border;
+  border-bottom: 2px solid rgba($color-gold-light, 0.2); // 💡 境界を金色の透過フレームに強化
 
   @media (max-width: 600px) {
     flex-direction: column;
@@ -51,7 +51,7 @@ body {
     letter-spacing: 2px;
     background: linear-gradient(135deg, #ffffff 0%, $color-gold-light 100%);
     -webkit-background-clip: text; // Safari / Chrome 互換用
-    background-clip: text; // 標準プロパティ（追加）
+    background-clip: text; // 標準プロパティ
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 20px rgba($color-gold-light, 0.3);
   }
@@ -60,34 +60,36 @@ body {
   .header-actions {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px; // 💡 バランスを均等に少し広げる
 
     @media (max-width: 600px) {
       width: 100%;
     }
 
-    // 共通のボタンスタイル
+    // 共通のボタンスタイル（💡 漆黒の立体ベースへ修正）
     .refresh-btn,
     .reset-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px; // アイコンと文字の間隔
-      height: 40px;
-      padding: 0 16px;
+      gap: 8px; // 💡 アイコンと文字の間隔を少し広げて調整
+      height: 42px; // 💡 重厚感に合わせて高さを1px調整
+      padding: 0 18px;
       font-size: 14px;
-      font-weight: 600;
-      border-radius: 20px; // Apple風の丸み
+      font-weight: 700; // 💡 太字に変更
+      border-radius: 30px; // 💡 シャープかつリッチな丸みに変更
       cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
       box-sizing: border-box;
+      background: linear-gradient(145deg, #1a1d24, #15181c);
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 
       // マテリアルアイコンのサイズと位置調整
       .material-symbols-outlined {
         font-size: 18px;
+        // フォントバリエーション設定を修正（WIGHTをWEIGHTに訂正し最適化）
         font-variation-settings:
           "FILL" 0,
-          "WIGHT" 500,
+          "wght" 600,
           "GRAD" 0,
           "opsz" 24;
       }
@@ -97,36 +99,44 @@ body {
       }
     }
 
-    // 🔄 最新データに更新ボタン（青アクセントのプレミアム枠）
+    // 🔄 最新データに更新ボタン（💡 追加カラーに合わせたゴールドネオン枠へ変更）
     .refresh-btn {
-      background-color: #ffffff;
-      border: 1px solid rgba($color-primary, 0.4);
-      color: $color-primary;
+      border: 1px solid rgba($color-gold-light, 0.4);
+      color: $color-gold-light;
+      box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.4),
+        0 0 10px rgba($color-gold-light, 0.05);
 
       &:hover:not(:disabled) {
-        background-color: rgba($color-primary, 0.05);
-        border-color: $color-primary;
-        color: $color-primary-hover;
+        border-color: $color-gold-light;
+        color: #ffffff;
+        background: linear-gradient(145deg, #222630, #1a1d24);
+        transform: translateY(-2px);
+        box-shadow:
+          0 6px 20px rgba(0, 0, 0, 0.6),
+          0 0 15px rgba($color-gold-light, 0.25);
       }
 
       &:disabled {
-        background-color: #f5f5f7;
-        border-color: transparent;
-        color: #a0a5b5;
+        background: #111318;
+        border-color: rgba(255, 255, 255, 0.05);
+        color: #4a4f5d;
         cursor: wait;
+        transform: none;
+        box-shadow: none;
       }
     }
 
-    // 👁️ すべての回答を隠すボタン（シックなライトグレー）
+    // 👁️ すべての回答を隠すボタン（💡 警告を潜めたサイレントグレー枠へ変更）
     .reset-btn {
-      background-color: #f5f5f7;
-      border: 1px solid $color-border;
-      color: #515154;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #a0a5b5;
 
       &:hover {
-        background-color: #e8e8ed;
-        border-color: #86868b;
-        color: #1d1d1f;
+        background: linear-gradient(145deg, #222630, #1a1d24);
+        border-color: rgba(235, 87, 87, 0.4); // 警告を連想させる鈍い赤
+        color: #ff8e8e;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
       }
     }
   }
@@ -285,7 +295,7 @@ body {
     }
   }
 
-  .member-header {
+  .member-card .member-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
