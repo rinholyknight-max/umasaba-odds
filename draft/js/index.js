@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const container = document.getElementById("members-container");
   const resetBtn = document.getElementById("reset-all-btn");
-  const refreshBtn = document.getElementById("refresh-data-btn"); // 🔄 追加：「最新データに更新」ボタンの取得
+  const refreshBtn = document.getElementById("refresh-data-btn");
 
   try {
     const response = await fetch("/api/get-members");
@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     membersData.forEach((member) => {
       const card = document.createElement("div");
       card.className = "member-card";
-      // 💡 後から特定のメンバーを特定して上書きできるよう、data属性を付与
       card.setAttribute("data-username", member.username);
 
       card.innerHTML = `
@@ -22,16 +21,15 @@ document.addEventListener("DOMContentLoaded", async () => {
           <span class="toggle-badge">中身を見る</span>
         </div>
         <div class="member-content">
-          <!-- 💡 JavaScriptからピンポイントで書き換えられるようクラスやラッパーを固定配置 -->
-          <p class="memo-text">${member.text || ""}</p>
-          <div class="canvas-img-wrap" style="${member.image ? "" : "display: none;"}">
-            <img src="${member.image || ""}" alt="手書き予想" />
+          <p class="memo-text"></p>
+          <div class="canvas-img-wrap">
+            <img src="" alt="手書き予想" />
           </div>
         </div>
       `;
 
-      // 初期表示でテキストも画像も空なら、コンテンツエリア自体のスタイル調整が必要な場合のために考慮
-      toggleContentVisibility(card, member.text, member.image);
+      // 💡 初回表示時の表示分け処理（テキスト優先、なければ画像）
+      applyExclusiveContent(card, member.text, member.image);
 
       // クリックイベント
       card.addEventListener("click", () => {
@@ -51,42 +49,22 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
     });
 
-    // 🔄 追加：最新データに更新ボタンのクリック処理
+    // 最新データに更新ボタンのクリック処理
     if (refreshBtn) {
       refreshBtn.addEventListener("click", async () => {
         refreshBtn.disabled = true;
         refreshBtn.textContent = "更新中...";
 
         try {
-          // 最新のメンバーデータを再取得
           const res = await fetch("/api/get-members");
           const updateResult = await res.json();
 
           if (updateResult.success) {
             updateResult.data.forEach((member) => {
-              // 画面上にある該当メンバーのカードを検索（これにより要素を壊さずis-activeを維持）
               const card = container.querySelector(`.member-card[data-username="${member.username}"]`);
               if (card) {
-                // テキストの更新
-                const textElem = card.querySelector(".memo-text");
-                if (textElem) textElem.textContent = member.text || "";
-
-                // 画像の更新
-                const imgWrap = card.querySelector(".canvas-img-wrap");
-                const imgElem = imgWrap ? imgWrap.querySelector("img") : null;
-
-                if (imgElem && imgWrap) {
-                  if (member.image) {
-                    imgElem.src = member.image;
-                    imgWrap.style.display = ""; // 表示
-                  } else {
-                    imgElem.src = "";
-                    imgWrap.style.display = "none"; // 非表示
-                  }
-                }
-
-                // テキストと画像の有無に応じた表示ロジックの適用
-                toggleContentVisibility(card, member.text, member.image);
+                // 💡 更新時にも同様の排他制御ロジックを適用
+                applyExclusiveContent(card, member.text, member.image);
               }
             });
           }
@@ -103,12 +81,38 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   /**
-   * 💡 テキストや画像の有無で要素の表示・非表示を切り替える補助関数
+   * 💡 テキストと手書き画像の表示を完全に切り替える排他制御関数
    */
-  function toggleContentVisibility(card, text, image) {
+  function applyExclusiveContent(card, text, image) {
     const textElem = card.querySelector(".memo-text");
-    if (textElem) {
-      textElem.style.display = text ? "" : "none";
+    const imgWrap = card.querySelector(".canvas-img-wrap");
+    const imgElem = imgWrap ? imgWrap.querySelector("img") : null;
+
+    // トリムして文字があるか判定
+    const hasText = text && text.trim() !== "";
+
+    if (hasText) {
+      // 📝 テキストがある時は「テキストのみ」
+      if (textElem) {
+        textElem.textContent = text;
+        textElem.style.display = ""; // 表示
+      }
+      if (imgWrap) imgWrap.style.display = "none"; // 画像を非表示
+      if (imgElem) imgElem.src = "";
+    } else if (image) {
+      // 🎨 手書き画像がある時は「手書きのみ」
+      if (textElem) {
+        textElem.textContent = "";
+        textElem.style.display = "none"; // テキストを非表示
+      }
+      if (imgWrap) {
+        imgWrap.style.display = ""; // 画像を表示
+      }
+      if (imgElem) imgElem.src = image;
+    } else {
+      // 両方空の時
+      if (textElem) textElem.style.display = "none";
+      if (imgWrap) imgWrap.style.display = "none";
     }
   }
 });
