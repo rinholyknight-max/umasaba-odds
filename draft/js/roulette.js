@@ -63,6 +63,15 @@ document.addEventListener("DOMContentLoaded", () => {
       let totalRounds = 30;
 
       function spin() {
+        /* 
+         * -------------------------------------------------------------------
+         * 🎲 均等抽選の仕組み（アニメーション表示用）
+         * -------------------------------------------------------------------
+         * 1. Math.random() は 0 以上 1 未満の浮動小数点数を「一様分布（均等な確率）」で生成します。
+         * 2. そこに配列の長さ（candidates.length）を掛けることで、[0 〜 N未満] の範囲に引き伸ばします。
+         * 3. Math.floor() で端数を切り捨て、0 〜 (N-1) の整数インデックスに変換します。
+         * これにより、各候補のインデックスが選ばれる確率は完全に等しく（1 / candidates.length）なります。
+         */
         const randomIndex = Math.floor(Math.random() * candidates.length);
         rouletteName.textContent = candidates[randomIndex];
 
@@ -74,8 +83,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
           setTimeout(spin, speed);
         } else {
-          // 🎉 最終決定（確定演出）
-          const winner = candidates[Math.floor(Math.random() * candidates.length)];
+          /* 
+           * -------------------------------------------------------------------
+           * 🎉 均等抽選の仕組み（最終結果の決定）
+           * -------------------------------------------------------------------
+           * 表示アニメーションとは独立して、最終当選者も同様に『1 / N』の一様確率で再計算し公平に決定します。
+           * (例: 5チーム選択されている場合、各チームの当選確率は正確に 20% となります)
+           */
+          const winnerIndex = Math.floor(Math.random() * candidates.length);
+          const winner = candidates[winnerIndex];
+          
           rouletteName.textContent = winner;
           rouletteName.className = "roulette-name is-winner";
           isSpinning = false;
