@@ -66,27 +66,26 @@ body {
       width: 100%;
     }
 
-    // 共通のボタンスタイル（💡 漆黒の立体ベースへ修正）
+    // 共通のボタンスタイル
     .refresh-btn,
-    .reset-btn {
+    .reset-btn,
+    .roulette-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px; // 💡 アイコンと文字の間隔を少し広げて調整
-      height: 42px; // 💡 重厚感に合わせて高さを1px調整
+      gap: 8px;
+      height: 42px;
       padding: 0 18px;
       font-size: 14px;
-      font-weight: 700; // 💡 太字に変更
-      border-radius: 30px; // 💡 シャープかつリッチな丸みに変更
+      font-weight: 700;
+      border-radius: 30px;
       cursor: pointer;
       box-sizing: border-box;
       background: linear-gradient(145deg, #1a1d24, #15181c);
       transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 
-      // マテリアルアイコンのサイズと位置調整
       .material-symbols-outlined {
         font-size: 18px;
-        // フォントバリエーション設定を修正（WIGHTをWEIGHTに訂正し最適化）
         font-variation-settings:
           "FILL" 0,
           "wght" 600,
@@ -99,7 +98,21 @@ body {
       }
     }
 
-    // 🔄 最新データに更新ボタン（💡 追加カラーに合わせたゴールドネオン枠へ変更）
+    // 🎰 ルーレットボタン
+    .roulette-btn {
+      background: linear-gradient(135deg, $color-gold-light, $color-gold-dark) !important;
+      color: #0f1115 !important;
+      border: none !important;
+      font-weight: 800 !important;
+      box-shadow: 0 0 15px rgba($color-gold-light, 0.4);
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 25px rgba($color-gold-light, 0.7);
+      }
+    }
+
+    // 🔄 最新データに更新ボタン
     .refresh-btn {
       border: 1px solid rgba($color-gold-light, 0.4);
       color: $color-gold-light;
@@ -127,14 +140,14 @@ body {
       }
     }
 
-    // 👁️ すべての回答を隠すボタン（💡 警告を潜めたサイレントグレー枠へ変更）
+    // 👁️ すべての回答を隠すボタン
     .reset-btn {
       border: 1px solid rgba(255, 255, 255, 0.1);
       color: #a0a5b5;
 
       &:hover {
         background: linear-gradient(145deg, #222630, #1a1d24);
-        border-color: rgba(235, 87, 87, 0.4); // 警告を連想させる鈍い赤
+        border-color: rgba(235, 87, 87, 0.4);
         color: #ff8e8e;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
       }
@@ -148,11 +161,10 @@ body {
 .members-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 32px; // 少し広げてカードの存在感を強調
+  gap: 32px;
 
-  // 🔥 【超重要：はみ出し撲滅設定】
   width: 100%;
-  max-width: 100%; // 親要素（1000px）より絶対に大きくならないように制限
+  max-width: 100%;
   box-sizing: border-box;
 
   @media (max-width: 768px) {
@@ -164,9 +176,9 @@ body {
 //  カードのスタイリング
 // ==========================================================================
 .member-card {
-  background: linear-gradient(145deg, #1a1d24, #15181c); // 高級感のある黒
-  border: 2px solid rgba(255, 255, 255, 0.1); // 初期状態は控えめなメタリック枠
-  border-radius: 16px; // 角丸を少し強調してリッチに
+  background: linear-gradient(145deg, #1a1d24, #15181c);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
   padding: 24px;
   cursor: pointer;
   position: relative;
@@ -176,7 +188,6 @@ body {
   max-width: 100%;
   box-sizing: border-box;
 
-  // 通常時は4:3の比率
   aspect-ratio: 4 / 3;
 
   display: block;
@@ -185,7 +196,6 @@ body {
     box-shadow 0.3s ease,
     border-color 0.3s ease;
 
-  // 未選択時のホバー：選択を待つ緊張感を演出
   &:hover {
     transform: translateY(-8px) scale(1.02);
     border-color: rgba($color-gold-light, 0.6);
@@ -200,7 +210,7 @@ body {
   // 🎉 【確定・アクティブ時】ドラフト指名獲得のド派手な演出
   &.is-active {
     height: auto !important;
-    aspect-ratio: auto !important; // 縦伸びを許容
+    aspect-ratio: auto !important;
 
     border-color: $color-gold-light;
     background: linear-gradient(145deg, #221e16, #15181c);
@@ -218,16 +228,16 @@ body {
       }
       .toggle-badge {
         background: linear-gradient(135deg, $color-gold-light, $color-gold-dark);
-        color: #0f1115; // 文字色を漆黒（$color-draft-darkと同等）にして視認性を確保
-        font-weight: 800; // より力強い太さに
-        box-shadow: 0 0 15px rgba($color-gold-light, 0.4); // 金色のグロー効果
+        color: #0f1115;
+        font-weight: 800;
+        box-shadow: 0 0 15px rgba($color-gold-light, 0.4);
         text-shadow: none;
       }
     }
 
     .member-content {
       background-image: none;
-      background-color: #ffffff; // 中身は白ベースで見やすく
+      background-color: #ffffff;
       border: 1px solid $color-gold-dark;
       box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
 
@@ -241,12 +251,10 @@ body {
       }
 
       .canvas-img-wrap {
-        // 元々非表示（JSで display: none にされたもの）は !important で完全に消す
         &[style*="display: none"] {
           display: none !important;
         }
 
-        // JS側で非表示になっていない（手書き画像がある）ときだけ flex を適用する
         &:not([style*="display: none"]) {
           display: flex !important;
           animation: imgReveal 0.4s 0.2s ease-out both;
@@ -255,114 +263,64 @@ body {
     }
   }
 
-  .member-content {
-    margin-top: 16px;
-    border-radius: 12px;
-
-    height: calc(100% - 45px);
-    // 未開封時：ゴールドとグレーのプレビュー感のある豪華な斜線
-    background-image: repeating-linear-gradient(45deg, #252932, #252932 10px, #1e222b 10px, #1e222b 20px);
-    background-size: cover;
-    overflow: hidden;
-    box-sizing: border-box; // はみ出し防止
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-
-    p {
-      opacity: 0;
-      transform: translateY(10px);
-      margin: 16px;
-      line-height: 1.6;
-      color: #1d1d1f; // 中身が開いた時のテキスト色
-      font-size: 15px;
-      font-weight: 500;
-      transition:
-        opacity 0.4s ease,
-        transform 0.4s ease;
-    }
-
-    .canvas-img-wrap {
-      margin-top: 12px;
-      width: 100%; // 親であるカードの横幅いっぱいに広げる
-      max-width: 100%; // 絶対にそれ以上はみ出させない
-      display: none;
-      justify-content: center;
-      box-sizing: border-box;
-      padding: 0 16px 16px 16px;
-
-      img {
-        width: 100% !important;
-        max-width: 100% !important;
-        height: auto !important; // 縦横比を崩さずに縮小する
-
-        border-radius: 8px;
-        border: 2px solid $color-gold-dark;
-        background: #ffffff; // 手書きの背景を白にして見やすく
-        box-sizing: border-box;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      }
-    }
-  }
-
-  .member-card .member-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  h3 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 700;
-    color: #ffffff;
-    transition: color 0.3s ease;
-  }
-
-  // 💡 右上にまとめるアクションエリア（バッジ ＋ チェックボックス）
-  .header-right-actions {
+  // 💡 【ここを修正】不要な .member-card セレクタの重複を解消
+  .member-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 12px;
 
-    // 🎨 カスタムチェックボックスのデザイン
-    .roulette-checkbox {
-      appearance: none; // ブラウザデフォルトのダサい枠線を無効化
-      -webkit-appearance: none;
-      width: 20px;
-      height: 20px;
-      border: 2px solid rgba($color-gold-light, 0.5); // 通常時は鈍いゴールド枠
-      border-radius: 6px; // 丸みのある四角
-      background-color: #121419;
-      cursor: pointer;
-      position: relative;
-      transition: all 0.2s ease;
-      outline: none;
+    h3 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      transition: color 0.3s ease;
+    }
 
-      // 💡 ホバー時：明るく発光
-      &:hover {
-        border-color: $color-gold-light;
-        box-shadow: 0 0 8px rgba($color-gold-light, 0.4);
-      }
+    // 右上のアクションエリア（バッジ ＋ チェックボックス）
+    .header-right-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
 
-      &:checked {
-        background-color: $color-gold-light;
-        border-color: $color-gold-light;
-        box-shadow: 0 0 10px rgba($color-gold-light, 0.6);
+      // 🎨 カスタムチェックボックス
+      .roulette-checkbox {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgba($color-gold-light, 0.5);
+        border-radius: 6px;
+        background-color: #121419;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.2s ease;
+        outline: none;
 
-        // チェックマーク（✔）を描画
-        &::after {
-          content: "";
-          position: absolute;
-          left: 5px;
-          top: 1px;
-          width: 5px;
-          height: 10px;
-          border: solid #0f1115; // チェックマークの色（濃い漆黒）
-          border-width: 0 2.5px 2.5px 0;
-          transform: rotate(45deg);
+        &:hover {
+          border-color: $color-gold-light;
+          box-shadow: 0 0 8px rgba($color-gold-light, 0.4);
+        }
+
+        &:checked {
+          background-color: $color-gold-light;
+          border-color: $color-gold-light;
+          box-shadow: 0 0 10px rgba($color-gold-light, 0.6);
+
+          &::after {
+            content: "";
+            position: absolute;
+            left: 5px;
+            top: 1px;
+            width: 5px;
+            height: 10px;
+            border: solid #0f1115;
+            border-width: 0 2.5px 2.5px 0;
+            transform: rotate(45deg);
+          }
         }
       }
     }
-  }
 
     .toggle-badge {
       font-size: 12px;
@@ -373,12 +331,58 @@ body {
       border-radius: 20px;
       transition: all 0.3s ease;
     }
+  }
 
+  .member-content {
+    margin-top: 16px;
+    border-radius: 12px;
 
+    height: calc(100% - 45px);
+    background-image: repeating-linear-gradient(45deg, #252932, #252932 10px, #1e222b 10px, #1e222b 20px);
+    background-size: cover;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    p {
+      opacity: 0;
+      transform: translateY(10px);
+      margin: 16px;
+      line-height: 1.6;
+      color: #1d1d1f;
+      font-size: 15px;
+      font-weight: 500;
+      transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+    }
+
+    .canvas-img-wrap {
+      margin-top: 12px;
+      width: 100%;
+      max-width: 100%;
+      display: none;
+      justify-content: center;
+      box-sizing: border-box;
+      padding: 0 16px 16px 16px;
+
+      img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+
+        border-radius: 8px;
+        border: 2px solid $color-gold-dark;
+        background: #ffffff;
+        box-sizing: border-box;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+    }
   }
 }
 
-// 🎬 ドラフト決定時のフラッシュ＆ポップアップアニメーション
+// 🎬 ドラフト決定時のアニメーション
 @keyframes flashOpen {
   0% {
     transform: scale(0.96);
@@ -405,22 +409,8 @@ body {
 }
 
 // ==========================================================================
-// 🎰 ルーレット用スタイル
+// 🎰 ルーレット用モーダルスタイル
 // ==========================================================================
-
-// ヘッダーのルーレットボタン（ゴールド輝くアクセントボタン）
-.header-actions .roulette-btn {
-  background: linear-gradient(135deg, $color-gold-light, $color-gold-dark) !important;
-  color: #0f1115 !important;
-  border: none !important;
-  font-weight: 800 !important;
-  box-shadow: 0 0 15px rgba($color-gold-light, 0.4);
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 25px rgba($color-gold-light, 0.7);
-  }
-}
 
 // モーダル背景
 .roulette-modal {
