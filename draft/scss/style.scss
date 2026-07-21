@@ -345,14 +345,6 @@ body {
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.05);
 
-    .memo-border {
-      border: 1px solid rgba($color-gold-light, 0.3);
-      border-radius: 12px;
-      padding: 16px;
-      height: 100%;
-      box-sizing: border-box;
-    }
-
     p {
       opacity: 0;
       transform: translateY(10px);
@@ -362,8 +354,12 @@ body {
       margin: 50px;
       font-weight: 500;
       transition:
-        opacity 0.4s ease,
-        transform 0.4s ease;
+      opacity 0.4s ease,
+      transform 0.4s ease;
+    	border-radius: 8px;
+    	border: 2px solid #b8860b;
+    	background: #ffffff;
+	    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
 
     .canvas-img-wrap {
