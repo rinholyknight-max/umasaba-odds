@@ -16,8 +16,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       card.setAttribute("data-username", member.username);
 
       card.innerHTML = `
-        <div class="member-header">
-          <h3>${member.name || member.username}</h3>
+       <div class="member-header">
+          <div class="header-left">
+            <input type="checkbox" class="roulette-checkbox" data-username="${member.username}" checked />
+            <h3>${member.name || member.username}</h3>
+          </div>
           <span class="toggle-badge">中身を見る</span>
         </div>
         <div class="member-content">
@@ -27,6 +30,13 @@ document.addEventListener("DOMContentLoaded", async () => {
           </div>
         </div>
       `;
+
+      const checkbox = card.querySelector(".roulette-checkbox");
+      if (checkbox) {
+        checkbox.addEventListener("click", (e) => {
+          e.stopPropagation(); // カード本体のクリックイベント発火をストップ
+        });
+      }
 
       // 💡 初回表示時の表示分け処理（テキスト優先、なければ画像）
       applyExclusiveContent(card, member.text, member.image);

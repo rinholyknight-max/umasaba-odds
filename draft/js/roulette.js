@@ -1,5 +1,5 @@
 /**
- * ドラフト会議 ルーレットシステム
+ * 🎰 ドラフト会議 ルーレットシステム（チェックボックス選択版）
  */
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("members-container");
@@ -11,19 +11,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let isSpinning = false;
 
-  // モーダルを開く
+  // モーダルを開く処理
   if (rouletteStartBtn) {
     rouletteStartBtn.addEventListener("click", () => {
       if (!container) return;
 
-      // 💡 開いているカード（is-active）から対象メンバーを抽出
-      let activeCards = container.querySelectorAll(".member-card.is-active");
-      if (activeCards.length === 0) {
-        activeCards = container.querySelectorAll(".member-card");
-      }
+      // 💡 チェックされているチェックボックスを検索
+      const checkedBoxes = container.querySelectorAll(".roulette-checkbox:checked");
 
-      if (activeCards.length === 0) {
-        alert("抽選対象のメンバーがいません。");
+      if (checkedBoxes.length === 0) {
+        alert("ルーレットで抽選したいチームにチェックを入れてください。");
         return;
       }
 
@@ -34,10 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // モーダルを閉じる
+  // モーダルを閉じる処理
   if (rouletteCloseBtn) {
     rouletteCloseBtn.addEventListener("click", () => {
-      if (isSpinning) return; // 抽選中は閉じさせない
+      if (isSpinning) return;
       rouletteModal.classList.remove("is-open");
     });
   }
@@ -47,16 +44,12 @@ document.addEventListener("DOMContentLoaded", () => {
     rouletteSpinBtn.addEventListener("click", () => {
       if (isSpinning || !container) return;
 
-      // 💡 中身が開いている（is-active）カードから候補の名前を取得
-      let targetCards = Array.from(container.querySelectorAll(".member-card.is-active"));
+      // 💡 チェックされているカードからチーム名/メンバー名を取得
+      const checkedBoxes = Array.from(container.querySelectorAll(".roulette-checkbox:checked"));
 
-      // 一つも開いていない場合は全員から抽選
-      if (targetCards.length === 0) {
-        targetCards = Array.from(container.querySelectorAll(".member-card"));
-      }
-
-      const candidates = targetCards.map((card) => {
-        return card.querySelector("h3")?.textContent.trim() || "名前なし";
+      const candidates = checkedBoxes.map((box) => {
+        const card = box.closest(".member-card");
+        return card ? card.querySelector("h3")?.textContent.trim() || "名前なし" : "名前なし";
       });
 
       if (candidates.length === 0) return;
@@ -66,8 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
       rouletteName.className = "roulette-name is-spinning";
 
       let counter = 0;
-      let speed = 50; // 開始時のスロット速度(ms)
-      let totalRounds = 30; // ルーレットが切り替わる回数
+      let speed = 50;
+      let totalRounds = 30;
 
       function spin() {
         const randomIndex = Math.floor(Math.random() * candidates.length);
@@ -95,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 確定した勝者のカードにスクロール移動して強調する処理
+  // 確定したチームのカードへスクロール
   function highlightWinnerCard(winnerName) {
     if (!container) return;
     const cards = container.querySelectorAll(".member-card");
