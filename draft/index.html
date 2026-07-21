@@ -8,7 +8,10 @@
     <meta name="description" content="合同杯4th ドラフトページ" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
@@ -30,6 +33,10 @@
       <header class="main-header">
         <h1>合同杯4th チームドラフト</h1>
         <div class="header-actions">
+          <button id="roulette-start-btn" class="roulette-btn" title="ルーレット開始">
+            <span class="material-symbols-outlined">casino</span>
+            <span>ルーレット</span>
+          </button>
           <button id="refresh-data-btn" class="refresh-btn" title="最新データに更新">
             <span class="material-symbols-outlined">refresh</span>
             <span>最新データに更新</span>
@@ -38,6 +45,28 @@
             <span class="material-symbols-outlined">visibility_off</span>
             <span>すべての回答を隠す</span>
           </button>
+
+          <!-- ドラフト指名ルーレット用モーダル -->
+          <div id="roulette-modal" class="roulette-modal">
+            <div class="roulette-modal-content">
+              <div class="roulette-header">
+                <h2>DRAFT SELECTION</h2>
+                <p class="roulette-subtitle">第1巡 選択希望選手</p>
+              </div>
+
+              <div class="roulette-display">
+                <div id="roulette-name" class="roulette-name">???</div>
+              </div>
+
+              <div class="roulette-actions">
+                <button id="roulette-spin-btn" class="spin-btn">
+                  <span class="material-symbols-outlined">play_arrow</span>
+                  <span>抽選スタート</span>
+                </button>
+                <button id="roulette-close-btn" class="close-btn">閉じる</button>
+              </div>
+            </div>
+          </div>
         </div>
       </header>
 
@@ -45,5 +74,6 @@
     </main>
 
     <script type="module" src="/draft/js/index.js"></script>
+    <script src="/draft/js/roulette.js"></script>
   </body>
 </html>

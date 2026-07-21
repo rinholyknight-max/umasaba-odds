@@ -354,3 +354,172 @@ body {
     transform: scale(1) translateY(0);
   }
 }
+
+// ==========================================================================
+// 🎰 ルーレット用スタイル
+// ==========================================================================
+
+// ヘッダーのルーレットボタン（ゴールド輝くアクセントボタン）
+.header-actions .roulette-btn {
+  background: linear-gradient(135deg, $color-gold-light, $color-gold-dark) !important;
+  color: #0f1115 !important;
+  border: none !important;
+  font-weight: 800 !important;
+  box-shadow: 0 0 15px rgba($color-gold-light, 0.4);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba($color-gold-light, 0.7);
+  }
+}
+
+// モーダル背景
+.roulette-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 17, 21, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// モーダルコンテンツカード
+.roulette-modal-content {
+  background: linear-gradient(145deg, #1a1d24, #121419);
+  border: 2px solid $color-gold-light;
+  border-radius: 24px;
+  padding: 40px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 0 50px rgba($color-gold-light, 0.3);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+
+  .roulette-modal.is-open & {
+    transform: scale(1);
+  }
+
+  .roulette-header {
+    h2 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: $color-gold-light;
+      text-shadow: 0 0 10px rgba($color-gold-light, 0.5);
+    }
+    .roulette-subtitle {
+      margin: 8px 0 0 0;
+      font-size: 14px;
+      color: #a0a5b5;
+      letter-spacing: 2px;
+    }
+  }
+
+  // ルーレットの表示パネル
+  .roulette-display {
+    margin: 32px 0;
+    padding: 24px;
+    background: #0f1115;
+    border: 1px solid rgba($color-gold-light, 0.3);
+    border-radius: 16px;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .roulette-name {
+      font-size: 32px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 1px;
+
+      &.is-spinning {
+        color: rgba(255, 255, 255, 0.6);
+        filter: blur(1px);
+      }
+
+      &.is-winner {
+        color: $color-gold-light;
+        font-size: 36px;
+        text-shadow: 0 0 20px rgba($color-gold-light, 0.8);
+        animation: winnerFlash 0.5s ease-out;
+      }
+    }
+  }
+
+  .roulette-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+
+    button {
+      height: 48px;
+      padding: 0 24px;
+      border-radius: 24px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .spin-btn {
+      background: linear-gradient(135deg, $color-gold-light, $color-gold-dark);
+      color: #0f1115;
+      border: none;
+      box-shadow: 0 4px 15px rgba($color-gold-light, 0.3);
+
+      &:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba($color-gold-light, 0.5);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+
+    .close-btn {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #a0a5b5;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+@keyframes winnerFlash {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

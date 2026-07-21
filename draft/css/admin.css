@@ -4,7 +4,8 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 * {
@@ -65,9 +66,12 @@ button {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    -webkit-transition-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 }
@@ -96,7 +100,8 @@ body {
   padding: 40px;
   border-radius: 18px;
   border: 1px solid #d2d2d7;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+  -webkit-box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
   text-align: center;
 }
 #login-container h2 {
@@ -129,13 +134,16 @@ body {
   border-radius: 10px;
   font-size: 15px;
   color: #1d1d1f;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   outline: none;
+  -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
 #login-container .input-group input:focus {
   border-color: #0071e3;
-  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15);
+  -webkit-box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15);
+          box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15);
 }
 #login-container button {
   width: 100%;
@@ -147,13 +155,17 @@ body {
   font-weight: 700;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.24);
+  -webkit-box-shadow: 0 4px 12px rgba(0, 113, 227, 0.24);
+          box-shadow: 0 4px 12px rgba(0, 113, 227, 0.24);
+  -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
 #login-container button:hover {
   background: linear-gradient(135deg, #0077ed 0%, #0071e3 100%);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(0, 113, 227, 0.35);
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+  -webkit-box-shadow: 0 6px 16px rgba(0, 113, 227, 0.35);
+          box-shadow: 0 6px 16px rgba(0, 113, 227, 0.35);
 }
 #login-container #error-message {
   color: #ff3b30;
@@ -168,12 +180,19 @@ body {
   padding: 32px;
   border-radius: 16px;
   border: 1px solid #d2d2d7;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  -webkit-box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
 }
 #admin-content .admin-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-bottom: 2px solid #d2d2d7;
   padding-bottom: 20px;
   margin-bottom: 28px;
@@ -197,28 +216,42 @@ body {
   cursor: pointer;
   font-size: 13px;
   font-weight: 600;
+  -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
 #admin-content .admin-header #logout-btn:hover {
   background-color: #ff3b30;
   color: #ffffff;
   border-color: #ff3b30;
-  box-shadow: 0 4px 10px rgba(255, 59, 48, 0.2);
+  -webkit-box-shadow: 0 4px 10px rgba(255, 59, 48, 0.2);
+          box-shadow: 0 4px 10px rgba(255, 59, 48, 0.2);
 }
 #admin-content .editor-layout {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 32px;
   margin-bottom: 32px;
 }
 @media (max-width: 768px) {
   #admin-content .editor-layout {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 #admin-content .editor-layout .field-group {
-  flex: 1;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 #admin-content .editor-layout .field-group label {
   font-size: 15px;
@@ -231,7 +264,9 @@ body {
 }
 #admin-content .editor-layout .field-group textarea {
   width: 100%;
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   min-height: 300px;
   padding: 16px;
   border: 1px solid #d2d2d7;
@@ -239,17 +274,32 @@ body {
   font-size: 15px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   line-height: 1.6;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   resize: none;
   outline: none;
   background-color: #f5f5f7;
   color: #1d1d1f;
+  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 #admin-content .editor-layout .field-group textarea:focus {
   border-color: #0071e3;
   background-color: #fff;
-  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15);
+  -webkit-box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15);
+          box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15);
+}
+#admin-content .editor-layout .field-group textarea::-webkit-input-placeholder {
+  color: #86868b;
+}
+#admin-content .editor-layout .field-group textarea::-moz-placeholder {
+  color: #86868b;
+}
+#admin-content .editor-layout .field-group textarea:-ms-input-placeholder {
+  color: #86868b;
+}
+#admin-content .editor-layout .field-group textarea::-ms-input-placeholder {
+  color: #86868b;
 }
 #admin-content .editor-layout .field-group textarea::placeholder {
   color: #86868b;
@@ -261,9 +311,16 @@ body {
   cursor: not-allowed;
 }
 #admin-content .editor-layout .field-group .canvas-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   width: 100%;
 }
 #admin-content .editor-layout .field-group .canvas-wrapper canvas {
@@ -271,14 +328,20 @@ body {
   border: 1px solid #d2d2d7;
   border-radius: 12px;
   cursor: crosshair;
-  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.06);
+  -webkit-box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.06);
+          box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.06);
   max-width: 100%;
   height: auto;
+  -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 #admin-content .editor-layout .field-group .canvas-wrapper .color-palette {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 12px;
   margin-top: 12px;
   width: 100%;
@@ -289,23 +352,30 @@ body {
   border-radius: 50%;
   border: 2px solid transparent;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
   padding: 0;
 }
 #admin-content .editor-layout .field-group .canvas-wrapper .color-palette .color-btn:hover:not(:disabled) {
-  transform: scale(1.15);
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
 }
 #admin-content .editor-layout .field-group .canvas-wrapper .color-palette .color-btn.active {
   border-color: #1d1d1f;
-  transform: scale(1.1);
-  box-shadow: 0 0 0 2px #ffffff, 0 4px 10px rgba(0, 0, 0, 0.3);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-box-shadow: 0 0 0 2px #ffffff, 0 4px 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 0 2px #ffffff, 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 #admin-content .editor-layout .field-group .canvas-wrapper .color-palette .color-btn:disabled {
   opacity: 0.2;
   cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
+  -webkit-transform: none;
+          transform: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 #admin-content .editor-layout .field-group .canvas-wrapper .color-palette #color-picker {
   border: 1px solid #d2d2d7;
@@ -315,14 +385,16 @@ body {
   padding: 2px;
   border-radius: 6px;
   cursor: pointer;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 #admin-content .editor-layout .field-group .canvas-wrapper .color-palette #color-picker:disabled {
   opacity: 0.3;
   cursor: not-allowed;
 }
 #admin-content .editor-layout .field-group .canvas-wrapper canvas[style*="pointer-events: none"] {
-  filter: contrast(0.8) brightness(0.95);
+  -webkit-filter: contrast(0.8) brightness(0.95);
+          filter: contrast(0.8) brightness(0.95);
   background-color: #e8e8ed;
   border-color: #d2d2d7;
 }
@@ -336,6 +408,7 @@ body {
   font-weight: 600;
   cursor: pointer;
   margin-top: 12px;
+  -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
 #admin-content .editor-layout .field-group .canvas-wrapper #clear-btn:hover:not(:disabled) {
@@ -363,22 +436,30 @@ body {
   letter-spacing: 1px;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3);
+  -webkit-box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3);
+          box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3);
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 #admin-content #save-submit-btn:hover:not(:disabled) {
   background: linear-gradient(135deg, #0080ff 0%, #0071e3 100%);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(0, 113, 227, 0.45);
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  -webkit-box-shadow: 0 10px 24px rgba(0, 113, 227, 0.45);
+          box-shadow: 0 10px 24px rgba(0, 113, 227, 0.45);
 }
 #admin-content #save-submit-btn:active:not(:disabled) {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.2);
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+  -webkit-box-shadow: 0 4px 12px rgba(0, 113, 227, 0.2);
+          box-shadow: 0 4px 12px rgba(0, 113, 227, 0.2);
 }
 #admin-content #save-submit-btn:disabled {
   background: #d2d2d7;
   color: #86868b;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   cursor: wait;
-  transform: none;
+  -webkit-transform: none;
+          transform: none;
 }/*# sourceMappingURL=admin.css.map */
