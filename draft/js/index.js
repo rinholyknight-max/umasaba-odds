@@ -24,7 +24,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         </div>
       </div>
       <div class="member-content">
-        <p class="memo-text"></p>
+        <div class="memo-border">
+          <p class="memo-text"></p>
+        </div>
         <div class="canvas-img-wrap">
           <img src="" alt="手書き予想" />
         </div>
