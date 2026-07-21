@@ -17,19 +17,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       card.innerHTML = `
        <div class="member-header">
-          <div class="header-left">
-            <input type="checkbox" class="roulette-checkbox" data-username="${member.username}" checked />
-            <h3>${member.name || member.username}</h3>
-          </div>
+        <h3>${member.name || member.username}</h3>
+        <div class="header-right-actions">
           <span class="toggle-badge">中身を見る</span>
+          <input type="checkbox" class="roulette-checkbox" data-username="${member.username}" title="ルーレットの対象にする" checked />
         </div>
-        <div class="member-content">
-          <p class="memo-text"></p>
-          <div class="canvas-img-wrap">
-            <img src="" alt="手書き予想" />
-          </div>
+      </div>
+      <div class="member-content">
+        <p class="memo-text"></p>
+        <div class="canvas-img-wrap">
+          <img src="" alt="手書き予想" />
         </div>
-      `;
+      </div>
+    `;
 
       const checkbox = card.querySelector(".roulette-checkbox");
       if (checkbox) {
