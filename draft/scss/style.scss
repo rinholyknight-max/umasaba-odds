@@ -305,32 +305,64 @@ body {
   }
 
   .member-card .member-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    transition: color 0.3s ease;
+  }
+
+  // 💡 右上にまとめるアクションエリア（バッジ ＋ チェックボックス）
+  .header-right-actions {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 12px;
 
-  .header-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    // 🎨 カスタムチェックボックスのデザイン
+    .roulette-checkbox {
+      appearance: none; // ブラウザデフォルトのダサい枠線を無効化
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba($color-gold-light, 0.5); // 通常時は鈍いゴールド枠
+      border-radius: 6px; // 丸みのある四角
+      background-color: #121419;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+      outline: none;
 
-      // カスタムチェックボックス（ゴールド枠）
-      .roulette-checkbox {
-        width: 20px;
-        height: 20px;
-        cursor: pointer;
-        accent-color: $color-gold-light; // チェック時の色をゴールドに
-        transform: scale(1.2);
+      // 💡 ホバー時：明るく発光
+      &:hover {
+        border-color: $color-gold-light;
+        box-shadow: 0 0 8px rgba($color-gold-light, 0.4);
       }
 
-      h3 {
-        margin: 0;
-        font-size: 20px;
-        font-weight: 700;
-        color: #ffffff;
-        transition: color 0.3s ease;
+      &:checked {
+        background-color: $color-gold-light;
+        border-color: $color-gold-light;
+        box-shadow: 0 0 10px rgba($color-gold-light, 0.6);
+
+        // チェックマーク（✔）を描画
+        &::after {
+          content: "";
+          position: absolute;
+          left: 5px;
+          top: 1px;
+          width: 5px;
+          height: 10px;
+          border: solid #0f1115; // チェックマークの色（濃い漆黒）
+          border-width: 0 2.5px 2.5px 0;
+          transform: rotate(45deg);
+        }
       }
     }
+  }
 
     .toggle-badge {
       font-size: 12px;
