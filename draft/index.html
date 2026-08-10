@@ -36,17 +36,13 @@
       <div class="swiper side-banner__swiper" id="banner-left">
         <div class="swiper-wrapper">
           <!-- 600×600（正方形）パターン -->
-          <div class="swiper-slide"><a href="#" target="_blank" rel="noopener"><img src="https://placehold.co/600x600/1a1d24/ffd700?text=Banner+1%0A600x600" alt="広告1" /></a></div>
+          <div class="swiper-slide">
+              <img src="https://placehold.co/600x600/1a1d24/ffd700?text=Banner+1%0A600x600" alt="広告1" />
+          </div>
           <!-- 600×1200（縦長）パターン -->
-          <div class="swiper-slide"><a href="#" target="_blank" rel="noopener"><img src="https://placehold.co/600x1200/221e16/ffd700?text=Banner+2%0A600x1200" alt="広告2" /></a></div>
-          <!-- 600×600 -->
-          <div class="swiper-slide"><a href="#" target="_blank" rel="noopener"><img src="https://placehold.co/600x600/0f1115/b8860b?text=Banner+3%0A600x600" alt="広告3" /></a></div>
-          <!-- 600×1200 -->
-          <div class="swiper-slide"><a href="#" target="_blank" rel="noopener"><img src="https://placehold.co/600x1200/252932/ffd700?text=Banner+4%0A600x1200" alt="広告4" /></a></div>
-          <!-- 600×600 -->
-          <div class="swiper-slide"><a href="#" target="_blank" rel="noopener"><img src="https://placehold.co/600x600/15181c/ffd700?text=Banner+5%0A600x600" alt="広告5" /></a></div>
-          <!-- 600×1200 -->
-          <div class="swiper-slide"><a href="#" target="_blank" rel="noopener"><img src="https://placehold.co/600x1200/1a1d24/b8860b?text=Banner+6%0A600x1200" alt="広告6" /></a></div>
+          <div class="swiper-slide">
+              <img src="https://placehold.co/600x1200/221e16/ffd700?text=Banner+2%0A600x1200" alt="広告2" />
+          </div>
         </div>
       </div>
     </aside>
@@ -55,18 +51,14 @@
     <aside class="side-banner side-banner--right">
       <div class="swiper side-banner__swiper" id="banner-right">
         <div class="swiper-wrapper">
-          <!-- 600×1200（縦長）パターン -->
-          <div class="swiper-slide"><a href="#" target="_blank" rel="noopener"><img src="https://placehold.co/600x1200/252932/ffd700?text=AD+1%0A600x1200" alt="広告A" /></a></div>
           <!-- 600×600（正方形）パターン -->
-          <div class="swiper-slide"><a href="#" target="_blank" rel="noopener"><img src="https://placehold.co/600x600/1a1d24/b8860b?text=AD+2%0A600x600" alt="広告B" /></a></div>
-          <!-- 600×1200 -->
-          <div class="swiper-slide"><a href="#" target="_blank" rel="noopener"><img src="https://placehold.co/600x1200/0f1115/ffd700?text=AD+3%0A600x1200" alt="広告C" /></a></div>
-          <!-- 600×600 -->
-          <div class="swiper-slide"><a href="#" target="_blank" rel="noopener"><img src="https://placehold.co/600x600/221e16/b8860b?text=AD+4%0A600x600" alt="広告D" /></a></div>
-          <!-- 600×1200 -->
-          <div class="swiper-slide"><a href="#" target="_blank" rel="noopener"><img src="https://placehold.co/600x1200/15181c/ffd700?text=AD+5%0A600x1200" alt="広告E" /></a></div>
-          <!-- 600×600 -->
-          <div class="swiper-slide"><a href="#" target="_blank" rel="noopener"><img src="https://placehold.co/600x600/1a1d24/ffd700?text=AD+6%0A600x600" alt="広告F" /></a></div>
+          <div class="swiper-slide">
+              <img src="https://placehold.co/600x600/1a1d24/ffd700?text=Banner+1%0A600x600" alt="広告1" />
+          </div>
+          <!-- 600×1200（縦長）パターン -->
+          <div class="swiper-slide">
+              <img src="https://placehold.co/600x1200/221e16/ffd700?text=Banner+2%0A600x1200" alt="広告2" />
+          </div>
         </div>
       </div>
     </aside>
@@ -130,7 +122,7 @@
           },
           autoHeight: true,        // 600x600 と 600x1200 の高さの違いに自動対応
           autoplay: {
-            delay: 4000,           // 4秒ごとに切り替え
+            delay: 10000,           // 10秒ごとに切り替え
             disableOnInteraction: false,
           },
           loop: true,              // 無限ループ
@@ -142,13 +134,13 @@
         // 左バナー
         new Swiper('#banner-left', {
           ...bannerOptions,
-          autoplay: { ...bannerOptions.autoplay, delay: 4000 },
+          autoplay: { ...bannerOptions.autoplay, delay: 10000 },
         });
 
         // 右バナー（少しずらして同時切り替えを回避）
         new Swiper('#banner-right', {
           ...bannerOptions,
-          autoplay: { ...bannerOptions.autoplay, delay: 5000 },
+          autoplay: { ...bannerOptions.autoplay, delay: 10000 },
         });
       });
     </script>
