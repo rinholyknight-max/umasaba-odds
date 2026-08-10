@@ -707,17 +707,13 @@ body {
             transform: scale(1);
     opacity: 1;
   }
-}/*# sourceMappingURL=style.css.map */
-
-/* ==========================================================================
-   📢 左右サイドバナー広告（Swiper フェード切り替え）
-   ========================================================================== */
+}
 .side-banner {
   position: fixed;
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  width: 200px;
+  width: 600px;
   z-index: 100;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -728,10 +724,10 @@ body {
   }
 }
 .side-banner--left {
-  left: 20px;
+  left: 100px;
 }
 .side-banner--right {
-  right: 20px;
+  right: 100px;
 }
 .side-banner__swiper {
   width: 100%;
@@ -751,5 +747,6 @@ body {
   width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
-}
+  -o-object-fit: cover;
+     object-fit: cover;
+}/*# sourceMappingURL=style.css.map */
