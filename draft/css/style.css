@@ -713,7 +713,7 @@ body {
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  width: 600px;
+  width: 400px;
   z-index: 100;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
