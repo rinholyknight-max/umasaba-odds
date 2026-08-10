@@ -566,3 +566,56 @@ body {
     opacity: 1;
   }
 }
+
+// ==========================================================================
+// 📢 左右サイドバナー広告（Swiper フェード切り替え）
+// ==========================================================================
+$banner-width: 200px; // バナー表示幅（600x600, 600x1200の縦横比に対応）
+
+.side-banner {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: $banner-width;
+  z-index: 100;
+  transition: all 0.3s ease;
+
+  // メインコンテンツ(1000px) + 左右バナー(400px) + 余白 を考慮し1440px以下で非表示
+  @media (max-width: 1440px) {
+    display: none;
+  }
+
+  &--left {
+    left: 20px;
+  }
+
+  &--right {
+    right: 20px;
+  }
+
+  // Swiperスライド内のスタイル
+  &__swiper {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+      0 8px 30px rgba(0, 0, 0, 0.6),
+      0 0 15px rgba($color-gold-light, 0.15);
+    border: 1px solid rgba($color-gold-light, 0.2);
+    transition: height 0.4s ease;
+
+    .swiper-slide {
+      a {
+        display: block;
+        line-height: 0;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+      }
+    }
+  }
+}

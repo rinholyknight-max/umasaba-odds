@@ -708,3 +708,48 @@ body {
     opacity: 1;
   }
 }/*# sourceMappingURL=style.css.map */
+
+/* ==========================================================================
+   📢 左右サイドバナー広告（Swiper フェード切り替え）
+   ========================================================================== */
+.side-banner {
+  position: fixed;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 200px;
+  z-index: 100;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+@media (max-width: 1440px) {
+  .side-banner {
+    display: none;
+  }
+}
+.side-banner--left {
+  left: 20px;
+}
+.side-banner--right {
+  right: 20px;
+}
+.side-banner__swiper {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 215, 0, 0.15);
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 215, 0, 0.15);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  -webkit-transition: height 0.4s ease;
+  transition: height 0.4s ease;
+}
+.side-banner__swiper .swiper-slide a {
+  display: block;
+  line-height: 0;
+}
+.side-banner__swiper .swiper-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
