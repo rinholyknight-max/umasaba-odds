@@ -16,17 +16,29 @@ document.addEventListener("DOMContentLoaded", async () => {
       card.setAttribute("data-username", member.username);
 
       card.innerHTML = `
-        <div class="member-header">
-          <h3>${member.name || member.username}</h3>
+       <div class="member-header">
+        <h3>${member.name || member.username}</h3>
+        <div class="header-right-actions">
           <span class="toggle-badge">中身を見る</span>
+          <input type="checkbox" class="roulette-checkbox" data-username="${member.username}" title="ルーレットの対象にする" checked />
         </div>
-        <div class="member-content">
+      </div>
+      <div class="member-content">
+        <div class="memo-border">
           <p class="memo-text"></p>
-          <div class="canvas-img-wrap">
-            <img src="" alt="手書き予想" />
-          </div>
         </div>
-      `;
+        <div class="canvas-img-wrap">
+          <img src="" alt="手書き予想" />
+        </div>
+      </div>
+    `;
+
+      const checkbox = card.querySelector(".roulette-checkbox");
+      if (checkbox) {
+        checkbox.addEventListener("click", (e) => {
+          e.stopPropagation(); // カード本体のクリックイベント発火をストップ
+        });
+      }
 
       // 💡 初回表示時の表示分け処理（テキスト優先、なければ画像）
       applyExclusiveContent(card, member.text, member.image);
