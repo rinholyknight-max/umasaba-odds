@@ -66,6 +66,42 @@
 
         <button id="save-submit-btn">この内容で保存する</button>
       </div>
+
+
+      <div id="sheet-table"></div>
+
+      <script>
+      const API_KEY = 'AIzaSyAUK_b_mXR35VGKEyKTGgryV0f6q-EB4cw';
+      const SHEET_ID = '1NcCED9zwxWwuY7nQHrkfCsrGbxiTzn_Wom4S_W2GLGQ';
+      const RANGE = 'シート1!A1:E44'; // 取得したい範囲
+
+      async function fetchSheetData() {
+        const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
+        const res = await fetch(url);
+        const data = await res.json();
+        renderTable(data.values || []);
+      }
+
+      function renderTable(rows) {
+        const container = document.getElementById('sheet-table');
+        let html = '<table border="1" style="border-collapse:collapse">';
+        rows.forEach((row, i) => {
+          html += '<tr>';
+          row.forEach(cell => {
+            html += i === 0 ? `<th>${cell}</th>` : `<td>${cell}</td>`;
+          });
+          html += '</tr>';
+        });
+        html += '</table>';
+        container.innerHTML = html;
+      }
+
+      // 初回読み込み
+      fetchSheetData();
+      // 10秒ごとに更新（頻度は用途に応じて調整）
+      setInterval(fetchSheetData, 10000);
+      </script>
+
     </main>
 
     <script type="module" src="/draft/js/admin.js"></script>
