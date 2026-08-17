@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const rouletteSpinBtn = document.getElementById("roulette-spin-btn");
   const rouletteCloseBtn = document.getElementById("roulette-close-btn");
   const rouletteName = document.getElementById("roulette-name");
+  const rouletteSubtitle = document.getElementById("roulette-subtitle");
+  const roundSelect = document.getElementById("round-select");
 
   let isSpinning = false;
 
@@ -27,6 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
       rouletteName.textContent = "???";
       rouletteName.className = "roulette-name";
       rouletteSpinBtn.disabled = false;
+
+      if (rouletteSubtitle && roundSelect) {
+        rouletteSubtitle.textContent = `第${roundSelect.value}巡 選択希望選手`;
+      }
+
       rouletteModal.classList.add("is-open");
     });
   }

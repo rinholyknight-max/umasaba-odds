@@ -98,6 +98,40 @@ body {
       }
     }
 
+    // 🔢 巡目選択ボックス（ルーレットの左）
+    .round-select {
+      height: 42px;
+      padding: 0 32px 0 16px;
+      font-size: 14px;
+      font-weight: 700;
+      color: $color-gold-light;
+      background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0L5 6L10 0Z' fill='%23ffd700'/%3E%3C/svg%3E") no-repeat right 14px center,
+        linear-gradient(145deg, #1a1d24, #15181c);
+      border: 1px solid rgba($color-gold-light, 0.4);
+      border-radius: 30px;
+      cursor: pointer;
+      box-sizing: border-box;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+
+      &:hover {
+        border-color: $color-gold-light;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      }
+
+      option {
+        background: $color-draft-dark;
+        color: #ffffff;
+      }
+
+      @media (max-width: 600px) {
+        flex: 1;
+      }
+    }
+
     // 🎰 ルーレットボタン
     .roulette-btn {
       background: linear-gradient(135deg, $color-gold-light, $color-gold-dark) !important;

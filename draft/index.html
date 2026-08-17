@@ -69,13 +69,20 @@
       <header class="main-header">
         <h1>合同杯4th チームドラフト</h1>
         <div class="header-actions">
+          <select id="round-select" class="round-select" title="巡目を選択">
+            <option value="1">第1巡</option>
+            <option value="2">第2巡</option>
+            <option value="3">第3巡</option>
+            <option value="4">第4巡</option>
+            <option value="5">第5巡</option>
+          </select>
           <button id="roulette-start-btn" class="roulette-btn" title="ルーレット開始">
             <span class="material-symbols-outlined">casino</span>
-            <span>ルーレット</span>
+            <span>抽選</span>
           </button>
           <button id="refresh-data-btn" class="refresh-btn" title="最新データに更新">
             <span class="material-symbols-outlined">refresh</span>
-            <span>最新データに更新</span>
+            <span>データ更新</span>
           </button>
           <button id="reset-all-btn" class="reset-btn" title="すべての回答を隠す">
             <span class="material-symbols-outlined">visibility_off</span>
@@ -87,7 +94,7 @@
             <div class="roulette-modal-content">
               <div class="roulette-header">
                 <h2>DRAFT SELECTION</h2>
-                <p class="roulette-subtitle">第1巡 選択希望選手</p>
+                <p id="roulette-subtitle" class="roulette-subtitle">第1巡 選択希望選手</p>
               </div>
 
               <div class="roulette-display">

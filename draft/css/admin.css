@@ -468,4 +468,8 @@ body {
   cursor: wait;
   -webkit-transform: none;
           transform: none;
+}
+
+#sheet-table {
+  padding: 24px;
 }/*# sourceMappingURL=admin.css.map */
