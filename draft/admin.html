@@ -88,7 +88,8 @@
         rows.forEach((row, i) => {
           if (i > 0 && row[0]) return; // 2行目以降でA列に値があれば非表示
           html += '<tr>';
-          row.forEach(cell => {
+          row.forEach((cell, j) => {
+            if (j === 1) return; // B列は常に非表示
             html += i === 0 ? `<th>${cell}</th>` : `<td>${cell}</td>`;
           });
           html += '</tr>';
