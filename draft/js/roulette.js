@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const candidates = checkedBoxes.map((box) => {
         const card = box.closest(".member-card");
-        return card ? card.querySelector("h3")?.textContent.trim() || "名前なし" : "名前なし";
+        return card ? card.querySelector("h3")?.innerHTML.trim() || "名前なし" : "名前なし";
       });
 
       if (candidates.length === 0) return;
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
          * これにより、各候補のインデックスが選ばれる確率は完全に等しく（1 / candidates.length）なります。
          */
         const randomIndex = Math.floor(Math.random() * candidates.length);
-        rouletteName.textContent = candidates[randomIndex];
+        rouletteName.innerHTML = candidates[randomIndex];
 
         counter++;
 
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const winnerIndex = Math.floor(Math.random() * candidates.length);
           const winner = candidates[winnerIndex];
           
-          rouletteName.textContent = winner;
+          rouletteName.innerHTML = winner;
           rouletteName.className = "roulette-name is-winner";
           isSpinning = false;
 
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!container) return;
     const cards = container.querySelectorAll(".member-card");
     cards.forEach((card) => {
-      const name = card.querySelector("h3")?.textContent.trim();
+      const name = card.querySelector("h3")?.innerHTML.trim();
       if (name === winnerName) {
         card.scrollIntoView({ behavior: "smooth", block: "center" });
       }
