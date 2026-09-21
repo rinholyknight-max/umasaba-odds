@@ -10,6 +10,42 @@ const selectedSkillIds = new Set();
 const SKILL_TYPE_LABELS = { speed: "速度", accel: "加速", recovery: "回復", green: "緑", evolution: "進化" };
 let selectedSkillType = null;
 
+const STORAGE_KEY = "umasaba-odds-rank-state-v1";
+
+function saveCachedState() {
+  try {
+    const stats = {};
+    STATS.forEach((key) => {
+      stats[key] = document.getElementById(`stat-${key}`).value;
+    });
+    const aptitudes = {};
+    selectedSkillIds.forEach((id) => {
+      const sel = document.querySelector(`.skill-aptitude[data-id="${id}"]`);
+      if (sel) aptitudes[id] = sel.value;
+    });
+    const state = {
+      stats,
+      uniqueTier: document.getElementById("unique-tier").value,
+      uniqueLevel: document.getElementById("unique-level").value,
+      rankLimit: document.getElementById("rank-limit").value,
+      selectedSkillIds: Array.from(selectedSkillIds),
+      aptitudes,
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (e) {
+    // localStorageが使えない環境（プライベートモード等）では諦める
+  }
+}
+
+function loadCachedState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) {
+    return null;
+  }
+}
+
 async function loadData() {
   const [statRes, uniqueRes, skillsRes, rankRes] = await Promise.all([
     fetch("data/stat-table.json"),
@@ -175,10 +211,11 @@ function renderSkillList() {
       const requiresAptitude = skill.aptitudeType !== "none";
       const ptLabel = skill.needsData ? "データ未設定" : skill.requiredPt != null ? `必要pt: ${skill.requiredPt}` : "必要ptデータなし";
       const characterLabel = skill.character ? `［${skill.character}］` : "";
+      const isSelected = selectedSkillIds.has(skill.id);
       return `
-        <li class="skill-row${skill.needsData ? " skill-row--needs-data" : ""}" data-id="${skill.id}" data-type="${skill.skillType ?? ""}">
+        <li class="skill-row${skill.needsData ? " skill-row--needs-data" : ""}${isSelected ? " selected" : ""}" data-id="${skill.id}" data-type="${skill.skillType ?? ""}">
           <label>
-            <input type="checkbox" class="skill-checkbox" data-id="${skill.id}" />
+            <input type="checkbox" class="skill-checkbox" data-id="${skill.id}" ${isSelected ? "checked" : ""} />
             ${skill.name}（${ptLabel}）${characterLabel}
           </label>
           ${requiresAptitude ? `
@@ -199,16 +236,66 @@ function renderSkillList() {
     })
     .join("");
 
+  list.querySelectorAll(".skill-row").forEach((row) => {
+    row.addEventListener("click", (e) => {
+      if (e.target.closest(".skill-aptitude") || e.target.closest("label")) return;
+      const checkbox = row.querySelector(".skill-checkbox");
+      checkbox.checked = !checkbox.checked;
+      checkbox.dispatchEvent(new Event("change"));
+    });
+  });
   list.querySelectorAll(".skill-checkbox").forEach((el) => {
     el.addEventListener("change", (e) => {
       const id = e.target.dataset.id;
-      if (e.target.checked) selectedSkillIds.add(id);
-      else selectedSkillIds.delete(id);
+      const row = e.target.closest(".skill-row");
+      if (e.target.checked) {
+        selectedSkillIds.add(id);
+        row.classList.add("selected");
+      } else {
+        selectedSkillIds.delete(id);
+        row.classList.remove("selected");
+      }
       updateTotal();
     });
   });
   list.querySelectorAll(".skill-aptitude").forEach((el) => {
     el.addEventListener("change", updateTotal);
+  });
+}
+
+function renderSelectedSkillList() {
+  const list = document.getElementById("selected-skill-list");
+  document.getElementById("selected-count").textContent = selectedSkillIds.size;
+
+  if (selectedSkillIds.size === 0) {
+    list.innerHTML = `<li class="empty">まだ選択されていません</li>`;
+    return;
+  }
+
+  const items = Array.from(selectedSkillIds)
+    .map((id) => skillData.skills.find((s) => s.id === id))
+    .filter(Boolean);
+
+  list.innerHTML = items
+    .map((skill) => {
+      const aptitudeSelect = document.querySelector(`.skill-aptitude[data-id="${skill.id}"]`);
+      const aptitude = aptitudeSelect ? aptitudeSelect.value : "none";
+      const score = skillScore(skill, aptitude);
+      return `<li data-id="${skill.id}"><span>${skill.name}</span><span>${score}点</span></li>`;
+    })
+    .join("");
+
+  list.querySelectorAll("li[data-id]").forEach((el) => {
+    el.addEventListener("click", () => {
+      const id = el.dataset.id;
+      selectedSkillIds.delete(id);
+      const checkbox = document.querySelector(`.skill-checkbox[data-id="${id}"]`);
+      if (checkbox) {
+        checkbox.checked = false;
+        checkbox.closest(".skill-row")?.classList.remove("selected");
+      }
+      updateTotal();
+    });
   });
 }
 
@@ -278,14 +365,43 @@ function updateTotal() {
   } else {
     diffEl.textContent = "";
   }
+
+  renderSelectedSkillList();
+  saveCachedState();
 }
 
 async function init() {
   await loadData();
+  const cached = loadCachedState();
+  if (cached && Array.isArray(cached.selectedSkillIds)) {
+    cached.selectedSkillIds.forEach((id) => selectedSkillIds.add(id));
+  }
+
   renderStatInputs();
   renderUniqueSkillInputs();
   renderSkillTypeFilter();
   renderSkillList();
+
+  if (cached) {
+    STATS.forEach((key) => {
+      if (cached.stats && cached.stats[key] != null) {
+        document.getElementById(`stat-${key}`).value = cached.stats[key];
+      }
+    });
+    if (cached.uniqueTier) {
+      document.getElementById("unique-tier").value = cached.uniqueTier;
+      document.getElementById("unique-tier").dispatchEvent(new Event("change"));
+    }
+    if (cached.uniqueLevel != null) document.getElementById("unique-level").value = cached.uniqueLevel;
+    if (cached.rankLimit != null) document.getElementById("rank-limit").value = cached.rankLimit;
+    if (cached.aptitudes) {
+      Object.entries(cached.aptitudes).forEach(([id, value]) => {
+        const sel = document.querySelector(`.skill-aptitude[data-id="${id}"]`);
+        if (sel) sel.value = value;
+      });
+    }
+  }
+
   document.getElementById("rank-limit").addEventListener("input", updateTotal);
   document.getElementById("skill-search").addEventListener("input", (e) => filterSkillList(e.target.value));
   updateTotal();

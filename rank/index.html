@@ -9,20 +9,41 @@
       body { font-family: sans-serif; margin: 16px; max-width: 1200px; }
       h1 { font-size: 1.2rem; }
       h2 { font-size: 1rem; margin-top: 24px; }
+      h3 { font-size: 0.9rem; margin: 0 0 8px; }
       .field { display: inline-block; margin: 4px 8px 4px 0; }
       .field input { width: 160px;height: 60px; font-size: 2rem;}
-      #skill-search { width: 100%; box-sizing: border-box; margin-bottom: 8px; }
+      #skill-search { width: 100%; box-sizing: border-box; margin-bottom: 8px; font-size: 1rem; padding: 8px; }
       .type-filter { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
-      .type-filter button { padding: 4px 10px; border: 1px solid #999; border-radius: 999px; background: #fff; cursor: pointer; font-size: 0.85rem; }
+      .type-filter button { padding: 6px 12px; border: 1px solid #999; border-radius: 999px; background: #fff; cursor: pointer; font-size: 0.9rem; }
       .type-filter button.active { background: #333; color: #fff; border-color: #333; }
-      #skill-list { list-style: none; padding: 0; max-height: 400px; overflow-y: auto; border: 1px solid #ccc; }
-      .skill-row { padding: 6px 8px; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+      .skill-panel { display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; margin-top: 8px; }
+      .skill-picker { flex: 1 1 320px; min-width: 280px; }
+      .skill-sidebar { flex: 0 0 320px; width: 320px; position: sticky; top: 16px; }
+      @media (max-width: 720px) {
+        .skill-sidebar { position: static; width: 100%; flex-basis: 100%; }
+      }
+
+      #skill-list { list-style: none; padding: 0; margin: 0; max-height: 60vh; overflow-y: auto; border: 1px solid #ccc; }
+      .skill-row { padding: 10px 10px; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+      .skill-row:hover { background: #f5f7ff; }
+      .skill-row.selected { background: #e8f0fe; }
+      .skill-row label { flex: 1 1 auto; min-width: 160px; cursor: pointer; }
+      .skill-checkbox { width: 18px; height: 18px; flex-shrink: 0; }
       .skill-score { color: #555; font-size: 0.85rem; }
       .skill-row--needs-data { color: #999; }
       .skill-row--needs-data label { color: #999; }
-      #summary { border: 1px solid #999; padding: 12px; margin-top: 16px; }
-      #summary div { margin: 4px 0;     font-size: 1.5rem;}
-      #grand-total { font-weight: bold; font-size: 3.2rem; }
+
+      #selected-skill-list { list-style: none; padding: 0; margin: 0 0 12px; max-height: 40vh; overflow-y: auto; border: 1px solid #ccc; }
+      #selected-skill-list li { padding: 8px 10px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; gap: 8px; cursor: pointer; font-size: 0.9rem; }
+      #selected-skill-list li:hover { background: #ffecec; }
+      #selected-skill-list .empty { color: #999; cursor: default; justify-content: center; }
+      #selected-skill-list .empty:hover { background: none; }
+
+      #summary { border: 1px solid #999; padding: 12px; margin-top: 12px; }
+      #summary div { margin: 4px 0; font-size: 1.1rem; }
+      #grand-total { font-weight: bold; font-size: 2rem; }
+      .rank-limit-field { margin-top: 8px; }
       .note { color: #777; font-size: 0.85rem; }
     </style>
   </head>
@@ -40,20 +61,29 @@
     <label class="field">星ランク <select id="unique-tier"></select></label>
     <label class="field">Lv <select id="unique-level"></select></label>
 
-    <h2>獲得スキル（白因子）</h2>
-    <input type="text" id="skill-search" placeholder="スキル名で検索" />
-    <div id="skill-type-filter" class="type-filter"></div>
-    <ul id="skill-list"></ul>
+    <h2>獲得スキル</h2>
+    <div class="skill-panel">
+      <div class="skill-picker">
+        <input type="text" id="skill-search" placeholder="スキル名で検索" />
+        <div id="skill-type-filter" class="type-filter"></div>
+        <ul id="skill-list"></ul>
+      </div>
+      <aside class="skill-sidebar">
+        <h3>取得中のスキル（<span id="selected-count">0</span>件・タップで解除）</h3>
+        <ul id="selected-skill-list"></ul>
 
-    <h2>ランク制限（評価点上限）</h2>
-    <label class="field">上限評価点 <input type="number" id="rank-limit" min="0" /></label>
+        <div class="rank-limit-field">
+          <label class="field">上限評価点 <input type="number" id="rank-limit" min="0" /></label>
+        </div>
 
-    <div id="summary">
-      <div>ステータス評価点: <span id="stat-total">0</span></div>
-      <div>固有スキル評価点: <span id="unique-total">0</span></div>
-      <div>獲得スキル評価点: <span id="skill-total">0</span>（必要pt合計: <span id="pt-total">0</span>）</div>
-      <div>合計評価点: <span id="grand-total">0</span> (<span id="grand-rank"></span>)</div>
-      <div id="limit-diff"></div>
+        <div id="summary">
+          <div>ステータス評価点: <span id="stat-total">0</span></div>
+          <div>固有スキル評価点: <span id="unique-total">0</span></div>
+          <div>獲得スキル評価点: <span id="skill-total">0</span>（必要pt合計: <span id="pt-total">0</span>）</div>
+          <div>合計評価点: <span id="grand-total">0</span> (<span id="grand-rank"></span>)</div>
+          <div id="limit-diff"></div>
+        </div>
+      </aside>
     </div>
 
     <script src="js/calc.js"></script>
