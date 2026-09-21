@@ -52,15 +52,18 @@ function loadCachedState() {
 }
 
 const SUPPORT_CARD_STORAGE_KEY = "umasaba-odds-support-cards-v1";
-let supportCards = [];
-const activeCardIds = new Set();
+const SUPPORT_CARD_SLOT_COUNT = 6;
+// 各要素は null（未登録） または { name, skillIds } の固定6枠。
+let supportCards = new Array(SUPPORT_CARD_SLOT_COUNT).fill(null);
+const activeSlots = new Set();
+let editingSlotIndex = null;
 let pendingCardSkillIds = [];
 
 function saveSupportCards() {
   try {
     localStorage.setItem(
       SUPPORT_CARD_STORAGE_KEY,
-      JSON.stringify({ cards: supportCards, active: Array.from(activeCardIds) })
+      JSON.stringify({ cards: supportCards, active: Array.from(activeSlots) })
     );
   } catch (e) {
     // localStorageが使えない環境では諦める
@@ -72,17 +75,32 @@ function loadSupportCards() {
     const raw = localStorage.getItem(SUPPORT_CARD_STORAGE_KEY);
     if (!raw) return;
     const parsed = JSON.parse(raw);
-    supportCards = Array.isArray(parsed.cards) ? parsed.cards : [];
-    (parsed.active || []).forEach((id) => activeCardIds.add(id));
+    const rawCards = Array.isArray(parsed.cards) ? parsed.cards : [];
+    supportCards = new Array(SUPPORT_CARD_SLOT_COUNT).fill(null);
+    if (rawCards.length && rawCards[0] && "id" in rawCards[0]) {
+      // 旧形式（idベースの可変リスト）から固定6枠へ移行
+      rawCards.slice(0, SUPPORT_CARD_SLOT_COUNT).forEach((card, i) => {
+        supportCards[i] = { name: card.name, skillIds: card.skillIds };
+      });
+      (parsed.active || []).forEach((id) => {
+        const idx = rawCards.findIndex((c) => c.id === id);
+        if (idx >= 0 && idx < SUPPORT_CARD_SLOT_COUNT) activeSlots.add(idx);
+      });
+    } else {
+      rawCards.slice(0, SUPPORT_CARD_SLOT_COUNT).forEach((card, i) => {
+        supportCards[i] = card;
+      });
+      (parsed.active || []).forEach((idx) => activeSlots.add(Number(idx)));
+    }
   } catch (e) {
-    supportCards = [];
+    supportCards = new Array(SUPPORT_CARD_SLOT_COUNT).fill(null);
   }
 }
 
 function prioritySkillIdSet() {
   const ids = new Set();
-  supportCards.forEach((card) => {
-    if (activeCardIds.has(card.id)) {
+  supportCards.forEach((card, idx) => {
+    if (card && activeSlots.has(idx)) {
       card.skillIds.forEach((id) => ids.add(id));
     }
   });
@@ -279,46 +297,70 @@ function renderDistanceFilter() {
 
 function renderSupportCardList() {
   const container = document.getElementById("support-card-list");
-  if (supportCards.length === 0) {
-    container.innerHTML = `<p class="note">登録済みのカードはまだありません。</p>`;
-    return;
-  }
   container.innerHTML = supportCards
-    .map(
-      (card) => `
-        <div class="card-item" data-id="${card.id}">
+    .map((card, idx) => {
+      if (!card) {
+        return `
+          <div class="card-item card-item--empty" data-slot="${idx}">
+            <span class="card-slot-label">スロット${idx + 1}：未登録</span>
+            <button type="button" class="card-register" data-slot="${idx}">＋ 登録</button>
+          </div>
+        `;
+      }
+      return `
+        <div class="card-item" data-slot="${idx}">
           <label>
-            <input type="checkbox" class="card-active-checkbox" data-id="${card.id}" ${activeCardIds.has(card.id) ? "checked" : ""} />
+            <input type="checkbox" class="card-active-checkbox" data-slot="${idx}" ${activeSlots.has(idx) ? "checked" : ""} />
             ${card.name}
             <span class="card-skill-count">（${card.skillIds.length}スキル）</span>
           </label>
-          <button type="button" class="card-delete" data-id="${card.id}">削除</button>
+          <button type="button" class="card-edit" data-slot="${idx}">編集</button>
+          <button type="button" class="card-delete" data-slot="${idx}">クリア</button>
         </div>
-      `
-    )
+      `;
+    })
     .join("");
 
   container.querySelectorAll(".card-active-checkbox").forEach((el) => {
     el.addEventListener("change", (e) => {
-      const id = e.target.dataset.id;
-      if (e.target.checked) activeCardIds.add(id);
-      else activeCardIds.delete(id);
+      const idx = Number(e.target.dataset.slot);
+      if (e.target.checked) activeSlots.add(idx);
+      else activeSlots.delete(idx);
       saveSupportCards();
       renderSkillList();
       filterSkillList(document.getElementById("skill-search").value);
     });
   });
+  container.querySelectorAll(".card-register, .card-edit").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      openCardForm(Number(e.target.dataset.slot));
+    });
+  });
   container.querySelectorAll(".card-delete").forEach((el) => {
     el.addEventListener("click", (e) => {
-      const id = e.target.dataset.id;
-      supportCards = supportCards.filter((c) => c.id !== id);
-      activeCardIds.delete(id);
+      const idx = Number(e.target.dataset.slot);
+      supportCards[idx] = null;
+      activeSlots.delete(idx);
       saveSupportCards();
       renderSupportCardList();
       renderSkillList();
       filterSkillList(document.getElementById("skill-search").value);
     });
   });
+}
+
+function openCardForm(idx) {
+  editingSlotIndex = idx;
+  const card = supportCards[idx];
+  pendingCardSkillIds = card ? [...card.skillIds] : [];
+  document.getElementById("card-name-input").value = card ? card.name : "";
+  document.getElementById("card-skill-search").value = "";
+  document.getElementById("card-form-summary").textContent = `スロット${idx + 1}を編集`;
+  renderCardSkillChips();
+  renderCardSkillCandidates("");
+  const details = document.getElementById("support-card-form");
+  details.open = true;
+  document.getElementById("card-name-input").focus();
 }
 
 function renderCardSkillChips() {
@@ -580,25 +622,41 @@ async function init() {
   document.getElementById("skill-search").addEventListener("input", (e) => filterSkillList(e.target.value));
   document.getElementById("card-skill-search").addEventListener("input", (e) => renderCardSkillCandidates(e.target.value));
   document.getElementById("card-save-button").addEventListener("click", () => {
+    if (editingSlotIndex == null) return;
     const nameInput = document.getElementById("card-name-input");
     const name = nameInput.value.trim();
     if (!name || pendingCardSkillIds.length === 0) {
       alert("カード名と、少なくとも1つのスキルを指定してください。");
       return;
     }
-    supportCards.push({
-      id: `card-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-      name,
-      skillIds: [...pendingCardSkillIds],
-    });
+    supportCards[editingSlotIndex] = { name, skillIds: [...pendingCardSkillIds] };
     saveSupportCards();
     pendingCardSkillIds = [];
+    editingSlotIndex = null;
     nameInput.value = "";
     document.getElementById("card-skill-search").value = "";
+    document.getElementById("card-form-summary").textContent = "サポートカードを登録";
     renderCardSkillChips();
     renderCardSkillCandidates("");
     renderSupportCardList();
+    renderSkillList();
+    filterSkillList(document.getElementById("skill-search").value);
     document.getElementById("support-card-form").open = false;
+  });
+  document.getElementById("support-card-form").addEventListener("toggle", (e) => {
+    const details = e.target;
+    if (details.open && editingSlotIndex === null) {
+      const emptyIdx = supportCards.findIndex((c) => c === null);
+      if (emptyIdx === -1) {
+        details.open = false;
+        alert("登録できる枠がいっぱいです（最大6枚）。既存のカードを編集またはクリアしてください。");
+        return;
+      }
+      openCardForm(emptyIdx);
+    } else if (!details.open) {
+      editingSlotIndex = null;
+      document.getElementById("card-form-summary").textContent = "サポートカードを登録";
+    }
   });
   document.getElementById("save-button").addEventListener("click", () => {
     saveCachedState();

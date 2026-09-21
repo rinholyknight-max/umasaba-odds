@@ -191,8 +191,7 @@
       "needsData": false,
       "directPoint": 210,
       "styles": [
-        "senkou",
-        "chukyori"
+        "senkou"
       ]
     },
     {
@@ -371,6 +370,7 @@
       "needsData": false,
       "directPoint": 239,
       "styles": [
+        "chokyori",
         "chukyori"
       ]
     },
@@ -404,6 +404,9 @@
       "name": "イニシアチブ",
       "category": "nige-gold",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 170,
       "directPoint": 615,
@@ -421,7 +424,7 @@
       "aptitudeType": "none",
       "needsData": false,
       "styles": [
-        "chukyori"
+        "nige"
       ]
     },
     {
@@ -429,6 +432,9 @@
       "name": "大逃げ",
       "category": "nige-gold",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 200,
       "directPoint": 407,
@@ -440,6 +446,9 @@
       "name": "画竜点睛",
       "category": "nige-gold",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 160,
       "directPoint": 615,
@@ -451,6 +460,9 @@
       "name": "傑出",
       "category": "nige-gold",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 559,
@@ -462,6 +474,9 @@
       "name": "再燃焼",
       "category": "nige-gold",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 320,
@@ -473,6 +488,9 @@
       "name": "先手必勝",
       "category": "nige-gold",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 120,
       "directPoint": 367,
@@ -484,6 +502,9 @@
       "name": "シックスセンス",
       "category": "nige-gold",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 110,
       "directPoint": 367,
@@ -495,6 +516,9 @@
       "name": "じゃじゃウマ娘",
       "category": "nige-gold",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 559,
@@ -506,6 +530,9 @@
       "name": "出力1000%!",
       "category": "nige-gold",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 320,
@@ -523,7 +550,7 @@
       "aptitudeType": "none",
       "needsData": false,
       "styles": [
-        "chukyori"
+        "nige"
       ]
     },
     {
@@ -531,6 +558,9 @@
       "name": "陣風円刃",
       "category": "nige-gold",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 150,
       "directPoint": 559,
@@ -542,6 +572,9 @@
       "name": "脱出術",
       "category": "nige-gold",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 559,
@@ -568,6 +601,9 @@
       "name": "逃亡者",
       "category": "nige-gold",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 559,
@@ -579,6 +615,9 @@
       "name": "トップランナー",
       "category": "nige-gold",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 559,
@@ -590,6 +629,9 @@
       "name": "早業",
       "category": "nige-gold",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 559,
@@ -601,6 +643,9 @@
       "name": "万里一空",
       "category": "nige-gold",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 170,
       "directPoint": 615,
@@ -612,6 +657,9 @@
       "name": "踏ませぬ影",
       "category": "nige-gold",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 559,
@@ -638,6 +686,9 @@
       "name": "勢い任せ",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 239,
@@ -649,6 +700,9 @@
       "name": "急ぎ足",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 239,
@@ -666,7 +720,7 @@
       "aptitudeType": "none",
       "needsData": false,
       "styles": [
-        "chukyori"
+        "nige"
       ]
     },
     {
@@ -674,6 +728,9 @@
       "name": "大詰め",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 160,
       "directPoint": 263,
@@ -685,6 +742,9 @@
       "name": "押し切り準備",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 239,
@@ -711,6 +771,9 @@
       "name": "覚悟を決めて",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 160,
       "directPoint": 263,
@@ -722,6 +785,9 @@
       "name": "危険回避",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 110,
       "directPoint": 142,
@@ -733,6 +799,9 @@
       "name": "気の向くままに",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 263,
@@ -744,6 +813,9 @@
       "name": "切り込み隊長",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 239,
@@ -755,6 +827,9 @@
       "name": "先駆け",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 120,
       "directPoint": 239,
@@ -766,6 +841,9 @@
       "name": "しゃかりき",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 239,
@@ -777,6 +855,9 @@
       "name": "先頭プライド",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 239,
@@ -794,7 +875,7 @@
       "aptitudeType": "none",
       "needsData": false,
       "styles": [
-        "chukyori"
+        "nige"
       ]
     },
     {
@@ -802,6 +883,9 @@
       "name": "逃げコ◎＋〇",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 270,
       "directPoint": 288,
@@ -813,6 +897,9 @@
       "name": "逃げコーナー◎",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 140,
       "directPoint": 288,
@@ -824,6 +911,9 @@
       "name": "逃げコーナー〇",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 130,
       "directPoint": 239,
@@ -835,6 +925,9 @@
       "name": "逃げ直◎＋〇",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 270,
       "directPoint": 288,
@@ -846,6 +939,9 @@
       "name": "逃げ直線◎",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 140,
       "directPoint": 288,
@@ -857,6 +953,9 @@
       "name": "逃げ直線〇",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 130,
       "directPoint": 239,
@@ -868,6 +967,9 @@
       "name": "逃げコツ◎＋〇",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 240,
       "directPoint": 239,
@@ -879,6 +981,9 @@
       "name": "逃げのコツ◎",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 130,
       "directPoint": 239,
@@ -890,6 +995,9 @@
       "name": "逃げのコツ〇",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 110,
       "directPoint": 191,
@@ -901,6 +1009,9 @@
       "name": "逃げるが勝ち！",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 239,
@@ -912,6 +1023,9 @@
       "name": "二の矢",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 239,
@@ -923,6 +1037,9 @@
       "name": "抜きん出る一歩",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 239,
@@ -934,6 +1051,9 @@
       "name": "粘り腰",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 239,
@@ -945,6 +1065,9 @@
       "name": "弾みをつけて",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 239,
@@ -962,7 +1085,7 @@
       "aptitudeType": "none",
       "needsData": false,
       "styles": [
-        "chukyori"
+        "nige"
       ]
     },
     {
@@ -970,6 +1093,9 @@
       "name": "迷いなし",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 170,
       "directPoint": 263,
@@ -996,6 +1122,9 @@
       "name": "目にも止まらず",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 180,
       "directPoint": 239,
@@ -1007,6 +1136,9 @@
       "name": "譲れぬ一歩",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 170,
       "directPoint": 263,
@@ -1018,6 +1150,9 @@
       "name": "リスタート",
       "category": "nige-white",
       "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
       "strategy": "nige",
       "requiredPt": 130,
       "directPoint": 239,
@@ -1082,8 +1217,8 @@
       "category": "senkou-gold",
       "skillType": "speed",
       "styles": [
-        "senkou",
-        "sashi"
+        "sashi",
+        "senkou"
       ],
       "requiredPt": 180,
       "directPoint": 559,
@@ -1109,8 +1244,7 @@
       "category": "senkou-gold",
       "skillType": "speed",
       "styles": [
-        "senkou",
-        "chukyori"
+        "senkou"
       ],
       "requiredPt": 170,
       "directPoint": 615,
@@ -1240,8 +1374,8 @@
       "category": "senkou-gold",
       "skillType": "speed",
       "styles": [
-        "senkou",
-        "sashi"
+        "sashi",
+        "senkou"
       ],
       "requiredPt": 180,
       "directPoint": 559,
@@ -1254,8 +1388,7 @@
       "category": "senkou-gold",
       "skillType": "speed",
       "styles": [
-        "senkou",
-        "chukyori"
+        "senkou"
       ],
       "requiredPt": 120,
       "directPoint": 558,
@@ -1437,8 +1570,8 @@
       "category": "senkou-gold",
       "skillType": "speed",
       "styles": [
-        "senkou",
-        "sashi"
+        "sashi",
+        "senkou"
       ],
       "requiredPt": 180,
       "directPoint": 559,
@@ -1477,8 +1610,7 @@
       "category": "senkou-gold",
       "skillType": "speed",
       "styles": [
-        "senkou",
-        "chukyori"
+        "senkou"
       ],
       "requiredPt": 170,
       "directPoint": 615,
@@ -1530,8 +1662,7 @@
       "category": "senkou-white",
       "skillType": "speed",
       "styles": [
-        "senkou",
-        "chukyori"
+        "senkou"
       ],
       "requiredPt": 170,
       "directPoint": 263,
@@ -1622,8 +1753,8 @@
       "category": "senkou-white",
       "skillType": "speed",
       "styles": [
-        "senkou",
-        "sashi"
+        "sashi",
+        "senkou"
       ],
       "requiredPt": 180,
       "directPoint": 239,
@@ -1662,8 +1793,8 @@
       "category": "senkou-white",
       "skillType": "speed",
       "styles": [
-        "senkou",
-        "sashi"
+        "sashi",
+        "senkou"
       ],
       "requiredPt": 180,
       "directPoint": 239,
@@ -1715,8 +1846,7 @@
       "category": "senkou-white",
       "skillType": "speed",
       "styles": [
-        "senkou",
-        "chukyori"
+        "senkou"
       ],
       "requiredPt": 170,
       "directPoint": 263,
@@ -1911,8 +2041,7 @@
       "category": "senkou-white",
       "skillType": "speed",
       "styles": [
-        "senkou",
-        "chukyori"
+        "senkou"
       ],
       "requiredPt": 170,
       "directPoint": 263,
@@ -2081,8 +2210,8 @@
       "category": "senkou-white",
       "skillType": "speed",
       "styles": [
-        "senkou",
-        "sashi"
+        "sashi",
+        "senkou"
       ],
       "requiredPt": 180,
       "directPoint": 239,
@@ -2212,8 +2341,7 @@
       "category": "sashi-gold",
       "skillType": "speed",
       "styles": [
-        "sashi",
-        "chukyori"
+        "sashi"
       ],
       "requiredPt": 160,
       "directPoint": 615,
@@ -2304,8 +2432,7 @@
       "category": "sashi-gold",
       "skillType": "speed",
       "styles": [
-        "sashi",
-        "chukyori"
+        "sashi"
       ],
       "requiredPt": 170,
       "directPoint": 615,
@@ -2422,6 +2549,7 @@
       "category": "sashi-gold",
       "skillType": "speed",
       "styles": [
+        "oikomi",
         "sashi"
       ],
       "requiredPt": 180,
@@ -2552,8 +2680,7 @@
       "category": "sashi-white",
       "skillType": "speed",
       "styles": [
-        "sashi",
-        "chukyori"
+        "sashi"
       ],
       "requiredPt": 170,
       "directPoint": 263,
@@ -2592,8 +2719,7 @@
       "category": "sashi-white",
       "skillType": "speed",
       "styles": [
-        "sashi",
-        "chukyori"
+        "sashi"
       ],
       "requiredPt": 180,
       "directPoint": 263,
@@ -2684,8 +2810,7 @@
       "category": "sashi-white",
       "skillType": "speed",
       "styles": [
-        "sashi",
-        "chukyori"
+        "sashi"
       ],
       "requiredPt": 160,
       "directPoint": 263,
@@ -3010,8 +3135,7 @@
       "category": "sashi-white",
       "skillType": "speed",
       "styles": [
-        "sashi",
-        "chukyori"
+        "sashi"
       ],
       "requiredPt": 170,
       "directPoint": 352,
@@ -3063,8 +3187,7 @@
       "category": "sashi-white",
       "skillType": "speed",
       "styles": [
-        "sashi",
-        "chukyori"
+        "sashi"
       ],
       "requiredPt": 160,
       "directPoint": 263,
@@ -3077,6 +3200,7 @@
       "category": "sashi-white",
       "skillType": "speed",
       "styles": [
+        "oikomi",
         "sashi"
       ],
       "requiredPt": 180,
@@ -3129,7 +3253,8 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "chukyori",
+        "mile"
       ],
       "requiredPt": 180,
       "directPoint": 559,
@@ -3194,6 +3319,7 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 180,
@@ -3207,7 +3333,7 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "senkou"
       ],
       "requiredPt": 170,
       "directPoint": 615,
@@ -3246,6 +3372,7 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 180,
@@ -3259,7 +3386,7 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "oikomi"
       ],
       "requiredPt": 180,
       "directPoint": 615,
@@ -3324,6 +3451,7 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 180,
@@ -3363,7 +3491,8 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "chukyori",
+        "mile"
       ],
       "requiredPt": 180,
       "directPoint": 559,
@@ -3428,7 +3557,7 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "sashi"
       ],
       "requiredPt": 160,
       "directPoint": 615,
@@ -3454,6 +3583,7 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 180,
@@ -3480,7 +3610,7 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "oikomi"
       ],
       "requiredPt": 170,
       "directPoint": 615,
@@ -3493,6 +3623,7 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 180,
@@ -3506,7 +3637,8 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "chukyori",
+        "mile"
       ],
       "requiredPt": 180,
       "directPoint": 559,
@@ -3519,7 +3651,8 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "chukyori",
+        "mile"
       ],
       "requiredPt": 200,
       "directPoint": 696,
@@ -3558,7 +3691,8 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "chukyori",
+        "mile"
       ],
       "requiredPt": 200,
       "directPoint": 407,
@@ -3571,6 +3705,7 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 180,
@@ -3584,7 +3719,7 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "sashi"
       ],
       "requiredPt": 170,
       "directPoint": 615,
@@ -3597,6 +3732,7 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 200,
@@ -3623,6 +3759,7 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 200,
@@ -3636,7 +3773,8 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "chukyori",
+        "mile"
       ],
       "requiredPt": 180,
       "directPoint": 559,
@@ -3675,7 +3813,8 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "chukyori",
+        "mile"
       ],
       "requiredPt": 180,
       "directPoint": 559,
@@ -3688,6 +3827,7 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 180,
@@ -3701,7 +3841,7 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "oikomi"
       ],
       "requiredPt": 170,
       "directPoint": 615,
@@ -3753,6 +3893,7 @@
       "category": "chukyori-gold",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 180,
@@ -3792,6 +3933,7 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 200,
@@ -3805,6 +3947,7 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 180,
@@ -3857,6 +4000,7 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 180,
@@ -3896,7 +4040,7 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "oikomi"
       ],
       "requiredPt": 160,
       "directPoint": 263,
@@ -3909,7 +4053,8 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "chukyori",
+        "mile"
       ],
       "requiredPt": 200,
       "directPoint": 289,
@@ -3922,6 +4067,7 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 180,
@@ -3948,6 +4094,7 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 180,
@@ -3961,6 +4108,7 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 180,
@@ -4000,6 +4148,7 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 180,
@@ -4013,7 +4162,8 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "chukyori",
+        "mile"
       ],
       "requiredPt": 180,
       "directPoint": 239,
@@ -4026,6 +4176,7 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 180,
@@ -4052,7 +4203,7 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "oikomi"
       ],
       "requiredPt": 180,
       "directPoint": 263,
@@ -4065,6 +4216,7 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 180,
@@ -4091,7 +4243,8 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "chukyori",
+        "mile"
       ],
       "requiredPt": 180,
       "directPoint": 239,
@@ -4130,7 +4283,8 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "chukyori",
+        "mile"
       ],
       "requiredPt": 180,
       "directPoint": 239,
@@ -4221,6 +4375,7 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 180,
@@ -4260,7 +4415,8 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "chukyori",
+        "mile"
       ],
       "requiredPt": 180,
       "directPoint": 239,
@@ -4273,7 +4429,7 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "oikomi"
       ],
       "requiredPt": 170,
       "directPoint": 263,
@@ -4286,6 +4442,7 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 200,
@@ -4299,7 +4456,8 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "chukyori",
+        "mile"
       ],
       "requiredPt": 200,
       "directPoint": 289,
@@ -4312,7 +4470,8 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "chukyori",
+        "mile"
       ],
       "requiredPt": 180,
       "directPoint": 239,
@@ -4377,6 +4536,7 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
+        "chokyori",
         "chukyori"
       ],
       "requiredPt": 200,
@@ -4403,7 +4563,7 @@
       "category": "chukyori-white",
       "skillType": "speed",
       "styles": [
-        "chukyori"
+        "oikomi"
       ],
       "requiredPt": 170,
       "directPoint": 263,
@@ -13732,6 +13892,10 @@
       "name": "曙光",
       "category": "rare",
       "skillType": null,
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
       "tierIndex": null,
       "requiredPt": null,
       "aptitudeType": "none",
@@ -13754,6 +13918,10 @@
       "name": "奮い立つ心",
       "category": "normal",
       "skillType": null,
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
       "tierIndex": null,
       "requiredPt": null,
       "aptitudeType": "none",
@@ -13786,6 +13954,9 @@
       "name": "アクセル全開！",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -13806,6 +13977,9 @@
       "name": "熱いまなざし",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -13816,6 +13990,9 @@
       "name": "圧倒",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -13826,6 +14003,9 @@
       "name": "圧倒的リード",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -13836,6 +14016,9 @@
       "name": "姉御肌",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 367,
       "aptitudeType": "none",
@@ -13856,6 +14039,9 @@
       "name": "意気衝天",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -13866,6 +14052,9 @@
       "name": "一網打尽",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 615,
       "aptitudeType": "none",
@@ -13876,6 +14065,9 @@
       "name": "一所懸命",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -13886,6 +14078,9 @@
       "name": "一心不乱",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -13896,6 +14091,9 @@
       "name": "一石二鳥",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chukyori"
+      ],
       "requiredPt": null,
       "directPoint": 693,
       "aptitudeType": "none",
@@ -13906,6 +14104,9 @@
       "name": "一発必中",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -13926,6 +14127,9 @@
       "name": "エネルギッシュ",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 633,
       "aptitudeType": "none",
@@ -13946,6 +14150,9 @@
       "name": "火事場のバ鹿力",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -13956,6 +14163,9 @@
       "name": "風翔",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -13966,6 +14176,9 @@
       "name": "かっとばせ！",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "senkou"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -13976,6 +14189,9 @@
       "name": "完全燃焼",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -13986,6 +14202,9 @@
       "name": "ギアチェンジ",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -13996,6 +14215,9 @@
       "name": "気骨稜稜",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14006,6 +14228,9 @@
       "name": "奇術師",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 367,
       "aptitudeType": "none",
@@ -14016,6 +14241,9 @@
       "name": "急先鋒",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "nige"
+      ],
       "requiredPt": null,
       "directPoint": 615,
       "aptitudeType": "none",
@@ -14026,6 +14254,9 @@
       "name": "強攻策",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14036,6 +14267,9 @@
       "name": "クールダウン",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14046,6 +14280,9 @@
       "name": "慧眼",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14056,6 +14293,9 @@
       "name": "下校後のスペシャリスト",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14066,6 +14306,9 @@
       "name": "月影一閃",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14076,6 +14319,9 @@
       "name": "月影円刃",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14086,6 +14332,9 @@
       "name": "元気溌剌",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14106,6 +14355,9 @@
       "name": "堅忍果決",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14116,6 +14368,9 @@
       "name": "光輝燦然",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14126,6 +14381,9 @@
       "name": "豪脚",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14136,6 +14394,9 @@
       "name": "豪胆無比",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14146,6 +14407,9 @@
       "name": "豪風一閃",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14156,6 +14420,9 @@
       "name": "豪風円刃",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14186,6 +14453,10 @@
       "name": "この手に掴んだ未来",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chukyori",
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 320,
       "aptitudeType": "none",
@@ -14216,6 +14487,9 @@
       "name": "残影",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14226,6 +14500,9 @@
       "name": "視界良好！異常なし！",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 367,
       "aptitudeType": "none",
@@ -14236,6 +14513,9 @@
       "name": "疾風怒濤",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14246,6 +14526,9 @@
       "name": "紫電一閃",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14256,6 +14539,9 @@
       "name": "紫電円刃",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14266,6 +14552,9 @@
       "name": "遮二無二",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14276,6 +14565,9 @@
       "name": "出力1000％！",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "nige"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14286,6 +14578,9 @@
       "name": "純真無垢",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "senkou"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14296,6 +14591,9 @@
       "name": "準備万全！",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 433,
       "aptitudeType": "none",
@@ -14306,6 +14604,9 @@
       "name": "掌握",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14316,6 +14617,9 @@
       "name": "勝負はここから！",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "nige"
+      ],
       "requiredPt": null,
       "directPoint": 615,
       "aptitudeType": "none",
@@ -14336,6 +14640,9 @@
       "name": "勝利への執念",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chukyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14346,6 +14653,9 @@
       "name": "熾烈の極み",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14356,6 +14666,9 @@
       "name": "真打",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14376,6 +14689,9 @@
       "name": "心頭滅却",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14386,6 +14702,9 @@
       "name": "陣風一閃",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "nige"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14396,6 +14715,9 @@
       "name": "スタミナグリード",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 507,
       "aptitudeType": "none",
@@ -14436,6 +14758,9 @@
       "name": "スプリントターボ",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14456,6 +14781,9 @@
       "name": "清麗高雅",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chukyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14466,6 +14794,9 @@
       "name": "迫る影",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14476,6 +14807,9 @@
       "name": "千載一遇",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 615,
       "aptitudeType": "none",
@@ -14486,6 +14820,9 @@
       "name": "先陣の心得",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14506,6 +14843,9 @@
       "name": "即断即決",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 376,
       "aptitudeType": "none",
@@ -14516,6 +14856,9 @@
       "name": "泰然自若",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14526,6 +14869,9 @@
       "name": "匠のステアリング",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14536,6 +14882,9 @@
       "name": "脱兎の先へ",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 696,
       "aptitudeType": "none",
@@ -14546,6 +14895,9 @@
       "name": "誰より前へ！",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chukyori"
+      ],
       "requiredPt": null,
       "directPoint": 367,
       "aptitudeType": "none",
@@ -14566,6 +14918,10 @@
       "name": "超然",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
       "requiredPt": null,
       "directPoint": 696,
       "aptitudeType": "none",
@@ -14576,6 +14932,9 @@
       "name": "電撃の煌めき",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14586,6 +14945,10 @@
       "name": "電光石火",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile",
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14596,6 +14959,9 @@
       "name": "電迅速攻",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14606,6 +14972,9 @@
       "name": "天真爛漫",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14626,6 +14995,9 @@
       "name": "天命士",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 367,
       "aptitudeType": "none",
@@ -14636,6 +15008,9 @@
       "name": "当機立断",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14646,6 +15021,10 @@
       "name": "トキメキハート",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile",
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14656,6 +15035,9 @@
       "name": "怒涛の追い上げ",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14676,6 +15058,9 @@
       "name": "内的体験",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14686,6 +15071,9 @@
       "name": "肉薄",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14696,6 +15084,9 @@
       "name": "日本一のウマ娘",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14706,6 +15097,9 @@
       "name": "熱情",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14716,6 +15110,9 @@
       "name": "眠れる獅子",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14736,6 +15133,9 @@
       "name": "悩殺術",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14746,6 +15146,9 @@
       "name": "ハイボルテージ",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14776,6 +15179,9 @@
       "name": "破竹の勢い",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14786,6 +15192,9 @@
       "name": "抜群の切れ味",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14806,6 +15215,9 @@
       "name": "飛翔脚",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14826,6 +15238,9 @@
       "name": "百戦錬磨",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14836,6 +15251,9 @@
       "name": "百花繚乱",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "senkou"
+      ],
       "requiredPt": null,
       "directPoint": 615,
       "aptitudeType": "none",
@@ -14846,6 +15264,9 @@
       "name": "閃く雷光",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 367,
       "aptitudeType": "none",
@@ -14856,6 +15277,9 @@
       "name": "飛竜乗雲",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "nige"
+      ],
       "requiredPt": null,
       "directPoint": 615,
       "aptitudeType": "none",
@@ -14866,6 +15290,9 @@
       "name": "布陣",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14876,6 +15303,9 @@
       "name": "ブチ☆アゲ↑バイブス",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 696,
       "aptitudeType": "none",
@@ -14886,6 +15316,9 @@
       "name": "プランX",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14896,6 +15329,9 @@
       "name": "ブレイクスルー",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14906,6 +15342,9 @@
       "name": "マイルの支配者",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14916,6 +15355,10 @@
       "name": "まばたき厳禁！",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile",
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14956,6 +15399,9 @@
       "name": "問答無用",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14986,6 +15432,9 @@
       "name": "勇猛果敢",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -14996,6 +15445,10 @@
       "name": "悠々自適",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -15006,6 +15459,9 @@
       "name": "冷静沈着",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -15016,6 +15472,9 @@
       "name": "レースメイカー",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "nige"
+      ],
       "requiredPt": null,
       "directPoint": 615,
       "aptitudeType": "none",
@@ -15026,6 +15485,9 @@
       "name": "烈風一閃",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -15036,6 +15498,9 @@
       "name": "烈風円刃",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 559,
       "aptitudeType": "none",
@@ -15046,6 +15511,9 @@
       "name": "ロケットスタート",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 366,
       "aptitudeType": "none",
@@ -15056,6 +15524,10 @@
       "name": "私たちの走る道程",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "mile",
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 696,
       "aptitudeType": "none",
@@ -15066,6 +15538,10 @@
       "name": "阿吽の呼吸",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chukyori",
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15086,6 +15562,9 @@
       "name": "アクセラレーション",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15096,6 +15575,9 @@
       "name": "足任せ",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15116,6 +15598,9 @@
       "name": "後先恐れず",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15146,6 +15631,9 @@
       "name": "いざ我が道へ！",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15156,6 +15644,9 @@
       "name": "頂を目指して",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "sashi"
+      ],
       "requiredPt": null,
       "directPoint": 263,
       "aptitudeType": "none",
@@ -15166,6 +15657,10 @@
       "name": "一足飛び",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile",
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15176,6 +15671,10 @@
       "name": "いつまでも健やかに",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile",
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 289,
       "aptitudeType": "none",
@@ -15186,6 +15685,9 @@
       "name": "内弁慶",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15206,6 +15708,9 @@
       "name": "追い上げ",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15216,6 +15721,9 @@
       "name": "追込コーナー○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15226,6 +15734,9 @@
       "name": "追込コーナー◎",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 288,
       "aptitudeType": "none",
@@ -15236,6 +15747,9 @@
       "name": "追込直線○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15246,6 +15760,9 @@
       "name": "追込直線◎",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 288,
       "aptitudeType": "none",
@@ -15256,6 +15773,9 @@
       "name": "大きなリード",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 288,
       "aptitudeType": "none",
@@ -15266,6 +15786,10 @@
       "name": "大立ち回り",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "sashi",
+        "senkou"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15276,6 +15800,9 @@
       "name": "臆せぬ心",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15286,6 +15813,9 @@
       "name": "奥の手",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "nige"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15296,6 +15826,9 @@
       "name": "惜しみなし",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15306,6 +15839,9 @@
       "name": "押せ押せムード",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15316,6 +15852,9 @@
       "name": "お見通し",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 94,
       "aptitudeType": "none",
@@ -15336,6 +15875,9 @@
       "name": "垣間見た光",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 263,
       "aptitudeType": "none",
@@ -15346,6 +15888,9 @@
       "name": "輝きを放って",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15356,6 +15901,9 @@
       "name": "影打",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15366,6 +15914,9 @@
       "name": "影踏み",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15376,6 +15927,9 @@
       "name": "影を追って",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15386,6 +15940,9 @@
       "name": "風切り",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15396,6 +15953,9 @@
       "name": "軽い足取り",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15406,6 +15966,9 @@
       "name": "華麗な足取り",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chukyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15416,6 +15979,9 @@
       "name": "華麗な踏み込み",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chukyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15426,6 +15992,9 @@
       "name": "気合十分",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15436,6 +16005,9 @@
       "name": "ギアシフト",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15446,6 +16018,9 @@
       "name": "急降下",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15456,6 +16031,9 @@
       "name": "急旋回",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15466,6 +16044,9 @@
       "name": "急発進",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15496,6 +16077,9 @@
       "name": "切り崩し",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15506,6 +16090,9 @@
       "name": "切れ味",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15516,6 +16103,9 @@
       "name": "元気バクハツ",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15526,6 +16116,9 @@
       "name": "好機を捉えて",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 263,
       "aptitudeType": "none",
@@ -15556,6 +16149,9 @@
       "name": "ここが狙い目",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15566,6 +16162,9 @@
       "name": "心弾んで",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15576,6 +16175,9 @@
       "name": "個性的",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "senkou"
+      ],
       "requiredPt": null,
       "directPoint": 263,
       "aptitudeType": "none",
@@ -15586,6 +16188,9 @@
       "name": "ごぼう抜き",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 263,
       "aptitudeType": "none",
@@ -15606,6 +16211,9 @@
       "name": "策士",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 94,
       "aptitudeType": "none",
@@ -15616,6 +16224,9 @@
       "name": "差しコーナー○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "sashi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15626,6 +16237,9 @@
       "name": "差し直線○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "sashi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15646,6 +16260,9 @@
       "name": "潮目を掴んで",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15656,6 +16273,9 @@
       "name": "仕掛け準備",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 191,
       "aptitudeType": "none",
@@ -15666,6 +16286,9 @@
       "name": "仕掛け抜群",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15686,6 +16309,10 @@
       "name": "シビれる走り",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile",
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15696,6 +16323,9 @@
       "name": "瞬発力",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15706,6 +16336,9 @@
       "name": "上昇気流",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15726,6 +16359,9 @@
       "name": "推力十分",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15736,6 +16372,9 @@
       "name": "ステップアップ",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15766,6 +16405,9 @@
       "name": "スプリントギア",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15776,6 +16418,9 @@
       "name": "聖女の試練",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "sashi"
+      ],
       "requiredPt": null,
       "directPoint": 85,
       "aptitudeType": "none",
@@ -15796,6 +16441,9 @@
       "name": "積極策",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15806,6 +16454,9 @@
       "name": "先行コーナー○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "senkou"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15816,6 +16467,9 @@
       "name": "先行直線○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "senkou"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15826,6 +16480,9 @@
       "name": "善後策",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15836,6 +16493,9 @@
       "name": "先導者",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "nige"
+      ],
       "requiredPt": null,
       "directPoint": 263,
       "aptitudeType": "none",
@@ -15856,6 +16516,10 @@
       "name": "存在感",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
       "requiredPt": null,
       "directPoint": 289,
       "aptitudeType": "none",
@@ -15906,6 +16570,9 @@
       "name": "打開策",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15916,6 +16583,9 @@
       "name": "滾る想い",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15926,6 +16596,9 @@
       "name": "たぎる血潮",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15936,6 +16609,9 @@
       "name": "ただその先へ",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "senkou"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15946,6 +16622,9 @@
       "name": "ダブルアクセル",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chukyori"
+      ],
       "requiredPt": null,
       "directPoint": 286,
       "aptitudeType": "none",
@@ -15956,6 +16635,9 @@
       "name": "短距離コーナー○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15966,6 +16648,9 @@
       "name": "短距離コーナー◎",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 288,
       "aptitudeType": "none",
@@ -15976,6 +16661,9 @@
       "name": "短距離直線○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -15986,6 +16674,9 @@
       "name": "短距離直線◎",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 288,
       "aptitudeType": "none",
@@ -15996,6 +16687,9 @@
       "name": "中距離コーナー○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chukyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16006,6 +16700,9 @@
       "name": "中距離直線○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chukyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16016,6 +16713,9 @@
       "name": "長距離コーナー○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16026,6 +16726,9 @@
       "name": "長距離コーナー◎",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 288,
       "aptitudeType": "none",
@@ -16036,6 +16739,9 @@
       "name": "長距離直線○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16046,6 +16752,9 @@
       "name": "長距離直線◎",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 288,
       "aptitudeType": "none",
@@ -16056,6 +16765,9 @@
       "name": "直線一気",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16066,6 +16778,9 @@
       "name": "追駆",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16076,6 +16791,9 @@
       "name": "追尾",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "sashi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16096,6 +16814,9 @@
       "name": "詰め寄り",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16106,6 +16827,9 @@
       "name": "手練手管",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16116,6 +16840,9 @@
       "name": "登竜門",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16136,6 +16863,10 @@
       "name": "流れに任せて",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "sashi",
+        "senkou"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16156,6 +16887,9 @@
       "name": "逃げコーナー○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "nige"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16166,6 +16900,9 @@
       "name": "逃げ直線○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "nige"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16186,6 +16923,9 @@
       "name": "熱狂的",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16216,6 +16956,9 @@
       "name": "ハイピッチ",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16226,6 +16969,9 @@
       "name": "バイブス上昇",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 289,
       "aptitudeType": "none",
@@ -16236,6 +16982,9 @@
       "name": "弾ける足取り",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16246,6 +16995,9 @@
       "name": "溌剌",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16256,6 +17008,9 @@
       "name": "早仕掛け",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16266,6 +17021,9 @@
       "name": "張り切り",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 289,
       "aptitudeType": "none",
@@ -16276,6 +17034,9 @@
       "name": "ヒートアップ",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 263,
       "aptitudeType": "none",
@@ -16286,6 +17047,9 @@
       "name": "ひたむき前進",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16296,6 +17060,9 @@
       "name": "広がる景色",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 263,
       "aptitudeType": "none",
@@ -16306,6 +17073,9 @@
       "name": "筆に任せて",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "nige"
+      ],
       "requiredPt": null,
       "directPoint": 263,
       "aptitudeType": "none",
@@ -16316,6 +17086,9 @@
       "name": "プレリュード",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16326,6 +17099,9 @@
       "name": "奮闘",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16336,6 +17112,9 @@
       "name": "ポイントマン",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "nige"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16356,6 +17135,9 @@
       "name": "捕捉",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16366,6 +17148,9 @@
       "name": "マイルコーナー○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16376,6 +17161,9 @@
       "name": "マイルコーナー◎",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 288,
       "aptitudeType": "none",
@@ -16386,6 +17174,9 @@
       "name": "マイル直線○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16396,6 +17187,9 @@
       "name": "マイル直線◎",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 288,
       "aptitudeType": "none",
@@ -16406,6 +17200,9 @@
       "name": "負けん気",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16426,6 +17223,9 @@
       "name": "待ったなし",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16436,6 +17236,9 @@
       "name": "向こう見ず",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16446,6 +17249,9 @@
       "name": "無三",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16456,6 +17262,9 @@
       "name": "無二",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16466,6 +17275,10 @@
       "name": "胸の高鳴り",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile",
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16476,6 +17289,9 @@
       "name": "目にも留まらず",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "nige"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16486,6 +17302,9 @@
       "name": "猛プッシュ",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16506,6 +17325,9 @@
       "name": "リードキープ",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16526,6 +17348,9 @@
       "name": "練達の一歩",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16546,6 +17371,9 @@
       "name": "ロックオン",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16556,6 +17384,9 @@
       "name": "私の足取り",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16566,6 +17397,10 @@
       "name": "息抜き上手",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16576,6 +17411,9 @@
       "name": "下校の楽しみ",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16586,6 +17424,9 @@
       "name": "後方待機",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16616,6 +17457,9 @@
       "name": "深呼吸",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16636,6 +17480,9 @@
       "name": "超長距離回復○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16646,6 +17493,9 @@
       "name": "超長距離回復◎",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 288,
       "aptitudeType": "none",
@@ -16656,6 +17506,9 @@
       "name": "展開窺い",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16666,6 +17519,9 @@
       "name": "パス上手",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16676,6 +17532,9 @@
       "name": "不動の心",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16686,6 +17545,9 @@
       "name": "別腹タンク",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16696,6 +17558,9 @@
       "name": "マイペース",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16706,6 +17571,9 @@
       "name": "様子見",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16716,6 +17584,9 @@
       "name": "冷静",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16726,6 +17597,9 @@
       "name": "脇目も振らず",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 289,
       "aptitudeType": "none",
@@ -16776,6 +17650,9 @@
       "name": "追込のコツ○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 191,
       "aptitudeType": "none",
@@ -16786,6 +17663,9 @@
       "name": "追込のコツ◎",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -16886,6 +17766,9 @@
       "name": "差しのコツ○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "sashi"
+      ],
       "requiredPt": null,
       "directPoint": 191,
       "aptitudeType": "none",
@@ -16916,6 +17799,9 @@
       "name": "衝動",
       "category": "general-gold",
       "skillType": null,
+      "styles": [
+        "sashi"
+      ],
       "requiredPt": null,
       "directPoint": 477,
       "aptitudeType": "none",
@@ -16926,6 +17812,9 @@
       "name": "勝負勘",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "nige"
+      ],
       "requiredPt": null,
       "directPoint": 210,
       "aptitudeType": "none",
@@ -16936,6 +17825,9 @@
       "name": "精神力",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "sashi"
+      ],
       "requiredPt": null,
       "directPoint": 210,
       "aptitudeType": "none",
@@ -16946,6 +17838,9 @@
       "name": "先行のコツ○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "senkou"
+      ],
       "requiredPt": null,
       "directPoint": 191,
       "aptitudeType": "none",
@@ -17076,6 +17971,9 @@
       "name": "逃げのコツ○",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "nige"
+      ],
       "requiredPt": null,
       "directPoint": 191,
       "aptitudeType": "none",
@@ -17306,6 +18204,9 @@
       "name": "後方釘付",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 288,
       "aptitudeType": "none",
@@ -17356,6 +18257,9 @@
       "name": "スタミナイーター",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -17366,6 +18270,9 @@
       "name": "スピードイーター",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -17486,6 +18393,9 @@
       "name": "抜け駆け禁止",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
       "requiredPt": null,
       "directPoint": 288,
       "aptitudeType": "none",
@@ -17496,6 +18406,9 @@
       "name": "布石",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "mile"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -17506,6 +18419,9 @@
       "name": "まなざし",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
       "requiredPt": null,
       "directPoint": 239,
       "aptitudeType": "none",
@@ -17516,6 +18432,9 @@
       "name": "目くらまし",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
       "requiredPt": null,
       "directPoint": 142,
       "aptitudeType": "none",

@@ -167,6 +167,14 @@
         transition: background-color 0.15s ease, color 0.15s ease;
       }
       .card-item .card-delete:hover { background: var(--danger-bg); color: var(--danger); }
+      .card-item--empty { border-style: dashed; }
+      .card-slot-label { flex: 1; font-size: 0.85rem; color: var(--text-tertiary); }
+      .card-register, .card-edit {
+        background: none; border: 1px solid var(--border); border-radius: var(--radius);
+        color: var(--text-secondary); cursor: pointer; font-size: 0.78rem; padding: 4px 10px;
+        transition: border-color 0.15s ease, color 0.15s ease;
+      }
+      .card-register:hover, .card-edit:hover { border-color: var(--border-strong); color: var(--text-primary); }
 
       #support-card-form { border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 14px; margin-bottom: 20px; background: var(--surface); }
       #support-card-form summary { cursor: pointer; font-size: 0.85rem; font-weight: 500; color: var(--text-secondary); list-style: none; }
@@ -205,10 +213,10 @@
     <label class="field">Lv <select id="unique-level"></select></label>
 
     <h2>育成サポートカード</h2>
-    <p class="note">登録したカードを「優先」にすると、そのカードで取れるスキルが下の獲得スキル一覧の先頭に表示されます。</p>
+    <p class="note">最大6枚まで登録できます。登録したカードを「優先」にすると、そのカードで取れるスキルが下の獲得スキル一覧の先頭に表示されます。</p>
     <div id="support-card-list"></div>
     <details id="support-card-form">
-      <summary>＋ サポートカードを登録</summary>
+      <summary id="card-form-summary">サポートカードを登録</summary>
       <div class="card-form-body">
         <input type="text" id="card-name-input" placeholder="カード名（例: SSR 〇〇）" />
         <input type="text" id="card-skill-search" placeholder="スキル名で検索して追加" />
