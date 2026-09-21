@@ -1,71 +1,91 @@
 const STATS = ["speed", "stamina", "power", "guts", "wisdom"];
 const STAT_LABELS = { speed: "スピード", stamina: "スタミナ", power: "パワー", guts: "根性", wisdom: "賢さ" };
 
-let realStatTable = null;
-let lowStatTable = null;
-let highStatTable = null;
+let statFormula = null;
 let uniqueSkillTable = null;
 let skillData = null;
+let rankThresholds = null;
 const selectedSkillIds = new Set();
 
-const SKILL_TYPE_LABELS = { speed: "速度", accel: "加速", recovery: "回復", green: "緑" };
+const SKILL_TYPE_LABELS = { speed: "速度", accel: "加速", recovery: "回復", green: "緑", evolution: "進化" };
 let selectedSkillType = null;
 
-function filterNumericKeys(obj) {
-  return Object.fromEntries(Object.entries(obj).filter(([key]) => /^\d+$/.test(key)));
-}
-
 async function loadData() {
-  const [statRes, uniqueRes, skillsRes] = await Promise.all([
+  const [statRes, uniqueRes, skillsRes, rankRes] = await Promise.all([
     fetch("data/stat-table.json"),
     fetch("data/unique-skill.json"),
     fetch("data/skills.json"),
+    fetch("data/rank-table.json"),
   ]);
-  const statJson = await statRes.json();
-  realStatTable = filterNumericKeys(statJson.points);
-  const rangeRaw = filterNumericKeys(statJson.estimatedRangeAbove1200 || {});
-  lowStatTable = { ...realStatTable, ...Object.fromEntries(Object.entries(rangeRaw).map(([k, v]) => [k, v.low])) };
-  highStatTable = { ...realStatTable, ...Object.fromEntries(Object.entries(rangeRaw).map(([k, v]) => [k, v.high])) };
+  statFormula = await statRes.json();
   uniqueSkillTable = (await uniqueRes.json()).tiers;
   skillData = await skillsRes.json();
+  rankThresholds = (await rankRes.json()).thresholds;
 }
 
-// テーブル範囲内は線形補間、最大キーを超えたら最後の2点の傾きで線形外挿する（精度は保証しない）。
-function interpolateTable(table, value) {
-  const keys = Object.keys(table).map(Number).sort((a, b) => a - b);
-  if (value <= keys[0]) return 0;
-
-  const lastKey = keys[keys.length - 1];
-  if (value > lastKey) {
-    const prevKey = keys[keys.length - 2];
-    const slope = (table[lastKey] - table[prevKey]) / (lastKey - prevKey);
-    return Math.round(table[lastKey] + slope * (value - lastKey));
+// ステータス値→評価点の生値（10倍スケール）を、data/stat-table.jsonの階段関数パラメータに従って積算する。
+// 出典: https://umakonga-t.github.io/hyokatenCalc/ のロジックを移植（0〜verifiedMaxで実測値と一致することを確認済み）。
+function segmentRawScore(segment, toValue) {
+  let bucketIndex = 0;
+  let raw = segment.startRaw;
+  const [firstBreak, secondBreak] = segment.firstBucketBreaks;
+  for (let v = segment.fromValue; v <= toValue; v++) {
+    if (v <= firstBreak) bucketIndex = 0;
+    else if (v <= secondBreak) bucketIndex = 1;
+    else if (v % segment.bucketSize === 0) bucketIndex++;
+    raw += segment.rates[bucketIndex];
   }
+  return raw;
+}
 
-  for (let i = 0; i < keys.length - 1; i++) {
-    const lo = keys[i];
-    const hi = keys[i + 1];
-    if (value >= lo && value <= hi) {
-      const loPt = table[lo];
-      const hiPt = table[hi];
-      const ratio = (value - lo) / (hi - lo);
-      return Math.round(loPt + (hiPt - loPt) * ratio);
+function tailRawScore(tail, toValue) {
+  let bucketCount = 0;
+  let raw = tail.startRaw;
+  let rate = tail.startRate;
+  for (let v = tail.fromValue; v <= toValue; v++) {
+    if (bucketCount >= tail.bucketSize) {
+      rate++;
+      bucketCount = 0;
     }
+    raw += rate;
+    bucketCount++;
   }
-  return 0;
+  return raw;
 }
 
-// 実測範囲（〜1200）は単一値、それ超は保守的/積極的フィットによる low/high レンジを返す。
+// 任意のステータス値（verifiedMaxを超えた外挿域も含む）に対する厳密な評価点を返す。
+function statPointsExact(value) {
+  if (value <= 0) return 0;
+  const [seg1, seg2] = statFormula.segments;
+  let raw;
+  if (value <= seg1.toValue) raw = segmentRawScore(seg1, value);
+  else if (value <= seg2.toValue) raw = segmentRawScore(seg2, value);
+  else raw = tailRawScore(statFormula.tailSegment, value);
+  return Math.round(raw / 10);
+}
+
+// verifiedMaxまでは同じ式による確定値。それを超える域は式をそのまま外挿した値をhigh、
+// 直近2点（verifiedMax-100〜verifiedMax）の傾きをそのまま延ばした保守的な値をlowとして幅を持たせる。
 function statScoreRange(value) {
-  const maxRealKey = Math.max(...Object.keys(realStatTable).map(Number));
-  if (value <= maxRealKey) {
-    const exact = interpolateTable(realStatTable, value);
+  const verifiedMax = statFormula.verifiedMax;
+  if (value <= verifiedMax) {
+    const exact = statPointsExact(value);
     return { low: exact, high: exact };
   }
-  return {
-    low: interpolateTable(lowStatTable, value),
-    high: interpolateTable(highStatTable, value),
-  };
+  const high = statPointsExact(value);
+  const atMax = statPointsExact(verifiedMax);
+  const slope = atMax - statPointsExact(verifiedMax - 100);
+  const low = Math.round(atMax + (slope / 100) * (value - verifiedMax));
+  return { low, high };
+}
+
+function rankLabel(points) {
+  if (!rankThresholds || !rankThresholds.length) return "";
+  for (const [threshold, label] of rankThresholds) {
+    if (points <= threshold) return label;
+  }
+  const [, topLabel] = rankThresholds[rankThresholds.length - 1];
+  return `${topLabel}超`;
 }
 
 function formatRange(low, high) {
@@ -153,12 +173,13 @@ function renderSkillList() {
   list.innerHTML = skillData.skills
     .map((skill) => {
       const requiresAptitude = skill.aptitudeType !== "none";
-      const ptLabel = skill.needsData ? "データ未設定" : `必要pt: ${skill.requiredPt}`;
+      const ptLabel = skill.needsData ? "データ未設定" : skill.requiredPt != null ? `必要pt: ${skill.requiredPt}` : "必要ptデータなし";
+      const characterLabel = skill.character ? `［${skill.character}］` : "";
       return `
         <li class="skill-row${skill.needsData ? " skill-row--needs-data" : ""}" data-id="${skill.id}" data-type="${skill.skillType ?? ""}">
           <label>
             <input type="checkbox" class="skill-checkbox" data-id="${skill.id}" />
-            ${skill.name}（${ptLabel}）
+            ${skill.name}（${ptLabel}）${characterLabel}
           </label>
           ${requiresAptitude ? `
             <select class="skill-aptitude" data-id="${skill.id}">
@@ -225,7 +246,7 @@ function updateTotal() {
     const scoreEl = document.querySelector(`.skill-score[data-id="${id}"]`);
     if (scoreEl) scoreEl.textContent = `= ${score}点（効率 ${efficiency(score, skill.requiredPt).toFixed(2)}）`;
     skillTotal += score;
-    ptTotal += skill.requiredPt;
+    ptTotal += skill.requiredPt || 0;
   });
 
   // 固有スキル・獲得スキルは確定値なので low/high 双方に同じ値を加算する。
@@ -238,6 +259,8 @@ function updateTotal() {
   document.getElementById("skill-total").textContent = skillTotal;
   document.getElementById("pt-total").textContent = ptTotal;
   document.getElementById("grand-total").textContent = formatRange(grandLow, grandHigh);
+  document.getElementById("grand-rank").textContent =
+    grandLow === grandHigh ? rankLabel(grandLow) : `${rankLabel(grandLow)}〜${rankLabel(grandHigh)}`;
 
   const diffEl = document.getElementById("limit-diff");
   if (limit > 0) {
