@@ -48,45 +48,53 @@
       "name": "右回り◎",
       "category": "normal",
       "tierIndex": null,
-      "requiredPt": null,
-      "aptitudeType": "aptitude",
-      "needsData": true
+      "requiredPt": 110,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 45
     },
     {
       "id": "corner-kousha",
       "name": "コーナー巧者○",
       "category": "normal",
       "tierIndex": null,
-      "requiredPt": null,
+      "requiredPt": 180,
       "aptitudeType": "none",
-      "needsData": true
+      "needsData": false,
+      "directPoint": 217
     },
     {
       "id": "chokusen-kousha",
       "name": "直線巧者",
       "category": "normal",
       "tierIndex": null,
-      "requiredPt": null,
+      "requiredPt": 170,
       "aptitudeType": "none",
-      "needsData": true
+      "needsData": false,
+      "directPoint": 217
     },
     {
       "id": "pace-up",
       "name": "ペースアップ",
       "category": "normal",
       "tierIndex": null,
-      "requiredPt": null,
+      "requiredPt": 170,
       "aptitudeType": "none",
-      "needsData": true
+      "needsData": false,
+      "directPoint": 217
     },
     {
       "id": "chukyori-corner",
       "name": "中距離コーナー◎",
       "category": "normal",
       "tierIndex": null,
-      "requiredPt": null,
-      "aptitudeType": "aptitude",
-      "needsData": true
+      "requiredPt": 110,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 49,
+      "styles": [
+        "chukyori"
+      ]
     },
     {
       "id": "senkou-chokusen",
@@ -119,36 +127,40 @@
       "name": "ウマ好み",
       "category": "normal",
       "tierIndex": null,
-      "requiredPt": null,
+      "requiredPt": 160,
       "aptitudeType": "none",
-      "needsData": true
+      "needsData": false,
+      "directPoint": 217
     },
     {
       "id": "jigatame",
       "name": "地固め",
       "category": "normal",
       "tierIndex": null,
-      "requiredPt": null,
+      "requiredPt": 100,
       "aptitudeType": "none",
-      "needsData": true
+      "needsData": false,
+      "directPoint": 217
     },
     {
       "id": "shippo-no-takinobori",
       "name": "尻尾の滝登り",
       "category": "rare",
       "tierIndex": null,
-      "requiredPt": null,
+      "requiredPt": 180,
       "aptitudeType": "none",
-      "needsData": true
+      "needsData": false,
+      "directPoint": 291
     },
     {
       "id": "slipstream",
       "name": "スリップストリーム",
       "category": "normal",
       "tierIndex": null,
-      "requiredPt": null,
+      "requiredPt": 160,
       "aptitudeType": "none",
-      "needsData": true
+      "needsData": false,
+      "directPoint": 217
     },
     {
       "id": "barikata-icchoagari",
@@ -164,18 +176,23 @@
       "name": "下り坂巧者",
       "category": "normal",
       "tierIndex": null,
-      "requiredPt": null,
+      "requiredPt": 170,
       "aptitudeType": "none",
-      "needsData": true
+      "needsData": false,
+      "directPoint": 217
     },
     {
       "id": "ignition",
       "name": "イグニッション",
       "category": "normal",
       "tierIndex": null,
-      "requiredPt": null,
+      "requiredPt": 160,
       "aptitudeType": "none",
-      "needsData": true
+      "needsData": false,
+      "directPoint": 239,
+      "styles": [
+        "chukyori"
+      ]
     },
     {
       "id": "tankyuushin",
@@ -187,7 +204,8 @@
       "needsData": false,
       "directPoint": 210,
       "styles": [
-        "senkou"
+        "senkou",
+        "chukyori"
       ]
     },
     {
@@ -208,9 +226,13 @@
       "name": "光差す方へ",
       "category": "normal",
       "tierIndex": null,
-      "requiredPt": null,
+      "requiredPt": 140,
       "aptitudeType": "none",
-      "needsData": true
+      "needsData": false,
+      "directPoint": 239,
+      "styles": [
+        "chukyori"
+      ]
     },
     {
       "id": "seiseidoudou",
@@ -261,9 +283,13 @@
       "name": "気ままな足取り",
       "category": "normal",
       "tierIndex": null,
-      "requiredPt": null,
+      "requiredPt": 180,
       "aptitudeType": "none",
-      "needsData": true
+      "needsData": false,
+      "directPoint": 239,
+      "styles": [
+        "chukyori"
+      ]
     },
     {
       "id": "mezame-no-toki",
@@ -322,36 +348,49 @@
       "name": "勝負を懸けて",
       "category": "normal",
       "tierIndex": null,
-      "requiredPt": null,
+      "requiredPt": 200,
       "aptitudeType": "none",
-      "needsData": true
+      "needsData": false,
+      "directPoint": 263
     },
     {
       "id": "senren-banren",
       "name": "千鍛万錬",
       "category": "rare",
       "tierIndex": null,
-      "requiredPt": null,
+      "requiredPt": 180,
       "aptitudeType": "none",
-      "needsData": true
+      "needsData": false,
+      "directPoint": 320,
+      "styles": [
+        "chukyori"
+      ]
     },
     {
       "id": "kinjou-tenka",
       "name": "錦上添花",
       "category": "rare",
       "tierIndex": null,
-      "requiredPt": null,
+      "requiredPt": 120,
       "aptitudeType": "none",
-      "needsData": true
+      "needsData": false,
+      "directPoint": 129,
+      "styles": [
+        "chukyori"
+      ]
     },
     {
       "id": "senryakuka",
       "name": "戦略家",
       "category": "normal",
       "tierIndex": null,
-      "requiredPt": null,
+      "requiredPt": 180,
       "aptitudeType": "none",
-      "needsData": true
+      "needsData": false,
+      "directPoint": 239,
+      "styles": [
+        "chukyori"
+      ]
     },
     {
       "id": "zenjin-mitou",
@@ -376,9 +415,13 @@
       "name": "もう一踏ん張り",
       "category": "normal",
       "tierIndex": null,
-      "requiredPt": null,
+      "requiredPt": 180,
       "aptitudeType": "none",
-      "needsData": true
+      "needsData": false,
+      "directPoint": 239,
+      "styles": [
+        "chukyori"
+      ]
     },
     {
       "id": "furuitatsu-kokoro",
@@ -403,9 +446,10 @@
       "name": "レースの真髄・体",
       "category": "normal",
       "tierIndex": null,
-      "requiredPt": null,
+      "requiredPt": 150,
       "aptitudeType": "none",
-      "needsData": true
+      "needsData": false,
+      "directPoint": 174
     },
     {
       "id": "nige-gold-01",
@@ -425,7 +469,10 @@
       "requiredPt": 170,
       "directPoint": 352,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "chukyori"
+      ]
     },
     {
       "id": "nige-gold-03",
@@ -515,7 +562,10 @@
       "requiredPt": 180,
       "directPoint": 352,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "chukyori"
+      ]
     },
     {
       "id": "nige-gold-12",
@@ -643,7 +693,10 @@
       "requiredPt": 170,
       "directPoint": 263,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "chukyori"
+      ]
     },
     {
       "id": "nige-white-04",
@@ -757,7 +810,10 @@
       "requiredPt": 180,
       "directPoint": 263,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "chukyori"
+      ]
     },
     {
       "id": "nige-white-15",
@@ -907,7 +963,10 @@
       "requiredPt": 170,
       "directPoint": 263,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "chukyori"
+      ]
     },
     {
       "id": "nige-white-30",
@@ -1041,7 +1100,8 @@
       "name": "快進撃",
       "category": "senkou-gold",
       "styles": [
-        "senkou"
+        "senkou",
+        "chukyori"
       ],
       "requiredPt": 170,
       "directPoint": 352,
@@ -1174,7 +1234,8 @@
       "name": "シンギュラリティ",
       "category": "senkou-gold",
       "styles": [
-        "senkou"
+        "senkou",
+        "chukyori"
       ],
       "requiredPt": 120,
       "directPoint": 348,
@@ -1379,7 +1440,8 @@
       "name": "夢の舞台へ",
       "category": "senkou-gold",
       "styles": [
-        "senkou"
+        "senkou",
+        "chukyori"
       ],
       "requiredPt": 170,
       "directPoint": 352,
@@ -1427,7 +1489,8 @@
       "name": "憧れを超えて",
       "category": "senkou-white",
       "styles": [
-        "senkou"
+        "senkou",
+        "chukyori"
       ],
       "requiredPt": 170,
       "directPoint": 263,
@@ -1597,7 +1660,8 @@
       "name": "さらなる高みへ",
       "category": "senkou-white",
       "styles": [
-        "senkou"
+        "senkou",
+        "chukyori"
       ],
       "requiredPt": 170,
       "directPoint": 263,
@@ -1777,7 +1841,8 @@
       "name": "確かな足取り",
       "category": "senkou-white",
       "styles": [
-        "senkou"
+        "senkou",
+        "chukyori"
       ],
       "requiredPt": 170,
       "directPoint": 263,
@@ -2054,7 +2119,8 @@
       "name": "ストレートハート",
       "category": "sashi-gold",
       "styles": [
-        "sashi"
+        "sashi",
+        "chukyori"
       ],
       "requiredPt": 160,
       "directPoint": 352,
@@ -2138,7 +2204,8 @@
       "name": "天賦の才",
       "category": "sashi-gold",
       "styles": [
-        "sashi"
+        "sashi",
+        "chukyori"
       ],
       "requiredPt": 170,
       "directPoint": 352,
@@ -2366,7 +2433,8 @@
       "name": "頂きを目指して",
       "category": "sashi-white",
       "styles": [
-        "sashi"
+        "sashi",
+        "chukyori"
       ],
       "requiredPt": 170,
       "directPoint": 263,
@@ -2402,7 +2470,8 @@
       "name": "内なる獣",
       "category": "sashi-white",
       "styles": [
-        "sashi"
+        "sashi",
+        "chukyori"
       ],
       "requiredPt": 180,
       "directPoint": 263,
@@ -2486,7 +2555,8 @@
       "name": "間隙を突いて",
       "category": "sashi-white",
       "styles": [
-        "sashi"
+        "sashi",
+        "chukyori"
       ],
       "requiredPt": 160,
       "directPoint": 239,
@@ -2798,7 +2868,8 @@
       "name": "不断の鍛錬",
       "category": "sashi-white",
       "styles": [
-        "sashi"
+        "sashi",
+        "chukyori"
       ],
       "requiredPt": 170,
       "directPoint": 263,
@@ -2846,7 +2917,8 @@
       "name": "真っ直ぐな走り",
       "category": "sashi-white",
       "styles": [
-        "sashi"
+        "sashi",
+        "chukyori"
       ],
       "requiredPt": 160,
       "directPoint": 263,
@@ -2874,6 +2946,3417 @@
       ],
       "requiredPt": 180,
       "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-01",
+      "name": "荒ぶる旋風",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-02",
+      "name": "一張一弛",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-03",
+      "name": "雲蒸竜変",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-04",
+      "name": "王道一途",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-05",
+      "name": "神業ステップ",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-06",
+      "name": "気炎万丈",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-07",
+      "name": "起死回生",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-08",
+      "name": "気丈夫",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "gousha-no-akashi",
+      "name": "強者の証",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 170,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-10",
+      "name": "キラーチューン",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-11",
+      "name": "切り開く者",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-12",
+      "name": "麒麟児",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-13",
+      "name": "君臨",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-14",
+      "name": "決死の覚悟",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-15",
+      "name": "光芒一閃",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 150,
+      "directPoint": 271,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-16",
+      "name": "光芒円刃",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 150,
+      "directPoint": 271,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-17",
+      "name": "高揚感",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-18",
+      "name": "後の先",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-19",
+      "name": "才気煥発",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 170,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-20",
+      "name": "才色兼備",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-21",
+      "name": "十全十美",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-22",
+      "name": "自由奔放",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-23",
+      "name": "勝利の執念",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-24",
+      "name": "閃光",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 140,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-25",
+      "name": "初志貫徹",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "setsuna-no-shouki",
+      "name": "刹那の勝機",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-27",
+      "name": "千里眼",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 110,
+      "directPoint": 225,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-28",
+      "name": "昂る鼓動",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-29",
+      "name": "誰より前へ!",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 120,
+      "directPoint": 128,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-30",
+      "name": "追跡者",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 170,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-31",
+      "name": "天衣無縫",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-32",
+      "name": "闘争本能",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-33",
+      "name": "解き放つ情念",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 200,
+      "directPoint": 407,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-34",
+      "name": "独占力",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-35",
+      "name": "突破口",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-36",
+      "name": "爆熱のキラメキ!",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 200,
+      "directPoint": 407,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-37",
+      "name": "パスファインダー",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "himeta-toukon",
+      "name": "秘めた闘魂",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 170,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-39",
+      "name": "睥睨",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 200,
+      "directPoint": 407,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-40",
+      "name": "本能の架け橋",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 200,
+      "directPoint": 407,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-41",
+      "name": "もう少しだけ、いい景色",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 200,
+      "directPoint": 407,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-42",
+      "name": "燃ゆる魂",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-43",
+      "name": "魅惑のささやき",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-44",
+      "name": "唯一無二",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-45",
+      "name": "優位形成",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-46",
+      "name": "悠久走破",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-47",
+      "name": "勇気凛々",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 170,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-48",
+      "name": "ライトニングステップ",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 140,
+      "directPoint": 242,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-49",
+      "name": "ルミネセンス",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-50",
+      "name": "怜悧清澄",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 200,
+      "directPoint": 407,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-51",
+      "name": "烈火の如く",
+      "category": "chukyori-gold",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-01",
+      "name": "足がかり",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-02",
+      "name": "ありったけ",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-03",
+      "name": "あるがままに",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 200,
+      "directPoint": 289,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-04",
+      "name": "あふれる活力",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-05",
+      "name": "一番乗り",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 120,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-06",
+      "name": "一歩ずつ前へ",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-07",
+      "name": "イナズマステップ",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 140,
+      "directPoint": 191,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-08",
+      "name": "型破り",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-09",
+      "name": "華麗なステップ",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 120,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-10",
+      "name": "軽やかステップ",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-11",
+      "name": "鬼気迫って",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-12",
+      "name": "想い焦がれて",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 200,
+      "directPoint": 289,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-13",
+      "name": "活路を拓く！",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-14",
+      "name": "気迫を込めて",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-15",
+      "name": "急襲",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-16",
+      "name": "切り返し",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-17",
+      "name": "切り替え上手",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-18",
+      "name": "食い下がり",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-19",
+      "name": "健脚",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-20",
+      "name": "好戦的",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-21",
+      "name": "光明",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-22",
+      "name": "克己心",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 200,
+      "directPoint": 289,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-23",
+      "name": "渾身の足取り",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-24",
+      "name": "込み上げる熱",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-25",
+      "name": "ささやき",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-26",
+      "name": "自信家",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-27",
+      "name": "正面突破",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-28",
+      "name": "精神力",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 120,
+      "aptitudeType": "none",
+      "needsData": true,
+      "directPoint": null
+    },
+    {
+      "id": "chukyori-white-29",
+      "name": "前途洋々",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-30",
+      "name": "しとやかな足取り",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-31",
+      "name": "束縛",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-32",
+      "name": "中距離コ◎＋〇",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 210,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-33",
+      "name": "中距離コーナー〇",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 100,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-34",
+      "name": "中距離直◎＋〇",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 210,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-35",
+      "name": "中距離直線◎",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 110,
+      "directPoint": 49,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-36",
+      "name": "中距離直線〇",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 100,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-37",
+      "name": "天才肌",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-38",
+      "name": "テンポアップ",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-39",
+      "name": "闘争心",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-40",
+      "name": "灯を胸に",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-41",
+      "name": "這い寄る足音",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-42",
+      "name": "覇気十分",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 200,
+      "directPoint": 289,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-43",
+      "name": "バーニングソウル",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-44",
+      "name": "品行方正",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-45",
+      "name": "ホークアイ",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 110,
+      "directPoint": 142,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-46",
+      "name": "前のめり",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-47",
+      "name": "躍動",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 170,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-48",
+      "name": "優等生",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-49",
+      "name": "夢の再生方法",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 200,
+      "directPoint": 289,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-50",
+      "name": "夢への挑戦",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-51",
+      "name": "凛然と",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-52",
+      "name": "揺るがぬ信念",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-53",
+      "name": "労を惜しまず",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-54",
+      "name": "ワンチャンス",
+      "category": "chukyori-white",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-01",
+      "name": "アオハル燃焼・根",
+      "category": "general-gold",
+      "requiredPt": 200,
+      "directPoint": 370,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-02",
+      "name": "アオハル燃焼・速",
+      "category": "general-gold",
+      "requiredPt": 200,
+      "directPoint": 370,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-03",
+      "name": "アガッてきた",
+      "category": "general-gold",
+      "requiredPt": 170,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-04",
+      "name": "新たな伝説を築く者",
+      "category": "general-gold",
+      "requiredPt": 200,
+      "directPoint": 370,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-05",
+      "name": "いいとこ入った!",
+      "category": "general-gold",
+      "requiredPt": 160,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-06",
+      "name": "一番星",
+      "category": "general-gold",
+      "requiredPt": 200,
+      "directPoint": 370,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-07",
+      "name": "ウママニア",
+      "category": "general-gold",
+      "requiredPt": 160,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-08",
+      "name": "英俊豪傑",
+      "category": "general-gold",
+      "requiredPt": 200,
+      "directPoint": 370,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-09",
+      "name": "お先に失礼っ!",
+      "category": "general-gold",
+      "requiredPt": 160,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-10",
+      "name": "機先の勝負",
+      "category": "general-gold",
+      "requiredPt": 160,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-11",
+      "name": "キミと勝ちたい",
+      "category": "general-gold",
+      "requiredPt": 200,
+      "directPoint": 370,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-12",
+      "name": "限界の先へ",
+      "category": "general-gold",
+      "requiredPt": 200,
+      "directPoint": 370,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-13",
+      "name": "好奇心",
+      "category": "general-gold",
+      "requiredPt": 180,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-14",
+      "name": "弧線のプロフェッサー",
+      "category": "general-gold",
+      "requiredPt": 180,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-15",
+      "name": "最高峰の夢",
+      "category": "general-gold",
+      "requiredPt": 200,
+      "directPoint": 370,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-16",
+      "name": "至高のダウンヒラー",
+      "category": "general-gold",
+      "requiredPt": 170,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-17",
+      "name": "順風満帆",
+      "category": "general-gold",
+      "requiredPt": 180,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-18",
+      "name": "情熱と挑戦の先の栄光",
+      "category": "general-gold",
+      "requiredPt": 200,
+      "directPoint": 370,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-19",
+      "name": "真骨頂",
+      "category": "general-gold",
+      "requiredPt": 180,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-20",
+      "name": "神速",
+      "category": "general-gold",
+      "requiredPt": 200,
+      "directPoint": 370,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-21",
+      "name": "正攻法",
+      "category": "general-gold",
+      "requiredPt": 180,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-22",
+      "name": "全身全霊",
+      "category": "general-gold",
+      "requiredPt": 170,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-23",
+      "name": "太陽の叡智",
+      "category": "general-gold",
+      "requiredPt": 200,
+      "directPoint": 370,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-24",
+      "name": "大地の叡智",
+      "category": "general-gold",
+      "requiredPt": 200,
+      "directPoint": 370,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-25",
+      "name": "時中の妙",
+      "category": "general-gold",
+      "requiredPt": 160,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-26",
+      "name": "ネバーギブアップ",
+      "category": "general-gold",
+      "requiredPt": 180,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-27",
+      "name": "博打うち",
+      "category": "general-gold",
+      "requiredPt": 120,
+      "directPoint": 205,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-28",
+      "name": "ハヤテ一文字",
+      "category": "general-gold",
+      "requiredPt": 170,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-29",
+      "name": "遥か先へ",
+      "category": "general-gold",
+      "requiredPt": 200,
+      "directPoint": 370,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-30",
+      "name": "保養が導く奇跡",
+      "category": "general-gold",
+      "requiredPt": 200,
+      "directPoint": 370,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-01",
+      "name": "アオハル点火・根",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-02",
+      "name": "アオハル点火・速",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-03",
+      "name": "遊びはおしまいっ!",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-04",
+      "name": "アメリカンドリーム",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-05",
+      "name": "あやしげな作戦",
+      "category": "general-white",
+      "requiredPt": 120,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-06",
+      "name": "一歩ずつ前へ",
+      "category": "general-white",
+      "requiredPt": 180,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-07",
+      "name": "海の加護",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-08",
+      "name": "想いを背負って",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-09",
+      "name": "折れない心",
+      "category": "general-white",
+      "requiredPt": 180,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-10",
+      "name": "快速",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-11",
+      "name": "気持ちを乗せて",
+      "category": "general-white",
+      "requiredPt": 180,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-12",
+      "name": "綺羅星",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-13",
+      "name": "心惹かれて",
+      "category": "general-white",
+      "requiredPt": 180,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-14",
+      "name": "時代を築く者",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-15",
+      "name": "尻尾上がり",
+      "category": "general-white",
+      "requiredPt": 100,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-16",
+      "name": "序盤巧者",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-17",
+      "name": "末脚",
+      "category": "general-white",
+      "requiredPt": 170,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-18",
+      "name": "素直な一歩",
+      "category": "general-white",
+      "requiredPt": 180,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-19",
+      "name": "地の加護",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-20",
+      "name": "中盤巧者",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-21",
+      "name": "本気で休んで、もう一度",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-22",
+      "name": "比類なき",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-23",
+      "name": "前だけ見据えて",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-24",
+      "name": "夢の途中",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-25",
+      "name": "陽の加護",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-26",
+      "name": "レースの真髄・賢",
+      "category": "general-white",
+      "requiredPt": 150,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-27",
+      "name": "レースの真髄・速",
+      "category": "general-white",
+      "requiredPt": 150,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-28",
+      "name": "レースの真髄・力",
+      "category": "general-white",
+      "requiredPt": 150,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-31",
+      "name": "アオハル燃焼・力",
+      "category": "general-gold",
+      "requiredPt": 200,
+      "directPoint": 370,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-32",
+      "name": "一陣の風",
+      "category": "general-gold",
+      "requiredPt": 170,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-33",
+      "name": "究極のヒルクライマー",
+      "category": "general-gold",
+      "requiredPt": 160,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-34",
+      "name": "曲線のソムリエ",
+      "category": "general-gold",
+      "requiredPt": 180,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-35",
+      "name": "大海の叡智",
+      "category": "general-gold",
+      "requiredPt": 200,
+      "directPoint": 370,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-36",
+      "name": "ノンストップガール",
+      "category": "general-gold",
+      "requiredPt": 150,
+      "directPoint": 334,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-37",
+      "name": "盤石の構え",
+      "category": "general-gold",
+      "requiredPt": 180,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-29",
+      "name": "アオハル点火・力",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-30",
+      "name": "コーナー加速",
+      "category": "general-white",
+      "requiredPt": 180,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-31",
+      "name": "垂れウマ回避",
+      "category": "general-white",
+      "requiredPt": 150,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-32",
+      "name": "直線加速",
+      "category": "general-white",
+      "requiredPt": 170,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-33",
+      "name": "登山家",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-34",
+      "name": "レースの真髄・根",
+      "category": "general-white",
+      "requiredPt": 150,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-38",
+      "name": "アオハル燃焼・体",
+      "category": "general-gold",
+      "requiredPt": 200,
+      "directPoint": 370,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-39",
+      "name": "円弧のマエストロ",
+      "category": "general-gold",
+      "requiredPt": 170,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-40",
+      "name": "好転一息",
+      "category": "general-gold",
+      "requiredPt": 170,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-41",
+      "name": "どこ吹く風",
+      "category": "general-gold",
+      "requiredPt": 170,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-42",
+      "name": "鋼の意思",
+      "category": "general-gold",
+      "requiredPt": 160,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-43",
+      "name": "不屈の心",
+      "category": "general-gold",
+      "requiredPt": 170,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-44",
+      "name": "連鎖反応",
+      "category": "general-gold",
+      "requiredPt": 200,
+      "directPoint": 370,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-35",
+      "name": "アオハル点火・体",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-36",
+      "name": "ウマ込み冷静",
+      "category": "general-white",
+      "requiredPt": 170,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-37",
+      "name": "隠れ蓑",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-38",
+      "name": "コーナー回復",
+      "category": "general-white",
+      "requiredPt": 170,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-39",
+      "name": "スリーセブン",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-40",
+      "name": "端緒",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-41",
+      "name": "超長距離回復◎",
+      "category": "general-white",
+      "requiredPt": 80,
+      "directPoint": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "general-white-42",
+      "name": "超長距離回復〇",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "general-white-43",
+      "name": "直線回復",
+      "category": "general-white",
+      "requiredPt": 170,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-44",
+      "name": "ふり絞り",
+      "category": "general-white",
+      "requiredPt": 100,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-45",
+      "name": "ペースキープ",
+      "category": "general-white",
+      "requiredPt": 170,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-45",
+      "name": "青嵐",
+      "category": "general-gold",
+      "requiredPt": 130,
+      "directPoint": 287,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-46",
+      "name": "凍て風",
+      "category": "general-gold",
+      "requiredPt": 130,
+      "directPoint": 287,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-47",
+      "name": "交流重賞の鬼",
+      "category": "general-gold",
+      "requiredPt": 130,
+      "directPoint": 287,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-48",
+      "name": "コネクト",
+      "category": "general-gold",
+      "requiredPt": 150,
+      "directPoint": 205,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-49",
+      "name": "勝負師",
+      "category": "general-gold",
+      "requiredPt": 180,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-50",
+      "name": "スーパーラッキーセブン",
+      "category": "general-gold",
+      "requiredPt": 110,
+      "directPoint": 160,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-51",
+      "name": "初嵐",
+      "category": "general-gold",
+      "requiredPt": 130,
+      "directPoint": 287,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-52",
+      "name": "春一番",
+      "category": "general-gold",
+      "requiredPt": 130,
+      "directPoint": 287,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-53",
+      "name": "府中の申し子",
+      "category": "general-gold",
+      "requiredPt": 130,
+      "directPoint": 287,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-54",
+      "name": "右回りの鬼",
+      "category": "general-gold",
+      "requiredPt": 130,
+      "directPoint": 287,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-55",
+      "name": "淀の申し子",
+      "category": "general-gold",
+      "requiredPt": 130,
+      "directPoint": 287,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-56",
+      "name": "ロンシャンの申し子",
+      "category": "general-gold",
+      "requiredPt": 130,
+      "directPoint": 287,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-57",
+      "name": "道悪の鬼",
+      "category": "general-gold",
+      "requiredPt": 130,
+      "directPoint": 287,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-58",
+      "name": "良バ場の鬼",
+      "category": "general-gold",
+      "requiredPt": 130,
+      "directPoint": 287,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-46",
+      "name": "秋ウマ娘◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-47",
+      "name": "秋ウマ娘◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-48",
+      "name": "秋ウマ娘〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-49",
+      "name": "雨の日◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-50",
+      "name": "雨の日◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-51",
+      "name": "雨の日〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-52",
+      "name": "一匹狼",
+      "category": "general-white",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-53",
+      "name": "内枠有利◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-54",
+      "name": "内枠有利◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-55",
+      "name": "内枠有利〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-56",
+      "name": "大井レース場◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-57",
+      "name": "大井レース場◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-58",
+      "name": "大井レース場〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-59",
+      "name": "おひとり様◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-60",
+      "name": "おひとり様◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-61",
+      "name": "おひとり様〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-62",
+      "name": "川崎レース場◎＋〇",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-63",
+      "name": "川崎レース場◎",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-64",
+      "name": "川崎レース場〇",
+      "category": "general-white",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-65",
+      "name": "京都レース場◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-66",
+      "name": "京都レース場◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-67",
+      "name": "京都レース場〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-68",
+      "name": "曇りの日◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-69",
+      "name": "曇りの日◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-70",
+      "name": "曇りの日〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-71",
+      "name": "交流重賞◎＋〇",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-72",
+      "name": "交流重賞◎",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-73",
+      "name": "交流重賞〇",
+      "category": "general-white",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-74",
+      "name": "小倉レース場◎＋〇",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-75",
+      "name": "小倉レース場◎",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-76",
+      "name": "小倉レース場〇",
+      "category": "general-white",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-77",
+      "name": "小回り◎＋〇",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-78",
+      "name": "小回り◎",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-79",
+      "name": "小回り〇",
+      "category": "general-white",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-80",
+      "name": "根幹距離◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-81",
+      "name": "根幹距離◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-82",
+      "name": "根幹距離〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-83",
+      "name": "札幌レース場◎＋〇",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-84",
+      "name": "札幌レース場◎",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-85",
+      "name": "札幌レース場〇",
+      "category": "general-white",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-86",
+      "name": "サンタアニタパークレース場◎＋〇",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-87",
+      "name": "サンタアニタパークレース場◎",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-88",
+      "name": "サンタアニタパークレース場〇",
+      "category": "general-white",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-89",
+      "name": "自制心",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-90",
+      "name": "シンパシー",
+      "category": "general-white",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-91",
+      "name": "外枠得意◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-92",
+      "name": "外枠得意◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-93",
+      "name": "外枠得意〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-94",
+      "name": "対抗意識◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-95",
+      "name": "対抗意識◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-96",
+      "name": "対抗意識〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-97",
+      "name": "中京レース場◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-98",
+      "name": "中京レース場◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-99",
+      "name": "中京レース場〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-100",
+      "name": "直線コース◎＋○",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-101",
+      "name": "直線コース◎",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-102",
+      "name": "直線コース○",
+      "category": "general-white",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-103",
+      "name": "徹底マーク◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-104",
+      "name": "徹底マーク◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-105",
+      "name": "徹底マーク〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-106",
+      "name": "デルマーレース場◎＋〇",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-107",
+      "name": "デルマーレース場◎",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-108",
+      "name": "デルマーレース場〇",
+      "category": "general-white",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-109",
+      "name": "東京レース場◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-110",
+      "name": "東京レース場◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-111",
+      "name": "東京レース場〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-112",
+      "name": "ナイター◎＋〇",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-113",
+      "name": "ナイター◎",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-114",
+      "name": "ナイター〇",
+      "category": "general-white",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-115",
+      "name": "中山レース場◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-116",
+      "name": "中山レース場◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-117",
+      "name": "中山レース場〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-118",
+      "name": "夏ウマ娘◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-119",
+      "name": "夏ウマ娘◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-120",
+      "name": "夏ウマ娘〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-121",
+      "name": "新潟レース場◎＋〇",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-122",
+      "name": "新潟レース場◎",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-123",
+      "name": "新潟レース場〇",
+      "category": "general-white",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-124",
+      "name": "函館レース場◎＋〇",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-125",
+      "name": "函館レース場◎",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-126",
+      "name": "函館レース場〇",
+      "category": "general-white",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-127",
+      "name": "春ウマ娘◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-128",
+      "name": "春ウマ娘◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-129",
+      "name": "春ウマ娘〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-130",
+      "name": "阪神レース場◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-131",
+      "name": "阪神レース場◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-132",
+      "name": "阪神レース場〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-133",
+      "name": "非根幹距離◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-134",
+      "name": "非根幹距離◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-135",
+      "name": "非根幹距離〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-136",
+      "name": "晴れの日◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-137",
+      "name": "晴れの日◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-138",
+      "name": "晴れの日〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-139",
+      "name": "左回り◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-140",
+      "name": "左回り◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-141",
+      "name": "左回り〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-142",
+      "name": "福島レース場◎＋〇",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-143",
+      "name": "福島レース場◎",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-144",
+      "name": "福島レース場〇",
+      "category": "general-white",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-145",
+      "name": "伏兵◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-146",
+      "name": "伏兵◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-147",
+      "name": "伏兵〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-148",
+      "name": "船橋レース場◎＋〇",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-149",
+      "name": "船橋レース場◎",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-150",
+      "name": "船橋レース場〇",
+      "category": "general-white",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-151",
+      "name": "冬ウマ娘◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-152",
+      "name": "冬ウマ娘◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-153",
+      "name": "冬ウマ娘〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-154",
+      "name": "右回り◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-155",
+      "name": "右回り〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-156",
+      "name": "道悪◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-157",
+      "name": "道悪◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-158",
+      "name": "道悪〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-159",
+      "name": "盛岡レース場◎＋〇",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-160",
+      "name": "盛岡レース場◎",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-161",
+      "name": "盛岡レース場〇",
+      "category": "general-white",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-162",
+      "name": "やまっけ",
+      "category": "general-white",
+      "requiredPt": 180,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-163",
+      "name": "雪の日◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-164",
+      "name": "雪の日◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-165",
+      "name": "雪の日〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-166",
+      "name": "ラッキーセブン",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-167",
+      "name": "レースの真髄・心",
+      "category": "general-white",
+      "requiredPt": 150,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-168",
+      "name": "ロンシャンレース場◎＋〇",
+      "category": "general-white",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-169",
+      "name": "ロンシャンレース場◎",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-170",
+      "name": "ロンシャンレース場〇",
+      "category": "general-white",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-171",
+      "name": "良バ場◎＋〇",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-172",
+      "name": "良バ場◎",
+      "category": "general-white",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-173",
+      "name": "良バ場〇",
+      "category": "general-white",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-59",
+      "name": "アオハル燃焼・賢",
+      "category": "general-gold",
+      "requiredPt": 200,
+      "directPoint": 370,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-60",
+      "name": "コンセントレーション",
+      "category": "general-gold",
+      "requiredPt": 140,
+      "directPoint": 265,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-61",
+      "name": "注目の踊り子",
+      "category": "general-gold",
+      "requiredPt": 120,
+      "directPoint": 205,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-62",
+      "name": "レーンの魔術師",
+      "category": "general-gold",
+      "requiredPt": 120,
+      "directPoint": 205,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-174",
+      "name": "アオハル点火・賢",
+      "category": "general-white",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-175",
+      "name": "集中力",
+      "category": "general-white",
+      "requiredPt": 140,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-176",
+      "name": "ポジションセンス",
+      "category": "general-white",
+      "requiredPt": 120,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-177",
+      "name": "臨機応変",
+      "category": "general-white",
+      "requiredPt": 120,
+      "directPoint": 129,
       "aptitudeType": "none",
       "needsData": false
     }
