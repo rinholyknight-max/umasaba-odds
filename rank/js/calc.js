@@ -10,6 +10,11 @@ const selectedSkillIds = new Set();
 const SKILL_TYPE_LABELS = { speed: "速度", accel: "加速", recovery: "回復", green: "緑", evolution: "進化" };
 let selectedSkillType = null;
 
+const RUNNING_STYLE_LABELS = { nige: "逃げ", senkou: "先行", sashi: "差し", oikomi: "追込" };
+const DISTANCE_LABELS = { tankyori: "短距離", mile: "マイル", chukyori: "中距離", chokyori: "長距離" };
+let selectedRunningStyle = null;
+let selectedDistance = null;
+
 const STORAGE_KEY = "umasaba-odds-rank-state-v1";
 
 function saveCachedState() {
@@ -44,6 +49,44 @@ function loadCachedState() {
   } catch (e) {
     return null;
   }
+}
+
+const SUPPORT_CARD_STORAGE_KEY = "umasaba-odds-support-cards-v1";
+let supportCards = [];
+const activeCardIds = new Set();
+let pendingCardSkillIds = [];
+
+function saveSupportCards() {
+  try {
+    localStorage.setItem(
+      SUPPORT_CARD_STORAGE_KEY,
+      JSON.stringify({ cards: supportCards, active: Array.from(activeCardIds) })
+    );
+  } catch (e) {
+    // localStorageが使えない環境では諦める
+  }
+}
+
+function loadSupportCards() {
+  try {
+    const raw = localStorage.getItem(SUPPORT_CARD_STORAGE_KEY);
+    if (!raw) return;
+    const parsed = JSON.parse(raw);
+    supportCards = Array.isArray(parsed.cards) ? parsed.cards : [];
+    (parsed.active || []).forEach((id) => activeCardIds.add(id));
+  } catch (e) {
+    supportCards = [];
+  }
+}
+
+function prioritySkillIdSet() {
+  const ids = new Set();
+  supportCards.forEach((card) => {
+    if (activeCardIds.has(card.id)) {
+      card.skillIds.forEach((id) => ids.add(id));
+    }
+  });
+  return ids;
 }
 
 async function loadData() {
@@ -184,39 +227,160 @@ function renderUniqueSkillInputs() {
   levelSelect.addEventListener("change", updateTotal);
 }
 
-function renderSkillTypeFilter() {
-  const container = document.getElementById("skill-type-filter");
-  const types = [null, ...Object.keys(SKILL_TYPE_LABELS)];
-  container.innerHTML = types
-    .map((type) => {
-      const label = type === null ? "すべて" : SKILL_TYPE_LABELS[type];
-      const active = selectedSkillType === type ? " active" : "";
-      return `<button type="button" class="type-filter-btn${active}" data-type="${type ?? ""}">${label}</button>`;
+function renderFilterGroup(containerId, labels, getSelected, setSelected, rerender) {
+  const container = document.getElementById(containerId);
+  const values = [null, ...Object.keys(labels)];
+  container.innerHTML = values
+    .map((value) => {
+      const label = value === null ? "すべて" : labels[value];
+      const active = getSelected() === value ? " active" : "";
+      return `<button type="button" class="type-filter-btn${active}" data-value="${value ?? ""}">${label}</button>`;
     })
     .join("");
 
   container.querySelectorAll(".type-filter-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      selectedSkillType = btn.dataset.type || null;
-      renderSkillTypeFilter();
+      setSelected(btn.dataset.value || null);
+      rerender();
       filterSkillList(document.getElementById("skill-search").value);
+    });
+  });
+}
+
+function renderSkillTypeFilter() {
+  renderFilterGroup(
+    "skill-type-filter",
+    SKILL_TYPE_LABELS,
+    () => selectedSkillType,
+    (v) => (selectedSkillType = v),
+    renderSkillTypeFilter
+  );
+}
+
+function renderRunningStyleFilter() {
+  renderFilterGroup(
+    "skill-running-style-filter",
+    RUNNING_STYLE_LABELS,
+    () => selectedRunningStyle,
+    (v) => (selectedRunningStyle = v),
+    renderRunningStyleFilter
+  );
+}
+
+function renderDistanceFilter() {
+  renderFilterGroup(
+    "skill-distance-filter",
+    DISTANCE_LABELS,
+    () => selectedDistance,
+    (v) => (selectedDistance = v),
+    renderDistanceFilter
+  );
+}
+
+function renderSupportCardList() {
+  const container = document.getElementById("support-card-list");
+  if (supportCards.length === 0) {
+    container.innerHTML = `<p class="note">登録済みのカードはまだありません。</p>`;
+    return;
+  }
+  container.innerHTML = supportCards
+    .map(
+      (card) => `
+        <div class="card-item" data-id="${card.id}">
+          <label>
+            <input type="checkbox" class="card-active-checkbox" data-id="${card.id}" ${activeCardIds.has(card.id) ? "checked" : ""} />
+            ${card.name}
+            <span class="card-skill-count">（${card.skillIds.length}スキル）</span>
+          </label>
+          <button type="button" class="card-delete" data-id="${card.id}">削除</button>
+        </div>
+      `
+    )
+    .join("");
+
+  container.querySelectorAll(".card-active-checkbox").forEach((el) => {
+    el.addEventListener("change", (e) => {
+      const id = e.target.dataset.id;
+      if (e.target.checked) activeCardIds.add(id);
+      else activeCardIds.delete(id);
+      saveSupportCards();
+      renderSkillList();
+      filterSkillList(document.getElementById("skill-search").value);
+    });
+  });
+  container.querySelectorAll(".card-delete").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      const id = e.target.dataset.id;
+      supportCards = supportCards.filter((c) => c.id !== id);
+      activeCardIds.delete(id);
+      saveSupportCards();
+      renderSupportCardList();
+      renderSkillList();
+      filterSkillList(document.getElementById("skill-search").value);
+    });
+  });
+}
+
+function renderCardSkillChips() {
+  const container = document.getElementById("card-skill-chips");
+  container.innerHTML = pendingCardSkillIds
+    .map((id) => {
+      const skill = skillData.skills.find((s) => s.id === id);
+      if (!skill) return "";
+      return `<span class="chip" data-id="${id}">${skill.name}<button type="button" data-id="${id}">×</button></span>`;
+    })
+    .join("");
+  container.querySelectorAll("button[data-id]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      pendingCardSkillIds = pendingCardSkillIds.filter((id) => id !== btn.dataset.id);
+      renderCardSkillChips();
+    });
+  });
+}
+
+function renderCardSkillCandidates(query) {
+  const list = document.getElementById("card-skill-candidates");
+  if (!query) {
+    list.innerHTML = "";
+    return;
+  }
+  const q = query.toLowerCase();
+  const matches = skillData.skills
+    .filter((s) => s.name.toLowerCase().includes(q) && !pendingCardSkillIds.includes(s.id))
+    .slice(0, 30);
+  list.innerHTML = matches.map((s) => `<li data-id="${s.id}">${s.name}</li>`).join("");
+  list.querySelectorAll("li[data-id]").forEach((el) => {
+    el.addEventListener("click", () => {
+      if (!pendingCardSkillIds.includes(el.dataset.id)) {
+        pendingCardSkillIds.push(el.dataset.id);
+      }
+      renderCardSkillChips();
+      renderCardSkillCandidates(document.getElementById("card-skill-search").value);
     });
   });
 }
 
 function renderSkillList() {
   const list = document.getElementById("skill-list");
-  list.innerHTML = skillData.skills
+  const priorityIds = prioritySkillIdSet();
+  const orderedSkills = [...skillData.skills].sort((a, b) => {
+    const pa = priorityIds.has(a.id) ? 0 : 1;
+    const pb = priorityIds.has(b.id) ? 0 : 1;
+    return pa - pb;
+  });
+  list.innerHTML = orderedSkills
     .map((skill) => {
       const requiresAptitude = skill.aptitudeType !== "none";
       const ptLabel = skill.needsData ? "データ未設定" : skill.requiredPt != null ? `必要pt: ${skill.requiredPt}` : "必要ptデータなし";
       const characterLabel = skill.character ? `［${skill.character}］` : "";
       const isSelected = selectedSkillIds.has(skill.id);
+      const isPriority = priorityIds.has(skill.id);
+      const stylesAttr = (skill.styles || []).join(" ");
       return `
-        <li class="skill-row${skill.needsData ? " skill-row--needs-data" : ""}${isSelected ? " selected" : ""}" data-id="${skill.id}" data-type="${skill.skillType ?? ""}">
+        <li class="skill-row${skill.needsData ? " skill-row--needs-data" : ""}${isSelected ? " selected" : ""}${isPriority ? " skill-row--priority" : ""}" data-id="${skill.id}" data-type="${skill.skillType ?? ""}" data-styles="${stylesAttr}">
           <label>
             <input type="checkbox" class="skill-checkbox" data-id="${skill.id}" ${isSelected ? "checked" : ""} />
-            ${skill.name}（${ptLabel}）${characterLabel}
+            ${isPriority ? `<span class="priority-badge">優先</span>` : ""}${skill.name}（${ptLabel}）${characterLabel}
           </label>
           ${requiresAptitude ? `
             <select class="skill-aptitude" data-id="${skill.id}">
@@ -302,9 +466,15 @@ function renderSelectedSkillList() {
 function filterSkillList(query) {
   const rows = document.querySelectorAll(".skill-row");
   rows.forEach((row) => {
+    const styles = row.dataset.styles ? row.dataset.styles.split(" ") : [];
+    const hasStyleTag = styles.some((s) => s in RUNNING_STYLE_LABELS);
+    const hasDistanceTag = styles.some((s) => s in DISTANCE_LABELS);
+
     const matchesQuery = !query || row.textContent.toLowerCase().includes(query.toLowerCase());
     const matchesType = !selectedSkillType || row.dataset.type === selectedSkillType;
-    row.hidden = !matchesQuery || !matchesType;
+    const matchesRunningStyle = !selectedRunningStyle || !hasStyleTag || styles.includes(selectedRunningStyle);
+    const matchesDistance = !selectedDistance || !hasDistanceTag || styles.includes(selectedDistance);
+    row.hidden = !matchesQuery || !matchesType || !matchesRunningStyle || !matchesDistance;
   });
 }
 
@@ -355,12 +525,12 @@ function updateTotal() {
     const diffHigh = limit - grandHigh;
     if (grandLow === grandHigh) {
       diffEl.textContent = diffHigh >= 0 ? `残り ${diffHigh}点` : `超過 ${Math.abs(diffHigh)}点`;
-      diffEl.style.color = diffHigh >= 0 ? "#2e7d32" : "#c62828";
+      diffEl.style.color = diffHigh >= 0 ? "#15803D" : "#B91C1C";
     } else {
       const lowText = diffLow >= 0 ? `残り${diffLow}点` : `超過${Math.abs(diffLow)}点`;
       const highText = diffHigh >= 0 ? `残り${diffHigh}点` : `超過${Math.abs(diffHigh)}点`;
       diffEl.textContent = `下限想定: ${lowText} / 上限想定: ${highText}`;
-      diffEl.style.color = diffHigh >= 0 ? "#2e7d32" : "#c62828";
+      diffEl.style.color = diffHigh >= 0 ? "#15803D" : "#B91C1C";
     }
   } else {
     diffEl.textContent = "";
@@ -376,10 +546,14 @@ async function init() {
   if (cached && Array.isArray(cached.selectedSkillIds)) {
     cached.selectedSkillIds.forEach((id) => selectedSkillIds.add(id));
   }
+  loadSupportCards();
 
   renderStatInputs();
   renderUniqueSkillInputs();
   renderSkillTypeFilter();
+  renderRunningStyleFilter();
+  renderDistanceFilter();
+  renderSupportCardList();
   renderSkillList();
 
   if (cached) {
@@ -404,6 +578,36 @@ async function init() {
 
   document.getElementById("rank-limit").addEventListener("input", updateTotal);
   document.getElementById("skill-search").addEventListener("input", (e) => filterSkillList(e.target.value));
+  document.getElementById("card-skill-search").addEventListener("input", (e) => renderCardSkillCandidates(e.target.value));
+  document.getElementById("card-save-button").addEventListener("click", () => {
+    const nameInput = document.getElementById("card-name-input");
+    const name = nameInput.value.trim();
+    if (!name || pendingCardSkillIds.length === 0) {
+      alert("カード名と、少なくとも1つのスキルを指定してください。");
+      return;
+    }
+    supportCards.push({
+      id: `card-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      name,
+      skillIds: [...pendingCardSkillIds],
+    });
+    saveSupportCards();
+    pendingCardSkillIds = [];
+    nameInput.value = "";
+    document.getElementById("card-skill-search").value = "";
+    renderCardSkillChips();
+    renderCardSkillCandidates("");
+    renderSupportCardList();
+    document.getElementById("support-card-form").open = false;
+  });
+  document.getElementById("save-button").addEventListener("click", () => {
+    saveCachedState();
+    const status = document.getElementById("save-status");
+    status.textContent = "保存しました";
+    setTimeout(() => {
+      if (status.textContent === "保存しました") status.textContent = "";
+    }, 2000);
+  });
   updateTotal();
 }
 

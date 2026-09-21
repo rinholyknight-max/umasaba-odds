@@ -6,45 +6,188 @@
     <meta name="robots" content="noindex, nofollow" />
     <title>評価点計算ツール（因子構築用・近似版）</title>
     <style>
-      body { font-family: sans-serif; margin: 16px; max-width: 1200px; }
-      h1 { font-size: 1.2rem; }
-      h2 { font-size: 1rem; margin-top: 24px; }
-      h3 { font-size: 0.9rem; margin: 0 0 8px; }
-      .field { display: inline-block; margin: 4px 8px 4px 0; }
-      .field input { width: 160px;height: 60px; font-size: 2rem;}
-      #skill-search { width: 100%; box-sizing: border-box; margin-bottom: 8px; font-size: 1rem; padding: 8px; }
-      .type-filter { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
-      .type-filter button { padding: 6px 12px; border: 1px solid #999; border-radius: 999px; background: #fff; cursor: pointer; font-size: 0.9rem; }
-      .type-filter button.active { background: #333; color: #fff; border-color: #333; }
+      :root {
+        --bg: #f8fafc;
+        --surface: #ffffff;
+        --border: #e2e8f0;
+        --border-strong: #cbd5e1;
+        --text-primary: #0f172a;
+        --text-secondary: #64748b;
+        --text-tertiary: #94a3b8;
+        --radius: 8px;
+        --success: #15803d;
+        --danger: #b91c1c;
+        --danger-bg: #fef2f2;
+      }
 
-      .skill-panel { display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; margin-top: 8px; }
+      * { box-sizing: border-box; }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+          "Yu Gothic UI", "Segoe UI", sans-serif;
+        margin: 0 auto;
+        padding: 32px 20px 80px;
+        max-width: 1180px;
+        background: var(--bg);
+        color: var(--text-primary);
+        font-size: 14px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1 { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 4px; }
+      h2 { font-size: 0.95rem; font-weight: 600; margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+      h3 { font-size: 0.85rem; font-weight: 600; margin: 0 0 10px; }
+      .note { color: var(--text-secondary); font-size: 0.8rem; margin: 0 0 8px; }
+
+      input[type="number"], input[type="text"], select {
+        font-family: inherit;
+        font-size: 0.85rem;
+        color: var(--text-primary);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 8px 10px;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      }
+      input:hover, select:hover { border-color: var(--border-strong); }
+      input:focus, select:focus {
+        outline: none;
+        border-color: var(--text-primary);
+        box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
+      }
+      input:disabled, select:disabled { background: var(--bg); color: var(--text-tertiary); cursor: not-allowed; }
+      input::placeholder { color: var(--text-tertiary); }
+
+      .field { display: inline-block; margin: 0 12px 12px 0; font-size: 0.8rem; color: var(--text-secondary); }
+      .field input { display: block; width: 140px; height: 44px; font-size: 1.4rem; font-weight: 600; color: var(--text-primary); margin-top: 4px; }
+
+      #skill-search { width: 100%; font-size: 0.9rem; padding: 10px 12px; margin-bottom: 10px; }
+
+      .type-filter { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+      .type-filter button {
+        padding: 6px 12px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--surface);
+        color: var(--text-secondary);
+        cursor: pointer;
+        font-size: 0.8rem;
+        font-weight: 500;
+        transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+      }
+      .type-filter button:hover { background: var(--bg); border-color: var(--border-strong); }
+      .type-filter button:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1); }
+      .type-filter button.active { background: var(--text-primary); color: #fff; border-color: var(--text-primary); }
+
+      .skill-panel { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; margin-top: 4px; }
       .skill-picker { flex: 1 1 320px; min-width: 280px; }
-      .skill-sidebar { flex: 0 0 320px; width: 320px; position: sticky; top: 16px; }
+      .skill-sidebar { flex: 0 0 320px; width: 320px; position: sticky; top: 20px; }
       @media (max-width: 720px) {
         .skill-sidebar { position: static; width: 100%; flex-basis: 100%; }
       }
 
-      #skill-list { list-style: none; padding: 0; margin: 0; max-height: 60vh; overflow-y: auto; border: 1px solid #ccc; }
-      .skill-row { padding: 10px 10px; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; cursor: pointer; -webkit-tap-highlight-color: transparent; }
-      .skill-row:hover { background: #f5f7ff; }
-      .skill-row.selected { background: #e8f0fe; }
-      .skill-row label { flex: 1 1 auto; min-width: 160px; cursor: pointer; }
-      .skill-checkbox { width: 18px; height: 18px; flex-shrink: 0; }
-      .skill-score { color: #555; font-size: 0.85rem; }
-      .skill-row--needs-data { color: #999; }
-      .skill-row--needs-data label { color: #999; }
+      #skill-list { list-style: none; padding: 0; margin: 0; max-height: 60vh; overflow-y: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+      .skill-row {
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--border);
+        display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+        cursor: pointer; -webkit-tap-highlight-color: transparent;
+        transition: background-color 0.15s ease;
+      }
+      #skill-list li.skill-row:last-child { border-bottom: none; }
+      .skill-row:hover { background: var(--bg); }
+      .skill-row.selected { background: #f1f5f9; }
+      .skill-row label {
+        flex: 1 1 auto; min-width: 160px; cursor: pointer; color: var(--text-primary); font-size: 0.85rem;
+        display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+      }
+      .skill-checkbox { width: 16px; height: 16px; flex-shrink: 0; accent-color: var(--text-primary); }
+      .skill-score { color: var(--text-secondary); font-size: 0.78rem; white-space: nowrap; }
+      .skill-row--needs-data { color: var(--text-tertiary); }
+      .skill-row--needs-data label { color: var(--text-tertiary); }
 
-      #selected-skill-list { list-style: none; padding: 0; margin: 0 0 12px; max-height: 40vh; overflow-y: auto; border: 1px solid #ccc; }
-      #selected-skill-list li { padding: 8px 10px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; gap: 8px; cursor: pointer; font-size: 0.9rem; }
-      #selected-skill-list li:hover { background: #ffecec; }
-      #selected-skill-list .empty { color: #999; cursor: default; justify-content: center; }
+      .priority-badge {
+        display: inline-block;
+        font-size: 0.68rem; font-weight: 600; color: var(--text-secondary);
+        border: 1px solid var(--border-strong); border-radius: var(--radius);
+        padding: 1px 6px; margin-right: 6px; vertical-align: middle;
+      }
+
+      #selected-skill-list { list-style: none; padding: 0; margin: 0 0 12px; max-height: 40vh; overflow-y: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+      #selected-skill-list li {
+        padding: 9px 12px; border-bottom: 1px solid var(--border);
+        display: flex; justify-content: space-between; gap: 8px;
+        cursor: pointer; font-size: 0.82rem; color: var(--text-primary);
+        transition: background-color 0.15s ease;
+      }
+      #selected-skill-list li:last-child { border-bottom: none; }
+      #selected-skill-list li:hover { background: var(--bg); }
+      #selected-skill-list .empty { color: var(--text-tertiary); cursor: default; justify-content: center; padding: 20px 12px; }
       #selected-skill-list .empty:hover { background: none; }
 
-      #summary { border: 1px solid #999; padding: 12px; margin-top: 12px; }
-      #summary div { margin: 4px 0; font-size: 1.1rem; }
-      #grand-total { font-weight: bold; font-size: 2rem; }
-      .rank-limit-field { margin-top: 8px; }
-      .note { color: #777; font-size: 0.85rem; }
+      button#save-button, button#card-save-button {
+        display: block; width: 100%; padding: 10px 14px; margin-top: 8px;
+        font-size: 0.85rem; font-weight: 600;
+        border: 1px solid var(--text-primary); border-radius: var(--radius);
+        background: var(--text-primary); color: #fff; cursor: pointer;
+        transition: background-color 0.15s ease;
+      }
+      button#save-button:hover, button#card-save-button:hover { background: #1e293b; }
+      button#save-button:focus-visible, button#card-save-button:focus-visible {
+        outline: none; box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.15);
+      }
+      button#save-button:active, button#card-save-button:active { background: #020617; }
+      button#save-button:disabled, button#card-save-button:disabled {
+        background: var(--border); border-color: var(--border); color: var(--text-tertiary); cursor: not-allowed;
+      }
+
+      #save-status { display: inline-block; margin-top: 6px; font-size: 0.78rem; color: var(--success); }
+
+      #summary { border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; margin-top: 12px; background: var(--surface); }
+      #summary div { margin: 6px 0; font-size: 0.85rem; color: var(--text-secondary); }
+      #summary span { color: var(--text-primary); font-weight: 600; }
+      #grand-total { font-weight: 700; font-size: 1.6rem; color: var(--text-primary); }
+      .rank-limit-field { margin-top: 4px; }
+
+      #support-card-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+      .card-item {
+        display: flex; align-items: center; gap: 10px;
+        border: 1px solid var(--border); border-radius: var(--radius);
+        padding: 10px 12px; background: var(--surface);
+        transition: border-color 0.15s ease;
+      }
+      .card-item:hover { border-color: var(--border-strong); }
+      .card-item label { display: flex; align-items: center; gap: 8px; cursor: pointer; flex: 1; font-size: 0.85rem; color: var(--text-primary); }
+      .card-item input[type="checkbox"] { accent-color: var(--text-primary); width: 16px; height: 16px; }
+      .card-item .card-skill-count { color: var(--text-tertiary); font-size: 0.78rem; }
+      .card-item .card-delete {
+        background: none; border: 1px solid transparent; border-radius: var(--radius);
+        color: var(--text-secondary); cursor: pointer; font-size: 0.78rem; padding: 4px 8px;
+        transition: background-color 0.15s ease, color 0.15s ease;
+      }
+      .card-item .card-delete:hover { background: var(--danger-bg); color: var(--danger); }
+
+      #support-card-form { border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 14px; margin-bottom: 20px; background: var(--surface); }
+      #support-card-form summary { cursor: pointer; font-size: 0.85rem; font-weight: 500; color: var(--text-secondary); list-style: none; }
+      #support-card-form summary::-webkit-details-marker { display: none; }
+      #support-card-form[open] summary { color: var(--text-primary); margin-bottom: 4px; }
+      .card-form-body { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+      .card-form-body input { width: 100%; font-size: 0.85rem; padding: 9px 10px; }
+
+      .candidate-list { list-style: none; padding: 0; margin: 0; max-height: 160px; overflow-y: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+      .candidate-list li { padding: 7px 10px; cursor: pointer; font-size: 0.8rem; border-bottom: 1px solid var(--border); color: var(--text-primary); transition: background-color 0.15s ease; }
+      .candidate-list li:last-child { border-bottom: none; }
+      .candidate-list li:hover { background: var(--bg); }
+
+      .chip-list { display: flex; flex-wrap: wrap; gap: 6px; }
+      .chip {
+        display: inline-flex; align-items: center; gap: 6px;
+        background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+        padding: 4px 8px 4px 10px; font-size: 0.78rem; color: var(--text-primary);
+      }
+      .chip button { border: none; background: none; cursor: pointer; color: var(--text-tertiary); font-size: 0.85rem; line-height: 1; padding: 0; transition: color 0.15s ease; }
+      .chip button:hover { color: var(--danger); }
     </style>
   </head>
   <body>
@@ -61,16 +204,34 @@
     <label class="field">星ランク <select id="unique-tier"></select></label>
     <label class="field">Lv <select id="unique-level"></select></label>
 
+    <h2>育成サポートカード</h2>
+    <p class="note">登録したカードを「優先」にすると、そのカードで取れるスキルが下の獲得スキル一覧の先頭に表示されます。</p>
+    <div id="support-card-list"></div>
+    <details id="support-card-form">
+      <summary>＋ サポートカードを登録</summary>
+      <div class="card-form-body">
+        <input type="text" id="card-name-input" placeholder="カード名（例: SSR 〇〇）" />
+        <input type="text" id="card-skill-search" placeholder="スキル名で検索して追加" />
+        <ul id="card-skill-candidates" class="candidate-list"></ul>
+        <div id="card-skill-chips" class="chip-list"></div>
+        <button type="button" id="card-save-button">このカードを登録</button>
+      </div>
+    </details>
+
     <h2>獲得スキル</h2>
     <div class="skill-panel">
       <div class="skill-picker">
         <input type="text" id="skill-search" placeholder="スキル名で検索" />
         <div id="skill-type-filter" class="type-filter"></div>
+        <div id="skill-running-style-filter" class="type-filter"></div>
+        <div id="skill-distance-filter" class="type-filter"></div>
         <ul id="skill-list"></ul>
       </div>
       <aside class="skill-sidebar">
         <h3>取得中のスキル（<span id="selected-count">0</span>件・タップで解除）</h3>
         <ul id="selected-skill-list"></ul>
+        <button type="button" id="save-button">獲得内容を保存</button>
+        <span id="save-status" class="note"></span>
 
         <div class="rank-limit-field">
           <label class="field">上限評価点 <input type="number" id="rank-limit" min="0" /></label>
