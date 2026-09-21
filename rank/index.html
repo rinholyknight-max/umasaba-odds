@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>評価点計算ツール（因子構築用・近似版）</title>
+    <style>
+      body { font-family: sans-serif; margin: 16px; max-width: 720px; }
+      h1 { font-size: 1.2rem; }
+      h2 { font-size: 1rem; margin-top: 24px; }
+      .field { display: inline-block; margin: 4px 8px 4px 0; }
+      .field input { width: 80px; }
+      #skill-search { width: 100%; box-sizing: border-box; margin-bottom: 8px; }
+      #skill-list { list-style: none; padding: 0; max-height: 400px; overflow-y: auto; border: 1px solid #ccc; }
+      .skill-row { padding: 6px 8px; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+      .skill-score { color: #555; font-size: 0.85rem; }
+      .skill-row--needs-data { color: #999; }
+      .skill-row--needs-data label { color: #999; }
+      #summary { border: 1px solid #999; padding: 12px; margin-top: 16px; }
+      #summary div { margin: 4px 0; }
+      #grand-total { font-weight: bold; font-size: 1.2rem; }
+      .note { color: #777; font-size: 0.85rem; }
+    </style>
+  </head>
+  <body>
+    <h1>評価点計算ツール（因子構築用・近似版）</h1>
+    <p class="note">
+      公式の計算式は非公開のため、GameWith等の逆算値に基づく近似計算です。目安としてご利用ください。
+    </p>
+
+    <h2>ステータス</h2>
+    <p class="note">1200超は実測データが無いため推定値（外挿）です。目安程度に見てください。</p>
+    <div id="stat-inputs"></div>
+
+    <h2>固有スキル</h2>
+    <label class="field">星ランク <select id="unique-tier"></select></label>
+    <label class="field">Lv <select id="unique-level"></select></label>
+
+    <h2>獲得スキル（白因子）</h2>
+    <input type="text" id="skill-search" placeholder="スキル名で検索" />
+    <ul id="skill-list"></ul>
+
+    <h2>ランク制限（評価点上限）</h2>
+    <label class="field">上限評価点 <input type="number" id="rank-limit" min="0" /></label>
+
+    <div id="summary">
+      <div>ステータス評価点: <span id="stat-total">0</span></div>
+      <div>固有スキル評価点: <span id="unique-total">0</span></div>
+      <div>獲得スキル評価点: <span id="skill-total">0</span>（必要pt合計: <span id="pt-total">0</span>）</div>
+      <div>合計評価点: <span id="grand-total">0</span></div>
+      <div id="limit-diff"></div>
+    </div>
+
+    <script src="js/calc.js"></script>
+  </body>
+</html>

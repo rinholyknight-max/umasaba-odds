@@ -1,0 +1,2889 @@
+{
+  "_comment": "白因子（スキル）データ。directPointがあるスキルはユーザー提供の実データ（必要pt・評価点そのまま）をそのまま使用する。directPointが無くtierIndexがあるものはbaseTier×適性倍率の近似計算。needsData:trueのものは実キャラのスキル欄から名称のみ確認できたが、必要pt・評価点が未確認のため評価点0扱い（要データ入力）。今後データを追加する場合はdirectPoint方式を優先すること。",
+  "aptitudeMultiplier": {
+    "S": 1.1,
+    "A": 1.1,
+    "B": 0.9,
+    "C": 0.9,
+    "D": 0.8,
+    "E": 0.8,
+    "F": 0.8,
+    "G": 0.7
+  },
+  "baseTier": {
+    "normal": [
+      262,
+      217,
+      174,
+      129,
+      85
+    ],
+    "rare": [
+      508,
+      394,
+      334
+    ]
+  },
+  "skills": [
+    {
+      "id": "joy-to-the-world",
+      "name": "Joy to the World",
+      "category": "rare",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "ifudoudou-yumenishiki",
+      "name": "威風堂々、夢錦！",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "migimawari",
+      "name": "右回り◎",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "aptitude",
+      "needsData": true
+    },
+    {
+      "id": "corner-kousha",
+      "name": "コーナー巧者○",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "chokusen-kousha",
+      "name": "直線巧者",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "pace-up",
+      "name": "ペースアップ",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "chukyori-corner",
+      "name": "中距離コーナー◎",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "aptitude",
+      "needsData": true
+    },
+    {
+      "id": "senkou-chokusen",
+      "name": "先行直線◎",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": 140,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 49,
+      "styles": [
+        "senkou"
+      ]
+    },
+    {
+      "id": "senkou-corner",
+      "name": "先行コーナー◎",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": 140,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 49,
+      "styles": [
+        "senkou"
+      ]
+    },
+    {
+      "id": "uma-gonomi",
+      "name": "ウマ好み",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "jigatame",
+      "name": "地固め",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "shippo-no-takinobori",
+      "name": "尻尾の滝登り",
+      "category": "rare",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "slipstream",
+      "name": "スリップストリーム",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "barikata-icchoagari",
+      "name": "バリカタ、一丁上がり！",
+      "category": "rare",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "kudarizaka-kousha",
+      "name": "下り坂巧者",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "ignition",
+      "name": "イグニッション",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "tankyuushin",
+      "name": "探求心",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": 120,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 210,
+      "styles": [
+        "senkou"
+      ]
+    },
+    {
+      "id": "shouri-ni-mukatte",
+      "name": "勝利に向かって",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": 180,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 239,
+      "styles": [
+        "senkou"
+      ]
+    },
+    {
+      "id": "hikarisasu-hou-e",
+      "name": "光差す方へ",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "seiseidoudou",
+      "name": "正々堂々",
+      "category": "rare",
+      "tierIndex": null,
+      "requiredPt": 180,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 320,
+      "styles": [
+        "senkou"
+      ]
+    },
+    {
+      "id": "kakushin-sareta-shouri",
+      "name": "確信された勝利",
+      "category": "rare",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "shokou",
+      "name": "曙光",
+      "category": "rare",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "showdown",
+      "name": "ショーダウン",
+      "category": "rare",
+      "tierIndex": null,
+      "requiredPt": 180,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 320,
+      "styles": [
+        "senkou"
+      ]
+    },
+    {
+      "id": "kimamana-ashidori",
+      "name": "気ままな足取り",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "mezame-no-toki",
+      "name": "目覚めの時",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": 180,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 239,
+      "styles": [
+        "senkou"
+      ]
+    },
+    {
+      "id": "hotobashiru-kihaku",
+      "name": "迸る気迫",
+      "category": "rare",
+      "tierIndex": null,
+      "requiredPt": 180,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 320,
+      "styles": [
+        "senkou"
+      ]
+    },
+    {
+      "id": "chikarawaza",
+      "name": "力業",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": 190,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 239,
+      "styles": [
+        "senkou"
+      ]
+    },
+    {
+      "id": "yosei-wo-katte",
+      "name": "余勢を駆って",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": 120,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 239,
+      "styles": [
+        "senkou"
+      ]
+    },
+    {
+      "id": "shoubu-wo-kakete",
+      "name": "勝負を懸けて",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "senren-banren",
+      "name": "千鍛万錬",
+      "category": "rare",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "kinjou-tenka",
+      "name": "錦上添花",
+      "category": "rare",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "senryakuka",
+      "name": "戦略家",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "zenjin-mitou",
+      "name": "前人未到",
+      "category": "rare",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "the-next-phase",
+      "name": "The Next Phase",
+      "category": "rare",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "mou-hitofunbari",
+      "name": "もう一踏ん張り",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "furuitatsu-kokoro",
+      "name": "奮い立つ心",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "soshitsu-no-shoumei",
+      "name": "素質の証明",
+      "category": "rare",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "race-no-shinzui-tai",
+      "name": "レースの真髄・体",
+      "category": "normal",
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "nige-gold-01",
+      "name": "イニシアチブ",
+      "category": "nige-gold",
+      "strategy": "nige",
+      "requiredPt": 170,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-02",
+      "name": "英姿颯爽",
+      "category": "nige-gold",
+      "strategy": "nige",
+      "requiredPt": 170,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-03",
+      "name": "大逃げ",
+      "category": "nige-gold",
+      "strategy": "nige",
+      "requiredPt": 200,
+      "directPoint": 407,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-04",
+      "name": "画竜点睛",
+      "category": "nige-gold",
+      "strategy": "nige",
+      "requiredPt": 160,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-05",
+      "name": "傑出",
+      "category": "nige-gold",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-06",
+      "name": "再燃焼",
+      "category": "nige-gold",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-07",
+      "name": "先手必勝",
+      "category": "nige-gold",
+      "strategy": "nige",
+      "requiredPt": 120,
+      "directPoint": 128,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-08",
+      "name": "シックスセンス",
+      "category": "nige-gold",
+      "strategy": "nige",
+      "requiredPt": 110,
+      "directPoint": 225,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-09",
+      "name": "じゃじゃウマ娘",
+      "category": "nige-gold",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-10",
+      "name": "出力1000%!",
+      "category": "nige-gold",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-11",
+      "name": "勝負はここから!",
+      "category": "nige-gold",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-12",
+      "name": "陣風円刃",
+      "category": "nige-gold",
+      "strategy": "nige",
+      "requiredPt": 150,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-13",
+      "name": "脱出術",
+      "category": "nige-gold",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-14",
+      "name": "猪突猛進",
+      "category": "nige-gold",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "nige",
+        "senkou"
+      ]
+    },
+    {
+      "id": "nige-gold-15",
+      "name": "逃亡者",
+      "category": "nige-gold",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-16",
+      "name": "トップランナー",
+      "category": "nige-gold",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-17",
+      "name": "早業",
+      "category": "nige-gold",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-18",
+      "name": "万里一空",
+      "category": "nige-gold",
+      "strategy": "nige",
+      "requiredPt": 170,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-19",
+      "name": "踏ませぬ影",
+      "category": "nige-gold",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-20",
+      "name": "猛烈激走",
+      "category": "nige-gold",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "nige",
+        "senkou"
+      ]
+    },
+    {
+      "id": "nige-white-01",
+      "name": "勢い任せ",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-02",
+      "name": "急ぎ足",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-03",
+      "name": "追い風に乗って",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-04",
+      "name": "大詰め",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 160,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-05",
+      "name": "押し切り準備",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-06",
+      "name": "押しの一手",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "nige",
+        "senkou"
+      ]
+    },
+    {
+      "id": "nige-white-07",
+      "name": "覚悟を決めて",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-08",
+      "name": "危険回避",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 110,
+      "directPoint": 142,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-09",
+      "name": "気の向くままに",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-10",
+      "name": "切り込み隊長",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-11",
+      "name": "先駆け",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 120,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-12",
+      "name": "しゃかりき",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-13",
+      "name": "先頭プライド",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-14",
+      "name": "逃げ切り体勢",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-15",
+      "name": "逃げコ◎＋〇",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 270,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-16",
+      "name": "逃げコーナー◎",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 140,
+      "directPoint": 49,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-17",
+      "name": "逃げコーナー〇",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 130,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-18",
+      "name": "逃げ直◎＋〇",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 270,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-19",
+      "name": "逃げ直線◎",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 140,
+      "directPoint": 49,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-20",
+      "name": "逃げ直線〇",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 130,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-21",
+      "name": "逃げコツ◎＋〇",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 240,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-22",
+      "name": "逃げのコツ◎",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 130,
+      "directPoint": 48,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-23",
+      "name": "逃げのコツ〇",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 110,
+      "directPoint": 191,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-24",
+      "name": "逃げるが勝ち！",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-25",
+      "name": "二の矢",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-26",
+      "name": "抜きん出る一歩",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-27",
+      "name": "粘り腰",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-28",
+      "name": "弾みをつけて",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-29",
+      "name": "破天荒",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-30",
+      "name": "迷いなし",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-31",
+      "name": "みなぎる闘志",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "nige",
+        "senkou"
+      ]
+    },
+    {
+      "id": "nige-white-32",
+      "name": "目にも止まらず",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-33",
+      "name": "譲れぬ一歩",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 170,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-34",
+      "name": "リスタート",
+      "category": "nige-white",
+      "strategy": "nige",
+      "requiredPt": 130,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-01",
+      "name": "アンストッパブル",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-02",
+      "name": "一点集中",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 160,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-03",
+      "name": "一意専心",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-04",
+      "name": "影従打破",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-05",
+      "name": "王手",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou",
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-06",
+      "name": "開花",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-07",
+      "name": "快進撃",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-08",
+      "name": "快刀乱麻",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 160,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-09",
+      "name": "怪物",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 376,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-10",
+      "name": "かっとばせ!",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-11",
+      "name": "強者の証",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 340,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-12",
+      "name": "技巧派",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 120,
+      "directPoint": 128,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-13",
+      "name": "食いしん坊",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-14",
+      "name": "継続は力なり",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 140,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-15",
+      "name": "決意の直滑降",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 120,
+      "directPoint": 128,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-16",
+      "name": "幻惑のかく乱",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 110,
+      "directPoint": 273,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-17",
+      "name": "行雲流水",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou",
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-19",
+      "name": "シンギュラリティ",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 120,
+      "directPoint": 348,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-20",
+      "name": "スピードスター",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-21",
+      "name": "くじけぬ精神",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 120,
+      "directPoint": 128,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-23",
+      "name": "大車輪",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 120,
+      "directPoint": 128,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-24",
+      "name": "鍔迫り合い",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-25",
+      "name": "丁々発止",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-27",
+      "name": "努力の結実",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-28",
+      "name": "ハジける闘志",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-29",
+      "name": "パラダイムシフト",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 190,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-30",
+      "name": "風雲の志",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-31",
+      "name": "ぶっちぎり！",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-32",
+      "name": "不抜の気概",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-33",
+      "name": "踏みしめる大地",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-35",
+      "name": "幕引き",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-36",
+      "name": "猛追",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou",
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-38",
+      "name": "勇迅一閃",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 150,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-39",
+      "name": "勇迅円刃",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 150,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-40",
+      "name": "夢の舞台へ",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-41",
+      "name": "余裕綽々",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-42",
+      "name": "流星光底",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-43",
+      "name": "レースプランナー",
+      "category": "senkou-gold",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-01",
+      "name": "憧れを超えて",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-02",
+      "name": "アグレッシブ",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-03",
+      "name": "意地っ張り",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-04",
+      "name": "憂いなし",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-05",
+      "name": "栄養補給",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-06",
+      "name": "己を信じて",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-08",
+      "name": "思い切り",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 160,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-09",
+      "name": "会心の一歩",
+      "category": "senkou-white",
+      "styles": [
+        "senkou",
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-10",
+      "name": "かく乱",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 110,
+      "directPoint": 94,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-11",
+      "name": "気丈な姿勢",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-12",
+      "name": "食らいつき",
+      "category": "senkou-white",
+      "styles": [
+        "senkou",
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-13",
+      "name": "決定打",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-14",
+      "name": "好位追走",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-15",
+      "name": "向上心",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-16",
+      "name": "さらなる高みへ",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-17",
+      "name": "実直な走り",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 140,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-19",
+      "name": "地道に重ねて",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-20",
+      "name": "スタミナキープ",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-21",
+      "name": "攻めの姿勢",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-22",
+      "name": "先行コ◎＋〇",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 270,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-24",
+      "name": "先行コーナー〇",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 130,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-25",
+      "name": "先直◎＋〇",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 270,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-27",
+      "name": "先行直線〇",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 130,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-28",
+      "name": "先コツ◎＋〇",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 240,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-29",
+      "name": "先行のコツ◎",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 130,
+      "directPoint": 48,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-30",
+      "name": "先行のコツ〇",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 110,
+      "directPoint": 191,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-31",
+      "name": "前進あるのみ",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-32",
+      "name": "卓越する走り",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 190,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-33",
+      "name": "巧みなステップ",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 120,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-34",
+      "name": "確かな足取り",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-36",
+      "name": "力の限り",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-38",
+      "name": "直滑降",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 120,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-39",
+      "name": "抜け出し準備",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-40",
+      "name": "逸る足取り",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-41",
+      "name": "火花散らして",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-42",
+      "name": "飛躍の予感",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-43",
+      "name": "本領発揮",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-44",
+      "name": "抜かりなし",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-45",
+      "name": "狙いを定めて",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 160,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-46",
+      "name": "まき直し",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 120,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-47",
+      "name": "真っ向勝負",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-50",
+      "name": "勇気の一歩",
+      "category": "senkou-white",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-52",
+      "name": "淀みなし",
+      "category": "senkou-white",
+      "styles": [
+        "senkou",
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-01",
+      "name": "一気呵成",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-02",
+      "name": "一騎当千",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-03",
+      "name": "一世一代",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-04",
+      "name": "威風堂々",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 190,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-05",
+      "name": "インスピレーション",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-06",
+      "name": "鋭脚一閃",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 150,
+      "directPoint": 271,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-07",
+      "name": "鋭脚円刃",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 150,
+      "directPoint": 271,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-08",
+      "name": "至宝の輝き",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 170,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-11",
+      "name": "迅速果断",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-12",
+      "name": "ストレートハート",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-13",
+      "name": "絶塵",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-14",
+      "name": "刹那の勝機",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-15",
+      "name": "潜伏態勢",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-16",
+      "name": "千里の道",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-17",
+      "name": "大胆不敵",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-18",
+      "name": "大局観",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 120,
+      "directPoint": 273,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-19",
+      "name": "天賦の才",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 170,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-20",
+      "name": "独立独歩",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-21",
+      "name": "突撃魂",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-22",
+      "name": "トップギア",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-23",
+      "name": "努力家",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-24",
+      "name": "昇り龍",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-25",
+      "name": "乗り換え上手",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-26",
+      "name": "八方にらみ",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-27",
+      "name": "百万バリキ",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 120,
+      "directPoint": 128,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-28",
+      "name": "本能の解放",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-29",
+      "name": "舞い降りる翼",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 120,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-30",
+      "name": "無我夢中",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-32",
+      "name": "秘めた闘魂",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 170,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-33",
+      "name": "勇往邁進",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-34",
+      "name": "有志竟成",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-35",
+      "name": "陽炎",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-36",
+      "name": "用意周到",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-37",
+      "name": "リラックス",
+      "category": "sashi-gold",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-01",
+      "name": "溢れる情熱",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-02",
+      "name": "頂きを目指して",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-03",
+      "name": "位置取り押し上げ",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-04",
+      "name": "一歩から",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-05",
+      "name": "内なる獣",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-06",
+      "name": "大急ぎ",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-07",
+      "name": "押し通る！",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-08",
+      "name": "恐れぬ心",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-10",
+      "name": "駆け降り",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 120,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-11",
+      "name": "影より速く",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-12",
+      "name": "がむしゃら",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-13",
+      "name": "間隙を突いて",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-14",
+      "name": "がんばり屋",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-15",
+      "name": "キレる脚",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-17",
+      "name": "ここ一番",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-18",
+      "name": "差し切り体勢",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-19",
+      "name": "差しコ◎＋〇",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 270,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-20",
+      "name": "差しコーナー◎",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 140,
+      "directPoint": 49,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-21",
+      "name": "差しコーナー〇",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 130,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-22",
+      "name": "差し直◎＋〇",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 270,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-23",
+      "name": "差し直線◎",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 140,
+      "directPoint": 49,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-24",
+      "name": "差し直線〇",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 130,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-25",
+      "name": "差しコツ◎＋〇",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 240,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-26",
+      "name": "差しのコツ◎",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 130,
+      "directPoint": 48,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-27",
+      "name": "差しのコツ〇",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 110,
+      "directPoint": 191,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-28",
+      "name": "静かな呼吸",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-29",
+      "name": "静かな熱",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-30",
+      "name": "下準備",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-31",
+      "name": "小休憩",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-32",
+      "name": "衝動",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 320,
+      "directPoint": null,
+      "aptitudeType": "none",
+      "needsData": true
+    },
+    {
+      "id": "sashi-white-33",
+      "name": "十万バリキ",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 120,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-34",
+      "name": "進出開始",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-35",
+      "name": "鋭い眼光",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-36",
+      "name": "外差し準備",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-37",
+      "name": "大志を抱いて",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-38",
+      "name": "ターニングポイント",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-39",
+      "name": "読解力",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 120,
+      "directPoint": 94,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-40",
+      "name": "不断の鍛錬",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-41",
+      "name": "フルスロットル",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-42",
+      "name": "プレッシャー",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 190,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-43",
+      "name": "誇りを抱いて",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-44",
+      "name": "真っ直ぐな走り",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-45",
+      "name": "むきだしの情熱",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-46",
+      "name": "勇を奮って",
+      "category": "sashi-white",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    }
+  ],
+  "uniqueSkillsObserved": [
+    {
+      "id": "peerless-heroine",
+      "name": "Peerless Heroine",
+      "tier": "star3-5",
+      "level": 6
+    }
+  ]
+}
