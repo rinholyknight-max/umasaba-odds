@@ -8,6 +8,9 @@ let uniqueSkillTable = null;
 let skillData = null;
 const selectedSkillIds = new Set();
 
+const SKILL_TYPE_LABELS = { speed: "速度", accel: "加速", recovery: "回復", green: "緑" };
+let selectedSkillType = null;
+
 function filterNumericKeys(obj) {
   return Object.fromEntries(Object.entries(obj).filter(([key]) => /^\d+$/.test(key)));
 }
@@ -125,6 +128,26 @@ function renderUniqueSkillInputs() {
   levelSelect.addEventListener("change", updateTotal);
 }
 
+function renderSkillTypeFilter() {
+  const container = document.getElementById("skill-type-filter");
+  const types = [null, ...Object.keys(SKILL_TYPE_LABELS)];
+  container.innerHTML = types
+    .map((type) => {
+      const label = type === null ? "すべて" : SKILL_TYPE_LABELS[type];
+      const active = selectedSkillType === type ? " active" : "";
+      return `<button type="button" class="type-filter-btn${active}" data-type="${type ?? ""}">${label}</button>`;
+    })
+    .join("");
+
+  container.querySelectorAll(".type-filter-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      selectedSkillType = btn.dataset.type || null;
+      renderSkillTypeFilter();
+      filterSkillList(document.getElementById("skill-search").value);
+    });
+  });
+}
+
 function renderSkillList() {
   const list = document.getElementById("skill-list");
   list.innerHTML = skillData.skills
@@ -132,7 +155,7 @@ function renderSkillList() {
       const requiresAptitude = skill.aptitudeType !== "none";
       const ptLabel = skill.needsData ? "データ未設定" : `必要pt: ${skill.requiredPt}`;
       return `
-        <li class="skill-row${skill.needsData ? " skill-row--needs-data" : ""}" data-id="${skill.id}">
+        <li class="skill-row${skill.needsData ? " skill-row--needs-data" : ""}" data-id="${skill.id}" data-type="${skill.skillType ?? ""}">
           <label>
             <input type="checkbox" class="skill-checkbox" data-id="${skill.id}" />
             ${skill.name}（${ptLabel}）
@@ -171,8 +194,9 @@ function renderSkillList() {
 function filterSkillList(query) {
   const rows = document.querySelectorAll(".skill-row");
   rows.forEach((row) => {
-    const text = row.textContent.toLowerCase();
-    row.hidden = query && !text.includes(query.toLowerCase());
+    const matchesQuery = !query || row.textContent.toLowerCase().includes(query.toLowerCase());
+    const matchesType = !selectedSkillType || row.dataset.type === selectedSkillType;
+    row.hidden = !matchesQuery || !matchesType;
   });
 }
 
@@ -237,6 +261,7 @@ async function init() {
   await loadData();
   renderStatInputs();
   renderUniqueSkillInputs();
+  renderSkillTypeFilter();
   renderSkillList();
   document.getElementById("rank-limit").addEventListener("input", updateTotal);
   document.getElementById("skill-search").addEventListener("input", (e) => filterSkillList(e.target.value));
