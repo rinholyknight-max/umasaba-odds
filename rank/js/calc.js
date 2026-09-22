@@ -272,18 +272,28 @@ function renderUniqueSkillInputs() {
 
 function renderStyleAptitudeInputs() {
   const container = document.getElementById("style-aptitude-inputs");
-  const allLabels = { ...RUNNING_STYLE_LABELS, ...DISTANCE_LABELS, ...SURFACE_LABELS };
+  const rows = [SURFACE_LABELS, DISTANCE_LABELS, RUNNING_STYLE_LABELS];
   const grades = ["S", "A", "B", "C", "D", "E", "F", "G"];
-  container.innerHTML = Object.keys(allLabels)
-    .map((key) => `
-      <label class="field">
-        ${allLabels[key]}
-        <select class="style-aptitude-select" data-key="${key}">
-          <option value="none"${styleAptitudes[key] === "none" ? " selected" : ""}>未設定</option>
-          ${grades.map((g) => `<option value="${g}"${styleAptitudes[key] === g ? " selected" : ""}>${g}</option>`).join("")}
-        </select>
-      </label>
-    `)
+  container.innerHTML = rows
+    .map(
+      (labels) => `
+        <div class="aptitude-row">
+          ${Object.keys(labels)
+            .map(
+              (key) => `
+                <label class="field">
+                  ${labels[key]}
+                  <select class="style-aptitude-select" data-key="${key}">
+                    <option value="none"${styleAptitudes[key] === "none" ? " selected" : ""}>未設定</option>
+                    ${grades.map((g) => `<option value="${g}"${styleAptitudes[key] === g ? " selected" : ""}>${g}</option>`).join("")}
+                  </select>
+                </label>
+              `
+            )
+            .join("")}
+        </div>
+      `
+    )
     .join("");
 
   container.querySelectorAll(".style-aptitude-select").forEach((el) => {
