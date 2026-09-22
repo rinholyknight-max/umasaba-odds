@@ -12,8 +12,26 @@ let selectedSkillType = null;
 
 const RUNNING_STYLE_LABELS = { nige: "逃げ", senkou: "先行", sashi: "差し", oikomi: "追込" };
 const DISTANCE_LABELS = { tankyori: "短距離", mile: "マイル", chukyori: "中距離", chokyori: "長距離" };
+const SURFACE_LABELS = { turf: "芝", dirt: "ダート" };
 let selectedRunningStyle = null;
 let selectedDistance = null;
+
+const STYLE_APTITUDE_KEYS = ["nige", "senkou", "sashi", "oikomi", "tankyori", "mile", "chukyori", "chokyori", "turf", "dirt"];
+const styleAptitudes = Object.fromEntries(STYLE_APTITUDE_KEYS.map((k) => [k, "none"]));
+
+// スキルのstyles（脚質/距離タグ）のうち、キャラの適性が設定されているものの中で
+// 最も有利な倍率（S/A系優先）を採用する。未設定タグや無タグは倍率1のまま。
+function styleAptitudeMultiplier(skill) {
+  const tags = skill.styles || [];
+  let best = null;
+  tags.forEach((tag) => {
+    const grade = styleAptitudes[tag];
+    if (!grade || grade === "none") return;
+    const mult = skillData.aptitudeMultiplier[grade] ?? 1;
+    if (best === null || mult > best) best = mult;
+  });
+  return best === null ? 1 : best;
+}
 
 const STORAGE_KEY = "umasaba-odds-rank-state-v1";
 
@@ -35,6 +53,7 @@ function saveCachedState() {
       rankLimit: document.getElementById("rank-limit").value,
       selectedSkillIds: Array.from(selectedSkillIds),
       aptitudes,
+      styleAptitudes: { ...styleAptitudes },
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   } catch (e) {
@@ -197,13 +216,19 @@ function uniqueSkillScore(tier, level) {
 
 function skillScore(skill, aptitudeGrade) {
   if (skill.needsData) return 0;
-  if (skill.directPoint != null) return skill.directPoint;
-  if (skill.tierIndex == null) return 0;
-  const base = skillData.baseTier[skill.category][skill.tierIndex];
-  const multiplier = skill.aptitudeType !== "none"
-    ? skillData.aptitudeMultiplier[aptitudeGrade] ?? 1
-    : 1;
-  return Math.round(base * multiplier);
+  let base;
+  if (skill.directPoint != null) {
+    base = skill.directPoint;
+  } else if (skill.tierIndex != null) {
+    const tierBase = skillData.baseTier[skill.category][skill.tierIndex];
+    const multiplier = skill.aptitudeType !== "none"
+      ? skillData.aptitudeMultiplier[aptitudeGrade] ?? 1
+      : 1;
+    base = tierBase * multiplier;
+  } else {
+    return 0;
+  }
+  return Math.round(base * styleAptitudeMultiplier(skill));
 }
 
 function efficiency(score, requiredPt) {
@@ -243,6 +268,32 @@ function renderUniqueSkillInputs() {
     updateTotal();
   });
   levelSelect.addEventListener("change", updateTotal);
+}
+
+function renderStyleAptitudeInputs() {
+  const container = document.getElementById("style-aptitude-inputs");
+  const allLabels = { ...RUNNING_STYLE_LABELS, ...DISTANCE_LABELS, ...SURFACE_LABELS };
+  const grades = ["S", "A", "B", "C", "D", "E", "F", "G"];
+  container.innerHTML = Object.keys(allLabels)
+    .map((key) => `
+      <label class="field">
+        ${allLabels[key]}
+        <select class="style-aptitude-select" data-key="${key}">
+          <option value="none"${styleAptitudes[key] === "none" ? " selected" : ""}>未設定</option>
+          ${grades.map((g) => `<option value="${g}"${styleAptitudes[key] === g ? " selected" : ""}>${g}</option>`).join("")}
+        </select>
+      </label>
+    `)
+    .join("");
+
+  container.querySelectorAll(".style-aptitude-select").forEach((el) => {
+    el.addEventListener("change", (e) => {
+      styleAptitudes[e.target.dataset.key] = e.target.value;
+      renderSkillList();
+      filterSkillList(document.getElementById("skill-search").value);
+      updateTotal();
+    });
+  });
 }
 
 function renderFilterGroup(containerId, labels, getSelected, setSelected, rerender) {
@@ -402,10 +453,32 @@ function renderCardSkillCandidates(query) {
   });
 }
 
+let skillSortOrder = "default";
+
+function defaultAptitudeGrade(skill) {
+  return skill.aptitudeType !== "none" ? "S" : "none";
+}
+
+function skillRowText(skill, isPriority, aptitudeGrade) {
+  const scoreLabel = skill.needsData ? "データ未設定" : `${skillScore(skill, aptitudeGrade)}点`;
+  const characterLabel = skill.character ? `［${skill.character}］` : "";
+  const badge = isPriority ? `<span class="priority-badge">優先</span>` : "";
+  return `${badge}${skill.name}（${scoreLabel}）${characterLabel}`;
+}
+
 function renderSkillList() {
   const list = document.getElementById("skill-list");
   const priorityIds = prioritySkillIdSet();
-  const orderedSkills = [...skillData.skills].sort((a, b) => {
+  let orderedSkills = [...skillData.skills];
+  if (skillSortOrder === "score-desc" || skillSortOrder === "score-asc") {
+    const dir = skillSortOrder === "score-desc" ? -1 : 1;
+    orderedSkills.sort((a, b) => {
+      const sa = a.needsData ? 0 : skillScore(a, defaultAptitudeGrade(a));
+      const sb = b.needsData ? 0 : skillScore(b, defaultAptitudeGrade(b));
+      return (sa - sb) * dir;
+    });
+  }
+  orderedSkills.sort((a, b) => {
     const pa = priorityIds.has(a.id) ? 0 : 1;
     const pb = priorityIds.has(b.id) ? 0 : 1;
     return pa - pb;
@@ -413,8 +486,6 @@ function renderSkillList() {
   list.innerHTML = orderedSkills
     .map((skill) => {
       const requiresAptitude = skill.aptitudeType !== "none";
-      const ptLabel = skill.needsData ? "データ未設定" : skill.requiredPt != null ? `必要pt: ${skill.requiredPt}` : "必要ptデータなし";
-      const characterLabel = skill.character ? `［${skill.character}］` : "";
       const isSelected = selectedSkillIds.has(skill.id);
       const isPriority = priorityIds.has(skill.id);
       const stylesAttr = (skill.styles || []).join(" ");
@@ -422,7 +493,7 @@ function renderSkillList() {
         <li class="skill-row${skill.needsData ? " skill-row--needs-data" : ""}${isSelected ? " selected" : ""}${isPriority ? " skill-row--priority" : ""}" data-id="${skill.id}" data-type="${skill.skillType ?? ""}" data-styles="${stylesAttr}">
           <label>
             <input type="checkbox" class="skill-checkbox" data-id="${skill.id}" ${isSelected ? "checked" : ""} />
-            ${isPriority ? `<span class="priority-badge">優先</span>` : ""}${skill.name}（${ptLabel}）${characterLabel}
+            <span class="skill-row-text" data-id="${skill.id}">${skillRowText(skill, isPriority, defaultAptitudeGrade(skill))}</span>
           </label>
           ${requiresAptitude ? `
             <select class="skill-aptitude" data-id="${skill.id}">
@@ -465,7 +536,16 @@ function renderSkillList() {
     });
   });
   list.querySelectorAll(".skill-aptitude").forEach((el) => {
-    el.addEventListener("change", updateTotal);
+    el.addEventListener("change", (e) => {
+      const id = e.target.dataset.id;
+      const skill = skillData.skills.find((s) => s.id === id);
+      const textEl = document.querySelector(`.skill-row-text[data-id="${id}"]`);
+      if (skill && textEl) {
+        const isPriority = priorityIds.has(id);
+        textEl.innerHTML = skillRowText(skill, isPriority, e.target.value);
+      }
+      updateTotal();
+    });
   });
 }
 
@@ -588,10 +668,16 @@ async function init() {
   if (cached && Array.isArray(cached.selectedSkillIds)) {
     cached.selectedSkillIds.forEach((id) => selectedSkillIds.add(id));
   }
+  if (cached && cached.styleAptitudes) {
+    Object.keys(styleAptitudes).forEach((key) => {
+      if (cached.styleAptitudes[key]) styleAptitudes[key] = cached.styleAptitudes[key];
+    });
+  }
   loadSupportCards();
 
   renderStatInputs();
   renderUniqueSkillInputs();
+  renderStyleAptitudeInputs();
   renderSkillTypeFilter();
   renderRunningStyleFilter();
   renderDistanceFilter();
@@ -620,6 +706,11 @@ async function init() {
 
   document.getElementById("rank-limit").addEventListener("input", updateTotal);
   document.getElementById("skill-search").addEventListener("input", (e) => filterSkillList(e.target.value));
+  document.getElementById("skill-sort").addEventListener("change", (e) => {
+    skillSortOrder = e.target.value;
+    renderSkillList();
+    filterSkillList(document.getElementById("skill-search").value);
+  });
   document.getElementById("card-skill-search").addEventListener("input", (e) => renderCardSkillCandidates(e.target.value));
   document.getElementById("card-save-button").addEventListener("click", () => {
     if (editingSlotIndex == null) return;

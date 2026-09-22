@@ -3328,19 +3328,6 @@
       "needsData": false
     },
     {
-      "id": "gousha-no-akashi",
-      "name": "強者の証",
-      "category": "chukyori-gold",
-      "skillType": "speed",
-      "styles": [
-        "senkou"
-      ],
-      "requiredPt": 170,
-      "directPoint": 615,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
       "id": "chukyori-gold-10",
       "name": "キラーチューン",
       "category": "chukyori-gold",
@@ -3552,19 +3539,6 @@
       "needsData": false
     },
     {
-      "id": "setsuna-no-shouki",
-      "name": "刹那の勝機",
-      "category": "chukyori-gold",
-      "skillType": "speed",
-      "styles": [
-        "sashi"
-      ],
-      "requiredPt": 160,
-      "directPoint": 615,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
       "id": "chukyori-gold-27",
       "name": "千里眼",
       "category": "chukyori-gold",
@@ -3710,19 +3684,6 @@
       ],
       "requiredPt": 180,
       "directPoint": 559,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "himeta-toukon",
-      "name": "秘めた闘魂",
-      "category": "chukyori-gold",
-      "skillType": "speed",
-      "styles": [
-        "sashi"
-      ],
-      "requiredPt": 170,
-      "directPoint": 615,
       "aptitudeType": "none",
       "needsData": false
     },
@@ -4960,16 +4921,6 @@
       "needsData": false
     },
     {
-      "id": "general-white-06",
-      "name": "一歩ずつ前へ",
-      "category": "general-white",
-      "skillType": "speed",
-      "requiredPt": 180,
-      "directPoint": 217,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
       "id": "general-white-07",
       "name": "海の加護",
       "category": "general-white",
@@ -5514,6 +5465,9 @@
       "name": "コネクト",
       "category": "general-gold",
       "skillType": "green",
+      "styles": [
+        "turf"
+      ],
       "requiredPt": 150,
       "directPoint": 334,
       "aptitudeType": "none",
@@ -11384,6 +11338,9 @@
       "name": "悪路のほうが好みでね",
       "category": "evolution",
       "skillType": "evolution",
+      "styles": [
+        "turf"
+      ],
       "character": "シリウスシンボリ",
       "requiredPt": null,
       "directPoint": 508,
@@ -11659,6 +11616,9 @@
       "name": "ターフの主人公",
       "category": "evolution",
       "skillType": "evolution",
+      "styles": [
+        "turf"
+      ],
       "character": "ナリタトップロード",
       "requiredPt": null,
       "directPoint": 508,
@@ -12825,6 +12785,10 @@
       "name": "“METI”レゾナンス",
       "category": "evolution",
       "skillType": "evolution",
+      "styles": [
+        "chukyori",
+        "turf"
+      ],
       "character": "ネオユニヴァース",
       "requiredPt": null,
       "directPoint": 433,
@@ -13155,6 +13119,10 @@
       "name": "誠心たる光燿",
       "category": "evolution",
       "skillType": "evolution",
+      "styles": [
+        "oikomi",
+        "turf"
+      ],
       "character": "ブエナビスタ",
       "requiredPt": null,
       "directPoint": 766,
@@ -13166,6 +13134,10 @@
       "name": "我が意、即ち天の理なり",
       "category": "evolution",
       "skillType": "evolution",
+      "styles": [
+        "oikomi",
+        "turf"
+      ],
       "character": "オルフェーヴル",
       "requiredPt": null,
       "directPoint": 696,
@@ -13562,6 +13534,9 @@
       "name": "万哩へ響け大歓声",
       "category": "evolution",
       "skillType": "evolution",
+      "styles": [
+        "turf"
+      ],
       "character": "グランアレグリア",
       "requiredPt": null,
       "directPoint": 696,
@@ -13738,6 +13713,10 @@
       "name": "星奔光天",
       "category": "evolution",
       "skillType": "evolution",
+      "styles": [
+        "senkou",
+        "turf"
+      ],
       "character": "エピファネイア",
       "requiredPt": null,
       "directPoint": 696,
@@ -13815,6 +13794,9 @@
       "name": "巧妙なるギャンビット",
       "category": "evolution",
       "skillType": "evolution",
+      "styles": [
+        "turf"
+      ],
       "character": "ルーラーシップ",
       "requiredPt": null,
       "directPoint": 461,
@@ -13970,7 +13952,10 @@
       "requiredPt": null,
       "directPoint": 508,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-gold-66",
@@ -14120,7 +14105,10 @@
       "requiredPt": null,
       "directPoint": 508,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-gold-78",
@@ -14348,7 +14336,10 @@
       "requiredPt": null,
       "directPoint": 508,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-gold-96",
@@ -14470,7 +14461,10 @@
       "requiredPt": null,
       "directPoint": 508,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-gold-106",
@@ -14480,7 +14474,10 @@
       "requiredPt": null,
       "directPoint": 508,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-gold-107",
@@ -14633,7 +14630,10 @@
       "requiredPt": null,
       "directPoint": 508,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-gold-119",
@@ -14682,7 +14682,10 @@
       "requiredPt": null,
       "directPoint": 508,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-gold-123",
@@ -14731,7 +14734,10 @@
       "requiredPt": null,
       "directPoint": 508,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-gold-127",
@@ -14741,7 +14747,10 @@
       "requiredPt": null,
       "directPoint": 508,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-gold-128",
@@ -14751,7 +14760,10 @@
       "requiredPt": null,
       "directPoint": 508,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-gold-129",
@@ -14836,7 +14848,10 @@
       "requiredPt": null,
       "directPoint": 508,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-gold-136",
@@ -14911,7 +14926,10 @@
       "requiredPt": null,
       "directPoint": 508,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-gold-142",
@@ -14988,7 +15006,10 @@
       "requiredPt": null,
       "directPoint": 508,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-gold-148",
@@ -15051,7 +15072,10 @@
       "requiredPt": null,
       "directPoint": 461,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-gold-153",
@@ -15126,7 +15150,10 @@
       "requiredPt": null,
       "directPoint": 394,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-gold-159",
@@ -15208,7 +15235,10 @@
       "requiredPt": null,
       "directPoint": 461,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-gold-166",
@@ -15372,7 +15402,10 @@
       "requiredPt": null,
       "directPoint": 508,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-gold-179",
@@ -15392,7 +15425,10 @@
       "requiredPt": null,
       "directPoint": 508,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-gold-181",
@@ -15415,7 +15451,10 @@
       "requiredPt": null,
       "directPoint": 508,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-gold-183",
@@ -15425,7 +15464,10 @@
       "requiredPt": null,
       "directPoint": 508,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-gold-184",
@@ -15555,7 +15597,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-180",
@@ -15614,7 +15659,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-185",
@@ -15624,7 +15672,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-186",
@@ -15701,7 +15752,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-192",
@@ -16060,7 +16114,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-220",
@@ -16204,7 +16261,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-232",
@@ -16220,32 +16280,6 @@
       "needsData": false
     },
     {
-      "id": "general-white-233",
-      "name": "差しコーナー○",
-      "category": "general-white",
-      "skillType": null,
-      "styles": [
-        "sashi"
-      ],
-      "requiredPt": null,
-      "directPoint": 239,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-234",
-      "name": "差し直線○",
-      "category": "general-white",
-      "skillType": null,
-      "styles": [
-        "sashi"
-      ],
-      "requiredPt": null,
-      "directPoint": 239,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
       "id": "general-white-235",
       "name": "砂塵を越えて",
       "category": "general-white",
@@ -16253,7 +16287,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-236",
@@ -16352,7 +16389,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-244",
@@ -16398,7 +16438,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-248",
@@ -16450,32 +16493,6 @@
       "needsData": false
     },
     {
-      "id": "general-white-252",
-      "name": "先行コーナー○",
-      "category": "general-white",
-      "skillType": null,
-      "styles": [
-        "senkou"
-      ],
-      "requiredPt": null,
-      "directPoint": 239,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-253",
-      "name": "先行直線○",
-      "category": "general-white",
-      "skillType": null,
-      "styles": [
-        "senkou"
-      ],
-      "requiredPt": null,
-      "directPoint": 239,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
       "id": "general-white-254",
       "name": "善後策",
       "category": "general-white",
@@ -16509,7 +16526,10 @@
       "requiredPt": null,
       "directPoint": 174,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-257",
@@ -16533,7 +16553,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-259",
@@ -16543,7 +16566,10 @@
       "requiredPt": null,
       "directPoint": 262,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-260",
@@ -16553,7 +16579,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-261",
@@ -16563,7 +16592,10 @@
       "requiredPt": null,
       "directPoint": 262,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-262",
@@ -16679,32 +16711,6 @@
       ],
       "requiredPt": null,
       "directPoint": 288,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-271",
-      "name": "中距離コーナー○",
-      "category": "general-white",
-      "skillType": null,
-      "styles": [
-        "chukyori"
-      ],
-      "requiredPt": null,
-      "directPoint": 239,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-272",
-      "name": "中距離直線○",
-      "category": "general-white",
-      "skillType": null,
-      "styles": [
-        "chukyori"
-      ],
-      "requiredPt": null,
-      "directPoint": 239,
       "aptitudeType": "none",
       "needsData": false
     },
@@ -16856,7 +16862,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-285",
@@ -16880,33 +16889,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-287",
-      "name": "逃げコーナー○",
-      "category": "general-white",
-      "skillType": null,
+      "needsData": false,
       "styles": [
-        "nige"
-      ],
-      "requiredPt": null,
-      "directPoint": 239,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-288",
-      "name": "逃げ直線○",
-      "category": "general-white",
-      "skillType": null,
-      "styles": [
-        "nige"
-      ],
-      "requiredPt": null,
-      "directPoint": 239,
-      "aptitudeType": "none",
-      "needsData": false
+        "dirt"
+      ]
     },
     {
       "id": "general-white-289",
@@ -16916,7 +16902,10 @@
       "requiredPt": null,
       "directPoint": 263,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-290",
@@ -16939,7 +16928,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-292",
@@ -16949,7 +16941,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-293",
@@ -17216,7 +17211,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-314",
@@ -17318,7 +17316,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-322",
@@ -17341,7 +17342,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-324",
@@ -17450,7 +17454,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-333",
@@ -17473,7 +17480,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-335",
@@ -17606,26 +17616,6 @@
       "needsData": false
     },
     {
-      "id": "general-white-345",
-      "name": "秋ウマ娘○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-346",
-      "name": "雨の日○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
       "id": "general-white-347",
       "name": "内枠得意○",
       "category": "general-white",
@@ -17672,135 +17662,13 @@
       "needsData": false
     },
     {
-      "id": "general-white-351",
-      "name": "大井レース場○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-352",
-      "name": "おひとり様○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-353",
-      "name": "川崎レース場○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-354",
-      "name": "京都レース場○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-355",
-      "name": "曇りの日○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-356",
-      "name": "交流重賞○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-357",
-      "name": "小倉レース場○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-358",
-      "name": "小回り○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-359",
-      "name": "根幹距離○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-360",
-      "name": "差しのコツ○",
-      "category": "general-white",
-      "skillType": null,
-      "styles": [
-        "sashi"
-      ],
-      "requiredPt": null,
-      "directPoint": 191,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-361",
-      "name": "札幌レース場○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-362",
-      "name": "サンタアニタパークレース場○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
       "id": "general-gold-192",
       "name": "衝動",
       "category": "general-gold",
       "skillType": null,
       "styles": [
-        "sashi"
+        "sashi",
+        "turf"
       ],
       "requiredPt": null,
       "directPoint": 477,
@@ -17834,79 +17702,6 @@
       "needsData": false
     },
     {
-      "id": "general-white-365",
-      "name": "先行のコツ○",
-      "category": "general-white",
-      "skillType": null,
-      "styles": [
-        "senkou"
-      ],
-      "requiredPt": null,
-      "directPoint": 191,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-366",
-      "name": "外枠得意○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-367",
-      "name": "対抗意識○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-368",
-      "name": "中京レース場○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-369",
-      "name": "徹底マーク○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-370",
-      "name": "デルマーレース場○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-371",
-      "name": "東京レース場○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
       "id": "general-white-372",
       "name": "泥遊び○",
       "category": "general-white",
@@ -17914,7 +17709,10 @@
       "requiredPt": null,
       "directPoint": 129,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-373",
@@ -17924,150 +17722,10 @@
       "requiredPt": null,
       "directPoint": 174,
       "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-374",
-      "name": "ナイター○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-375",
-      "name": "中山レース場○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-376",
-      "name": "夏ウマ娘○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-377",
-      "name": "新潟レース場○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-378",
-      "name": "逃げのコツ○",
-      "category": "general-white",
-      "skillType": null,
+      "needsData": false,
       "styles": [
-        "nige"
-      ],
-      "requiredPt": null,
-      "directPoint": 191,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-379",
-      "name": "函館レース場○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-380",
-      "name": "春ウマ娘○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-381",
-      "name": "晴れの日○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-382",
-      "name": "阪神レース場○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-383",
-      "name": "非根幹距離○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-384",
-      "name": "左回り○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-385",
-      "name": "福島レース場○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-386",
-      "name": "伏兵○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-387",
-      "name": "船橋レース場○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
+        "dirt"
+      ]
     },
     {
       "id": "general-white-388",
@@ -18077,77 +17735,10 @@
       "requiredPt": null,
       "directPoint": 174,
       "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-389",
-      "name": "冬ウマ娘○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-390",
-      "name": "右回り○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-391",
-      "name": "道悪○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-392",
-      "name": "盛岡レース場○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-393",
-      "name": "雪の日○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-394",
-      "name": "良バ場○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
-    },
-    {
-      "id": "general-white-395",
-      "name": "ロンシャンレース場○",
-      "category": "general-white",
-      "skillType": null,
-      "requiredPt": null,
-      "directPoint": 129,
-      "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-396",
@@ -18157,7 +17748,10 @@
       "requiredPt": null,
       "directPoint": 217,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-397",
@@ -18326,7 +17920,10 @@
       "requiredPt": null,
       "directPoint": 174,
       "aptitudeType": "none",
-      "needsData": false
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
     },
     {
       "id": "general-white-413",
@@ -18465,6 +18062,10 @@
       "name": "Weaving History",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "senkou",
+        "turf"
+      ],
       "requiredPt": null,
       "directPoint": 198,
       "aptitudeType": "none",
@@ -18705,6 +18306,10 @@
       "name": "海風にまったり身を任せ",
       "category": "general-white",
       "skillType": null,
+      "styles": [
+        "nige",
+        "turf"
+      ],
       "requiredPt": null,
       "directPoint": 198,
       "aptitudeType": "none",

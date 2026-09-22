@@ -80,6 +80,9 @@
       .type-filter button:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1); }
       .type-filter button.active { background: var(--text-primary); color: #fff; border-color: var(--text-primary); }
 
+      .sort-control { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 10px; }
+      .sort-control select { font-size: 0.8rem; padding: 6px 10px; }
+
       .skill-panel { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; margin-top: 4px; }
       .skill-picker { flex: 1 1 320px; min-width: 280px; }
       .skill-sidebar { flex: 0 0 320px; width: 320px; position: sticky; top: 20px; }
@@ -213,6 +216,10 @@
     <label class="field">星ランク <select id="unique-tier"></select></label>
     <label class="field">Lv <select id="unique-level"></select></label>
 
+    <h2>適性</h2>
+    <p class="note">脚質・距離・バ場（芝/ダート）適性を入力すると、対応するタグが付いたスキルの評価点に適性倍率（S/A×1.1、B/C×0.9、D〜F×0.8、G×0.7）が自動で反映されます。未設定のままなら倍率はかかりません。（芝は既定の条件のためタグ付けされたスキルが少なく、現状ほぼ影響しません）</p>
+    <div id="style-aptitude-inputs"></div>
+
     <h2>育成サポートカード</h2>
     <p class="note">最大6枚まで登録できます。登録したカードを「優先」にすると、そのカードで取れるスキルが下の獲得スキル一覧の先頭に表示されます。</p>
     <div id="support-card-list"></div>
@@ -234,6 +241,13 @@
         <div id="skill-type-filter" class="type-filter"></div>
         <div id="skill-running-style-filter" class="type-filter"></div>
         <div id="skill-distance-filter" class="type-filter"></div>
+        <label class="sort-control" for="skill-sort">並び順
+          <select id="skill-sort">
+            <option value="default">既定（優先スキルを先頭表示）</option>
+            <option value="score-desc">評価点が高い順</option>
+            <option value="score-asc">評価点が低い順</option>
+          </select>
+        </label>
         <ul id="skill-list"></ul>
       </div>
       <aside class="skill-sidebar">
