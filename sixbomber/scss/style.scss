@@ -170,21 +170,21 @@ body {
     text-shadow: 0 0 10px rgba($color-gold-light, 0.5);
   }
 
-  .question-input {
+  .question-text {
     flex: 1;
     min-width: 0;
+    margin: 0;
     font-family: "Zen Kaku Gothic New", $font-sans;
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 900;
+    line-height: 1.4;
     color: #ffffff;
-    background: transparent;
-    border: none;
-    outline: none;
+    word-break: break-word;
 
-    &::placeholder {
-      color: #4a4f5d;
+    &.is-empty {
       font-size: 16px;
       font-weight: 700;
+      color: #4a4f5d;
     }
 
     @media (max-width: 600px) {
@@ -394,54 +394,6 @@ body {
     }
   }
 
-  // ○×判定ボタン（オープン後に表示）
-  .judge-actions {
-    display: none;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 12px;
-
-    .judge-btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      flex: 1;
-      max-width: 56px;
-      height: 40px;
-      border-radius: 20px;
-      background: #1a1d24;
-      cursor: pointer;
-      transition: all 0.2s ease;
-
-      .material-symbols-outlined {
-        font-size: 24px;
-        font-variation-settings:
-          "FILL" 0,
-          "wght" 700,
-          "GRAD" 0,
-          "opsz" 24;
-      }
-
-      &--correct {
-        color: $color-correct;
-        border: 1px solid rgba($color-correct, 0.5);
-
-        &:hover {
-          background: rgba($color-correct, 0.15);
-        }
-      }
-
-      &--wrong {
-        color: $color-bomb;
-        border: 1px solid rgba($color-bomb, 0.5);
-
-        &:hover {
-          background: rgba($color-bomb, 0.15);
-        }
-      }
-    }
-  }
-
   // 判定スタンプ（○ / ×）
   .judge-stamp {
     position: absolute;
@@ -482,10 +434,6 @@ body {
       }
     }
 
-    .judge-actions {
-      display: flex;
-    }
-
     .toggle-badge {
       background: linear-gradient(135deg, $color-gold-light, $color-gold-dark);
       color: $color-dark;
@@ -493,8 +441,8 @@ body {
     }
   }
 
-  // ⭕ 正解
-  &.is-correct {
+  // ⭕ 正解（開いているカードだけ表示）
+  &.is-active.is-correct {
     border-color: $color-correct;
     box-shadow: 0 0 30px rgba($color-correct, 0.4);
     animation: none;
@@ -509,14 +457,10 @@ body {
       color: #ffffff !important;
     }
 
-    .judge-btn--correct {
-      background: $color-correct;
-      color: #ffffff;
-    }
   }
 
   // 💣 不正解（BOMB）
-  &.is-wrong {
+  &.is-active.is-wrong {
     border-color: $color-bomb;
     background: linear-gradient(145deg, #2a1414, #15181c);
     box-shadow:
@@ -539,10 +483,6 @@ body {
       color: #ffffff !important;
     }
 
-    .judge-btn--wrong {
-      background: $color-bomb;
-      color: #ffffff;
-    }
   }
 }
 

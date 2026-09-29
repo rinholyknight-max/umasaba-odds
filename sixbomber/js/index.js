@@ -1,13 +1,15 @@
 /**
  * 💣 シックスボンバー 司会用ボード
- * 6チームの回答を1枚ずつめくり、○×で判定。全員正解でクリア演出。
+ * 6チームの回答をめくって表示。お題と○×判定はゲームマスターページからリアルタイムで反映。
  */
+import { watchGame } from "./firebase.js";
+
 document.addEventListener("DOMContentLoaded", async () => {
   const container = document.getElementById("members-container");
   const resetBtn = document.getElementById("reset-all-btn");
   const refreshBtn = document.getElementById("refresh-data-btn");
   const openAllBtn = document.getElementById("open-all-btn");
-  const questionInput = document.getElementById("question-input");
+  const questionText = document.getElementById("question-text");
   const scoreSlots = document.getElementById("score-slots");
   const scoreCorrect = document.getElementById("score-correct");
   const scoreTotal = document.getElementById("score-total");
@@ -15,17 +17,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const clearCloseBtn = document.getElementById("clear-close-btn");
 
   const API_URL = "/api/get-members?board=sixbomber";
-  const QUESTION_KEY = "umasaba_sixbomber_question";
 
-  // お題はリロードしても消えないようにブラウザに保持
-  try {
-    questionInput.value = localStorage.getItem(QUESTION_KEY) || "";
-  } catch (e) {}
-  questionInput.addEventListener("input", () => {
-    try {
-      localStorage.setItem(QUESTION_KEY, questionInput.value);
-    } catch (e) {}
-  });
+  // 直前に受け取った判定（変化したカードだけ演出するため）
+  let currentJudges = {};
 
   try {
     const response = await fetch(API_URL);
@@ -48,29 +42,13 @@ document.addEventListener("DOMContentLoaded", async () => {
           <img src="" alt="手書き回答" />
         </div>
       </div>
-      <div class="judge-actions">
-        <button type="button" class="judge-btn judge-btn--correct" data-judge="correct" title="正解">
-          <span class="material-symbols-outlined">circle</span>
-        </button>
-        <button type="button" class="judge-btn judge-btn--wrong" data-judge="wrong" title="不正解">
-          <span class="material-symbols-outlined">close</span>
-        </button>
-      </div>
       <div class="judge-stamp"></div>
     `;
 
       applyExclusiveContent(card, member.text, member.image);
 
-      // カードをクリックで回答オープン（一度開いたら判定まで開きっぱなし）
+      // カードをクリックで回答オープン
       card.addEventListener("click", () => openCard(card));
-
-      // ○×判定ボタン
-      card.querySelectorAll(".judge-btn").forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-          e.stopPropagation(); // カード本体のクリックイベント発火をストップ
-          setJudge(card, btn.dataset.judge);
-        });
-      });
 
       container.appendChild(card);
     });
@@ -86,16 +64,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
     });
 
-    // リセット：すべての回答を隠して判定もクリア
+    // すべて隠す：カードを伏せ直す（判定はゲームマスター側で管理）
     resetBtn.addEventListener("click", () => {
       container.querySelectorAll(".member-card").forEach((card) => {
-        card.classList.remove("is-active", "is-correct", "is-wrong");
-        card.removeAttribute("data-judge");
-        card.querySelector(".toggle-badge").textContent = "オープン";
-        card.querySelector(".judge-stamp").textContent = "";
+        card.classList.remove("is-active");
+        updateBadge(card);
       });
       clearOverlay.classList.remove("is-open");
-      renderScore();
     });
 
     // 最新データに更新ボタンのクリック処理
@@ -126,36 +101,61 @@ document.addEventListener("DOMContentLoaded", async () => {
     clearOverlay.classList.remove("is-open");
   });
 
+  // 🔥 お題・判定をリアルタイムで反映
+  watchGame(({ question, judges }) => {
+    questionText.textContent = question || "お題の登録を待っています";
+    questionText.classList.toggle("is-empty", !question);
+
+    container.querySelectorAll(".member-card").forEach((card) => {
+      const username = card.dataset.username;
+      if (judges[username] !== currentJudges[username]) {
+        setJudge(card, judges[username] || null);
+      }
+    });
+    currentJudges = judges;
+    renderScore();
+  }).catch((error) => console.error("Watch Game Error:", error));
+
   /**
    * カードを開いて回答を表示する
    */
   function openCard(card) {
     if (card.classList.contains("is-active")) return;
     card.classList.add("is-active");
-    card.querySelector(".toggle-badge").textContent = "判定待ち";
+    updateBadge(card);
   }
 
   /**
-   * ○×判定をカードに反映し、スコアボードを更新する
+   * ○×判定をカードに反映（判定が付いたカードは自動でオープン）
    */
   function setJudge(card, judge) {
     card.classList.remove("is-correct", "is-wrong");
-    // 再判定できるように、同じ判定を押し直したら解除
-    if (card.dataset.judge === judge) {
+
+    if (!judge) {
       card.removeAttribute("data-judge");
-      card.querySelector(".toggle-badge").textContent = "判定待ち";
       card.querySelector(".judge-stamp").textContent = "";
-      renderScore();
+      updateBadge(card);
       return;
     }
 
     card.dataset.judge = judge;
+    card.classList.add("is-active");
     // アニメーションを毎回再生するため、リフローを挟んでからクラス付与
     void card.offsetWidth;
     card.classList.add(judge === "correct" ? "is-correct" : "is-wrong");
-    card.querySelector(".toggle-badge").textContent = judge === "correct" ? "正解" : "BOMB!";
     card.querySelector(".judge-stamp").textContent = judge === "correct" ? "○" : "×";
-    renderScore();
+    updateBadge(card);
+  }
+
+  /**
+   * カードの状態に合わせてバッジの文言を切り替える
+   */
+  function updateBadge(card) {
+    const badge = card.querySelector(".toggle-badge");
+    if (!card.classList.contains("is-active")) badge.textContent = "オープン";
+    else if (card.dataset.judge === "correct") badge.textContent = "正解";
+    else if (card.dataset.judge === "wrong") badge.textContent = "BOMB!";
+    else badge.textContent = "判定待ち";
   }
 
   /**
@@ -170,9 +170,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       .join("");
     scoreCorrect.textContent = correctCount;
 
-    if (cards.length > 0 && correctCount === cards.length) {
-      clearOverlay.classList.add("is-open");
-    }
+    clearOverlay.classList.toggle("is-open", cards.length > 0 && correctCount === cards.length);
   }
 
   /**

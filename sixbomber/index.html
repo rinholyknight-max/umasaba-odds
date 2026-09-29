@@ -39,17 +39,17 @@
             <span class="material-symbols-outlined">refresh</span>
             <span>データ更新</span>
           </button>
-          <button id="reset-all-btn" class="reset-btn" title="回答を隠して判定をリセット">
-            <span class="material-symbols-outlined">restart_alt</span>
-            <span>リセット</span>
+          <button id="reset-all-btn" class="reset-btn" title="すべての回答を伏せる">
+            <span class="material-symbols-outlined">visibility_off</span>
+            <span>すべて隠す</span>
           </button>
         </div>
       </header>
 
-      <!-- お題（司会がその場で入力） -->
+      <!-- お題（ゲームマスターページから登録） -->
       <section class="question-panel">
         <span class="question-label">Q.</span>
-        <input id="question-input" class="question-input" type="text" placeholder="お題を入力（例：G1を勝ったウマ娘を答えよ）" />
+        <p id="question-text" class="question-text is-empty">お題の登録を待っています</p>
       </section>
 
       <!-- 正解数スコアボード -->
@@ -64,14 +64,9 @@
       <aside class="bottom-banner">
         <div class="swiper bottom-banner__swiper" id="banner-bottom">
           <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="/draft/img/ad-banner_01.png" alt="広告" /></div>
-          <div class="swiper-slide"><img src="/draft/img/ad-banner_02.png" alt="広告" /></div>
-          <div class="swiper-slide"><img src="/draft/img/ad-banner_04.png" alt="広告" /></div>
-          <div class="swiper-slide"><img src="/draft/img/ad-banner_05.png" alt="広告" /></div>
-          <div class="swiper-slide"><img src="/draft/img/ad-banner_06.png" alt="広告" /></div>
-          <div class="swiper-slide"><img src="/draft/img/ad-banner_07.png" alt="広告" /></div>
-          <div class="swiper-slide"><img src="/draft/img/ad-banner_08.png" alt="広告" /></div>
-          <div class="swiper-slide"><img src="/draft/img/ad-banner_09.png" alt="広告" /></div>
+            <div class="swiper-slide">
+              <img src="/sixbomber/images/add-banner_01.png" alt="広告" />
+            </div>
           </div>
         </div>
       </aside>

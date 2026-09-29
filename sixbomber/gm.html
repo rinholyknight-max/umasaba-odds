@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>合同杯4th シックスボンバー ゲームマスター</title>
+    <meta name="description" content="合同杯4th シックスボンバー ゲームマスター" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <!-- css -->
+    <script>
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = `/sixbomber/css/gm.css?v=${new Date().getTime()}`;
+      document.head.appendChild(link);
+    </script>
+  </head>
+
+  <body>
+    <!-- 🔒 ログイン -->
+    <div id="login-container" class="login hidden">
+      <div class="login__box">
+        <h2>ゲームマスター ログイン</h2>
+        <form id="login-form">
+          <input type="text" id="username-input" placeholder="ユーザー名" required autocomplete="username" />
+          <input type="password" id="password-input" placeholder="パスワード" required autocomplete="current-password" />
+          <button type="submit">ログイン</button>
+        </form>
+        <p id="error-message" class="login__error"></p>
+      </div>
+    </div>
+
+    <main id="gm-content" class="container hidden">
+      <header class="gm-header">
+        <h1>シックスボンバー <span>GAME MASTER</span></h1>
+        <div class="gm-header__actions">
+          <a href="/sixbomber/" target="_blank" class="ghost-btn">
+            <span class="material-symbols-outlined">open_in_new</span>
+            <span>ボードを開く</span>
+          </a>
+          <button id="logout-btn" class="ghost-btn">ログアウト</button>
+        </div>
+      </header>
+
+      <!-- ❓ お題の登録 -->
+      <section class="gm-panel">
+        <h2 class="gm-panel__title">お題</h2>
+        <div class="question-form">
+          <textarea id="question-input" rows="2" placeholder="お題を入力（例：G1を勝ったウマ娘を答えよ）"></textarea>
+          <button id="question-save-btn" class="primary-btn">
+            <span class="material-symbols-outlined">send</span>
+            <span>お題を反映</span>
+          </button>
+        </div>
+        <p class="question-live">ボード表示中：<span id="question-live">（未登録）</span></p>
+      </section>
+
+      <!-- ⭕❌ 回答の判定 -->
+      <section class="gm-panel">
+        <div class="gm-panel__head">
+          <h2 class="gm-panel__title">判定 <span class="gm-score"><span id="score-correct">0</span> / <span id="score-total">6</span> 正解</span></h2>
+          <div class="gm-panel__actions">
+            <button id="refresh-btn" class="ghost-btn">
+              <span class="material-symbols-outlined">refresh</span>
+              <span>回答を再取得</span>
+            </button>
+            <button id="clear-judges-btn" class="ghost-btn ghost-btn--danger">
+              <span class="material-symbols-outlined">restart_alt</span>
+              <span>判定をリセット</span>
+            </button>
+          </div>
+        </div>
+        <ul id="answer-list" class="answer-list"></ul>
+      </section>
+    </main>
+
+    <script type="module" src="/sixbomber/js/gm.js"></script>
+  </body>
+</html>

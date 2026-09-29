@@ -1,0 +1,423 @@
+@use "reset";
+
+$font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+// ボードと共通のカラー
+$color-dark: #0f1115;
+$color-panel: #1a1d24;
+$color-gold-light: #ffd700;
+$color-gold-dark: #b8860b;
+$color-correct: #34c759;
+$color-bomb: #ff3b30;
+$color-muted: #a0a5b5;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $color-dark;
+  color: #ffffff;
+  font-family: $font-sans;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 16px 64px;
+  box-sizing: border-box;
+}
+
+// ==========================================================================
+// 共通ボタン
+// ==========================================================================
+.primary-btn,
+.ghost-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+
+  .material-symbols-outlined {
+    font-size: 18px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: wait;
+  }
+}
+
+.primary-btn {
+  color: $color-dark;
+  background: linear-gradient(135deg, $color-gold-light, $color-gold-dark);
+  border: none;
+  box-shadow: 0 0 12px rgba($color-gold-light, 0.3);
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 0 20px rgba($color-gold-light, 0.6);
+  }
+}
+
+.ghost-btn {
+  color: $color-muted;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  &:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  &--danger:hover {
+    color: #ff8e8e;
+    border-color: rgba($color-bomb, 0.6);
+  }
+}
+
+// ==========================================================================
+// 🔒 ログイン
+// ==========================================================================
+.login {
+  display: flex;
+  justify-content: center;
+  padding: 100px 16px 0;
+
+  &__box {
+    width: 100%;
+    max-width: 360px;
+    padding: 32px 24px;
+    background: $color-panel;
+    border: 1px solid rgba($color-gold-light, 0.3);
+    border-radius: 16px;
+    box-sizing: border-box;
+
+    h2 {
+      margin: 0 0 24px;
+      font-size: 20px;
+      text-align: center;
+      color: $color-gold-light;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    input {
+      height: 44px;
+      padding: 0 14px;
+      font-size: 16px;
+      color: #ffffff;
+      background: $color-dark;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      outline: none;
+
+      &:focus {
+        border-color: $color-gold-light;
+      }
+    }
+
+    button {
+      height: 44px;
+      font-size: 15px;
+      font-weight: 700;
+      color: $color-dark;
+      background: linear-gradient(135deg, $color-gold-light, $color-gold-dark);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  }
+
+  &__error {
+    min-height: 1em;
+    margin: 12px 0 0;
+    font-size: 13px;
+    color: #ff8e8e;
+    text-align: center;
+  }
+}
+
+// ==========================================================================
+// ヘッダー
+// ==========================================================================
+.gm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+
+  h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+
+    span {
+      margin-left: 6px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: $color-gold-light;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+// ==========================================================================
+// パネル
+// ==========================================================================
+.gm-panel {
+  margin-bottom: 24px;
+  padding: 20px;
+  background: $color-panel;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+
+    .gm-panel__title {
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    margin: 0 0 16px;
+    font-size: 16px;
+    font-weight: 800;
+    color: $color-gold-light;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+.gm-score {
+  margin-left: 8px;
+  font-size: 14px;
+  color: $color-muted;
+
+  #score-correct {
+    font-size: 20px;
+    color: $color-correct;
+  }
+}
+
+// ❓ お題
+.question-form {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+
+  textarea {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 14px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #ffffff;
+    background: $color-dark;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    resize: vertical;
+    outline: none;
+
+    &:focus {
+      border-color: $color-gold-light;
+    }
+  }
+
+  .primary-btn {
+    height: auto;
+    min-height: 44px;
+  }
+}
+
+.question-live {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: $color-muted;
+
+  span {
+    font-weight: 700;
+    color: #ffffff;
+  }
+}
+
+// ⭕❌ 回答一覧
+.answer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.answer-item {
+  display: grid;
+  grid-template-columns: 160px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  background: $color-dark;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  transition: border-color 0.2s ease;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr auto;
+
+    .answer-item__answer {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
+  }
+
+  &[data-judge="correct"] {
+    border-color: $color-correct;
+  }
+
+  &[data-judge="wrong"] {
+    border-color: $color-bomb;
+  }
+
+  &__team {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    font-weight: 700;
+  }
+
+  &__no {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    font-size: 13px;
+    font-weight: 900;
+    color: $color-dark;
+    background: $color-gold-light;
+    border-radius: 50%;
+  }
+
+  &__name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__answer {
+    min-width: 0;
+    font-family: "Zen Kaku Gothic New", $font-sans;
+    font-size: 20px;
+    font-weight: 900;
+    white-space: pre-wrap;
+    word-break: break-word;
+
+    &.is-empty {
+      font-size: 14px;
+      color: #4a4f5d;
+    }
+
+    img {
+      display: block;
+      max-width: 200px;
+      max-height: 120px;
+      background: #ffffff;
+      border-radius: 6px;
+    }
+  }
+
+  &__judge {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.judge-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 44px;
+  background: transparent;
+  border-radius: 22px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  .material-symbols-outlined {
+    font-size: 24px;
+    font-variation-settings:
+      "FILL" 0,
+      "wght" 700,
+      "GRAD" 0,
+      "opsz" 24;
+  }
+
+  &--correct {
+    color: $color-correct;
+    border: 1px solid rgba($color-correct, 0.5);
+
+    &:hover {
+      background: rgba($color-correct, 0.15);
+    }
+
+    &.is-selected {
+      color: #ffffff;
+      background: $color-correct;
+    }
+  }
+
+  &--wrong {
+    color: $color-bomb;
+    border: 1px solid rgba($color-bomb, 0.5);
+
+    &:hover {
+      background: rgba($color-bomb, 0.15);
+    }
+
+    &.is-selected {
+      color: #ffffff;
+      background: $color-bomb;
+    }
+  }
+}

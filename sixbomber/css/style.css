@@ -213,24 +213,24 @@ body {
   color: #ffd700;
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
-.question-panel .question-input {
+.question-panel .question-text {
   flex: 1;
   min-width: 0;
+  margin: 0;
   font-family: "Zen Kaku Gothic New", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 900;
+  line-height: 1.4;
   color: #ffffff;
-  background: transparent;
-  border: none;
-  outline: none;
+  word-break: break-word;
 }
-.question-panel .question-input::placeholder {
-  color: #4a4f5d;
+.question-panel .question-text.is-empty {
   font-size: 16px;
   font-weight: 700;
+  color: #4a4f5d;
 }
 @media (max-width: 600px) {
-  .question-panel .question-input {
+  .question-panel .question-text {
     font-size: 18px;
   }
 }
@@ -408,42 +408,6 @@ body {
   width: 100%;
   height: auto;
 }
-.member-card .judge-actions {
-  display: none;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 12px;
-}
-.member-card .judge-actions .judge-btn {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  max-width: 56px;
-  height: 40px;
-  border-radius: 20px;
-  background: #1a1d24;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.member-card .judge-actions .judge-btn .material-symbols-outlined {
-  font-size: 24px;
-  font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 24;
-}
-.member-card .judge-actions .judge-btn--correct {
-  color: #34c759;
-  border: 1px solid rgba(52, 199, 89, 0.5);
-}
-.member-card .judge-actions .judge-btn--correct:hover {
-  background: rgba(52, 199, 89, 0.15);
-}
-.member-card .judge-actions .judge-btn--wrong {
-  color: #ff3b30;
-  border: 1px solid rgba(255, 59, 48, 0.5);
-}
-.member-card .judge-actions .judge-btn--wrong:hover {
-  background: rgba(255, 59, 48, 0.15);
-}
 .member-card .judge-stamp {
   position: absolute;
   top: 50%;
@@ -479,52 +443,41 @@ body {
   display: block;
   animation: imgReveal 0.4s 0.2s ease-out both;
 }
-.member-card.is-active .judge-actions {
-  display: flex;
-}
 .member-card.is-active .toggle-badge {
   background: linear-gradient(135deg, #ffd700, #b8860b);
   color: #0f1115;
   font-weight: 800;
 }
-.member-card.is-correct {
+.member-card.is-active.is-correct {
   border-color: #34c759;
   box-shadow: 0 0 30px rgba(52, 199, 89, 0.4);
   animation: none;
 }
-.member-card.is-correct .judge-stamp {
+.member-card.is-active.is-correct .judge-stamp {
   color: rgba(52, 199, 89, 0.45);
   animation: stampIn 0.35s cubic-bezier(0.25, 1.5, 0.5, 1) forwards;
 }
-.member-card.is-correct .toggle-badge {
+.member-card.is-active.is-correct .toggle-badge {
   background: #34c759 !important;
   color: #ffffff !important;
 }
-.member-card.is-correct .judge-btn--correct {
-  background: #34c759;
-  color: #ffffff;
-}
-.member-card.is-wrong {
+.member-card.is-active.is-wrong {
   border-color: #ff3b30;
   background: linear-gradient(145deg, #2a1414, #15181c);
   box-shadow: 0 0 40px rgba(255, 59, 48, 0.6), inset 0 0 20px rgba(255, 59, 48, 0.3);
   animation: bombShake 0.5s ease-out;
 }
-.member-card.is-wrong .member-content {
+.member-card.is-active.is-wrong .member-content {
   filter: grayscale(0.6) brightness(0.8);
 }
-.member-card.is-wrong .judge-stamp {
+.member-card.is-active.is-wrong .judge-stamp {
   color: rgba(255, 59, 48, 0.55);
   text-shadow: 0 0 30px rgba(163, 31, 23, 0.8);
   animation: stampIn 0.35s cubic-bezier(0.25, 1.5, 0.5, 1) forwards;
 }
-.member-card.is-wrong .toggle-badge {
+.member-card.is-active.is-wrong .toggle-badge {
   background: #ff3b30 !important;
   color: #ffffff !important;
-}
-.member-card.is-wrong .judge-btn--wrong {
-  background: #ff3b30;
-  color: #ffffff;
 }
 
 .clear-overlay {
