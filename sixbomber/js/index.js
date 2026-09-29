@@ -4,7 +4,14 @@
  */
 import { watchGame } from "./firebase.js";
 
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", () => {
+  const loginContainer = document.getElementById("login-container");
+  const boardContent = document.getElementById("board-content");
+  const loginForm = document.getElementById("login-form");
+  const usernameInput = document.getElementById("username-input");
+  const passwordInput = document.getElementById("password-input");
+  const errorMessage = document.getElementById("error-message");
+
   const container = document.getElementById("members-container");
   const resetBtn = document.getElementById("reset-all-btn");
   const refreshBtn = document.getElementById("refresh-data-btn");
@@ -18,103 +25,171 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const API_URL = "/api/get-members?board=sixbomber";
 
+  // ゲームマスターページと同じアカウント・トークンを使う（どちらかでログインすれば両方開ける）
+  const AUTH_KEY = "umasaba_sixbomber_gm_token";
+  const GM_USERNAMES = ["gm"];
+
   // 直前に受け取った判定（変化したカードだけ演出するため）
   let currentJudges = {};
+  let isStarted = false;
 
-  try {
-    const response = await fetch(API_URL);
-    const result = await response.json();
-    if (!result.success) return;
+  checkAuth();
 
-    result.data.forEach((member, index) => {
-      const card = document.createElement("div");
-      card.className = "member-card";
-      card.setAttribute("data-username", member.username);
+  /**
+   * 認証状態をチェックし、表示を切り替える
+   */
+  function checkAuth() {
+    let token = null;
+    try {
+      token = localStorage.getItem(AUTH_KEY);
+    } catch (e) {}
 
-      card.innerHTML = `
-      <div class="member-header">
-        <h3><span class="member-no">${index + 1}</span>${member.name || member.username}</h3>
-        <span class="toggle-badge">オープン</span>
-      </div>
-      <div class="member-content">
-        <p class="memo-text"></p>
-        <div class="canvas-img-wrap">
-          <img src="" alt="手書き回答" />
-        </div>
-      </div>
-      <div class="judge-stamp"></div>
-    `;
+    const username = token && token.startsWith("auth_token_for_") ? token.replace("auth_token_for_", "") : null;
 
-      applyExclusiveContent(card, member.text, member.image);
-
-      // カードをクリックで回答オープン
-      card.addEventListener("click", () => openCard(card));
-
-      container.appendChild(card);
-    });
-
-    scoreTotal.textContent = result.data.length;
-    renderScore();
-
-    // まとめて開く：まだ伏せてあるカードを左から順にオープン
-    openAllBtn.addEventListener("click", () => {
-      const closedCards = container.querySelectorAll(".member-card:not(.is-active)");
-      closedCards.forEach((card, i) => {
-        setTimeout(() => openCard(card), i * 150);
-      });
-    });
-
-    // すべて隠す：カードを伏せ直す（判定はゲームマスター側で管理）
-    resetBtn.addEventListener("click", () => {
-      container.querySelectorAll(".member-card").forEach((card) => {
-        card.classList.remove("is-active");
-        updateBadge(card);
-      });
-      clearOverlay.classList.remove("is-open");
-    });
-
-    // 最新データに更新ボタンのクリック処理
-    refreshBtn.addEventListener("click", async () => {
-      refreshBtn.disabled = true;
-
-      try {
-        const res = await fetch(API_URL);
-        const updateResult = await res.json();
-
-        if (updateResult.success) {
-          updateResult.data.forEach((member) => {
-            const card = container.querySelector(`.member-card[data-username="${member.username}"]`);
-            if (card) applyExclusiveContent(card, member.text, member.image);
-          });
-        }
-      } catch (err) {
-        console.error("Refresh Error:", err);
-      } finally {
-        refreshBtn.disabled = false;
-      }
-    });
-  } catch (error) {
-    console.error("Fetch Members Error:", error);
+    if (username && GM_USERNAMES.includes(username)) {
+      loginContainer.classList.add("hidden");
+      boardContent.classList.remove("hidden");
+      start();
+    } else {
+      boardContent.classList.add("hidden");
+      loginContainer.classList.remove("hidden");
+    }
   }
+
+  // ログイン
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    errorMessage.textContent = "";
+
+    const username = usernameInput.value.trim();
+    if (!GM_USERNAMES.includes(username)) {
+      errorMessage.textContent = "ゲームマスター用のアカウントではありません。";
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password: passwordInput.value }),
+      });
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        localStorage.setItem(AUTH_KEY, data.token);
+        passwordInput.value = "";
+        checkAuth();
+      } else {
+        errorMessage.textContent = data.error || "ログインに失敗しました。";
+      }
+    } catch (error) {
+      console.error("Auth Error:", error);
+      errorMessage.textContent = "通信エラーが発生しました。";
+    }
+  });
 
   clearCloseBtn.addEventListener("click", () => {
     clearOverlay.classList.remove("is-open");
   });
 
-  // 🔥 お題・判定をリアルタイムで反映
-  watchGame(({ question, judges }) => {
-    questionText.textContent = question || "お題の登録を待っています";
-    questionText.classList.toggle("is-empty", !question);
+  /**
+   * ログイン後の初期化（カードの描画とゲーム状態の監視）
+   */
+  async function start() {
+    if (isStarted) return;
+    isStarted = true;
 
-    container.querySelectorAll(".member-card").forEach((card) => {
-      const username = card.dataset.username;
-      if (judges[username] !== currentJudges[username]) {
-        setJudge(card, judges[username] || null);
-      }
-    });
-    currentJudges = judges;
-    renderScore();
-  }).catch((error) => console.error("Watch Game Error:", error));
+    try {
+      const response = await fetch(API_URL);
+      const result = await response.json();
+      if (!result.success) return;
+
+      result.data.forEach((member, index) => {
+        const card = document.createElement("div");
+        card.className = "member-card";
+        card.setAttribute("data-username", member.username);
+
+        card.innerHTML = `
+        <div class="member-header">
+          <h3><span class="member-no">${index + 1}</span>${member.name || member.username}</h3>
+          <span class="toggle-badge">オープン</span>
+        </div>
+        <div class="member-content">
+          <p class="memo-text"></p>
+          <div class="canvas-img-wrap">
+            <img src="" alt="手書き回答" />
+          </div>
+        </div>
+        <div class="judge-stamp"></div>
+      `;
+
+        applyExclusiveContent(card, member.text, member.image);
+
+        // カードをクリックで回答オープン
+        card.addEventListener("click", () => openCard(card));
+
+        container.appendChild(card);
+      });
+
+      scoreTotal.textContent = result.data.length;
+      renderScore();
+
+      // まとめて開く：まだ伏せてあるカードを左から順にオープン
+      openAllBtn.addEventListener("click", () => {
+        const closedCards = container.querySelectorAll(".member-card:not(.is-active)");
+        closedCards.forEach((card, i) => {
+          setTimeout(() => openCard(card), i * 150);
+        });
+      });
+
+      // すべて隠す：カードを伏せ直す（判定はゲームマスター側で管理）
+      resetBtn.addEventListener("click", () => {
+        container.querySelectorAll(".member-card").forEach((card) => {
+          card.classList.remove("is-active");
+          updateBadge(card);
+        });
+        clearOverlay.classList.remove("is-open");
+      });
+
+      // 最新データに更新ボタンのクリック処理
+      refreshBtn.addEventListener("click", async () => {
+        refreshBtn.disabled = true;
+
+        try {
+          const res = await fetch(API_URL);
+          const updateResult = await res.json();
+
+          if (updateResult.success) {
+            updateResult.data.forEach((member) => {
+              const card = container.querySelector(`.member-card[data-username="${member.username}"]`);
+              if (card) applyExclusiveContent(card, member.text, member.image);
+            });
+          }
+        } catch (err) {
+          console.error("Refresh Error:", err);
+        } finally {
+          refreshBtn.disabled = false;
+        }
+      });
+    } catch (error) {
+      console.error("Fetch Members Error:", error);
+    }
+
+    // 🔥 お題・判定をリアルタイムで反映
+    watchGame(({ question, judges }) => {
+      questionText.textContent = question || "お題の登録を待っています";
+      questionText.classList.toggle("is-empty", !question);
+
+      container.querySelectorAll(".member-card").forEach((card) => {
+        const username = card.dataset.username;
+        if (judges[username] !== currentJudges[username]) {
+          setJudge(card, judges[username] || null);
+        }
+      });
+      currentJudges = judges;
+      renderScore();
+    }).catch((error) => console.error("Watch Game Error:", error));
+  }
 
   /**
    * カードを開いて回答を表示する

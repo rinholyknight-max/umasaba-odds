@@ -195,6 +195,95 @@ body {
   color: #ff8e8e;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
+.main-header .live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #ff3b30;
+  border: 1px solid rgba(255, 59, 48, 0.5);
+  border-radius: 16px;
+}
+.main-header .live-badge::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #ff3b30;
+  border-radius: 50%;
+  animation: livePulse 1.6s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+.hidden {
+  display: none !important;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  padding: 100px 16px 0;
+}
+.login__box {
+  width: 100%;
+  max-width: 360px;
+  padding: 32px 24px;
+  background: #1a1d24;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+.login__box h2 {
+  margin: 0 0 24px;
+  font-size: 20px;
+  text-align: center;
+  color: #ffd700;
+}
+.login__box form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.login__box input {
+  height: 44px;
+  padding: 0 14px;
+  font-size: 16px;
+  color: #ffffff;
+  background: #0f1115;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  outline: none;
+}
+.login__box input:focus {
+  border-color: #ffd700;
+}
+.login__box button {
+  height: 44px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f1115;
+  background: linear-gradient(135deg, #ffd700, #b8860b);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.login__error {
+  min-height: 1em;
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: #ff8e8e;
+  text-align: center;
+}
 
 .question-panel {
   display: flex;
@@ -314,12 +403,15 @@ body {
     padding: 10px;
   }
 }
-.member-card:hover:not(.is-active) {
+.member-card.is-readonly {
+  cursor: default;
+}
+.member-card:hover:not(.is-active):not(.is-readonly) {
   transform: translateY(-6px);
   border-color: rgba(255, 215, 0, 0.6);
   box-shadow: 0 12px 30px rgba(255, 215, 0, 0.15);
 }
-.member-card:hover:not(.is-active) .toggle-badge {
+.member-card:hover:not(.is-active):not(.is-readonly) .toggle-badge {
   background: #ffd700;
   color: #000;
 }
