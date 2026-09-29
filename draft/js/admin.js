@@ -22,6 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // ブラウザのLocalStorageに保存するトークンのキー名
   const AUTH_KEY = "umasaba_admin_session_token";
 
+  // 保存先ボード（<body data-board="..."> で指定。未指定ならドラフト）
+  const BOARD = document.body.dataset.board || "draft";
+
   let isDrawing = false;
 
   // 線のスタイル初期設定
@@ -57,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
    */
   async function loadCurrentUserData(username) {
     try {
-      const response = await fetch(`/api/get-user-data?username=${username}`);
+      const response = await fetch(`/api/get-user-data?username=${encodeURIComponent(username)}&board=${BOARD}`);
       const result = await response.json();
 
       if (result.success && result.data) {
@@ -123,6 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
       username: currentUsername,
       text: textValue,
       image: drawingDataUrl,
+      board: BOARD,
     };
 
     try {

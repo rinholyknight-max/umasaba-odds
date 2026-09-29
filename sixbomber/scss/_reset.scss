@@ -1,0 +1,90 @@
+/* ==========================================================================
+   Modern Reset for SCSS
+   ========================================================================== */
+
+// 1. 全ての要素のボックスモデルを border-box に統一
+// これにより、paddingやborderを含めたサイズ計算が直感的になります
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// 2. デフォルトの余白（margin/padding）をリセット
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// 3. HTMLとBodyの基本設定
+html {
+  // スムーズスクロールを有効化（アンカーリンクなどでヌルッと動く）
+  scroll-behavior: smooth;
+  // テキストのサイズ調整をブラウザに任せる
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  // フォントのレンダリングを綺麗にする
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  min-height: 100vh; // 画面全体を覆う最小高
+  text-rendering: optimizeSpeed;
+}
+
+// 4. 画像とメディア要素の扱い
+// 画像の下に謎の隙間ができるのを防ぎ、親要素を突き抜けないようにします
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// 5. フォーム要素のフォント継承
+// inputやbuttonが親のフォント設定を無視するのを防ぎます
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+// 6. リストの記号を消す（必要に応じて）
+ul,
+ol {
+  list-style: none;
+}
+
+// 7. Aタグの初期スタイル（下線などを消す場合）
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// 8. ボタンのデフォルトスタイルをリセット
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+// 9. 不要なアニメーションを無効化（OSで「視覚効果を減らす」設定にしている人用）
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

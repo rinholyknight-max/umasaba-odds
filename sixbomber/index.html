@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>合同杯4th シックスボンバー</title>
+    <meta name="description" content="合同杯4th シックスボンバー" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <!-- Swiper（バナー広告用） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- css -->
+    <script>
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      const timestamp = new Date().getTime();
+      link.href = `/sixbomber/css/style.css?v=${timestamp}`;
+
+      document.head.appendChild(link);
+    </script>
+  </head>
+
+  <body>
+    <main class="container">
+      <header class="main-header">
+        <h1>合同杯4th シックスボンバー</h1>
+        <div class="header-actions">
+          <button id="open-all-btn" class="open-all-btn" title="すべての回答をまとめて開く">
+            <span class="material-symbols-outlined">visibility</span>
+            <span>まとめて開く</span>
+          </button>
+          <button id="refresh-data-btn" class="refresh-btn" title="最新データに更新">
+            <span class="material-symbols-outlined">refresh</span>
+            <span>データ更新</span>
+          </button>
+          <button id="reset-all-btn" class="reset-btn" title="回答を隠して判定をリセット">
+            <span class="material-symbols-outlined">restart_alt</span>
+            <span>リセット</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- お題（司会がその場で入力） -->
+      <section class="question-panel">
+        <span class="question-label">Q.</span>
+        <input id="question-input" class="question-input" type="text" placeholder="お題を入力（例：G1を勝ったウマ娘を答えよ）" />
+      </section>
+
+      <!-- 正解数スコアボード -->
+      <section class="score-board">
+        <div class="score-slots" id="score-slots"></div>
+        <div class="score-count"><span id="score-correct">0</span> / <span id="score-total">6</span></div>
+      </section>
+
+      <div class="members-grid" id="members-container"></div>
+
+      <!-- 下部横長バナー広告 -->
+      <aside class="bottom-banner">
+        <div class="swiper bottom-banner__swiper" id="banner-bottom">
+          <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="/draft/img/ad-banner_01.png" alt="広告" /></div>
+          <div class="swiper-slide"><img src="/draft/img/ad-banner_02.png" alt="広告" /></div>
+          <div class="swiper-slide"><img src="/draft/img/ad-banner_04.png" alt="広告" /></div>
+          <div class="swiper-slide"><img src="/draft/img/ad-banner_05.png" alt="広告" /></div>
+          <div class="swiper-slide"><img src="/draft/img/ad-banner_06.png" alt="広告" /></div>
+          <div class="swiper-slide"><img src="/draft/img/ad-banner_07.png" alt="広告" /></div>
+          <div class="swiper-slide"><img src="/draft/img/ad-banner_08.png" alt="広告" /></div>
+          <div class="swiper-slide"><img src="/draft/img/ad-banner_09.png" alt="広告" /></div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- 全問正解時の演出 -->
+    <div id="clear-overlay" class="clear-overlay">
+      <div class="clear-overlay__content">
+        <p class="clear-overlay__sub">ALL CORRECT</p>
+        <h2 class="clear-overlay__title">SIX BOMBER<br />CLEAR!!</h2>
+        <button id="clear-close-btn" class="clear-overlay__close">閉じる</button>
+      </div>
+    </div>
+
+    <script type="module" src="/sixbomber/js/index.js"></script>
+
+    <!-- Swiper JS + バナー初期化 -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      // 下部バナーのSwiper初期化（横に流れる自動再生）
+      document.addEventListener("DOMContentLoaded", () => {
+        new Swiper("#banner-bottom", {
+          slidesPerView: "auto", // 画像ごとの横幅に合わせて並べる（横長画像にも対応）
+          spaceBetween: 16,
+          loop: true,
+          speed: 800,
+          autoplay: { delay: 5000, disableOnInteraction: false },
+          allowTouchMove: false,
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,729 @@
+@use "reset";
+
+$font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+// ドラフトと共通のダークなベースとゴールドのアクセント
+$color-dark: #0f1115;
+$color-gold-light: #ffd700;
+$color-gold-dark: #b8860b;
+
+// シックスボンバー用の判定カラー
+$color-correct: #34c759;
+$color-bomb: #ff3b30;
+$color-bomb-dark: #a31f17;
+
+html,
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: $color-dark;
+  color: #ffffff;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: $font-sans;
+  box-sizing: border-box;
+
+  @media (max-width: 600px) {
+    padding: 24px 16px;
+  }
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba($color-bomb, 0.3);
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, $color-gold-light 0%, $color-bomb 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba($color-bomb, 0.3);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    @media (max-width: 600px) {
+      width: 100%;
+    }
+
+    .open-all-btn,
+    .refresh-btn,
+    .reset-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 42px;
+      padding: 0 18px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 30px;
+      cursor: pointer;
+      box-sizing: border-box;
+      background: linear-gradient(145deg, #1a1d24, #15181c);
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+
+      .material-symbols-outlined {
+        font-size: 18px;
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 600,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+
+      @media (max-width: 600px) {
+        flex: 1;
+      }
+    }
+
+    // 👁️ まとめて開くボタン
+    .open-all-btn {
+      background: linear-gradient(135deg, $color-gold-light, $color-gold-dark);
+      color: $color-dark;
+      border: none;
+      font-weight: 800;
+      box-shadow: 0 0 15px rgba($color-gold-light, 0.4);
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 25px rgba($color-gold-light, 0.7);
+      }
+    }
+
+    // 🔄 最新データに更新ボタン
+    .refresh-btn {
+      border: 1px solid rgba($color-gold-light, 0.4);
+      color: $color-gold-light;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+
+      &:hover:not(:disabled) {
+        border-color: $color-gold-light;
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow:
+          0 6px 20px rgba(0, 0, 0, 0.6),
+          0 0 15px rgba($color-gold-light, 0.25);
+      }
+
+      &:disabled {
+        background: #111318;
+        border-color: rgba(255, 255, 255, 0.05);
+        color: #4a4f5d;
+        cursor: wait;
+      }
+    }
+
+    // ♻️ リセットボタン
+    .reset-btn {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #a0a5b5;
+
+      &:hover {
+        border-color: rgba($color-bomb, 0.5);
+        color: #ff8e8e;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+}
+
+// ==========================================================================
+// ❓ お題パネル
+// ==========================================================================
+.question-panel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 16px 20px;
+  background: linear-gradient(145deg, #1a1d24, #15181c);
+  border: 2px solid rgba($color-gold-light, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba($color-gold-light, 0.08);
+
+  .question-label {
+    font-size: 28px;
+    font-weight: 900;
+    color: $color-gold-light;
+    text-shadow: 0 0 10px rgba($color-gold-light, 0.5);
+  }
+
+  .question-input {
+    flex: 1;
+    min-width: 0;
+    font-family: "Zen Kaku Gothic New", $font-sans;
+    font-size: 24px;
+    font-weight: 900;
+    color: #ffffff;
+    background: transparent;
+    border: none;
+    outline: none;
+
+    &::placeholder {
+      color: #4a4f5d;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 600px) {
+      font-size: 18px;
+    }
+  }
+}
+
+// ==========================================================================
+// 💡 スコアボード（6つのランプ＋正解数）
+// ==========================================================================
+.score-board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+
+  .score-slots {
+    display: flex;
+    gap: 10px;
+  }
+
+  .score-slot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #252932;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+
+    &.is-correct {
+      background: $color-correct;
+      border-color: $color-correct;
+      box-shadow: 0 0 14px rgba($color-correct, 0.7);
+    }
+
+    &.is-wrong {
+      background: $color-bomb;
+      border-color: $color-bomb;
+      box-shadow: 0 0 14px rgba($color-bomb, 0.7);
+    }
+
+    @media (max-width: 600px) {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .score-count {
+    font-size: 28px;
+    font-weight: 900;
+    color: #a0a5b5;
+    letter-spacing: 2px;
+
+    #score-correct {
+      color: $color-gold-light;
+      font-size: 36px;
+    }
+  }
+}
+
+// ==========================================================================
+// グリッドシステム（6枚横一列）
+// ==========================================================================
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+
+  // スマホでは一列に収まらないので3×2に折り返す
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+}
+
+// ==========================================================================
+// カードのスタイリング
+// ==========================================================================
+.member-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 360px;
+  padding: 14px;
+  background: linear-gradient(145deg, #1a1d24, #15181c);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  cursor: pointer;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition:
+    transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+
+  @media (max-width: 768px) {
+    min-height: 240px;
+    padding: 10px;
+  }
+
+  &:hover:not(.is-active) {
+    transform: translateY(-6px);
+    border-color: rgba($color-gold-light, 0.6);
+    box-shadow: 0 12px 30px rgba($color-gold-light, 0.15);
+
+    .toggle-badge {
+      background: $color-gold-light;
+      color: #000;
+    }
+  }
+
+  .member-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      max-width: 100%;
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .member-no {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      font-size: 14px;
+      font-weight: 900;
+      color: $color-dark;
+      background: $color-gold-light;
+      border-radius: 50%;
+    }
+
+    .toggle-badge {
+      flex-shrink: 0;
+      font-size: 12px;
+      font-weight: 600;
+      color: #a0a5b5;
+      background: #252932;
+      padding: 6px 14px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+  }
+
+  // 伏せ状態の回答エリア
+  .member-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 14px;
+    border-radius: 12px;
+    background-image: repeating-linear-gradient(45deg, #252932, #252932 10px, #1e222b 10px, #1e222b 20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    .memo-text {
+      margin: 0;
+      padding: 12px;
+      font-family: "Zen Kaku Gothic New", $font-sans;
+      font-size: 1.5rem;
+      font-weight: 900;
+      line-height: 1.4;
+      color: #1d1d1f;
+      text-align: center;
+      white-space: pre-wrap;
+      word-break: break-word;
+      opacity: 0;
+      transform: translateY(10px);
+      transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+
+    .canvas-img-wrap {
+      display: none;
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  // ○×判定ボタン（オープン後に表示）
+  .judge-actions {
+    display: none;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+
+    .judge-btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      max-width: 56px;
+      height: 40px;
+      border-radius: 20px;
+      background: #1a1d24;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      .material-symbols-outlined {
+        font-size: 24px;
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 700,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+
+      &--correct {
+        color: $color-correct;
+        border: 1px solid rgba($color-correct, 0.5);
+
+        &:hover {
+          background: rgba($color-correct, 0.15);
+        }
+      }
+
+      &--wrong {
+        color: $color-bomb;
+        border: 1px solid rgba($color-bomb, 0.5);
+
+        &:hover {
+          background: rgba($color-bomb, 0.15);
+        }
+      }
+    }
+  }
+
+  // 判定スタンプ（○ / ×）
+  .judge-stamp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 140px;
+    font-weight: 900;
+    line-height: 1;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2);
+
+    @media (max-width: 768px) {
+      font-size: 80px;
+    }
+  }
+
+  // 🎉 オープン状態
+  &.is-active {
+    cursor: default;
+    border-color: $color-gold-light;
+    box-shadow: 0 0 24px rgba($color-gold-light, 0.25);
+    animation: flashOpen 0.6s ease-out forwards;
+
+    .member-content {
+      background-image: none;
+      background-color: #ffffff;
+      border-color: $color-gold-dark;
+
+      .memo-text {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .canvas-img-wrap:not([style*="display: none"]) {
+        display: block;
+        animation: imgReveal 0.4s 0.2s ease-out both;
+      }
+    }
+
+    .judge-actions {
+      display: flex;
+    }
+
+    .toggle-badge {
+      background: linear-gradient(135deg, $color-gold-light, $color-gold-dark);
+      color: $color-dark;
+      font-weight: 800;
+    }
+  }
+
+  // ⭕ 正解
+  &.is-correct {
+    border-color: $color-correct;
+    box-shadow: 0 0 30px rgba($color-correct, 0.4);
+    animation: none;
+
+    .judge-stamp {
+      color: rgba($color-correct, 0.45);
+      animation: stampIn 0.35s cubic-bezier(0.25, 1.5, 0.5, 1) forwards;
+    }
+
+    .toggle-badge {
+      background: $color-correct !important;
+      color: #ffffff !important;
+    }
+
+    .judge-btn--correct {
+      background: $color-correct;
+      color: #ffffff;
+    }
+  }
+
+  // 💣 不正解（BOMB）
+  &.is-wrong {
+    border-color: $color-bomb;
+    background: linear-gradient(145deg, #2a1414, #15181c);
+    box-shadow:
+      0 0 40px rgba($color-bomb, 0.6),
+      inset 0 0 20px rgba($color-bomb, 0.3);
+    animation: bombShake 0.5s ease-out;
+
+    .member-content {
+      filter: grayscale(0.6) brightness(0.8);
+    }
+
+    .judge-stamp {
+      color: rgba($color-bomb, 0.55);
+      text-shadow: 0 0 30px rgba($color-bomb-dark, 0.8);
+      animation: stampIn 0.35s cubic-bezier(0.25, 1.5, 0.5, 1) forwards;
+    }
+
+    .toggle-badge {
+      background: $color-bomb !important;
+      color: #ffffff !important;
+    }
+
+    .judge-btn--wrong {
+      background: $color-bomb;
+      color: #ffffff;
+    }
+  }
+}
+
+// ==========================================================================
+// 🏆 全問正解オーバーレイ
+// ==========================================================================
+.clear-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(15, 17, 21, 0.85);
+  backdrop-filter: blur(8px);
+
+  &.is-open {
+    display: flex;
+    animation: overlayFade 0.3s ease both;
+
+    .clear-overlay__title {
+      animation: clearBurst 0.8s cubic-bezier(0.25, 1.5, 0.5, 1) both;
+    }
+  }
+
+  &__content {
+    padding: 0 16px;
+    text-align: center;
+    font-family: "Zen Kaku Gothic New", $font-sans;
+  }
+
+  &__sub {
+    margin: 0 0 12px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    color: #a0a5b5;
+  }
+
+  &__title {
+    margin: 0 0 32px;
+    font-size: clamp(40px, 10vw, 88px);
+    font-weight: 900;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #ffffff 0%, $color-gold-light 60%, $color-gold-dark 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 24px rgba($color-gold-light, 0.6));
+  }
+
+  &__close {
+    height: 44px;
+    padding: 0 28px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #a0a5b5;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 22px;
+    cursor: pointer;
+
+    &:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+}
+
+// ==========================================================================
+// 🎬 アニメーション
+// ==========================================================================
+@keyframes flashOpen {
+  0% {
+    transform: scale(0.96);
+    filter: brightness(2);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+@keyframes imgReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes stampIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes bombShake {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  15% {
+    transform: translate(-10px, 4px) rotate(-2deg);
+    filter: brightness(2.5);
+  }
+  30% {
+    transform: translate(9px, -4px) rotate(2deg);
+  }
+  45% {
+    transform: translate(-7px, 3px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(5px, -2px);
+  }
+  75% {
+    transform: translate(-3px, 1px);
+  }
+}
+
+@keyframes overlayFade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes clearBurst {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// ==========================================================================
+// 📢 下部横長バナー広告
+// ==========================================================================
+$banner-height: 160px;
+
+.bottom-banner {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid rgba($color-gold-light, 0.2);
+
+  &__swiper {
+    width: 100%;
+
+    // 画像の横幅に合わせてスライド幅を決める（正方形・横長どちらもOK）
+    .swiper-slide {
+      width: auto;
+
+      img {
+        display: block;
+        height: $banner-height;
+        width: auto;
+        border-radius: 12px;
+        border: 1px solid rgba($color-gold-light, 0.2);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    margin-top: 32px;
+
+    &__swiper .swiper-slide img {
+      height: 100px;
+    }
+  }
+}

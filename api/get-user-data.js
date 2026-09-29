@@ -13,15 +13,20 @@ if (!admin.apps.length) {
 
 const db = admin.database();
 
+// 💡 board パラメータごとの保存先ノード（未指定ならドラフト用）
+const BOARD_NODES = { draft: "admin_users", sixbomber: "sixbomber_users" };
+
 export default async function handler(req, res) {
   if (req.method !== "GET") return res.status(405).json({ error: "Method Not Allowed" });
 
-  const { username } = req.query;
+  const { username, board = "draft" } = req.query;
 
   if (!username) return res.status(400).json({ success: false, error: "ユーザー名が必要です。" });
+  const node = BOARD_NODES[board];
+  if (!node) return res.status(400).json({ success: false, error: "不明なボードです。" });
 
   try {
-    const ref = db.ref("admin_users");
+    const ref = db.ref(node);
     const snapshot = await ref.orderByChild("username").equalTo(username).once("value");
 
     if (!snapshot.exists()) {

@@ -13,27 +13,41 @@ if (!admin.apps.length) {
 
 const db = admin.database();
 
+// 💡 board パラメータごとの保存先ノード（未指定ならドラフト用）
+const BOARD_NODES = { draft: "admin_users", sixbomber: "sixbomber_users" };
+
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "Method Not Allowed" });
 
-  const { username, text, image } = req.body;
+  const { username, text, image, board = "draft" } = req.body;
 
   if (!username) {
     return res.status(400).json({ success: false, error: "ユーザー名が不明です。" });
   }
+  const node = BOARD_NODES[board];
+  if (!node) return res.status(400).json({ success: false, error: "不明なボードです。" });
 
   try {
-    // 💡 admin_users の中の、該当するユーザーのデータノードを特定して直接更新する
-    // 例: admin_users の中の一致する username の場所
-    const ref = db.ref("admin_users");
+    // 💡 board に対応するノードの中の、該当するユーザーのデータノードを特定して直接更新する
+    const ref = db.ref(node);
     const snapshot = await ref.orderByChild("username").equalTo(username).once("value");
 
-    if (!snapshot.exists()) {
+    let userKey;
+    if (snapshot.exists()) {
+      // 該当ユーザーのFirebase上のキー（自動生成されたIDなど）を取得
+      userKey = Object.keys(snapshot.val())[0];
+    } else if (board === "sixbomber") {
+      // シックスボンバー側にまだ枠が無ければ、ドラフトのチーム情報をもとに作成する
+      const draftSnapshot = await db.ref(BOARD_NODES.draft).orderByChild("username").equalTo(username).once("value");
+      if (!draftSnapshot.exists()) {
+        return res.status(404).json({ success: false, error: "ユーザーが見つかりません。" });
+      }
+      userKey = Object.keys(draftSnapshot.val())[0];
+      const draftUser = draftSnapshot.val()[userKey];
+      await ref.child(userKey).set({ username, name: draftUser.name || username });
+    } else {
       return res.status(404).json({ success: false, error: "ユーザーが見つかりません。" });
     }
-
-    // 該当ユーザーのFirebase上のキー（自動生成されたIDなど）を取得
-    const userKey = Object.keys(snapshot.val())[0];
 
     // データを更新（テキストと手書き画像を上書き）
     await ref.child(userKey).update({

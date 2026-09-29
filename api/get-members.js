@@ -23,17 +23,34 @@ const defaultMembers = {
   user_team06: { username: "team06", name: "チーム06", text: "チーム06の仮テキストです。二重スクロールも出ないよ！", image: "" },
 };
 
+// 💡 board パラメータごとの保存先ノード（未指定ならドラフト用）
+const BOARD_NODES = { draft: "admin_users", sixbomber: "sixbomber_users" };
+
 export default async function handler(req, res) {
   if (req.method !== "GET") return res.status(405).json({ error: "Method Not Allowed" });
 
+  const board = req.query.board || "draft";
+  const node = BOARD_NODES[board];
+  if (!node) return res.status(400).json({ success: false, error: "不明なボードです。" });
+
   try {
-    const ref = db.ref("admin_users");
+    const ref = db.ref(node);
     let snapshot = await ref.once("value");
 
     // 💡 もし Firebase 側にデータが何もなかったら（初回アクセス時）
     if (!snapshot.exists()) {
+      // シックスボンバーはドラフトのチーム名を引き継ぎ、回答は空でスタート
+      let seed = defaultMembers;
+      if (board === "sixbomber") {
+        const draftSnapshot = await db.ref(BOARD_NODES.draft).once("value");
+        const source = draftSnapshot.exists() ? draftSnapshot.val() : defaultMembers;
+        seed = {};
+        Object.keys(source).forEach((key) => {
+          seed[key] = { username: source[key].username, name: source[key].name || source[key].username, text: "", image: "" };
+        });
+      }
       // 6人分の仮データを Firebase にドン！と書き込む
-      await ref.set(defaultMembers);
+      await ref.set(seed);
       // 書き込んだ直後の最新データをもう一度取得する
       snapshot = await ref.once("value");
     }
