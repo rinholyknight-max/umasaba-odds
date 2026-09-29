@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </button>
           </div>
         `;
-        item.querySelector(".answer-item__name").textContent = member.name || member.username;
+        item.querySelector(".answer-item__name").textContent = (member.name || member.username).replace(/<br\s*\/?>/gi, " ");
 
         const answerElem = item.querySelector(".answer-item__answer");
         if (member.text && member.text.trim() !== "") {
