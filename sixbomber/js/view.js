@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       </div>
       <div class="judge-stamp"></div>
     `;
-      card.querySelector("h3").append(member.name || member.username);
+      card.querySelector("h3").append(createName(member.name || member.username));
 
       container.appendChild(card);
     });
@@ -79,6 +79,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
     renderScore();
   }).catch((error) => console.error("Watch Game Error:", error));
+
+  /**
+   * チーム名の要素を作る（名前内の <br> だけ改行にし、それ以外はテキストとして扱う）
+   */
+  function createName(name) {
+    const span = document.createElement("span");
+    span.className = "member-name";
+    String(name)
+      .split(/<br\s*\/?>/i)
+      .forEach((line, i) => {
+        if (i > 0) span.append(document.createElement("br"));
+        span.append(line);
+      });
+    return span;
+  }
 
   /**
    * 全メンバーの最新回答を username をキーにして取得

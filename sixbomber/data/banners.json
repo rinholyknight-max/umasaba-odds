@@ -1,0 +1,10 @@
+{
+  "interval": 5000,
+  "banners": [
+    {
+      "image": "/sixbomber/images/add-banner_01.png",
+      "alt": "広告",
+      "url": ""
+    }
+  ]
+}

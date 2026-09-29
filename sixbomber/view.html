@@ -52,11 +52,8 @@
       <!-- 下部横長バナー広告 -->
       <aside class="bottom-banner">
         <div class="swiper bottom-banner__swiper" id="banner-bottom">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="/sixbomber/images/add-banner_01.png" alt="広告" />
-            </div>
-          </div>
+          <!-- 広告は data/banners.json で管理（js/banner.js が読み込む） -->
+          <div class="swiper-wrapper"></div>
         </div>
       </aside>
     </main>
@@ -72,20 +69,8 @@
 
     <script type="module" src="/sixbomber/js/view.js"></script>
 
-    <!-- Swiper JS + バナー初期化 -->
+    <!-- Swiper JS + バナー広告 -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-      // 下部バナーのSwiper初期化（中央に1枚ずつフェードイン/アウトで自動再生）
-      document.addEventListener("DOMContentLoaded", () => {
-        new Swiper("#banner-bottom", {
-          effect: "fade",
-          fadeEffect: { crossFade: true },
-          loop: true,
-          speed: 800,
-          autoplay: { delay: 5000, disableOnInteraction: false },
-          allowTouchMove: false,
-        });
-      });
-    </script>
+    <script src="/sixbomber/js/banner.js"></script>
   </body>
 </html>
