@@ -753,14 +753,17 @@ $banner-height: 160px;
   &__swiper {
     width: 100%;
 
-    // 画像の横幅に合わせてスライド幅を決める（正方形・横長どちらもOK）
+    // 1枚ずつフェード表示。画像は中央揃え（正方形・横長どちらもOK）
     .swiper-slide {
-      width: auto;
+      display: flex;
+      justify-content: center;
 
       img {
         display: block;
         height: $banner-height;
         width: auto;
+        max-width: 100%;
+        object-fit: contain;
         border-radius: 12px;
         border: 1px solid rgba($color-gold-light, 0.2);
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);

@@ -75,11 +75,11 @@
     <!-- Swiper JS + バナー初期化 -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-      // 下部バナーのSwiper初期化（横に流れる自動再生）
+      // 下部バナーのSwiper初期化（中央に1枚ずつフェードイン/アウトで自動再生）
       document.addEventListener("DOMContentLoaded", () => {
         new Swiper("#banner-bottom", {
-          slidesPerView: "auto", // 画像ごとの横幅に合わせて並べる（横長画像にも対応）
-          spaceBetween: 16,
+          effect: "fade",
+          fadeEffect: { crossFade: true },
           loop: true,
           speed: 800,
           autoplay: { delay: 5000, disableOnInteraction: false },

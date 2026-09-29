@@ -706,12 +706,15 @@ body {
   width: 100%;
 }
 .bottom-banner__swiper .swiper-slide {
-  width: auto;
+  display: flex;
+  justify-content: center;
 }
 .bottom-banner__swiper .swiper-slide img {
   display: block;
   height: 160px;
   width: auto;
+  max-width: 100%;
+  object-fit: contain;
   border-radius: 12px;
   border: 1px solid rgba(255, 215, 0, 0.2);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
