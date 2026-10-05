@@ -1,5 +1,5 @@
 /**
- * 💣 シックスボンバー 司会用ボード
+ * 💣 ウマリーグ 司会用ボード
  * 6チームの回答をめくって表示。お題と○×判定はゲームマスターページからリアルタイムで反映。
  */
 import { watchGame } from "./firebase.js";
@@ -112,6 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
         card.innerHTML = `
         <div class="member-header">
           <h3><span class="member-no">${index + 1}</span>${member.name || member.username}</h3>
+          <p class="member-score">累計 <span class="member-score__value">0</span> 問正解</p>
           <span class="toggle-badge">オープン</span>
         </div>
         <div class="member-content">
@@ -175,8 +176,8 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Fetch Members Error:", error);
     }
 
-    // 🔥 お題・判定をリアルタイムで反映
-    watchGame(({ question, judges }) => {
+    // 🔥 お題・判定・累計正解数をリアルタイムで反映
+    watchGame(({ question, judges, scores }) => {
       questionText.textContent = question || "お題の登録を待っています";
       questionText.classList.toggle("is-empty", !question);
 
@@ -188,6 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       currentJudges = judges;
       renderScore();
+      renderTotals(scores);
     }).catch((error) => console.error("Watch Game Error:", error));
   }
 
@@ -246,6 +248,24 @@ document.addEventListener("DOMContentLoaded", () => {
     scoreCorrect.textContent = correctCount;
 
     clearOverlay.classList.toggle("is-open", cards.length > 0 && correctCount === cards.length);
+  }
+
+  /**
+   * 各カードに累計正解数を表示（増えたときだけ数字を弾ませる）
+   */
+  function renderTotals(scores) {
+    container.querySelectorAll(".member-card").forEach((card) => {
+      const value = card.querySelector(".member-score__value");
+      const next = String(scores[card.dataset.username] || 0);
+      if (value.textContent === next) return;
+      const isUp = Number(next) > Number(value.textContent);
+      value.textContent = next;
+      value.classList.remove("is-up");
+      if (isUp) {
+        void value.offsetWidth;
+        value.classList.add("is-up");
+      }
+    });
   }
 
   /**

@@ -291,7 +291,7 @@ body {
 
 .answer-item {
   display: grid;
-  grid-template-columns: 160px 1fr auto;
+  grid-template-columns: 160px 1fr auto auto;
   align-items: center;
   gap: 16px;
   padding: 12px 16px;
@@ -301,7 +301,7 @@ body {
   transition: border-color 0.2s ease;
 
   @media (max-width: 600px) {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
 
     .answer-item__answer {
       grid-column: 1 / -1;
@@ -367,9 +367,66 @@ body {
     }
   }
 
+  // 累計正解数（＋−で手動修正）
+  &__score {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__score-value {
+    min-width: 2.2em;
+    font-size: 20px;
+    font-weight: 900;
+    text-align: center;
+    color: $color-gold-light;
+
+    &::after {
+      content: "問";
+      margin-left: 1px;
+      font-size: 11px;
+      font-weight: 700;
+      color: $color-muted;
+    }
+  }
+
   &__judge {
     display: flex;
     gap: 8px;
+  }
+}
+
+.score-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  color: $color-muted;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .material-symbols-outlined {
+    font-size: 18px;
+  }
+
+  &--reset {
+    margin-left: 4px;
+
+    &:hover {
+      color: $color-bomb;
+      border-color: rgba($color-bomb, 0.5);
+      background: rgba($color-bomb, 0.12);
+    }
   }
 }
 

@@ -39,7 +39,7 @@ export default async function handler(req, res) {
 
     // 💡 もし Firebase 側にデータが何もなかったら（初回アクセス時）
     if (!snapshot.exists()) {
-      // シックスボンバーはドラフトのチーム名を引き継ぎ、回答は空でスタート
+      // ウマリーグはドラフトのチーム名を引き継ぎ、回答は空でスタート
       let seed = defaultMembers;
       if (board === "sixbomber") {
         const draftSnapshot = await db.ref(BOARD_NODES.draft).once("value");

@@ -447,6 +447,23 @@ body {
   background: #ffd700;
   border-radius: 50%;
 }
+.member-card .member-header .member-score {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: #a0a5b5;
+}
+.member-card .member-header .member-score__value {
+  display: inline-block;
+  margin: 0 1px;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1;
+  color: #ffd700;
+}
+.member-card .member-header .member-score__value.is-up {
+  animation: scoreUp 0.6s ease;
+}
 .member-card .member-header .toggle-badge {
   flex-shrink: 0;
   font-size: 12px;
@@ -725,6 +742,19 @@ body {
   }
   .bottom-banner__swiper .swiper-slide img {
     height: 100px;
+  }
+}
+
+@keyframes scoreUp {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.6);
+    color: #ffffff;
+  }
+  100% {
+    transform: scale(1);
   }
 }
 

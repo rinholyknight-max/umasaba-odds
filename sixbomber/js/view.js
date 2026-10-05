@@ -1,6 +1,6 @@
 /**
- * 👀 シックスボンバー 観戦用ボード（閲覧専用）
- * 操作は一切なし。お題と○×判定をゲームマスターページからリアルタイムで反映し、
+ * 👀 ウマリーグ 観戦用ボード（閲覧専用）
+ * 操作は一切なし。お題と○×判定・累計正解数をゲームマスターページからリアルタイムで反映し、
  * 判定が付いたカードだけ回答を表示する（判定前の回答はDOMにも入れない）。
  */
 import { watchGame } from "./firebase.js";
@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       card.innerHTML = `
       <div class="member-header">
         <h3><span class="member-no">${index + 1}</span></h3>
+        <p class="member-score">累計 <span class="member-score__value">0</span> 問正解</p>
         <span class="toggle-badge">判定待ち</span>
       </div>
       <div class="member-content">
@@ -57,10 +58,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     clearOverlay.classList.remove("is-open");
   });
 
-  // 🔥 お題・判定をリアルタイムで反映
-  watchGame(async ({ question, judges }) => {
+  // 🔥 お題・判定・累計正解数をリアルタイムで反映
+  watchGame(async ({ question, judges, scores }) => {
     questionText.textContent = question || "お題の登録を待っています";
     questionText.classList.toggle("is-empty", !question);
+    renderTotals(scores);
 
     // 表示中の判定と比べて変化したカードだけ演出する
     const seq = ++watchSeq;
@@ -157,6 +159,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     scoreCorrect.textContent = correctCount;
 
     clearOverlay.classList.toggle("is-open", cards.length > 0 && correctCount === cards.length);
+  }
+
+  /**
+   * 各カードに累計正解数を表示（増えたときだけ数字を弾ませる）
+   */
+  function renderTotals(scores) {
+    container.querySelectorAll(".member-card").forEach((card) => {
+      const value = card.querySelector(".member-score__value");
+      const next = String(scores[card.dataset.username] || 0);
+      if (value.textContent === next) return;
+      const isUp = Number(next) > Number(value.textContent);
+      value.textContent = next;
+      value.classList.remove("is-up");
+      if (isUp) {
+        void value.offsetWidth;
+        value.classList.add("is-up");
+      }
+    });
   }
 
   /**

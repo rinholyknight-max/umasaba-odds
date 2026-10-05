@@ -1,8 +1,8 @@
 /**
- * 🎤 シックスボンバー ゲームマスターページ
- * お題の登録と、各チームの回答の○×判定。どちらもボードへ即時反映される。
+ * 🎤 ウマリーグ ゲームマスターページ
+ * お題の登録と、各チームの回答の○×判定・累計正解数の管理。どれもボードへ即時反映される。
  */
-import { watchGame, saveQuestion, saveJudge, clearJudges } from "./firebase.js";
+import { watchGame, saveQuestion, saveJudge, clearJudges, adjustScore, clearScore, clearScores } from "./firebase.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const loginContainer = document.getElementById("login-container");
@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const answerList = document.getElementById("answer-list");
   const refreshBtn = document.getElementById("refresh-btn");
   const clearJudgesBtn = document.getElementById("clear-judges-btn");
+  const clearScoresBtn = document.getElementById("clear-scores-btn");
   const scoreCorrect = document.getElementById("score-correct");
   const scoreTotal = document.getElementById("score-total");
 
@@ -28,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const API_URL = "/api/get-members?board=sixbomber";
 
   let judges = {};
+  let scores = {};
   let isStarted = false;
 
   checkAuth();
@@ -105,6 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // 入力中のお題を上書きしないよう、空欄のときだけ現在のお題を入れておく
       if (!questionInput.value) questionInput.value = game.question;
       judges = game.judges;
+      scores = game.scores;
       renderJudges();
     }).catch((error) => {
       console.error("Watch Game Error:", error);
@@ -133,6 +136,18 @@ document.addEventListener("DOMContentLoaded", () => {
             <span class="answer-item__name"></span>
           </div>
           <div class="answer-item__answer"></div>
+          <div class="answer-item__score" title="累計正解数">
+            <button type="button" class="score-btn" data-delta="-1" title="累計正解数を1減らす">
+              <span class="material-symbols-outlined">remove</span>
+            </button>
+            <span class="answer-item__score-value">0</span>
+            <button type="button" class="score-btn" data-delta="1" title="累計正解数を1増やす">
+              <span class="material-symbols-outlined">add</span>
+            </button>
+            <button type="button" class="score-btn score-btn--reset" title="このチームの累計正解数をリセット">
+              <span class="material-symbols-outlined">restart_alt</span>
+            </button>
+          </div>
           <div class="answer-item__judge">
             <button type="button" class="judge-btn judge-btn--correct" data-judge="correct" title="正解">
               <span class="material-symbols-outlined">circle</span>
@@ -161,14 +176,41 @@ document.addEventListener("DOMContentLoaded", () => {
         item.querySelectorAll(".judge-btn").forEach((btn) => {
           btn.addEventListener("click", async () => {
             const judge = btn.dataset.judge;
-            const next = judges[member.username] === judge ? null : judge;
+            const prev = judges[member.username];
+            const next = prev === judge ? null : judge;
             try {
-              await saveJudge(member.username, next);
+              await saveJudge(member.username, next, prev);
             } catch (error) {
               console.error("Save Judge Error:", error);
               alert("判定の保存に失敗しました。");
             }
           });
+        });
+
+        // ＋−ボタン：累計正解数の手動修正
+        item.querySelectorAll(".score-btn[data-delta]").forEach((btn) => {
+          btn.addEventListener("click", async () => {
+            const delta = Number(btn.dataset.delta);
+            if ((scores[member.username] || 0) + delta < 0) return;
+            try {
+              await adjustScore(member.username, delta);
+            } catch (error) {
+              console.error("Adjust Score Error:", error);
+              alert("累計正解数の保存に失敗しました。");
+            }
+          });
+        });
+
+        // リセットボタン：このチームの累計正解数だけ 0 に戻す
+        item.querySelector(".score-btn--reset").addEventListener("click", async () => {
+          const name = item.querySelector(".answer-item__name").textContent;
+          if (!confirm(`${name} の累計正解数をリセットしますか？`)) return;
+          try {
+            await clearScore(member.username);
+          } catch (error) {
+            console.error("Clear Score Error:", error);
+            alert("累計正解数のリセットに失敗しました。");
+          }
         });
 
         answerList.appendChild(item);
@@ -182,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /**
-   * 判定状態をボタンとスコアに反映
+   * 判定状態と累計正解数をボタンとスコアに反映
    */
   function renderJudges() {
     const items = answerList.querySelectorAll(".answer-item");
@@ -192,6 +234,7 @@ document.addEventListener("DOMContentLoaded", () => {
       item.querySelectorAll(".judge-btn").forEach((btn) => {
         btn.classList.toggle("is-selected", btn.dataset.judge === judge);
       });
+      item.querySelector(".answer-item__score-value").textContent = scores[item.dataset.username] || 0;
     });
     scoreCorrect.textContent = Object.values(judges).filter((judge) => judge === "correct").length;
   }
@@ -214,6 +257,17 @@ document.addEventListener("DOMContentLoaded", () => {
     refreshBtn.disabled = true;
     await loadAnswers();
     refreshBtn.disabled = false;
+  });
+
+  // 累計正解数をすべてリセット
+  clearScoresBtn.addEventListener("click", async () => {
+    if (!confirm("全チームの累計正解数をリセットしますか？")) return;
+    try {
+      await clearScores();
+    } catch (error) {
+      console.error("Clear Scores Error:", error);
+      alert("累計正解数のリセットに失敗しました。");
+    }
   });
 
   // 判定をすべてリセット

@@ -7,7 +7,7 @@ $color-dark: #0f1115;
 $color-gold-light: #ffd700;
 $color-gold-dark: #b8860b;
 
-// シックスボンバー用の判定カラー
+// ウマリーグ用の判定カラー
 $color-correct: #34c759;
 $color-bomb: #ff3b30;
 $color-bomb-dark: #a31f17;
@@ -442,6 +442,27 @@ body {
       border-radius: 50%;
     }
 
+    // 累計正解数
+    .member-score {
+      margin: 0;
+      font-size: 12px;
+      font-weight: 700;
+      color: #a0a5b5;
+    }
+
+    .member-score__value {
+      display: inline-block;
+      margin: 0 1px;
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1;
+      color: $color-gold-light;
+
+      &.is-up {
+        animation: scoreUp 0.6s ease;
+      }
+    }
+
     .toggle-badge {
       flex-shrink: 0;
       font-size: 12px;
@@ -777,5 +798,18 @@ $banner-height: 160px;
     &__swiper .swiper-slide img {
       height: 100px;
     }
+  }
+}
+
+@keyframes scoreUp {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.6);
+    color: #ffffff;
+  }
+  100% {
+    transform: scale(1);
   }
 }

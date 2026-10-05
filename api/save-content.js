@@ -37,7 +37,7 @@ export default async function handler(req, res) {
       // 該当ユーザーのFirebase上のキー（自動生成されたIDなど）を取得
       userKey = Object.keys(snapshot.val())[0];
     } else if (board === "sixbomber") {
-      // シックスボンバー側にまだ枠が無ければ、ドラフトのチーム情報をもとに作成する
+      // ウマリーグ側にまだ枠が無ければ、ドラフトのチーム情報をもとに作成する
       const draftSnapshot = await db.ref(BOARD_NODES.draft).orderByChild("username").equalTo(username).once("value");
       if (!draftSnapshot.exists()) {
         return res.status(404).json({ success: false, error: "ユーザーが見つかりません。" });
