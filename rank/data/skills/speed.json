@@ -1,0 +1,5097 @@
+{
+  "skills": [
+    {
+      "id": "corner-kousha",
+      "name": "コーナー巧者○",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 180,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 217
+    },
+    {
+      "id": "chokusen-kousha",
+      "name": "直線巧者",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 170,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 217
+    },
+    {
+      "id": "pace-up",
+      "name": "ペースアップ",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 170,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 217
+    },
+    {
+      "id": "chukyori-corner",
+      "name": "中距離コーナー◎",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 110,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 288,
+      "styles": [
+        "chukyori"
+      ]
+    },
+    {
+      "id": "senkou-chokusen",
+      "name": "先行直線◎",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 140,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 288,
+      "styles": [
+        "senkou"
+      ]
+    },
+    {
+      "id": "senkou-corner",
+      "name": "先行コーナー◎",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 140,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 288,
+      "styles": [
+        "senkou"
+      ]
+    },
+    {
+      "id": "uma-gonomi",
+      "name": "ウマ好み",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 160,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 217
+    },
+    {
+      "id": "shippo-no-takinobori",
+      "name": "尻尾の滝登り",
+      "category": "rare",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 180,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 508
+    },
+    {
+      "id": "slipstream",
+      "name": "スリップストリーム",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 160,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 217
+    },
+    {
+      "id": "kudarizaka-kousha",
+      "name": "下り坂巧者",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 170,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 217
+    },
+    {
+      "id": "ignition",
+      "name": "イグニッション",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 160,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 239,
+      "styles": [
+        "chukyori"
+      ]
+    },
+    {
+      "id": "tankyuushin",
+      "name": "探求心",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 120,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 210,
+      "styles": [
+        "senkou"
+      ]
+    },
+    {
+      "id": "shouri-ni-mukatte",
+      "name": "勝利に向かって",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 180,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 239,
+      "styles": [
+        "senkou"
+      ]
+    },
+    {
+      "id": "hikarisasu-hou-e",
+      "name": "光差す方へ",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 140,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 239,
+      "styles": [
+        "chukyori"
+      ]
+    },
+    {
+      "id": "seiseidoudou",
+      "name": "正々堂々",
+      "category": "rare",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 180,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 559,
+      "styles": [
+        "senkou"
+      ]
+    },
+    {
+      "id": "showdown",
+      "name": "ショーダウン",
+      "category": "rare",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 180,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 559,
+      "styles": [
+        "senkou"
+      ]
+    },
+    {
+      "id": "kimamana-ashidori",
+      "name": "気ままな足取り",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 180,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 239,
+      "styles": [
+        "chukyori"
+      ]
+    },
+    {
+      "id": "mezame-no-toki",
+      "name": "目覚めの時",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 180,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 239,
+      "styles": [
+        "senkou"
+      ]
+    },
+    {
+      "id": "hotobashiru-kihaku",
+      "name": "迸る気迫",
+      "category": "rare",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 180,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 559,
+      "styles": [
+        "senkou"
+      ]
+    },
+    {
+      "id": "chikarawaza",
+      "name": "力業",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 190,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 239,
+      "styles": [
+        "senkou"
+      ]
+    },
+    {
+      "id": "yosei-wo-katte",
+      "name": "余勢を駆って",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 120,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 239,
+      "styles": [
+        "senkou"
+      ]
+    },
+    {
+      "id": "shoubu-wo-kakete",
+      "name": "勝負を懸けて",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 200,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 263
+    },
+    {
+      "id": "senren-banren",
+      "name": "千鍛万錬",
+      "category": "rare",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 180,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 559,
+      "styles": [
+        "chukyori"
+      ]
+    },
+    {
+      "id": "kinjou-tenka",
+      "name": "錦上添花",
+      "category": "rare",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 120,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 367,
+      "styles": [
+        "chukyori"
+      ]
+    },
+    {
+      "id": "senryakuka",
+      "name": "戦略家",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 180,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 239,
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ]
+    },
+    {
+      "id": "mou-hitofunbari",
+      "name": "もう一踏ん張り",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 180,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 239,
+      "styles": [
+        "chukyori"
+      ]
+    },
+    {
+      "id": "race-no-shinzui-tai",
+      "name": "レースの真髄・体",
+      "category": "normal",
+      "skillType": "speed",
+      "tierIndex": null,
+      "requiredPt": 150,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 174
+    },
+    {
+      "id": "nige-gold-01",
+      "name": "イニシアチブ",
+      "category": "nige-gold",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 170,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-02",
+      "name": "英姿颯爽",
+      "category": "nige-gold",
+      "skillType": "speed",
+      "strategy": "nige",
+      "requiredPt": 170,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "nige"
+      ]
+    },
+    {
+      "id": "nige-gold-03",
+      "name": "大逃げ",
+      "category": "nige-gold",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 200,
+      "directPoint": 407,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-04",
+      "name": "画竜点睛",
+      "category": "nige-gold",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 160,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-05",
+      "name": "傑出",
+      "category": "nige-gold",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-06",
+      "name": "再燃焼",
+      "category": "nige-gold",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-07",
+      "name": "先手必勝",
+      "category": "nige-gold",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 120,
+      "directPoint": 367,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-08",
+      "name": "シックスセンス",
+      "category": "nige-gold",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 110,
+      "directPoint": 367,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-09",
+      "name": "じゃじゃウマ娘",
+      "category": "nige-gold",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-10",
+      "name": "出力1000%!",
+      "category": "nige-gold",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-11",
+      "name": "勝負はここから!",
+      "category": "nige-gold",
+      "skillType": "speed",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "nige"
+      ]
+    },
+    {
+      "id": "nige-gold-12",
+      "name": "陣風円刃",
+      "category": "nige-gold",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 150,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-13",
+      "name": "脱出術",
+      "category": "nige-gold",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-14",
+      "name": "猪突猛進",
+      "category": "nige-gold",
+      "skillType": "speed",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "nige",
+        "senkou"
+      ]
+    },
+    {
+      "id": "nige-gold-15",
+      "name": "逃亡者",
+      "category": "nige-gold",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-16",
+      "name": "トップランナー",
+      "category": "nige-gold",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-17",
+      "name": "早業",
+      "category": "nige-gold",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-18",
+      "name": "万里一空",
+      "category": "nige-gold",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 170,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-19",
+      "name": "踏ませぬ影",
+      "category": "nige-gold",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-gold-20",
+      "name": "猛烈激走",
+      "category": "nige-gold",
+      "skillType": "speed",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "nige",
+        "senkou"
+      ]
+    },
+    {
+      "id": "nige-white-01",
+      "name": "勢い任せ",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-02",
+      "name": "急ぎ足",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-03",
+      "name": "追い風に乗って",
+      "category": "nige-white",
+      "skillType": "speed",
+      "strategy": "nige",
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "nige"
+      ]
+    },
+    {
+      "id": "nige-white-04",
+      "name": "大詰め",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 160,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-05",
+      "name": "押し切り準備",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-06",
+      "name": "押しの一手",
+      "category": "nige-white",
+      "skillType": "speed",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "nige",
+        "senkou"
+      ]
+    },
+    {
+      "id": "nige-white-07",
+      "name": "覚悟を決めて",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 160,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-08",
+      "name": "危険回避",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 110,
+      "directPoint": 142,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-09",
+      "name": "気の向くままに",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-10",
+      "name": "切り込み隊長",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-11",
+      "name": "先駆け",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 120,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-12",
+      "name": "しゃかりき",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-13",
+      "name": "先頭プライド",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-14",
+      "name": "逃げ切り体勢",
+      "category": "nige-white",
+      "skillType": "speed",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "nige"
+      ]
+    },
+    {
+      "id": "nige-white-15",
+      "name": "逃げコ◎＋〇",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 270,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-16",
+      "name": "逃げコーナー◎",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 140,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-17",
+      "name": "逃げコーナー〇",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 130,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-18",
+      "name": "逃げ直◎＋〇",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 270,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-19",
+      "name": "逃げ直線◎",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 140,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-20",
+      "name": "逃げ直線〇",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 130,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-21",
+      "name": "逃げコツ◎＋〇",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 240,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-22",
+      "name": "逃げのコツ◎",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 130,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-23",
+      "name": "逃げのコツ〇",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 110,
+      "directPoint": 191,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-24",
+      "name": "逃げるが勝ち！",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-25",
+      "name": "二の矢",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-26",
+      "name": "抜きん出る一歩",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-27",
+      "name": "粘り腰",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-28",
+      "name": "弾みをつけて",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-29",
+      "name": "破天荒",
+      "category": "nige-white",
+      "skillType": "speed",
+      "strategy": "nige",
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "nige"
+      ]
+    },
+    {
+      "id": "nige-white-30",
+      "name": "迷いなし",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-31",
+      "name": "みなぎる闘志",
+      "category": "nige-white",
+      "skillType": "speed",
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "nige",
+        "senkou"
+      ]
+    },
+    {
+      "id": "nige-white-32",
+      "name": "目にも止まらず",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-33",
+      "name": "譲れぬ一歩",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "nige-white-34",
+      "name": "リスタート",
+      "category": "nige-white",
+      "skillType": "speed",
+      "styles": [
+        "nige"
+      ],
+      "strategy": "nige",
+      "requiredPt": 130,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-01",
+      "name": "アンストッパブル",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-02",
+      "name": "一点集中",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 160,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-03",
+      "name": "一意専心",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-04",
+      "name": "影従打破",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-05",
+      "name": "王手",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi",
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-06",
+      "name": "開花",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-07",
+      "name": "快進撃",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-08",
+      "name": "快刀乱麻",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 160,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-09",
+      "name": "怪物",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-10",
+      "name": "かっとばせ!",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-11",
+      "name": "強者の証",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 340,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-12",
+      "name": "技巧派",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 120,
+      "directPoint": 367,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-13",
+      "name": "食いしん坊",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-14",
+      "name": "継続は力なり",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 140,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-15",
+      "name": "決意の直滑降",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 120,
+      "directPoint": 367,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-16",
+      "name": "幻惑のかく乱",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 110,
+      "directPoint": 367,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-17",
+      "name": "行雲流水",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi",
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-19",
+      "name": "シンギュラリティ",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 120,
+      "directPoint": 558,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-20",
+      "name": "スピードスター",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-21",
+      "name": "くじけぬ精神",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 120,
+      "directPoint": 367,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-23",
+      "name": "大車輪",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 120,
+      "directPoint": 367,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-24",
+      "name": "鍔迫り合い",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-25",
+      "name": "丁々発止",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-27",
+      "name": "努力の結実",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-28",
+      "name": "ハジける闘志",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-29",
+      "name": "パラダイムシフト",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 190,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-30",
+      "name": "風雲の志",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-31",
+      "name": "ぶっちぎり！",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-32",
+      "name": "不抜の気概",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-33",
+      "name": "踏みしめる大地",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-35",
+      "name": "幕引き",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-36",
+      "name": "猛追",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi",
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-38",
+      "name": "勇迅一閃",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 150,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-39",
+      "name": "勇迅円刃",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 150,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-40",
+      "name": "夢の舞台へ",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-41",
+      "name": "余裕綽々",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-42",
+      "name": "流星光底",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-gold-43",
+      "name": "レースプランナー",
+      "category": "senkou-gold",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-01",
+      "name": "憧れを超えて",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-02",
+      "name": "アグレッシブ",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-03",
+      "name": "意地っ張り",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-04",
+      "name": "憂いなし",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-05",
+      "name": "栄養補給",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-06",
+      "name": "己を信じて",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-08",
+      "name": "思い切り",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 160,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-09",
+      "name": "会心の一歩",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi",
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-10",
+      "name": "かく乱",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 110,
+      "directPoint": 94,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-11",
+      "name": "気丈な姿勢",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-12",
+      "name": "食らいつき",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi",
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-13",
+      "name": "決定打",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-14",
+      "name": "好位追走",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-15",
+      "name": "向上心",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-16",
+      "name": "さらなる高みへ",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-17",
+      "name": "実直な走り",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 140,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-19",
+      "name": "地道に重ねて",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-20",
+      "name": "スタミナキープ",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-21",
+      "name": "攻めの姿勢",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-22",
+      "name": "先行コ◎＋〇",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 270,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-24",
+      "name": "先行コーナー〇",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 130,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-25",
+      "name": "先直◎＋〇",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 270,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-27",
+      "name": "先行直線〇",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 130,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-28",
+      "name": "先コツ◎＋〇",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 240,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-29",
+      "name": "先行のコツ◎",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 130,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-30",
+      "name": "先行のコツ〇",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 110,
+      "directPoint": 191,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-31",
+      "name": "前進あるのみ",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-32",
+      "name": "卓越する走り",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 190,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-33",
+      "name": "巧みなステップ",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 120,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-34",
+      "name": "確かな足取り",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-36",
+      "name": "力の限り",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-38",
+      "name": "直滑降",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 120,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-39",
+      "name": "抜け出し準備",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-40",
+      "name": "逸る足取り",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-41",
+      "name": "火花散らして",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-42",
+      "name": "飛躍の予感",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-43",
+      "name": "本領発揮",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-44",
+      "name": "抜かりなし",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-45",
+      "name": "狙いを定めて",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 160,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-46",
+      "name": "まき直し",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 120,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-47",
+      "name": "真っ向勝負",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-50",
+      "name": "勇気の一歩",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "senkou-white-52",
+      "name": "淀みなし",
+      "category": "senkou-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi",
+        "senkou"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-01",
+      "name": "一気呵成",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-02",
+      "name": "一騎当千",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-03",
+      "name": "一世一代",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-04",
+      "name": "威風堂々",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 190,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-05",
+      "name": "インスピレーション",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-06",
+      "name": "鋭脚一閃",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 150,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-07",
+      "name": "鋭脚円刃",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 150,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-08",
+      "name": "至宝の輝き",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 170,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-11",
+      "name": "迅速果断",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-12",
+      "name": "ストレートハート",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-13",
+      "name": "絶塵",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-14",
+      "name": "刹那の勝機",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-15",
+      "name": "潜伏態勢",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-16",
+      "name": "千里の道",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-17",
+      "name": "大胆不敵",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-18",
+      "name": "大局観",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 120,
+      "directPoint": 367,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-19",
+      "name": "天賦の才",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 170,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-20",
+      "name": "独立独歩",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-21",
+      "name": "突撃魂",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-22",
+      "name": "トップギア",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-23",
+      "name": "努力家",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 367,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-24",
+      "name": "昇り龍",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-25",
+      "name": "乗り換え上手",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-26",
+      "name": "八方にらみ",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-27",
+      "name": "百万バリキ",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 120,
+      "directPoint": 367,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-28",
+      "name": "本能の解放",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "oikomi",
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-29",
+      "name": "舞い降りる翼",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 120,
+      "directPoint": 367,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-30",
+      "name": "無我夢中",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-32",
+      "name": "秘めた闘魂",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 170,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-33",
+      "name": "勇往邁進",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-34",
+      "name": "有志竟成",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-35",
+      "name": "陽炎",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-36",
+      "name": "用意周到",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-gold-37",
+      "name": "リラックス",
+      "category": "sashi-gold",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-01",
+      "name": "溢れる情熱",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-02",
+      "name": "頂きを目指して",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-03",
+      "name": "位置取り押し上げ",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-04",
+      "name": "一歩から",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-05",
+      "name": "内なる獣",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-06",
+      "name": "大急ぎ",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-07",
+      "name": "押し通る！",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-08",
+      "name": "恐れぬ心",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-10",
+      "name": "駆け降り",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 120,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-11",
+      "name": "影より速く",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-12",
+      "name": "がむしゃら",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-13",
+      "name": "間隙を突いて",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-14",
+      "name": "がんばり屋",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-15",
+      "name": "キレる脚",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-17",
+      "name": "ここ一番",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-18",
+      "name": "差し切り体勢",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-19",
+      "name": "差しコ◎＋〇",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 270,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-20",
+      "name": "差しコーナー◎",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 140,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-21",
+      "name": "差しコーナー〇",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 130,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-22",
+      "name": "差し直◎＋〇",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 270,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-23",
+      "name": "差し直線◎",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 140,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-24",
+      "name": "差し直線〇",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 130,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-25",
+      "name": "差しコツ◎＋〇",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 240,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-26",
+      "name": "差しのコツ◎",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 130,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-27",
+      "name": "差しのコツ〇",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 110,
+      "directPoint": 191,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-28",
+      "name": "静かな呼吸",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-29",
+      "name": "静かな熱",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-30",
+      "name": "下準備",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-31",
+      "name": "小休憩",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-33",
+      "name": "十万バリキ",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 120,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-34",
+      "name": "進出開始",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-35",
+      "name": "鋭い眼光",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-36",
+      "name": "外差し準備",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-37",
+      "name": "大志を抱いて",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-38",
+      "name": "ターニングポイント",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-39",
+      "name": "読解力",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 120,
+      "directPoint": 94,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-40",
+      "name": "不断の鍛錬",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 170,
+      "directPoint": 352,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-41",
+      "name": "フルスロットル",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-42",
+      "name": "プレッシャー",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 190,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-43",
+      "name": "誇りを抱いて",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-44",
+      "name": "真っ直ぐな走り",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-45",
+      "name": "むきだしの情熱",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "oikomi",
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "sashi-white-46",
+      "name": "勇を奮って",
+      "category": "sashi-white",
+      "skillType": "speed",
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-01",
+      "name": "荒ぶる旋風",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-02",
+      "name": "一張一弛",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-03",
+      "name": "雲蒸竜変",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori",
+        "mile"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-04",
+      "name": "王道一途",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-05",
+      "name": "神業ステップ",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-06",
+      "name": "気炎万丈",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-07",
+      "name": "起死回生",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-08",
+      "name": "気丈夫",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-10",
+      "name": "キラーチューン",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-11",
+      "name": "切り開く者",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-12",
+      "name": "麒麟児",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-13",
+      "name": "君臨",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-14",
+      "name": "決死の覚悟",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-15",
+      "name": "光芒一閃",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 150,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-16",
+      "name": "光芒円刃",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 150,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-17",
+      "name": "高揚感",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-18",
+      "name": "後の先",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-19",
+      "name": "才気煥発",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 170,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-20",
+      "name": "才色兼備",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-21",
+      "name": "十全十美",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori",
+        "mile"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-22",
+      "name": "自由奔放",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-23",
+      "name": "勝利の執念",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-24",
+      "name": "閃光",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 140,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-25",
+      "name": "初志貫徹",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-27",
+      "name": "千里眼",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 110,
+      "directPoint": 367,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-28",
+      "name": "昂る鼓動",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-29",
+      "name": "誰より前へ!",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 120,
+      "directPoint": 128,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-30",
+      "name": "追跡者",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": 170,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-31",
+      "name": "天衣無縫",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-32",
+      "name": "闘争本能",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori",
+        "mile"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-33",
+      "name": "解き放つ情念",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori",
+        "mile"
+      ],
+      "requiredPt": 200,
+      "directPoint": 696,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-34",
+      "name": "独占力",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-35",
+      "name": "突破口",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-36",
+      "name": "爆熱のキラメキ!",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori",
+        "mile"
+      ],
+      "requiredPt": 200,
+      "directPoint": 407,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-37",
+      "name": "パスファインダー",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-39",
+      "name": "睥睨",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 200,
+      "directPoint": 696,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-40",
+      "name": "本能の架け橋",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 200,
+      "directPoint": 696,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-41",
+      "name": "もう少しだけ、いい景色",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 200,
+      "directPoint": 696,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-42",
+      "name": "燃ゆる魂",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori",
+        "mile"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-43",
+      "name": "魅惑のささやき",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-44",
+      "name": "唯一無二",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-45",
+      "name": "優位形成",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori",
+        "mile"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-46",
+      "name": "悠久走破",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-47",
+      "name": "勇気凛々",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": 170,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-48",
+      "name": "ライトニングステップ",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 140,
+      "directPoint": 433,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-49",
+      "name": "ルミネセンス",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-50",
+      "name": "怜悧清澄",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 200,
+      "directPoint": 696,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-gold-51",
+      "name": "烈火の如く",
+      "category": "chukyori-gold",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-01",
+      "name": "足がかり",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-02",
+      "name": "ありったけ",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-03",
+      "name": "あるがままに",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 200,
+      "directPoint": 289,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-04",
+      "name": "あふれる活力",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-05",
+      "name": "一番乗り",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 120,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-06",
+      "name": "一歩ずつ前へ",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-07",
+      "name": "イナズマステップ",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 140,
+      "directPoint": 191,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-08",
+      "name": "型破り",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-09",
+      "name": "華麗なステップ",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 120,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-10",
+      "name": "軽やかステップ",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-11",
+      "name": "鬼気迫って",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": 160,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-12",
+      "name": "想い焦がれて",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori",
+        "mile"
+      ],
+      "requiredPt": 200,
+      "directPoint": 289,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-13",
+      "name": "活路を拓く！",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-14",
+      "name": "気迫を込めて",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-15",
+      "name": "急襲",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-16",
+      "name": "切り返し",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-17",
+      "name": "切り替え上手",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-18",
+      "name": "食い下がり",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-19",
+      "name": "健脚",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-20",
+      "name": "好戦的",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori",
+        "mile"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-21",
+      "name": "光明",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-22",
+      "name": "克己心",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 200,
+      "directPoint": 289,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-23",
+      "name": "渾身の足取り",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": 180,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-24",
+      "name": "込み上げる熱",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-25",
+      "name": "ささやき",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-26",
+      "name": "自信家",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori",
+        "mile"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-27",
+      "name": "正面突破",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-29",
+      "name": "前途洋々",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-30",
+      "name": "しとやかな足取り",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori",
+        "mile"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-31",
+      "name": "束縛",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-32",
+      "name": "中距離コ◎＋〇",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 210,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-33",
+      "name": "中距離コーナー〇",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 100,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-34",
+      "name": "中距離直◎＋〇",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 210,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-35",
+      "name": "中距離直線◎",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 110,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-36",
+      "name": "中距離直線〇",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 100,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-37",
+      "name": "天才肌",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-38",
+      "name": "テンポアップ",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-39",
+      "name": "闘争心",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-40",
+      "name": "灯を胸に",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori",
+        "mile"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-41",
+      "name": "這い寄る足音",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-42",
+      "name": "覇気十分",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 200,
+      "directPoint": 289,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-43",
+      "name": "バーニングソウル",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori",
+        "mile"
+      ],
+      "requiredPt": 200,
+      "directPoint": 289,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-44",
+      "name": "品行方正",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori",
+        "mile"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-45",
+      "name": "ホークアイ",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 110,
+      "directPoint": 142,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-46",
+      "name": "前のめり",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-47",
+      "name": "躍動",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 170,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-48",
+      "name": "優等生",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-49",
+      "name": "夢の再生方法",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": 200,
+      "directPoint": 289,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-50",
+      "name": "夢への挑戦",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-51",
+      "name": "凛然と",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": 170,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-52",
+      "name": "揺るがぬ信念",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-53",
+      "name": "労を惜しまず",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 180,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "chukyori-white-54",
+      "name": "ワンチャンス",
+      "category": "chukyori-white",
+      "skillType": "speed",
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": 160,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-01",
+      "name": "アオハル燃焼・根",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-02",
+      "name": "アオハル燃焼・速",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-03",
+      "name": "アガッてきた",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 170,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-04",
+      "name": "新たな伝説を築く者",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-05",
+      "name": "いいとこ入った!",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 160,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-06",
+      "name": "一番星",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-07",
+      "name": "ウママニア",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 160,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-08",
+      "name": "英俊豪傑",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-09",
+      "name": "お先に失礼っ!",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 160,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-10",
+      "name": "機先の勝負",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 160,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-11",
+      "name": "キミと勝ちたい",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-12",
+      "name": "限界の先へ",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-13",
+      "name": "好奇心",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 180,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-14",
+      "name": "弧線のプロフェッサー",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 180,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-15",
+      "name": "最高峰の夢",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-16",
+      "name": "至高のダウンヒラー",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 170,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-17",
+      "name": "順風満帆",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 180,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-18",
+      "name": "情熱と挑戦の先の栄光",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-19",
+      "name": "真骨頂",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 180,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-20",
+      "name": "神速",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-21",
+      "name": "正攻法",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 180,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-22",
+      "name": "全身全霊",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 170,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-23",
+      "name": "太陽の叡智",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-24",
+      "name": "大地の叡智",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-25",
+      "name": "時中の妙",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 160,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-26",
+      "name": "ネバーギブアップ",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 180,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-27",
+      "name": "博打うち",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 120,
+      "directPoint": 334,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-28",
+      "name": "ハヤテ一文字",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 170,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-29",
+      "name": "遥か先へ",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-30",
+      "name": "保養が導く奇跡",
+      "category": "general-gold",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-01",
+      "name": "アオハル点火・根",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-02",
+      "name": "アオハル点火・速",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-03",
+      "name": "遊びはおしまいっ!",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 160,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-04",
+      "name": "アメリカンドリーム",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-05",
+      "name": "あやしげな作戦",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 120,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-07",
+      "name": "海の加護",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-08",
+      "name": "想いを背負って",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-09",
+      "name": "折れない心",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 180,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-10",
+      "name": "快速",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-11",
+      "name": "気持ちを乗せて",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 180,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-12",
+      "name": "綺羅星",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-13",
+      "name": "心惹かれて",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 180,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-14",
+      "name": "時代を築く者",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-15",
+      "name": "尻尾上がり",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 100,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-16",
+      "name": "序盤巧者",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 160,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-17",
+      "name": "末脚",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 170,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-18",
+      "name": "素直な一歩",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 180,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-19",
+      "name": "地の加護",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-20",
+      "name": "中盤巧者",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 160,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-21",
+      "name": "本気で休んで、もう一度",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-22",
+      "name": "比類なき",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-23",
+      "name": "前だけ見据えて",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-24",
+      "name": "夢の途中",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-25",
+      "name": "陽の加護",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-26",
+      "name": "レースの真髄・賢",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 150,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-27",
+      "name": "レースの真髄・速",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 150,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-28",
+      "name": "レースの真髄・力",
+      "category": "general-white",
+      "skillType": "speed",
+      "requiredPt": 150,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    }
+  ]
+}

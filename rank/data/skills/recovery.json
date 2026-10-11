@@ -1,0 +1,164 @@
+{
+  "skills": [
+    {
+      "id": "general-gold-38",
+      "name": "アオハル燃焼・体",
+      "category": "general-gold",
+      "skillType": "recovery",
+      "requiredPt": 200,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-39",
+      "name": "円弧のマエストロ",
+      "category": "general-gold",
+      "skillType": "recovery",
+      "requiredPt": 170,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-40",
+      "name": "好転一息",
+      "category": "general-gold",
+      "skillType": "recovery",
+      "requiredPt": 170,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-41",
+      "name": "どこ吹く風",
+      "category": "general-gold",
+      "skillType": "recovery",
+      "requiredPt": 170,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-42",
+      "name": "鋼の意思",
+      "category": "general-gold",
+      "skillType": "recovery",
+      "requiredPt": 160,
+      "directPoint": 291,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-43",
+      "name": "不屈の心",
+      "category": "general-gold",
+      "skillType": "recovery",
+      "requiredPt": 170,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-44",
+      "name": "連鎖反応",
+      "category": "general-gold",
+      "skillType": "recovery",
+      "requiredPt": 200,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-35",
+      "name": "アオハル点火・体",
+      "category": "general-white",
+      "skillType": "recovery",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-36",
+      "name": "ウマ込み冷静",
+      "category": "general-white",
+      "skillType": "recovery",
+      "requiredPt": 170,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-37",
+      "name": "隠れ蓑",
+      "category": "general-white",
+      "skillType": "recovery",
+      "requiredPt": 160,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-38",
+      "name": "コーナー回復",
+      "category": "general-white",
+      "skillType": "recovery",
+      "requiredPt": 170,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-39",
+      "name": "スリーセブン",
+      "category": "general-white",
+      "skillType": "recovery",
+      "requiredPt": 160,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-40",
+      "name": "端緒",
+      "category": "general-white",
+      "skillType": "recovery",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-43",
+      "name": "直線回復",
+      "category": "general-white",
+      "skillType": "recovery",
+      "requiredPt": 170,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-44",
+      "name": "ふり絞り",
+      "category": "general-white",
+      "skillType": "recovery",
+      "requiredPt": 100,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-45",
+      "name": "ペースキープ",
+      "category": "general-white",
+      "skillType": "recovery",
+      "requiredPt": 170,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    }
+  ]
+}

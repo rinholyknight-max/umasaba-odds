@@ -130,13 +130,22 @@ async function loadData() {
   const [statRes, uniqueRes, skillsRes, rankRes] = await Promise.all([
     fetch("data/stat-table.json"),
     fetch("data/unique-skill.json"),
-    fetch("data/skills.json"),
+    fetch("data/skills/index.json"),
     fetch("data/rank-table.json"),
   ]);
   statFormula = await statRes.json();
   uniqueSkillTable = (await uniqueRes.json()).tiers;
   skillData = await skillsRes.json();
   rankThresholds = (await rankRes.json()).thresholds;
+  skillData.skills = await loadSkillFiles(skillData.files);
+}
+
+// スキルデータは項目（速度/加速/回復/緑/進化/継承など）ごとに data/skills/*.json に分割されている。
+async function loadSkillFiles(files) {
+  const groups = await Promise.all(
+    files.map((name) => fetch(`data/skills/${name}.json`).then((res) => res.json()))
+  );
+  return groups.flatMap((group) => group.skills);
 }
 
 // ステータス値→評価点の生値（10倍スケール）を、data/stat-table.jsonの階段関数パラメータに従って積算する。

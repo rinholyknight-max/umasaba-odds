@@ -1,0 +1,4205 @@
+{
+  "skills": [
+    {
+      "id": "joy-to-the-world",
+      "name": "Joy to the World",
+      "category": "normal",
+      "skillType": null,
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 180
+    },
+    {
+      "id": "ifudoudou-yumenishiki",
+      "name": "威風堂々、夢錦！",
+      "category": "normal",
+      "skillType": null,
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 180
+    },
+    {
+      "id": "barikata-icchoagari",
+      "name": "バリカタ、一丁上がり！",
+      "category": "rare",
+      "skillType": null,
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 633
+    },
+    {
+      "id": "shokou",
+      "name": "曙光",
+      "category": "rare",
+      "skillType": null,
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 559
+    },
+    {
+      "id": "zenjin-mitou",
+      "name": "前人未到",
+      "category": "rare",
+      "skillType": null,
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 508
+    },
+    {
+      "id": "furuitatsu-kokoro",
+      "name": "奮い立つ心",
+      "category": "normal",
+      "skillType": null,
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 239
+    },
+    {
+      "id": "soshitsu-no-shoumei",
+      "name": "素質の証明",
+      "category": "rare",
+      "skillType": null,
+      "tierIndex": null,
+      "requiredPt": null,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 633
+    },
+    {
+      "id": "general-gold-63",
+      "name": "アガッてきた！",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-64",
+      "name": "アクセル全開！",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-65",
+      "name": "開けろ風穴！",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-gold-66",
+      "name": "熱いまなざし",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-67",
+      "name": "圧倒",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-68",
+      "name": "圧倒的リード",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-69",
+      "name": "姉御肌",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 367,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-70",
+      "name": "いいとこ入った！",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-71",
+      "name": "意気衝天",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-72",
+      "name": "一網打尽",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-73",
+      "name": "一所懸命",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-74",
+      "name": "一心不乱",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-75",
+      "name": "一石二鳥",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 693,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-76",
+      "name": "一発必中",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-77",
+      "name": "イノベーション",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-gold-78",
+      "name": "エネルギッシュ",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-79",
+      "name": "お先に失礼っ！",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-80",
+      "name": "火事場のバ鹿力",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-81",
+      "name": "風翔",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-82",
+      "name": "かっとばせ！",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-83",
+      "name": "完全燃焼",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-84",
+      "name": "ギアチェンジ",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-85",
+      "name": "気骨稜稜",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-86",
+      "name": "奇術師",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 367,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-87",
+      "name": "急先鋒",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "nige"
+      ],
+      "requiredPt": null,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-88",
+      "name": "強攻策",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-89",
+      "name": "クールダウン",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-90",
+      "name": "慧眼",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-91",
+      "name": "下校後のスペシャリスト",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-92",
+      "name": "月影一閃",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-93",
+      "name": "月影円刃",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-94",
+      "name": "元気溌剌",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-95",
+      "name": "捲土重来",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-gold-96",
+      "name": "堅忍果決",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-97",
+      "name": "光輝燦然",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-98",
+      "name": "豪脚",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-99",
+      "name": "豪胆無比",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-100",
+      "name": "豪風一閃",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-101",
+      "name": "豪風円刃",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-102",
+      "name": "コール＆レスポンス",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-103",
+      "name": "極上の感謝を！",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-104",
+      "name": "この手に掴んだ未来",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chukyori",
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 320,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-105",
+      "name": "砂塵一閃",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-gold-106",
+      "name": "砂塵円刃",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-gold-107",
+      "name": "残影",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-108",
+      "name": "視界良好！異常なし！",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 367,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-109",
+      "name": "疾風怒濤",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-110",
+      "name": "紫電一閃",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-111",
+      "name": "紫電円刃",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-112",
+      "name": "遮二無二",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-113",
+      "name": "出力1000％！",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "nige"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-114",
+      "name": "純真無垢",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-115",
+      "name": "準備万全！",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 433,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-116",
+      "name": "掌握",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-117",
+      "name": "勝負はここから！",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "nige"
+      ],
+      "requiredPt": null,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-118",
+      "name": "勝利の機運",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-gold-119",
+      "name": "勝利への執念",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-120",
+      "name": "熾烈の極み",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-121",
+      "name": "真打",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-122",
+      "name": "震天動地",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-gold-123",
+      "name": "心頭滅却",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-124",
+      "name": "陣風一閃",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "nige"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-125",
+      "name": "スタミナグリード",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 507,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-126",
+      "name": "砂の開拓者",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-gold-127",
+      "name": "砂の玄人",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-gold-128",
+      "name": "砂の妙手",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-gold-129",
+      "name": "スプリントターボ",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-130",
+      "name": "清濁併?",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-131",
+      "name": "清麗高雅",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-132",
+      "name": "迫る影",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-133",
+      "name": "千載一遇",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-134",
+      "name": "先陣の心得",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-135",
+      "name": "全速前進！",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-gold-136",
+      "name": "即断即決",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 376,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-137",
+      "name": "泰然自若",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-138",
+      "name": "匠のステアリング",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-139",
+      "name": "脱兎の先へ",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 696,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-140",
+      "name": "誰より前へ！",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 367,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-141",
+      "name": "チャート急上昇！",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-gold-142",
+      "name": "超然",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 696,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-143",
+      "name": "電撃の煌めき",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-144",
+      "name": "電光石火",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile",
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-145",
+      "name": "電迅速攻",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-146",
+      "name": "天真爛漫",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-147",
+      "name": "点滴穿石",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-gold-148",
+      "name": "天命士",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 367,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-149",
+      "name": "当機立断",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-150",
+      "name": "トキメキハート",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile",
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-151",
+      "name": "怒涛の追い上げ",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-152",
+      "name": "泥んこマイスター",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 461,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-gold-153",
+      "name": "内的体験",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-154",
+      "name": "肉薄",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-155",
+      "name": "日本一のウマ娘",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-156",
+      "name": "熱情",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-157",
+      "name": "眠れる獅子",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-158",
+      "name": "狙うは最前列！",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 394,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-gold-159",
+      "name": "悩殺術",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-160",
+      "name": "ハイボルテージ",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-161",
+      "name": "鋼の意志",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-162",
+      "name": "爆熱のキラメキ",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 696,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-163",
+      "name": "破竹の勢い",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-164",
+      "name": "抜群の切れ味",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-165",
+      "name": "抜群の踏み込み",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 461,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-gold-166",
+      "name": "飛翔脚",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-167",
+      "name": "左回りの鬼",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 461,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-168",
+      "name": "百戦錬磨",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-169",
+      "name": "百花繚乱",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": null,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-170",
+      "name": "閃く雷光",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 367,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-171",
+      "name": "飛竜乗雲",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "nige"
+      ],
+      "requiredPt": null,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-172",
+      "name": "布陣",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-173",
+      "name": "ブチ☆アゲ↑バイブス",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 696,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-174",
+      "name": "プランX",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-175",
+      "name": "ブレイクスルー",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-176",
+      "name": "マイルの支配者",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-177",
+      "name": "まばたき厳禁！",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile",
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-178",
+      "name": "見事な砂蹴り",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-gold-179",
+      "name": "見惚れるトリック",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-180",
+      "name": "目指せセンター！",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-gold-181",
+      "name": "問答無用",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-182",
+      "name": "優雅な砂浴び",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-gold-183",
+      "name": "勇壮活発",
+      "category": "general-gold",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-gold-184",
+      "name": "勇猛果敢",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-185",
+      "name": "悠々自適",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-186",
+      "name": "冷静沈着",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-187",
+      "name": "レースメイカー",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "nige"
+      ],
+      "requiredPt": null,
+      "directPoint": 615,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-188",
+      "name": "烈風一閃",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-189",
+      "name": "烈風円刃",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 559,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-190",
+      "name": "ロケットスタート",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 366,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-191",
+      "name": "私たちの走る道程",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "mile",
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 696,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-178",
+      "name": "阿吽の呼吸",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chukyori",
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-179",
+      "name": "明るい兆し",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-180",
+      "name": "アクセラレーション",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-181",
+      "name": "足任せ",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-182",
+      "name": "遊びはおしまいっ！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-183",
+      "name": "後先恐れず",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-184",
+      "name": "アプローチ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-185",
+      "name": "意気込み十分",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-186",
+      "name": "いざ我が道へ！",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-187",
+      "name": "頂を目指して",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": null,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-188",
+      "name": "一足飛び",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile",
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-189",
+      "name": "いつまでも健やかに",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile",
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 289,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-190",
+      "name": "内弁慶",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-191",
+      "name": "裏腹なキモチ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-192",
+      "name": "追い上げ",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-193",
+      "name": "追込コーナー○",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-194",
+      "name": "追込コーナー◎",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-195",
+      "name": "追込直線○",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-196",
+      "name": "追込直線◎",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-197",
+      "name": "大きなリード",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-198",
+      "name": "大立ち回り",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "sashi",
+        "senkou"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-199",
+      "name": "臆せぬ心",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-200",
+      "name": "奥の手",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "nige"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-201",
+      "name": "惜しみなし",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-202",
+      "name": "押せ押せムード",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-203",
+      "name": "お見通し",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 94,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-204",
+      "name": "恩返し、召し上がれ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-205",
+      "name": "垣間見た光",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-206",
+      "name": "輝きを放って",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-207",
+      "name": "影打",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-208",
+      "name": "影踏み",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-209",
+      "name": "影を追って",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-210",
+      "name": "風切り",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-211",
+      "name": "軽い足取り",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-212",
+      "name": "華麗な足取り",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-213",
+      "name": "華麗な踏み込み",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-214",
+      "name": "気合十分",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-215",
+      "name": "ギアシフト",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-216",
+      "name": "急降下",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-217",
+      "name": "急旋回",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-218",
+      "name": "急発進",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-219",
+      "name": "急浮上",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-220",
+      "name": "巨歩",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-221",
+      "name": "切り崩し",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-222",
+      "name": "切れ味",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-223",
+      "name": "元気バクハツ",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-224",
+      "name": "好機を捉えて",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-225",
+      "name": "コーナー加速◯",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-226",
+      "name": "コーナー巧者◯",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-227",
+      "name": "ここが狙い目",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-228",
+      "name": "心弾んで",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-229",
+      "name": "個性的",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": null,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-230",
+      "name": "ごぼう抜き",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-231",
+      "name": "冴える思考",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-232",
+      "name": "策士",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 94,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-235",
+      "name": "砂塵を越えて",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-236",
+      "name": "潮目を掴んで",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-237",
+      "name": "仕掛け準備",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 191,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-238",
+      "name": "仕掛け抜群",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-239",
+      "name": "時代を変える者",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-240",
+      "name": "シビれる走り",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile",
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-241",
+      "name": "瞬発力",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-242",
+      "name": "上昇気流",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-243",
+      "name": "精進",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-244",
+      "name": "推力十分",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-245",
+      "name": "ステップアップ",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-246",
+      "name": "砂浴び◯",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-247",
+      "name": "砂蹴り",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-248",
+      "name": "スプリントギア",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-249",
+      "name": "聖女の試練",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": null,
+      "directPoint": 85,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-250",
+      "name": "聖女の挑戦",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-251",
+      "name": "積極策",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-254",
+      "name": "善後策",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-255",
+      "name": "先導者",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "nige"
+      ],
+      "requiredPt": null,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-256",
+      "name": "前列狙い",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-257",
+      "name": "存在感",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 289,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-258",
+      "name": "ダートコーナー○",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-259",
+      "name": "ダートコーナー◎",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 262,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-260",
+      "name": "ダート直線○",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-261",
+      "name": "ダート直線◎",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 262,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-262",
+      "name": "打開策",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-263",
+      "name": "滾る想い",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-264",
+      "name": "たぎる血潮",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-265",
+      "name": "ただその先へ",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "senkou"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-266",
+      "name": "ダブルアクセル",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chukyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 286,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-267",
+      "name": "短距離コーナー○",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-268",
+      "name": "短距離コーナー◎",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-269",
+      "name": "短距離直線○",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-270",
+      "name": "短距離直線◎",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-273",
+      "name": "長距離コーナー○",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-274",
+      "name": "長距離コーナー◎",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-275",
+      "name": "長距離直線○",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-276",
+      "name": "長距離直線◎",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-277",
+      "name": "直線一気",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-278",
+      "name": "追駆",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-279",
+      "name": "追尾",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-280",
+      "name": "突き抜ける走り",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-281",
+      "name": "詰め寄り",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-282",
+      "name": "手練手管",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-283",
+      "name": "登竜門",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-284",
+      "name": "轟く足音",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-285",
+      "name": "流れに任せて",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "sashi",
+        "senkou"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-286",
+      "name": "なりふり構わず",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-289",
+      "name": "二段構え",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-290",
+      "name": "熱狂的",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-291",
+      "name": "パイオニア",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-292",
+      "name": "バイタリティ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-293",
+      "name": "ハイピッチ",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-294",
+      "name": "バイブス上昇",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 289,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-295",
+      "name": "弾ける足取り",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-296",
+      "name": "溌剌",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-297",
+      "name": "早仕掛け",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-298",
+      "name": "張り切り",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 289,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-299",
+      "name": "ヒートアップ",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-300",
+      "name": "ひたむき前進",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-301",
+      "name": "広がる景色",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-302",
+      "name": "筆に任せて",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "nige"
+      ],
+      "requiredPt": null,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-303",
+      "name": "プレリュード",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-304",
+      "name": "奮闘",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-305",
+      "name": "ポイントマン",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "nige"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-306",
+      "name": "星の煌き",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-307",
+      "name": "捕捉",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-308",
+      "name": "マイルコーナー○",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-309",
+      "name": "マイルコーナー◎",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-310",
+      "name": "マイル直線○",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-311",
+      "name": "マイル直線◎",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-312",
+      "name": "負けん気",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-313",
+      "name": "まっしぐら",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-314",
+      "name": "待ったなし",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-315",
+      "name": "向こう見ず",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-316",
+      "name": "無三",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-317",
+      "name": "無二",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-318",
+      "name": "胸の高鳴り",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile",
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-319",
+      "name": "目にも留まらず",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "nige"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-320",
+      "name": "猛プッシュ",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-321",
+      "name": "盛り返し",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-322",
+      "name": "リードキープ",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-323",
+      "name": "レコメンド",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-324",
+      "name": "練達の一歩",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-325",
+      "name": "連綿",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-326",
+      "name": "ロックオン",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-327",
+      "name": "私の足取り",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-328",
+      "name": "息抜き上手",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori",
+        "chukyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-329",
+      "name": "下校の楽しみ",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-330",
+      "name": "後方待機",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-331",
+      "name": "コーナー回復◯",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-332",
+      "name": "砂塵慣れ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-333",
+      "name": "深呼吸",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-334",
+      "name": "砂払い",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-335",
+      "name": "超長距離回復○",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-336",
+      "name": "超長距離回復◎",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-337",
+      "name": "展開窺い",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-338",
+      "name": "パス上手",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-339",
+      "name": "不動の心",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-340",
+      "name": "別腹タンク",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-341",
+      "name": "マイペース",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-342",
+      "name": "様子見",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-343",
+      "name": "冷静",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-344",
+      "name": "脇目も振らず",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 289,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-347",
+      "name": "内枠得意○",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-348",
+      "name": "内枠得意◎",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-349",
+      "name": "追込のコツ○",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 191,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-350",
+      "name": "追込のコツ◎",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-192",
+      "name": "衝動",
+      "category": "general-gold",
+      "skillType": null,
+      "styles": [
+        "sashi",
+        "turf"
+      ],
+      "requiredPt": null,
+      "directPoint": 477,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-363",
+      "name": "勝負勘",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "nige"
+      ],
+      "requiredPt": null,
+      "directPoint": 210,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-364",
+      "name": "精神力",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "sashi"
+      ],
+      "requiredPt": null,
+      "directPoint": 210,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-372",
+      "name": "泥遊び○",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-373",
+      "name": "泥遊び◎",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-388",
+      "name": "踏み込み上手",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-396",
+      "name": "圧迫感",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-397",
+      "name": "追込焦り",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-398",
+      "name": "追込駆け引き",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-399",
+      "name": "追込けん制",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-400",
+      "name": "追込ためらい",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-401",
+      "name": "後方釘付",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-402",
+      "name": "差し焦り",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-403",
+      "name": "差し駆け引き",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-404",
+      "name": "差しけん制",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-405",
+      "name": "差しためらい",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-406",
+      "name": "スタミナイーター",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-407",
+      "name": "スピードイーター",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-408",
+      "name": "先行焦り",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-409",
+      "name": "先行駆け引き",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-410",
+      "name": "先行けん制",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-411",
+      "name": "先行ためらい",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-412",
+      "name": "土煙",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false,
+      "styles": [
+        "dirt"
+      ]
+    },
+    {
+      "id": "general-white-413",
+      "name": "トリック（後）",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-414",
+      "name": "トリック（前）",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-415",
+      "name": "逃げ焦り",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-416",
+      "name": "逃げ駆け引き",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-417",
+      "name": "逃げけん制",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-418",
+      "name": "逃げためらい",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-419",
+      "name": "抜け駆け禁止",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "tankyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 288,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-420",
+      "name": "布石",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "mile"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-421",
+      "name": "まなざし",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "oikomi"
+      ],
+      "requiredPt": null,
+      "directPoint": 239,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-422",
+      "name": "目くらまし",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "chokyori"
+      ],
+      "requiredPt": null,
+      "directPoint": 142,
+      "aptitudeType": "none",
+      "needsData": false
+    }
+  ]
+}

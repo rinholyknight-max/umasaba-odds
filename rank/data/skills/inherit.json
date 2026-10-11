@@ -1,0 +1,1982 @@
+{
+  "skills": [
+    {
+      "id": "general-white-423",
+      "name": "Vive la GOLD",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-424",
+      "name": "Watch Us Flourish",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-425",
+      "name": "Weaving History",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "senkou",
+        "turf"
+      ],
+      "requiredPt": null,
+      "directPoint": 198,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-426",
+      "name": "win Q.E.D",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-427",
+      "name": "With All My Heart",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-428",
+      "name": "YEAH☆VIVID TIME!",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-429",
+      "name": "愛と熔けよただ熔けよ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-430",
+      "name": "あおぞらクッキング♪",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-431",
+      "name": "暁の御旗『葛城栄主』！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-432",
+      "name": "アゲてアゲてぷちょへんざ！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-433",
+      "name": "憧れは桜を越える！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-434",
+      "name": "あっぱれ大盤振る舞い！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-435",
+      "name": "アド・アストラ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-436",
+      "name": "あなたに捧げるフリーポア",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-437",
+      "name": "アナタヲ・オイカケテ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-438",
+      "name": "アングリング×スキーミング",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-439",
+      "name": "いずれあなたに咲くフローラ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-440",
+      "name": "いただき☆ストレリチア！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-441",
+      "name": "一期の夢、刹那の飛翔",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-442",
+      "name": "いっぱいおあげんしぇ！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-443",
+      "name": "一杯全力、お届けします！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 218,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-444",
+      "name": "禾スナハチ登ル",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-445",
+      "name": "ヴィヴァーチェ・ヴォラーレ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-446",
+      "name": "ヴィクトリーショット！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-447",
+      "name": "ヴィットーリアに捧ぐ舞踏",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-448",
+      "name": "打ち、鍛えて",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-449",
+      "name": "海風にまったり身を任せ",
+      "category": "general-white",
+      "skillType": null,
+      "styles": [
+        "nige",
+        "turf"
+      ],
+      "requiredPt": null,
+      "directPoint": 198,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-450",
+      "name": "麗しき花信風",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-451",
+      "name": "運否、聖夜の星に賭ける",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 198,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-452",
+      "name": "鋭気のアレグロ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-453",
+      "name": "エパヌイスマンの大号令",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-454",
+      "name": "エンジン点火！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-455",
+      "name": "エンジン全開！大噴射！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-456",
+      "name": "演舞・撫子大薙刀",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-457",
+      "name": "奥義・常夏バーニング！！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-458",
+      "name": "黄金を訪ねて",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 238,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-459",
+      "name": "大盛り！ファーストバイト！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-460",
+      "name": "オペレーション・Cacao",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-461",
+      "name": "念い、信ずればこそ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 198,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-462",
+      "name": "快走かな、快走かな！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-463",
+      "name": "快なる剛力",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-464",
+      "name": "晦冥を照らせ永遠の耀き",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-465",
+      "name": "掲げよ、己が魂の剣を！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-466",
+      "name": "かがやけ☆とまこまい",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-467",
+      "name": "翳り退く、さざめきの矢",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-468",
+      "name": "風光る",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-469",
+      "name": "勝ち鬨ワッショイ！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-470",
+      "name": "喝采☆ワンダードール！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-471",
+      "name": "カッティング×DRIVE！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-472",
+      "name": "彼方、その先へ…",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-473",
+      "name": "歌舞歓楽や、ああをかし",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-474",
+      "name": "駆るは光、狩るは星々",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-475",
+      "name": "冠絶タクティクス",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 198,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-476",
+      "name": "貴顕の使命を果たすべく",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-477",
+      "name": "きせき・おもい・かなで",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-478",
+      "name": "きっとその先へ…！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-479",
+      "name": "来ます来てます来させます！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-480",
+      "name": "究極テイオーステップ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-481",
+      "name": "暁霞を拓き、朝を掴む",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 198,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-482",
+      "name": "キラキラ☆STARDOM",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-483",
+      "name": "煌星のヴォードヴィル",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-484",
+      "name": "きらめくは海、まばゆきは君",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-485",
+      "name": "煌めき華やぐアローライン",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-486",
+      "name": "グッときて♪Chu",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-487",
+      "name": "ぐるぐるマミートリック?",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-488",
+      "name": "薫風、永遠なる瞬間を",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-489",
+      "name": "恵福バルカローレ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-490",
+      "name": "ゲインヒール・スペリアー",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-491",
+      "name": "決意一筆",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-492",
+      "name": "ケ・ピアチェーヴォレ！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-493",
+      "name": "玄雲散らす、黄金甲矢",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-494",
+      "name": "剣ヶ峰より、狂気に嗤え",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-495",
+      "name": "紅焔ギア/LP1211-M",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-496",
+      "name": "轟！トレセン応援団！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-497",
+      "name": "剛勇果断、烈火之刀",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-498",
+      "name": "心からのおもてにゃし",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-499",
+      "name": "心、強し！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-500",
+      "name": "五獣挙りて彩光奏づ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-501",
+      "name": "ごろりん！？パワードライブ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-502",
+      "name": "コンドル猛撃波",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-503",
+      "name": "最恐！いたずら計画なのだ♪",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 198,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-504",
+      "name": "最強の名を懸けて",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-505",
+      "name": "桜吹雪くスプリントバースト",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 198,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-506",
+      "name": "咲け咲け！私！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-507",
+      "name": "幸せの青い光",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-508",
+      "name": "潮風のGeschenk",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-509",
+      "name": "至上であれ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-510",
+      "name": "疾風爆走ペガサスダッシュ！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-511",
+      "name": "シューティングスター",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-512",
+      "name": "シュガーパレード･始動！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-513",
+      "name": "ジュ・テーム☆バカンス！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-514",
+      "name": "春光・Bon app?tit",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-515",
+      "name": "勝利の鼓動",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-516",
+      "name": "勝利のチケットを、君にッ！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-517",
+      "name": "勝利ヘ至ル累積",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-518",
+      "name": "叙情、旅路の果てに",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-519",
+      "name": "白い稲妻、見せたるで！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-520",
+      "name": "深淵のテルプシコラー",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-521",
+      "name": "水平線のその先へ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-522",
+      "name": "スカーレットリリィの高揚",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-523",
+      "name": "ずっとずっと輝いて",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 216,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-524",
+      "name": "精神一到何事か成らざらん",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-525",
+      "name": "聖夜のミラクルラン！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-526",
+      "name": "セイリオス",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-527",
+      "name": "絶対最強☆アピール宣言！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-528",
+      "name": "絶対は、ボクだ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-529",
+      "name": "先頭の景色は譲らない…！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-530",
+      "name": "全力全開！サイクロン",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-531",
+      "name": "蒼炎",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-532",
+      "name": "想像×創造＝∞",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 198,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-533",
+      "name": "『それでは、よき旅を』",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-534",
+      "name": "対象捕捉！正義遂行！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-535",
+      "name": "タイマン！デッドヒート！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-536",
+      "name": "黄昏の血盟",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-537",
+      "name": "辿る血脈、芽吹く未来",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-538",
+      "name": "小さな奇跡、フォーユー♪",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-539",
+      "name": "千歳、廻りて",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-540",
+      "name": "地熱解放オーヴァードライブ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-541",
+      "name": "チャージ完了！全速前進！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-542",
+      "name": "超光速微粒子の可能性",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-543",
+      "name": "繋ぐ・繋がる×夢・未来",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-544",
+      "name": "つぼみ、ほころぶ時",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-545",
+      "name": "ディオスクロイの流星",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-546",
+      "name": "照らすのはわたしの焔",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-547",
+      "name": "デラックス☆ファウンテン",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-548",
+      "name": "灯穂",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-549",
+      "name": "尊み☆ﾗｽﾄｽﾊﾟー(ﾟ∀ﾟ)ーﾄ!",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-550",
+      "name": "時かけるせせらぎ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 198,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-551",
+      "name": "ときめきが呼ぶほうへ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-552",
+      "name": "解けぬ結い目",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 198,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-553",
+      "name": "とっておきmaterialize",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-554",
+      "name": "とびだせ☆ポッピングシェル",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-555",
+      "name": "どんっ、パッ、むんっ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-556",
+      "name": "渚のヴィーナスタイム",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-557",
+      "name": "夏空ハレーション",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-558",
+      "name": "汝、皇帝の神威を見よ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-559",
+      "name": "忍法・ほほえみ心結の印",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-560",
+      "name": "熱血！！風紀アタック",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-561",
+      "name": "ノッてけ、マッシュアップ！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-562",
+      "name": "夏雷カスケード！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 198,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-563",
+      "name": "灰色の臨界点",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-564",
+      "name": "灰の光跡：シンデレラグレイ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-565",
+      "name": "花開き、世界",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-566",
+      "name": "万彩☆マーベラス★世界",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-567",
+      "name": "火神鳴",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-568",
+      "name": "光れ！弾けろ！超新星爆発！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 238,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-569",
+      "name": "姫たるもの、勝利をこの手に",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-570",
+      "name": "ピュリティオブハート",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-571",
+      "name": "ひらめき☆ランディング",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-572",
+      "name": "ふくらむ夢、先駆の途",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-573",
+      "name": "不凋なるCattleya",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 198,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-574",
+      "name": "不沈艦、抜錨ォッ！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-575",
+      "name": "ぶっちぎりロード",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-576",
+      "name": "『船橋最強！』",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-577",
+      "name": "フラワリー☆マニューバ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-578",
+      "name": "プランチャ☆ガナドール",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-579",
+      "name": "ブリリアント・レッドエース",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-580",
+      "name": "ブルーローズチェイサー",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-581",
+      "name": "ブレイズ・オブ・プライド",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-582",
+      "name": "フレッシュ☆パーラー",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-583",
+      "name": "ふわもこアワー",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-584",
+      "name": "霹靂のアウフヘーベン",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-585",
+      "name": "ホップステップ・ゲッチュ?",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-586",
+      "name": "ポンテ・デ・ディアマン",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-587",
+      "name": "迷えるときも、幽かなる時も",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 198,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-588",
+      "name": "未知との遭遇、即ち物語",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-589",
+      "name": "ミンナノアタシへ！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-590",
+      "name": "無垢の祈り・ホーリーライト",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 198,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-591",
+      "name": "無二無三なる一条の路",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-592",
+      "name": "夢寐に見る銀世界",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-593",
+      "name": "萌到譲我活過来了！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-594",
+      "name": "燃え盛るは絶対の意志",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-595",
+      "name": "もちっと・ハレハレ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-596",
+      "name": "ヤバ技☆ジャグルビート",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 198,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-597",
+      "name": "悠遠のファーノース",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-598",
+      "name": "優等生×バクシン=大勝利ッ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-599",
+      "name": "夕凪のリトリート・メモリー",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-600",
+      "name": "ゆきあかり、おいかけて",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-601",
+      "name": "夢の先へ、届け！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-602",
+      "name": "湯守の和心",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-603",
+      "name": "知宵欺敵、百戦不殆",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-604",
+      "name": "羅刹、赤翼にて天上へ至らん",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-605",
+      "name": "爛然闊歩",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-606",
+      "name": "理運開かりて翔る",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-607",
+      "name": "理想へのwinding road",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-608",
+      "name": "霊験灼然チョベリグ神託",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-609",
+      "name": "麗走一直！ラーメン道",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 198,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-610",
+      "name": "烈花の洗礼",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-611",
+      "name": "烈火繚乱、無敵之舞",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-612",
+      "name": "レッツ・アナボリック！",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-613",
+      "name": "烈々と咲く",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 198,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-614",
+      "name": "我が覇道、阻むものなし",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 198,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-615",
+      "name": "ワクワククライマックス",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-616",
+      "name": "わやかわ♪マリンダイヴ",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-617",
+      "name": "咲う花形",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-618",
+      "name": "剛心鉄壁ガーディアン",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 198,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-619",
+      "name": "α-star*",
+      "category": "general-white",
+      "skillType": null,
+      "requiredPt": null,
+      "directPoint": 180,
+      "aptitudeType": "none",
+      "needsData": false
+    }
+  ]
+}

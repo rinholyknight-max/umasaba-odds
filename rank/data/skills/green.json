@@ -1,0 +1,1438 @@
+{
+  "skills": [
+    {
+      "id": "migimawari",
+      "name": "右回り◎",
+      "category": "normal",
+      "skillType": "green",
+      "tierIndex": null,
+      "requiredPt": 110,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 174
+    },
+    {
+      "id": "general-gold-45",
+      "name": "青嵐",
+      "category": "general-gold",
+      "skillType": "green",
+      "requiredPt": 130,
+      "directPoint": 461,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-46",
+      "name": "凍て風",
+      "category": "general-gold",
+      "skillType": "green",
+      "requiredPt": 130,
+      "directPoint": 461,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-47",
+      "name": "交流重賞の鬼",
+      "category": "general-gold",
+      "skillType": "green",
+      "requiredPt": 130,
+      "directPoint": 461,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-48",
+      "name": "コネクト",
+      "category": "general-gold",
+      "skillType": "green",
+      "styles": [
+        "turf"
+      ],
+      "requiredPt": 150,
+      "directPoint": 334,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-49",
+      "name": "勝負師",
+      "category": "general-gold",
+      "skillType": "green",
+      "requiredPt": 180,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-50",
+      "name": "スーパーラッキーセブン",
+      "category": "general-gold",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 334,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-51",
+      "name": "初嵐",
+      "category": "general-gold",
+      "skillType": "green",
+      "requiredPt": 130,
+      "directPoint": 461,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-52",
+      "name": "春一番",
+      "category": "general-gold",
+      "skillType": "green",
+      "requiredPt": 130,
+      "directPoint": 461,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-53",
+      "name": "府中の申し子",
+      "category": "general-gold",
+      "skillType": "green",
+      "requiredPt": 130,
+      "directPoint": 461,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-54",
+      "name": "右回りの鬼",
+      "category": "general-gold",
+      "skillType": "green",
+      "requiredPt": 130,
+      "directPoint": 461,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-55",
+      "name": "淀の申し子",
+      "category": "general-gold",
+      "skillType": "green",
+      "requiredPt": 130,
+      "directPoint": 461,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-56",
+      "name": "ロンシャンの申し子",
+      "category": "general-gold",
+      "skillType": "green",
+      "requiredPt": 130,
+      "directPoint": 461,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-57",
+      "name": "道悪の鬼",
+      "category": "general-gold",
+      "skillType": "green",
+      "requiredPt": 130,
+      "directPoint": 461,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-58",
+      "name": "良バ場の鬼",
+      "category": "general-gold",
+      "skillType": "green",
+      "requiredPt": 130,
+      "directPoint": 461,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-46",
+      "name": "秋ウマ娘◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-47",
+      "name": "秋ウマ娘◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-48",
+      "name": "秋ウマ娘〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-49",
+      "name": "雨の日◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-50",
+      "name": "雨の日◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-51",
+      "name": "雨の日〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-52",
+      "name": "一匹狼",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-53",
+      "name": "内枠有利◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-54",
+      "name": "内枠有利◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 45,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-55",
+      "name": "内枠有利〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-56",
+      "name": "大井レース場◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-57",
+      "name": "大井レース場◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-58",
+      "name": "大井レース場〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-59",
+      "name": "おひとり様◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-60",
+      "name": "おひとり様◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-61",
+      "name": "おひとり様〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-62",
+      "name": "川崎レース場◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-63",
+      "name": "川崎レース場◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-64",
+      "name": "川崎レース場〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-65",
+      "name": "京都レース場◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-66",
+      "name": "京都レース場◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-67",
+      "name": "京都レース場〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-68",
+      "name": "曇りの日◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-69",
+      "name": "曇りの日◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-70",
+      "name": "曇りの日〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-71",
+      "name": "交流重賞◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-72",
+      "name": "交流重賞◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-73",
+      "name": "交流重賞〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-74",
+      "name": "小倉レース場◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-75",
+      "name": "小倉レース場◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-76",
+      "name": "小倉レース場〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-77",
+      "name": "小回り◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-78",
+      "name": "小回り◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-79",
+      "name": "小回り〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-80",
+      "name": "根幹距離◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-81",
+      "name": "根幹距離◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-82",
+      "name": "根幹距離〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-83",
+      "name": "札幌レース場◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-84",
+      "name": "札幌レース場◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-85",
+      "name": "札幌レース場〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-86",
+      "name": "サンタアニタパークレース場◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-87",
+      "name": "サンタアニタパークレース場◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-88",
+      "name": "サンタアニタパークレース場〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-89",
+      "name": "自制心",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 160,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-90",
+      "name": "シンパシー",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-91",
+      "name": "外枠得意◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-92",
+      "name": "外枠得意◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-93",
+      "name": "外枠得意〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-94",
+      "name": "対抗意識◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-95",
+      "name": "対抗意識◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-96",
+      "name": "対抗意識〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-97",
+      "name": "中京レース場◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-98",
+      "name": "中京レース場◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-99",
+      "name": "中京レース場〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-100",
+      "name": "直線コース◎＋○",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-101",
+      "name": "直線コース◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-102",
+      "name": "直線コース○",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-103",
+      "name": "徹底マーク◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-104",
+      "name": "徹底マーク◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-105",
+      "name": "徹底マーク〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-106",
+      "name": "デルマーレース場◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-107",
+      "name": "デルマーレース場◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-108",
+      "name": "デルマーレース場〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-109",
+      "name": "東京レース場◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-110",
+      "name": "東京レース場◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-111",
+      "name": "東京レース場〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-112",
+      "name": "ナイター◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-113",
+      "name": "ナイター◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-114",
+      "name": "ナイター〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-115",
+      "name": "中山レース場◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-116",
+      "name": "中山レース場◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-117",
+      "name": "中山レース場〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-118",
+      "name": "夏ウマ娘◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-119",
+      "name": "夏ウマ娘◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-120",
+      "name": "夏ウマ娘〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-121",
+      "name": "新潟レース場◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-122",
+      "name": "新潟レース場◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-123",
+      "name": "新潟レース場〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-124",
+      "name": "函館レース場◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-125",
+      "name": "函館レース場◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-126",
+      "name": "函館レース場〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-127",
+      "name": "春ウマ娘◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-128",
+      "name": "春ウマ娘◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-129",
+      "name": "春ウマ娘〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-130",
+      "name": "阪神レース場◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-131",
+      "name": "阪神レース場◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-132",
+      "name": "阪神レース場〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-133",
+      "name": "非根幹距離◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-134",
+      "name": "非根幹距離◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-135",
+      "name": "非根幹距離〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-136",
+      "name": "晴れの日◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-137",
+      "name": "晴れの日◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-138",
+      "name": "晴れの日〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-139",
+      "name": "左回り◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-140",
+      "name": "左回り◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-141",
+      "name": "左回り〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-142",
+      "name": "福島レース場◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-143",
+      "name": "福島レース場◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-144",
+      "name": "福島レース場〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-145",
+      "name": "伏兵◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-146",
+      "name": "伏兵◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-147",
+      "name": "伏兵〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-148",
+      "name": "船橋レース場◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-149",
+      "name": "船橋レース場◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-150",
+      "name": "船橋レース場〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-151",
+      "name": "冬ウマ娘◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-152",
+      "name": "冬ウマ娘◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-153",
+      "name": "冬ウマ娘〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-154",
+      "name": "右回り◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-155",
+      "name": "右回り〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-156",
+      "name": "道悪◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-157",
+      "name": "道悪◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-158",
+      "name": "道悪〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-159",
+      "name": "盛岡レース場◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-160",
+      "name": "盛岡レース場◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-161",
+      "name": "盛岡レース場〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-162",
+      "name": "やまっけ",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 180,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-163",
+      "name": "雪の日◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-164",
+      "name": "雪の日◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-165",
+      "name": "雪の日〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-166",
+      "name": "ラッキーセブン",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-167",
+      "name": "レースの真髄・心",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 150,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-168",
+      "name": "ロンシャンレース場◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 160,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-169",
+      "name": "ロンシャンレース場◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-170",
+      "name": "ロンシャンレース場〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 70,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-171",
+      "name": "良バ場◎＋〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 200,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-172",
+      "name": "良バ場◎",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 110,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-173",
+      "name": "良バ場〇",
+      "category": "general-white",
+      "skillType": "green",
+      "requiredPt": 90,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    }
+  ]
+}

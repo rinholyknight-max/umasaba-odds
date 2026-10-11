@@ -1,0 +1,84 @@
+{
+  "skills": [
+    {
+      "id": "general-gold-59",
+      "name": "アオハル燃焼・賢",
+      "category": "general-gold",
+      "skillType": "other",
+      "requiredPt": 200,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-60",
+      "name": "コンセントレーション",
+      "category": "general-gold",
+      "skillType": "other",
+      "requiredPt": 140,
+      "directPoint": 394,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-61",
+      "name": "注目の踊り子",
+      "category": "general-gold",
+      "skillType": "other",
+      "requiredPt": 120,
+      "directPoint": 334,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-62",
+      "name": "レーンの魔術師",
+      "category": "general-gold",
+      "skillType": "other",
+      "requiredPt": 120,
+      "directPoint": 334,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-174",
+      "name": "アオハル点火・賢",
+      "category": "general-white",
+      "skillType": "other",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-175",
+      "name": "集中力",
+      "category": "general-white",
+      "skillType": "other",
+      "requiredPt": 140,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-176",
+      "name": "ポジションセンス",
+      "category": "general-white",
+      "skillType": "other",
+      "requiredPt": 120,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-177",
+      "name": "臨機応変",
+      "category": "general-white",
+      "skillType": "other",
+      "requiredPt": 120,
+      "directPoint": 129,
+      "aptitudeType": "none",
+      "needsData": false
+    }
+  ]
+}

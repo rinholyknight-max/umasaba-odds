@@ -1,0 +1,64 @@
+{
+  "_comment": "白因子（スキル）データ。directPointがあるスキルはユーザー提供の実データ（必要pt・評価点そのまま）をそのまま使用する。directPointが無くtierIndexがあるものはbaseTier×適性倍率の近似計算。needsData:trueのものは実キャラのスキル欄から名称のみ確認できたが、必要pt・評価点が未確認のため評価点0扱い（要データ入力）。今後データを追加する場合はdirectPoint方式を優先すること。",
+  "aptitudeMultiplier": {
+    "S": 1.1,
+    "A": 1.1,
+    "B": 0.9,
+    "C": 0.9,
+    "D": 0.8,
+    "E": 0.8,
+    "F": 0.8,
+    "G": 0.7
+  },
+  "baseTier": {
+    "normal": [
+      262,
+      217,
+      174,
+      129,
+      85
+    ],
+    "rare": [
+      508,
+      394,
+      334
+    ]
+  },
+  "uniqueSkillsObserved": [
+    {
+      "id": "peerless-heroine",
+      "name": "Peerless Heroine",
+      "tier": "star3-5",
+      "level": 6
+    }
+  ],
+  "observedCharacters": [
+    {
+      "name": "アーモンドアイ",
+      "displayedRank": "UA3",
+      "stats": {
+        "speed": 2279,
+        "stamina": 1532,
+        "power": 1603,
+        "guts": 1015,
+        "wisdom": 1488
+      },
+      "uniqueSkill": {
+        "name": "Peerless Heroine",
+        "tier": "star3-5",
+        "level": 6
+      },
+      "note": "スキルタブのスクリーンショットから取得。継承因子分の加点は含まれないため、表示ランクとの厳密な逆算はできない。"
+    }
+  ],
+  "files": [
+    "speed",
+    "accel",
+    "recovery",
+    "green",
+    "evolution",
+    "inherit",
+    "other",
+    "unclassified"
+  ]
+}

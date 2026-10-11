@@ -1,0 +1,145 @@
+{
+  "skills": [
+    {
+      "id": "jigatame",
+      "name": "地固め",
+      "category": "normal",
+      "skillType": "accel",
+      "tierIndex": null,
+      "requiredPt": 100,
+      "aptitudeType": "none",
+      "needsData": false,
+      "directPoint": 217
+    },
+    {
+      "id": "general-gold-31",
+      "name": "アオハル燃焼・力",
+      "category": "general-gold",
+      "skillType": "accel",
+      "requiredPt": 200,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-32",
+      "name": "一陣の風",
+      "category": "general-gold",
+      "skillType": "accel",
+      "requiredPt": 170,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-33",
+      "name": "究極のヒルクライマー",
+      "category": "general-gold",
+      "skillType": "accel",
+      "requiredPt": 160,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-34",
+      "name": "曲線のソムリエ",
+      "category": "general-gold",
+      "skillType": "accel",
+      "requiredPt": 180,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-35",
+      "name": "大海の叡智",
+      "category": "general-gold",
+      "skillType": "accel",
+      "requiredPt": 200,
+      "directPoint": 633,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-36",
+      "name": "ノンストップガール",
+      "category": "general-gold",
+      "skillType": "accel",
+      "requiredPt": 150,
+      "directPoint": 394,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-gold-37",
+      "name": "盤石の構え",
+      "category": "general-gold",
+      "skillType": "accel",
+      "requiredPt": 180,
+      "directPoint": 508,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-29",
+      "name": "アオハル点火・力",
+      "category": "general-white",
+      "skillType": "accel",
+      "requiredPt": 200,
+      "directPoint": 263,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-30",
+      "name": "コーナー加速",
+      "category": "general-white",
+      "skillType": "accel",
+      "requiredPt": 180,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-31",
+      "name": "垂れウマ回避",
+      "category": "general-white",
+      "skillType": "accel",
+      "requiredPt": 150,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-32",
+      "name": "直線加速",
+      "category": "general-white",
+      "skillType": "accel",
+      "requiredPt": 170,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-33",
+      "name": "登山家",
+      "category": "general-white",
+      "skillType": "accel",
+      "requiredPt": 160,
+      "directPoint": 217,
+      "aptitudeType": "none",
+      "needsData": false
+    },
+    {
+      "id": "general-white-34",
+      "name": "レースの真髄・根",
+      "category": "general-white",
+      "skillType": "accel",
+      "requiredPt": 150,
+      "directPoint": 174,
+      "aptitudeType": "none",
+      "needsData": false
+    }
+  ]
+}
